@@ -1,0 +1,14 @@
+uuid: e9b3bd6c-fb3b-40b5-860d-095e78ba8e26
+name: ECI
+mail: info@example.org
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /user/login
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
