@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.initiative.field_date
     - field.field.node.initiative.field_main_objectives
+    - field.field.node.initiative.field_subject_matter
     - node.type.initiative
   module:
     - field_layout
@@ -47,3 +48,5 @@ content:
 hidden:
   field_date: true
   field_main_objectives: true
+  field_subject_matter: true
+  langcode: true

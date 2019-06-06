@@ -1,0 +1,16 @@
+uuid: 584ca679-bca4-48f4-9270-91b0e17b9073
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.initiative
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.initiative
+target_entity_type_id: node
+target_bundle: initiative
+default_langcode: site_default
+language_alterable: false

@@ -17,9 +17,11 @@ module:
   jsonapi: 0
   jsonapi_defaults: 0
   jsonapi_extras: 0
+  language: 0
   layout_builder: 0
   layout_discovery: 0
   link: 0
+  locale: 0
   node: 0
   oe_theme_helper: 0
   options: 0
@@ -36,6 +38,7 @@ module:
   update: 0
   user: 0
   menu_link_content: 1
+  content_translation: 10
   views: 10
   oe_profile: 1000
 theme:

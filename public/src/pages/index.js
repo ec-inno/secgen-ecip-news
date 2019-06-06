@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 
 const Homepage = ({ data }) => {
