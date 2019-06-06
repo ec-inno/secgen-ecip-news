@@ -1,9 +1,10 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "name": "digit-eci-reference-public",
+  "description": "The UI using digit-eci-reference Drupal 8 backend.",
   "version": "0.1.0",
-  "license": "MIT",
+  "author": "European Commission",
+  "license": "EUPL-1.1",
+  "private": true,
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -13,19 +14,22 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
-    "gatsby": "^2.8.4",
+    "@ecl/ec-preset-website": "2.5.0",
+    "gatsby": "2.8.4",
     "gatsby-source-drupal": "3.1.10",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-helmet": "5.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.17.1"
+    "prettier": "1.17.1",
+    "prop-types": "15.7.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/ec-inno/digit-eci-reference"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/ec-inno/digit-eci-reference"
   }
 }

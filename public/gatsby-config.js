@@ -4,7 +4,7 @@ const baseUrl = process.env.SITE_BASE_URL
 
 module.exports = {
   siteMetadata: {
-    title: "ECI",
+    title: "European citizens' initiative",
   },
   plugins: [
     {
