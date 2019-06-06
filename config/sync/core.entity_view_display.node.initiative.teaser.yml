@@ -1,0 +1,49 @@
+uuid: 01fc423f-27ff-4afe-8edd-a355e7fb3e60
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.initiative.field_date
+    - field.field.node.initiative.field_main_objectives
+    - node.type.initiative
+  module:
+    - field_layout
+    - layout_builder
+    - layout_discovery
+    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+  layout_builder:
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings: {  }
+        components:
+          0efc883e-ab48-408b-a094-856d9fb1f526:
+            uuid: 0efc883e-ab48-408b-a094-856d9fb1f526
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:initiative:links'
+            additional: {  }
+            weight: 0
+        third_party_settings: {  }
+id: node.initiative.teaser
+targetEntityType: node
+bundle: initiative
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_date: true
+  field_main_objectives: true

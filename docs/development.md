@@ -20,6 +20,14 @@ $ docker-compose exec web composer require drupal/jsonapi_extras
 $ docker-compose exec web ./vendor/drupal/console/bin/drupal site:statistics
 ```
 
+## Clearing cache
+
+This command is frequently used, you might want to make an alias for it.
+
+```sh
+$ docker-compose exec web ./vendor/drupal/console/bin/drupal cache:rebuild
+```
+
 ## Installing modules
 
 ```sh

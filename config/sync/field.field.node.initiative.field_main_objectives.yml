@@ -1,0 +1,21 @@
+uuid: 57c55dc3-c40e-460a-b2aa-04727bf76489
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_objectives
+    - node.type.initiative
+  module:
+    - text
+id: node.initiative.field_main_objectives
+field_name: field_main_objectives
+entity_type: node
+bundle: initiative
+label: 'Main objectives'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
