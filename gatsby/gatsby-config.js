@@ -14,7 +14,6 @@ module.exports = {
       options: {
         baseUrl,
         apiBase: `api`,
-        language: 'bg',
       },
     },
     {
@@ -22,6 +21,7 @@ module.exports = {
       options: {
         baseUrl,
         apiBase: `api`,
+        language: 'bg',
       },
     },
   ],

@@ -180,11 +180,19 @@ exports.sourceNodes = async (
 
   // Process nodes
   const nodes = [];
+
+  // The namespace is not matching jsonapi/drupal pattern!
+  // It's apiBase/language and not language/apiBase.
+  // It's used to namespace nodes and their ids, not for api calls!
+  const apiLanguageBasedNamespace = language
+    ? `${apiBase}/${language}`
+    : apiBase;
+
   _.each(allData, contentType => {
     if (!contentType) return;
 
     _.each(contentType.data, datum => {
-      const node = nodeFromData(datum, createNodeId);
+      const node = nodeFromData(datum, createNodeId, apiLanguageBasedNamespace);
 
       node.relationships = {};
 
@@ -195,10 +203,16 @@ exports.sourceNodes = async (
           if (_.isArray(v.data) && v.data.length > 0) {
             // Create array of all ids that are in our index
             node.relationships[`${k}___NODE`] = _.compact(
-              v.data.map(data => (ids[data.id] ? createNodeId(data.id) : null))
+              v.data.map(data =>
+                ids[data.id]
+                  ? `${apiLanguageBasedNamespace}/${createNodeId(data.id)}`
+                  : null
+              )
             );
           } else if (ids[v.data.id]) {
-            node.relationships[`${k}___NODE`] = createNodeId(v.data.id);
+            node.relationships[
+              `${k}___NODE`
+            ] = `${apiLanguageBasedNamespace}/${createNodeId(v.data.id)}`;
           }
         });
       }
@@ -212,7 +226,9 @@ exports.sourceNodes = async (
             node.relationships[`${ref.type}___NODE`] = [];
           }
 
-          node.relationships[`${ref.type}___NODE`].push(createNodeId(ref.id));
+          node.relationships[`${ref.type}___NODE`].push(
+            `${apiLanguageBasedNamespace}/${createNodeId(ref.id)}`
+          );
         });
       }
 
