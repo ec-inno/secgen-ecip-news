@@ -4,6 +4,6 @@ A [headless Drupal](https://dri.es/tag/headless-drupal) project based on [OpenEu
 
 ## Useful resources
 
-- Back-end installation: [Docker](./docs/installation-docker.md)|[LAMP](./docs/installation-lamp.md)
+- Back-end installation: [[Docker](./docs/installation-docker.md) | [LAMP](./docs/installation-lamp.md)]
 - [Client application](./gatsby)
 - [Development tips and tricks](./docs/development.md)
