@@ -8,13 +8,14 @@ const asyncPool = require(`tiny-async-pool`);
 exports.sourceNodes = async (
   { actions, store, cache, createNodeId, createContentDigest, reporter },
   {
-    baseUrl,
     apiBase,
+    baseUrl,
     basicAuth,
+    concurrentFileRequests,
     filters,
     headers,
+    language,
     params,
-    concurrentFileRequests,
   }
 ) => {
   const { createNode } = actions;
@@ -23,8 +24,11 @@ exports.sourceNodes = async (
     `Remote file download`
   );
 
-  // Default apiBase to `jsonapi`
+  // Default apiBase to `jsonapi`.
   apiBase = apiBase || `jsonapi`;
+
+  // Allow for a specific language.
+  language = language || '';
 
   // Default concurrentFileRequests to `20`
   concurrentFileRequests = concurrentFileRequests || 20;
@@ -50,16 +54,30 @@ exports.sourceNodes = async (
 
   drupalFetchActivity.start();
 
-  const data = await axios.get(`${baseUrl}/${apiBase}`, {
+  const endpoint = language
+    ? `${baseUrl}/${language}/${apiBase}`
+    : `${baseUrl}/${apiBase}`;
+
+  const data = await axios.get(endpoint, {
     auth: basicAuth,
     headers,
     params,
   });
+
   const allData = await Promise.all(
     _.map(data.data.links, async (url, type) => {
+      const defaultEndpoint = `${baseUrl}/${apiBase}`;
+      const languageEndpoint = `${baseUrl}/${language}/${apiBase}`;
+
+      // Correct links
+      if (url && url.href && language) {
+        url.href = url.href.replace(defaultEndpoint, languageEndpoint);
+      }
+
       if (type === `self`) return;
       if (!url) return;
       if (!type) return;
+
       const getNext = async (url, data = []) => {
         if (typeof url === `object`) {
           // url can be string or object containing href field

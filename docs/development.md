@@ -46,7 +46,7 @@ Where `82d95e8d23e4` is an ID which you can see by:
 
 ```sh
 $ docker ps
-``` 
+```
 
 ## Export configurations
 
@@ -61,4 +61,3 @@ or, as documented in the main `README.md`
 ```sh
 $ docker-compose exec web drush cex
 ```
-

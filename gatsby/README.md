@@ -34,4 +34,3 @@ Build the website with the prefixes:
 ```
 gatsby build --prefix-paths
 ```
-

@@ -14,6 +14,14 @@ module.exports = {
       options: {
         baseUrl,
         apiBase: `api`,
+        language: 'bg',
+      },
+    },
+    {
+      resolve: `gatsby-source-drupal-oe`,
+      options: {
+        baseUrl,
+        apiBase: `api`,
       },
     },
   ],
