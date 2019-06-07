@@ -1,7 +1,7 @@
-const path = require("path")
+const path = require('path');
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   return graphql(`
     query getAllInitiatives {
@@ -24,10 +24,10 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
-    const { allInitiatives } = result.data
+    const { allInitiatives } = result.data;
 
     allInitiatives.edges.forEach(({ node }) => {
-      const { alias } = node.path
+      const { alias } = node.path;
 
       createPage({
         path: alias,
@@ -37,7 +37,7 @@ exports.createPages = ({ graphql, actions }) => {
           // in page queries as GraphQL variables.
           slug: alias,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};

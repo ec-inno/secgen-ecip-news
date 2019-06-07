@@ -1,16 +1,16 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/Layout"
-import PageHeader from "../components/partials/PageHeader"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
+import PageHeader from '../components/partials/PageHeader';
 
 const InitiativeTemplate = ({ data }) => {
-  const { initiatives: node } = data
+  const { initiatives: node } = data;
   const {
     title,
     field_date,
     field_subject_matter,
     field_main_objectives,
-  } = node
+  } = node;
 
   return (
     <Layout pageHeader={<PageHeader title={title} />}>
@@ -30,8 +30,8 @@ const InitiativeTemplate = ({ data }) => {
         }}
       />
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query getInitiative($slug: String!) {
@@ -46,6 +46,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default InitiativeTemplate
+export default InitiativeTemplate;

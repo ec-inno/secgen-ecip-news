@@ -1,6 +1,6 @@
-import React from "react"
+import React from 'react';
 
-import logo from "../assets/logo--en.svg"
+import logo from '../assets/logo--en.svg';
 
 const Header = () => (
   <header className="ecl-site-header">
@@ -22,6 +22,6 @@ const Header = () => (
       </div>
     </div>
   </header>
-)
+);
 
-export default Header
+export default Header;

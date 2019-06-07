@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["compat", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "graphql": true
+  },
+  "rules": {
+    "compat/compat": 2,
+    "prettier/prettier": [
+      "error",
+      { "trailingComma": "es5", "singleQuote": true }
+    ],
+    "jsx-a11y/anchor-is-valid": 0
+  }
+}

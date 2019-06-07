@@ -1,11 +1,11 @@
-import React, { Fragment } from "react"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/Layout"
-import PageHeader from "../components/partials/PageHeader"
+import React, { Fragment } from 'react';
+import { graphql, Link } from 'gatsby';
+import Layout from '../components/Layout';
+import PageHeader from '../components/partials/PageHeader';
 
 const Homepage = ({ data }) => {
-  const { title, description } = data.site.siteMetadata
-  const initiatives = data.allInitiatives.edges
+  const { title, description } = data.site.siteMetadata;
+  const initiatives = data.allInitiatives.edges;
 
   return (
     <Layout
@@ -14,8 +14,8 @@ const Homepage = ({ data }) => {
       }
     >
       {initiatives.map(initiativeNode => {
-        const { node } = initiativeNode
-        const { id, title, field_main_objectives, path } = node
+        const { node } = initiativeNode;
+        const { id, title, field_main_objectives, path } = node;
 
         return (
           <Fragment key={id}>
@@ -30,11 +30,11 @@ const Homepage = ({ data }) => {
               }}
             />
           </Fragment>
-        )
+        );
       })}
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   {
@@ -62,6 +62,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default Homepage
+export default Homepage;

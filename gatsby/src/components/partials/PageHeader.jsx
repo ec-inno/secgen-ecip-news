@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import { Link } from 'gatsby';
 
 const PageHeader = ({ siteTitle, siteDescription, title, description }) => (
   <div className="ecl-page-header">
@@ -30,6 +30,6 @@ const PageHeader = ({ siteTitle, siteDescription, title, description }) => (
       </p>
     </div>
   </div>
-)
+);
 
-export default PageHeader
+export default PageHeader;
