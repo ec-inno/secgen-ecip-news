@@ -31,7 +31,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       createPage({
         path: alias,
-        component: path.resolve(`./src/templates/initiative.js`),
+        component: path.resolve(`./src/templates/initiative.jsx`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
