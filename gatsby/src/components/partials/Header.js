@@ -8,7 +8,7 @@ const Header = () => (
       <div className="ecl-site-header__banner">
         <a
           className="ecl-link ecl-link--standalone"
-          href="/example"
+          href="http://ec.europa.eu/"
           aria-label="European Commission"
         >
           <img

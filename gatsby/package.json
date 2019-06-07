@@ -1,6 +1,6 @@
 {
-  "name": "digit-eci-reference-public",
-  "description": "The UI using digit-eci-reference Drupal 8 backend.",
+  "name": "digit-eci-reference-gatsby",
+  "description": "The Gatsby.js client-side using digit-eci-reference Drupal 8 backend.",
   "version": "0.1.0",
   "author": "European Commission",
   "license": "EUPL-1.1",
