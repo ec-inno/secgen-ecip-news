@@ -21,7 +21,9 @@
     "@ecl/ec-preset-website": "2.5.0",
     "gatsby": "2.8.4",
     "gatsby-link": "2.1.1",
+    "gatsby-plugin-i18n": "1.0.1",
     "gatsby-plugin-react-helmet": "3.0.12",
+    "ptz-i18n": "1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "5.2.1"

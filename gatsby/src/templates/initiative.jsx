@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import PageHeader from '../components/partials/PageHeader';
 
 const InitiativeTemplate = ({ data }) => {

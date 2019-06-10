@@ -9,13 +9,6 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             id
-            field_date
-            field_subject_matter {
-              processed
-            }
-            field_main_objectives {
-              processed
-            }
             path {
               alias
               langcode
