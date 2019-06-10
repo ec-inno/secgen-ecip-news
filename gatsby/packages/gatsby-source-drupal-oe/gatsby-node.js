@@ -186,7 +186,8 @@ exports.sourceNodes = async (
   // It's used to namespace nodes and their ids, not for api calls!
   const apiLanguageBasedNamespace = language
     ? `${apiBase}/${language}`
-    : apiBase;
+    : // Assumes English is default!
+      `${apiBase}/en`;
 
   _.each(allData, contentType => {
     if (!contentType) return;

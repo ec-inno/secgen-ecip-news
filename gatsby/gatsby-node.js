@@ -18,6 +18,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
             path {
               alias
+              langcode
             }
           }
         }
@@ -27,15 +28,18 @@ exports.createPages = ({ graphql, actions }) => {
     const { allInitiatives } = result.data;
 
     allInitiatives.edges.forEach(({ node }) => {
-      const { alias } = node.path;
+      const { alias, langcode } = node.path;
+      // This is to "physically" create separate pages for languages.
+      const pathInGatsby = `${langcode}${alias}`;
 
       createPage({
-        path: alias,
+        path: pathInGatsby,
         component: path.resolve(`./src/templates/initiative.jsx`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
-          slug: alias,
+          alias,
+          langcode,
         },
       });
     });

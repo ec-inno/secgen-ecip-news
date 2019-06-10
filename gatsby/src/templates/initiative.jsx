@@ -34,8 +34,8 @@ const InitiativeTemplate = ({ data }) => {
 };
 
 export const query = graphql`
-  query getInitiative($slug: String!) {
-    initiatives(path: { alias: { eq: $slug } }) {
+  query getInitiative($alias: String!, $langcode: String!) {
+    initiatives(path: { alias: { eq: $alias }, langcode: { eq: $langcode } }) {
       title
       field_date
       field_subject_matter {

@@ -5,7 +5,10 @@ import PageHeader from '../components/partials/PageHeader';
 
 const Homepage = ({ data }) => {
   const { title, description } = data.site.siteMetadata;
-  const initiatives = data.allInitiatives.edges;
+  const initiatives = data.allInitiatives.edges.filter(node =>
+    // English by default.
+    node.node.id.includes('/en/')
+  );
 
   return (
     <Layout
@@ -16,10 +19,14 @@ const Homepage = ({ data }) => {
       {initiatives.map(initiativeNode => {
         const { node } = initiativeNode;
         const { id, title, field_main_objectives, path } = node;
+        const { alias, langcode } = path;
 
         return (
           <Fragment key={id}>
-            <Link to={path.alias} className="ecl-link ecl-link--standalone">
+            <Link
+              to={`/${langcode}${alias}`}
+              className="ecl-link ecl-link--standalone"
+            >
               <h2 className="ecl-u-type-heading-2">{title}</h2>
             </Link>
             <p
@@ -44,7 +51,7 @@ export const query = graphql`
         description
       }
     }
-    allInitiatives {
+    allInitiatives(filter: { langcode: { eq: "en" } }) {
       edges {
         node {
           id
@@ -57,6 +64,7 @@ export const query = graphql`
           }
           path {
             alias
+            langcode
           }
         }
       }
