@@ -123,6 +123,24 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  node_translations:
+    fieldName: node_translations
+    publicName: node_translations
+    enhancer:
+      id: json
+    disabled: false
+  content_translation_source:
+    fieldName: content_translation_source
+    publicName: content_translation_source
+    enhancer:
+      id: ''
+    disabled: false
+  content_translation_outdated:
+    fieldName: content_translation_outdated
+    publicName: content_translation_outdated
+    enhancer:
+      id: ''
+    disabled: false
   field_date:
     fieldName: field_date
     publicName: field_date

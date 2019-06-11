@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains translations_normalizer.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function translations_normalizer_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the translations_normalizer module.
+    case 'help.page.translations_normalizer':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Expose list of entity translations to service-oriented modules.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

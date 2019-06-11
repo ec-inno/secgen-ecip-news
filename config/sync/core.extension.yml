@@ -7,6 +7,7 @@ module:
   ctools: 0
   datetime: 0
   dblog: 0
+  devel: 0
   dynamic_page_cache: 0
   editor: 0
   field: 0
@@ -18,6 +19,7 @@ module:
   jsonapi: 0
   jsonapi_defaults: 0
   jsonapi_extras: 0
+  kint: 0
   language: 0
   layout_builder: 0
   layout_discovery: 0
@@ -28,16 +30,19 @@ module:
   page_cache: 0
   path: 0
   responsive_image: 0
+  rest: 0
   serialization: 0
   system: 0
   taxonomy: 0
   text: 0
   token: 0
   toolbar: 0
+  translations_normalizer: 0
   ui_patterns: 0
   ui_patterns_library: 0
   update: 0
   user: 0
+  views_ui: 0
   menu_link_content: 1
   pathauto: 1
   content_translation: 10

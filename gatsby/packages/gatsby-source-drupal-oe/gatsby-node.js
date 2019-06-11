@@ -94,6 +94,7 @@ exports.sourceNodes = async (
         }
 
         let d;
+
         try {
           d = await axios.get(url, {
             auth: basicAuth,
@@ -110,7 +111,11 @@ exports.sourceNodes = async (
             throw error;
           }
         }
+
+        debugger;
+
         data = data.concat(d.data.data);
+
         if (d.data.links.next) {
           data = await getNext(d.data.links.next, data);
         }

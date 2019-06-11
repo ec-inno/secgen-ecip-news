@@ -22,6 +22,7 @@ module.exports = {
         useLangKeyLayout: false,
       },
     },
+    // The following part could possibly generated based on list of languages.langs without languages.defaultLangKey
     {
       resolve: 'gatsby-source-drupal-oe',
       options: {
@@ -35,6 +36,14 @@ module.exports = {
         baseUrl,
         apiBase: 'api',
         language: 'bg',
+      },
+    },
+    {
+      resolve: 'gatsby-source-drupal-oe',
+      options: {
+        baseUrl,
+        apiBase: 'api',
+        language: 'fr',
       },
     },
   ],

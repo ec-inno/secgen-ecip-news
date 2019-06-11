@@ -5,9 +5,11 @@ url:
   prefixes:
     en: ''
     bg: bg
+    fr: fr
   domains:
     en: ''
     bg: ''
+    fr: ''
 selected_langcode: site_default
 _core:
   default_config_hash: uEePITI9tV6WqzmsTb7MfPCi5yPWXSxAN1xeLcYFQbM

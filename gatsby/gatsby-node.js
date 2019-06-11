@@ -1,5 +1,19 @@
 const path = require('path');
 
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === 'initiatives') {
+    // Create a new field on Gatsby side to later store information about translations of a given node.
+
+    createNodeField({
+      name: 'translations',
+      node,
+      value: [],
+    });
+  }
+};
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
