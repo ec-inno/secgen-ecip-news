@@ -1,38 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, navigate, withPrefix } from 'gatsby';
-import { getUserLangKey } from 'ptz-i18n';
+import { graphql } from 'gatsby';
 
-// Homepage placeholder for `/` which redirects to default language.
-// Inspired by https://github.com/mccrodp/gatsby-starter-contentful-i18n/blob/master/src/pages/index.js
-const RedirectIndex = props => {
-  // Skip build, Browsers only
-  if (typeof window !== 'undefined') {
-    const { langs, defaultLangKey } = props.data.site.siteMetadata.languages;
-    const langKey = getUserLangKey(langs, defaultLangKey);
-    const homeUrl = withPrefix(`/${langKey}/`);
+import logoSvg from '@ecl/ec-preset-website/dist/images/logo/logo--mute.svg';
 
-    navigate(homeUrl);
-  }
+import LanguageList from '../components/LanguageList/LanguageList';
 
-  // It's recommended to add your SEO solution in here for bots
-  // eg. https://github.com/ahimsayogajp/ahimsayoga-gatsby/blob/master/src/pages/index.js#L22
-  return <div />;
+// Homepage follows closely language splash page: https://github.com/ec-europa/europa-component-library/blob/v2-dev/src/systems/ec/implementations/react/page-structure/language-list/src/LanguageListSplash.jsx
+const Index = props => {
+  const { languages } = props.data.site.siteMetadata.languages;
+
+  // For the moment, subpages follow lang attributes.
+  const items = languages.map(language => ({
+    href: `/${language.lang}`,
+    ...language,
+  }));
+
+  return (
+    <div className="ecl-language-list ecl-language-list--splash">
+      <header className="ecl-language-list__header">
+        <img
+          className="ecl-language-list__logo"
+          src={logoSvg}
+          alt="European Commission logo"
+        />
+      </header>
+      <div className="ecl-language-list__container ecl-container">
+        <LanguageList items={items} />
+      </div>
+    </div>
+  );
 };
 
-RedirectIndex.propTypes = {
+Index.propTypes = {
   data: PropTypes.object,
 };
 
-export default RedirectIndex;
+export default Index;
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query getSiteMetaData {
     site {
       siteMetadata {
         languages {
-          defaultLangKey
-          langs
+          languages {
+            label
+            lang
+          }
         }
       }
     }
