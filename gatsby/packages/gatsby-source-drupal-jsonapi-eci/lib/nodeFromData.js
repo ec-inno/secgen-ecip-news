@@ -15,4 +15,4 @@ const nodeFromData = (datum, createNodeId, apiLanguageBasedNamespace) => {
   };
 };
 
-exports.nodeFromData = nodeFromData;
+module.exports = nodeFromData;

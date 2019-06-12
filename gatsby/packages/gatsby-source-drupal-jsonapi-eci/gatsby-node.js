@@ -1,6 +1,8 @@
 const axios = require('axios');
 const _ = require('lodash');
-const { nodeFromData } = require('./normalize');
+
+const nodeFromData = require('./lib/nodeFromData');
+const addNodeTranslations = require('./lib/addNodeTranslations');
 
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest, reporter },
@@ -198,6 +200,8 @@ exports.sourceNodes = async (
       });
     });
   }
+
+  addNodeTranslations(nodes);
 
   // Create each node
   for (const node of nodes) {
