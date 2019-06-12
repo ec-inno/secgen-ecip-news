@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-source-drupal-oe",
-  "description": "Gatsby source plugin for building websites using the Drupal CMS as a data source",
+  "name": "gatsby-source-drupal-jsonapi-eci",
+  "description": "",
   "version": "0.1.0",
   "dependencies": {
     "axios": "^0.19.0",

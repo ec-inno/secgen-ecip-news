@@ -22,28 +22,12 @@ module.exports = {
         useLangKeyLayout: false,
       },
     },
-    // The following part could possibly generated based on list of languages.langs without languages.defaultLangKey
     {
-      resolve: 'gatsby-source-drupal-oe',
+      resolve: 'gatsby-source-drupal-jsonapi-eci',
       options: {
         baseUrl,
         apiBase: 'api',
-      },
-    },
-    {
-      resolve: 'gatsby-source-drupal-oe',
-      options: {
-        baseUrl,
-        apiBase: 'api',
-        language: 'bg',
-      },
-    },
-    {
-      resolve: 'gatsby-source-drupal-oe',
-      options: {
-        baseUrl,
-        apiBase: 'api',
-        language: 'fr',
+        languages: languages.langs,
       },
     },
   ],

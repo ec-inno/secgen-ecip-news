@@ -1,4 +1,4 @@
 .cache
 node_modules
 public
-packages/gatsby-source-drupal-oe
+packages/gatsby-source-drupal-jsonapi-eci
