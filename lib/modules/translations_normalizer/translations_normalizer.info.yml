@@ -1,5 +1,0 @@
-name: 'translations_normalizer'
-type: module
-description: 'Expose list of entity translations to service-oriented modules.'
-core: 8.x
-package: 'TranslationsNormalizer'

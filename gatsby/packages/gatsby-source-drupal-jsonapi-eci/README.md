@@ -1,4 +1,4 @@
-# gatsby-source-drupal-json-api-eci
+# gatsby-source-drupal-jsonapi-eci
 
 Started off [`gatsby-source-drupal`](https://www.gatsbyjs.org/packages/gatsby-source-drupal/) plugin.
 

@@ -1,6 +1,0 @@
-services:
-  serializer.translations_normalizer:
-    class: Drupal\translations_normalizer\Normalizer\ContentEntityTranslationsNormalizer
-    arguments: ['@entity.manager']
-    tags:
-      - { name: normalizer, priority: 10 }
