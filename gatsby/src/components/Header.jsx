@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'gatsby';
 
 import logoEN from '@ecl/ec-preset-website/dist/images/logo/logo--en.svg';
@@ -9,8 +9,6 @@ import LanguageListOverlay from './LanguageList/LanguageListOverlay';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const Header = ({ languages, location }) => {
-  const [isHidden, hideOverlay] = useState(true);
-
   let logo = logoEN;
   const locations = location.pathname.split('/').filter(p => p);
   const currentLanguage = locations[0];
@@ -48,11 +46,7 @@ const Header = ({ languages, location }) => {
                 src={logo}
               />
             </Link>
-            <LanguageSwitcher
-              languages={languages}
-              location={location}
-              hideOverlay={hideOverlay}
-            />
+            <LanguageSwitcher languages={languages} location={location} />
           </div>
         </div>
       </header>
@@ -60,8 +54,6 @@ const Header = ({ languages, location }) => {
         closeLabel="Close"
         title="Select your language"
         items={items}
-        hidden={isHidden}
-        hideOverlay={hideOverlay}
       />
     </Fragment>
   );

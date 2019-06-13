@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, StaticQuery } from 'gatsby';
 
 // Add pre-built ECL CSS.
 import '@ecl/ec-preset-website/dist/styles/ecl-ec-preset-website.css';
+
+import { ContextProvider } from '../Context';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -32,7 +34,7 @@ const Layout = ({ children, location }) => {
         const { languages } = data.site.siteMetadata.languages;
 
         return (
-          <Fragment>
+          <ContextProvider>
             <Header languages={languages} location={location} />
             <main className="ecl-u-pv-xl">
               <div className="ecl-container">
@@ -42,7 +44,7 @@ const Layout = ({ children, location }) => {
               </div>
             </main>
             <Footer />
-          </Fragment>
+          </ContextProvider>
         );
       }}
     />

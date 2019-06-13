@@ -2,3 +2,5 @@
 node_modules
 public
 packages/gatsby-source-drupal-jsonapi-eci
+
+src/Context.js
