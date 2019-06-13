@@ -1,14 +1,18 @@
 import React from 'react';
 import iconsSpritePath from '@ecl/ec-preset-website/dist/images/icons/sprites/icons.svg';
 
-const LanguageSwitcher = ({ languages, location }) => {
-  console.log(languages, location);
+const LanguageSwitcher = ({ languages, location, hideOverlay }) => {
+  const showOverlay = e => {
+    console.log(e.target);
+    hideOverlay(false);
+  };
 
   return (
     <div className="ecl-site-header__selector">
       <a
+        onClick={showOverlay}
         className="ecl-link ecl-link--standalone"
-        href="/example"
+        href="#"
         data-ecl-language-selector="true"
         aria-expanded="true"
       >
