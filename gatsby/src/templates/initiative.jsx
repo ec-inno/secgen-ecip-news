@@ -1,5 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { Link } from 'gatsby';
+
 import Layout from '../components/layout';
 import PageHeader from '../components/partials/PageHeader';
 
@@ -10,6 +12,7 @@ const InitiativeTemplate = ({ data }) => {
     field_date,
     field_subject_matter,
     field_main_objectives,
+    translations,
   } = node;
 
   return (
@@ -29,6 +32,19 @@ const InitiativeTemplate = ({ data }) => {
           __html: field_main_objectives.processed,
         }}
       />
+      {translations ? (
+        <ul className="ecl-unordered-list">
+          {translations.map(translation => (
+            <li className="ecl-unordered-list__item" key={translation.langcode}>
+              <Link to={`/${translation.langcode}/${translation.alias}`}>
+                {translation.langcode}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        []
+      )}
     </Layout>
   );
 };
@@ -43,6 +59,10 @@ export const query = graphql`
       }
       field_main_objectives {
         processed
+      }
+      translations {
+        alias
+        langcode
       }
     }
   }
