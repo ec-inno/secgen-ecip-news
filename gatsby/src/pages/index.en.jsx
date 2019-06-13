@@ -1,18 +1,11 @@
 import React, { Fragment } from 'react';
 import { graphql, Link } from 'gatsby';
-import Layout from '../components/layout';
-import PageHeader from '../components/partials/PageHeader';
 
 const Homepage = ({ data }) => {
-  const { title, description } = data.site.siteMetadata;
   const initiatives = data.allInitiatives.edges;
 
   return (
-    <Layout
-      pageHeader={
-        <PageHeader siteTitle={title} siteDescription={description} />
-      }
-    >
+    <Fragment>
       {initiatives.map(initiativeNode => {
         const { node } = initiativeNode;
         const { id, title, field_main_objectives, path } = node;
@@ -36,18 +29,12 @@ const Homepage = ({ data }) => {
           </Fragment>
         );
       })}
-    </Layout>
+    </Fragment>
   );
 };
 
 export const query = graphql`
   {
-    site {
-      siteMetadata {
-        title
-        description
-      }
-    }
     allInitiatives(
       filter: { id: { regex: "//en//" }, langcode: { eq: "en" } }
     ) {
