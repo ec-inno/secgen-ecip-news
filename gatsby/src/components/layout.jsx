@@ -28,14 +28,31 @@ const Layout = ({ children, location }) => {
               }
             }
           }
+          allNodeTranslation {
+            nodes {
+              path {
+                langcode
+                alias
+              }
+              translations {
+                langcode
+                alias
+              }
+            }
+          }
         }
       `}
       render={data => {
         const { languages } = data.site.siteMetadata.languages;
+        const { nodes: contentTranslations } = data.allNodeTranslation;
 
         return (
           <ContextProvider>
-            <Header languages={languages} location={location} />
+            <Header
+              languages={languages}
+              location={location}
+              contentTranslations={contentTranslations}
+            />
             <main className="ecl-u-pv-xl">
               <div className="ecl-container">
                 <div className="ecl-row">
