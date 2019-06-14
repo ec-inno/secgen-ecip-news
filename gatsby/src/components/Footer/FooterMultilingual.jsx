@@ -9,7 +9,6 @@ import getCurrentLanguage from '../../utils/getCurrentLanguage';
 const FooterMultilingual = ({ location }) => {
   const lang = getCurrentLanguage(location);
   const footerData = data[lang];
-  console.log(footerData);
   return <Footer {...footerData} />;
 };
 

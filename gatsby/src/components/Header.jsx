@@ -8,14 +8,13 @@ import logoFR from '@ecl/ec-preset-website/dist/images/logo/logo--fr.svg';
 import languages from '../languages';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
-import LanguageListOverlay from './LanguageList/LanguageListOverlay';
+import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const { map: languageMap } = languages;
 
 const Header = ({ languages, location, contentTranslations }) => {
   let items = [];
-  let translations = [];
   let logo = logoEN;
 
   const currentLanguage = getCurrentLanguage(location);
@@ -51,6 +50,8 @@ const Header = ({ languages, location, contentTranslations }) => {
         href: `/${langcode}${alias}`,
         lang: langcode,
         label: languageMap[langcode],
+        // src/components/LanguageList/LanguageListItem.jsx is not ready yet for isActive
+        // isActive: langcode === currentLanguage,
       };
     });
   }
