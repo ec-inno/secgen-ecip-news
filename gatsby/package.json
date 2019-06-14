@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@ecl/ec-preset-website": "2.5.0",
+    "classnames": "2.2.6",
     "gatsby": "2.8.4",
     "gatsby-link": "2.1.1",
     "gatsby-plugin-i18n": "1.0.1",

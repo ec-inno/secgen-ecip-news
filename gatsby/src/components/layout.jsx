@@ -8,7 +8,7 @@ import '@ecl/ec-preset-website/dist/styles/ecl-ec-preset-website.css';
 import { ContextProvider } from '../Context';
 
 import Header from './Header';
-import Footer from './Footer';
+import Footer from './Footer/FooterMultilingual';
 
 const Layout = ({ children, location }) => {
   // Homepage is a the splash page with languages.
@@ -60,7 +60,7 @@ const Layout = ({ children, location }) => {
                 </div>
               </div>
             </main>
-            <Footer />
+            <Footer location={location} />
           </ContextProvider>
         );
       }}
