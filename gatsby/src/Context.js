@@ -3,11 +3,14 @@ import React from 'react';
 const contextStore = {
   data: {
     LanguageListOverlayIsHidden: true,
+    translations: [],
   },
   set: () => {},
 };
 
-const { Provider, Consumer } = React.createContext(contextStore);
+const Context = React.createContext(contextStore);
+
+const { Consumer, Provider } = Context;
 
 // Taken from https://www.gatsbyjs.org/packages/gatsby-plugin-layout/#passing-data-from-layout-to-page--from-page-to-layout
 class ContextProvider extends React.Component {
@@ -35,4 +38,4 @@ class ContextProvider extends React.Component {
   }
 }
 
-export { Consumer as default, ContextProvider };
+export { Context, Consumer as default, ContextProvider };

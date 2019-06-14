@@ -1,9 +1,14 @@
 import React from 'react';
 import iconsSpritePath from '@ecl/ec-preset-website/dist/images/icons/sprites/icons.svg';
 
+import languages from '../languages';
+import getCurrentLanguage from '../utils/getCurrentLanguage';
 import ContextConsumer from '../Context';
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ location }) => {
+  const { map: langMap } = languages;
+  const currentLanguage = getCurrentLanguage(location);
+
   return (
     <ContextConsumer>
       {({ set }) => {
@@ -19,7 +24,7 @@ const LanguageSwitcher = () => {
               data-ecl-language-selector="true"
               aria-expanded="true"
             >
-              English
+              {langMap[currentLanguage]}
               <span className="ecl-site-header__language-icon">
                 <svg
                   focusable="false"
@@ -28,7 +33,9 @@ const LanguageSwitcher = () => {
                 >
                   <use xlinkHref={`${iconsSpritePath}#general--language`} />
                 </svg>
-                <span className="ecl-site-header__language-code">en</span>
+                <span className="ecl-site-header__language-code">
+                  {currentLanguage}
+                </span>
               </span>
             </a>
           </div>
