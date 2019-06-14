@@ -1,0 +1,8 @@
+uuid: 01fe00fa-a8ef-4e7a-b505-581f020b802e
+langcode: en
+status: true
+dependencies: {  }
+id: footer-ec-en
+label: 'European Commission'
+description: ''
+locked: false

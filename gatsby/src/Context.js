@@ -3,7 +3,6 @@ import React from 'react';
 const contextStore = {
   data: {
     LanguageListOverlayIsHidden: true,
-    translations: [],
   },
   set: () => {},
 };

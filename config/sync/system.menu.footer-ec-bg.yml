@@ -1,0 +1,8 @@
+uuid: b3ddc8b6-9c57-4a9d-b379-6a0b7073cf67
+langcode: bg
+status: true
+dependencies: {  }
+id: footer-ec-bg
+label: 'Европейска комисия'
+description: ''
+locked: false
