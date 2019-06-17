@@ -8,6 +8,7 @@ import Icon from '../Icon';
 import LanguageList from './LanguageList';
 
 const LanguageListOverlay = ({
+  closeHandler,
   closeLabel,
   title,
   items,
@@ -26,6 +27,7 @@ const LanguageListOverlay = ({
         <div className="ecl-row">
           <div className="ecl-language-list__close ecl-col-12 ecl-col-lg-8 ecl-offset-lg-2">
             <Button
+              onClick={() => closeHandler()}
               variant="ghost"
               label={closeLabel}
               icon={{ shape: 'ui--close', size: 's' }}

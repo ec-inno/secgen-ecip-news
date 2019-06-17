@@ -7,12 +7,14 @@ import LanguageListOverlay from './LanguageListOverlay';
 const LanguageListOverlayWithContext = props => {
   return (
     <ContextConsumer>
-      {({ data }) => {
+      {({ data, set }) => {
         const { LanguageListOverlayIsHidden } = data;
+        const closeHandler = () => set({ LanguageListOverlayIsHidden: true });
 
         return (
           <LanguageListOverlay
             hidden={LanguageListOverlayIsHidden}
+            closeHandler={closeHandler}
             {...props}
           />
         );

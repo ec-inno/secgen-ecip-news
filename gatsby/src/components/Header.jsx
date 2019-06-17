@@ -9,7 +9,7 @@ import languages from '../languages';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
 import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSelector from './LanguageSelector';
 
 const { map: languageMap } = languages;
 
@@ -55,13 +55,6 @@ const Header = ({ languages, location, contentTranslations }) => {
       };
     });
   }
-  // Fallback to selecting a language-specific start.
-  else {
-    items = languages.map(language => ({
-      href: `/${language.lang}`,
-      ...language,
-    }));
-  }
 
   return (
     <Fragment>
@@ -80,7 +73,12 @@ const Header = ({ languages, location, contentTranslations }) => {
                 src={logo}
               />
             </Link>
-            <LanguageSwitcher location={location} />
+            <LanguageSelector
+              code={currentLanguage}
+              name={languageMap[currentLanguage]}
+              href="#"
+              opensOverlay={items.length ? true : false}
+            />
           </div>
         </div>
       </header>
