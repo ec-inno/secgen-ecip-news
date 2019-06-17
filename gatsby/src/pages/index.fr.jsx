@@ -1,24 +1,25 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 const Homepage = ({ data }) => {
   const initiatives = data.allInitiatives.edges;
 
   return (
-    <Fragment>
+    <ul className="ecl-unordered-list">
       {initiatives.map(initiativeNode => {
         const { node } = initiativeNode;
         const { id, title, field_main_objectives, path } = node;
         const { alias, langcode } = path;
 
         return (
-          <Fragment key={id}>
+          <li className="ecl-unordered-list__item" key={id}>
             <Link
               to={`/${langcode}${alias}`}
-              className="ecl-link ecl-link--standalone"
+              className="ecl-u-d-block ecl-link ecl-link--standalone"
             >
-              <h2 className="ecl-u-type-heading-2">{title}</h2>
+              <strong>{title}</strong>
             </Link>
+
             <p
               key={id}
               className="ecl-paragraph"
@@ -26,10 +27,10 @@ const Homepage = ({ data }) => {
                 __html: field_main_objectives.processed,
               }}
             />
-          </Fragment>
+          </li>
         );
       })}
-    </Fragment>
+    </ul>
   );
 };
 

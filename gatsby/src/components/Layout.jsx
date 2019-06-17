@@ -11,6 +11,7 @@ import { ContextProvider } from '../Context';
 
 import TopMessage from './TopMessage';
 import Header from './Header';
+import Menu from './Menu';
 import Footer from './Footer/FooterMultilingual';
 
 const Layout = ({ children, location }) => {
@@ -57,12 +58,9 @@ const Layout = ({ children, location }) => {
               location={location}
               contentTranslations={contentTranslations}
             />
+            <Menu />
             <main className="ecl-u-pv-xl">
-              <div className="ecl-container">
-                <div className="ecl-row">
-                  <div className="ecl-col-sm-12">{children}</div>
-                </div>
-              </div>
+              <div className="ecl-container">{children}</div>
             </main>
             <Footer location={location} />
           </ContextProvider>
