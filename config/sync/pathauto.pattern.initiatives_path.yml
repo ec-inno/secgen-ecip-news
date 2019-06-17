@@ -23,6 +23,7 @@ selection_criteria:
     langcodes:
       en: en
       bg: bg
+      fr: fr
     negate: false
     context_mapping:
       language: 'node:langcode:language'
