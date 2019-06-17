@@ -36,19 +36,21 @@ exports.createPages = ({ graphql, actions }) => {
 
     allInitiatives.edges.forEach(({ node }) => {
       const { alias, langcode } = node.path;
-      // This is to "physically" create separate pages for languages.
-      const pathInGatsby = `${langcode}${alias}`;
+      if (alias && langcode) {
+        // This is to "physically" create separate pages for languages.
+        const pathInGatsby = `${langcode}${alias}`;
 
-      createPage({
-        path: pathInGatsby,
-        component: path.resolve(`./src/templates/initiative.jsx`),
-        context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
-          alias,
-          langcode,
-        },
-      });
+        createPage({
+          path: pathInGatsby,
+          component: path.resolve(`./src/templates/initiative.jsx`),
+          context: {
+            // Data passed to context is available
+            // in page queries as GraphQL variables.
+            alias,
+            langcode,
+          },
+        });
+      }
     });
   });
 };
