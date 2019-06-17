@@ -18,7 +18,7 @@
     "test": "npm-run-all -p test:* -cn"
   },
   "dependencies": {
-    "@ecl/ec-preset-website": "2.5.0",
+    "@ecl/eu-preset-website": "2.6.0",
     "classnames": "2.2.6",
     "gatsby": "2.8.4",
     "gatsby-link": "2.1.1",

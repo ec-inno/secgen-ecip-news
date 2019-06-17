@@ -1,0 +1,158 @@
+/* ECI custom rules */
+body {
+  margin: 0;
+}
+.eci-name {
+  line-height: 1;
+}
+.eci-name div:nth-child(1) {
+  color: #00b7f3;
+}
+.eci-name div:nth-child(2) {
+  color: #f04c4d;
+}
+.eci-name div:nth-child(3) {
+  color: #52ba59;
+}
+.eci-filter {
+  background-color: #f5f5f5;
+}
+.eci-table {
+  text-align: left;
+  width: 100%;
+}
+.eci-table td:nth-child(2),
+.eci-table td:nth-child(3),
+.eci-table th:nth-child(2),
+.eci-table th:nth-child(3) {
+  text-align: right;
+}
+.eci-answer {
+  background-color: #ebebeb;
+  border-left: 0.5rem solid #004494;
+}
+.eci-more-info {
+  background-color: #f5f5f5;
+}
+.eci-tag {
+  background-color: #f5f5f5;
+  border-radius: 0;
+  text-decoration: none;
+}
+
+/* ECI menu */
+.eci-menu {
+  background-color: #f5f5f5;
+  font: normal normal 400 1rem/1.25rem Arial, sans-serif;
+  margin: 0;
+}
+.eci-menu__link {
+  display: block;
+  font: normal normal 600 1rem/1.25rem Arial, sans-serif;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+}
+.eci-menu__link:hover,
+.eci-menu__link:focus {
+  color: #404040;
+  outline-offset: -3px;
+  text-decoration: underline;
+}
+.eci-menu__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.eci-menu__option {
+  display: inline-block;
+  flex-grow: 1;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+}
+@media (min-width: 480px) {
+  .eci-menu__option {
+    flex-grow: 0;
+  }
+}
+.eci-menu__option--is-selected {
+  background-color: #004494;
+}
+.eci-menu__option--is-selected .eci-menu__link {
+  color: #fff;
+}
+
+/* ECL page header */
+.ecl-page-header__info-item {
+  display: block;
+}
+
+/* ECL language list */
+.ecl-language-list {
+  background-color: #e3e3e3;
+}
+.ecl-language-list__title {
+  color: #404040;
+}
+.ecl-language-list__close-button {
+  color: #004494;
+}
+
+/* ECL timeline */
+.ecl-timeline__item::before {
+  border: 0.25rem solid #ffd617;
+}
+
+.ecl-timeline__item--current::before {
+  background-color: #ffd617;
+}
+
+.ecl-timeline__item--disabled::before {
+  background-color: #fff;
+  border: 0.25rem solid #ddd;
+}
+
+/* ECL file */
+.ecl-file__translation-container {
+  padding-left: 1.5rem !important;
+}
+
+/* ECL button */
+.ecl-button {
+  display: inline-block;
+}
+.ecl-button--block {
+  width: 100%;
+}
+
+/* ECL card */
+.ecl-card {
+  height: 100%;
+}
+.ecl-card--plus {
+  background-color: #fff;
+  border-style: dashed;
+}
+.ecl-card--plus .ecl-card__header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+.ecl-card--plus .ecl-card__image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.ecl-card__link.ecl-button--secondary:hover,
+.ecl-card__link.ecl-button--secondary:active,
+.ecl-card__link.ecl-button--secondary:focus {
+  color: #fff;
+}
+
+/* ECL footer */
+.ecl-footer__common-container {
+  justify-content: center;
+}

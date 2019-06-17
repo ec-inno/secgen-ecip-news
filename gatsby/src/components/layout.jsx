@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, StaticQuery } from 'gatsby';
 
-// Add pre-built ECL CSS.
-import '@ecl/ec-preset-website/dist/styles/ecl-ec-preset-website.css';
+// Add pre-built CSS.
+import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
+// Include custom styling as from http://eci-mockups.surge.sh/home.html#
+import '../components/assets/styles.css';
 
 import { ContextProvider } from '../Context';
 
+import TopMessage from './TopMessage';
 import Header from './Header';
 import Footer from './Footer/FooterMultilingual';
 
@@ -48,6 +51,7 @@ const Layout = ({ children, location }) => {
 
         return (
           <ContextProvider>
+            <TopMessage />
             <Header
               languages={languages}
               location={location}

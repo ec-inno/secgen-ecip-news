@@ -750,10 +750,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@ecl/ec-preset-website@2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@ecl/ec-preset-website/-/ec-preset-website-2.5.0.tgz#b2eb7f65a5236d84641d64ab9bb76754d83b3b26"
-  integrity sha512-5wxTSC8OgUq0G+oDf23xaPUjEGX25OmPr/B2Fgx5rDp9s82YKEJavyx3Jk9Re8L+07vI5x9WUKDKdFPZ+25bAA==
+"@ecl/eu-preset-website@2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@ecl/eu-preset-website/-/eu-preset-website-2.6.0.tgz#e757ca60fa3e52048473896afe8d485acf794f00"
+  integrity sha512-DHb0W2SL8s3aKegKSDz5VuVk3QnwgbQn5Lqym8pYIiKWNDHCd/FH7oi0tWg6tDRDPvpLJ/eGZB6F+9aLDJIVgQ==
 
 "@gatsbyjs/relay-compiler@2.0.0-printer-fix.2":
   version "2.0.0-printer-fix.2"

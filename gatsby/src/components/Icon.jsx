@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import defaultSprite from '@ecl/ec-preset-website/dist/images/icons/sprites/icons.svg';
+import defaultSprite from '@ecl/eu-preset-website/dist/images/icons/sprites/icons.svg';
 
 const Icon = ({
   className,

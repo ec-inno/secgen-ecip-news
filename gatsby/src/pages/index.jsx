@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import logoSvg from '@ecl/ec-preset-website/dist/images/logo/logo--mute.svg';
+import logoSvg from '@ecl/eu-preset-website/dist/images/logo/logo--mute.svg';
 
 import LanguageList from '../components/LanguageList/LanguageList';
 

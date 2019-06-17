@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { Link } from 'gatsby';
 
-import logoEN from '@ecl/ec-preset-website/dist/images/logo/logo--en.svg';
-import logoBG from '@ecl/ec-preset-website/dist/images/logo/logo--bg.svg';
-import logoFR from '@ecl/ec-preset-website/dist/images/logo/logo--fr.svg';
+import logoEN from '@ecl/eu-preset-website/dist/images/logo/logo--en.svg';
+import logoBG from '@ecl/eu-preset-website/dist/images/logo/logo--bg.svg';
+import logoFR from '@ecl/eu-preset-website/dist/images/logo/logo--fr.svg';
 
 import languages from '../languages';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
@@ -13,7 +13,7 @@ import LanguageSelector from './LanguageSelector';
 
 const { map: languageMap } = languages;
 
-const Header = ({ languages, location, contentTranslations }) => {
+const Header = ({ location, contentTranslations }) => {
   let items = [];
   let logo = logoEN;
 
