@@ -1,72 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
-// Add pre-built CSS.
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
-// Include custom styling as from http://eci-mockups.surge.sh/home.html#
 import '../components/assets/styles.css';
 
 import { ContextProvider } from '../Context';
 
-import TopMessage from './TopMessage';
+import getCurrentLanguage from '../utils/getCurrentLanguage';
+
+import TopMessage from './TopMessage/TopMessage';
 import Header from './Header';
-import Menu from './Menu';
+import Menu from './Menu/Menu';
 import Footer from './Footer/FooterMultilingual';
 
 const Layout = ({ children, location }) => {
   // Homepage is a the splash page with languages.
   if (location.pathname === '/') return children;
 
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          site {
-            siteMetadata {
-              languages {
-                languages {
-                  lang
-                  label
-                }
-              }
-            }
-          }
-          allNodeTranslation {
-            nodes {
-              path {
-                langcode
-                alias
-              }
-              translations {
-                langcode
-                alias
-              }
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          languages {
+            languages {
+              lang
+              label
             }
           }
         }
-      `}
-      render={data => {
-        const { languages } = data.site.siteMetadata.languages;
-        const { nodes: contentTranslations } = data.allNodeTranslation;
+      }
+      allNodeTranslation {
+        nodes {
+          path {
+            langcode
+            alias
+          }
+          translations {
+            langcode
+            alias
+          }
+        }
+      }
+    }
+  `);
 
-        return (
-          <ContextProvider>
-            <TopMessage />
-            <Header
-              languages={languages}
-              location={location}
-              contentTranslations={contentTranslations}
-            />
-            <Menu />
-            <main className="ecl-u-pv-xl">
-              <div className="ecl-container">{children}</div>
-            </main>
-            <Footer location={location} />
-          </ContextProvider>
-        );
-      }}
-    />
+  const { languages } = data.site.siteMetadata.languages;
+  const { nodes: contentTranslations } = data.allNodeTranslation;
+  const currentLanguage = getCurrentLanguage(location);
+
+  return (
+    <ContextProvider>
+      <TopMessage currentLanguage={currentLanguage} />
+      <Header
+        languages={languages}
+        currentLanguage={currentLanguage}
+        location={location}
+        contentTranslations={contentTranslations}
+      />
+      <Menu currentLanguage={currentLanguage} />
+      <main className="ecl-u-pv-xl">
+        <div className="ecl-container">{children}</div>
+      </main>
+      <Footer location={location} />
+    </ContextProvider>
   );
 };
 
