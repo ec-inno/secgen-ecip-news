@@ -1,5 +1,5 @@
 // Simple content for demo
-module.exports = {
+const data = {
   en: {
     backToTop: {
       variant: 'standalone',
@@ -382,3 +382,5 @@ module.exports = {
     ],
   },
 };
+
+export default data;

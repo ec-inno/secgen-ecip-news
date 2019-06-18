@@ -1,4 +1,4 @@
-module.exports = {
+const data = {
   bg: [
     { label: 'Начало', href: '/' },
     { label: 'Новини', href: '/news' },
@@ -15,3 +15,5 @@ module.exports = {
     { label: 'How it works (FR)', href: '/how-it-works' },
   ],
 };
+
+export default data;
