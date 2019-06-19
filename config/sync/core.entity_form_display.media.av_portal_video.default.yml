@@ -1,0 +1,55 @@
+uuid: f900443b-2dc2-4297-a61a-3146f7d0d5c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.av_portal_video.oe_media_avportal_video
+    - media.type.av_portal_video
+  module:
+    - field_layout
+    - layout_discovery
+    - media_avportal
+    - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+_core:
+  default_config_hash: aQ7hWp-kIN2peWu_IzUHMB57WXXfXHb4KAHc7I7Pe6E
+id: media.av_portal_video.default
+targetEntityType: media
+bundle: av_portal_video
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  oe_media_avportal_video:
+    type: avportal_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 100
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  name: true
+  uid: true

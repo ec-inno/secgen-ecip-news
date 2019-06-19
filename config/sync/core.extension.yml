@@ -11,6 +11,8 @@ module:
   devel: 0
   dynamic_page_cache: 0
   editor: 0
+  entity_browser: 0
+  entity_browser_entity_form: 0
   field: 0
   field_group: 0
   field_layout: 0
@@ -18,6 +20,7 @@ module:
   file: 0
   filter: 0
   image: 0
+  inline_entity_form: 0
   jsonapi: 0
   jsonapi_defaults: 0
   jsonapi_extras: 0
@@ -28,15 +31,21 @@ module:
   link: 0
   locale: 0
   maxlength: 0
+  media: 0
+  media_avportal: 0
   menu_ui: 0
   node: 0
   oe_content: 0
+  oe_content_news: 0
+  oe_media: 0
+  oe_media_avportal: 0
   oe_theme_helper: 0
   options: 0
   page_cache: 0
   path: 0
   rdf_entity: 0
   rdf_skos: 0
+  remote_stream_wrapper: 0
   responsive_image: 0
   rest: 0
   serialization: 0
