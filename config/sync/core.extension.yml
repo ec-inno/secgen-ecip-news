@@ -12,6 +12,7 @@ module:
   dynamic_page_cache: 0
   editor: 0
   field: 0
+  field_group: 0
   field_layout: 0
   field_ui: 0
   file: 0
@@ -26,12 +27,16 @@ module:
   layout_discovery: 0
   link: 0
   locale: 0
+  maxlength: 0
   menu_ui: 0
   node: 0
+  oe_content: 0
   oe_theme_helper: 0
   options: 0
   page_cache: 0
   path: 0
+  rdf_entity: 0
+  rdf_skos: 0
   responsive_image: 0
   rest: 0
   serialization: 0
