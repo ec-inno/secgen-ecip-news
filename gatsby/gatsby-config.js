@@ -13,15 +13,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    // @see https://www.npmjs.com/package/gatsby-plugin-i18n#all-options
-    {
-      resolve: 'gatsby-plugin-i18n',
-      options: {
-        langKeyForNull: 'any',
-        langKeyDefault: languages.defaultLangKey,
-        useLangKeyLayout: false,
-      },
-    },
     {
       resolve: 'gatsby-source-drupal-jsonapi-eci',
       options: {

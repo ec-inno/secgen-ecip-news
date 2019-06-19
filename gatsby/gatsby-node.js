@@ -1,4 +1,5 @@
 const path = require('path');
+const languages = require('./src/languages');
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
@@ -53,4 +54,30 @@ exports.createPages = ({ graphql, actions }) => {
       }
     });
   });
+};
+
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+
+  try {
+    deletePage(page);
+
+    languages.langs.map(lang => {
+      const localizedPath = `${lang}${page.path}`;
+      const languageRegex = `//${lang}//`;
+
+      return createPage({
+        ...page,
+        path: localizedPath,
+        // Be extra careful with context: https://www.gatsbyjs.org/docs/creating-and-modifying-pages/#pass-context-to-pages
+        context: {
+          ...page.context,
+          locale: lang,
+          languageRegex,
+        },
+      });
+    });
+  } catch (error) {
+    return console.error(error);
+  }
 };

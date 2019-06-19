@@ -1,54 +1,75 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
+import { graphql, Link, navigate, withPrefix } from 'gatsby';
 
-import logoSvg from '@ecl/eu-preset-website/dist/images/logo/logo--mute.svg';
+import { defaultLangKey } from '../languages';
 
-import LanguageList from '../components/LanguageList/LanguageList';
+const Homepage = ({ data, location }) => {
+  if (typeof window !== 'undefined') {
+    if (location.pathname === '/') {
+      const homeUrl = withPrefix(`/${defaultLangKey}/`);
+      navigate(homeUrl);
 
-// Homepage follows closely language splash page: https://github.com/ec-europa/europa-component-library/blob/v2-dev/src/systems/ec/implementations/react/page-structure/language-list/src/LanguageListSplash.jsx
-const Index = props => {
-  const { languages } = props.data.site.siteMetadata.languages;
+      return <div />;
+    }
+  }
 
-  // For the moment, subpages follow lang attributes.
-  const items = languages.map(language => ({
-    href: `/${language.lang}`,
-    ...language,
-  }));
+  const initiatives = data.allInitiatives.edges;
 
   return (
-    <div className="ecl-language-list ecl-language-list--splash">
-      <header className="ecl-language-list__header">
-        <img
-          className="ecl-language-list__logo"
-          src={logoSvg}
-          alt="European Commission logo"
-        />
-      </header>
-      <div className="ecl-language-list__container ecl-container">
-        <LanguageList items={items} />
-      </div>
-    </div>
+    <ul className="ecl-unordered-list">
+      {initiatives.map(initiativeNode => {
+        const { node } = initiativeNode;
+        const { id, title, field_main_objectives, path } = node;
+        const { alias, langcode } = path;
+
+        return (
+          <li className="ecl-unordered-list__item" key={id}>
+            <Link
+              to={`/${langcode}${alias}`}
+              className="ecl-u-d-block ecl-link ecl-link--standalone"
+            >
+              <strong>{title}</strong>
+            </Link>
+
+            <p
+              key={id}
+              className="ecl-paragraph"
+              dangerouslySetInnerHTML={{
+                __html: field_main_objectives.processed,
+              }}
+            />
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
-Index.propTypes = {
-  data: PropTypes.object,
-};
-
-export default Index;
-
-export const pageQuery = graphql`
-  query getSiteMetaData {
-    site {
-      siteMetadata {
-        languages {
-          languages {
-            label
-            lang
+export const query = graphql`
+  query getInitiatives($locale: String!, $languageRegex: String!) {
+    allInitiatives(
+      filter: { id: { regex: $languageRegex }, langcode: { eq: $locale } }
+      limit: 10
+      sort: { order: DESC, fields: field_date }
+    ) {
+      edges {
+        node {
+          id
+          title
+          field_main_objectives {
+            processed
+          }
+          field_subject_matter {
+            processed
+          }
+          path {
+            alias
+            langcode
           }
         }
       }
     }
   }
 `;
+
+export default Homepage;

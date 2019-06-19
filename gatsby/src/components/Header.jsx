@@ -88,7 +88,7 @@ const Header = ({
           <div className="ecl-site-header__banner">
             <Link
               className="ecl-link ecl-link--standalone"
-              to="/"
+              to={`/${currentLanguage}`}
               aria-label="European Union"
             >
               <img

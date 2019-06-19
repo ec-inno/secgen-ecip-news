@@ -15,9 +15,6 @@ import Menu from './Menu/Menu';
 import Footer from './Footer/FooterMultilingual';
 
 const Layout = ({ children, location }) => {
-  // Homepage is a the splash page with languages.
-  if (location.pathname === '/') return children;
-
   const data = useStaticQuery(graphql`
     query {
       site {
