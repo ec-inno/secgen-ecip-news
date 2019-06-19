@@ -1,0 +1,16 @@
+uuid: bd15d3f1-8288-4700-9998-774138eae7c1
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: _hgpVkrKGGZ2pJJjgCuGx5ZZcojk2yiGL272s-YnH5c
+id: document
+label: Document
+description: 'Basic document media type'
+source: file
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: oe_media_file
+field_map:
+  name: name

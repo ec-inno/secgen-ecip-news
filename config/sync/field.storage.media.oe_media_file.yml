@@ -1,0 +1,25 @@
+uuid: 97fdd1ec-1994-42e1-baa1-da58b0faf536
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - media
+_core:
+  default_config_hash: 40oWsHPL0K2LvB-rNWPkwzgdASYSH7oSjzKlEc0JqiI
+id: media.oe_media_file
+field_name: oe_media_file
+entity_type: media
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

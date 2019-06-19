@@ -1,0 +1,13 @@
+uuid: c202656d-6e57-479f-905e-5cd6748f9bfb
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5kaGbfJEXgNbQtggWVdMTq5A_iG70DOgXcNabMbogtg
+name: News
+type: oe_news
+description: ''
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: true

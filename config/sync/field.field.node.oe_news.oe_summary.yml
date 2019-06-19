@@ -1,0 +1,23 @@
+uuid: f64870b3-36c1-423f-9ac3-9babdd4c7770
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.oe_summary
+    - node.type.oe_news
+  module:
+    - text
+_core:
+  default_config_hash: rcBvSHe5miHKwb8ZaErqZBgi0A6laTjQxAPx-6TF_Sg
+id: node.oe_news.oe_summary
+field_name: oe_summary
+entity_type: node
+bundle: oe_news
+label: Summary
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

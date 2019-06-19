@@ -1,0 +1,21 @@
+uuid: 0f6a2044-dfa3-4ba2-ac19-bd84019baa68
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.oe_media_avportal_video
+    - media.type.av_portal_video
+_core:
+  default_config_hash: 5TpXwvTZuuN6qodYe_yscNybrxW0iQDnOcUL4c29QB8
+id: media.av_portal_video.oe_media_avportal_video
+field_name: oe_media_avportal_video
+entity_type: media
+bundle: av_portal_video
+label: 'Media AV Portal Video'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

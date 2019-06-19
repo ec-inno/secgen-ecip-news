@@ -7,3 +7,19 @@ A [headless Drupal](https://dri.es/tag/headless-drupal) project started off Open
 - Back-end installation: [[Docker](./docs/installation-docker.md) | [LAMP](./docs/installation-lamp.md)]
 - [Client application](./gatsby)
 - [Development tips and tricks](./docs/development.md)
+
+## SPARQL
+
+Add this to your settings php:
+
+```
+$databases["sparql_default"] = array(
+  'default' => array(
+    'prefix' => '',
+    'host' => 'sparql',
+    'port' => '8890',
+    'namespace' => 'Drupal\\Driver\\Database\\sparql',
+    'driver' => 'sparql'
+  )
+);
+```
