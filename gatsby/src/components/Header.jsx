@@ -40,42 +40,36 @@ const Header = ({
   const currentPath = location.pathname;
   const [langcode, urlPath] = currentPath.split('/').filter(p => p);
 
-  if (langcode && urlPath) {
-    const translationSet = contentTranslations.find(contentTranslation => {
-      return (
-        contentTranslation.path.alias === `/${urlPath}` &&
-        contentTranslation.path.langcode === langcode
-      );
+  const translationSet = contentTranslations.find(contentTranslation => {
+    return (
+      contentTranslation.path.alias === `/${urlPath}` &&
+      contentTranslation.path.langcode === langcode
+    );
+  });
+
+  // Are there translations for this content page?
+  if (
+    translationSet &&
+    translationSet.translations &&
+    translationSet.translations.length
+  ) {
+    items = translationSet.translations.map(translation => {
+      // translation is a structure of data coming from jsonapi about a pathauto alias.
+      // Because gatsby has already created content matching this path, we only need to reformat the information.
+      const { alias, langcode } = translation;
+
+      return {
+        href: `/${langcode}${alias}`,
+        lang: langcode,
+        label: languageMap[langcode],
+        // src/components/LanguageList/LanguageListItem.jsx is not ready yet for isActive
+        // isActive: langcode === currentLanguage,
+      };
     });
-
-    // Are there translations for this content page?
-    if (
-      translationSet &&
-      translationSet.translations &&
-      translationSet.translations.length
-    ) {
-      items = translationSet.translations.map(translation => {
-        // translation is a structure of data coming from jsonapi about a pathauto alias.
-        // Because gatsby has already created content matching this path, we only need to reformat the information.
-        const { alias, langcode } = translation;
-
-        return {
-          href: `/${langcode}${alias}`,
-          lang: langcode,
-          label: languageMap[langcode],
-          // src/components/LanguageList/LanguageListItem.jsx is not ready yet for isActive
-          // isActive: langcode === currentLanguage,
-        };
-      });
-      opensOverlay = true;
-    }
-  }
-
-  // It's the landing/home page of a specific language.
-  // Examples /en, /bg, /fr, etc.
-  if (currentLanguage && urlPath === undefined) {
+    opensOverlay = true;
+  } else {
     items = languages.map(language => ({
-      href: `/${language.lang}`,
+      href: urlPath ? `/${language.lang}/${urlPath}` : `/${language.lang}`,
       ...language,
     }));
     opensOverlay = true;

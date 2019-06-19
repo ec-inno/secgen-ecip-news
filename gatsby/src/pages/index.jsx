@@ -16,32 +16,36 @@ const Homepage = ({ data, location }) => {
   const initiatives = data.allInitiatives.edges;
 
   return (
-    <ul className="ecl-unordered-list">
-      {initiatives.map(initiativeNode => {
-        const { node } = initiativeNode;
-        const { id, title, field_main_objectives, path } = node;
-        const { alias, langcode } = path;
+    <main className="ecl-u-pv-xl">
+      <div className="ecl-container">
+        <ul className="ecl-unordered-list">
+          {initiatives.map(initiativeNode => {
+            const { node } = initiativeNode;
+            const { id, title, field_main_objectives, path } = node;
+            const { alias, langcode } = path;
 
-        return (
-          <li className="ecl-unordered-list__item" key={id}>
-            <Link
-              to={`/${langcode}${alias}`}
-              className="ecl-u-d-block ecl-link ecl-link--standalone"
-            >
-              <strong>{title}</strong>
-            </Link>
+            return (
+              <li className="ecl-unordered-list__item" key={id}>
+                <Link
+                  to={`/${langcode}${alias}`}
+                  className="ecl-u-d-block ecl-link ecl-link--standalone"
+                >
+                  <strong>{title}</strong>
+                </Link>
 
-            <p
-              key={id}
-              className="ecl-paragraph"
-              dangerouslySetInnerHTML={{
-                __html: field_main_objectives.processed,
-              }}
-            />
-          </li>
-        );
-      })}
-    </ul>
+                <div
+                  key={id}
+                  className="ecl-paragraph"
+                  dangerouslySetInnerHTML={{
+                    __html: field_main_objectives.processed,
+                  }}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </main>
   );
 };
 

@@ -62,7 +62,7 @@ exports.onCreatePage = async ({ page, actions }) => {
   try {
     deletePage(page);
 
-    languages.langs.map(lang => {
+    return languages.langs.map(lang => {
       const localizedPath = `${lang}${page.path}`;
       const languageRegex = `//${lang}//`;
 
@@ -78,6 +78,6 @@ exports.onCreatePage = async ({ page, actions }) => {
       });
     });
   } catch (error) {
-    return console.error(error);
+    throw error;
   }
 };

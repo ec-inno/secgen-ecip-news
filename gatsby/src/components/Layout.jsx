@@ -56,9 +56,7 @@ const Layout = ({ children, location }) => {
         contentTranslations={contentTranslations}
       />
       <Menu currentLanguage={currentLanguage} />
-      <main className="ecl-u-pv-xl">
-        <div className="ecl-container">{children}</div>
-      </main>
+      {children}
       <Footer location={location} />
     </ContextProvider>
   );
