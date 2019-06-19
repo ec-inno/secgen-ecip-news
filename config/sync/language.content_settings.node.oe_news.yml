@@ -8,7 +8,7 @@ dependencies:
     - content_translation
 third_party_settings:
   content_translation:
-    enabled: false
+    enabled: true
 _core:
   default_config_hash: nl84icDZVfKqB_E6YgToClYDVEjpzfMutYWPSVH68eY
 id: node.oe_news
