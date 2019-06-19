@@ -12,125 +12,263 @@ const data = {
     },
     sections: [
       {
-        title: 'European Commission',
-        links: [
-          {
-            variant: 'standalone',
-            label: 'Commission and its priorities',
-            href: 'https://ec.europa.eu/commission/index_en',
-          },
-          {
-            variant: 'standalone',
-            label: 'Policies, information and services',
-            href: 'https://ec.europa.eu/info/index_en',
-          },
+        title: 'Contact the EU',
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: '00 800 6 7 8 9 10 11',
+                href: '#',
+              },
+              before: 'Call us ',
+            },
+            {
+              link: {
+                variant: 'standalone',
+                label: 'telephone options',
+                href: '#',
+              },
+              before: ' or use other ',
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'contact form',
+                href: '#',
+              },
+              before: 'E-mail us via our ',
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'contact points',
+                href: '#',
+              },
+              before: 'Visit our ',
+              after: ' in your country',
+            },
+          ],
         ],
       },
       {
-        title: 'Follow the European Commission',
-        links: [
-          {
-            variant: 'standalone',
-            label: 'Facebook',
-            href: 'https://www.facebook.com/EuropeanCommission',
-            iconPosition: 'before',
-            icon: {
-              shape: 'branded--facebook',
-              size: 'xs',
+        title: 'Find an EU social media account',
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'EU social media channels',
+                href: '#',
+              },
+              before: 'Search for ',
             },
-          },
-          {
-            variant: 'standalone',
-            label: 'Twitter',
-            href: 'https://twitter.com/EU_commission',
-            iconPosition: 'before',
-            icon: {
-              shape: 'branded--twitter',
-              size: 'xs',
-            },
-          },
-          {
-            variant: 'standalone',
-            label: 'Other social networks',
-            href:
-              'https://europa.eu/european-union/contact/social-networks_en#n:+i:4+e:1+t:+s',
-            iconPosition: 'after',
-            icon: {
-              shape: 'ui--external',
-              size: 'xs',
-            },
-          },
+          ],
         ],
       },
       {
-        title: 'European Union',
-        links: [
-          {
-            variant: 'standalone',
-            label: 'European Union',
-            href: 'https://europa.eu/european-union/index_en',
-            iconPosition: 'after',
-            icon: {
-              shape: 'ui--external',
-              size: 'xs',
+        title: 'Find a European institution',
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Parliament',
+                href: '#',
+              },
             },
-          },
-          {
-            variant: 'standalone',
-            label: 'EU institutions',
-            href:
-              'https://europa.eu/european-union/about-eu/institutions-bodies_en',
-            iconPosition: 'after',
-            icon: {
-              shape: 'ui--external',
-              size: 'xs',
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Council',
+                href: '#',
+              },
             },
-          },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Council of the European Union',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Commission',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Court of Justice of the European Union',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Central Bank',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Court of Auditors',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European External Action Service',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Economic and Social Committee',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Committee of the Regions',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Investment Bank',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Ombudsman',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Data Protection Supervisor',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Personnel Selection Office',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Publications Office of the European Union',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Agencies',
+                href: '#',
+              },
+            },
+          ],
+        ],
+      },
+      {
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'EU institutions',
+                href: '#',
+              },
+              before: 'Search for ',
+            },
+          ],
         ],
       },
     ],
-    common: [
-      {
-        variant: 'standalone',
-        label: "About the Commission's new web presence",
-        href: 'https://ec.europa.eu/info/about-commissions-new-web-presence_en',
-      },
-      {
-        variant: 'standalone',
-        href: 'https://ec.europa.eu/info/language-policy_en',
-        label: 'Language policy',
-      },
-      {
-        variant: 'standalone',
-        label: 'Resources for partners',
-        href: 'http://ec.europa.eu/info/resources-partners_en',
-      },
-      {
-        variant: 'standalone',
-        label: 'Cookies',
-        href: 'https://ec.europa.eu/info/cookies_en',
-      },
-      {
-        variant: 'standalone',
-        href: 'https://ec.europa.eu/info/privacy-policy_en',
-        label: 'Privacy policy',
-      },
-      {
-        variant: 'standalone',
-        label: 'Legal notice',
-        href: 'https://ec.europa.eu/info/legal-notice_en',
-      },
-      {
-        variant: 'standalone',
-        label: 'Contact',
-        href: 'https://ec.europa.eu/info/contact_en',
-      },
-    ],
+    common: {
+      label: 'Last published 26/06/2018',
+      links: [
+        {
+          variant: 'standalone',
+          label: 'Language policy',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Privacy policy',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Legal notice',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Cookies',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Web accessibility',
+          href: '#',
+        },
+      ],
+    },
   },
   fr: {
     backToTop: {
       variant: 'standalone',
-      label: 'Haut',
+      label: 'Go to top',
       href: '#top',
       icon: {
         shape: 'ui--corner-arrow',
@@ -139,125 +277,263 @@ const data = {
     },
     sections: [
       {
-        title: 'Commission européenne',
-        links: [
-          {
-            variant: 'standalone',
-            label: 'La Commission et ses priorités',
-            href: 'https://ec.europa.eu/commission/index_fr',
-          },
-          {
-            variant: 'standalone',
-            label: 'Politiques, informations et services',
-            href: 'https://ec.europa.eu/info/index_fr',
-          },
+        title: 'Contact the EU',
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: '00 800 6 7 8 9 10 11',
+                href: '#',
+              },
+              before: 'Call us ',
+            },
+            {
+              link: {
+                variant: 'standalone',
+                label: 'telephone options',
+                href: '#',
+              },
+              before: ' or use other ',
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'contact form',
+                href: '#',
+              },
+              before: 'E-mail us via our ',
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'contact points',
+                href: '#',
+              },
+              before: 'Visit our ',
+              after: ' in your country',
+            },
+          ],
         ],
       },
       {
-        title: 'Suivre la Commission européenne',
-        links: [
-          {
-            variant: 'standalone',
-            label: 'Facebook',
-            href: 'https://www.facebook.com/EuropeanCommission',
-            iconPosition: 'before',
-            icon: {
-              shape: 'branded--facebook',
-              size: 'xs',
+        title: 'Find an EU social media account',
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'EU social media channels',
+                href: '#',
+              },
+              before: 'Search for ',
             },
-          },
-          {
-            variant: 'standalone',
-            label: 'Twitter',
-            href: 'https://twitter.com/EU_commission',
-            iconPosition: 'before',
-            icon: {
-              shape: 'branded--twitter',
-              size: 'xs',
-            },
-          },
-          {
-            variant: 'standalone',
-            label: 'Autres réseaux sociaux',
-            href:
-              'https://europa.eu/european-union/contact/social-networks_fr#n:+i:4+e:1+t:+s',
-            iconPosition: 'after',
-            icon: {
-              shape: 'ui--external',
-              size: 'xs',
-            },
-          },
+          ],
         ],
       },
       {
-        title: 'Union européenne',
-        links: [
-          {
-            variant: 'standalone',
-            label: 'Union européenne',
-            href: 'https://europa.eu/european-union/index_fr',
-            iconPosition: 'after',
-            icon: {
-              shape: 'ui--external',
-              size: 'xs',
+        title: 'Find a European institution',
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Parliament',
+                href: '#',
+              },
             },
-          },
-          {
-            variant: 'standalone',
-            label: 'Institutions de l’UE',
-            href:
-              'https://europa.eu/european-union/about-eu/institutions-bodies_fr',
-            iconPosition: 'after',
-            icon: {
-              shape: 'ui--external',
-              size: 'xs',
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Council',
+                href: '#',
+              },
             },
-          },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Council of the European Union',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Commission',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Court of Justice of the European Union',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Central Bank',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Court of Auditors',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European External Action Service',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Economic and Social Committee',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Committee of the Regions',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Investment Bank',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Ombudsman',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Data Protection Supervisor',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Personnel Selection Office',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Publications Office of the European Union',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Agencies',
+                href: '#',
+              },
+            },
+          ],
+        ],
+      },
+      {
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'EU institutions',
+                href: '#',
+              },
+              before: 'Search for ',
+            },
+          ],
         ],
       },
     ],
-    common: [
-      {
-        variant: 'standalone',
-        label: 'À propos de la nouvelle présence de la Commission sur le web',
-        href: 'https://ec.europa.eu/info/about-commissions-new-web-presence_fr',
-      },
-      {
-        variant: 'standalone',
-        href: 'https://ec.europa.eu/info/language-policy_fr',
-        label: 'Politique linguistique',
-      },
-      {
-        variant: 'standalone',
-        label: 'Ressources pour les partenaires',
-        href: 'http://ec.europa.eu/info/resources-partners_fr',
-      },
-      {
-        variant: 'standalone',
-        label: 'Cookies',
-        href: 'https://ec.europa.eu/info/cookies_fr',
-      },
-      {
-        variant: 'standalone',
-        href: 'https://ec.europa.eu/info/privacy-policy_fr',
-        label: 'Protection de la vie privée',
-      },
-      {
-        variant: 'standalone',
-        label: 'Avis juridique',
-        href: 'https://ec.europa.eu/info/legal-notice_fr',
-      },
-      {
-        variant: 'standalone',
-        label: 'Contact',
-        href: 'https://ec.europa.eu/info/contact_fr',
-      },
-    ],
+    common: {
+      label: 'Last published 26/06/2018',
+      links: [
+        {
+          variant: 'standalone',
+          label: 'Language policy',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Privacy policy',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Legal notice',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Cookies',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Web accessibility',
+          href: '#',
+        },
+      ],
+    },
   },
   bg: {
     backToTop: {
       variant: 'standalone',
-      label: 'Нагоре',
+      label: 'Go to top',
       href: '#top',
       icon: {
         shape: 'ui--corner-arrow',
@@ -266,120 +542,258 @@ const data = {
     },
     sections: [
       {
-        title: 'Европейска комисия',
-        links: [
-          {
-            variant: 'standalone',
-            label: 'Комисията и нейните приоритети',
-            href: 'https://ec.europa.eu/commission/index_bg',
-          },
-          {
-            variant: 'standalone',
-            label: 'Политики, информация и услуги',
-            href: 'https://ec.europa.eu/info/index_bg',
-          },
+        title: 'Contact the EU',
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: '00 800 6 7 8 9 10 11',
+                href: '#',
+              },
+              before: 'Call us ',
+            },
+            {
+              link: {
+                variant: 'standalone',
+                label: 'telephone options',
+                href: '#',
+              },
+              before: ' or use other ',
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'contact form',
+                href: '#',
+              },
+              before: 'E-mail us via our ',
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'contact points',
+                href: '#',
+              },
+              before: 'Visit our ',
+              after: ' in your country',
+            },
+          ],
         ],
       },
       {
-        title: 'Следвайте Европейската комисия',
-        links: [
-          {
-            variant: 'standalone',
-            label: 'Facebook',
-            href: 'https://www.facebook.com/EuropeanCommission',
-            iconPosition: 'before',
-            icon: {
-              shape: 'branded--facebook',
-              size: 'xs',
+        title: 'Find an EU social media account',
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'EU social media channels',
+                href: '#',
+              },
+              before: 'Search for ',
             },
-          },
-          {
-            variant: 'standalone',
-            label: 'Twitter',
-            href: 'https://twitter.com/EU_commission',
-            iconPosition: 'before',
-            icon: {
-              shape: 'branded--twitter',
-              size: 'xs',
-            },
-          },
-          {
-            variant: 'standalone',
-            label: 'Други социални мрежи',
-            href:
-              'https://europa.eu/european-union/contact/social-networks_en#n:+i:4+e:1+t:+s',
-            iconPosition: 'after',
-            icon: {
-              shape: 'ui--external',
-              size: 'xs',
-            },
-          },
+          ],
         ],
       },
       {
-        title: 'Европейски съюз',
-        links: [
-          {
-            variant: 'standalone',
-            label: 'Европейски съюз',
-            href: 'https://europa.eu/european-union/index_bg',
-            iconPosition: 'after',
-            icon: {
-              shape: 'ui--external',
-              size: 'xs',
+        title: 'Find a European institution',
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Parliament',
+                href: '#',
+              },
             },
-          },
-          {
-            variant: 'standalone',
-            label: 'Институции на ЕС',
-            href:
-              'https://europa.eu/european-union/about-eu/institutions-bodies_bg',
-            iconPosition: 'after',
-            icon: {
-              shape: 'ui--external',
-              size: 'xs',
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Council',
+                href: '#',
+              },
             },
-          },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Council of the European Union',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Commission',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Court of Justice of the European Union',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Central Bank',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Court of Auditors',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European External Action Service',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Economic and Social Committee',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Committee of the Regions',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Investment Bank',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Ombudsman',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Data Protection Supervisor',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'European Personnel Selection Office',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Publications Office of the European Union',
+                href: '#',
+              },
+            },
+          ],
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'Agencies',
+                href: '#',
+              },
+            },
+          ],
+        ],
+      },
+      {
+        items: [
+          [
+            {
+              link: {
+                variant: 'standalone',
+                label: 'EU institutions',
+                href: '#',
+              },
+              before: 'Search for ',
+            },
+          ],
         ],
       },
     ],
-    common: [
-      {
-        variant: 'standalone',
-        label: 'За новото присъствие на Комисията в интернет',
-        href: 'https://ec.europa.eu/info/about-commissions-new-web-presence_bg',
-      },
-      {
-        variant: 'standalone',
-        href: 'https://ec.europa.eu/info/language-policy_bg',
-        label: 'Езикова политика',
-      },
-      {
-        variant: 'standalone',
-        label: 'Ресурси за партньори',
-        href: 'http://ec.europa.eu/info/resources-partners_bg',
-      },
-      {
-        variant: 'standalone',
-        label: 'Бисквитки',
-        href: 'https://ec.europa.eu/info/cookies_bg',
-      },
-      {
-        variant: 'standalone',
-        href: 'https://ec.europa.eu/info/privacy-policy_bg',
-        label: 'Политика за поверителност',
-      },
-      {
-        variant: 'standalone',
-        label: 'Правна информация',
-        href: 'https://ec.europa.eu/info/legal-notice_bg',
-      },
-      {
-        variant: 'standalone',
-        label: 'За контакти',
-        href: 'https://ec.europa.eu/info/contact_bg',
-      },
-    ],
+    common: {
+      label: 'Last published 26/06/2018',
+      links: [
+        {
+          variant: 'standalone',
+          label: 'Language policy',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Privacy policy',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Legal notice',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Cookies',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Web accessibility',
+          href: '#',
+        },
+      ],
+    },
   },
 };
 
