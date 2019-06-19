@@ -206,7 +206,6 @@ exports.sourceNodes = async (
 
   addNodeTranslations(nodes);
 
-  // Create nodes for initiatives
   for (const node of nodes) {
     // Create a gatsby node for everything from Drupal: menus, blocks, content types, etc.
     createNode(node);

@@ -4,7 +4,7 @@ const languages = require('./src/languages');
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'initiatives') {
+  if (node.internal.type === 'news') {
     // Create a new field on Gatsby side to later store information about translations of a given node.
 
     createNodeField({
@@ -19,8 +19,8 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return graphql(`
-    query getAllInitiatives {
-      allInitiatives {
+    query getAllNews {
+      allNews {
         edges {
           node {
             id
@@ -33,9 +33,9 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
-    const { allInitiatives } = result.data;
+    const { allNews } = result.data;
 
-    allInitiatives.edges.forEach(({ node }) => {
+    allNews.edges.forEach(({ node }) => {
       const { alias, langcode } = node.path;
       if (alias && langcode) {
         // This is to "physically" create separate pages for languages.
@@ -43,7 +43,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         createPage({
           path: pathInGatsby,
-          component: path.resolve(`./src/templates/initiative.jsx`),
+          component: path.resolve(`./src/templates/news.jsx`),
           context: {
             // Data passed to context is available
             // in page queries as GraphQL variables.

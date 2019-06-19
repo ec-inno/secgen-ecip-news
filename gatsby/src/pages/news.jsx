@@ -6,45 +6,45 @@ const News = ({ data }) => {
 
   return (
     <main>
-      <section class="ecl-page-header">
-        <div class="ecl-container">
-          <div class="ecl-page-header__title-wrapper">
-            <h1 class="ecl-page-header__title">{title}</h1>
-            <p class="ecl-page-header__slogan ecl-u-type-paragraph ecl-u-mt-l">
+      <section className="ecl-page-header">
+        <div className="ecl-container">
+          <div className="ecl-page-header__title-wrapper">
+            <h1 className="ecl-page-header__title">{title}</h1>
+            <p className="ecl-page-header__slogan ecl-u-type-paragraph ecl-u-mt-l">
               Access the latest news from ECI.
             </p>
           </div>
         </div>
       </section>
 
-      <div class="ecl-container ecl-u-mt-xl">
-        <div class="ecl-row ecl-u-mt-l">
-          <div class="ecl-col-12 ecl-col-sm-3">
+      <div className="ecl-container ecl-u-mt-xl">
+        <div className="ecl-row ecl-u-mt-l">
+          <div className="ecl-col-12 ecl-col-sm-3">
             <nav>
-              <div class="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
+              <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
                 PAGE CONTENTS
               </div>
-              <ul class="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
-                <li class="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m">
+              <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
+                <li className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m">
                   <a
                     href="#inline-nav-1"
-                    class="ecl-link ecl-link--standalone ecl-u-d-block"
+                    className="ecl-link ecl-link--standalone ecl-u-d-block"
                   >
                     Launching European citizens’ initiatives just got easier
                   </a>
                 </li>
-                <li class="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m">
+                <li className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m">
                   <a
                     href="#inline-nav-2"
-                    class="ecl-link ecl-link--standalone ecl-u-d-block"
+                    className="ecl-link ecl-link--standalone ecl-u-d-block"
                   >
                     ECI Day 2019 focuses on digital democracy
                   </a>
                 </li>
-                <li class="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m">
+                <li className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m">
                   <a
                     href="#inline-nav-3"
-                    class="ecl-link ecl-link--standalone ecl-u-d-block"
+                    className="ecl-link ecl-link--standalone ecl-u-d-block"
                   >
                     Webinar 3: New rules for the European Citizens’ Initiative
                     as of 2020
@@ -54,12 +54,12 @@ const News = ({ data }) => {
             </nav>
           </div>
 
-          <div class="ecl-col-12 ecl-col-sm-9">
-            <h3 class="ecl-u-type-heading-3" id="inline-nav-1">
+          <div className="ecl-col-12 ecl-col-sm-9">
+            <h3 className="ecl-u-type-heading-3" id="inline-nav-1">
               Launching European citizens’ initiatives just got easier
             </h3>
-            <p class="ecl-u-type-paragraph-s">09.05.2019</p>
-            <p class="ecl-u-type-paragraph">
+            <p className="ecl-u-type-paragraph-s">09.05.2019</p>
+            <p className="ecl-u-type-paragraph">
               The European Parliament and the Council adopted changes to the
               European Citizens’ Initiative on 17 April that will make it easier
               to launch such actions and gather signatures thanks to a new free,
@@ -68,18 +68,18 @@ const News = ({ data }) => {
               of initiatives into all EU languages within certain limits and
               more flexibility on starting dates.
             </p>
-            <p class="ecl-u-type-paragraph">
+            <p className="ecl-u-type-paragraph">
               News source:{' '}
               <a href="http://ec.europa.eu/citizens-initiative/public/welcome">
                 http://ec.europa.eu/citizens-initiative/public/welcome
               </a>
             </p>
 
-            <h3 class="ecl-u-type-heading-3" id="inline-nav-2">
+            <h3 className="ecl-u-type-heading-3" id="inline-nav-2">
               ECI Day 2019 focuses on digital democracy
             </h3>
-            <p class="ecl-u-type-paragraph-s">09.05.2019</p>
-            <p class="ecl-u-type-paragraph">
+            <p className="ecl-u-type-paragraph-s">09.05.2019</p>
+            <p className="ecl-u-type-paragraph">
               The European Parliament and the Council adopted changes to the
               European Citizens’ Initiative on 17 April that will make it easier
               to launch such actions and gather signatures thanks to a new free,
@@ -88,19 +88,19 @@ const News = ({ data }) => {
               of initiatives into all EU languages within certain limits and
               more flexibility on starting dates.
             </p>
-            <p class="ecl-u-type-paragraph">
+            <p className="ecl-u-type-paragraph">
               News source:{' '}
               <a href="http://ec.europa.eu/citizens-initiative/public/welcome">
                 http://ec.europa.eu/citizens-initiative/public/welcome
               </a>
             </p>
 
-            <h3 class="ecl-u-type-heading-3" id="inline-nav-3">
+            <h3 className="ecl-u-type-heading-3" id="inline-nav-3">
               Webinar 3: New rules for the European Citizens’ Initiative as of
               2020
             </h3>
-            <p class="ecl-u-type-paragraph-s">09.05.2019</p>
-            <p class="ecl-u-type-paragraph">
+            <p className="ecl-u-type-paragraph-s">09.05.2019</p>
+            <p className="ecl-u-type-paragraph">
               The European Parliament and the Council adopted changes to the
               European Citizens’ Initiative on 17 April that will make it easier
               to launch such actions and gather signatures thanks to a new free,
@@ -109,7 +109,7 @@ const News = ({ data }) => {
               of initiatives into all EU languages within certain limits and
               more flexibility on starting dates.
             </p>
-            <p class="ecl-u-type-paragraph">
+            <p className="ecl-u-type-paragraph">
               News source:{' '}
               <a href="http://ec.europa.eu/citizens-initiative/public/welcome">
                 http://ec.europa.eu/citizens-initiative/public/welcome
