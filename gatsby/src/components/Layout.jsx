@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, useStaticQuery } from 'gatsby';
 
@@ -6,8 +6,6 @@ import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
 
 import getCurrentLanguage from '../utils/getCurrentLanguage';
-
-import { ContextProviderWithReducer } from '../Context';
 
 import TopMessage from './TopMessage/TopMessage';
 import Header from './Header';
@@ -47,7 +45,7 @@ const Layout = ({ children, location }) => {
   const currentLanguage = getCurrentLanguage(location);
 
   return (
-    <ContextProviderWithReducer>
+    <>
       <TopMessage currentLanguage={currentLanguage} />
       <Header
         languages={languages}
@@ -58,7 +56,7 @@ const Layout = ({ children, location }) => {
       <Menu currentLanguage={currentLanguage} />
       {children}
       <Footer location={location} />
-    </ContextProviderWithReducer>
+    </>
   );
 };
 

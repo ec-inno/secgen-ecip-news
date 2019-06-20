@@ -6,7 +6,9 @@ import Context from '../Context';
 import Icon from './Icon';
 
 const LanguageSelector = ({ href, name, code }) => {
-  const { dispatch } = useContext(Context);
+  const { store, dispatch } = useContext(Context);
+
+  console.log(store);
 
   return (
     <div className="ecl-site-header__selector">
@@ -15,7 +17,6 @@ const LanguageSelector = ({ href, name, code }) => {
           dispatch({
             type: 'SET_LANGUAGE_OVERLAY_VISIBILITY',
             hideOverlay: false,
-            translations: ['foo'],
           });
         }}
         className="ecl-link ecl-link--standalone"
