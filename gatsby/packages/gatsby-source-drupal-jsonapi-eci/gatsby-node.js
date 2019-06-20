@@ -43,7 +43,7 @@ exports.sourceNodes = async (
         if (!type) return;
 
         const getNext = async (url, data = []) => {
-          if (typeof url === `object`) {
+          if (url.href && !url.href.includes('skos')) {
             // url can be string or object containing href field
             url = url.href;
 
@@ -55,34 +55,34 @@ exports.sourceNodes = async (
                 url = url + `?${filters[type]}`;
               }
             }
-          }
 
-          let d;
+            let d;
 
-          try {
-            d = await axios.get(url, {
-              auth: basicAuth,
-              headers,
-              params,
-            });
-          } catch (error) {
-            if (error.response && error.response.status == 405) {
-              // The endpoint doesn't support the GET method, so just skip it.
-              return [];
-            } else {
-              console.error(`Failed to fetch ${url}`, error.message);
-              console.log(error.data);
-              throw error;
+            try {
+              d = await axios.get(url, {
+                auth: basicAuth,
+                headers,
+                params,
+              });
+            } catch (error) {
+              if (error.response && error.response.status == 405) {
+                // The endpoint doesn't support the GET method, so just skip it.
+                return [];
+              } else {
+                console.error(`Failed to fetch ${url}`, error.message);
+                console.log(error.data);
+                throw error;
+              }
             }
+
+            data = data.concat(d.data.data);
+
+            if (d.data.links.next) {
+              data = await getNext(d.data.links.next, data);
+            }
+
+            return data;
           }
-
-          data = data.concat(d.data.data);
-
-          if (d.data.links.next) {
-            data = await getNext(d.data.links.next, data);
-          }
-
-          return data;
         };
 
         const data = await getNext(url);
