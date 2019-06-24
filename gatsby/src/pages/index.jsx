@@ -10,6 +10,7 @@ const Homepage = ({ data }) => {
   return (
     <main className="ecl-u-pv-xl">
       <div className="ecl-container">
+        <h2 className="ecl-u-type-heading-2">Latest news</h2>
         <ul className="ecl-unordered-list">
           {news.map(newsNode => {
             const { node } = newsNode;
