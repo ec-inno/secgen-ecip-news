@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
+import slugify from 'slugify';
 
 const Homepage = ({ data }) => {
   const news = data.allNews.edges;
@@ -16,7 +17,7 @@ const Homepage = ({ data }) => {
             return (
               <li className="ecl-unordered-list__item" key={id}>
                 <Link
-                  to={`/${langcode}${alias}`}
+                  to={`/${langcode}/news#${slugify(title)}`}
                   className="ecl-u-d-block ecl-link ecl-link--standalone"
                 >
                   <strong>{title}</strong>
