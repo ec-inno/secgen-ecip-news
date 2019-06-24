@@ -15,12 +15,12 @@ const Homepage = ({ data }) => {
           {news.map(newsNode => {
             const { node } = newsNode;
             const { id, title, oe_teaser, path } = node;
-            const { alias, langcode } = path;
+            const { langcode } = path;
 
             return (
               <li className="ecl-unordered-list__item" key={id}>
                 <Link
-                  to={`/${langcode}/news#${slugify(title)}`}
+                  to={`/${langcode}/news#${slugify(title, {lower: true})}`}
                   className="ecl-u-d-block ecl-link ecl-link--standalone"
                 >
                   <strong>{title}</strong>

@@ -56,7 +56,7 @@ const News = ({ data }) => {
 
               return (
                 <Fragment key={i}>
-                  <h3 id={`${slugify(title)}`} className="ecl-u-type-heading-3">{title}</h3>
+                  <h3 id={`${slugify(title, {lower: true})}`} className="ecl-u-type-heading-3">{title}</h3>
 
                   <p className="ecl-u-type-paragraph-s">
                     {oe_publication_date}
