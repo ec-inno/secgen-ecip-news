@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 
+import getCurrentLanguage from '../utils/getCurrentLanguage';
+
 const Homepage = ({ data }) => {
   const news = data.allNews.edges;
 
@@ -38,6 +40,9 @@ const Homepage = ({ data }) => {
             );
           })}
         </ul>
+        <p className="ecl-u-type-paragraph">
+          <Link className="ecl-link ecl-link--standalone" to={`/${getCurrentLanguage}/news`}>See more news</Link>
+        </p>
       </div>
     </main>
   );
