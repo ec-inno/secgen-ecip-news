@@ -1,18 +1,7 @@
 import React from 'react';
-import { graphql, Link, navigate, withPrefix } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
-import { defaultLangKey } from '../languages';
-
-const Homepage = ({ data, location }) => {
-  if (typeof window !== 'undefined') {
-    if (location.pathname === '/') {
-      const homeUrl = withPrefix(`/${defaultLangKey}/`);
-      navigate(homeUrl);
-
-      return <div />;
-    }
-  }
-
+const Homepage = ({ data }) => {
   const news = data.allNews.edges;
 
   return (

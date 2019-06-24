@@ -15,10 +15,10 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 };
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  return graphql(`
+  const result = await graphql(`
     query getAllNews {
       allNews {
         edges {
@@ -32,27 +32,26 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     }
-  `).then(result => {
-    const { allNews } = result.data;
+  `);
 
-    allNews.edges.forEach(({ node }) => {
-      const { alias, langcode } = node.path;
-      if (alias && langcode) {
-        // This is to "physically" create separate pages for languages.
-        const pathInGatsby = `${langcode}${alias}`;
+  const { allNews } = result.data;
+  const newsNodes = allNews.edges;
 
-        createPage({
-          path: pathInGatsby,
-          component: path.resolve(`./src/templates/news.jsx`),
-          context: {
-            // Data passed to context is available
-            // in page queries as GraphQL variables.
-            alias,
-            langcode,
-          },
-        });
-      }
-    });
+  newsNodes.forEach(({ node }) => {
+    const { alias, langcode } = node.path;
+
+    if (alias && langcode) {
+      const pathInGatsby = `${langcode}${alias}`;
+
+      createPage({
+        path: pathInGatsby,
+        component: path.resolve(`./src/templates/news.jsx`),
+        context: {
+          alias,
+          langcode,
+        },
+      });
+    }
   });
 };
 
