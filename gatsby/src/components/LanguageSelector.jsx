@@ -1,37 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import ContextConsumer from '../Context';
+import Context, { SET_LANGUAGE_OVERLAY_VISIBILITY } from '../Context';
 
 import Icon from './Icon';
 
-const LanguageSelector = ({ href, name, code, opensOverlay }) => {
+const LanguageSelector = ({ href, name, code }) => {
+  const { dispatch } = useContext(Context);
+
+  const openOverlay = e => {
+    e.preventDefault();
+
+    dispatch({
+      type: SET_LANGUAGE_OVERLAY_VISIBILITY,
+      hideOverlay: false,
+    });
+  };
+
   return (
-    <ContextConsumer>
-      {({ set }) => {
-        return (
-          <div className="ecl-site-header__selector">
-            <a
-              onClick={e => {
-                e.preventDefault();
-                if (opensOverlay) {
-                  set({ LanguageListOverlayIsHidden: false });
-                }
-              }}
-              className="ecl-link ecl-link--standalone"
-              href={href}
-              data-ecl-language-selector
-            >
-              {name}
-              <span className="ecl-site-header__language-icon">
-                <Icon shape="general--language" size="m" />
-                <span className="ecl-site-header__language-code">{code}</span>
-              </span>
-            </a>
-          </div>
-        );
-      }}
-    </ContextConsumer>
+    <div className="ecl-site-header__selector">
+      <a
+        onClick={openOverlay}
+        className="ecl-link ecl-link--standalone"
+        href={href}
+        data-ecl-language-selector
+      >
+        {name}
+        <span className="ecl-site-header__language-icon">
+          <Icon shape="general--language" size="m" />
+          <span className="ecl-site-header__language-code">{code}</span>
+        </span>
+      </a>
+    </div>
   );
 };
 

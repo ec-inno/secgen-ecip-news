@@ -1,40 +1,34 @@
 import React from 'react';
 
-const contextStore = {
-  data: {
-    LanguageListOverlayIsHidden: true,
-  },
-  set: () => {},
+const initialState = {
+  hideOverlay: true,
 };
 
-const Context = React.createContext(contextStore);
+export const SET_LANGUAGE_OVERLAY_VISIBILITY =
+  'SET_LANGUAGE_OVERLAY_VISIBILITY';
 
-const { Consumer, Provider } = Context;
+const reducer = (state, action) => {
+  switch (action.type) {
+    case SET_LANGUAGE_OVERLAY_VISIBILITY: {
+      return Object.assign({}, state, {
+        hideOverlay: action.hideOverlay,
+      });
+    }
 
-// Taken from https://www.gatsbyjs.org/packages/gatsby-plugin-layout/#passing-data-from-layout-to-page--from-page-to-layout
-class ContextProvider extends React.Component {
-  constructor() {
-    super();
-
-    this.setData = this.setData.bind(this);
-    this.state = {
-      ...contextStore,
-      set: this.setData,
-    };
+    default: {
+      return initialState;
+    }
   }
+};
 
-  setData(newData) {
-    this.setState(state => ({
-      data: {
-        ...state.data,
-        ...newData,
-      },
-    }));
-  }
+const Context = React.createContext();
 
-  render() {
-    return <Provider value={this.state}>{this.props.children}</Provider>;
-  }
-}
+const ContextProviderWithReducer = ({ children }) => {
+  const [store, dispatch] = React.useReducer(reducer, initialState);
 
-export { Context, Consumer as default, ContextProvider };
+  return (
+    <Context.Provider value={{ store, dispatch }}>{children}</Context.Provider>
+  );
+};
+
+export { ContextProviderWithReducer, Context as default };

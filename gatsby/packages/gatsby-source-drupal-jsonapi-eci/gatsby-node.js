@@ -44,17 +44,15 @@ exports.sourceNodes = async (
 
         const getNext = async (url, data = []) => {
           if (url.href && !url.href.includes('skos')) {
-            if (typeof url === `object`) {
-              // url can be string or object containing href field
-              url = url.href;
+            // url can be string or object containing href field
+            url = url.href;
 
-              // Apply any filters configured in gatsby-config.js. Filters
-              // can be any valid JSON API filter query string.
-              // See https://www.drupal.org/docs/8/modules/jsonapi/filtering
-              if (typeof filters === `object`) {
-                if (filters.hasOwnProperty(type)) {
-                  url = url + `?${filters[type]}`;
-                }
+            // Apply any filters configured in gatsby-config.js. Filters
+            // can be any valid JSON API filter query string.
+            // See https://www.drupal.org/docs/8/modules/jsonapi/filtering
+            if (typeof filters === `object`) {
+              if (filters.hasOwnProperty(type)) {
+                url = url + `?${filters[type]}`;
               }
             }
 

@@ -5,8 +5,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
 
-import { ContextProvider } from '../Context';
-
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
 import TopMessage from './TopMessage/TopMessage';
@@ -47,7 +45,7 @@ const Layout = ({ children, location }) => {
   const currentLanguage = getCurrentLanguage(location);
 
   return (
-    <ContextProvider>
+    <>
       <TopMessage currentLanguage={currentLanguage} />
       <Header
         languages={languages}
@@ -58,7 +56,7 @@ const Layout = ({ children, location }) => {
       <Menu currentLanguage={currentLanguage} />
       {children}
       <Footer location={location} />
-    </ContextProvider>
+    </>
   );
 };
 
