@@ -18,6 +18,9 @@ exports.onCreateNode = ({ node, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
+  const newsPerPage = 10;
+  const pagesPerLanguage = {};
+
   const result = await graphql(`
     query getAllNews {
       allNews {
@@ -45,13 +48,42 @@ exports.createPages = async ({ graphql, actions }) => {
 
       createPage({
         path: pathInGatsby,
-        component: path.resolve(`./src/templates/news.jsx`),
+        component: path.resolve('./src/templates/news.jsx'),
         context: {
           alias,
           langcode,
         },
       });
+
+      if (!pagesPerLanguage[langcode]) {
+        pagesPerLanguage[langcode] = [];
+      }
+
+      pagesPerLanguage[langcode].push(node);
     }
+  });
+
+  // Create news sections with paginations for each language.
+  Object.keys(pagesPerLanguage).forEach(language => {
+    const items = pagesPerLanguage[language];
+    const languageRegex = `//${language}//`;
+    const numPages = Math.ceil(items.length / newsPerPage);
+
+    /* eslint-disable-next-line compat/compat */
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/${language}/news` : `/${language}/news/${i + 1}`,
+        component: path.resolve('./src/templates/news-pagination.jsx'),
+        context: {
+          limit: newsPerPage,
+          skip: i * newsPerPage,
+          numPages,
+          currentPage: i + 1,
+          locale: language,
+          languageRegex,
+        },
+      });
+    });
   });
 };
 

@@ -22,13 +22,17 @@ const Homepage = ({ data }) => {
                   <strong>{title}</strong>
                 </Link>
 
-                <div
-                  key={id}
-                  className="ecl-paragraph"
-                  dangerouslySetInnerHTML={{
-                    __html: oe_teaser.processed,
-                  }}
-                />
+                {oe_teaser ? (
+                  <div
+                    key={id}
+                    className="ecl-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: oe_teaser.processed,
+                    }}
+                  />
+                ) : (
+                  ''
+                )}
               </li>
             );
           })}
