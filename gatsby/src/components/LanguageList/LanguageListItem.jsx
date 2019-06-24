@@ -11,7 +11,7 @@ const LanguageListItem = ({ label, lang, href, isActive, isOverlay }) => {
 
   return (
     <Link
-      onClick={e =>
+      onClick={() =>
         dispatch({
           type: 'SET_LANGUAGE_OVERLAY_VISIBILITY',
           hideOverlay: true,
