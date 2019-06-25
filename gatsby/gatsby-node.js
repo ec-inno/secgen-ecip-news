@@ -59,7 +59,11 @@ exports.createPages = async ({ graphql, actions }) => {
         pagesPerLanguage[langcode] = [];
       }
 
-      pagesPerLanguage[langcode].push(node);
+      const nodeExists = pagesPerLanguage[langcode].find(
+        n => n.path.alias === alias && n.path.langcode === langcode
+      );
+
+      if (!nodeExists) pagesPerLanguage[langcode].push(node);
     }
   });
 

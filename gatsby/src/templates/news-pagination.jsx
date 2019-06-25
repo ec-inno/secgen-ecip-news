@@ -2,7 +2,15 @@ import React, { Fragment } from 'react';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 
-const News = ({ data }) => {
+const News = ({ data, pageContext }) => {
+  const { currentPage, numPages, locale } = pageContext;
+  const pageRoot = `/${locale}/news/`;
+  const isFirst = currentPage === 1;
+  const isLast = currentPage === numPages;
+  const prevPage =
+    currentPage - 1 === 1 ? pageRoot : pageRoot + (currentPage - 1).toString();
+  const nextPage = pageRoot + (currentPage + 1).toString();
+
   const { title, news_intro, inpage_title } = data.file.childNewsJson;
   const { edges: newsItems } = data.allNews;
 
@@ -50,6 +58,16 @@ const News = ({ data }) => {
           </div>
 
           <div className="ecl-col-12 ecl-col-sm-9">
+            {!isFirst && (
+              <Link to={prevPage} rel="prev">
+                ← Previous Page
+              </Link>
+            )}
+            {!isLast && (
+              <Link to={nextPage} rel="next">
+                Next Page →
+              </Link>
+            )}
             {newsItems.map((item, i) => {
               const { node } = item;
               const {
