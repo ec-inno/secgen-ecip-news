@@ -37,7 +37,7 @@ const News = ({ data }) => {
                       className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
                     >
                       <a
-                        href={`#${slugify(title)}`}
+                        href={`#${slugify(title, { lower: true })}`}
                         className="ecl-link ecl-link--standalone ecl-u-d-block"
                       >
                         {title}
@@ -52,11 +52,21 @@ const News = ({ data }) => {
           <div className="ecl-col-12 ecl-col-sm-9">
             {newsItems.map((item, i) => {
               const { node } = item;
-              const { title, oe_publication_date, oe_summary, field_source } = node;
+              const {
+                title,
+                oe_publication_date,
+                oe_summary,
+                field_source,
+              } = node;
 
               return (
                 <Fragment key={i}>
-                  <h3 id={`${slugify(title, {lower: true})}`} className="ecl-u-type-heading-3">{title}</h3>
+                  <h3
+                    id={`${slugify(title, { lower: true })}`}
+                    className="ecl-u-type-heading-3"
+                  >
+                    {title}
+                  </h3>
 
                   <p className="ecl-u-type-paragraph-s">
                     {oe_publication_date}
