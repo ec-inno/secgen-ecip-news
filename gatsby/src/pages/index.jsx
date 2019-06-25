@@ -1,74 +1,71 @@
 import React from 'react';
-import { graphql, Link, navigate, withPrefix } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import slugify from 'slugify';
 
-import { defaultLangKey } from '../languages';
+import getCurrentLanguage from '../utils/getCurrentLanguage';
 
-const Homepage = ({ data, location }) => {
-  if (typeof window !== 'undefined') {
-    if (location.pathname === '/') {
-      const homeUrl = withPrefix(`/${defaultLangKey}/`);
-      navigate(homeUrl);
-
-      return <div />;
-    }
-  }
-
-  const initiatives = data.allInitiatives.edges;
+const Homepage = ({ data }) => {
+  const news = data.allNews.edges;
 
   return (
     <main className="ecl-u-pv-xl">
       <div className="ecl-container">
+        <h2 className="ecl-u-type-heading-2">Latest news</h2>
         <ul className="ecl-unordered-list">
-          {initiatives.map(initiativeNode => {
-            const { node } = initiativeNode;
-            const { id, title, field_main_objectives, path } = node;
-            const { alias, langcode } = path;
+          {news.map(newsNode => {
+            const { node } = newsNode;
+            const { id, title, oe_teaser, path } = node;
+            const { langcode } = path;
 
             return (
               <li className="ecl-unordered-list__item" key={id}>
                 <Link
-                  to={`/${langcode}${alias}`}
+                  to={`/${langcode}/news#${slugify(title, {lower: true})}`}
                   className="ecl-u-d-block ecl-link ecl-link--standalone"
                 >
                   <strong>{title}</strong>
                 </Link>
 
-                <div
-                  key={id}
-                  className="ecl-paragraph"
-                  dangerouslySetInnerHTML={{
-                    __html: field_main_objectives.processed,
-                  }}
-                />
+                {oe_teaser ? (
+                  <div
+                    key={id}
+                    className="ecl-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: oe_teaser.processed,
+                    }}
+                  />
+                ) : (
+                  ''
+                )}
               </li>
             );
           })}
         </ul>
+        <p className="ecl-u-type-paragraph">
+          <Link className="ecl-link ecl-link--standalone" to={`/${getCurrentLanguage}/news`}>See more news</Link>
+        </p>
       </div>
     </main>
   );
 };
 
 export const query = graphql`
-  query getInitiatives($locale: String!, $languageRegex: String!) {
-    allInitiatives(
+  query getNews($locale: String!, $languageRegex: String!) {
+    allNews(
       filter: { id: { regex: $languageRegex }, langcode: { eq: $locale } }
       limit: 10
-      sort: { order: DESC, fields: field_date }
+      sort: { order: DESC, fields: oe_publication_date }
     ) {
       edges {
         node {
           id
           title
-          field_main_objectives {
-            processed
-          }
-          field_subject_matter {
-            processed
-          }
           path {
             alias
             langcode
+          }
+          oe_teaser {
+            processed
           }
         }
       }

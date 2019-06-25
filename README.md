@@ -10,7 +10,7 @@ A [headless Drupal](https://dri.es/tag/headless-drupal) project started off Open
 
 ## SPARQL
 
-Add this to your settings php:
+Add this to your `settings.php`:
 
 ```
 $databases["sparql_default"] = array(

@@ -2,35 +2,22 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Link } from 'gatsby';
 
-const InitiativeTemplate = ({ data }) => {
-  const { initiatives: node } = data;
-  const {
-    title,
-    field_date,
-    field_subject_matter,
-    field_main_objectives,
-    translations,
-  } = node;
+const NewsTemplate = ({ data }) => {
+  const { news: node } = data;
+  const { title, body, oe_publication_date, translations } = node;
 
   return (
     <main className="ecl-u-pv-xl">
       <div className="ecl-container">
         <h1>{title}</h1>
-        <p className="ecl-paragraph">Date: {field_date}</p>
-        <h3 className="ecl-u-type-heading-3">Subject matter</h3>
-        <p
+        <p className="ecl-paragraph">{oe_publication_date}</p>
+        <div
           className="ecl-paragraph"
           dangerouslySetInnerHTML={{
-            __html: field_subject_matter.processed,
+            __html: body.processed,
           }}
         />
-        <h3 className="ecl-u-type-heading-3">Main objectives</h3>
-        <p
-          className="ecl-paragraph"
-          dangerouslySetInnerHTML={{
-            __html: field_main_objectives.processed,
-          }}
-        />
+
         {translations ? (
           <ul className="ecl-unordered-list">
             {translations.map(translation => (
@@ -53,14 +40,11 @@ const InitiativeTemplate = ({ data }) => {
 };
 
 export const query = graphql`
-  query getInitiative($alias: String!, $langcode: String!) {
-    initiatives(path: { alias: { eq: $alias }, langcode: { eq: $langcode } }) {
+  query getNewsSingle($alias: String!, $langcode: String!) {
+    news(path: { alias: { eq: $alias }, langcode: { eq: $langcode } }) {
       title
-      field_date
-      field_subject_matter {
-        processed
-      }
-      field_main_objectives {
+      oe_publication_date
+      body {
         processed
       }
       translations {
@@ -71,4 +55,4 @@ export const query = graphql`
   }
 `;
 
-export default InitiativeTemplate;
+export default NewsTemplate;

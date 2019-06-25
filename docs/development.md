@@ -61,3 +61,15 @@ or, as documented in the main `README.md`
 ```sh
 $ docker-compose exec web drush cex
 ```
+
+## Import configurations
+
+```sh
+$ docker-compose exec web drush config-import
+```
+
+## Update entities
+
+```sh
+$ docker-compose exec web drush entity-updates
+```
