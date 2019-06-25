@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.oe_news.body
+    - field.field.node.oe_news.field_source
     - field.field.node.oe_news.oe_author
     - field.field.node.oe_news.oe_news_featured_media
     - field.field.node.oe_news.oe_news_location
@@ -30,6 +31,18 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_source:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   oe_related_links:
     type: link

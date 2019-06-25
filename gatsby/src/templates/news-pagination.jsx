@@ -52,14 +52,11 @@ const News = ({ data }) => {
           <div className="ecl-col-12 ecl-col-sm-9">
             {newsItems.map((item, i) => {
               const { node } = item;
-              const { title, oe_publication_date, oe_summary, path } = node;
-              const { alias, langcode } = path;
+              const { title, oe_publication_date, oe_summary, field_source } = node;
 
               return (
                 <Fragment key={i}>
-                  <Link to={`/${langcode}/${alias}`} id={`${slugify(title)}`}>
-                    <h3 className="ecl-u-type-heading-3">{title}</h3>
-                  </Link>
+                  <h3 id={`${slugify(title, {lower: true})}`} className="ecl-u-type-heading-3">{title}</h3>
 
                   <p className="ecl-u-type-paragraph-s">
                     {oe_publication_date}
@@ -68,11 +65,20 @@ const News = ({ data }) => {
                   {oe_summary ? (
                     <div
                       key={i}
-                      className="ecl-paragraph"
+                      className="ecl-paragraph ecl-u-type-paragraph"
                       dangerouslySetInnerHTML={{
                         __html: oe_summary.processed,
                       }}
                     />
+                  ) : (
+                    ''
+                  )}
+
+                  {field_source ? (
+                    <p className="ecl-u-type-paragraph">
+                      News source:{' '}
+                      <Link to={field_source.uri}>{field_source.uri}</Link>
+                    </p>
                   ) : (
                     ''
                   )}
@@ -116,6 +122,10 @@ export const query = graphql`
           path {
             alias
             langcode
+          }
+          field_source {
+            uri
+            title
           }
         }
       }
