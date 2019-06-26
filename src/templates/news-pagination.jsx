@@ -12,7 +12,7 @@ const News = ({ data, pageContext }) => {
   const nextPage = pageRoot + (currentPage + 1).toString();
 
   const { title, news_intro, inpage_title } = data.file.childNewsJson;
-  const { edges: newsItems } = data.allNews;
+  const { edges: newsItems } = data.allNodeOeNews;
 
   return (
     <main>
@@ -134,7 +134,7 @@ export const query = graphql`
         inpage_title
       }
     }
-    allNews(
+    allNodeOeNews(
       filter: { id: { regex: $languageRegex }, langcode: { eq: $locale } }
       sort: { fields: [oe_publication_date], order: DESC }
       limit: $limit
