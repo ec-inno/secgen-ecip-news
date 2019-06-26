@@ -1,25 +1,36 @@
-# European citizens' initiative
+# ECI
 
-A [headless Drupal](https://dri.es/tag/headless-drupal) project started off OpenEuropa's [starter template](https://github.com/openeuropa/drupal-site-template) based on [OpenEuropa Profile](https://github.com/openeuropa/oe_profile). Uses [Gatsby.js](https://www.gatsbyjs.org/) for delivering performant client-side application using [Europa Component Library](https://github.com/ec-europa/europa-component-library) styles in order to follow European Commission visual identity.
+Public-facing client web app based on Gatsby.js.
 
-## Useful resources
+## Getting Started (Recommended)
 
-- Back-end installation: [[Docker](./docs/installation-docker.md) | [LAMP](./docs/installation-lamp.md)]
-- [Client application](./gatsby)
-- [Development tips and tricks](./docs/development.md)
-
-## SPARQL
-
-Add this to your `settings.php`:
+### Access Locally
 
 ```
-$databases["sparql_default"] = array(
-  'default' => array(
-    'prefix' => '',
-    'host' => 'sparql',
-    'port' => '8890',
-    'namespace' => 'Drupal\\Driver\\Database\\sparql',
-    'driver' => 'sparql'
-  )
-);
+yarn
+yarn develop
+```
+
+Check the local website at: http://localhost:8000/
+Or GraphiQL: http://localhost:8000/___graphql
+
+To test end result of development locally, you'll need run a production build of the site:
+
+```
+yarn build
+yarn serve
+```
+
+### Build a release
+
+Delete the cache and previous build:
+
+```
+rm -rf .cache public
+```
+
+Build the website with the prefixes:
+
+```
+gatsby build --prefix-paths
 ```
