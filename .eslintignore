@@ -5,3 +5,4 @@ packages/gatsby-source-drupal-jsonapi-eci
 
 src/Context.js
 gatsby-browser.js
+gatsby-ssr.js

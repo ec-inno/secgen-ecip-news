@@ -91,28 +91,41 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 };
 
-exports.onCreatePage = async ({ page, actions }) => {
+exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
-  try {
-    deletePage(page);
+  deletePage(page);
 
-    return languages.langs.map(lang => {
-      const localizedPath = `${lang}${page.path}`;
-      const languageRegex = `//${lang}//`;
+  // There are 2 types of landing pages:
 
-      return createPage({
-        ...page,
-        path: localizedPath,
-        // Be extra careful with context: https://www.gatsbyjs.org/docs/creating-and-modifying-pages/#pass-context-to-pages
-        context: {
-          ...page.context,
-          locale: lang,
-          languageRegex,
-        },
-      });
+  // The language selector, shown in root of the site.
+  if (page.path === '/') {
+    return createPage({
+      ...page,
+      context: {
+        ...page.context,
+        layout: 'landing',
+      },
     });
-  } catch (error) {
-    throw error;
   }
+
+  // Pages for each language.
+  return languages.langs.map(lang => {
+    // And if the page is `lang.jsx`, treat is a 2nd type of landing page: for the specific language.
+    const localizedPath =
+      page.path === '/lang/' ? `/${lang}` : `/${lang}${page.path}`;
+
+    const languageRegex = `//${lang}//`;
+
+    return createPage({
+      ...page,
+      path: localizedPath,
+      // Be extra careful with context: https://www.gatsbyjs.org/docs/creating-and-modifying-pages/#pass-context-to-pages
+      context: {
+        ...page.context,
+        locale: lang,
+        languageRegex,
+      },
+    });
+  });
 };

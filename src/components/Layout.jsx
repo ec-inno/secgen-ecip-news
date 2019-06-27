@@ -12,7 +12,9 @@ import Header from './Header';
 import Menu from './Menu/Menu';
 import Footer from './Footer/FooterMultilingual';
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children, location, pageContext }) => {
+  if (pageContext.layout === 'landing') return children;
+
   const data = useStaticQuery(graphql`
     query {
       site {
