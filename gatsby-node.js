@@ -4,7 +4,7 @@ const languages = require('./src/languages');
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'news') {
+  if (node.internal.type === 'node__oe_news') {
     // Create a new field on Gatsby side to later store information about translations of a given node.
 
     createNodeField({
@@ -23,7 +23,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     query getAllNews {
-      allNews {
+      allNodeOeNews {
         edges {
           node {
             id
@@ -37,8 +37,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const { allNews } = result.data;
-  const newsNodes = allNews.edges;
+  const { allNodeOeNews } = result.data;
+  const newsNodes = allNodeOeNews.edges;
 
   newsNodes.forEach(({ node }) => {
     const { alias, langcode } = node.path;

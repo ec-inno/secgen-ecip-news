@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { Link } from 'gatsby';
 
 const NewsTemplate = ({ data }) => {
-  const { news: node } = data;
+  const { node__oe_news: node } = data;
   const { title, body, oe_publication_date, translations } = node;
 
   return (
@@ -41,7 +41,7 @@ const NewsTemplate = ({ data }) => {
 
 export const query = graphql`
   query getNewsSingle($alias: String!, $langcode: String!) {
-    news(path: { alias: { eq: $alias }, langcode: { eq: $langcode } }) {
+    nodeOeNews(path: { alias: { eq: $alias }, langcode: { eq: $langcode } }) {
       title
       oe_publication_date
       body {
