@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import { Link } from 'gatsby';
 
 const NewsTemplate = ({ data }) => {
-  console.log(data);
   const { nodeOeNews: node } = data;
   const { title, body, oe_publication_date, translations } = node;
 
