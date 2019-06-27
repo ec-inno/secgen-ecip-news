@@ -4,9 +4,8 @@ import slugify from 'slugify';
 
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
-const currentLanguage = getCurrentLanguage(location);
-
-const Homepage = ({ data }) => {
+const Homepage = ({ data, location }) => {
+  const currentLanguage = getCurrentLanguage(location);
   const news = data.allNodeOeNews.edges;
 
   return (
