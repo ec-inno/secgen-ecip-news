@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { Link } from 'gatsby';
+// This Link is specific to this component. It has the logic of an ECL link component to handle icons, but also at the same time uses GatsbyJS's Link link for it's benefits.
+import Link from '../Link/LinkGatsby';
 
-import Context from '../../Context';
+import Context, { SET_LANGUAGE_OVERLAY_VISIBILITY } from '../../Context';
 
 // As close as possible to https://github.com/ec-europa/europa-component-library/blob/v2-dev/src/systems/ec/implementations/react/page-structure/language-list/src/LanguageListItem.jsx
 const LanguageListItem = ({ label, lang, href, isActive, isOverlay }) => {
@@ -13,13 +14,14 @@ const LanguageListItem = ({ label, lang, href, isActive, isOverlay }) => {
     <Link
       onClick={() =>
         dispatch({
-          type: 'SET_LANGUAGE_OVERLAY_VISIBILITY',
+          type: SET_LANGUAGE_OVERLAY_VISIBILITY,
           hideOverlay: true,
         })
       }
       lang={lang}
       hrefLang={lang}
-      to={href}
+      href={href}
+      label={label}
       className="ecl-language-list__link ecl-link ecl-link--standalone"
       {...(isActive && {
         icon: {
