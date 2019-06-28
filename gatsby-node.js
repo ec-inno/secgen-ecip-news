@@ -1,6 +1,41 @@
 const path = require('path');
 const languages = require('./src/languages');
 
+exports.sourceNodes = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+  type node__oe_news implements Node {
+    title: String
+    path: Path!
+    oe_teaser: ProcessedField!
+    oe_summary: ProcessedField!
+    field_source: LinkField!
+    langcode: String!
+    oe_publication_date: Date
+    body: ProcessedField!
+    translations: [Path!]!
+  }
+  type Path {
+    alias: String!
+    langcode: String!
+  }
+  type ProcessedField {
+    processed: String!
+  }
+  type LinkField {
+    title: String
+    uri: String
+  }
+  type NodeTranslation implements Node {
+    title: String
+    path: Path!
+    langcode: String
+    translations: [Path!]!
+  }
+  `;
+  createTypes(typeDefs);
+};
+
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
@@ -68,10 +103,10 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   // Create news sections with paginations for each language.
-  Object.keys(pagesPerLanguage).forEach(language => {
+  languages.langs.forEach(language => {
     const items = pagesPerLanguage[language];
     const languageRegex = `//${language}//`;
-    const numPages = Math.ceil(items.length / newsPerPage);
+    const numPages = Math.ceil(items ? items.length : 1 / newsPerPage);
 
     /* eslint-disable-next-line compat/compat */
     Array.from({ length: numPages }).forEach((_, i) => {
