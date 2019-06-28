@@ -5,6 +5,11 @@ const baseUrl = process.env.SITE_BASE_URL
   : 'http://127.0.0.1:8080/web';
 
 module.exports = {
+  // @see https://www.gatsbyjs.org/docs/api-proxy/
+  proxy: {
+    prefix: '/initiative',
+    url: 'https://ec.europa.eu/citizens-initiative/services',
+  },
   siteMetadata: {
     title: "European citizens' initiative",
     description:

@@ -5,6 +5,7 @@ import slugify from 'slugify';
 import SEO from '../components/SEO';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 import LeadParagraph from '../components/LeadParagraph';
+import InitiativesContainer from '../components/Initiative/Container';
 
 const Homepage = ({ data, location }) => {
   const currentLanguage = getCurrentLanguage(location);
@@ -26,6 +27,8 @@ const Homepage = ({ data, location }) => {
             linkText={how_works_link}
             intro={how_works_intro}
           />
+
+          <InitiativesContainer />
           <section className="ecl-u-mt-xl">
             <h2 className="ecl-u-type-heading-2">Latest news</h2>
             <ul className="ecl-unordered-list">
