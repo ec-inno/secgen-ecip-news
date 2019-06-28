@@ -7,6 +7,8 @@ import '../components/assets/styles.css';
 
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
+import SEO from './SEO';
+
 import TopMessage from './TopMessage/TopMessage';
 import Header from './Header';
 import Menu from './Menu/Menu';
@@ -48,6 +50,7 @@ const Layout = ({ children, location, pageContext }) => {
 
   return (
     <>
+      <SEO />
       <TopMessage currentLanguage={currentLanguage} />
       <Header
         languages={languages}

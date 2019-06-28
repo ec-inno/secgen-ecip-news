@@ -2,40 +2,45 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Link } from 'gatsby';
 
+import SEO from '../components/SEO';
+
 const NewsTemplate = ({ data }) => {
   const { nodeOeNews: node } = data;
   const { title, body, oe_publication_date, translations } = node;
 
   return (
-    <main className="ecl-u-pv-xl">
-      <div className="ecl-container">
-        <h1>{title}</h1>
-        <p className="ecl-paragraph">{oe_publication_date}</p>
-        <div
-          className="ecl-paragraph"
-          dangerouslySetInnerHTML={{
-            __html: body.processed,
-          }}
-        />
+    <>
+      <SEO title={title} />
+      <main className="ecl-u-pv-xl">
+        <div className="ecl-container">
+          <h1>{title}</h1>
+          <p className="ecl-paragraph">{oe_publication_date}</p>
+          <div
+            className="ecl-paragraph"
+            dangerouslySetInnerHTML={{
+              __html: body.processed,
+            }}
+          />
 
-        {translations ? (
-          <ul className="ecl-unordered-list">
-            {translations.map(translation => (
-              <li
-                className="ecl-unordered-list__item"
-                key={translation.langcode}
-              >
-                <Link to={`/${translation.langcode}${translation.alias}`}>
-                  {translation.langcode}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ''
-        )}
-      </div>
-    </main>
+          {translations ? (
+            <ul className="ecl-unordered-list">
+              {translations.map(translation => (
+                <li
+                  className="ecl-unordered-list__item"
+                  key={translation.langcode}
+                >
+                  <Link to={`/${translation.langcode}${translation.alias}`}>
+                    {translation.langcode}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            ''
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 

@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 
 import logoSvg from '@ecl/eu-preset-website/dist/images/logo/logo--mute.svg';
 
+import SEO from '../components/SEO';
 import LanguageList from '../components/LanguageList/LanguageList';
 
 const Index = props => {
@@ -15,18 +16,21 @@ const Index = props => {
   }));
 
   return (
-    <div className="ecl-language-list ecl-language-list--splash">
-      <header className="ecl-language-list__header">
-        <img
-          className="ecl-language-list__logo"
-          src={logoSvg}
-          alt="European Commission logo"
-        />
-      </header>
-      <div className="ecl-language-list__container ecl-container">
-        <LanguageList items={items} />
+    <>
+      <SEO title="Welcome" />
+      <div className="ecl-language-list ecl-language-list--splash">
+        <header className="ecl-language-list__header">
+          <img
+            className="ecl-language-list__logo"
+            src={logoSvg}
+            alt="European Commission logo"
+          />
+        </header>
+        <div className="ecl-language-list__container ecl-container">
+          <LanguageList items={items} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
