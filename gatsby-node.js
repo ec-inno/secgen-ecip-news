@@ -124,7 +124,7 @@ exports.createPages = async ({ graphql, actions }) => {
   languages.langs.forEach(language => {
     const items = pagesPerLanguage[language];
     const languageRegex = `//${language}//`;
-    const numPages = Math.ceil(items ? items.length : 1 / newsPerPage);
+    const numPages = items ? Math.ceil(items.length / newsPerPage) : 1;
 
     /* eslint-disable-next-line compat/compat */
     Array.from({ length: numPages }).forEach((_, i) => {
