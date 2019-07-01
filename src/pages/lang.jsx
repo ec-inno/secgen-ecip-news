@@ -18,7 +18,8 @@ const Homepage = ({ data, location }) => {
 
   const news = data.allNodeOeNews.edges;
 
-  const initiatives = data.allInitiative.nodes;
+  const initiatives = data.allInitiatives.nodes;
+  console.log(initiatives);
 
   return (
     <>
@@ -110,8 +111,7 @@ export const query = graphql`
         }
       }
     }
-    allInitiative {
-      totalCount
+    allInitiatives {
       nodes {
         id
         fundingSponsors {
