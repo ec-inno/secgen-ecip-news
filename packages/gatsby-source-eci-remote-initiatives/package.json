@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-source-drupal-jsonapi-eci",
+  "name": "gatsby-source-eci-remote-initiatives",
   "description": "",
   "version": "0.1.0",
   "dependencies": {

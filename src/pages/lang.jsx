@@ -5,7 +5,7 @@ import slugify from 'slugify';
 import SEO from '../components/SEO';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 import LeadParagraph from '../components/LeadParagraph';
-import InitiativesContainer from '../components/Initiative/Container';
+import InitiativesList from '../components/Initiative/List';
 
 const Homepage = ({ data, location }) => {
   const currentLanguage = getCurrentLanguage(location);
@@ -15,7 +15,10 @@ const Homepage = ({ data, location }) => {
     how_works_intro,
     how_works_link,
   } = data.file.childLangJson;
+
   const news = data.allNodeOeNews.edges;
+
+  const initiatives = data.allInitiative.nodes;
 
   return (
     <>
@@ -28,7 +31,7 @@ const Homepage = ({ data, location }) => {
             intro={how_works_intro}
           />
 
-          <InitiativesContainer />
+          <InitiativesList initiatives={initiatives} />
           <section className="ecl-u-mt-xl">
             <h2 className="ecl-u-type-heading-2">Latest news</h2>
             <ul className="ecl-unordered-list">
@@ -105,6 +108,29 @@ export const query = graphql`
             processed
           }
         }
+      }
+    }
+    allInitiative {
+      totalCount
+      nodes {
+        id
+        fundingSponsors {
+          total
+        }
+        number
+        organisers {
+          organiser {
+            fullname
+            email
+            _role
+          }
+        }
+        registrationNumber
+        searchEntry {
+          title
+        }
+        status
+        year
       }
     }
   }
