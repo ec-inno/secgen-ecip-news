@@ -114,23 +114,28 @@ export const query = graphql`
     allInitiatives {
       nodes {
         id
+        year
+        number
+        registrationNumber
+        registrationDate
         fundingSponsors {
           total
         }
-        number
         organisers {
           organiser {
             fullname
             email
-            _role
+            role
           }
         }
-        registrationNumber
         searchEntry {
           title
+          withdrawnOn
+          status
+          registrationNumber
+          deadlineForCollection
+          closedOn
         }
-        status
-        year
       }
     }
   }

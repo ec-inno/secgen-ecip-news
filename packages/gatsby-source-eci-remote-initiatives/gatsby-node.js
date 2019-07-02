@@ -2,6 +2,8 @@ const axios = require('axios');
 const deepmerge = require('deepmerge');
 
 const computeId = require('./lib/computeId');
+// Remove starting @ signs at important object keys.
+const deepRename = require('./lib/deepRename');
 
 // @see https://www.gatsbyjs.org/docs/node-apis/#sourceNodes
 exports.sourceNodes = async (
@@ -29,7 +31,6 @@ exports.sourceNodes = async (
           const { initiative: additional } = result.data;
 
           return {
-            // Copy 2 properties in a more readable way.
             year,
             number,
             ...basic,
@@ -43,6 +44,7 @@ exports.sourceNodes = async (
 
     // Create content in Gatsby.js.
     return initiatives.map(initiative => {
+      deepRename(initiative);
       const id = computeId(initiative);
 
       const nodeContent = JSON.stringify(initiative);
@@ -59,6 +61,8 @@ exports.sourceNodes = async (
       };
 
       const node = deepmerge(initiative, nodeMeta);
+
+      // Create content in Gatsby.
       createNode(node);
     });
   } catch (error) {
