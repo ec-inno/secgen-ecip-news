@@ -19,7 +19,6 @@ const Homepage = ({ data, location }) => {
   const news = data.allNodeOeNews.edges;
 
   const initiatives = data.allInitiatives.nodes;
-  console.log(initiatives);
 
   return (
     <>
@@ -32,7 +31,7 @@ const Homepage = ({ data, location }) => {
             intro={how_works_intro}
           />
 
-          <InitiativesList initiatives={initiatives} />
+          <InitiativesList initiatives={initiatives} location={location} />
           <section className="ecl-u-mt-xl">
             <h2 className="ecl-u-type-heading-2">Latest news</h2>
             <ul className="ecl-unordered-list">
