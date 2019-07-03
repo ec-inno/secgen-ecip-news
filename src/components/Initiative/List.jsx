@@ -1,24 +1,57 @@
 import React from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 import Item from '../Initiative/Item';
 import New from '../Initiative/New';
 
+// Possible to export to other dependees.
+const OPEN = 'OPEN';
+const SUCCESSFUL = 'SUCCESSFUL';
+
 const List = ({ initiatives, location }) => {
+  const page = [];
   const itemsPerRow = 3;
+  const itemsToDisplay = 8;
   const rowClass = 'ecl-row';
 
-  const filter = 'OPEN';
-  let items = 8;
+  const latest = initiatives
+    .filter(initiative => initiative.searchEntry.status)
+    .slice(0, itemsToDisplay);
 
-  const filtered = initiatives
-    .filter(initiative => initiative.searchEntry.status === filter)
-    .slice(0, items);
+  const ongoing = initiatives
+    .filter(initiative => initiative.searchEntry.status === OPEN)
+    .slice(0, itemsToDisplay);
 
-  const groups = Math.ceil(filtered.length / itemsPerRow);
+  const answered = initiatives
+    .filter(initiative => initiative.searchEntry.status === SUCCESSFUL)
+    .slice(0, itemsToDisplay);
 
-  return chunk(filtered, itemsPerRow).map((group, k) => {
+  const all = initiatives.slice(0, 20);
+
+  const tabs = {
+    latest: {
+      label: 'Latest',
+      items: latest,
+    },
+    ongoing: {
+      label: 'Ongoing',
+      items: ongoing,
+    },
+    answered: {
+      label: 'Answered',
+      items: answered,
+    },
+    all: {
+      label: 'All',
+      items: all,
+    },
+  };
+
+  const groups = Math.ceil(latest.length / itemsPerRow);
+
+  chunk(latest, itemsPerRow).map((group, k) => {
     const groupLength = group.length;
     // If it's either the first or last item, do not add 'md'.
     const rowSpacing =
@@ -26,7 +59,7 @@ const List = ({ initiatives, location }) => {
 
     const classNames = classnames(rowClass, rowSpacing);
 
-    return (
+    page.push(
       <div className={classNames} key={k}>
         {group.map((item, key) => {
           const list = [];
@@ -49,6 +82,8 @@ const List = ({ initiatives, location }) => {
       </div>
     );
   });
+
+  return page;
 };
 
 export default List;
