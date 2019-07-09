@@ -1,57 +1,31 @@
-import React from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 import Item from '../Initiative/Item';
 import New from '../Initiative/New';
 
-// Possible to export to other dependees.
-const OPEN = 'OPEN';
-const SUCCESSFUL = 'SUCCESSFUL';
-
-const List = ({ initiatives, location }) => {
+const List = ({ location }) => {
   const page = [];
   const itemsPerRow = 3;
-  const itemsToDisplay = 8;
   const rowClass = 'ecl-row';
 
-  const latest = initiatives
-    .filter(initiative => initiative.searchEntry.status)
-    .slice(0, itemsToDisplay);
+  const [initiatives, setData] = useState([]);
 
-  const ongoing = initiatives
-    .filter(initiative => initiative.searchEntry.status === OPEN)
-    .slice(0, itemsToDisplay);
+  useEffect(() => {
+    const fetchData = async () => {
+      const results = await axios.get('/initiative/get/all');
 
-  const answered = initiatives
-    .filter(initiative => initiative.searchEntry.status === SUCCESSFUL)
-    .slice(0, itemsToDisplay);
+      setData(results.data.initiative);
+    };
 
-  const all = initiatives.slice(0, 20);
+    fetchData();
+  }, []);
 
-  const tabs = {
-    latest: {
-      label: 'Latest',
-      items: latest,
-    },
-    ongoing: {
-      label: 'Ongoing',
-      items: ongoing,
-    },
-    answered: {
-      label: 'Answered',
-      items: answered,
-    },
-    all: {
-      label: 'All',
-      items: all,
-    },
-  };
+  const groups = Math.ceil(initiatives.length / itemsPerRow);
 
-  const groups = Math.ceil(latest.length / itemsPerRow);
-
-  chunk(latest, itemsPerRow).map((group, k) => {
+  chunk(initiatives, itemsPerRow).map((group, k) => {
     const groupLength = group.length;
     // If it's either the first or last item, do not add 'md'.
     const rowSpacing =

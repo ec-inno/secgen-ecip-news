@@ -18,8 +18,6 @@ const Homepage = ({ data, location }) => {
 
   const news = data.allNodeOeNews.edges;
 
-  const initiatives = data.allInitiatives.nodes;
-
   return (
     <>
       <SEO title="Home" />
@@ -31,7 +29,7 @@ const Homepage = ({ data, location }) => {
             intro={how_works_intro}
           />
 
-          <InitiativesList initiatives={initiatives} location={location} />
+          <InitiativesList location={location} />
           <section className="ecl-u-mt-xl">
             <h2 className="ecl-u-type-heading-2">Latest news</h2>
             <ul className="ecl-unordered-list">
@@ -107,33 +105,6 @@ export const query = graphql`
           oe_teaser {
             processed
           }
-        }
-      }
-    }
-    allInitiatives {
-      nodes {
-        id
-        year
-        number
-        registrationNumber
-        registrationDate
-        fundingSponsors {
-          total
-        }
-        organisers {
-          organiser {
-            fullname
-            email
-            role
-          }
-        }
-        searchEntry {
-          title
-          withdrawnOn
-          status
-          registrationNumber
-          deadlineForCollection
-          closedOn
         }
       }
     }
