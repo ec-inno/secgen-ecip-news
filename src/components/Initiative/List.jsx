@@ -7,6 +7,12 @@ import Item from '../Initiative/Item';
 import New from '../Initiative/New';
 
 const List = ({ location }) => {
+  // Use proxy in development or actual endpoint in production.
+  const endpoint =
+    process.env.NODE_ENV === 'development'
+      ? '/initiative'
+      : 'https://ec.europa.eu/citizens-initiative/services/initiative';
+
   const page = [];
   const itemsPerRow = 3;
   const rowClass = 'ecl-row';
@@ -15,9 +21,32 @@ const List = ({ location }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const results = await axios.get('/initiative/get/all');
+      const results = await axios.get(`${endpoint}/get/all`);
 
-      setData(results.data.initiative);
+      const initiatives = await Promise.all(
+        results.data.initiative.map(async basic => {
+          const year = basic['@year'];
+          const number = basic['@number'];
+
+          if (year && number) {
+            const result = await axios.get(
+              `${endpoint}/details/${year}/${number}`
+            );
+            const { initiative: additional } = result.data;
+
+            return {
+              year,
+              number,
+              ...basic,
+              ...additional,
+            };
+          }
+
+          return basic;
+        })
+      );
+
+      setData(initiatives);
     };
 
     fetchData();
