@@ -3,6 +3,7 @@ const languages = require('./src/languages');
 
 exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions;
+
   const typeDefs = `
     type node__faq implements Node {
       title: String
@@ -48,7 +49,8 @@ exports.sourceNodes = ({ actions }) => {
       translations: [Path!]!
     }
   `;
-  createTypes(typeDefs);
+
+  return createTypes(typeDefs);
 };
 
 exports.onCreateNode = ({ node, actions }) => {

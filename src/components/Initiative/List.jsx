@@ -18,13 +18,75 @@ const List = ({ location }) => {
   const itemsPerRow = 3;
   const rowClass = 'ecl-row';
 
+  const [filter, setFilter] = useState('ALL');
   const [initiatives, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  page.push(
+    <div className="ecl-u-mv-xl">
+      <ul className="eci-menu__list">
+        <li
+          className={
+            filter === 'ALL'
+              ? 'eci-menu__option eci-menu__option--is-selected'
+              : 'eci-menu__option'
+          }
+        >
+          <a
+            onClick={e => {
+              e.preventDefault();
+              setFilter('ALL');
+            }}
+            href="#"
+            className="eci-menu__link ecl-link"
+          >
+            All initiatives
+          </a>
+        </li>
+        <li
+          className={
+            filter === 'OPEN'
+              ? 'eci-menu__option eci-menu__option--is-selected'
+              : 'eci-menu__option'
+          }
+        >
+          <a
+            onClick={e => {
+              e.preventDefault();
+              setFilter('OPEN');
+            }}
+            href="#"
+            className="eci-menu__link ecl-link"
+          >
+            Ongoing
+          </a>
+        </li>
+        <li
+          className={
+            filter === 'SUCCESSFUL'
+              ? 'eci-menu__option eci-menu__option--is-selected'
+              : 'eci-menu__option'
+          }
+        >
+          <a
+            onClick={e => {
+              e.preventDefault();
+              setFilter('SUCCESSFUL');
+            }}
+            href="#"
+            className="eci-menu__link ecl-link"
+          >
+            Answered
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const results = await axios.get(`${endpoint}/get/all`);
+      const results = await axios.get(`${endpoint}/get/${filter}`);
 
       const initiatives = await Promise.all(
         results.data.initiative.map(async basic => {
@@ -54,7 +116,7 @@ const List = ({ location }) => {
     };
 
     fetchData();
-  }, []);
+  }, [filter]);
 
   const groups = Math.ceil(initiatives.length / itemsPerRow);
 
