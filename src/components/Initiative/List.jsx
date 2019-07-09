@@ -3,6 +3,7 @@ import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
+import Placeholder from '../Initiative/Placeholder';
 import Item from '../Initiative/Item';
 import New from '../Initiative/New';
 
@@ -18,9 +19,11 @@ const List = ({ location }) => {
   const rowClass = 'ecl-row';
 
   const [initiatives, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const results = await axios.get(`${endpoint}/get/all`);
 
       const initiatives = await Promise.all(
@@ -47,12 +50,15 @@ const List = ({ location }) => {
       );
 
       setData(initiatives);
+      setIsLoading(false);
     };
 
     fetchData();
   }, []);
 
   const groups = Math.ceil(initiatives.length / itemsPerRow);
+
+  if (isLoading) return <Placeholder location={location} />;
 
   chunk(initiatives, itemsPerRow).map((group, k) => {
     const groupLength = group.length;

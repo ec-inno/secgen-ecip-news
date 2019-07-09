@@ -156,3 +156,11 @@ body {
 .ecl-footer__common-container {
   justify-content: center;
 }
+
+.loading-opacity {
+  opacity: 0.5;
+}
+.loading-opacity.visible {
+  transition: opacity 1s ease-in;
+  opacity: 1;
+}
