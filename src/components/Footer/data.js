@@ -1,15 +1,6 @@
 // Simple content for demo
 const data = {
   en: {
-    backToTop: {
-      variant: 'standalone',
-      label: 'Go to top',
-      href: '#top',
-      icon: {
-        shape: 'ui--corner-arrow',
-        size: 'fluid',
-      },
-    },
     identity: {
       title: "European Citizens' Initiative",
       info: [
@@ -297,15 +288,6 @@ const data = {
     },
   },
   fr: {
-    backToTop: {
-      variant: 'standalone',
-      label: 'Go to top',
-      href: '#top',
-      icon: {
-        shape: 'ui--corner-arrow',
-        size: 'fluid',
-      },
-    },
     identity: {
       title: "European Citizens' Initiative",
       info: [
@@ -593,15 +575,6 @@ const data = {
     },
   },
   bg: {
-    backToTop: {
-      variant: 'standalone',
-      label: 'Go to top',
-      href: '#top',
-      icon: {
-        shape: 'ui--corner-arrow',
-        size: 'fluid',
-      },
-    },
     identity: {
       title: "European Citizens' Initiative",
       info: [

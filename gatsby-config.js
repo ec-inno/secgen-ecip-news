@@ -20,12 +20,21 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         name: `data`,
         path: `${__dirname}/src/data/`,
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images/`,
+      },
+    },
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     'gatsby-transformer-json',
     'gatsby-plugin-react-helmet',
     {
@@ -36,12 +45,6 @@ module.exports = {
         languages: languages.langs,
       },
     },
-    // {
-    //   resolve: 'gatsby-source-eci-remote-initiatives',
-    //   options: {
-    //     endpoint: 'http://ec.europa.eu/citizens-initiative/services/initiative',
-    //   },
-    // },
     {
       resolve: 'gatsby-plugin-layout',
       options: {
