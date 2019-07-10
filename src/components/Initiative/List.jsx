@@ -6,6 +6,7 @@ import { chunk } from 'lodash';
 import Item from '../Initiative/Item';
 import Message from '../Message';
 import New from '../Initiative/New';
+import Pagination from '../Pagination';
 import Placeholder from '../Initiative/Placeholder';
 
 const ALL = 'ALL';
@@ -24,7 +25,7 @@ const List = ({ location }) => {
   const rowClass = 'ecl-row';
 
   const [errorMessage, setErrorMessage] = useState('');
-  const [errorIsVisible, setErrorMessageVisibility] = useState(true);
+  const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
   const [filter, setFilter] = useState(OPEN);
   const [initiatives, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -66,6 +67,7 @@ const List = ({ location }) => {
         setData(initiatives);
       } catch (error) {
         setErrorMessage(error.message);
+        setErrorMessageVisibility(true);
       }
 
       setIsLoading(false);
@@ -74,33 +76,31 @@ const List = ({ location }) => {
     fetchData();
   }, []);
 
-  if (errorMessage) {
-    const errorComponentConfig = {
-      variant: 'error',
+  const errorComponentConfig = {
+    variant: 'error',
+    icon: {
+      shape: 'notifications--error',
+      size: 'l',
+    },
+    close: {
+      variant: 'ghost',
+      label: 'Close',
       icon: {
-        shape: 'notifications--error',
-        size: 'l',
+        shape: 'ui--close',
+        size: 's',
       },
-      close: {
-        variant: 'ghost',
-        label: 'Close',
-        icon: {
-          shape: 'ui--close',
-          size: 's',
-        },
-      },
-    };
+    },
+  };
 
-    page.push(
-      <Message
-        className={errorIsVisible ? '' : 'hidden'}
-        onClose={() => setErrorMessageVisibility(false)}
-        title="Issue fetching initiatives"
-        description={errorMessage}
-        {...errorComponentConfig}
-      />
-    );
-  }
+  page.push(
+    <Message
+      className={errorMessageIsVisible ? '' : 'hidden'}
+      onClose={() => setErrorMessageVisibility(false)}
+      title="Issue fetching initiatives"
+      description={errorMessage}
+      {...errorComponentConfig}
+    />
+  );
 
   if (isLoading) {
     page.push(<Placeholder location={location} />);
@@ -125,79 +125,77 @@ const List = ({ location }) => {
           initiative => initiative.searchEntry['@status'] === filter
         );
 
-  const filteredCopy = [...filtered];
+  const resultsAll = [...filtered];
 
-  const results = filtered.splice(0, itemsPerPage);
+  const resultsPage = filtered.splice(0, itemsPerPage);
 
-  if (!errorMessage) {
-    page.push(
-      <div className="ecl-u-mv-xl">
-        <ul className="eci-menu__list">
-          <li
-            className={
-              filter === OPEN
-                ? 'eci-menu__option eci-menu__option--is-selected'
-                : 'eci-menu__option'
-            }
+  page.push(
+    <div className={errorMessage ? 'hidden' : 'ecl-u-mv-xl'}>
+      <ul className="eci-menu__list">
+        <li
+          className={
+            filter === OPEN
+              ? 'eci-menu__option eci-menu__option--is-selected'
+              : 'eci-menu__option'
+          }
+        >
+          <a
+            onClick={e => {
+              e.preventDefault();
+              setItemsPerPage(itemsPerPageDefault);
+              setFilter(OPEN);
+            }}
+            href="#"
+            className="eci-menu__link ecl-link"
           >
-            <a
-              onClick={e => {
-                e.preventDefault();
-                setItemsPerPage(itemsPerPageDefault);
-                setFilter(OPEN);
-              }}
-              href="#"
-              className="eci-menu__link ecl-link"
-            >
-              Ongoing {ongoingCount ? `(${ongoingCount})` : ''}
-            </a>
-          </li>
-          <li
-            className={
-              filter === SUCCESSFUL
-                ? 'eci-menu__option eci-menu__option--is-selected'
-                : 'eci-menu__option'
-            }
+            Ongoing {ongoingCount ? `(${ongoingCount})` : ''}
+          </a>
+        </li>
+        <li
+          className={
+            filter === SUCCESSFUL
+              ? 'eci-menu__option eci-menu__option--is-selected'
+              : 'eci-menu__option'
+          }
+        >
+          <a
+            onClick={e => {
+              e.preventDefault();
+              setItemsPerPage(itemsPerPageDefault);
+              setFilter(SUCCESSFUL);
+            }}
+            href="#"
+            className="eci-menu__link ecl-link"
           >
-            <a
-              onClick={e => {
-                e.preventDefault();
-                setItemsPerPage(itemsPerPageDefault);
-                setFilter(SUCCESSFUL);
-              }}
-              href="#"
-              className="eci-menu__link ecl-link"
-            >
-              Answered {answeredCount ? `(${answeredCount})` : ''}
-            </a>
-          </li>
-          <li
-            className={
-              filter === ALL
-                ? 'eci-menu__option eci-menu__option--is-selected'
-                : 'eci-menu__option'
-            }
+            Answered {answeredCount ? `(${answeredCount})` : ''}
+          </a>
+        </li>
+        <li
+          className={
+            filter === ALL
+              ? 'eci-menu__option eci-menu__option--is-selected'
+              : 'eci-menu__option'
+          }
+        >
+          <a
+            onClick={e => {
+              e.preventDefault();
+              setItemsPerPage(20);
+              setFilter(ALL);
+            }}
+            href="#"
+            className="eci-menu__link ecl-link"
           >
-            <a
-              onClick={e => {
-                e.preventDefault();
-                setItemsPerPage(20);
-                setFilter(ALL);
-              }}
-              href="#"
-              className="eci-menu__link ecl-link"
-            >
-              All initiatives {allCount ? `(${allCount})` : ''}
-            </a>
-          </li>
-        </ul>
-      </div>
-    );
-  }
+            All initiatives {allCount ? `(${allCount})` : ''}
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
 
-  const groups = Math.ceil(results.length / itemsPerRow);
+  const groups = Math.ceil(resultsPage.length / itemsPerRow);
 
-  chunk(results, itemsPerRow).map((group, k) => {
+  chunk(resultsPage, itemsPerRow).map((group, k) => {
     const groupLength = group.length;
     // If it's either the first or last item, do not add 'md'.
     const rowSpacing =
@@ -229,30 +227,15 @@ const List = ({ location }) => {
     );
   });
 
-  if (results.length < filteredCopy.length) {
+  if (resultsPage.length < resultsAll.length) {
     page.push(
-      <div className="ecl-row ecl-u-mt-l">
-        <div className="ecl-col-sm-12 ecl-col-md-12">
-          <nav className="ecl-pagination" aria-label="Pagination">
-            <ul className="ecl-pagination__list">
-              <li className="ecl-pagination__item ecl-pagination__item--next">
-                <a
-                  onClick={e => {
-                    e.preventDefault();
-                    const newItemsPerPage = itemsPerPage * 2 + 1;
-                    setItemsPerPage(newItemsPerPage);
-                  }}
-                  aria-label="Go to next page"
-                  href="#"
-                  className="ecl-pagination__link ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"
-                >
-                  <span className="ecl-link__label">See more initiatives</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+      <Pagination
+        onClick={e => {
+          e.preventDefault();
+          const newItemsPerPage = itemsPerPage * 2 + 1;
+          setItemsPerPage(newItemsPerPage);
+        }}
+      />
     );
   }
 
