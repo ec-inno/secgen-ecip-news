@@ -157,6 +157,11 @@ body {
   justify-content: center;
 }
 
+/* aria-hidden attribute didn't work? */
+.hidden {
+  display: none;
+}
+
 .loading-opacity {
   opacity: 0.5;
 }

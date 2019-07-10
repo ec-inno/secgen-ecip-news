@@ -3,9 +3,10 @@ import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
-import Placeholder from '../Initiative/Placeholder';
 import Item from '../Initiative/Item';
+import Message from '../Message';
 import New from '../Initiative/New';
+import Placeholder from '../Initiative/Placeholder';
 
 const ALL = 'ALL';
 const OPEN = 'OPEN';
@@ -22,6 +23,8 @@ const List = ({ location }) => {
   const itemsPerRow = 3;
   const rowClass = 'ecl-row';
 
+  const [errorMessage, setErrorMessage] = useState('');
+  const [errorIsVisible, setErrorMessageVisibility] = useState(true);
   const [filter, setFilter] = useState(OPEN);
   const [initiatives, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,38 +35,77 @@ const List = ({ location }) => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      // Get all each time to display numbers.
-      const results = await axios.get(`${endpoint}/get/all`);
 
-      const initiatives = await Promise.all(
-        results.data.initiative.map(async basic => {
-          const year = basic['@year'];
-          const number = basic['@number'];
+      try {
+        // Get all each time to display numbers.
+        const results = await axios.get(`${endpoint}/get/all`);
 
-          if (year && number) {
-            const result = await axios.get(
-              `${endpoint}/details/${year}/${number}`
-            );
-            const { initiative: additional } = result.data;
+        const initiatives = await Promise.all(
+          results.data.initiative.map(async basic => {
+            const year = basic['@year'];
+            const number = basic['@number'];
 
-            return {
-              year,
-              number,
-              ...basic,
-              ...additional,
-            };
-          }
+            if (year && number) {
+              const result = await axios.get(
+                `${endpoint}/details/${year}/${number}`
+              );
+              const { initiative: additional } = result.data;
 
-          return basic;
-        })
-      );
+              return {
+                year,
+                number,
+                ...basic,
+                ...additional,
+              };
+            }
 
-      setData(initiatives);
+            return basic;
+          })
+        );
+
+        setData(initiatives);
+      } catch (error) {
+        setErrorMessage(error.message);
+      }
+
       setIsLoading(false);
     };
 
     fetchData();
   }, []);
+
+  if (errorMessage) {
+    const errorComponentConfig = {
+      variant: 'error',
+      icon: {
+        shape: 'notifications--error',
+        size: 'l',
+      },
+      close: {
+        variant: 'ghost',
+        label: 'Close',
+        icon: {
+          shape: 'ui--close',
+          size: 's',
+        },
+      },
+    };
+
+    page.push(
+      <Message
+        className={errorIsVisible ? '' : 'hidden'}
+        onClose={() => setErrorMessageVisibility(false)}
+        title="Issue fetching initiatives"
+        description={errorMessage}
+        {...errorComponentConfig}
+      />
+    );
+  }
+
+  if (isLoading) {
+    page.push(<Placeholder location={location} />);
+    return page;
+  }
 
   // Do not work with results of the side effect directly.
   const allInitiatives = [...initiatives];
@@ -87,73 +129,73 @@ const List = ({ location }) => {
 
   const results = filtered.splice(0, itemsPerPage);
 
-  page.push(
-    <div className="ecl-u-mv-xl">
-      <ul className="eci-menu__list">
-        <li
-          className={
-            filter === OPEN
-              ? 'eci-menu__option eci-menu__option--is-selected'
-              : 'eci-menu__option'
-          }
-        >
-          <a
-            onClick={e => {
-              e.preventDefault();
-              setItemsPerPage(itemsPerPageDefault);
-              setFilter(OPEN);
-            }}
-            href="#"
-            className="eci-menu__link ecl-link"
+  if (!errorMessage) {
+    page.push(
+      <div className="ecl-u-mv-xl">
+        <ul className="eci-menu__list">
+          <li
+            className={
+              filter === OPEN
+                ? 'eci-menu__option eci-menu__option--is-selected'
+                : 'eci-menu__option'
+            }
           >
-            Ongoing {ongoingCount ? `(${ongoingCount})` : ''}
-          </a>
-        </li>
-        <li
-          className={
-            filter === SUCCESSFUL
-              ? 'eci-menu__option eci-menu__option--is-selected'
-              : 'eci-menu__option'
-          }
-        >
-          <a
-            onClick={e => {
-              e.preventDefault();
-              setItemsPerPage(itemsPerPageDefault);
-              setFilter(SUCCESSFUL);
-            }}
-            href="#"
-            className="eci-menu__link ecl-link"
+            <a
+              onClick={e => {
+                e.preventDefault();
+                setItemsPerPage(itemsPerPageDefault);
+                setFilter(OPEN);
+              }}
+              href="#"
+              className="eci-menu__link ecl-link"
+            >
+              Ongoing {ongoingCount ? `(${ongoingCount})` : ''}
+            </a>
+          </li>
+          <li
+            className={
+              filter === SUCCESSFUL
+                ? 'eci-menu__option eci-menu__option--is-selected'
+                : 'eci-menu__option'
+            }
           >
-            Answered {answeredCount ? `(${answeredCount})` : ''}
-          </a>
-        </li>
-        <li
-          className={
-            filter === ALL
-              ? 'eci-menu__option eci-menu__option--is-selected'
-              : 'eci-menu__option'
-          }
-        >
-          <a
-            onClick={e => {
-              e.preventDefault();
-              setItemsPerPage(20);
-              setFilter(ALL);
-            }}
-            href="#"
-            className="eci-menu__link ecl-link"
+            <a
+              onClick={e => {
+                e.preventDefault();
+                setItemsPerPage(itemsPerPageDefault);
+                setFilter(SUCCESSFUL);
+              }}
+              href="#"
+              className="eci-menu__link ecl-link"
+            >
+              Answered {answeredCount ? `(${answeredCount})` : ''}
+            </a>
+          </li>
+          <li
+            className={
+              filter === ALL
+                ? 'eci-menu__option eci-menu__option--is-selected'
+                : 'eci-menu__option'
+            }
           >
-            All initiatives {allCount ? `(${allCount})` : ''}
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+            <a
+              onClick={e => {
+                e.preventDefault();
+                setItemsPerPage(20);
+                setFilter(ALL);
+              }}
+              href="#"
+              className="eci-menu__link ecl-link"
+            >
+              All initiatives {allCount ? `(${allCount})` : ''}
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
+  }
 
   const groups = Math.ceil(results.length / itemsPerRow);
-
-  if (isLoading) return <Placeholder location={location} />;
 
   chunk(results, itemsPerRow).map((group, k) => {
     const groupLength = group.length;
