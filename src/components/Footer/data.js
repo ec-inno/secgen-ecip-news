@@ -10,6 +10,37 @@ const data = {
         size: 'fluid',
       },
     },
+    identity: {
+      title: "European Citizens' Initiative",
+      info: [
+        {
+          variant: 'standalone',
+          label: 'Communication material',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'FAQ',
+          href: '/en/faq',
+          internal: 'true',
+        },
+        {
+          variant: 'standalone',
+          label: 'Site map',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Contact',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Newsletter',
+          href: '#',
+        },
+      ],
+    },
     sections: [
       {
         title: 'Contact the EU',
@@ -275,6 +306,37 @@ const data = {
         size: 'fluid',
       },
     },
+    identity: {
+      title: "European Citizens' Initiative",
+      info: [
+        {
+          variant: 'standalone',
+          label: 'Communication material',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'FAQ',
+          href: '/fr/faq',
+          internal: 'true',
+        },
+        {
+          variant: 'standalone',
+          label: 'Site map',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Contact',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Newsletter',
+          href: '#',
+        },
+      ],
+    },
     sections: [
       {
         title: 'Contact the EU',
@@ -539,6 +601,37 @@ const data = {
         shape: 'ui--corner-arrow',
         size: 'fluid',
       },
+    },
+    identity: {
+      title: "European Citizens' Initiative",
+      info: [
+        {
+          variant: 'standalone',
+          label: 'Communication material',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'FAQ',
+          href: '/bg/faq',
+          internal: 'true',
+        },
+        {
+          variant: 'standalone',
+          label: 'Site map',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Contact',
+          href: '#',
+        },
+        {
+          variant: 'standalone',
+          label: 'Newsletter',
+          href: '#',
+        },
+      ],
     },
     sections: [
       {

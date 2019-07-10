@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Link from '../Link/LinkEcl';
+import LinkGatsby from '../Link/LinkGatsby';
 
 const Footer = ({
   backToTop,
@@ -31,32 +32,50 @@ const Footer = ({
         <div className="ecl-container">
           <h1 className="ecl-footer__identity-title">{identity.title}</h1>
           <div className="ecl-row">
-            <div className="ecl-footer__identity-follow ecl-col-12 ecl-col-md-6">
-              <span className="ecl-footer__identity-label">
-                {identity.follow.label}
-              </span>
-              {identity.follow.links.map(link => (
-                <Link
-                  {...link}
-                  key={link.label}
-                  className={classnames(
-                    link.className,
-                    'ecl-footer__identity-link'
-                  )}
-                />
-              ))}
-            </div>
+            {identity.follow &&
+            identity.follow.label &&
+            identity.follow.links ? (
+              <div className="ecl-footer__identity-follow ecl-col-12 ecl-col-md-6">
+                <span className="ecl-footer__identity-label">
+                  {identity.follow.label}
+                </span>
+                {identity.follow.links.map(link => (
+                  <Link
+                    {...link}
+                    key={link.label}
+                    className={classnames(
+                      link.className,
+                      'ecl-footer__identity-link'
+                    )}
+                  />
+                ))}
+              </div>
+            ) : (
+              ''
+            )}
+
             <div className="ecl-footer__identity-info ecl-col-12 ecl-col-md-6">
-              {identity.info.map(link => (
-                <Link
-                  {...link}
-                  key={link.label}
-                  className={classnames(
-                    link.className,
-                    'ecl-footer__identity-link'
-                  )}
-                />
-              ))}
+              {identity.info.map(link =>
+                link.internal ? (
+                  <LinkGatsby
+                    {...link}
+                    key={link.label}
+                    className={classnames(
+                      link.className,
+                      'ecl-footer__identity-link'
+                    )}
+                  />
+                ) : (
+                  <Link
+                    {...link}
+                    key={link.label}
+                    className={classnames(
+                      link.className,
+                      'ecl-footer__identity-link'
+                    )}
+                  />
+                )
+              )}
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ import getCurrentLanguage from '../../utils/getCurrentLanguage';
 const FooterMultilingual = ({ location }) => {
   const lang = getCurrentLanguage(location);
   const footerData = data[lang];
-  return <Footer {...footerData} />;
+  return <Footer className="ecl-footer--custom" {...footerData} />;
 };
 
 export default FooterMultilingual;
