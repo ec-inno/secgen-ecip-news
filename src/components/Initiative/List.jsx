@@ -26,7 +26,7 @@ const List = ({ location }) => {
   const [initiatives, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const itemsPerPageDefault = filter === ALL ? 20 : 8;
+  const itemsPerPageDefault = 8;
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
   useEffect(() => {
@@ -138,7 +138,7 @@ const List = ({ location }) => {
           <a
             onClick={e => {
               e.preventDefault();
-              setItemsPerPage(itemsPerPageDefault);
+              setItemsPerPage(20);
               setFilter(ALL);
             }}
             href="#"
