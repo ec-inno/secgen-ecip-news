@@ -27,7 +27,6 @@
     "gatsby-plugin-react-helmet": "3.0.12",
     "gatsby-source-filesystem": "2.0.42",
     "gatsby-transformer-json": "2.1.11",
-    "ptz-i18n": "1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "5.2.1",
@@ -57,10 +56,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ec-inno/digit-eci-reference"
+    "url": "https://github.com/ec-inno/secgen-ecip-news"
   },
   "bugs": {
-    "url": "https://github.com/ec-inno/digit-eci-reference"
+    "url": "https://github.com/ec-inno/secgen-ecip-news"
   },
   "husky": {
     "hooks": {

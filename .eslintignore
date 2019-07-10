@@ -2,6 +2,7 @@
 node_modules
 public
 packages/gatsby-source-drupal-jsonapi-eci
+packages/gatsby-source-eci-remote-initiatives
 
 src/Context.js
 gatsby-browser.js

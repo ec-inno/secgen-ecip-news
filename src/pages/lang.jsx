@@ -5,6 +5,7 @@ import slugify from 'slugify';
 import SEO from '../components/SEO';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 import LeadParagraph from '../components/LeadParagraph';
+import InitiativesList from '../components/Initiative/List';
 
 const Homepage = ({ data, location }) => {
   const currentLanguage = getCurrentLanguage(location);
@@ -14,6 +15,7 @@ const Homepage = ({ data, location }) => {
     how_works_intro,
     how_works_link,
   } = data.file.childLangJson;
+
   const news = data.allNodeOeNews.edges;
 
   return (
@@ -26,6 +28,8 @@ const Homepage = ({ data, location }) => {
             linkText={how_works_link}
             intro={how_works_intro}
           />
+
+          <InitiativesList location={location} />
           <section className="ecl-u-mt-xl">
             <h2 className="ecl-u-type-heading-2">Latest news</h2>
             <ul className="ecl-unordered-list">

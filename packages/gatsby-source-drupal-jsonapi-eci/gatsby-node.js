@@ -17,7 +17,7 @@ exports.sourceNodes = async (
 
   const nodes = [];
 
-  reporter.info('Starting to fetch data from Drupal');
+  reporter.info('EC Drupal OE: getting content ...');
 
   for (const language of languages) {
     const endpoint = `${baseUrl}/${language}/${apiBase}`;
