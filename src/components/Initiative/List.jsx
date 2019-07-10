@@ -7,6 +7,10 @@ import Placeholder from '../Initiative/Placeholder';
 import Item from '../Initiative/Item';
 import New from '../Initiative/New';
 
+const ALL = 'ALL';
+const OPEN = 'OPEN';
+const SUCCESSFUL = 'SUCCESSFUL';
+
 const List = ({ location }) => {
   // Use proxy in development or actual endpoint in production.
   const endpoint =
@@ -18,13 +22,17 @@ const List = ({ location }) => {
   const itemsPerRow = 3;
   const rowClass = 'ecl-row';
 
-  const [filter, setFilter] = useState('ALL');
+  const [filter, setFilter] = useState(OPEN);
   const [initiatives, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const itemsPerPageDefault = filter === ALL ? 20 : 8;
+  const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
+      // Get all each time to display numbers.
       const results = await axios.get(`${endpoint}/get/all`);
 
       const initiatives = await Promise.all(
@@ -57,30 +65,34 @@ const List = ({ location }) => {
     fetchData();
   }, []);
 
-  // The statistics below are calculated on render because service does not provide `_count`.
-  const allCount = initiatives.length;
-  const ongoingCount = initiatives.filter(
-    initiative => initiative.searchEntry['@status'] === 'OPEN'
+  // Do not work with results of the side effect directly.
+  const allInitiatives = [...initiatives];
+
+  const allCount = allInitiatives.length;
+  const ongoingCount = allInitiatives.filter(
+    initiative => initiative.searchEntry['@status'] === OPEN
   ).length;
-  const answeredCount = initiatives.filter(
-    initiative => initiative.searchEntry['@status'] === 'SUCCESSFUL'
+  const answeredCount = allInitiatives.filter(
+    initiative => initiative.searchEntry['@status'] === SUCCESSFUL
   ).length;
 
-  // The filtering below should ideally be possible from the service.
-  // If it is, someday, pass `filter` to the `useEffect` to use service calls on change of filter.
-  const initiativesResults =
-    filter === 'ALL'
-      ? initiatives
-      : initiatives.filter(
+  const filtered =
+    filter === ALL
+      ? allInitiatives
+      : allInitiatives.filter(
           initiative => initiative.searchEntry['@status'] === filter
         );
+
+  const filteredCopy = [...filtered];
+
+  const results = filtered.splice(0, itemsPerPage);
 
   page.push(
     <div className="ecl-u-mv-xl">
       <ul className="eci-menu__list">
         <li
           className={
-            filter === 'ALL'
+            filter === OPEN
               ? 'eci-menu__option eci-menu__option--is-selected'
               : 'eci-menu__option'
           }
@@ -88,25 +100,8 @@ const List = ({ location }) => {
           <a
             onClick={e => {
               e.preventDefault();
-              setFilter('ALL');
-            }}
-            href="#"
-            className="eci-menu__link ecl-link"
-          >
-            All initiatives {allCount ? `(${allCount})` : ''}
-          </a>
-        </li>
-        <li
-          className={
-            filter === 'OPEN'
-              ? 'eci-menu__option eci-menu__option--is-selected'
-              : 'eci-menu__option'
-          }
-        >
-          <a
-            onClick={e => {
-              e.preventDefault();
-              setFilter('OPEN');
+              setItemsPerPage(itemsPerPageDefault);
+              setFilter(OPEN);
             }}
             href="#"
             className="eci-menu__link ecl-link"
@@ -116,7 +111,7 @@ const List = ({ location }) => {
         </li>
         <li
           className={
-            filter === 'SUCCESSFUL'
+            filter === SUCCESSFUL
               ? 'eci-menu__option eci-menu__option--is-selected'
               : 'eci-menu__option'
           }
@@ -124,7 +119,8 @@ const List = ({ location }) => {
           <a
             onClick={e => {
               e.preventDefault();
-              setFilter('SUCCESSFUL');
+              setItemsPerPage(itemsPerPageDefault);
+              setFilter(SUCCESSFUL);
             }}
             href="#"
             className="eci-menu__link ecl-link"
@@ -132,15 +128,34 @@ const List = ({ location }) => {
             Answered {answeredCount ? `(${answeredCount})` : ''}
           </a>
         </li>
+        <li
+          className={
+            filter === ALL
+              ? 'eci-menu__option eci-menu__option--is-selected'
+              : 'eci-menu__option'
+          }
+        >
+          <a
+            onClick={e => {
+              e.preventDefault();
+              setItemsPerPage(itemsPerPageDefault);
+              setFilter(ALL);
+            }}
+            href="#"
+            className="eci-menu__link ecl-link"
+          >
+            All initiatives {allCount ? `(${allCount})` : ''}
+          </a>
+        </li>
       </ul>
     </div>
   );
 
-  const groups = Math.ceil(initiativesResults.length / itemsPerRow);
+  const groups = Math.ceil(results.length / itemsPerRow);
 
   if (isLoading) return <Placeholder location={location} />;
 
-  chunk(initiativesResults, itemsPerRow).map((group, k) => {
+  chunk(results, itemsPerRow).map((group, k) => {
     const groupLength = group.length;
     // If it's either the first or last item, do not add 'md'.
     const rowSpacing =
@@ -171,6 +186,33 @@ const List = ({ location }) => {
       </div>
     );
   });
+
+  if (results.length < filteredCopy.length) {
+    page.push(
+      <div className="ecl-row ecl-u-mt-l">
+        <div className="ecl-col-sm-12 ecl-col-md-12">
+          <nav className="ecl-pagination" aria-label="Pagination">
+            <ul className="ecl-pagination__list">
+              <li className="ecl-pagination__item ecl-pagination__item--next">
+                <a
+                  onClick={e => {
+                    e.preventDefault();
+                    const newItemsPerPage = itemsPerPage * 2 + 1;
+                    setItemsPerPage(newItemsPerPage);
+                  }}
+                  aria-label="Go to next page"
+                  href="#"
+                  className="ecl-pagination__link ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"
+                >
+                  <span className="ecl-link__label">See more initiatives</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    );
+  }
 
   return page;
 };
