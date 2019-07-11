@@ -24,29 +24,34 @@ const ForumBanner = () => {
   `);
 
   return (
-    <>
+    <div className="ecl-page-banner ecl-page-banner--centered ecl-u-mt-l">
       <BackgroundImage
-        Tag="section"
-        className="ecl-page-banner ecl-page-banner--image-shade ecl-page-banner--centered ecl-u-mt-l"
+        Tag="div"
+        className="ecl-page-banner__image"
         fluid={data.desktop.childImageSharp.fluid}
         backgroundColor="#000"
       >
-        <div className="ecl-container ecl-page-banner__container">
-          <div className="ecl-page-banner__content">
-            <h1 className="ecl-page-banner__title">
-              Want to learn and collaborate?
-            </h1>
-            <Button
-              className="ecl-page-banner__button"
-              variant="call"
-              label="Join the forum"
-              icon={icon}
-              iconPosition="after"
-            />
+        <div className="eci-gatsby-image-shade">
+          <div
+            className="ecl-container ecl-page-banner__container"
+            style={{ top: '10%' }}
+          >
+            <div className="ecl-page-banner__content">
+              <h1 className="ecl-page-banner__title">
+                Want to learn and collaborate?
+              </h1>
+              <Button
+                className="ecl-page-banner__button"
+                variant="call"
+                label={'Join the forum'}
+                icon={icon}
+                iconPosition="after"
+              />
+            </div>
           </div>
         </div>
       </BackgroundImage>
-    </>
+    </div>
   );
 };
 
