@@ -99,7 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const { alias, langcode } = node.path;
 
     if (alias && langcode) {
-      const pathInGatsby = `${langcode}${alias}`;
+      const pathInGatsby = `/${langcode}${alias}`;
 
       createPage({
         path: pathInGatsby,
@@ -164,8 +164,6 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
-  deletePage(page);
-
   // There are 2 types of landing pages:
 
   // The language selector, shown in root of the site.
@@ -187,7 +185,7 @@ exports.onCreatePage = ({ page, actions }) => {
 
     const languageRegex = `//${lang}//`;
 
-    return createPage({
+    const localePage = {
       ...page,
       path: localizedPath,
       // Be extra careful with context: https://www.gatsbyjs.org/docs/creating-and-modifying-pages/#pass-context-to-pages
@@ -196,6 +194,15 @@ exports.onCreatePage = ({ page, actions }) => {
         locale: lang,
         languageRegex,
       },
-    });
+    };
+
+    // Not working yet.
+    // @see https://github.com/gatsbyjs/gatsby/issues/15101
+    if (localePage.path.match(/^\/[a-z]{2}\/404\/$/)) {
+      localePage.matchPath = `/${lang}/*`;
+    }
+
+    deletePage(page);
+    return createPage(localePage);
   });
 };
