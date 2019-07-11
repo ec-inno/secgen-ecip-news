@@ -24,7 +24,7 @@ const ForumBanner = () => {
   `);
 
   return (
-    <div className="ecl-page-banner ecl-page-banner--centered ecl-u-mt-l">
+    <section className="ecl-page-banner ecl-page-banner--centered ecl-u-mt-l">
       <BackgroundImage
         Tag="div"
         className="ecl-page-banner__image"
@@ -51,7 +51,7 @@ const ForumBanner = () => {
           </div>
         </div>
       </BackgroundImage>
-    </div>
+    </section>
   );
 };
 
