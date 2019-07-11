@@ -1,0 +1,21 @@
+pipeline:
+  # =======================================
+  # Setup  ================================
+  # =======================================
+  install:
+    image: node:dubnium
+    commands:
+      - yarn install --frozen-lockfile
+    when:
+      event: [pull_request, tag, deployment]
+
+  # =======================================
+  # Tests =================================
+  # =======================================
+  test:
+    image: node:dubnium
+    group: test
+    commands:
+      - yarn test
+    when:
+      event: [pull_request, tag, deployment]
