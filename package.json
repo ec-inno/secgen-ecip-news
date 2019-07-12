@@ -9,6 +9,7 @@
     "build:prefixed": "gatsby build --prefix-paths",
     "build": "gatsby build",
     "clean": "gatsby clean",
+    "deploy": "netlify deploy --prod",
     "develop": "gatsby develop",
     "format": "prettier --write \"{gatsby-*.js,src/**/*.js}\"",
     "lint-staged": "lint-staged",
@@ -21,6 +22,7 @@
   "dependencies": {
     "@ecl/eu-preset-website": "2.6.0",
     "classnames": "2.2.6",
+    "gatsby": "2.9.7",
     "gatsby-background-image": "0.8.0",
     "gatsby-link": "2.1.1",
     "gatsby-plugin-layout": "1.0.15",
@@ -30,11 +32,10 @@
     "gatsby-source-filesystem": "2.0.42",
     "gatsby-transformer-json": "2.1.11",
     "gatsby-transformer-sharp": "2.2.1",
-    "gatsby": "2.9.7",
     "intersection-observer": "0.7.0",
+    "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "5.2.1",
-    "react": "^16.8.6",
     "slugify": "1.3.4"
   },
   "devDependencies": {
@@ -50,6 +51,7 @@
     "husky": "2.4.1",
     "lerna": "3.15.0",
     "lint-staged": "8.2.1",
+    "netlify-cli": "2.11.23",
     "npm-run-all": "4.1.5",
     "prettier": "1.18.2",
     "prop-types": "15.7.2"

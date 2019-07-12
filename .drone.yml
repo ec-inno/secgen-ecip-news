@@ -2,7 +2,6 @@ pipeline:
   install:
     image: node:dubnium
     commands:
-      - npm install netlify-cli
       - yarn install --frozen-lockfile
 
   test:
@@ -16,4 +15,4 @@ pipeline:
     commands:
       - yarn clean
       - yarn build
-      - netlify deploy --prod
+      - yarn deploy
