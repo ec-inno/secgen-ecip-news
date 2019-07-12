@@ -8,3 +8,11 @@ pipeline:
     image: node:dubnium
     commands:
       - yarn test
+
+  deploy:
+    image: node:dubnium
+    commands:
+      - npm install netlify-cli
+      - yarn clean
+      - yarn build
+      - netlify deploy --prod
