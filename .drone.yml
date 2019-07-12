@@ -11,6 +11,7 @@ pipeline:
 
   deploy:
     image: node:dubnium
+    secrets: [site_base_url, netlify_auth_token, netlify_site_id]
     commands:
       - npm install netlify-cli
       - yarn clean
