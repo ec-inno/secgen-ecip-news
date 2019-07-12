@@ -1,7 +1,4 @@
 pipeline:
-  # =======================================
-  # Setup  ================================
-  # =======================================
   install:
     image: node:dubnium
     commands:
@@ -9,12 +6,8 @@ pipeline:
     when:
       event: [pull_request, tag, deployment]
 
-  # =======================================
-  # Tests =================================
-  # =======================================
   test:
     image: node:dubnium
-    group: test
     commands:
       - yarn test
     when:
