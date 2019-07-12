@@ -3,12 +3,8 @@ pipeline:
     image: node:dubnium
     commands:
       - yarn install --frozen-lockfile
-    when:
-      event: [pull_request, tag, deployment]
 
   test:
     image: node:dubnium
     commands:
       - yarn test
-    when:
-      event: [pull_request, tag, deployment]
