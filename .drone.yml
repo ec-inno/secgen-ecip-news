@@ -1,21 +1,18 @@
 pipeline:
-  # =======================================
-  # Setup  ================================
-  # =======================================
   install:
     image: node:dubnium
     commands:
       - yarn install --frozen-lockfile
-    when:
-      event: [pull_request, tag, deployment]
 
-  # =======================================
-  # Tests =================================
-  # =======================================
   test:
     image: node:dubnium
-    group: test
     commands:
       - yarn test
-    when:
-      event: [pull_request, tag, deployment]
+
+  deploy:
+    image: node:dubnium
+    secrets: [site_base_url, netlify_auth_token, netlify_site_id]
+    commands:
+      - yarn clean
+      - yarn build
+      - yarn deploy

@@ -9,6 +9,7 @@
     "build:prefixed": "gatsby build --prefix-paths",
     "build": "gatsby build",
     "clean": "gatsby clean",
+    "deploy": "netlify deploy --prod",
     "develop": "gatsby develop",
     "format": "prettier --write \"{gatsby-*.js,src/**/*.js}\"",
     "lint-staged": "lint-staged",
@@ -27,6 +28,7 @@
     "gatsby-plugin-layout": "1.0.15",
     "gatsby-plugin-react-helmet": "3.0.12",
     "gatsby-plugin-sharp": "2.2.3",
+    "gatsby-source-drupal-jsonapi-eci": "^0.1.0",
     "gatsby-source-filesystem": "2.0.42",
     "gatsby-transformer-json": "2.1.11",
     "gatsby-transformer-sharp": "2.2.1",
@@ -49,6 +51,7 @@
     "husky": "2.4.1",
     "lerna": "3.15.0",
     "lint-staged": "8.2.1",
+    "netlify-cli": "2.11.23",
     "npm-run-all": "4.1.5",
     "prettier": "1.18.2",
     "prop-types": "15.7.2"
