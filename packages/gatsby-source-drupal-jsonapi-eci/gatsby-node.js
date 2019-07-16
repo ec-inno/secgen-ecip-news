@@ -3,8 +3,6 @@ const _ = require('lodash');
 
 const getLinkData = require('./lib/getLinkData');
 const getNodes = require('./lib/getNodes');
-const addNodeTranslations = require('./lib/addNodeTranslations');
-const createTranslationNode = require('./lib/createTranslationNode');
 
 // @see https://www.gatsbyjs.org/docs/node-apis/#sourceNodes
 exports.sourceNodes = async (
@@ -94,18 +92,7 @@ exports.sourceNodes = async (
     nodes.push(...nodesLanguage);
   }
 
-  // No internal pages for news or faq pages for the moment.
-  addNodeTranslations(nodes);
-
   for (const node of nodes) {
-    // Create a gatsby node for everything from Drupal: menus, blocks, content types, etc.
     createNode(node);
-
-    createTranslationNode({
-      node,
-      createNodeId,
-      createContentDigest,
-      createNode,
-    });
   }
 };

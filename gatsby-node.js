@@ -53,23 +53,6 @@ exports.sourceNodes = ({ actions }) => {
   return createTypes(typeDefs);
 };
 
-exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions;
-
-  if (
-    node.internal.type === 'node__oe_news' ||
-    node.internal.type === 'node__faq_section'
-  ) {
-    // Create a new field on Gatsby side to later store information about translations of a given node.
-
-    createNodeField({
-      name: 'translations',
-      node,
-      value: [],
-    });
-  }
-};
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -99,17 +82,6 @@ exports.createPages = async ({ graphql, actions }) => {
     const { alias, langcode } = node.path;
 
     if (alias && langcode) {
-      const pathInGatsby = `${langcode}${alias}`;
-
-      createPage({
-        path: pathInGatsby,
-        component: path.resolve('./src/templates/news.jsx'),
-        context: {
-          alias,
-          langcode,
-        },
-      });
-
       if (!pagesPerLanguage[langcode]) {
         pagesPerLanguage[langcode] = [];
       }
