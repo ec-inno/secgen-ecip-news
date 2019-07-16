@@ -1,6 +1,7 @@
 const axios = require('axios');
 const _ = require('lodash');
 
+const getLinkData = require('./lib/getLinkData');
 const nodeFromData = require('./lib/nodeFromData');
 const addNodeTranslations = require('./lib/addNodeTranslations');
 
@@ -11,95 +12,77 @@ exports.sourceNodes = async (
 ) => {
   const { createNode } = actions;
 
-  // Set defaults for some options.
+  // Defaults.
   apiBase = apiBase || 'jsonapi';
   languages = languages || [];
 
   const nodes = [];
+  // Drupal content entities which tak on getting working copies
+  const contentTypes = [
+    'node--faq',
+    'node--faq_section',
+    'node--oe_news',
+    'node--oe_page',
+  ];
 
-  reporter.info('EC Drupal OE: getting content ...');
+  reporter.info('Getting content from Drupal ...');
 
   for (const language of languages) {
     const endpoint = `${baseUrl}/${language}/${apiBase}`;
 
-    const data = await axios.get(endpoint, {
+    const resourceEndpoints = await axios.get(endpoint, {
       auth: basicAuth,
       headers,
       params,
     });
 
-    const allData = await Promise.all(
-      _.map(data.data.links, async (url, type) => {
+    const dataAll = await Promise.all(
+      _.map(resourceEndpoints.data.links, async (url, type) => {
+        // Early exit on insufficient or edge case input.
+        if (!type || !url || type === 'self' || !contentTypes.includes(type))
+          return;
+
         const defaultEndpoint = `${baseUrl}/${apiBase}`;
         const languageEndpoint = `${baseUrl}/${language}/${apiBase}`;
 
-        // Correct links
-        if (url && url.href && language) {
+        if (url.href && !url.href.includes('skos')) {
+          // Drupal's JSONAPI needs corrections for its language dropping in links.
           url.href = url.href.replace(defaultEndpoint, languageEndpoint);
-        }
 
-        if (type === `self`) return;
-        if (!url) return;
-        if (!type) return;
+          const published = await getLinkData(url, [], {
+            filters,
+            headers,
+            params,
+            basicAuth,
+          });
 
-        const getNext = async (url, data = []) => {
-          if (url.href && !url.href.includes('skos')) {
-            // url can be string or object containing href field
-            url = url.href;
-
-            // Apply any filters configured in gatsby-config.js. Filters
-            // can be any valid JSON API filter query string.
-            // See https://www.drupal.org/docs/8/modules/jsonapi/filtering
-            if (typeof filters === `object`) {
-              if (filters.hasOwnProperty(type)) {
-                url = url + `?${filters[type]}`;
-              }
-            }
-
-            let d;
-
-            try {
-              d = await axios.get(url, {
-                auth: basicAuth,
-                headers,
-                params,
-              });
-            } catch (error) {
-              if (error.response && error.response.status == 405) {
-                // The endpoint doesn't support the GET method, so just skip it.
-                return [];
-              } else {
-                console.error(`Failed to fetch ${url}`, error.message);
-                console.log(error.data);
-                throw error;
-              }
-            }
-
-            data = data.concat(d.data.data);
-
-            if (d.data.links.next) {
-              data = await getNext(d.data.links.next, data);
-            }
-
-            return data;
+          if (process.env.DRAFT_PREVIEW) {
+            url.href += '?resourceVersion=rel%3Aworking-copy';
           }
-        };
 
-        const data = await getNext(url);
+          const drafts = await getLinkData(url, [], {
+            filters,
+            headers,
+            params,
+            basicAuth,
+          });
 
-        const result = {
-          type,
-          data,
-        };
+          const data = [...published, ...drafts];
 
-        return result;
+          return {
+            type,
+            data,
+          };
+        }
       })
     );
 
-    // Make list of all IDs so we can check against that when creating
-    // relationships.
+    const allResources = dataAll.filter(item => item);
+
+    debugger;
+    // Make list of all IDs so we can check against that when creating relationships.
     const ids = {};
-    _.each(allData, contentType => {
+    _.each(allResources, contentType => {
       if (!contentType) return;
       _.each(contentType.data, datum => {
         ids[datum.id] = true;
@@ -122,7 +105,7 @@ exports.sourceNodes = async (
       }
     };
 
-    _.each(allData, contentType => {
+    _.each(allResources, contentType => {
       if (!contentType) return;
       _.each(contentType.data, datum => {
         if (datum.relationships) {
@@ -144,7 +127,7 @@ exports.sourceNodes = async (
     // It's used to namespace nodes and their ids, not for api calls!
     const apiLanguageBasedNamespace = `${apiBase}/${language}`;
 
-    _.each(allData, contentType => {
+    _.each(allResources, contentType => {
       if (!contentType) return;
 
       _.each(contentType.data, datum => {
