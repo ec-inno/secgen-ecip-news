@@ -29,34 +29,17 @@ const Layout = ({ children, location, pageContext }) => {
           }
         }
       }
-      allNodeTranslation {
-        nodes {
-          path {
-            langcode
-            alias
-          }
-          translations {
-            langcode
-            alias
-          }
-        }
-      }
     }
   `);
 
   const { languages } = data.site.siteMetadata.languages;
-  const { nodes: contentTranslations } = data.allNodeTranslation;
   const currentLanguage = getCurrentLanguage(location);
 
   return (
     <>
       <SEO />
       <TopMessage currentLanguage={currentLanguage} />
-      <Header
-        languages={languages}
-        location={location}
-        contentTranslations={contentTranslations}
-      />
+      <Header languages={languages} location={location} />
       <Menu location={location} />
       {children}
       <Footer location={location} />
