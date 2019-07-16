@@ -37,7 +37,7 @@ const Homepage = ({ data, location }) => {
               <ul className="ecl-unordered-list">
                 {news.map(newsNode => {
                   const { node } = newsNode;
-                  const { id, title, oe_teaser, path } = node;
+                  const { id, title, oe_teaser } = node;
 
                   return (
                     <li className="ecl-unordered-list__item" key={id}>
