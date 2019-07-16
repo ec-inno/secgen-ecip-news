@@ -38,12 +38,11 @@ const Homepage = ({ data, location }) => {
                 {news.map(newsNode => {
                   const { node } = newsNode;
                   const { id, title, oe_teaser, path } = node;
-                  const { langcode } = path;
 
                   return (
                     <li className="ecl-unordered-list__item" key={id}>
                       <Link
-                        to={`/${langcode}/news#${slugify(title, {
+                        to={`/${currentLanguage}/news#${slugify(title, {
                           lower: true,
                         })}`}
                         className="ecl-u-d-block ecl-link ecl-link--standalone"
@@ -104,10 +103,6 @@ export const query = graphql`
         node {
           id
           title
-          path {
-            alias
-            langcode
-          }
           oe_teaser {
             processed
           }

@@ -34,7 +34,6 @@ const LanguageSelector = ({ href, name, code }) => {
 };
 
 LanguageSelector.propTypes = {
-  opensOverlay: PropTypes.bool,
   href: PropTypes.string,
   name: PropTypes.string,
   code: PropTypes.string,
