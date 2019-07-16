@@ -65,10 +65,6 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
-            path {
-              alias
-              langcode
-            }
           }
         }
       }
@@ -78,20 +74,19 @@ exports.createPages = async ({ graphql, actions }) => {
   const { allNodeOeNews } = result.data;
   const newsNodes = allNodeOeNews.edges;
 
+  // Helps counting content per language for pagination.
   newsNodes.forEach(({ node }) => {
-    const { alias, langcode } = node.path;
+    const langcode = node.id.split('/')[1];
 
-    if (alias && langcode) {
-      if (!pagesPerLanguage[langcode]) {
-        pagesPerLanguage[langcode] = [];
-      }
-
-      const nodeExists = pagesPerLanguage[langcode].find(
-        n => n.path.alias === alias && n.path.langcode === langcode
-      );
-
-      if (!nodeExists) pagesPerLanguage[langcode].push(node);
+    if (!pagesPerLanguage[langcode]) {
+      pagesPerLanguage[langcode] = [];
     }
+
+    const nodeExists = pagesPerLanguage[langcode].find(
+      n => n.id === node.id && n.path.langcode === langcode
+    );
+
+    if (!nodeExists) pagesPerLanguage[langcode].push(node);
   });
 
   // Create news sections with paginations for each language.
@@ -121,7 +116,6 @@ exports.createPages = async ({ graphql, actions }) => {
   languages.langs.forEach(language => {
     const languageRegex = `//${language}//`;
 
-    /* eslint-disable-next-line compat/compat */
     createPage({
       path: `/${language}/faq`,
       component: path.resolve('./src/templates/faq-page.jsx'),
