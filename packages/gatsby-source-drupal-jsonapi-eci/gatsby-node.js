@@ -1,8 +1,8 @@
 const axios = require('axios');
 const _ = require('lodash');
 
-const nodeFromData = require('./lib/nodeFromData');
-const addNodeTranslations = require('./lib/addNodeTranslations');
+const getLinkData = require('./lib/getLinkData');
+const getNodes = require('./lib/getNodes');
 
 // @see https://www.gatsbyjs.org/docs/node-apis/#sourceNodes
 exports.sourceNodes = async (
@@ -11,230 +11,88 @@ exports.sourceNodes = async (
 ) => {
   const { createNode } = actions;
 
-  // Set defaults for some options.
+  // Defaults.
   apiBase = apiBase || 'jsonapi';
   languages = languages || [];
 
   const nodes = [];
+  const contentTypes = [
+    'node--faq',
+    'node--faq_section',
+    'node--oe_news',
+    'node--oe_page',
+  ];
 
-  reporter.info('EC Drupal OE: getting content ...');
+  reporter.info('Getting content from Drupal ...');
 
   for (const language of languages) {
     const endpoint = `${baseUrl}/${language}/${apiBase}`;
 
-    const data = await axios.get(endpoint, {
+    const resourceEndpoints = await axios.get(endpoint, {
       auth: basicAuth,
       headers,
       params,
     });
 
-    const allData = await Promise.all(
-      _.map(data.data.links, async (url, type) => {
+    const dataAll = await Promise.all(
+      _.map(resourceEndpoints.data.links, async (url, type) => {
+        let published = [];
+        let drafts = [];
+
+        // Early exit on insufficient or edge case input.
+        if (!type || !url || type === 'self' || !contentTypes.includes(type))
+          return;
+
         const defaultEndpoint = `${baseUrl}/${apiBase}`;
         const languageEndpoint = `${baseUrl}/${language}/${apiBase}`;
 
-        // Correct links
-        if (url && url.href && language) {
+        if (url.href && !url.href.includes('skos')) {
+          // Drupal's JSONAPI needs corrections for its language dropping in links.
           url.href = url.href.replace(defaultEndpoint, languageEndpoint);
-        }
 
-        if (type === `self`) return;
-        if (!url) return;
-        if (!type) return;
+          published = await getLinkData(url, [], {
+            filters,
+            headers,
+            params,
+            basicAuth,
+          });
 
-        const getNext = async (url, data = []) => {
-          if (url.href && !url.href.includes('skos')) {
-            // url can be string or object containing href field
-            url = url.href;
+          if (process.env.DRAFT_PREVIEW) {
+            url.href += '?resourceVersion=rel%3Aworking-copy';
 
-            // Apply any filters configured in gatsby-config.js. Filters
-            // can be any valid JSON API filter query string.
-            // See https://www.drupal.org/docs/8/modules/jsonapi/filtering
-            if (typeof filters === `object`) {
-              if (filters.hasOwnProperty(type)) {
-                url = url + `?${filters[type]}`;
-              }
-            }
-
-            let d;
-
-            try {
-              d = await axios.get(url, {
-                auth: basicAuth,
-                headers,
-                params,
-              });
-            } catch (error) {
-              if (error.response && error.response.status == 405) {
-                // The endpoint doesn't support the GET method, so just skip it.
-                return [];
-              } else {
-                console.error(`Failed to fetch ${url}`, error.message);
-                console.log(error.data);
-                throw error;
-              }
-            }
-
-            data = data.concat(d.data.data);
-
-            if (d.data.links.next) {
-              data = await getNext(d.data.links.next, data);
-            }
-
-            return data;
+            drafts = await getLinkData(url, [], {
+              filters,
+              headers,
+              params,
+              basicAuth,
+            });
           }
-        };
 
-        const data = await getNext(url);
+          const data = [...published, ...drafts];
 
-        const result = {
-          type,
-          data,
-        };
-
-        return result;
+          return {
+            type,
+            data,
+          };
+        }
       })
     );
 
-    // Make list of all IDs so we can check against that when creating
-    // relationships.
-    const ids = {};
-    _.each(allData, contentType => {
-      if (!contentType) return;
-      _.each(contentType.data, datum => {
-        ids[datum.id] = true;
-      });
+    const allResources = dataAll.filter(item => item);
+
+    // Content for the given language.
+    const nodesLanguage = getNodes({
+      allResources,
+      apiBase,
+      language,
+      createNodeId,
+      createContentDigest,
     });
 
-    // Create back references.
-    const backRefs = {};
-
-    // Adds back reference to linked entity, so we can later add node link.
-    const addBackRef = (linkedId, sourceDatum) => {
-      if (ids[linkedId]) {
-        if (!backRefs[linkedId]) {
-          backRefs[linkedId] = [];
-        }
-        backRefs[linkedId].push({
-          id: sourceDatum.id,
-          type: sourceDatum.type,
-        });
-      }
-    };
-
-    _.each(allData, contentType => {
-      if (!contentType) return;
-      _.each(contentType.data, datum => {
-        if (datum.relationships) {
-          _.each(datum.relationships, (v, k) => {
-            if (!v.data) return;
-
-            if (_.isArray(v.data)) {
-              v.data.forEach(data => addBackRef(data.id, datum));
-            } else {
-              addBackRef(v.data.id, datum);
-            }
-          });
-        }
-      });
-    });
-
-    // The namespace is not matching jsonapi/drupal pattern!
-    // It's apiBase/language and not language/apiBase.
-    // It's used to namespace nodes and their ids, not for api calls!
-    const apiLanguageBasedNamespace = `${apiBase}/${language}`;
-
-    _.each(allData, contentType => {
-      if (!contentType) return;
-
-      _.each(contentType.data, datum => {
-        const node = nodeFromData(
-          datum,
-          createNodeId,
-          apiLanguageBasedNamespace
-        );
-
-        node.relationships = {};
-
-        // Add relationships
-        if (datum.relationships) {
-          _.each(datum.relationships, (v, k) => {
-            if (!v.data) return;
-            if (_.isArray(v.data) && v.data.length > 0) {
-              // Create array of all ids that are in our index
-              node.relationships[`${k}___NODE`] = _.compact(
-                v.data.map(data =>
-                  ids[data.id]
-                    ? `${apiLanguageBasedNamespace}/${createNodeId(data.id)}`
-                    : null
-                )
-              );
-            } else if (ids[v.data.id]) {
-              node.relationships[
-                `${k}___NODE`
-              ] = `${apiLanguageBasedNamespace}/${createNodeId(v.data.id)}`;
-            }
-          });
-        }
-
-        // Add back reference relationships.
-        // Back reference relationships will need to be arrays,
-        // as we can't control how if node is referenced only once.
-        if (backRefs[datum.id]) {
-          backRefs[datum.id].forEach(ref => {
-            if (!node.relationships[`${ref.type}___NODE`]) {
-              node.relationships[`${ref.type}___NODE`] = [];
-            }
-
-            node.relationships[`${ref.type}___NODE`].push(
-              `${apiLanguageBasedNamespace}/${createNodeId(ref.id)}`
-            );
-          });
-        }
-
-        if (_.isEmpty(node.relationships)) {
-          delete node.relationships;
-        }
-
-        node.internal.contentDigest = createContentDigest(node);
-        nodes.push(node);
-      });
-    });
+    nodes.push(...nodesLanguage);
   }
 
-  addNodeTranslations(nodes);
-
   for (const node of nodes) {
-    // Create a gatsby node for everything from Drupal: menus, blocks, content types, etc.
     createNode(node);
-
-    // Having a path and translations, this means it's a node with path from pathauto.
-    // In order to expose this information globally in any component in gatsby, we'll also create a gatsby node for translation's information.
-    if (node.path && node.translations && node.translations.length) {
-      const { path, translations, drupal_internal__nid } = node;
-
-      const translation = {
-        translations,
-        path,
-      };
-
-      const nodeContent = JSON.stringify(translation);
-
-      const nodeMeta = {
-        id: createNodeId(
-          `${drupal_internal__nid}/${path.langcode}/${path.alias}`
-        ),
-        parent: null,
-        children: [],
-        internal: {
-          type: 'node__translation',
-          content: nodeContent,
-          contentDigest: createContentDigest(translation),
-        },
-      };
-
-      const nodeTranslation = Object.assign({}, translation, nodeMeta);
-      createNode(nodeTranslation);
-    }
   }
 };

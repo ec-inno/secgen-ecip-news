@@ -31,50 +31,53 @@ const Homepage = ({ data, location }) => {
           />
 
           <InitiativesList location={location} />
-          <section className="ecl-u-mt-xl">
-            <h2 className="ecl-u-type-heading-2">Latest news</h2>
-            <ul className="ecl-unordered-list">
-              {news.map(newsNode => {
-                const { node } = newsNode;
-                const { id, title, oe_teaser, path } = node;
-                const { langcode } = path;
+          {news.length ? (
+            <section className="ecl-u-mt-xl">
+              <h2 className="ecl-u-type-heading-2">Latest news</h2>
+              <ul className="ecl-unordered-list">
+                {news.map(newsNode => {
+                  const { node } = newsNode;
+                  const { id, title, oe_teaser } = node;
 
-                return (
-                  <li className="ecl-unordered-list__item" key={id}>
-                    <Link
-                      to={`/${langcode}/news#${slugify(title, {
-                        lower: true,
-                      })}`}
-                      className="ecl-u-d-block ecl-link ecl-link--standalone"
-                    >
-                      <strong>{title}</strong>
-                    </Link>
+                  return (
+                    <li className="ecl-unordered-list__item" key={id}>
+                      <Link
+                        to={`/${currentLanguage}/news#${slugify(title, {
+                          lower: true,
+                        })}`}
+                        className="ecl-u-d-block ecl-link ecl-link--standalone"
+                      >
+                        <strong>{title}</strong>
+                      </Link>
 
-                    {oe_teaser ? (
-                      <div
-                        key={id}
-                        className="ecl-paragraph"
-                        dangerouslySetInnerHTML={{
-                          __html: oe_teaser.processed,
-                        }}
-                      />
-                    ) : (
-                      ''
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+                      {oe_teaser ? (
+                        <div
+                          key={id}
+                          className="ecl-paragraph"
+                          dangerouslySetInnerHTML={{
+                            __html: oe_teaser.processed,
+                          }}
+                        />
+                      ) : (
+                        ''
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
 
-            <p className="ecl-u-type-paragraph">
-              <Link
-                className="ecl-link ecl-link--standalone"
-                to={`/${currentLanguage}/news`}
-              >
-                {more_link}
-              </Link>
-            </p>
-          </section>
+              <p className="ecl-u-type-paragraph">
+                <Link
+                  className="ecl-link ecl-link--standalone"
+                  to={`/${currentLanguage}/news`}
+                >
+                  {more_link}
+                </Link>
+              </p>
+            </section>
+          ) : (
+            ''
+          )}
         </div>
       </main>
       <ForumBanner />
@@ -100,10 +103,6 @@ export const query = graphql`
         node {
           id
           title
-          path {
-            alias
-            langcode
-          }
           oe_teaser {
             processed
           }

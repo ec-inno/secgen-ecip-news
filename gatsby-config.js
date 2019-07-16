@@ -2,7 +2,7 @@ const languages = require('./src/languages');
 
 const baseUrl = process.env.SITE_BASE_URL
   ? process.env.SITE_BASE_URL
-  : 'http://127.0.0.1:8080/web';
+  : 'http://localhost:8080/web';
 
 module.exports = {
   // @see https://www.gatsbyjs.org/docs/api-proxy/
@@ -43,6 +43,10 @@ module.exports = {
         baseUrl,
         apiBase: 'api',
         languages: languages.langs,
+        basicAuth: {
+          username: process.env.BASIC_AUTH_USERNAME,
+          password: process.env.BASIC_AUTH_PASSWORD,
+        },
       },
     },
     {
