@@ -4,8 +4,16 @@
 set -e
 
 if [ "${DRONE}" = "true" ]; then
-    env
     yarn clean
-    yarn build:prod
-    yarn deploy:netlify
+
+    if [ "${CI_BUILD_TARGET}" = "test" ]; then
+        yarn build:test
+        yarn deploy:test
+    fi
+
+    if [ "${CI_BUILD_TARGET}" = "production" ]; then
+        yarn build:prod
+        yarn deploy:prod
+    fi
+
 fi
