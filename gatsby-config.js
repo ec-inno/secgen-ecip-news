@@ -1,4 +1,6 @@
-const languages = require('./src/languages');
+const langs = require('./languages');
+
+const languages = langs.languages.map(language => language.lang);
 
 const baseUrl = process.env.SITE_BASE_URL
   ? process.env.SITE_BASE_URL
@@ -16,7 +18,6 @@ module.exports = {
       'This site is a participatory democracy instrument that allows citizens to suggest concrete legal changes in any field where the European Commission has power to propose legislation, such as the environment, agriculture, energy, transport or trade.',
     titleTemplate: "%s | European citizens' initiative",
     url: 'https://example.eu', // No trailing slash allowed!
-    languages,
   },
   plugins: [
     {
@@ -42,7 +43,7 @@ module.exports = {
       options: {
         baseUrl,
         apiBase: 'api',
-        languages: languages.langs,
+        languages,
         basicAuth: {
           username: process.env.BASIC_AUTH_USERNAME,
           password: process.env.BASIC_AUTH_PASSWORD,

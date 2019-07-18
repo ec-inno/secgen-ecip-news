@@ -2,13 +2,19 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import logoPaths from '../utils/logoPaths';
-import { map as languageMap, defaultLangKey } from '../languages';
+import { languages, defaultLangKey } from '../../languages';
+
+// Create a map of language code to language label.
+const languageMap = languages.reduce((obj, item) => {
+  obj[item.lang] = item.label;
+  return obj;
+}, {});
 
 import SiteName from './SiteName';
 import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
 import LanguageSelector from './LanguageSelector';
 
-const Header = ({ languages, location }) => {
+const Header = ({ location }) => {
   let logo = logoPaths[defaultLangKey];
 
   const { pathname } = location;
@@ -21,20 +27,16 @@ const Header = ({ languages, location }) => {
     logo = logoPaths[langcodeCurrent];
   }
 
-  const items = languages
-    .map(language => {
-      const href = urlPath
-        ? `/${language.lang}/${urlPath}`
-        : `/${language.lang}`;
-      const isActive = href.includes(langcodeCurrent);
+  const items = languages.map(language => {
+    const href = urlPath ? `/${language.lang}/${urlPath}` : `/${language.lang}`;
+    const isActive = href.includes(langcodeCurrent);
 
-      return {
-        href,
-        isActive,
-        ...language,
-      };
-    })
-    .sort((a, b) => (a.lang < b.lang ? -1 : a.lang > b.lang ? 1 : 0));
+    return {
+      href,
+      isActive,
+      ...language,
+    };
+  });
 
   return (
     <>

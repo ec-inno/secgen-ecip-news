@@ -1,15 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
 
 import logoSvg from '@ecl/eu-preset-website/dist/images/logo/logo--mute.svg';
 
 import SEO from '../components/SEO';
 import LanguageList from '../components/LanguageList/LanguageList';
 
-const Index = props => {
-  const { languages } = props.data.site.siteMetadata.languages;
+import { languages } from '../../languages';
 
+const Index = () => {
   const items = languages.map(language => ({
     href: `/${language.lang}`,
     ...language,
@@ -34,23 +32,4 @@ const Index = props => {
   );
 };
 
-Index.propTypes = {
-  data: PropTypes.object,
-};
-
 export default Index;
-
-export const pageQuery = graphql`
-  query getSiteMetaData {
-    site {
-      siteMetadata {
-        languages {
-          languages {
-            label
-            lang
-          }
-        }
-      }
-    }
-  }
-`;
