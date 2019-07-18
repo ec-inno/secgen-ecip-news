@@ -11,6 +11,13 @@ pipeline:
 
   deploy:
     image: node:dubnium
-    secrets: [site_base_url, netlify_auth_token, netlify_site_id]
+    secrets:
+      [
+        site_base_url,
+        netlify_auth_token,
+        netlify_site_id,
+        basic_auth_username,
+        basic_auth_password,
+      ]
     commands:
       - yarn deploy
