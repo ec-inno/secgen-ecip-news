@@ -4,11 +4,9 @@ import PropTypes from 'prop-types';
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-
 import SEO from './SEO';
 
-import TopMessage from './TopMessage/TopMessage';
+import TopMessage from './TopMessage';
 import Header from './Header';
 import Menu from './Menu/Menu';
 import Footer from './Footer/FooterLanguage';
@@ -16,12 +14,10 @@ import Footer from './Footer/FooterLanguage';
 const Layout = ({ children, location, pageContext }) => {
   if (pageContext.layout === 'landing') return children;
 
-  const currentLanguage = getCurrentLanguage(location);
-
   return (
     <>
       <SEO />
-      <TopMessage currentLanguage={currentLanguage} />
+      <TopMessage location={location} />
       <Header location={location} />
       <Menu location={location} />
       {children}
