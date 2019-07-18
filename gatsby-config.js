@@ -1,5 +1,6 @@
 const langs = require('./languages');
 
+// Convert array of objects to an array of language codes.
 const languages = langs.languages.map(language => language.lang);
 
 const baseUrl = process.env.SITE_BASE_URL
@@ -23,7 +24,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: `data`,
+        name: 'data',
         path: `${__dirname}/src/data/`,
       },
     },
