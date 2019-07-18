@@ -1,3 +1,39 @@
 {
-  "title": "About the European Citizens' Initiative (BG)"
+  "title": "About the European Citizens' Initiative",
+  "intro": "This page gives extra information about the ECI and the corresponding legislations.",
+  "inpage_title": "PAGE CONTENTS",
+  "items": [
+    {
+      "title": "What is a European citizens' initiative?",
+      "media": [
+        {
+          "src": "http://eci-mockups.surge.sh/media/video-image.png",
+          "alt": "ECI video",
+          "caption": "ECI is a participatory democracy instrument that allows citizens to suggest concrete legal changes in any field where the European Commission has power to propose legislation, such as the environment, agriculture, energy, transport or trade."
+        }
+      ],
+      "body": "<p class=\"ecl-u-type-paragraph\">An initiative enables citizens from different member states to come together around an issue close to their heart with a view to influencing EU policy-making.</p><p class=\"ecl-u-type-paragraph\">To launch an initiative, it takes 7 EU citizens, living in at least 7 different Member States who are old enough to vote. Once an initiative gathers 1 million signatures with <a href=\"#\" class=\"ecl-link\">minimum thresholds</a> reached in at least 7 countries, the European Commission must decide whether or not to take action.</p><p class=\"ecl-u-type-paragraph\">The rules and procedures governing the citizens' initiative are set out in an <a href=\"#\" class=\"ecl-link\">EU Regulation</a> adopted by the European Parliament and the Council of the European Union in February 2011.</p>"
+    },
+    {
+      "title": "What can be proposed as a citizens' initiative?",
+      "media": [],
+      "body": "<p class=\"ecl-u-type-paragraph\">A citizens' initiative is possible in any field where the Commission has the power to propose legislation, for example environment, agriculture, transport or public health.</p><p class=\"ecl-u-type-paragraph\"><a href=\"#\" class=\"ecl-link\">Lear more here</a></p>"
+    },
+    {
+      "title": "Who can organise a citizens' initiative and how?",
+      "media": [],
+      "body": "<p class=\"ecl-u-type-paragraph\">In order to launch a citizens' initiative, citizens must form a \"citizens' committee\" composed of at least 7 EU citizens being resident in at least 7 different member states.</p><p class=\"ecl-u-type-paragraph\">The members of the citizens' committee must be EU citizens old enough to vote* in the European Parliament elections (18 years old, except in Austria &amp; Malta where the voting age is 16, and Greece where the voting age is 17).</p><p class=\"ecl-u-type-paragraph\">Citizens' initiatives cannot be run by organisations. However, organisations can promote or support initiatives provided that they do so with full transparency.</p><p class=\"ecl-u-type-paragraph\">The citizens' committee must register its initiative on this website before starting to collect statements of support from citizens. Once the registration is confirmed, organisers have one year to collect signatures.</p><p class=\"ecl-u-type-paragraph\"><em>* Citizens do not need to be registered to vote, just old enough.</em></p><p class=\"ecl-u-type-paragraph\"><a href=\"#\" class=\"ecl-link\">Lear more here</a></p>"
+    },
+    {
+      "title": "What happens when a citizens' initiative gets one million signatures?",
+      "media": [],
+      "body": "<p class=\"ecl-u-type-paragraph\">The Commission will carefully examine the initiative. Within 3 months after receiving the initiative:</p><ul class=\"ecl-unordered-list\"><li class=\"ecl-unordered-list__item\">Commission representatives will meet the organisers so they can explain in detail the issues raised in their initiative</li><li class=\"ecl-unordered-list__item\">the organisers will have the opportunity to present their initiative at a public hearing in the European Parliament</li><li class=\"ecl-unordered-list__item\">the Commission will adopt a formal response spelling out what action it will propose in response to the citizens' initiative, if any, and the reasons for doing or not doing so.</li></ul><p class=\"ecl-u-type-paragraph\">The response, which will take the form of a communication, will be formally adopted by the College of Commissioners and published in all official EU languages.</p><p class=\"ecl-u-type-paragraph\">The Commission is not obliged to propose legislation as a result of an initiative. If the Commission decides to put forward a legislative proposal, the normal legislative procedure kicks off: the Commission proposal is submitted to the legislator (generally the European Parliament and the Council or in some cases only the Council) and, if adopted, it becomes law.</p><p class=\"ecl-u-type-paragraph\"><a href=\"#\" class=\"ecl-link\">Lear more here</a></p>"
+    },
+    {
+      "title": "Want to know more about this topic?",
+      "media": [],
+      "body": "<ul class=\"ecl-unordered-list\"><li class=\"ecl-unordered-list__item\">Download the <a href=\"#\" class=\"ecl-link\">Guide to the European Citizens' Initiative</a></li><li class=\"ecl-unordered-list__item\"><a href=\"#\" class=\"ecl-link\">Additional link</a></li><li class=\"ecl-unordered-list__item\"><a href=\"#\" class=\"ecl-link\">Additional link</a></li></ul>",
+      "wrapper": "eci-more-info ecl-u-pa-m"
+    }
+  ]
 }
