@@ -1,13 +1,36 @@
 import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
-
-import data from './data';
 
 const Menu = ({ location }) => {
   const locations = location.pathname.split('/').filter(p => p);
   const [language, path] = locations;
-  const links = data[language];
+
+  const data = useStaticQuery(graphql`
+    query Menu {
+      allFile(filter: { relativeDirectory: { eq: "menu" } }) {
+        edges {
+          node {
+            name
+            childMenuJson {
+              links {
+                label
+                href
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const languageData = data.allFile.edges.find(
+    node => node.node.name === language
+  );
+
+  const { childMenuJson } = languageData.node;
+  const { links } = childMenuJson;
 
   return (
     <nav className="eci-menu">

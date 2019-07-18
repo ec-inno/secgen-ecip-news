@@ -8,7 +8,7 @@ import SEO from './SEO';
 
 import TopMessage from './TopMessage';
 import Header from './Header';
-import Menu from './Menu/Menu';
+import Menu from './Menu';
 import Footer from './Footer/FooterLanguage';
 
 const Layout = ({ children, location, pageContext }) => {
