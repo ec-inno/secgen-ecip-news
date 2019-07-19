@@ -6,7 +6,7 @@ import { chunk } from 'lodash';
 import Item from '../Initiative/Item';
 import Message from '../Message';
 import New from '../Initiative/New';
-import Pagination from '../Pagination';
+import Pagination from './Pagination';
 import Placeholder from '../Initiative/Placeholder';
 
 const ALL = 'ALL';
