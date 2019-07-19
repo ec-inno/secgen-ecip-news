@@ -6,13 +6,14 @@ export const handler = async () => {
 
     return {
       statusCode: 200,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ initiatives }),
     };
   } catch (err) {
-    console.log(err); // output to netlify function log
+    console.log(err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
+      body: JSON.stringify({ error: err.message }),
     };
   }
 };
