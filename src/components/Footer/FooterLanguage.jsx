@@ -22,6 +22,7 @@ const FooterLanguage = ({ location }) => {
                   variant
                   label
                   href
+                  internal
                 }
               }
               sections {

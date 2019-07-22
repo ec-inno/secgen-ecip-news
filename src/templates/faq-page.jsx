@@ -80,7 +80,7 @@ const FaqPage = ({ data, location }) => {
                               level={1}
                               toggle={{
                                 label: faqSectionItem.title,
-                                iconShape: 'general--faq',
+                                iconShape: 'ui--plus',
                               }}
                               onClick={() =>
                                 toggleItem(
