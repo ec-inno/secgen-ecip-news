@@ -5,7 +5,7 @@ import slugify from 'slugify';
 import SEO from '../components/SEO';
 import ForumBanner from '../components/ForumBanner';
 
-const About = ({ data }) => {
+const About = ({ data, location }) => {
   const { title, intro, inpage_title, items } = data.file.childAboutJson;
 
   const links = items.map(item => ({
@@ -128,7 +128,7 @@ const About = ({ data }) => {
           </div>
         </div>
       </main>
-      <ForumBanner />
+      <ForumBanner location={location} />
     </>
   );
 };

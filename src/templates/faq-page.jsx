@@ -6,7 +6,7 @@ import Accordion2 from '../components/Accordion/Accordion2';
 import Accordion2Item from '../components/Accordion/Accordion2Item';
 import ForumBanner from '../components/ForumBanner';
 
-const FaqPage = ({ data, pageContext }) => {
+const FaqPage = ({ data, location }) => {
   const { title, intro, inpage_title } = data.file.childFaqJson;
   const { edges: faqSections } = data.allNodeFaqSection;
 
@@ -105,7 +105,7 @@ const FaqPage = ({ data, pageContext }) => {
           </div>
         </div>
       </main>
-      <ForumBanner />
+      <ForumBanner location={location} />
     </>
   );
 };
