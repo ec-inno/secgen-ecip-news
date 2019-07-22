@@ -46,7 +46,7 @@ const List = ({ location }) => {
           const results = await axios.get(
             `${location.origin}/.netlify/functions/initiatives`
           );
-          initiativesFromService = results.initiatives;
+          initiativesFromService = results.data.initiatives;
         }
         // Otherwise make requests as usual.
         else {
