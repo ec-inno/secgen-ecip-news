@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+require('dotenv').config();
+
 const langs = require('./languages');
 
 // Convert array of objects to an array of language codes.

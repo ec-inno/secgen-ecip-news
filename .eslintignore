@@ -7,3 +7,6 @@ packages/gatsby-source-eci-remote-initiatives
 src/Context.js
 gatsby-browser.js
 gatsby-ssr.js
+
+# netlify functions
+api
