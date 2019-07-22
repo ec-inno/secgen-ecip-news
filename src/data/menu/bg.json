@@ -1,0 +1,7 @@
+{
+  "links": [
+    { "label": "Начало", "href": "/" },
+    { "label": "Новини", "href": "/news" },
+    { "label": "Как работи", "href": "/about" }
+  ]
+}

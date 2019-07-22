@@ -1,0 +1,23 @@
+pipeline:
+  install:
+    image: node:dubnium
+    commands:
+      - yarn install --frozen-lockfile
+
+  test:
+    image: node:dubnium
+    commands:
+      - yarn test
+
+  deploy:
+    image: node:dubnium
+    secrets:
+      [
+        site_base_url,
+        netlify_auth_token,
+        netlify_site_id,
+        basic_auth_username,
+        basic_auth_password,
+      ]
+    commands:
+      - yarn deploy

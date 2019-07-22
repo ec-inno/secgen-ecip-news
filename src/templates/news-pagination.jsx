@@ -152,10 +152,6 @@ export const query = graphql`
           oe_summary {
             processed
           }
-          path {
-            alias
-            langcode
-          }
           field_source {
             uri
             title

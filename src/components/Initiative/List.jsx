@@ -3,10 +3,12 @@ import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
+import getInitiatives from '../../utils/getInitiatives';
+
 import Item from '../Initiative/Item';
 import Message from '../Message';
 import New from '../Initiative/New';
-import Pagination from '../Pagination';
+import Pagination from './Pagination';
 import Placeholder from '../Initiative/Placeholder';
 
 const ALL = 'ALL';
@@ -14,7 +16,6 @@ const OPEN = 'OPEN';
 const SUCCESSFUL = 'SUCCESSFUL';
 
 const List = ({ location }) => {
-  // Use proxy in development or actual endpoint in production.
   const endpoint =
     process.env.NODE_ENV === 'development'
       ? '/initiative'
@@ -38,33 +39,21 @@ const List = ({ location }) => {
       setIsLoading(true);
 
       try {
-        // Get all each time to display numbers.
-        const results = await axios.get(`${endpoint}/get/all`);
+        let initiativesFromService = [];
 
-        const initiatives = await Promise.all(
-          results.data.initiative.map(async basic => {
-            const year = basic['@year'];
-            const number = basic['@number'];
+        // On netlify.com, which is test environment, use a function.
+        if (location.origin && location.origin.includes('netlify.com')) {
+          const results = await axios.get(
+            `${location.origin}/.netlify/functions/initiatives`
+          );
+          initiativesFromService = results.data.initiatives;
+        }
+        // Otherwise make requests as usual.
+        else {
+          initiativesFromService = await getInitiatives(endpoint);
+        }
 
-            if (year && number) {
-              const result = await axios.get(
-                `${endpoint}/details/${year}/${number}`
-              );
-              const { initiative: additional } = result.data;
-
-              return {
-                year,
-                number,
-                ...basic,
-                ...additional,
-              };
-            }
-
-            return basic;
-          })
-        );
-
-        setData(initiatives);
+        setData(initiativesFromService);
       } catch (error) {
         setErrorMessage(error.message);
         setErrorMessageVisibility(true);

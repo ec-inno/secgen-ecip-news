@@ -1,5 +1,5 @@
 const path = require('path');
-const languages = require('./src/languages');
+const { languages } = require('./languages');
 
 exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions;
@@ -53,23 +53,6 @@ exports.sourceNodes = ({ actions }) => {
   return createTypes(typeDefs);
 };
 
-exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions;
-
-  if (
-    node.internal.type === 'node__oe_news' ||
-    node.internal.type === 'node__faq_section'
-  ) {
-    // Create a new field on Gatsby side to later store information about translations of a given node.
-
-    createNodeField({
-      name: 'translations',
-      node,
-      value: [],
-    });
-  }
-};
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -82,10 +65,6 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
-            path {
-              alias
-              langcode
-            }
           }
         }
       }
@@ -95,70 +74,61 @@ exports.createPages = async ({ graphql, actions }) => {
   const { allNodeOeNews } = result.data;
   const newsNodes = allNodeOeNews.edges;
 
+  // Helps counting content per language for pagination.
   newsNodes.forEach(({ node }) => {
-    const { alias, langcode } = node.path;
+    const langcode = node.id.split('/')[1];
 
-    if (alias && langcode) {
-      const pathInGatsby = `/${langcode}${alias}`;
-
-      createPage({
-        path: pathInGatsby,
-        component: path.resolve('./src/templates/news.jsx'),
-        context: {
-          alias,
-          langcode,
-        },
-      });
-
-      if (!pagesPerLanguage[langcode]) {
-        pagesPerLanguage[langcode] = [];
-      }
-
-      const nodeExists = pagesPerLanguage[langcode].find(
-        n => n.path.alias === alias && n.path.langcode === langcode
-      );
-
-      if (!nodeExists) pagesPerLanguage[langcode].push(node);
+    if (!pagesPerLanguage[langcode]) {
+      pagesPerLanguage[langcode] = [];
     }
+
+    const nodeExists = pagesPerLanguage[langcode].find(
+      n => n.id === node.id && n.path.langcode === langcode
+    );
+
+    if (!nodeExists) pagesPerLanguage[langcode].push(node);
   });
 
   // Create news sections with paginations for each language.
-  languages.langs.forEach(language => {
-    const items = pagesPerLanguage[language];
-    const languageRegex = `//${language}//`;
-    const numPages = items ? Math.ceil(items.length / newsPerPage) : 1;
+  languages
+    .map(l => l.lang)
+    .forEach(language => {
+      const items = pagesPerLanguage[language];
+      const languageRegex = `//${language}//`;
+      const numPages = items ? Math.ceil(items.length / newsPerPage) : 1;
 
-    /* eslint-disable-next-line compat/compat */
-    Array.from({ length: numPages }).forEach((_, i) => {
+      /* eslint-disable-next-line compat/compat */
+      Array.from({ length: numPages }).forEach((_, i) => {
+        createPage({
+          path: i === 0 ? `/${language}/news` : `/${language}/news/${i + 1}`,
+          component: path.resolve('./src/templates/news-pagination.jsx'),
+          context: {
+            limit: newsPerPage,
+            skip: i * newsPerPage,
+            numPages,
+            currentPage: i + 1,
+            locale: language,
+            languageRegex,
+          },
+        });
+      });
+    });
+
+  // Create faq sections with paginations for each language.
+  languages
+    .map(l => l.lang)
+    .forEach(language => {
+      const languageRegex = `//${language}//`;
+
       createPage({
-        path: i === 0 ? `/${language}/news` : `/${language}/news/${i + 1}`,
-        component: path.resolve('./src/templates/news-pagination.jsx'),
+        path: `/${language}/faq`,
+        component: path.resolve('./src/templates/faq-page.jsx'),
         context: {
-          limit: newsPerPage,
-          skip: i * newsPerPage,
-          numPages,
-          currentPage: i + 1,
           locale: language,
           languageRegex,
         },
       });
     });
-  });
-
-  // Create faq sections with paginations for each language.
-  languages.langs.forEach(language => {
-    const languageRegex = `//${language}//`;
-
-    /* eslint-disable-next-line compat/compat */
-    createPage({
-      path: `/${language}/faq`,
-      component: path.resolve('./src/templates/faq-page.jsx'),
-      context: {
-        locale: language,
-        languageRegex,
-      },
-    });
-  });
 };
 
 exports.onCreatePage = ({ page, actions }) => {
@@ -178,7 +148,8 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 
   // Pages for each language.
-  return languages.langs.map(lang => {
+  return languages.map(language => {
+    const { lang } = language;
     // And if the page is `lang.jsx`, treat is a 2nd type of landing page: for the specific language.
     const localizedPath =
       page.path === '/lang/' ? `/${lang}` : `/${lang}${page.path}`;

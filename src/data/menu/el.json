@@ -1,0 +1,7 @@
+{
+  "links": [
+    { "label": "Home", "href": "/" },
+    { "label": "News", "href": "/news" },
+    { "label": "How it works", "href": "/about" }
+  ]
+}

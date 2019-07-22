@@ -1,36 +1,21 @@
-# ECI
+# SecGen ECIP Client
 
-Public-facing client web app based on Gatsby.js.
+Website built with [Gatsby.js](https://gatsbyjs.org) based on [Drupal 8 backend](https://github.com/ec-europa/secgen-ecip-reference).
 
-## Getting Started (Recommended)
+## Requirements
 
-### Access Locally
+- Node.js >= 8.16.0
+- yarn >= 1.16.0
 
-```
-yarn
-yarn develop
-```
+We recommend you to use [Node Version Manager](https://github.com/creationix/nvm).
 
-Check the local website at: http://localhost:8000/
-Or GraphiQL: http://localhost:8000/___graphql
+From project's root folder run the following:
 
-To test end result of development locally, you'll need run a production build of the site:
+- `nvm install`
+- `nvm use`
 
-```
-yarn build
-yarn serve
-```
+This will install and set the right version of Node.js for the project based on `.nvmrc`.
 
-### Build a release
+## Project documentation
 
-Delete the cache and previous build:
-
-```
-rm -rf .cache public
-```
-
-Build the website with the prefixes:
-
-```
-gatsby build --prefix-paths
-```
+Go to the [dedicated README file](./docs/README.md).
