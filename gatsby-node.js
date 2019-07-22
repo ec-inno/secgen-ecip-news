@@ -158,6 +158,11 @@ exports.onCreatePage = ({ page, actions }) => {
 
     const languageRegex = `//${lang}//`;
 
+    if (page.path.match(/^\/initiative/)) {
+      page.matchPath = '/initiatives/*';
+      return createPage(page);
+    }
+
     return createPage({
       ...page,
       path: localizedPath,
