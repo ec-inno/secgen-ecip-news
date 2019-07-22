@@ -62,7 +62,7 @@ const Header = ({ location }) => {
             />
           </div>
         </div>
-        <SiteName currentLanguage={langcodeCurrent} />
+        <SiteName location={location} />
       </header>
       <LanguageListOverlay
         closeLabel="Close"

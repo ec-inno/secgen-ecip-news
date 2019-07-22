@@ -983,10 +983,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@ecl/eu-preset-website@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@ecl/eu-preset-website/-/eu-preset-website-2.6.0.tgz#e757ca60fa3e52048473896afe8d485acf794f00"
-  integrity sha512-DHb0W2SL8s3aKegKSDz5VuVk3QnwgbQn5Lqym8pYIiKWNDHCd/FH7oi0tWg6tDRDPvpLJ/eGZB6F+9aLDJIVgQ==
+"@ecl/eu-preset-website@2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@ecl/eu-preset-website/-/eu-preset-website-2.8.0.tgz#9e6269c8e21b6bc4d50dd85f723ce2ab68555b40"
+  integrity sha512-6I+UcFlnpUsEVtW7v9EBdUqjjnPiQtaHcD/ELt7Qc/pxsUnpeENVMkxEKOfS4c8uOzjV3sicWTOd0VjmiuUHow==
 
 "@evocateur/libnpmaccess@^3.1.0":
   version "3.1.0"

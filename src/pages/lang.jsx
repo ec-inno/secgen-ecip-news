@@ -15,6 +15,7 @@ const Homepage = ({ data, location }) => {
     more_link,
     how_works_intro,
     how_works_link,
+    latest_news_heading,
   } = data.file.childLangJson;
 
   const news = data.allNodeOeNews.edges;
@@ -33,7 +34,7 @@ const Homepage = ({ data, location }) => {
           <InitiativesList location={location} />
           {news.length ? (
             <section className="ecl-u-mt-xl">
-              <h2 className="ecl-u-type-heading-2">Latest news</h2>
+              <h2 className="ecl-u-type-heading-2">{latest_news_heading}</h2>
               <ul className="ecl-unordered-list">
                 {news.map(newsNode => {
                   const { node } = newsNode;
@@ -80,7 +81,7 @@ const Homepage = ({ data, location }) => {
           )}
         </div>
       </main>
-      <ForumBanner />
+      <ForumBanner location={location} />
     </>
   );
 };
@@ -92,6 +93,7 @@ export const query = graphql`
         more_link
         how_works_intro
         how_works_link
+        latest_news_heading
       }
     }
     allNodeOeNews(

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
+import '../components/assets/custom.css';
 
 import SEO from './SEO';
 

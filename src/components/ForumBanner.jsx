@@ -2,9 +2,13 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 
+import getCurrentLanguage from '../utils/getCurrentLanguage';
+
 import Button from '../components/Button';
 
-const ForumBanner = () => {
+const ForumBanner = ({ location }) => {
+  const currentLanguage = getCurrentLanguage(location);
+
   const icon = {
     shape: 'ui--corner-arrow',
     size: 'xs',
@@ -12,7 +16,7 @@ const ForumBanner = () => {
   };
 
   const data = useStaticQuery(graphql`
-    query {
+    query ForumBanner {
       desktop: file(relativePath: { eq: "bg-forum.png" }) {
         childImageSharp {
           fluid(quality: 90, maxWidth: 4160) {
@@ -20,8 +24,26 @@ const ForumBanner = () => {
           }
         }
       }
+      allFile(filter: { relativeDirectory: { eq: "forumbanner" } }) {
+        edges {
+          node {
+            name
+            childForumbannerJson {
+              message
+              button
+            }
+          }
+        }
+      }
     }
   `);
+
+  const languageData = data.allFile.edges.find(
+    node => node.node.name === currentLanguage
+  );
+
+  const { childForumbannerJson } = languageData.node;
+  const { message, button } = childForumbannerJson;
 
   return (
     <section className="ecl-page-banner ecl-page-banner--centered ecl-u-mt-l">
@@ -37,13 +59,11 @@ const ForumBanner = () => {
             style={{ top: '10%' }}
           >
             <div className="ecl-page-banner__content">
-              <h1 className="ecl-page-banner__title">
-                Want to learn and collaborate?
-              </h1>
+              <h1 className="ecl-page-banner__title">{message}</h1>
               <Button
                 className="ecl-page-banner__button"
                 variant="call"
-                label={'Join the forum'}
+                label={button}
                 icon={icon}
                 iconPosition="after"
               />
