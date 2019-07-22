@@ -43,10 +43,9 @@ const List = ({ location }) => {
 
         // On netlify.com, which is test environment, use a function.
         if (location.origin && location.origin.includes('netlify.com')) {
-          initiativesFromService = await axios.get(
+          const results = await axios.get(
             `${location.origin}/.netlify/functions/initiatives`
           );
-          results = await getInitiatives(endpoint);
           initiativesFromService = results.initiatives;
         }
         // Otherwise make requests as usual.

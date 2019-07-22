@@ -7,9 +7,11 @@
   "private": true,
   "scripts": {
     "build:prefixed": "gatsby build --prefix-paths",
-    "build:prod": "gatsby build",
-    "build:test": "DRAFT_PREVIEW=true gatsby build",
+    "build:prod": "run-p build:api build:gatsby:prod",
+    "build:test": "run-p build:api build:gatsby:test",
     "build:api": "netlify-lambda build ./src/api",
+    "build:gatsby:prod": "gatsby build",
+    "build:gatsby:test": "DRAFT_PREVIEW=true gatsby build",
     "clean": "gatsby clean",
     "deploy": "./scripts/deploy.sh",
     "deploy:prod": "NETLIFY_SITE_ID=d2152720-be80-4697-ad20-89672d98ff00 netlify deploy --prod",
