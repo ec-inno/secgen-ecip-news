@@ -4,6 +4,12 @@ import Header from '../components/Header';
 
 const Initiative = ({ location }) => {
   console.log(location);
+  const { pathname } = location;
+  const pathParts = pathname.split('/').filter(a => a);
+  const initiativeParts = pathParts[1].split('-');
+  const [status, year, number] = initiativeParts;
+
+  console.log(status, year, number);
 
   return (
     <>
