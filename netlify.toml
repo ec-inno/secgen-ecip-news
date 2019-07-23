@@ -2,7 +2,7 @@
   functions = "api"
 
 [[redirects]]
-  from = "/initiatives/:slug"
+  from = "/initiatives/*"
   to = "/initiatives/index.html/:slug"
   status = 200
   force = false
