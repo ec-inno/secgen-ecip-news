@@ -60,5 +60,6 @@ module.exports = {
         component: require.resolve('./src/components/Layout.jsx'),
       },
     },
+    'gatsby-plugin-netlify',
   ],
 };
