@@ -1,22 +1,20 @@
 import React from 'react';
 
+import TopMessage from '../components/TopMessage';
 import Header from '../components/Header';
 
 const Initiative = ({ location }) => {
-  if (location && location.pathname) {
-    const { pathname } = location;
-    const pathParts = pathname.split('/').filter(a => a);
+  const hash = location.hash || '#';
+  const parts = hash.slice(1).split('-');
 
-    if (pathParts.length && pathParts.length > 1) {
-      const initiativeParts = pathParts[1].split('-');
-      const [status, year, number] = initiativeParts;
-
-      console.log(status, year, number);
-    }
+  if (parts && parts.length) {
+    const [status, year, number] = parts;
+    console.log(status, year, number);
   }
 
   return (
     <>
+      <TopMessage />
       <Header />
       <div>Details</div>
     </>
