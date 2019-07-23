@@ -15,6 +15,30 @@ import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
 import LanguageSelector from './LanguageSelector';
 
 const Header = ({ location }) => {
+  if (!location) {
+    return (
+      <header className="ecl-site-header">
+        <div className="ecl-site-header__container ecl-container">
+          <div className="ecl-site-header__banner">
+            <Link
+              className="ecl-link ecl-link--standalone"
+              to={`/${defaultLangKey}`}
+              aria-label="European Union"
+            >
+              <img
+                alt="European Union logo"
+                title="European Union"
+                className="ecl-site-header__logo-image"
+                src={logoPaths[defaultLangKey]}
+              />
+            </Link>
+          </div>
+        </div>
+        <SiteName />
+      </header>
+    );
+  }
+
   let logo = logoPaths[defaultLangKey];
 
   const { pathname } = location;

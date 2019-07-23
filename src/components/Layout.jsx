@@ -13,7 +13,8 @@ import Menu from './Menu';
 import Footer from './Footer/FooterLanguage';
 
 const Layout = ({ children, location, pageContext }) => {
-  if (pageContext.layout === 'landing') return children;
+  if (pageContext.layout === 'landing' || pageContext.layout === 'dynamic')
+    return children;
 
   return (
     <>

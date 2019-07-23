@@ -136,6 +136,18 @@ exports.onCreatePage = ({ page, actions }) => {
 
   deletePage(page);
 
+  if (page.path.match(/^\/initiative/)) {
+    /* eslint-disable no-param-reassign */
+    page.matchPath = '/initiatives/*';
+    return createPage({
+      ...page,
+      context: {
+        ...page.context,
+        layout: 'dynamic',
+      },
+    });
+  }
+
   // There are 2 types of landing pages:
 
   // The language selector, shown in root of the site.
@@ -157,11 +169,6 @@ exports.onCreatePage = ({ page, actions }) => {
       page.path === '/lang/' ? `/${lang}` : `/${lang}${page.path}`;
 
     const languageRegex = `//${lang}//`;
-
-    if (page.path.match(/^\/initiative/)) {
-      page.matchPath = '/initiatives/*';
-      return createPage(page);
-    }
 
     return createPage({
       ...page,

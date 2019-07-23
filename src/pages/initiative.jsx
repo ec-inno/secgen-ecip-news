@@ -1,9 +1,14 @@
 import React from 'react';
 
-const Initiative = ({ location }) => {
-  console.log(location);
+import Header from '../components/Header';
 
-  return <div>Internal page of a given initiative</div>;
+const Initiative = ({ location }) => {
+  return (
+    <>
+      <Header />
+      <div>Details</div>
+    </>
+  );
 };
 
 export default Initiative;
