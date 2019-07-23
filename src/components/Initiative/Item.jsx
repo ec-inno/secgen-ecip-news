@@ -12,9 +12,9 @@ const InitiativeItem = ({ item }) => {
 
     // If the initiative is open, we can fetch and display information about from the serivce.
     if (isOpen) {
-      href = `/initiatives/open/details/${year}/${number}`;
+      href = `/initiatives/open-${year}-${number}`;
     } else {
-      href = `/initiatives/obsolete/details/${year}/${number}`;
+      href = `/initiatives/obsolete-${year}-${number}`;
     }
     // Otherwise we redirect the user to the site, as the service does not provide the necessary information.
   } else if (item.searchEntry['@status'] === 'REJECTED') {

@@ -2,12 +2,7 @@
   functions = "api"
 
 [[redirects]]
-  # initiatives/open/details/2019/000010
-  from = "/initiatives/:status/:action/:year/:number"
-  to = " /initiative/:year/:month/:date/:slug"
-
-[[redirects]]
   from = "/initiatives/*"
-  to = "/initiative/"
+  to = "/initiatives/:splat"
   status = 200
   force = false

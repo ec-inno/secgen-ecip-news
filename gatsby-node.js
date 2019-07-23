@@ -136,9 +136,10 @@ exports.onCreatePage = ({ page, actions }) => {
 
   deletePage(page);
 
-  if (page.path.match(/^\/initiative/)) {
+  if (page.path.match(/^\/initiatives/)) {
     /* eslint-disable no-param-reassign */
     page.matchPath = '/initiatives/*';
+
     return createPage({
       ...page,
       context: {
