@@ -3,17 +3,46 @@ import { graphql, useStaticQuery } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 
 import getCurrentLanguage from '../utils/getCurrentLanguage';
+import getDefaultLanguage from '../utils/getDefaultLanguage';
 
+import image from '../components/assets/default-image.png';
 import Button from '../components/Button';
 
 const ForumBanner = ({ location }) => {
-  const currentLanguage = getCurrentLanguage(location);
-
-  const icon = {
+  const arrowIcon = {
     shape: 'ui--corner-arrow',
     size: 'xs',
     transform: 'rotate-90',
   };
+
+  if (!location) {
+    const defaultLanguage = getDefaultLanguage();
+    const data = require(`../data/forumbanner/${defaultLanguage}.json`);
+    const { message, button } = data;
+
+    return (
+      <section className="ecl-page-banner ecl-page-banner--image-shade ecl-page-banner--centered ecl-u-mt-l">
+        <div
+          className="ecl-page-banner__image"
+          style={{ backgroundImage: `url('${image}')` }}
+        ></div>
+        <div className="ecl-container ecl-page-banner__container">
+          <div className="ecl-page-banner__content">
+            <h1 className="ecl-page-banner__title">{message}</h1>
+            <Button
+              className="ecl-page-banner__button"
+              variant="call"
+              label={button}
+              icon={arrowIcon}
+              iconPosition="after"
+            />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const currentLanguage = getCurrentLanguage(location);
 
   const data = useStaticQuery(graphql`
     query ForumBanner {
@@ -64,7 +93,7 @@ const ForumBanner = ({ location }) => {
                 className="ecl-page-banner__button"
                 variant="call"
                 label={button}
-                icon={icon}
+                icon={arrowIcon}
                 iconPosition="after"
               />
             </div>
