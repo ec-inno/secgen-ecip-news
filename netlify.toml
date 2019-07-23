@@ -5,4 +5,4 @@
   from = "/initiatives/*"
   to = "/initiatives/:splat"
   status = 200
-  force = false
+  force = true
