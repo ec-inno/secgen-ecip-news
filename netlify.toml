@@ -3,5 +3,5 @@
 # The following redirect is intended for SPAs that handle routing internally.
 [[redirects]]
   from = "/initiatives/*"
-  to = "/initiative/index.html"
+  to = "/initiative/:splat"
   status = 200
