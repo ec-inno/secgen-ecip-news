@@ -3,6 +3,6 @@
 
 [[redirects]]
   from = "/initiatives/*"
-  to = "/initiatives/:splat"
+  to = "/initiatives/index.html"
   status = 200
-  force = true
+  force = false
