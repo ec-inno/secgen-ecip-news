@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import has from 'lodash/has';
+import isArray from 'lodash/isArray';
 
 import getDefaultLanguage from '../utils/getDefaultLanguage';
 
+// Generic
 import Icon from '../components/Icon';
-import Spinner from '../components/Spinner/Spinner';
+// import Spinner from '../components/Spinner/Spinner';
 
-// This is a client-side page in Gatsby, so it will use partials/components without `location` parameter.
+// Sub-components
+import Progress from '../components/Initiative/Progress';
+
+// Partials
+// This is a client-side page in Gatsby => no `location` parameter.
 import TopMessage from '../components/TopMessage';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
@@ -34,18 +41,52 @@ const Initiative = ({ location }) => {
       const fetchData = async () => {
         const result = await axios.get(`${endpoint}/details/${year}/${number}`);
 
+        const rDate = new Date(result.data.initiative.registrationDate);
+        const rDay = rDate.getUTCDate();
+        const rMonth = rDate.getUTCMonth();
+        const rYear = rDate.getUTCFullYear();
+        const dateRegistration = `${rDay}-${rMonth + 1}-${rYear}`;
         console.log('result', result);
 
-        const details = result.data.initiative.initiativeLanguages.initiativeLanguage.find(
-          l => l['@code'] === defaultLanguage
+        console.log(
+          Array.isArray(
+            result.data.initiative.initiativeLanguages.initiativeLanguage
+          )
         );
+
+        let details = {};
+
+        if (
+          has(result, 'data.initiative.initiativeLanguages.initiativeLanguage')
+        ) {
+          // Sometimes `data.initiative.initiativeLanguages.initiativeLanguage` is an array.
+          if (
+            isArray(
+              result.data.initiative.initiativeLanguages.initiativeLanguage
+            )
+          ) {
+            details = result.data.initiative.initiativeLanguages.initiativeLanguage.find(
+              l => l['@code'] === defaultLanguage
+            );
+          }
+
+          // Other times it's a "special" structure, a nested single-value object with 1 translation.
+          if (
+            result.data.initiative.initiativeLanguages.initiativeLanguage[
+              '@code'
+            ] === defaultLanguage
+          ) {
+            details =
+              result.data.initiative.initiativeLanguages.initiativeLanguage;
+          }
+        }
 
         console.log('details', details);
 
         const initiative = {
           title: details.title,
           status: result.data.initiative.status,
-          dateRegistration: result.data.initiative.registrationDate,
+          dateRegistration,
           dateDeadline: 'N/A',
           number: result.data.initiative.registrationNumber,
         };
@@ -112,7 +153,7 @@ const Initiative = ({ location }) => {
             </li>
             <li className="ecl-u-ml-l ecl-page-header__info-item">
               <a
-                href="https://eci.ec.europa.eu/002/public/#/initiative"
+                href="#"
                 target="_blank"
                 type="submit"
                 className="ecl-button ecl-button--call"
@@ -127,6 +168,15 @@ const Initiative = ({ location }) => {
           </ul>
         </div>
       </section>
+      <main className="ecl-u-pv-xl">
+        <div className="ecl-container">
+          <div className="ecl-row">
+            <div className="ecl-col-sm-12 ecl-col-md-4">
+              <Progress />
+            </div>
+          </div>
+        </div>
+      </main>
       <ForumBanner />
       <Footer />
     </>
