@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import plusSign from '../assets/plus.png';
+import plusSign from '../../images/plus.png';
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 
 const New = ({ location }) => {

@@ -5,7 +5,7 @@ import BackgroundImage from 'gatsby-background-image';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 import getDefaultLanguage from '../utils/getDefaultLanguage';
 
-import image from '../components/assets/default-image.png';
+import image from '../images/bg-forum.png';
 import Button from '../components/Button';
 
 const ForumBanner = ({ location }) => {

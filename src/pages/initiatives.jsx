@@ -5,6 +5,7 @@ import TopMessage from '../components/TopMessage';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import ForumBanner from '../components/ForumBanner';
+import Footer from '../components/Footer/FooterLanguage';
 
 const Initiative = ({ location }) => {
   const hash = location.hash || '#';
@@ -22,6 +23,7 @@ const Initiative = ({ location }) => {
       <Menu />
       <div>Details</div>
       <ForumBanner />
+      <Footer />
     </>
   );
 };
