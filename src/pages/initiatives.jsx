@@ -7,6 +7,7 @@ import getDefaultLanguage from '../utils/getDefaultLanguage';
 
 // Generic
 import Icon from '../components/Icon';
+import Message from '../components/Message';
 // import Spinner from '../components/Spinner/Spinner';
 
 // Sub-components
@@ -21,7 +22,16 @@ import ForumBanner from '../components/ForumBanner';
 import Footer from '../components/Footer/FooterLanguage';
 
 const Initiative = ({ location }) => {
+  const messageConfig = {
+    variant: 'warning',
+    icon: {
+      shape: 'notifications--warning',
+      size: 'l',
+    },
+  };
+
   // Because the Initiatives API does not provide a way to filter content by language.
+  // If language-specific content is to be treated: https://webgate.ec.europa.eu/CITnet/jira/browse/INNO-1683
   // We pick the default.
   const defaultLanguage = getDefaultLanguage();
   const hash = location.hash || '#';
@@ -46,13 +56,8 @@ const Initiative = ({ location }) => {
         const rMonth = rDate.getUTCMonth();
         const rYear = rDate.getUTCFullYear();
         const dateRegistration = `${rDay}-${rMonth + 1}-${rYear}`;
-        console.log('result', result);
 
-        console.log(
-          Array.isArray(
-            result.data.initiative.initiativeLanguages.initiativeLanguage
-          )
-        );
+        console.log('result', result);
 
         let details = {};
 
@@ -89,6 +94,7 @@ const Initiative = ({ location }) => {
           dateRegistration,
           dateDeadline: 'N/A',
           number: result.data.initiative.registrationNumber,
+          objectives: details.mainObjectives,
         };
 
         setData(initiative);
@@ -173,6 +179,36 @@ const Initiative = ({ location }) => {
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
               <Progress />
+            </div>
+            <div className="ecl-col-sm-12 ecl-col-md-8">
+              <p className="ecl-u-type-paragraph ecl-u-type-bold">
+                Only a part(s) of this initiative has(ve) been registered.
+                Please read the Commission Decision for the scope of the
+                registered initiative.
+              </p>
+              <Message
+                title="Disclaimer"
+                description={
+                  'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
+                }
+                {...messageConfig}
+              />
+              {initiativeData.objectives ? (
+                <h2 className="ecl-u-type-heading-2">Objectives</h2>
+              ) : (
+                ''
+              )}
+              {initiativeData.objectives
+                ? initiativeData.objectives.split(/\n/).map((line, key) => (
+                    <div
+                      key={key}
+                      className="ecl-paragraph"
+                      dangerouslySetInnerHTML={{
+                        __html: line,
+                      }}
+                    />
+                  ))
+                : ''}
             </div>
           </div>
         </div>
