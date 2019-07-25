@@ -6,14 +6,21 @@
  * @param {String} status The status as passed/received from API.
  */
 const getInitiativeStatusLabel = status => {
+  // Statuses are inconsistent throughout the service.
+  // These taxonomies will change and sometimes overlap as a mental model of the service creators, regular expressions are not enough.
+
   switch (status) {
     case 'OPEN':
       return 'Ongoing';
+
+    case 'REGISTERED':
+      return 'Registered';
 
     case 'SUCCESSFUL':
       return 'Answered';
 
     case 'WITHDRAWN':
+    case 'WITHDRAWN_BY_ORGANISER':
       return 'Withdrawn';
 
     case 'INSUFFICIENT_SUPPORT':
@@ -21,6 +28,12 @@ const getInitiativeStatusLabel = status => {
 
     case 'REJECTED':
       return 'Refused';
+
+    case 'CONDITIONS_NOT_FULFILLED':
+      return 'Conditions not fulfiled';
+
+    case 'ANSWERED':
+      return 'Answered';
 
     default:
       return status.toLowerCase();

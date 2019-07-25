@@ -10,17 +10,26 @@ const InitiativeItem = ({ item }) => {
   if (item.year && item.number) {
     const { year, number } = item;
 
-    // If the initiative is open, we can fetch and display information about from the serivce.
-    if (isOpen) {
-      href = `/initiatives/#open-${year}-${number}`;
-    } else {
-      href = `/initiatives/#obsolete-${year}-${number}`;
+    switch (item.searchEntry['@status']) {
+      case 'OPEN': {
+        href = `/initiatives/#open-${year}-${number}`;
+        break;
+      }
+
+      case 'SUCCESSFUL': {
+        href = `/initiatives/#successful-${year}-${number}`;
+        break;
+      }
+
+      case 'WITHDRAWN':
+      case 'INSUFFICIENT_SUPPORT': {
+        href = `/initiatives/#obsolete-${year}-${number}`;
+        break;
+      }
+
+      default:
+        break;
     }
-    // Otherwise we redirect the user to the site, as the service does not provide the necessary information.
-  } else if (item.searchEntry['@status'] === 'REJECTED') {
-    href += `/initiatives/non-registered`;
-  } else {
-    href += '/welcome';
   }
 
   const supporters =

@@ -4,6 +4,7 @@ import has from 'lodash/has';
 import isArray from 'lodash/isArray';
 
 import getDefaultLanguage from '../utils/getDefaultLanguage';
+import getInitiativeStatusLabel from '../utils/getInitiativeStatusLabel';
 
 // Generic
 import Icon from '../components/Icon';
@@ -11,7 +12,7 @@ import Message from '../components/Message';
 // import Spinner from '../components/Spinner/Spinner';
 
 // Sub-components
-import Progress from '../components/Initiative/Progress';
+// import Progress from '../components/Initiative/Progress';
 
 // Partials
 // This is a client-side page in Gatsby => no `location` parameter.
@@ -55,7 +56,7 @@ const Initiative = ({ location }) => {
         const rDay = rDate.getUTCDate();
         const rMonth = rDate.getUTCMonth();
         const rYear = rDate.getUTCFullYear();
-        const dateRegistration = `${rDay}-${rMonth + 1}-${rYear}`;
+        const dateRegistration = `${rDay}/${rMonth + 1}/${rYear}`;
 
         console.log('result', result);
 
@@ -102,7 +103,9 @@ const Initiative = ({ location }) => {
           dateRegistration,
           dateDeadline: 'N/A',
           number: result.data.initiative.registrationNumber,
+          subjectMatter: details.subjectMatter,
           objectives: details.mainObjectives,
+          legalBase: details.legalBase,
           website: details.website,
           organisers: { reps, subs, members },
         };
@@ -134,7 +137,9 @@ const Initiative = ({ location }) => {
                   className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
                 />
                 Current status:{' '}
-                {initiativeData.status ? initiativeData.status : '...'}
+                {initiativeData.status
+                  ? getInitiativeStatusLabel(initiativeData.status)
+                  : '...'}
               </div>
               <div className="ecl-u-d-flex ecl-u-mt-xs">
                 <Icon
@@ -188,21 +193,40 @@ const Initiative = ({ location }) => {
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              <Progress />
+              {/* <Progress /> */}
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
-              <p className="ecl-u-type-paragraph ecl-u-type-bold">
-                Only a part(s) of this initiative has(ve) been registered.
-                Please read the Commission Decision for the scope of the
-                registered initiative.
-              </p>
-              <Message
-                title="Disclaimer"
-                description={
-                  'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
-                }
-                {...messageConfig}
-              />
+              {initiativeData.status === 'REGISTERED' ? (
+                <>
+                  <p className="ecl-u-type-paragraph ecl-u-type-bold">
+                    Only a part(s) of this initiative has(ve) been registered.
+                    Please read the Commission Decision for the scope of the
+                    registered initiative.
+                  </p>
+                  <Message
+                    title="Disclaimer"
+                    description={
+                      'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
+                    }
+                    {...messageConfig}
+                  />
+                </>
+              ) : (
+                ''
+              )}
+              {initiativeData.subjectMatter ? (
+                <>
+                  <h2 className="ecl-u-type-heading-2">Subject-matter</h2>
+                  <p
+                    className="ecl-u-type-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: initiativeData.subjectMatter,
+                    }}
+                  />
+                </>
+              ) : (
+                ''
+              )}
               {initiativeData.objectives ? (
                 <>
                   <h2 className="ecl-u-type-heading-2">Objectives</h2>
@@ -210,13 +234,29 @@ const Initiative = ({ location }) => {
                     {initiativeData.objectives.split(/\n/).map((line, key) => (
                       <li
                         key={key}
-                        className="ecl-paragraph"
+                        className="ecl-u-type-paragraph"
                         dangerouslySetInnerHTML={{
                           __html: line,
                         }}
                       />
                     ))}
                   </ul>
+                </>
+              ) : (
+                ''
+              )}
+              {initiativeData.legalBase ? (
+                <>
+                  <h2 className="ecl-u-type-heading-2">
+                    Provisions of the Treaties considered relevant by the
+                    organisers
+                  </h2>
+                  <p
+                    className="ecl-u-type-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: initiativeData.legalBase,
+                    }}
+                  />
                 </>
               ) : (
                 ''
