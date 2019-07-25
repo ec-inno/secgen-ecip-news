@@ -88,6 +88,14 @@ const Initiative = ({ location }) => {
 
         console.log('details', details);
 
+        const people = has(result, 'data.initiative.organisers.organiser')
+          ? result.data.initiative.organisers.organiser
+          : [];
+
+        const reps = people.filter(p => p['@role'] === 'R');
+        const subs = people.filter(p => p['@role'] === 'S');
+        const members = people.filter(p => p['@role'] === 'M');
+
         const initiative = {
           title: details.title,
           status: result.data.initiative.status,
@@ -95,6 +103,8 @@ const Initiative = ({ location }) => {
           dateDeadline: 'N/A',
           number: result.data.initiative.registrationNumber,
           objectives: details.mainObjectives,
+          website: details.website,
+          organisers: { reps, subs, members },
         };
 
         setData(initiative);
@@ -194,21 +204,76 @@ const Initiative = ({ location }) => {
                 {...messageConfig}
               />
               {initiativeData.objectives ? (
-                <h2 className="ecl-u-type-heading-2">Objectives</h2>
+                <>
+                  <h2 className="ecl-u-type-heading-2">Objectives</h2>
+                  <ul className="ecl-u-type-paragraph">
+                    {initiativeData.objectives.split(/\n/).map((line, key) => (
+                      <li
+                        key={key}
+                        className="ecl-paragraph"
+                        dangerouslySetInnerHTML={{
+                          __html: line,
+                        }}
+                      />
+                    ))}
+                  </ul>
+                </>
               ) : (
                 ''
               )}
-              {initiativeData.objectives
-                ? initiativeData.objectives.split(/\n/).map((line, key) => (
-                    <div
-                      key={key}
-                      className="ecl-paragraph"
-                      dangerouslySetInnerHTML={{
-                        __html: line,
-                      }}
-                    />
-                  ))
-                : ''}
+              {initiativeData.website ? (
+                <>
+                  <h2 className="ecl-u-type-heading-2">Website</h2>
+                  <p className="ecl-u-type-paragraph">
+                    <a
+                      href={initiativeData.website}
+                      className="ecl-link"
+                      target="_blank"
+                    >
+                      {initiativeData.website}
+                    </a>
+                  </p>
+                </>
+              ) : (
+                ''
+              )}
+              {initiativeData.organisers ? (
+                <>
+                  <h2 className="ecl-u-type-heading-2">
+                    Organisers / Members of citizens' committee:
+                  </h2>
+                  <ul className="ecl-u-type-paragraph">
+                    {has(initiativeData, 'organisers.reps')
+                      ? initiativeData.organisers.reps.map((rep, key) => (
+                          <li key={`r-${key}`}>
+                            Representative: {rep.fullname}
+                            {rep.email ? ` - ${rep.email}` : ''}
+                          </li>
+                        ))
+                      : ''}
+                    {has(initiativeData, 'organisers.subs')
+                      ? initiativeData.organisers.subs.map((sub, key) => (
+                          <li key={`s-${key}`}>
+                            Substitute: {sub.fullname}
+                            {sub.email ? ` - ${sub.email}` : ''}
+                          </li>
+                        ))
+                      : ''}
+                    {has(initiativeData, 'organisers.members') ? (
+                      <li key="m-0">
+                        Members:{' '}
+                        {initiativeData.organisers.members
+                          .map(m => m.fullname)
+                          .join(', ')}
+                      </li>
+                    ) : (
+                      ''
+                    )}
+                  </ul>
+                </>
+              ) : (
+                ''
+              )}
             </div>
           </div>
         </div>
