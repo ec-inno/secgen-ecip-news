@@ -10,15 +10,26 @@ const InitiativeItem = ({ item }) => {
   if (item.year && item.number) {
     const { year, number } = item;
 
-    if (isOpen) {
-      href += `/initiatives/open/details/${year}/${number}`;
-    } else {
-      href += `/initiatives/obsolete/details/${year}/${number}`;
+    switch (item.searchEntry['@status']) {
+      case 'OPEN': {
+        href = `/initiatives/#open-${year}-${number}`;
+        break;
+      }
+
+      case 'SUCCESSFUL': {
+        href = `/initiatives/#successful-${year}-${number}`;
+        break;
+      }
+
+      case 'WITHDRAWN':
+      case 'INSUFFICIENT_SUPPORT': {
+        href = `/initiatives/#obsolete-${year}-${number}`;
+        break;
+      }
+
+      default:
+        break;
     }
-  } else if (item.searchEntry['@status'] === 'REJECTED') {
-    href += `/initiatives/non-registered`;
-  } else {
-    href += '/welcome';
   }
 
   const supporters =
@@ -38,13 +49,7 @@ const InitiativeItem = ({ item }) => {
           // style="background-image: url('media/initiatives/eat_original-en.png');"
         ></div>
         <h1 className="ecl-card__title">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            level="1"
-            href={href}
-            className="ecl-link ecl-link--standalone"
-          >
+          <a level="1" href={href} className="ecl-link ecl-link--standalone">
             <span className="ecl-link__label">{item.searchEntry.title}</span>
           </a>
         </h1>

@@ -2,8 +2,23 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import getCurrentLanguage from '../utils/getCurrentLanguage';
+import getDefaultLanguage from '../utils/getDefaultLanguage';
 
 const SiteName = ({ location }) => {
+  if (!location) {
+    const defaultLanguage = getDefaultLanguage();
+    const data = require(`../data/sitename/${defaultLanguage}.json`);
+    const { european, citizens, initiative } = data;
+
+    return (
+      <div className="ecl-container ecl-u-pb-m ecl-u-type-xl ecl-u-type-bold">
+        <span>{european}</span>
+        <span className="ecl-u-ml-2xs">{citizens}</span>
+        <span className="ecl-u-ml-2xs">{initiative}</span>
+      </div>
+    );
+  }
+
   const currentLanguage = getCurrentLanguage(location);
 
   const data = useStaticQuery(graphql`

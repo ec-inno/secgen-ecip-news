@@ -5,15 +5,16 @@ import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
 import '../components/assets/custom.css';
 
-import SEO from './SEO';
+import SEO from '../components/SEO';
 
-import TopMessage from './TopMessage';
-import Header from './Header';
-import Menu from './Menu';
-import Footer from './Footer/FooterLanguage';
+import TopMessage from '../components/TopMessage';
+import Header from '../components/Header';
+import Menu from '../components/Menu';
+import Footer from '../components/Footer/FooterLanguage';
 
 const Layout = ({ children, location, pageContext }) => {
-  if (pageContext.layout === 'landing') return children;
+  if (pageContext.layout === 'landing' || pageContext.layout === 'dynamic')
+    return children;
 
   return (
     <>

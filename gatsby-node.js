@@ -136,6 +136,19 @@ exports.onCreatePage = ({ page, actions }) => {
 
   deletePage(page);
 
+  if (page.path.match(/^\/initiatives/)) {
+    /* eslint-disable no-param-reassign */
+    page.matchPath = '/initiatives/*';
+
+    return createPage({
+      ...page,
+      context: {
+        ...page.context,
+        layout: 'dynamic',
+      },
+    });
+  }
+
   // There are 2 types of landing pages:
 
   // The language selector, shown in root of the site.
