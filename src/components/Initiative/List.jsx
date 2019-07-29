@@ -96,8 +96,12 @@ const List = ({ location }) => {
     return page;
   }
 
+  const initiativesRegistered = [...initiatives].filter(
+    r => r.searchEntry['@status'] !== 'REJECTED'
+  );
+
   // Do not work with results of the side effect directly.
-  const allInitiatives = [...initiatives];
+  const allInitiatives = [...initiativesRegistered];
 
   const allCount = allInitiatives.length;
   const ongoingCount = allInitiatives.filter(
