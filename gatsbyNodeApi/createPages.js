@@ -4,11 +4,21 @@ const { languages } = require('../languages');
 const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const newsPerPage = 10;
-  const pagesPerLanguage = {};
+  const itemsPerPage = 10;
+  const newsPerLanguage = {};
 
   const result = await graphql(`
-    query getAllNews {
+    query getDrupalContent {
+      allNodeOePage {
+        edges {
+          node {
+            path {
+              alias
+              langcode
+            }
+          }
+        }
+      }
       allNodeOeNews {
         edges {
           node {
@@ -19,31 +29,48 @@ const createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const { allNodeOeNews } = result.data;
-  const newsNodes = allNodeOeNews.edges;
+  const { allNodeOePage, allNodeOeNews } = result.data;
+  const oeNews = allNodeOeNews.edges;
+  const oePages = allNodeOePage.edges;
 
-  // Helps counting content per language for pagination.
-  newsNodes.forEach(({ node }) => {
+  oePages.forEach(async ({ node }) => {
+    const { path: pathauto } = node;
+    const { alias, langcode } = pathauto;
+
+    createPage({
+      // Drupal's pathauto requires that aliases are starting with `/`
+      path: `/${langcode}${alias}`,
+      component: path.resolve('./src/templates/basic-page.jsx'),
+      context: {
+        locale: langcode,
+        alias,
+      },
+    });
+  });
+
+  // Prepare pagination.
+  oeNews.forEach(({ node }) => {
     const langcode = node.id.split('/')[1];
 
-    if (!pagesPerLanguage[langcode]) {
-      pagesPerLanguage[langcode] = [];
+    if (!newsPerLanguage[langcode]) {
+      newsPerLanguage[langcode] = [];
     }
 
-    const nodeExists = pagesPerLanguage[langcode].find(
+    const nodeExists = newsPerLanguage[langcode].find(
       n => n.id === node.id && n.path.langcode === langcode
     );
 
-    if (!nodeExists) pagesPerLanguage[langcode].push(node);
+    if (!nodeExists) newsPerLanguage[langcode].push(node);
   });
 
-  // Create news sections with paginations for each language.
   languages
     .map(l => l.lang)
     .forEach(language => {
-      const items = pagesPerLanguage[language];
       const languageRegex = `//${language}//`;
-      const numPages = items ? Math.ceil(items.length / newsPerPage) : 1;
+
+      // Create news sections with paginations for each language.
+      const items = newsPerLanguage[language];
+      const numPages = items ? Math.ceil(items.length / itemsPerPage) : 1;
 
       /* eslint-disable-next-line compat/compat */
       Array.from({ length: numPages }).forEach((_, i) => {
@@ -51,8 +78,8 @@ const createPages = async ({ graphql, actions }) => {
           path: i === 0 ? `/${language}/news` : `/${language}/news/${i + 1}`,
           component: path.resolve('./src/templates/news-pagination.jsx'),
           context: {
-            limit: newsPerPage,
-            skip: i * newsPerPage,
+            limit: itemsPerPage,
+            skip: i * itemsPerPage,
             numPages,
             currentPage: i + 1,
             locale: language,
@@ -60,14 +87,8 @@ const createPages = async ({ graphql, actions }) => {
           },
         });
       });
-    });
 
-  // Create faq sections with paginations for each language.
-  languages
-    .map(l => l.lang)
-    .forEach(language => {
-      const languageRegex = `//${language}//`;
-
+      // Create FAQ page with sections and sub-items.
       createPage({
         path: `/${language}/faq`,
         component: path.resolve('./src/templates/faq-page.jsx'),
