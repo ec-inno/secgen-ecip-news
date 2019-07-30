@@ -6,7 +6,7 @@ import ForumBanner from '../components/ForumBanner';
 
 const BasicPage = ({ data, location }) => {
   const { inpage_title } = data.file.childBasicpageJson;
-  const { title } = data.nodeOePage;
+  const { title, oe_summary, body } = data.nodeOePage;
 
   return (
     <>
@@ -15,6 +15,14 @@ const BasicPage = ({ data, location }) => {
           <div className="ecl-container">
             <div className="ecl-page-header__title-wrapper">
               <h1 className="ecl-page-header__title">{title}</h1>
+              <p class="ecl-page-header__slogan ecl-u-type-paragraph ecl-u-mt-l">
+                <div
+                  className="ecl-paragraph"
+                  dangerouslySetInnerHTML={{
+                    __html: oe_summary.processed,
+                  }}
+                />
+              </p>
             </div>
           </div>
         </section>
@@ -29,7 +37,14 @@ const BasicPage = ({ data, location }) => {
               </nav>
             </div>
 
-            <div className="ecl-col-12 ecl-col-sm-9">body</div>
+            <div className="ecl-col-12 ecl-col-sm-9">
+              <div
+                className="ecl-paragraph"
+                dangerouslySetInnerHTML={{
+                  __html: body.processed,
+                }}
+              />
+            </div>
           </div>
         </div>
       </main>
@@ -47,6 +62,12 @@ export const query = graphql`
     }
     nodeOePage(path: { alias: { eq: $alias }, langcode: { eq: $locale } }) {
       title
+      oe_summary {
+        processed
+      }
+      body {
+        processed
+      }
     }
   }
 `;
