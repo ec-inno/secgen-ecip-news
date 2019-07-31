@@ -36,7 +36,15 @@ const Progress = () => {
     );
   }
 
-  const dateRegistered = getDateFormatted(initiative.registrationDate);
+  // Prepare information about some fields.
+  const registrationDate = initiative.registrationDate
+    ? getDateFormatted(initiative.registrationDate)
+    : '';
+
+  const collectionDeadline =
+    initiative.searchEntry && initiative.searchEntry.deadlineForCollection
+      ? getDateFormatted(initiative.searchEntry.deadlineForCollection)
+      : '';
 
   switch (initiative.status) {
     case 'REGISTERED': {
@@ -46,19 +54,24 @@ const Progress = () => {
           <ol className="ecl-timeline" data-ecl-timeline="true">
             <li className="ecl-timeline__item ecl-timeline__item--current">
               <div className="ecl-timeline__label">Registered</div>
-              {dateRegistered ? (
-                <div className="ecl-timeline__content">{dateRegistered}</div>
+              {registrationDate ? (
+                <div className="ecl-timeline__content">{registrationDate}</div>
               ) : (
                 ''
               )}
             </li>
-            {initiative.searchEntry['@status'] === 'OPEN' ? (
+            {collectionDeadline ? (
+              <li className="ecl-timeline__item">
+                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__content">
+                  Deadline: {collectionDeadline}
+                </div>
+              </li>
+            ) : (
               <li className="ecl-timeline__item">
                 <div className="ecl-timeline__label">Collection ongoing</div>
                 <div className="ecl-timeline__content">Current status</div>
               </li>
-            ) : (
-              ''
             )}
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
               <div className="ecl-timeline__label">Collection closed</div>
@@ -84,15 +97,25 @@ const Progress = () => {
           <ol className="ecl-timeline" data-ecl-timeline="true">
             <li className="ecl-timeline__item">
               <div className="ecl-timeline__label">Registered</div>
-              {dateRegistered ? (
-                <div className="ecl-timeline__content">{dateRegistered}</div>
+              {registrationDate ? (
+                <div className="ecl-timeline__content">{registrationDate}</div>
               ) : (
                 ''
               )}
             </li>
-            <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Collection ongoing</div>
-            </li>
+            {collectionDeadline ? (
+              <li className="ecl-timeline__item">
+                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__content">
+                  Deadline: {collectionDeadline}
+                </div>
+              </li>
+            ) : (
+              <li className="ecl-timeline__item">
+                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__content">Current status</div>
+              </li>
+            )}
             <li className="ecl-timeline__item ecl-timeline__item--current">
               <div className="ecl-timeline__label">Collection closed</div>
               <div className="ecl-timeline__content">Current status</div>
@@ -118,15 +141,25 @@ const Progress = () => {
           <ol className="ecl-timeline" data-ecl-timeline="true">
             <li className="ecl-timeline__item">
               <div className="ecl-timeline__label">Registered</div>
-              {dateRegistered ? (
-                <div className="ecl-timeline__content">{dateRegistered}</div>
+              {registrationDate ? (
+                <div className="ecl-timeline__content">{registrationDate}</div>
               ) : (
                 ''
               )}
             </li>
-            <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Collection ongoing</div>
-            </li>
+            {collectionDeadline ? (
+              <li className="ecl-timeline__item">
+                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__content">
+                  Deadline: {collectionDeadline}
+                </div>
+              </li>
+            ) : (
+              <li className="ecl-timeline__item">
+                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__content">Current status</div>
+              </li>
+            )}
             <li className="ecl-timeline__item">
               <div className="ecl-timeline__label">Collection closed</div>
             </li>
@@ -152,15 +185,25 @@ const Progress = () => {
           <ol className="ecl-timeline" data-ecl-timeline="true">
             <li className="ecl-timeline__item">
               <div className="ecl-timeline__label">Registered</div>
-              {dateRegistered ? (
-                <div className="ecl-timeline__content">{dateRegistered}</div>
+              {registrationDate ? (
+                <div className="ecl-timeline__content">{registrationDate}</div>
               ) : (
                 ''
               )}
             </li>
-            <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Collection ongoing</div>
-            </li>
+            {collectionDeadline ? (
+              <li className="ecl-timeline__item">
+                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__content">
+                  Deadline: {collectionDeadline}
+                </div>
+              </li>
+            ) : (
+              <li className="ecl-timeline__item">
+                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__content">Current status</div>
+              </li>
+            )}
             <li className="ecl-timeline__item">
               <div className="ecl-timeline__label">Collection closed</div>
             </li>
@@ -186,15 +229,25 @@ const Progress = () => {
           <ol className="ecl-timeline" data-ecl-timeline="true">
             <li className="ecl-timeline__item">
               <div className="ecl-timeline__label">Registered</div>
-              {dateRegistered ? (
-                <div className="ecl-timeline__content">{dateRegistered}</div>
+              {registrationDate ? (
+                <div className="ecl-timeline__content">{registrationDate}</div>
               ) : (
                 ''
               )}
             </li>
-            <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Collection ongoing</div>
-            </li>
+            {collectionDeadline ? (
+              <li className="ecl-timeline__item">
+                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__content">
+                  Deadline: {collectionDeadline}
+                </div>
+              </li>
+            ) : (
+              <li className="ecl-timeline__item">
+                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__content">Current status</div>
+              </li>
+            )}
             <li className="ecl-timeline__item">
               <div className="ecl-timeline__label">Collection closed</div>
             </li>
