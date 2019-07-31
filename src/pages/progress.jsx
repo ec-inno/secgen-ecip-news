@@ -103,11 +103,14 @@ const Progress = () => {
                 ''
               )}
             </li>
+            <li className="ecl-timeline__item">
+              <div className="ecl-timeline__label">Collection ongoing</div>
+            </li>
             {collectionDeadline ? (
               <li className="ecl-timeline__item">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__label">Collection closed</div>
                 <div className="ecl-timeline__content">
-                  Deadline: {collectionDeadline}
+                  {collectionDeadline}
                 </div>
               </li>
             ) : (
@@ -116,10 +119,6 @@ const Progress = () => {
                 <div className="ecl-timeline__content">Current status</div>
               </li>
             )}
-            <li className="ecl-timeline__item ecl-timeline__item--current">
-              <div className="ecl-timeline__label">Collection closed</div>
-              <div className="ecl-timeline__content">Current status</div>
-            </li>
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
               <div className="ecl-timeline__label">Verification</div>
             </li>
