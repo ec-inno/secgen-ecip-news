@@ -19,6 +19,9 @@ const getInitiativeStatusLabel = status => {
     case 'SUCCESSFUL':
       return 'Answered';
 
+    case 'COLLECTION_CLOSED':
+      return 'Collection closed';
+
     case 'WITHDRAWN':
     case 'WITHDRAWN_BY_ORGANISER':
       return 'Withdrawn';

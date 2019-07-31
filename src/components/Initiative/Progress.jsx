@@ -51,14 +51,19 @@ const Progress = ({ initiative }) => {
         <>
           <h3 className="ecl-u-type-heading-3">Initiative progress </h3>
           <ol className="ecl-timeline" data-ecl-timeline="true">
-            <li className="ecl-timeline__item ecl-timeline__item--current">
-              <div className="ecl-timeline__label">Registered</div>
-              {registrationDate ? (
-                <div className="ecl-timeline__content">{registrationDate}</div>
-              ) : (
-                ''
-              )}
-            </li>
+            {registrationDate ? (
+              <li className="ecl-timeline__item ecl-timeline__item--current">
+                <div className="ecl-timeline__label">Registered</div>
+                <div className="ecl-timeline__content">
+                  Deadline: {registrationDate}
+                </div>
+              </li>
+            ) : (
+              <li className="ecl-timeline__item ecl-timeline__item--current">
+                <div className="ecl-timeline__label">Registered</div>
+                <div className="ecl-timeline__content">Current status</div>
+              </li>
+            )}
             {collectionDeadline ? (
               <li className="ecl-timeline__item">
                 <div className="ecl-timeline__label">Collection ongoing</div>
@@ -67,9 +72,8 @@ const Progress = ({ initiative }) => {
                 </div>
               </li>
             ) : (
-              <li className="ecl-timeline__item">
+              <li className="ecl-timeline__item ecl-timeline__item--disabled">
                 <div className="ecl-timeline__label">Collection ongoing</div>
-                <div className="ecl-timeline__content">Current status</div>
               </li>
             )}
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
@@ -106,15 +110,15 @@ const Progress = ({ initiative }) => {
               <div className="ecl-timeline__label">Collection ongoing</div>
             </li>
             {collectionDeadline ? (
-              <li className="ecl-timeline__item">
+              <li className="ecl-timeline__item ecl-timeline__item--current">
                 <div className="ecl-timeline__label">Collection closed</div>
                 <div className="ecl-timeline__content">
                   {collectionDeadline}
                 </div>
               </li>
             ) : (
-              <li className="ecl-timeline__item">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+              <li className="ecl-timeline__item ecl-timeline__item--current">
+                <div className="ecl-timeline__label">Collection closed</div>
                 <div className="ecl-timeline__content">Current status</div>
               </li>
             )}
@@ -149,13 +153,12 @@ const Progress = ({ initiative }) => {
               <li className="ecl-timeline__item">
                 <div className="ecl-timeline__label">Collection ongoing</div>
                 <div className="ecl-timeline__content">
-                  Deadline: {collectionDeadline}
+                  {collectionDeadline}
                 </div>
               </li>
             ) : (
               <li className="ecl-timeline__item">
                 <div className="ecl-timeline__label">Collection ongoing</div>
-                <div className="ecl-timeline__content">Current status</div>
               </li>
             )}
             <li className="ecl-timeline__item">
@@ -193,13 +196,12 @@ const Progress = ({ initiative }) => {
               <li className="ecl-timeline__item">
                 <div className="ecl-timeline__label">Collection ongoing</div>
                 <div className="ecl-timeline__content">
-                  Deadline: {collectionDeadline}
+                  {collectionDeadline}
                 </div>
               </li>
             ) : (
               <li className="ecl-timeline__item">
                 <div className="ecl-timeline__label">Collection ongoing</div>
-                <div className="ecl-timeline__content">Current status</div>
               </li>
             )}
             <li className="ecl-timeline__item">
@@ -237,13 +239,12 @@ const Progress = ({ initiative }) => {
               <li className="ecl-timeline__item">
                 <div className="ecl-timeline__label">Collection ongoing</div>
                 <div className="ecl-timeline__content">
-                  Deadline: {collectionDeadline}
+                  {collectionDeadline}
                 </div>
               </li>
             ) : (
               <li className="ecl-timeline__item">
                 <div className="ecl-timeline__label">Collection ongoing</div>
-                <div className="ecl-timeline__content">Current status</div>
               </li>
             )}
             <li className="ecl-timeline__item">
