@@ -57,7 +57,7 @@ const Initiative = ({ location }) => {
         // On netlify.com, which is test environment, use a function.
         if (location.origin && location.origin.includes('netlify.com')) {
           const result = await axios.get(
-            `${location.origin}/.netlify/functions/initiative`
+            `${location.origin}/.netlify/functions/initiative?year=${year}&number=${number}`
           );
           initiativeData = result.data.initiative;
         }
