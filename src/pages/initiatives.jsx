@@ -3,6 +3,7 @@ import axios from 'axios';
 import has from 'lodash/has';
 import isArray from 'lodash/isArray';
 
+import getDateFormatted from '../utils/getDateFormatted';
 import getDefaultLanguage from '../utils/getDefaultLanguage';
 import getInitiativeStatusLabel from '../utils/getInitiativeStatusLabel';
 
@@ -12,7 +13,7 @@ import Message from '../components/Message';
 // import Spinner from '../components/Spinner/Spinner';
 
 // Sub-components
-// import Progress from '../components/Initiative/Progress';
+import Progress from '../components/Initiative/Progress';
 
 // Partials
 // This is a client-side page in Gatsby => no `location` parameter.
@@ -52,11 +53,9 @@ const Initiative = ({ location }) => {
       const fetchData = async () => {
         const result = await axios.get(`${endpoint}/details/${year}/${number}`);
 
-        const rDate = new Date(result.data.initiative.registrationDate);
-        const rDay = rDate.getUTCDate();
-        const rMonth = rDate.getUTCMonth();
-        const rYear = rDate.getUTCFullYear();
-        const dateRegistration = `${rDay}/${rMonth + 1}/${rYear}`;
+        const dateRegistration = has(result, 'data.initiative.registrationDate')
+          ? getDateFormatted(result.data.initiative.registrationDate)
+          : '';
 
         console.log('result', result);
 
@@ -193,7 +192,7 @@ const Initiative = ({ location }) => {
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              {/* <Progress /> */}
+              <Progress initiative={initiativeData} />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
               {initiativeData.status === 'REGISTERED' ? (
