@@ -57,9 +57,24 @@ They are currently 2:
 
 Both Drone CI and Netlify environments need to know about `SITE_BASE_URL`, `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD`.
 
-## Request proxy
+## Getting initiatives
 
-Because Initiatives' REST API has no-cors policy, a request proxy function is used to get initiatives when website is hosted on netlify.com.
+Because Initiatives' REST API has no-cors policy the project is using [Netlify functions](https://www.netlify.com/docs/functions/) in order to fetch and display initiatives' information server-side through serverless functions when site is hosted on netlfy.com domain.
+
+The functions are stored in `src/api` folder and there is a command to work with them locally:
+
+```sh
+yarn serve:api
+```
+
+This will provide the following endpoints:
+
+- `http://localhost:9000/initiatives` for all initiatives (list initiatives)
+- `http://localhost:9000/initiative` for details of a single initiave, use query string parameters to select an initiative, i.e. `/initiative?year=2018&number=000004`
+
+These endpoints are to be used only when developing the serverless functions.
+
+When developing the website in overall, the production service (`http://ec.europa.eu/citizens-initiative`) is used with [Gatsby proxy](https://www.gatsbyjs.org/docs/api-proxy/).
 
 ## Content updates
 

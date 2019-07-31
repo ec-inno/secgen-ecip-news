@@ -5,6 +5,7 @@ import isArray from 'lodash/isArray';
 
 import getDateFormatted from '../utils/getDateFormatted';
 import getDefaultLanguage from '../utils/getDefaultLanguage';
+import getInitiative from '../utils/getInitiative';
 import getInitiativeStatusLabel from '../utils/getInitiativeStatusLabel';
 
 // Generic
@@ -51,45 +52,49 @@ const Initiative = ({ location }) => {
 
     useEffect(() => {
       const fetchData = async () => {
-        const result = await axios.get(`${endpoint}/details/${year}/${number}`);
+        let initiativeData = {};
 
-        const dateRegistration = has(result, 'data.initiative.registrationDate')
-          ? getDateFormatted(result.data.initiative.registrationDate)
+        // On netlify.com, which is test environment, use a function.
+        if (location.origin && location.origin.includes('netlify.com')) {
+          const result = await axios.get(
+            `${location.origin}/.netlify/functions/initiative`
+          );
+          initiativeData = result.data.initiative;
+        }
+        // Otherwise make requests as usual.
+        else {
+          initiativeData = await getInitiative({ endpoint, year, number });
+        }
+
+        const dateRegistration = has(initiativeData, 'registrationDate')
+          ? getDateFormatted(initiativeData.registrationDate)
           : '';
 
-        console.log('result', result);
+        console.log('initiativeData', initiativeData);
 
         let details = {};
 
-        if (
-          has(result, 'data.initiative.initiativeLanguages.initiativeLanguage')
-        ) {
-          // Sometimes `data.initiative.initiativeLanguages.initiativeLanguage` is an array.
-          if (
-            isArray(
-              result.data.initiative.initiativeLanguages.initiativeLanguage
-            )
-          ) {
-            details = result.data.initiative.initiativeLanguages.initiativeLanguage.find(
+        if (has(initiativeData, 'initiativeLanguages.initiativeLanguage')) {
+          // Sometimes `initiativeLanguages.initiativeLanguage` is an array.
+          if (isArray(initiativeData.initiativeLanguages.initiativeLanguage)) {
+            details = initiativeData.initiativeLanguages.initiativeLanguage.find(
               l => l['@code'] === defaultLanguage
             );
           }
 
           // Other times it's a "special" structure, a nested single-value object with 1 translation.
           if (
-            result.data.initiative.initiativeLanguages.initiativeLanguage[
-              '@code'
-            ] === defaultLanguage
+            initiativeData.initiativeLanguages.initiativeLanguage['@code'] ===
+            defaultLanguage
           ) {
-            details =
-              result.data.initiative.initiativeLanguages.initiativeLanguage;
+            details = initiativeData.initiativeLanguages.initiativeLanguage;
           }
         }
 
         console.log('details', details);
 
-        const people = has(result, 'data.initiative.organisers.organiser')
-          ? result.data.initiative.organisers.organiser
+        const people = has(initiativeData, 'organisers.organiser')
+          ? initiativeData.organisers.organiser
           : [];
 
         const reps = people.filter(p => p['@role'] === 'R');
@@ -98,10 +103,10 @@ const Initiative = ({ location }) => {
 
         const initiative = {
           title: details.title,
-          status: result.data.initiative.status,
+          status: initiativeData.status,
           dateRegistration,
-          dateDeadline: 'N/A',
-          number: result.data.initiative.registrationNumber,
+          dateDeadline: 'N/A', // deadlineForCollection available from searchEntry is missing in details endpoint.
+          number: initiativeData.registrationNumber,
           subjectMatter: details.subjectMatter,
           objectives: details.mainObjectives,
           legalBase: details.legalBase,
