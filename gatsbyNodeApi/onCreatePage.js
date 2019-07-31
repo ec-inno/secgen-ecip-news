@@ -31,6 +31,17 @@ const onCreatePage = ({ page, actions }) => {
     });
   }
 
+  // Progress component in isolation.
+  if (page.path === '/progress') {
+    return createPage({
+      ...page,
+      context: {
+        ...page.context,
+        layout: 'progress',
+      },
+    });
+  }
+
   // Pages for each language.
   return languages.map(language => {
     const { lang } = language;

@@ -1,0 +1,2388 @@
+[
+  {
+    "year": "2019",
+    "number": "000013",
+    "status": "REGISTERED",
+    "registrationDate": "2019-07-26T08:50:15+02:00",
+    "registrationNumber": "ECI(2019)000013",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000013",
+      "title": "Mettons fin à l'ère du plastique en Europe",
+      "languages": { "language": { "@code": "fr", "@original": "true" } }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000012",
+    "status": "REGISTERED",
+    "registrationDate": "2019-07-25T08:36:03+02:00",
+    "registrationNumber": "ECI(2019)000012",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000012",
+      "title": "Grow scientific progress: crops matter!",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000011",
+    "status": "REGISTERED",
+    "registrationDate": "2019-07-22T08:47:36+02:00",
+    "registrationNumber": "ECI(2019)000011",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000011",
+      "title": "A price for carbon to fight climate change",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "nl" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "pt" },
+          { "@code": "sv" },
+          { "@code": "fr" },
+          { "@code": "ro" },
+          { "@code": "pl" },
+          { "@code": "fi" },
+          { "@code": "ga" },
+          { "@code": "it" },
+          { "@code": "mt" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "hr" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000010",
+    "status": "REGISTERED",
+    "registrationDate": "2019-05-27T11:11:30+02:00",
+    "registrationNumber": "ECI(2019)000010",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000010",
+      "title": "Rettet die Bienen! Schutz der Artenvielfalt und Verbesserung der Lebensräume von Insekten in Europa",
+      "languages": {
+        "language": [
+          { "@code": "de", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "fr" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "ro" },
+          { "@code": "pt" },
+          { "@code": "pl" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "ga" },
+          { "@code": "hr" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "sv" },
+          { "@code": "sl" },
+          { "@code": "sk" },
+          { "@code": "hu" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000009",
+    "status": "REGISTERED",
+    "registrationDate": "2019-05-10T10:09:02+02:00",
+    "registrationNumber": "ECI(2019)000009",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000009",
+      "title": "Ending the aviation fuel tax exemption in Europe",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "hr" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "nl" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "hu" },
+          { "@code": "ga" },
+          { "@code": "it" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "es" },
+          { "@code": "sv" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000008",
+    "status": "REGISTERED",
+    "registrationDate": "2019-05-08T10:46:57+02:00",
+    "registrationNumber": "ECI(2019)000008",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000008",
+      "title": "PRO-NUTRISCORE",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "de" },
+          { "@code": "es" },
+          { "@code": "fi" },
+          { "@code": "hr" },
+          { "@code": "hu" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" },
+          { "@code": "el" },
+          { "@code": "da" },
+          { "@code": "et" },
+          { "@code": "ga" },
+          { "@code": "en" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000007",
+    "status": "REGISTERED",
+    "registrationDate": "2019-05-07T11:28:12+02:00",
+    "registrationNumber": "ECI(2019)000007",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000007",
+      "title": "Cohesion policy for the equality of the regions and sustainability of the regional cultures",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "ro" },
+          { "@code": "hu" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "ga" },
+          { "@code": "hr" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000006",
+    "status": "REGISTERED",
+    "registrationDate": "2019-05-06T10:02:38+02:00",
+    "registrationNumber": "ECI(2019)000006",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000006",
+      "title": "The fast, fair and effective solution to climate change.",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "ga" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "hr" },
+          { "@code": "hu" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000005",
+    "status": "REGISTERED",
+    "registrationDate": "2019-04-08T11:09:24+02:00",
+    "registrationNumber": "ECI(2019)000005",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000005",
+      "title": "Respect de l'Etat de droit au sein de l'Union européenne",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "ga" },
+          { "@code": "hr" },
+          { "@code": "hu" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000004",
+    "status": "REGISTERED",
+    "registrationDate": "2019-04-01T09:17:37+02:00",
+    "registrationNumber": "ECI(2019)000004",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000004",
+      "title": "#NewRightsNow - Renforcer les droits des travailleurs \"ubérisés\"",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "de" },
+          { "@code": "es" },
+          { "@code": "fi" },
+          { "@code": "it" },
+          { "@code": "el" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "et" },
+          { "@code": "ga" },
+          { "@code": "hr" },
+          { "@code": "hu" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000003",
+    "status": "REGISTERED",
+    "registrationDate": "2019-03-18T08:56:23+01:00",
+    "registrationNumber": "ECI(2019)000003",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000003",
+      "title": "Housing for All",
+      "languages": {
+        "language": [
+          { "@code": "de", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "en" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "ga" },
+          { "@code": "hr" },
+          { "@code": "hu" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000002",
+    "status": "REGISTERED",
+    "registrationDate": "2019-03-04T08:53:04+01:00",
+    "registrationNumber": "ECI(2019)000002",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000002",
+      "title": "Europe CARES - Inclusive Quality Education for Children with Disabilities",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "year": "2019",
+    "number": "000001",
+    "status": "REGISTERED",
+    "registrationDate": "2019-02-20T09:38:31+01:00",
+    "registrationNumber": "ECI(2019)000001",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2019)000001",
+      "title": "Let's demand smarter vaping regulation!",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "ga" },
+          { "@code": "hu" },
+          { "@code": "hr" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2018",
+    "number": "000007",
+    "status": "REGISTERED",
+    "registrationDate": "2018-11-12T09:02:19+01:00",
+    "registrationNumber": "ECI(2018)000007",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2018)000007",
+      "title": "Mandatory food labelling Non-Vegetarian / Vegetarian / Vegan",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "ga" },
+          { "@code": "hr" },
+          { "@code": "hu" },
+          { "@code": "it" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" },
+          { "@code": "lt" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2018",
+    "number": "000006",
+    "status": "REGISTERED",
+    "registrationDate": "2018-10-02T08:59:17+02:00",
+    "registrationNumber": "ECI(2018)000006",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2018)000006",
+      "title": "Eat ORIGINal! Unmask your food",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "it" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "hr" },
+          { "@code": "hu" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" },
+          { "@code": "ga" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2018",
+    "number": "000005",
+    "status": "REGISTERED",
+    "registrationDate": "2018-09-27T08:38:54+02:00",
+    "registrationNumber": "ECI(2018)000005",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2018)000005",
+      "title": "STOP FRAUD and abuse of EU FUNDS - by better control of decisions, implementation and penalties",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "hu" },
+          { "@code": "de" },
+          { "@code": "fr" },
+          { "@code": "nl" },
+          { "@code": "es" },
+          { "@code": "pl" },
+          { "@code": "sv" },
+          { "@code": "ga" },
+          { "@code": "bg" },
+          { "@code": "hr" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "el" },
+          { "@code": "it" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2018",
+    "number": "000004",
+    "status": "REGISTERED",
+    "registrationDate": "2018-09-11T09:48:02+02:00",
+    "registrationNumber": "ECI(2018)000004",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2018)000004",
+      "title": "End the Cage Age",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "hu" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "hr" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" },
+          { "@code": "ga" },
+          { "@code": "mt" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2018",
+    "number": "000003",
+    "status": "COLLECTION_CLOSED",
+    "registrationDate": "2018-07-23T09:29:32+02:00",
+    "registrationNumber": "ECI(2018)000003",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2018)000003",
+      "title": "Permanent European Union Citizenship",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "hr" },
+          { "@code": "cs" },
+          { "@code": "de" },
+          { "@code": "es" },
+          { "@code": "fr" },
+          { "@code": "pl" },
+          { "@code": "ro" },
+          { "@code": "pt" },
+          { "@code": "sl" },
+          { "@code": "sk" },
+          { "@code": "nl" },
+          { "@code": "fi" },
+          { "@code": "el" },
+          { "@code": "hu" },
+          { "@code": "it" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "da" },
+          { "@code": "et" },
+          { "@code": "sv" },
+          { "@code": "ga" }
+        ]
+      },
+      "deadlineForCollection": "2020-07-24T23:59:59+02:00"
+    }
+  },
+  {
+    "year": "2018",
+    "number": "000002",
+    "status": "COLLECTION_CLOSED",
+    "registrationDate": "2018-07-19T11:22:02+02:00",
+    "registrationNumber": "ECI(2018)000002",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2018)000002",
+      "title": "Stop starvation for 8% of the European population!",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "sv" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "pl" },
+          { "@code": "cs" },
+          { "@code": "hr" },
+          { "@code": "pt" }
+        ]
+      },
+      "deadlineForCollection": "2020-07-20T23:59:59+02:00"
+    }
+  },
+  {
+    "year": "2017",
+    "number": "000007",
+    "status": "COLLECTION_CLOSED",
+    "registrationDate": "2017-06-12T09:08:39+02:00",
+    "registrationNumber": "ECI(2017)000007",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2017)000007",
+      "title": "Stop Extremism",
+      "languages": {
+        "language": [
+          { "@code": "de", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "es" },
+          { "@code": "it" },
+          { "@code": "fr" },
+          { "@code": "pl" },
+          { "@code": "da" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "hu" },
+          { "@code": "cs" },
+          { "@code": "bg" },
+          { "@code": "el" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "hr" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "nl" },
+          { "@code": "mt" },
+          { "@code": "pt" },
+          { "@code": "sl" },
+          { "@code": "sv" }
+        ]
+      },
+      "deadlineForCollection": "2021-06-13T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2017",
+    "number": "000004",
+    "status": "COLLECTION_CLOSED",
+    "registrationDate": "2017-04-03T10:57:12+02:00",
+    "registrationNumber": "ECI(2017)000004",
+    "searchEntry": {
+      "@status": "OPEN",
+      "registrationNumber": "ECI(2017)000004",
+      "title": "Minority SafePack – one million signatures for diversity in Europe",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "de" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "cs" },
+          { "@code": "et" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "pl" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "hr" },
+          { "@code": "fr" },
+          { "@code": "hu" },
+          { "@code": "ga" }
+        ]
+      },
+      "deadlineForCollection": "2021-04-04T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2017",
+    "number": "000002",
+    "status": "ANSWERED",
+    "registrationDate": "2017-01-25T13:57:19+01:00",
+    "registrationNumber": "ECI(2017)000002",
+    "searchEntry": {
+      "@status": "SUCCESSFUL",
+      "registrationNumber": "ECI(2017)000002",
+      "title": "Ban glyphosate and protect people and the environment from toxic pesticides",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "es" },
+          { "@code": "de" },
+          { "@code": "fr" },
+          { "@code": "pl" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "el" },
+          { "@code": "sv" },
+          { "@code": "da" },
+          { "@code": "pt" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "hr" },
+          { "@code": "ro" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "sk" },
+          { "@code": "fi" },
+          { "@code": "sl" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000007",
+    "status": "ANSWERED",
+    "registrationDate": "2012-06-22T11:46:48+02:00",
+    "registrationNumber": "ECI(2012)000007",
+    "searchEntry": {
+      "@status": "SUCCESSFUL",
+      "registrationNumber": "ECI(2012)000007",
+      "title": "Stop vivisection",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "it" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "da" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "ga" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "el" },
+          { "@code": "hu" },
+          { "@code": "mt" },
+          { "@code": "cs" },
+          { "@code": "hr" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000005",
+    "status": "ANSWERED",
+    "registrationDate": "2012-05-11T16:04:23+02:00",
+    "registrationNumber": "ECI(2012)000005",
+    "searchEntry": {
+      "@status": "SUCCESSFUL",
+      "registrationNumber": "ECI(2012)000005",
+      "title": "Uno di noi",
+      "languages": {
+        "language": [
+          { "@code": "it", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "es" },
+          { "@code": "ro" },
+          { "@code": "pt" },
+          { "@code": "lt" },
+          { "@code": "hu" },
+          { "@code": "sl" },
+          { "@code": "pl" },
+          { "@code": "el" },
+          { "@code": "da" },
+          { "@code": "lv" },
+          { "@code": "cs" },
+          { "@code": "sk" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "et" },
+          { "@code": "nl" },
+          { "@code": "bg" },
+          { "@code": "mt" },
+          { "@code": "hr" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000003",
+    "status": "ANSWERED",
+    "registrationDate": "2012-05-10T19:16:30+02:00",
+    "registrationNumber": "ECI(2012)000003",
+    "searchEntry": {
+      "@status": "SUCCESSFUL",
+      "registrationNumber": "ECI(2012)000003",
+      "title": "Water and sanitation are a human right!  Water is a public good, not a commodity!",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "nl" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "es" },
+          { "@code": "it" },
+          { "@code": "sv" },
+          { "@code": "ro" },
+          { "@code": "cs" },
+          { "@code": "bg" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "ga" },
+          { "@code": "hu" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "hr" }
+        ]
+      }
+    }
+  },
+  {
+    "year": "2017",
+    "number": "000008",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2017-07-10T10:29:18+02:00",
+    "registrationNumber": "ECI(2017)000008",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2017)000008",
+      "title": "STOP TTIP",
+      "languages": { "language": { "@code": "en", "@original": "true" } },
+      "withdrawnOn": "2018-07-09T12:38:34+02:00"
+    }
+  },
+  {
+    "year": "2016",
+    "number": "000001",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2016-09-02T11:54:24+02:00",
+    "registrationNumber": "ECI(2016)000001",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2016)000001",
+      "title": "Let'sfly2Europe: Flüchtlinge legalen und sicheren Zugang nach Europa ermöglichen!",
+      "languages": {
+        "language": [
+          { "@code": "de", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "fr" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "cs" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "pl" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "hr" }
+        ]
+      },
+      "withdrawnOn": "2016-12-03T14:23:02+01:00"
+    }
+  },
+  {
+    "year": "2015",
+    "number": "000005",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2015-11-30T13:58:30+01:00",
+    "registrationNumber": "ECI(2015)000005",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2015)000005",
+      "title": "Wake up Europe ! Agir pour préserver le projet démocratique européen",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "de" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "cs" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "pl" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "hr" }
+        ]
+      },
+      "withdrawnOn": "2016-06-23T12:06:33+02:00"
+    }
+  },
+  {
+    "year": "2015",
+    "number": "000004",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2015-11-30T13:52:36+01:00",
+    "registrationNumber": "ECI(2015)000004",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2015)000004",
+      "title": "Vi vill att WHO:s rekommendationer efterföljs. Cannabis ska bli avkriminaliserat med reglering.",
+      "languages": { "language": { "@code": "sv", "@original": "true" } },
+      "withdrawnOn": "2016-03-09T00:00:00+01:00"
+    }
+  },
+  {
+    "year": "2015",
+    "number": "000001",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2015-02-09T18:46:41+01:00",
+    "registrationNumber": "ECI(2015)000001",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2015)000001",
+      "title": "\"A l'écoute\"",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "es" },
+          { "@code": "it" },
+          { "@code": "en" },
+          { "@code": "de" }
+        ]
+      },
+      "withdrawnOn": "2015-10-22T20:23:16+02:00"
+    }
+  },
+  {
+    "year": "2014",
+    "number": "000002",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2014-03-07T14:46:51+01:00",
+    "registrationNumber": "ECI(2014)000002",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2014)000002",
+      "title": "NEW DEAL 4 EUROPE - FOR A EUROPEAN SPECIAL PLAN FOR SUSTAINABLE DEVELOPMENT AND EMPLOYMENT",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "it" },
+          { "@code": "fr" },
+          { "@code": "es" },
+          { "@code": "de" },
+          { "@code": "nl" },
+          { "@code": "cs" },
+          { "@code": "pt" },
+          { "@code": "el" },
+          { "@code": "sl" },
+          { "@code": "hr" },
+          { "@code": "fi" },
+          { "@code": "hu" },
+          { "@code": "ro" }
+        ]
+      },
+      "withdrawnOn": "2015-01-30T09:18:42+01:00"
+    }
+  },
+  {
+    "year": "2014",
+    "number": "000003",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2014-03-24T18:12:31+01:00",
+    "registrationNumber": "ECI(2014)000003",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2014)000003",
+      "title": "MOVEUROPE",
+      "languages": { "language": { "@code": "en", "@original": "true" } },
+      "withdrawnOn": "2014-06-26T14:55:10+02:00"
+    }
+  },
+  {
+    "year": "2013",
+    "number": "000005",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2013-06-17T18:44:55+02:00",
+    "registrationNumber": "ECI(2013)000005",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2013)000005",
+      "title": "Teach for Youth -- Upgrade to Erasmus 2.0",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "de" },
+          { "@code": "pl" },
+          { "@code": "fr" }
+        ]
+      },
+      "withdrawnOn": "2014-06-15T10:52:26+02:00"
+    }
+  },
+  {
+    "year": "2014",
+    "number": "000001",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2014-02-03T17:52:10+01:00",
+    "registrationNumber": "ECI(2014)000001",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2014)000001",
+      "title": "Turn me Off!",
+      "languages": { "language": { "@code": "en", "@original": "true" } },
+      "withdrawnOn": "2014-04-22T04:51:51+02:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000013",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2012-10-05T17:39:51+02:00",
+    "registrationNumber": "ECI(2012)000013",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2012)000013",
+      "title": "European Initiative for Media Pluralism",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "fr" },
+          { "@code": "it" },
+          { "@code": "ro" },
+          { "@code": "nl" },
+          { "@code": "hu" },
+          { "@code": "es" },
+          { "@code": "bg" },
+          { "@code": "de" },
+          { "@code": "pt" }
+        ]
+      },
+      "withdrawnOn": "2013-08-20T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000015",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2012-11-19T16:59:01+01:00",
+    "registrationNumber": "ECI(2012)000015",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2012)000015",
+      "title": "Kündigung Personenfreizügigkeit Schweiz",
+      "languages": {
+        "language": [{ "@code": "de", "@original": "true" }, { "@code": "en" }]
+      },
+      "withdrawnOn": "2013-02-04T22:28:43+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000006",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2012-05-11T16:08:38+02:00",
+    "registrationNumber": "ECI(2012)000006",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2012)000006",
+      "title": "Let me vote",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "en" },
+          { "@code": "nl" },
+          { "@code": "de" },
+          { "@code": "es" },
+          { "@code": "it" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "pl" },
+          { "@code": "sv" },
+          { "@code": "el" },
+          { "@code": "pt" }
+        ]
+      },
+      "withdrawnOn": "2013-01-29T05:19:32+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000012",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2012-10-01T17:35:17+02:00",
+    "registrationNumber": "ECI(2012)000012",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2012)000012",
+      "title": "End Ecocide in Europe: A Citizens’ Initiative to give the Earth Rights",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "lv" },
+          { "@code": "fr" },
+          { "@code": "nl" },
+          { "@code": "hu" },
+          { "@code": "de" },
+          { "@code": "et" }
+        ]
+      },
+      "withdrawnOn": "2013-01-21T08:54:21+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000002",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2012-05-10T19:04:41+02:00",
+    "registrationNumber": "ECI(2012)000002",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2012)000002",
+      "title": "Single Communication Tariff Act",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "fr" },
+          { "@code": "it" },
+          { "@code": "es" },
+          { "@code": "de" },
+          { "@code": "bg" },
+          { "@code": "fi" },
+          { "@code": "ga" },
+          { "@code": "ro" },
+          { "@code": "cs" },
+          { "@code": "hu" },
+          { "@code": "da" },
+          { "@code": "sv" },
+          { "@code": "sl" },
+          { "@code": "nl" },
+          { "@code": "pt" },
+          { "@code": "lv" },
+          { "@code": "pl" },
+          { "@code": "el" },
+          { "@code": "et" },
+          { "@code": "lt" },
+          { "@code": "sk" },
+          { "@code": "mt" }
+        ]
+      },
+      "withdrawnOn": "2012-12-03T11:12:14+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000004",
+    "status": "WITHDRAWN_BY_ORGANISER",
+    "registrationDate": "2012-05-10T19:17:55+02:00",
+    "registrationNumber": "ECI(2012)000004",
+    "searchEntry": {
+      "@status": "WITHDRAWN",
+      "registrationNumber": "ECI(2012)000004",
+      "title": "EU Directive on Dairy Cow Welfare",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "fr" },
+          { "@code": "lv" },
+          { "@code": "es" },
+          { "@code": "cs" },
+          { "@code": "el" },
+          { "@code": "sk" },
+          { "@code": "it" },
+          { "@code": "da" },
+          { "@code": "sv" },
+          { "@code": "nl" },
+          { "@code": "fi" },
+          { "@code": "de" },
+          { "@code": "pl" }
+        ]
+      },
+      "withdrawnOn": "2012-07-20T21:00:24+02:00"
+    }
+  },
+  {
+    "year": "2018",
+    "number": "000001",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2018-02-15T11:52:28+01:00",
+    "registrationNumber": "ECI(2018)000001",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2018)000001",
+      "title": "We are a welcoming Europe, let us help!",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "hr" },
+          { "@code": "el" },
+          { "@code": "fi" },
+          { "@code": "sk" },
+          { "@code": "it" },
+          { "@code": "es" },
+          { "@code": "fr" },
+          { "@code": "sv" },
+          { "@code": "nl" },
+          { "@code": "ro" },
+          { "@code": "sl" },
+          { "@code": "hu" },
+          { "@code": "pt" },
+          { "@code": "de" }
+        ]
+      },
+      "closedOn": "2019-02-15T23:55:55+01:00"
+    }
+  },
+  {
+    "year": "2017",
+    "number": "000006",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2017-05-22T11:12:46+02:00",
+    "registrationNumber": "ECI(2017)000006",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2017)000006",
+      "title": "Let us reduce the wage and economic differences that tear the EU apart!",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "cs" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "pl" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "hr" }
+        ]
+      },
+      "closedOn": "2018-05-22T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2017",
+    "number": "000005",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2017-05-02T10:53:15+02:00",
+    "registrationNumber": "ECI(2017)000005",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2017)000005",
+      "title": "Retaining European Citizenship",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "cs" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "pl" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "hr" }
+        ]
+      },
+      "closedOn": "2018-05-02T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2017",
+    "number": "000003",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2017-03-27T12:28:12+02:00",
+    "registrationNumber": "ECI(2017)000003",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2017)000003",
+      "title": "EU Citizenship for Europeans: United in Diversity in Spite of jus soli and jus sanguinis",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "sv" },
+          { "@code": "hu" },
+          { "@code": "pl" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "hr" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" }
+        ]
+      },
+      "closedOn": "2018-03-27T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2017",
+    "number": "000001",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2017-01-11T10:05:54+01:00",
+    "registrationNumber": "ECI(2017)000001",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2017)000001",
+      "title": "European Free Movement Instrument",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "ga" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "cs" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "pl" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "hr" }
+        ]
+      },
+      "closedOn": "2018-01-11T00:00:00+01:00"
+    }
+  },
+  {
+    "year": "2016",
+    "number": "000003",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2016-10-06T10:23:50+02:00",
+    "registrationNumber": "ECI(2016)000003",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2016)000003",
+      "title": "More than education - Shaping active and responsible citizens",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "es" },
+          { "@code": "it" },
+          { "@code": "ro" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "pt" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "cs" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "sk" },
+          { "@code": "bg" },
+          { "@code": "sl" },
+          { "@code": "hr" }
+        ]
+      },
+      "closedOn": "2017-10-06T23:55:55+02:00"
+    }
+  },
+  {
+    "year": "2015",
+    "number": "000003",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2015-10-19T13:15:19+02:00",
+    "registrationNumber": "ECI(2015)000003",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2015)000003",
+      "title": "STOP PLASTIC IN THE SEA",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "de" },
+          { "@code": "it" },
+          { "@code": "es" },
+          { "@code": "nl" },
+          { "@code": "da" },
+          { "@code": "pt" },
+          { "@code": "fi" },
+          { "@code": "ro" },
+          { "@code": "pl" },
+          { "@code": "mt" },
+          { "@code": "sv" },
+          { "@code": "cs" },
+          { "@code": "el" },
+          { "@code": "et" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "hr" },
+          { "@code": "hu" }
+        ]
+      },
+      "closedOn": "2016-10-19T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2016",
+    "number": "000002",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2016-09-12T11:19:32+02:00",
+    "registrationNumber": "ECI(2016)000002",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2016)000002",
+      "title": "People4Soil: sign the citizens' initiative to save the soils of Europe!",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "de" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "hr" },
+          { "@code": "hu" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" }
+        ]
+      },
+      "closedOn": "2017-09-12T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2015",
+    "number": "000006",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2015-12-11T12:10:23+01:00",
+    "registrationNumber": "ECI(2015)000006",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2015)000006",
+      "title": "Mum, Dad & Kids - European Citizens' Initiative to protect Marriage and Family",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "hu" },
+          { "@code": "it" },
+          { "@code": "bg" },
+          { "@code": "de" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "sv" },
+          { "@code": "el" },
+          { "@code": "nl" },
+          { "@code": "hr" },
+          { "@code": "ga" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "mt" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "es" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "pl" }
+        ]
+      },
+      "closedOn": "2016-12-11T00:00:00+01:00"
+    }
+  },
+  {
+    "year": "2014",
+    "number": "000005",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2014-12-19T14:00:49+01:00",
+    "registrationNumber": "ECI(2014)000005",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2014)000005",
+      "title": "Vite l'Europe sociale ! Pour une coopération renforcée des États membres contre la pauvreté en Europe.",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "de" },
+          { "@code": "ro" },
+          { "@code": "it" },
+          { "@code": "lt" },
+          { "@code": "el" },
+          { "@code": "mt" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "hu" },
+          { "@code": "hr" },
+          { "@code": "fi" },
+          { "@code": "et" },
+          { "@code": "es" },
+          { "@code": "lv" }
+        ]
+      },
+      "closedOn": "2015-12-19T00:00:55+01:00"
+    }
+  },
+  {
+    "year": "2015",
+    "number": "000002",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2015-09-14T14:13:58+02:00",
+    "registrationNumber": "ECI(2015)000002",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2015)000002",
+      "title": "Fair Transport Europe – equal treatment for all transport workers",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "cs" },
+          { "@code": "et" },
+          { "@code": "hu" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "mt" },
+          { "@code": "pl" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "hr" }
+        ]
+      },
+      "closedOn": "2016-09-14T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2013",
+    "number": "000008",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2013-11-20T10:40:57+01:00",
+    "registrationNumber": "ECI(2013)000008",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2013)000008",
+      "title": "Weed like to talk",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "de" },
+          { "@code": "hr" },
+          { "@code": "it" },
+          { "@code": "fr" },
+          { "@code": "sl" },
+          { "@code": "bg" },
+          { "@code": "ro" },
+          { "@code": "mt" },
+          { "@code": "pt" },
+          { "@code": "el" },
+          { "@code": "cs" },
+          { "@code": "sv" }
+        ]
+      },
+      "closedOn": "2014-11-20T00:00:00+01:00"
+    }
+  },
+  {
+    "year": "2014",
+    "number": "000004",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2014-10-01T15:40:43+02:00",
+    "registrationNumber": "ECI(2014)000004",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2014)000004",
+      "title": "Pour une Europe plus juste, neutralisons les sociétés écrans",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "de" },
+          { "@code": "en" },
+          { "@code": "es" },
+          { "@code": "it" },
+          { "@code": "ro" },
+          { "@code": "bg" },
+          { "@code": "hr" },
+          { "@code": "da" },
+          { "@code": "el" },
+          { "@code": "fi" },
+          { "@code": "lt" },
+          { "@code": "lv" },
+          { "@code": "hu" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "mt" },
+          { "@code": "sv" },
+          { "@code": "et" },
+          { "@code": "cs" }
+        ]
+      },
+      "closedOn": "2015-10-01T00:00:58+02:00"
+    }
+  },
+  {
+    "year": "2013",
+    "number": "000007",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2013-08-19T17:52:10+02:00",
+    "registrationNumber": "ECI(2013)000007",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2013)000007",
+      "title": "European Initiative for Media Pluralism",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "it" },
+          { "@code": "hu" },
+          { "@code": "ro" },
+          { "@code": "fr" },
+          { "@code": "es" },
+          { "@code": "bg" },
+          { "@code": "nl" },
+          { "@code": "de" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "el" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "hr" },
+          { "@code": "cs" },
+          { "@code": "sl" }
+        ]
+      },
+      "closedOn": "2014-08-19T12:00:00+02:00"
+    }
+  },
+  {
+    "year": "2013",
+    "number": "000009",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2013-11-25T18:17:43+01:00",
+    "registrationNumber": "ECI(2013)000009",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2013)000009",
+      "title": "European Free Vaping Initiative",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "hu" },
+          { "@code": "de" },
+          { "@code": "fr" },
+          { "@code": "pl" },
+          { "@code": "fi" },
+          { "@code": "et" }
+        ]
+      },
+      "closedOn": "2014-11-25T00:00:00+01:00"
+    }
+  },
+  {
+    "year": "2013",
+    "number": "000006",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2013-08-06T13:10:20+02:00",
+    "registrationNumber": "ECI(2013)000006",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2013)000006",
+      "title": "Η ΕΚΠΑΙΔΕΥΣΗ ΑΞΙΖΕΙ!ΜΗΝ ΤΗΝ ΥΠΟΛΟΓΙΖΕΙΣ ΣΤΟ ΕΛΛΕΙΜΜΑ!",
+      "languages": {
+        "language": [
+          { "@code": "el", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "es" },
+          { "@code": "pt" },
+          { "@code": "it" },
+          { "@code": "sv" }
+        ]
+      },
+      "closedOn": "2014-08-06T01:00:00+02:00"
+    }
+  },
+  {
+    "year": "2013",
+    "number": "000004",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2013-06-10T15:52:44+02:00",
+    "registrationNumber": "ECI(2013)000004",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2013)000004",
+      "title": "ACT 4 Growth",
+      "languages": { "language": { "@code": "en", "@original": "true" } },
+      "closedOn": "2014-06-10T00:00:00+02:00"
+    }
+  },
+  {
+    "year": "2013",
+    "number": "000003",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2013-01-28T19:51:09+01:00",
+    "registrationNumber": "ECI(2013)000003",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2013)000003",
+      "title": "Let me vote",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "de" },
+          { "@code": "it" },
+          { "@code": "es" },
+          { "@code": "el" },
+          { "@code": "nl" },
+          { "@code": "en" },
+          { "@code": "lv" },
+          { "@code": "pt" },
+          { "@code": "sv" },
+          { "@code": "lt" }
+        ]
+      },
+      "closedOn": "2014-01-28T00:00:00+01:00"
+    }
+  },
+  {
+    "year": "2013",
+    "number": "000002",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2013-01-21T17:28:22+01:00",
+    "registrationNumber": "ECI(2013)000002",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2013)000002",
+      "title": "End Ecocide in Europe: A Citizens’ Initiative to give the Earth Rights",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "et" },
+          { "@code": "de" },
+          { "@code": "nl" },
+          { "@code": "fr" },
+          { "@code": "pl" },
+          { "@code": "lt" },
+          { "@code": "ro" },
+          { "@code": "el" },
+          { "@code": "mt" },
+          { "@code": "pt" },
+          { "@code": "hu" },
+          { "@code": "es" },
+          { "@code": "it" },
+          { "@code": "sl" },
+          { "@code": "lv" },
+          { "@code": "da" },
+          { "@code": "bg" },
+          { "@code": "sv" },
+          { "@code": "fi" },
+          { "@code": "sk" },
+          { "@code": "cs" },
+          { "@code": "hr" }
+        ]
+      },
+      "closedOn": "2014-01-21T00:00:00+01:00"
+    }
+  },
+  {
+    "year": "2013",
+    "number": "000001",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2013-01-14T17:39:23+01:00",
+    "registrationNumber": "ECI(2013)000001",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2013)000001",
+      "title": "Unconditional Basic Income (UBI) - Exploring a pathway towards emancipatory welfare conditions in the EU",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "de" },
+          { "@code": "hu" },
+          { "@code": "fr" },
+          { "@code": "bg" },
+          { "@code": "sv" },
+          { "@code": "it" },
+          { "@code": "pt" },
+          { "@code": "sl" },
+          { "@code": "da" },
+          { "@code": "nl" },
+          { "@code": "fi" },
+          { "@code": "es" },
+          { "@code": "cs" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "el" },
+          { "@code": "pl" },
+          { "@code": "hr" },
+          { "@code": "et" }
+        ]
+      },
+      "closedOn": "2014-01-14T23:50:58+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000016",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2012-12-03T17:28:24+01:00",
+    "registrationNumber": "ECI(2012)000016",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2012)000016",
+      "title": "Single Communication Tariff Act",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "cs" },
+          { "@code": "da" },
+          { "@code": "nl" },
+          { "@code": "et" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "hu" },
+          { "@code": "ga" },
+          { "@code": "it" },
+          { "@code": "lv" },
+          { "@code": "lt" },
+          { "@code": "pl" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "es" },
+          { "@code": "sv" },
+          { "@code": "mt" },
+          { "@code": "pt" },
+          { "@code": "el" }
+        ]
+      },
+      "closedOn": "2013-12-03T23:59:58+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000014",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2012-11-13T10:22:38+01:00",
+    "registrationNumber": "ECI(2012)000014",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2012)000014",
+      "title": "“30 km/h - making the streets liveable!\"",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "bg" },
+          { "@code": "de" },
+          { "@code": "es" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "it" },
+          { "@code": "nl" },
+          { "@code": "pt" },
+          { "@code": "sv" },
+          { "@code": "sl" },
+          { "@code": "pl" },
+          { "@code": "el" },
+          { "@code": "cs" },
+          { "@code": "hu" },
+          { "@code": "et" }
+        ]
+      },
+      "closedOn": "2013-11-13T00:00:00+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000008",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2012-07-16T17:09:09+02:00",
+    "registrationNumber": "ECI(2012)000008",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2012)000008",
+      "title": "High Quality European Education for All",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "fr" },
+          { "@code": "it" },
+          { "@code": "pl" },
+          { "@code": "es" },
+          { "@code": "de" },
+          { "@code": "hu" },
+          { "@code": "ga" },
+          { "@code": "el" },
+          { "@code": "et" },
+          { "@code": "sv" },
+          { "@code": "ro" },
+          { "@code": "lt" },
+          { "@code": "pt" },
+          { "@code": "nl" },
+          { "@code": "bg" },
+          { "@code": "da" },
+          { "@code": "mt" },
+          { "@code": "fi" },
+          { "@code": "sl" },
+          { "@code": "lv" },
+          { "@code": "cs" },
+          { "@code": "sk" },
+          { "@code": "hr" }
+        ]
+      },
+      "closedOn": "2013-11-01T23:59:58+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000001",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2012-05-09T12:17:48+02:00",
+    "registrationNumber": "ECI(2012)000001",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2012)000001",
+      "title": "Fraternité 2020 - Mobility. Progress. Europe.",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "fr" },
+          { "@code": "de" },
+          { "@code": "cs" },
+          { "@code": "it" },
+          { "@code": "bg" },
+          { "@code": "da" },
+          { "@code": "es" },
+          { "@code": "lt" },
+          { "@code": "hu" },
+          { "@code": "nl" },
+          { "@code": "pl" },
+          { "@code": "pt" },
+          { "@code": "ro" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "fi" },
+          { "@code": "sv" },
+          { "@code": "mt" },
+          { "@code": "el" },
+          { "@code": "ga" },
+          { "@code": "et" },
+          { "@code": "lv" },
+          { "@code": "hr" }
+        ]
+      },
+      "closedOn": "2013-11-01T23:59:58+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000009",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2012-07-16T17:11:49+02:00",
+    "registrationNumber": "ECI(2012)000009",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2012)000009",
+      "title": "Pour une gestion responsable des déchets, contre les incinérateurs",
+      "languages": {
+        "language": [
+          { "@code": "fr", "@original": "true" },
+          { "@code": "en" },
+          { "@code": "de" }
+        ]
+      },
+      "closedOn": "2013-11-01T23:59:58+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000010",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2012-08-08T17:38:36+02:00",
+    "registrationNumber": "ECI(2012)000010",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2012)000010",
+      "title": "Suspension of the EU Climate & Energy Package.",
+      "languages": {
+        "language": [
+          { "@code": "en", "@original": "true" },
+          { "@code": "cs" },
+          { "@code": "pl" },
+          { "@code": "hu" },
+          { "@code": "et" },
+          { "@code": "it" },
+          { "@code": "de" },
+          { "@code": "da" },
+          { "@code": "lv" },
+          { "@code": "bg" },
+          { "@code": "es" },
+          { "@code": "fi" },
+          { "@code": "fr" },
+          { "@code": "lt" },
+          { "@code": "nl" },
+          { "@code": "pt" },
+          { "@code": "sk" },
+          { "@code": "sl" },
+          { "@code": "sv" },
+          { "@code": "ro" },
+          { "@code": "el" },
+          { "@code": "mt" }
+        ]
+      },
+      "closedOn": "2013-11-01T00:00:00+01:00"
+    }
+  },
+  {
+    "year": "2012",
+    "number": "000011",
+    "status": "CONDITIONS_NOT_FULFILLED",
+    "registrationDate": "2012-08-27T17:10:10+02:00",
+    "registrationNumber": "ECI(2012)000011",
+    "searchEntry": {
+      "@status": "INSUFFICIENT_SUPPORT",
+      "registrationNumber": "ECI(2012)000011",
+      "title": "Central public online collection platform for the European Citizen Initiative",
+      "languages": { "language": { "@code": "en", "@original": "true" } },
+      "closedOn": "2013-11-01T00:00:00+01:00"
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "DERECHO DE LA UNIÓN, DERECHOS DE LAS MINORÍAS Y DEMOCRATIZACIÓN DE LAS INSTITUCIONES ESPAÑOLAS",
+      "languages": { "language": { "@code": "es", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Stopping trade with Israeli settlements operating in the Occupied Palestinian Territory",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "EU wide referendum whether the European Citizens want the United Kingdom to remain or to leave!",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "British friends-stay with us in EU",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Stop Brexit",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Vite l'Europe sociale ! Pour un nouveau critère européen contre la pauvreté",
+      "languages": { "language": { "@code": "fr", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Ethics for Animals and Kids",
+      "languages": { "language": { "@code": "de", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "A new EU legal norm, self-abolition of the European Parliament and its structures, must be immediately adopted.",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "The Supreme Legislative & Executive Power in the EU must be the EU Referendum as an expression of direct democracy.",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Our concern for insufficient help to pet and stray animals in the European Union",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Right to Lifelong Care:  Leading a life of dignity and independence is a fundamental right!",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "To hold an immediate EU Referendum on public confidence in European Government’s (EG) competence.",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Stop cruelty for animals",
+      "languages": { "language": { "@code": "it", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Ensemble pour une Europe sans prostitution légalisée",
+      "languages": { "language": { "@code": "fr", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Enforcing selfdetermination Human Right in the EU",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Unconditional Basic Income",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "ONE MILLION SIGNATURES FOR “A EUROPE OF SOLIDARITY”",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Création d'une Banque publique européenne axée sur le développement social, écologique et solidaire",
+      "languages": { "language": { "@code": "fr", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Abolición en Europa de la tauromaquia y la utilización de toros en fiestas de crueldad y tortura por diversión.",
+      "languages": { "language": { "@code": "es", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Fortalecimiento de la participación ciudadana en la toma de decisiones sobre la soberanía colectiva",
+      "languages": { "language": { "@code": "es", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "Recommend singing the European Anthem in Esperanto",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  },
+  {
+    "searchEntry": {
+      "@status": "REJECTED",
+      "title": "My voice against nuclear power",
+      "languages": { "language": { "@code": "en", "@original": "true" } }
+    }
+  }
+]
