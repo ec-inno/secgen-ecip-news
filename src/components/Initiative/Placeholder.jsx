@@ -19,7 +19,9 @@ const Placeholder = ({ location }) => {
 
   return (
     <div className="loading-opacity">
-      <p className="ecl-paragraph">Fetching data about initiatives ...</p>
+      <p className="ecl-u-type-paragraph">
+        Fetching data about initiatives ...
+      </p>
       <div className="ecl-row ecl-u-mt-l">
         <div className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none">
           <article className="ecl-card">

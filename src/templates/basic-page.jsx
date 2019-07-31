@@ -17,7 +17,7 @@ const BasicPage = ({ data, location }) => {
               <h1 className="ecl-page-header__title">{title}</h1>
               <p class="ecl-page-header__slogan ecl-u-type-paragraph ecl-u-mt-l">
                 <div
-                  className="ecl-paragraph"
+                  className="ecl-u-type-paragraph"
                   dangerouslySetInnerHTML={{
                     __html: oe_summary.processed,
                   }}
@@ -39,7 +39,7 @@ const BasicPage = ({ data, location }) => {
 
             <div className="ecl-col-12 ecl-col-sm-9">
               <div
-                className="ecl-paragraph"
+                className="ecl-u-type-paragraph"
                 dangerouslySetInnerHTML={{
                   __html: body.processed,
                 }}

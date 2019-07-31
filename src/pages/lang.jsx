@@ -54,7 +54,7 @@ const Homepage = ({ data, location }) => {
                       {oe_teaser ? (
                         <div
                           key={id}
-                          className="ecl-paragraph"
+                          className="ecl-u-type-paragraph"
                           dangerouslySetInnerHTML={{
                             __html: oe_teaser.processed,
                           }}
