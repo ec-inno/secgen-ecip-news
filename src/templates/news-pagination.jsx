@@ -97,7 +97,7 @@ const News = ({ data, pageContext }) => {
                     {oe_summary ? (
                       <div
                         key={i}
-                        className="ecl-paragraph ecl-u-type-paragraph"
+                        className="ecl-u-type-paragraph ecl-u-type-paragraph"
                         dangerouslySetInnerHTML={{
                           __html: oe_summary.processed,
                         }}
