@@ -16,7 +16,8 @@
       {
         "variant": "standalone",
         "label": "Site map",
-        "href": "#"
+        "href": "/bg/sitemap",
+        "internal": "true"
       },
       {
         "variant": "standalone",
