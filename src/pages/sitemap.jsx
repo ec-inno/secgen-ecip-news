@@ -43,24 +43,6 @@ const Sitemap = ({ location }) => {
                   >
                     How to start
                   </Link>
-                  <ul class="ecl-unordered-list">
-                    <li class="ecl-unordered-list__item">
-                      <Link
-                        to={`/${currentLanguage}/how-to-start/prepare-system`}
-                        className="ecl-link ecl-link--standalone"
-                      >
-                        Prepare your online collection system
-                      </Link>
-                    </li>
-                    <li class="ecl-unordered-list__item">
-                      <Link
-                        to={`/${currentLanguage}/how-to-start/competences`}
-                        className="ecl-link ecl-link--standalone"
-                      >
-                        Can your idea be a citizens' initiative?
-                      </Link>
-                    </li>
-                  </ul>
                 </li>
                 <li class="ecl-unordered-list__item">
                   <Link
