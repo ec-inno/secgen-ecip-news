@@ -5,12 +5,13 @@
       {
         "variant": "standalone",
         "label": "Communication material",
-        "href": "#"
+        "href": "/it/communication-material",
+        "internal": "true"
       },
       {
         "variant": "standalone",
         "label": "FAQ",
-        "href": "/en/faq",
+        "href": "/it/faq",
         "internal": "true"
       },
       {
@@ -22,7 +23,8 @@
       {
         "variant": "standalone",
         "label": "Contact",
-        "href": "#"
+        "href": "/it/contact",
+        "internal": "true"
       },
       {
         "variant": "standalone",
