@@ -1,4 +1,6 @@
 const path = require('path');
+const has = require('lodash/has');
+
 const { languages, defaultLangKey } = require('../languages');
 
 const createPages = async ({ graphql, actions }) => {
@@ -6,7 +8,6 @@ const createPages = async ({ graphql, actions }) => {
 
   const itemsPerPage = 10;
   const newsPerLanguage = {};
-  const basicPagesPerLanguage = {};
 
   const result = await graphql(`
     query getDrupalContent {
@@ -35,84 +36,55 @@ const createPages = async ({ graphql, actions }) => {
   const oeNews = allNodeOeNews.edges;
   const oePages = allNodeOePage.edges;
 
-  // Prepare information about page nodes and their translations.
-  oePages.forEach(({ node }) => {
-    const langcode = node.id.split('/')[1];
+  // We'll start off the default (English) language.
+  const basicPages = oePages.filter(({ node }) =>
+    node.id.includes(defaultLangKey)
+  );
 
-    if (!basicPagesPerLanguage[langcode]) {
-      basicPagesPerLanguage[langcode] = [];
-    }
+  const otherLanguages = languages.map(l => l.lang);
+  // Remove default language from the list.
+  otherLanguages.splice(otherLanguages.indexOf(defaultLangKey), 1);
 
-    const nodeExists = basicPagesPerLanguage[langcode].find(
-      n => n.id === node.id && n.path.langcode === langcode
-    );
-
-    // Source plugin will create nodes which are not Drupal content and we don't need these.
-    // For this reason, double-check the language from API is node's language, if it's not, it's a source plugin content.
-    const isActualNode = node.path.langcode === langcode;
-
-    if (!nodeExists && isActualNode) basicPagesPerLanguage[langcode].push(node);
-  });
-
-  // For each item of the default language (English)
-  const basicPages = basicPagesPerLanguage[defaultLangKey];
-
-  // Create page for the default language and available translations.
-  // When a translation is not available, fallback to English.
-  basicPages.forEach(node => {
+  basicPages.forEach(({ node }) => {
     const { path: pathauto, id: nodeId } = node;
-    const { alias: aliasDefault, langcode: langcodeDefault } = pathauto;
+    const { alias: aliasDefault, langcode: languageDefault } = pathauto;
     const uid = nodeId.split('/')[2];
 
-    // Create page for default language.
+    // Create a page for the default language.
     createPage({
-      path: `/${langcodeDefault}${aliasDefault}`,
+      path: `/${languageDefault}${aliasDefault}`,
       component: path.resolve('./src/templates/basic-page.jsx'),
       context: {
-        locale: langcodeDefault,
+        locale: languageDefault,
         alias: aliasDefault,
       },
     });
 
-    // Create pages for the other languages.
-    const otherLanguages = languages.map(l => l.lang);
-    // Remove default language from the list.
-    otherLanguages.splice(otherLanguages.indexOf(defaultLangKey), 1);
-
     otherLanguages.forEach(language => {
-      let alias = aliasDefault;
-      let locale = langcodeDefault;
-      let pagePath = `/${language}${aliasDefault}`;
-
-      const translation = basicPagesPerLanguage[language].find(n =>
-        n.id.includes(uid)
+      // Try to find a translation.
+      const translation = oePages.find(
+        ({ node: oePage }) =>
+          oePage.id.includes(`${language}/${uid}`) &&
+          has(oePage, 'path.langcode') &&
+          oePage.path.langcode === language
       );
 
-      if (translation) {
-        const { path: pathTranslation } = translation;
-        const {
-          alias: aliasTranslation,
-          langcode: localeTranslation,
-        } = pathTranslation;
+      // Respect translation's alias if there is one.
+      const alias =
+        translation && has(translation, 'path.alias')
+          ? translation.path.alias
+          : aliasDefault;
 
-        alias = aliasTranslation;
-        locale = localeTranslation;
-        pagePath = `/${localeTranslation}${aliasTranslation}`;
-      }
-      // Create a "placeholder" in the given `language` path and default alias.
-      // Passing `langcodeDefault` to fallback to default language for content.
-      else {
-        alias = aliasDefault;
-        locale = langcodeDefault;
-        pagePath = `/${language}${aliasDefault}`;
-      }
+      // Fallback to default language for the content.
+      const locale = translation ? language : languageDefault;
 
-      // Create the page for the non-default language.
       createPage({
-        path: pagePath,
+        path: `/${language}${alias}`,
         component: path.resolve('./src/templates/basic-page.jsx'),
         context: {
           locale,
+          // If translation has a different path than original language, language switcher won't land user to translation.
+          // It's unlikely, but it's worth noting we respect paths from Drupal even if that would cause issues in Gatsby.
           alias,
         },
       });
