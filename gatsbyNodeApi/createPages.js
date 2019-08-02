@@ -38,7 +38,7 @@ const createPages = async ({ graphql, actions }) => {
 
   // We'll start off the default (English) language.
   const basicPages = oePages.filter(({ node }) =>
-    node.id.includes(defaultLangKey)
+    node.id.includes(`/${defaultLangKey}/`)
   );
 
   const otherLanguages = languages.map(l => l.lang);
