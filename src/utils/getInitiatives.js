@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 
 const getInitiatives = async (
   endpoint = 'https://ec.europa.eu/citizens-initiative/services/initiative'
@@ -30,4 +30,4 @@ const getInitiatives = async (
   return initiatives;
 };
 
-export default getInitiatives;
+module.exports = getInitiatives;

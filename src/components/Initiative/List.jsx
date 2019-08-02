@@ -16,10 +16,18 @@ const OPEN = 'OPEN';
 const SUCCESSFUL = 'SUCCESSFUL';
 
 const List = ({ location }) => {
-  const endpoint =
+  // Scenario when online: either a proxy or production.
+  let endpoint =
     process.env.NODE_ENV === 'development'
       ? '/initiative'
       : 'https://ec.europa.eu/citizens-initiative/services/initiative';
+
+  // When offline, requires that you have running local server with cached data.
+  // Refer to /docs/InitiativesAPI.md for more information.
+  endpoint = process.env.OFFLINE ? 'http://localhost:4000' : endpoint;
+  endpoint = 'http://localhost:4000';
+
+  console.log(process.env);
 
   const page = [];
   const itemsPerRow = 3;
