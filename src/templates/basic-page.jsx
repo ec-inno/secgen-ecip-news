@@ -1,12 +1,42 @@
-import React, { Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import slugify from 'slugify';
+
+import addSlugs from '../utils/addSlugs';
 
 import ForumBanner from '../components/ForumBanner';
 
 const BasicPage = ({ data, location }) => {
   const { inpage_title } = data.file.childBasicpageJson;
   const { title, oe_summary, body } = data.nodeOePage;
+
+  const [bodyProcessed, setBody] = useState('');
+  const [inpageItems, setInpageItems] = useState('');
+
+  useEffect(() => {
+    const processData = async () => {
+      const processed = await addSlugs(body.processed);
+      setBody(processed);
+
+      const regex = new RegExp(/<h2[^>]*id=["'](.*?)["']>(.*?)<\/h2>/gi);
+      const headings = processed.match(regex);
+      // Global flag is wanted but the stateful nature of the regex - not.
+      // @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/lastIndex
+      regex.lastIndex = 0;
+      const results = {};
+
+      for (let item in headings) {
+        const parts = regex.exec(headings[item]);
+        regex.lastIndex = 0;
+
+        // 1 is the id attribute value and 2 is the contents of the tag.
+        results[parts[1]] = parts[2];
+      }
+
+      setInpageItems(results);
+    };
+
+    processData();
+  }, []);
 
   return (
     <>
@@ -15,8 +45,8 @@ const BasicPage = ({ data, location }) => {
           <div className="ecl-container">
             <div className="ecl-page-header__title-wrapper">
               <h1 className="ecl-page-header__title">{title}</h1>
-              <p class="ecl-page-header__slogan ecl-u-type-paragraph ecl-u-mt-l">
-                <div
+              <p className="ecl-page-header__slogan ecl-u-type-paragraph ecl-u-mt-l">
+                <p
                   className="ecl-u-type-paragraph"
                   dangerouslySetInnerHTML={{
                     __html: oe_summary.processed,
@@ -35,13 +65,32 @@ const BasicPage = ({ data, location }) => {
                   {inpage_title}
                 </div>
               </nav>
+              <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
+                {inpageItems
+                  ? Object.keys(inpageItems).map((heading, key) => {
+                      return (
+                        <li
+                          key={key}
+                          className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
+                        >
+                          <a
+                            href={`#${heading}`}
+                            className="ecl-link ecl-link--standalone ecl-u-d-block"
+                          >
+                            {inpageItems[heading]}
+                          </a>
+                        </li>
+                      );
+                    })
+                  : ''}
+              </ul>
             </div>
 
             <div className="ecl-col-12 ecl-col-sm-9">
-              <div
+              <p
                 className="ecl-u-type-paragraph"
                 dangerouslySetInnerHTML={{
-                  __html: body.processed,
+                  __html: bodyProcessed,
                 }}
               />
             </div>
