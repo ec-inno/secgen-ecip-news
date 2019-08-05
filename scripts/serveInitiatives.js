@@ -20,10 +20,14 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.url === '/get/all') {
-    fs.createReadStream(`${apiFolder}/${apiFile}`).pipe(res);
-  } else {
-    return res.end('Unsupported endpoint');
+    /* eslint-disable-next-line  */
+    const initiatives = require(`${apiFolder}/${apiFile}`);
+
+    const response = { initiatives };
+    return res.end(JSON.stringify(response));
   }
+
+  return res.end('Unsupported endpoint');
 });
 
 server.on('request', () => console.log('Initiatives API offline: new request'));

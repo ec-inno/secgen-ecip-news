@@ -1,7 +1,11 @@
 import React from 'react';
+
+import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
-const InitiativeItem = ({ item }) => {
+const InitiativeItem = ({ item, location }) => {
+  const currentLanguage = getCurrentLanguage(location);
+
   // The base of all external links leading the existing portal.
   let href = 'https://ec.europa.eu/citizens-initiative/public';
   const isOpen = item.searchEntry['@status'] === 'OPEN';
@@ -12,18 +16,18 @@ const InitiativeItem = ({ item }) => {
 
     switch (item.searchEntry['@status']) {
       case 'OPEN': {
-        href = `/initiatives/#open-${year}-${number}`;
+        href = `/initiatives/#${currentLanguage}-open-${year}-${number}`;
         break;
       }
 
       case 'SUCCESSFUL': {
-        href = `/initiatives/#successful-${year}-${number}`;
+        href = `/initiatives/#${currentLanguage}-successful-${year}-${number}`;
         break;
       }
 
       case 'WITHDRAWN':
       case 'INSUFFICIENT_SUPPORT': {
-        href = `/initiatives/#obsolete-${year}-${number}`;
+        href = `/initiatives/#${currentLanguage}-obsolete-${year}-${number}`;
         break;
       }
 
@@ -50,7 +54,7 @@ const InitiativeItem = ({ item }) => {
         ></div>
         <h1 className="ecl-card__title">
           <a level="1" href={href} className="ecl-link ecl-link--standalone">
-            <span className="ecl-link__label">{item.searchEntry.title}</span>
+            <span className="ecl-link__label">{item.title}</span>
           </a>
         </h1>
       </header>

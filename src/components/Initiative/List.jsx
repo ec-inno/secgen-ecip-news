@@ -3,6 +3,7 @@ import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
+import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getInitiatives from '../../utils/getInitiatives';
 
 import Item from '../Initiative/Item';
@@ -22,24 +23,17 @@ const List = ({ location }) => {
       ? '/initiative'
       : 'https://ec.europa.eu/citizens-initiative/services/initiative';
 
-  // When offline, requires that you have running local server with cached data.
-  // Refer to /docs/InitiativesAPI.md for more information.
-  endpoint = process.env.OFFLINE ? 'http://localhost:4000' : endpoint;
-  endpoint = 'http://localhost:4000';
-
-  console.log(process.env);
-
   const page = [];
   const itemsPerRow = 3;
+  const itemsPerPageDefault = 8;
   const rowClass = 'ecl-row';
+  const currentLanguage = getCurrentLanguage(location);
 
   const [errorMessage, setErrorMessage] = useState('');
   const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
   const [filter, setFilter] = useState(OPEN);
   const [initiatives, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const itemsPerPageDefault = 8;
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
   useEffect(() => {
@@ -61,7 +55,39 @@ const List = ({ location }) => {
           initiativesFromService = await getInitiatives(endpoint);
         }
 
-        setData(initiativesFromService);
+        const initiatives = initiativesFromService
+          // Should not display rejected initiatives.
+          .filter(r => r.searchEntry['@status'] !== 'REJECTED')
+          // Will filter those with content available in the given language.
+          .filter(initiative => {
+            const { initiativeLanguage } = initiative.initiativeLanguages;
+            const content = Array.isArray(initiativeLanguage)
+              ? initiativeLanguage.filter(
+                  language => language['@code'] === currentLanguage
+                )
+              : initiativeLanguage['@code'] === currentLanguage;
+            if (content) return content;
+          })
+          // Merge fields:
+          // - Provides content in the given language.
+          // - Gets title, status, etc. fields on first level, rather than searchEntry, facilitating single item visualization.
+          .map(initiative => {
+            let additional = {};
+            const { initiativeLanguage } = initiative.initiativeLanguages;
+
+            if (Array.isArray(initiativeLanguage)) {
+              const lang = initiativeLanguage.filter(
+                language => language['@code'] === currentLanguage
+              );
+              additional = lang[0];
+            } else {
+              additional = initiativeLanguage;
+            }
+
+            return Object.assign({}, initiative, additional);
+          });
+
+        setData(initiatives);
       } catch (error) {
         setErrorMessage(error.message);
         setErrorMessageVisibility(true);
@@ -104,12 +130,8 @@ const List = ({ location }) => {
     return page;
   }
 
-  const initiativesRegistered = [...initiatives].filter(
-    r => r.searchEntry['@status'] !== 'REJECTED'
-  );
-
   // Do not work with results of the side effect directly.
-  const allInitiatives = [...initiativesRegistered];
+  const allInitiatives = [...initiatives];
 
   const allCount = allInitiatives.length;
   const ongoingCount = allInitiatives.filter(
@@ -214,7 +236,7 @@ const List = ({ location }) => {
               key={key}
               className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none"
             >
-              <Item key={key} item={item} />
+              <Item key={key} item={item} location={location} />
             </div>
           );
 

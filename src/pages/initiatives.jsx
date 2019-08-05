@@ -48,7 +48,7 @@ const Initiative = ({ location }) => {
         ? '/initiative'
         : 'https://ec.europa.eu/citizens-initiative/services/initiative';
 
-    const [status, year, number] = parts;
+    const [language, status, year, number] = parts;
 
     useEffect(() => {
       const fetchData = async () => {
