@@ -30,7 +30,21 @@ In short:
 yarn api:start
 ```
 
-The result of this is that you will be able to fetch all initiatives from `http://localhost:4000` even when being offline.
+The result of this is that you will be able to fetch all initiatives from `http://localhost:4000/get/all` even when being offline. Details of an initiative are at `http://localhost:4000/details/2019/000009` similarly to the production version.
+
+Because it's necessary to pass the context of being offline to client-side code, [environment variable](https://www.gatsbyjs.org/docs/environment-variables/) `GATSBY_OFFLINE` is required for the described server to work:
+
+```sh
+GATSBY_OFFLINE=true yarn start
+```
+
+Alternatively:
+
+```sh
+yarn start:offline
+```
+
+If `GATSBY_OFFLINE` is not set, system falls back to online scenarios.
 
 ## Working locally: online scenario
 

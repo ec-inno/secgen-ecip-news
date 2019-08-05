@@ -23,6 +23,10 @@ const List = ({ location }) => {
       ? '/initiative'
       : 'https://ec.europa.eu/citizens-initiative/services/initiative';
 
+  // When offline, requires that you have running local server with cached data.
+  // Refer to /docs/InitiativesAPI.md for more information.
+  endpoint = process.env.GATSBY_OFFLINE ? 'http://localhost:4000' : endpoint;
+
   const page = [];
   const itemsPerRow = 3;
   const itemsPerPageDefault = 8;

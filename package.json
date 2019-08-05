@@ -28,6 +28,7 @@
     "serve": "gatsby serve",
     "serve:api": "netlify-lambda serve src/api",
     "start": "npm run develop",
+    "start:offline": "GATSBY_OFFLINE=true npm run develop",
     "test:lint": "npm run lint:js",
     "test": "npm-run-all -p test:* -cn"
   },

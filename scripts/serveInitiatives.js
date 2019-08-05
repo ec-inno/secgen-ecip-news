@@ -1,3 +1,12 @@
+/**
+ * Minimal dependency-free server providing information about:
+ *
+ * - initiatives list
+ * - single initiative details
+ *
+ * Not meant to be used in production, it's only to facilitate local offline development!
+ */
+
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
@@ -19,12 +28,25 @@ const server = http.createServer((req, res) => {
     );
   }
 
-  if (req.url === '/get/all') {
-    /* eslint-disable-next-line  */
-    const initiatives = require(`${apiFolder}/${apiFile}`);
+  // Require the json instead of reading it as a buffer.
+  /* eslint-disable-next-line  */
+  const initiatives = require(`${apiFolder}/${apiFile}`);
 
-    const response = { initiatives };
+  // Simulates GET https://ec.europa.eu/citizens-initiative/services/initiative/get/all
+  if (req.url === '/get/all') {
+    const response = { initiative: initiatives };
     return res.end(JSON.stringify(response));
+  }
+
+  // Simulates GET http://ec.europa.eu/citizens-initiative/services/initiative/details/2019/000010
+  if (req.url.includes('/details')) {
+    const q = req.url.split('/').filter(a => a);
+    const [_, year, number] = q;
+    const details = initiatives.find(
+      initiative => initiative.year === year && initiative.number === number
+    );
+
+    return res.end(JSON.stringify(details));
   }
 
   return res.end('Unsupported endpoint');
