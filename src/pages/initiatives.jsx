@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import has from 'lodash/has';
 import isArray from 'lodash/isArray';
@@ -141,6 +142,7 @@ const Initiative = ({ location }) => {
 
   return (
     <>
+      <Helmet title={initiativeData.title ? initiativeData.title : '...'} />
       <TopMessage />
       <Header />
       <Menu />
