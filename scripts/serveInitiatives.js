@@ -52,7 +52,9 @@ const server = http.createServer((req, res) => {
   return res.end('Unsupported endpoint');
 });
 
-server.on('request', () => console.log('Initiatives API offline: new request'));
+server.on('request', req =>
+  console.log(`Initiatives API offline: ${req.method} ${req.url}`)
+);
 
 server.listen(port, hostname, () => {
   console.log(`Local initiatives at http://${hostname}:${port}/`);
