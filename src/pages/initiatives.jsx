@@ -33,10 +33,8 @@ const Initiative = ({ location }) => {
     },
   };
 
-  // Because the Initiatives API does not provide a way to filter content by language.
-  // If language-specific content is to be treated: https://webgate.ec.europa.eu/CITnet/jira/browse/INNO-1683
-  // We pick the default.
   const defaultLanguage = getDefaultLanguage();
+  let currentLanguage = defaultLanguage;
   const hash = location.hash || '#';
   const parts = hash.slice(1).split('-');
 
@@ -50,7 +48,9 @@ const Initiative = ({ location }) => {
 
     const [language, status, year, number] = parts;
 
-    console.log('language', language);
+    if (currentLanguage !== language) {
+      currentLanguage = language;
+    }
 
     useEffect(() => {
       const fetchData = async () => {
@@ -78,17 +78,33 @@ const Initiative = ({ location }) => {
 
         if (has(initiativeData, 'initiativeLanguages.initiativeLanguage')) {
           // Sometimes `initiativeLanguages.initiativeLanguage` is an array.
+          // This means that the given initiative is available in several languages.
           if (isArray(initiativeData.initiativeLanguages.initiativeLanguage)) {
             details = initiativeData.initiativeLanguages.initiativeLanguage.find(
-              l => l['@code'] === defaultLanguage
+              l => l['@code'] === currentLanguage
             );
+
+            // If the list of available translations does not have the currently selected language.
+            // Fallback to default language.
+            if (!details.title && currentLanguage !== defaultLanguage) {
+              details = initiativeData.initiativeLanguages.initiativeLanguage.find(
+                l => l['@code'] === defaultLanguage
+              );
+            }
           }
 
-          // Other times it's a "special" structure, a nested single-value object with 1 translation.
+          // When not an array, this means that the initiative is available in only 1 language.
+          // This scenario hopes that the currently selected language is the original language of creation.
           if (
             initiativeData.initiativeLanguages.initiativeLanguage['@code'] ===
-            defaultLanguage
+            currentLanguage
           ) {
+            details = initiativeData.initiativeLanguages.initiativeLanguage;
+          }
+
+          // If the initiative did not have content in default language or translation.
+          // Fallback to what we can get, better than nothing.
+          if (!details.title) {
             details = initiativeData.initiativeLanguages.initiativeLanguage;
           }
         }
@@ -120,7 +136,7 @@ const Initiative = ({ location }) => {
       };
 
       fetchData();
-    }, []);
+    }, [currentLanguage]);
   }
 
   return (
