@@ -50,6 +50,8 @@ const Initiative = ({ location }) => {
 
     const [language, status, year, number] = parts;
 
+    console.log('language', language);
+
     useEffect(() => {
       const fetchData = async () => {
         let initiativeData = {};

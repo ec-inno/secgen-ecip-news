@@ -15,36 +15,38 @@ import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
 import LanguageSelector from './LanguageSelector';
 
 const Header = ({ location }) => {
-  if (!location) {
-    return (
-      <header className="ecl-site-header">
-        <div className="ecl-site-header__container ecl-container">
-          <div className="ecl-site-header__banner">
-            <Link
-              className="ecl-link ecl-link--standalone"
-              to={`/${defaultLangKey}`}
-              aria-label="European Union"
-            >
-              <img
-                alt="European Union logo"
-                title="European Union"
-                className="ecl-site-header__logo-image"
-                src={logoPaths[defaultLangKey]}
-              />
-            </Link>
-          </div>
-        </div>
-        <SiteName />
-      </header>
-    );
+  let loc = {};
+  let pathParts = [];
+  let langcodeCurrent = defaultLangKey;
+  let urlPath = '';
+  let logo = logoPaths[defaultLangKey];
+  let isClientRouting = false;
+
+  // If it's used as a client-side only.
+  if (window && window.location) {
+    loc = window.location;
+  }
+  // Respect Gatsby's location if provided.
+  if (location) {
+    loc = location;
   }
 
-  let logo = logoPaths[defaultLangKey];
+  const { pathname } = loc;
 
-  const { pathname } = location;
-  const pathParts = pathname.split('/').filter(p => p);
-  const langcodeCurrent = pathParts.shift();
-  const urlPath = pathParts.join('/');
+  // Client-only page, currently using hashes in url for passing information.
+  // Change when redirects and rewrites are working instead of the hashes.
+  if (pathname === '/initiatives/') {
+    const pathParts = loc.hash.slice(1).split('-');
+    langcodeCurrent = pathParts.shift();
+    urlPath = pathParts.join('-');
+    isClientRouting = true;
+  }
+  // Non-hash scenario, paths are divided with slashes.
+  else {
+    pathParts = pathname.split('/').filter(p => p);
+    langcodeCurrent = pathParts.shift();
+    urlPath = pathParts.join('/');
+  }
 
   // Change logo to a language-specific one, if applicable.
   if (langcodeCurrent !== defaultLangKey) {
@@ -52,8 +54,13 @@ const Header = ({ location }) => {
   }
 
   const items = languages.map(language => {
-    const href = urlPath ? `/${language.lang}/${urlPath}` : `/${language.lang}`;
-    const isActive = href.includes(langcodeCurrent);
+    const href = isClientRouting
+      ? `/initiatives/#${language.lang}-${urlPath}`
+      : `/${language.lang}/${urlPath}`;
+
+    const isActive =
+      href.includes(`/#${langcodeCurrent}`) ||
+      href.includes(`/${langcodeCurrent}/`);
 
     return {
       href,
@@ -86,7 +93,7 @@ const Header = ({ location }) => {
             />
           </div>
         </div>
-        <SiteName location={location} />
+        <SiteName location={loc} />
       </header>
       <LanguageListOverlay
         closeLabel="Close"
