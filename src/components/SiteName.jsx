@@ -5,9 +5,15 @@ import getCurrentLanguage from '../utils/getCurrentLanguage';
 import getDefaultLanguage from '../utils/getDefaultLanguage';
 
 const SiteName = ({ location }) => {
-  if (!location) {
-    const defaultLanguage = getDefaultLanguage();
-    const data = require(`../data/sitename/${defaultLanguage}.json`);
+  let langcodeCurrent = getDefaultLanguage();
+
+  if (window && window.location) {
+    if (window.location.pathname === '/initiatives/') {
+      const pathParts = window.location.hash.slice(1).split('-');
+      langcodeCurrent = pathParts.shift();
+    }
+
+    const data = require(`../data/sitename/${langcodeCurrent}.json`);
     const { european, citizens, initiative } = data;
 
     return (
