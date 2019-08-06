@@ -5,12 +5,15 @@ import getCurrentLanguage from '../utils/getCurrentLanguage';
 import getDefaultLanguage from '../utils/getDefaultLanguage';
 
 const SiteName = ({ location }) => {
-  let langcodeCurrent = getDefaultLanguage();
+  const languageDefault = getDefaultLanguage();
+  let langcodeCurrent = languageDefault;
 
-  if (window && window.location) {
-    if (window.location.pathname === '/initiatives/') {
-      const pathParts = window.location.hash.slice(1).split('-');
-      langcodeCurrent = pathParts.shift();
+  if (!location) {
+    if (typeof window !== 'undefined') {
+      if (window.location.pathname === '/initiatives/') {
+        const pathParts = window.location.hash.slice(1).split('-');
+        langcodeCurrent = pathParts.shift();
+      }
     }
 
     const data = require(`../data/sitename/${langcodeCurrent}.json`);

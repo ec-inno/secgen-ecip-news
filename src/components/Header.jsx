@@ -14,16 +14,18 @@ import SiteName from './SiteName';
 import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
 import LanguageSelector from './LanguageSelector';
 
-const Header = ({ location }) => {
+const Header = ({ location, clientRoute }) => {
   let loc = {};
   let pathParts = [];
   let langcodeCurrent = defaultLangKey;
   let urlPath = '';
   let logo = logoPaths[defaultLangKey];
-  let isClientRouting = false;
+  // `clientRoute` is contained in `pageContext`, in this context passed from parent.
+  // Based on `dynamic` property communicating client-only route.
+  const isClientRouting = clientRoute || false;
 
   // If it's used as a client-side only.
-  if (window && window.location) {
+  if (typeof window !== 'undefined') {
     loc = window.location;
   }
   // Respect Gatsby's location if provided.
@@ -31,19 +33,16 @@ const Header = ({ location }) => {
     loc = location;
   }
 
-  const { pathname } = loc;
-
   // Client-only page, currently using hashes in url for passing information.
   // Change when redirects and rewrites are working instead of the hashes.
-  if (pathname === '/initiatives/') {
+  if (loc && loc.hash && loc.pathname === '/initiatives/') {
     const pathParts = loc.hash.slice(1).split('-');
     langcodeCurrent = pathParts.shift();
     urlPath = pathParts.join('-');
-    isClientRouting = true;
   }
   // Non-hash scenario, paths are divided with slashes.
-  else {
-    pathParts = pathname.split('/').filter(p => p);
+  else if (loc && loc.pathname) {
+    pathParts = loc.pathname.split('/').filter(p => p);
     langcodeCurrent = pathParts.shift();
     urlPath = pathParts.join('/');
   }
@@ -93,7 +92,7 @@ const Header = ({ location }) => {
             />
           </div>
         </div>
-        <SiteName location={loc} />
+        <SiteName location={location} clientRoute={clientRoute} />
       </header>
       <LanguageListOverlay
         closeLabel="Close"

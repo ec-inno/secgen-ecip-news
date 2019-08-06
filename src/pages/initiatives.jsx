@@ -25,7 +25,7 @@ import Menu from '../components/Menu';
 import ForumBanner from '../components/ForumBanner';
 import Footer from '../components/Footer/FooterLanguage';
 
-const Initiative = ({ location }) => {
+const Initiative = ({ location, pageContext }) => {
   const messageConfig = {
     variant: 'warning',
     icon: {
@@ -34,6 +34,7 @@ const Initiative = ({ location }) => {
     },
   };
 
+  const clientRoute = pageContext.layout === 'dynamic' ? true : false;
   const defaultLanguage = getDefaultLanguage();
   let currentLanguage = defaultLanguage;
   const hash = location.hash || '#';
@@ -143,9 +144,9 @@ const Initiative = ({ location }) => {
   return (
     <>
       <Helmet title={initiativeData.title ? initiativeData.title : '...'} />
-      <TopMessage />
-      <Header />
-      <Menu />
+      <TopMessage clientRoute={clientRoute} />
+      <Header clientRoute={clientRoute} />
+      <Menu clientRoute={clientRoute} />
       <section className="ecl-page-header">
         <div className="ecl-container">
           <div className="ecl-page-header__title-wrapper">
@@ -342,8 +343,8 @@ const Initiative = ({ location }) => {
           </div>
         </div>
       </main>
-      <ForumBanner />
-      <Footer />
+      <ForumBanner clientRoute={clientRoute} />
+      <Footer clientRoute={clientRoute} />
     </>
   );
 };
