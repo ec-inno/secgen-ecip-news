@@ -1,16 +1,18 @@
 # Project documentation
 
-Contains a high-level overview of a few implementations and integrations.
+Contains a high-level overview for Gatsby-specific technical implementations and workflows.
 
-There is a separate document related to [Initiatives API](./InitiativesAPI.md).
+If you are rather looking for topics related to integration with third-party services when data is not sourced in Gatsby but fetched client-only: please refer to [this guide](./API/README.md).
 
 ## Environment variables
 
 The project relies on several variables described below. When working locally, one can set these by copying `.env.example` and setting values into `.env`.
 
+To pass information from to client-only code (dynamic data fetching), please use [variables prefixed with `GATSBY_`](https://www.gatsbyjs.org/docs/environment-variables).
+
 ## Backend API
 
-You will need a running Drupal 8 website with a JSONAPI endpoint before being able to run or build the client website.
+You will need a running Drupal 8 website with a JSONAPI endpoint before being able to run or build the client website. Content from Drupal is sourced (Gatsby term), which means that data is cached and HTML is rendered server-side during Gatsby build task.
 
 Given you have a running Drupal 8 API, set the following environment variables:
 
@@ -23,6 +25,8 @@ If `DRAFT_PREVIEW` is to be truthy, please provide also:
 - `BASIC_AUTH_PASSWORD`
 
 The `BASIC_AUTH_*` variables should be safely stored in a vault and should not be commited under source control! Also, they have to reflect an existing Drupal user in the API with sufficient permissions to see unpublished content. (In terms of the corporate editorial worklow, this means an `editor` or `validator` user.)
+
+If `DRAFT_PREVIEW` is set and truthy, but credentials are missing, Drupal will provide only public/published type of content. Meaning, if you miss credentials, the site will work in production mode not being able to fetch drafts.
 
 ## Local development
 
@@ -47,8 +51,8 @@ Having the project running, you will be able to reach the following:
 
 ## Building the site
 
-- Test: `yarn build:test` (requires basic authentication, shows unpublished content)
-- Prod: `yarn build:prod` (shows only validated/published content)
+- Test: `yarn build:test` (draft content)
+- Prod: `yarn build:prod` (published content)
 
 ## Automation systems
 

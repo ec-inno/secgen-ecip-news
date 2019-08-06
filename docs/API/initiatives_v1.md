@@ -1,10 +1,10 @@
-# Initiatives API
+# Initiatives API - version 1
 
 Contains details on how the project is integrating with the [Initiatives API](https://ec.europa.eu/citizens-initiative/services/initiative/get/all).
 
 ## Background information
 
-The API has a no-cors policy and limited set of features. This document is going to focus on how developers can work with the API in terms of Gatsby.js integration rather than the API itself.
+The API has a no-cors policy and limited set of features. This document focuses on how developers can work with the API in terms of Gatsby.js integration rather than the API itself.
 
 As of August 2019, the API provides two main endpoints: one for the list of initaitives and another one the details of a given item.
 
