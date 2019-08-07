@@ -1,3 +1,5 @@
+const { languages } = require('../../languages');
+
 /**
  * Extracts current language from `location`.
  *
@@ -5,8 +7,12 @@
  * @returns {String}
  */
 const getCurrentLanguage = location => {
-  const locations = location.pathname.split('/').filter(p => p);
-  return locations[0];
+  if (location && location.pathname) {
+    const validLanguages = languages.map(l => l.lang);
+    const locations = location.pathname.split('/').filter(p => p);
+    return validLanguages.find(l => l === locations[0]);
+  }
+  return undefined;
 };
 
 export default getCurrentLanguage;

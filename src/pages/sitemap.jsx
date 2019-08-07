@@ -4,8 +4,6 @@ import { Link } from 'gatsby';
 import SEO from '../components/SEO';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
-import ForumBanner from '../components/ForumBanner';
-
 // Update title and body to use dynamic content coming from Drupal's menu.
 const Sitemap = ({ location }) => {
   const currentLanguage = getCurrentLanguage(location);
@@ -123,7 +121,6 @@ const Sitemap = ({ location }) => {
           </div>
         </div>
       </main>
-      <ForumBanner location={location} />
     </>
   );
 };

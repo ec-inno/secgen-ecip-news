@@ -11,6 +11,7 @@ import TopMessage from '../components/TopMessage';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer/FooterLanguage';
+import ForumBanner from '../components/ForumBanner';
 
 const Layout = ({ children, location, pageContext }) => {
   if (pageContext.layout === 'landing' || pageContext.layout === 'dynamic')
@@ -23,7 +24,8 @@ const Layout = ({ children, location, pageContext }) => {
       <Header location={location} />
       <Menu location={location} />
       {children}
-      <Footer location={location} />
+      {/* <Footer location={location} /> */}
+      {/* <ForumBanner location={location} /> */}
     </>
   );
 };
