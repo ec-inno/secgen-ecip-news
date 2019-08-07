@@ -19,18 +19,19 @@ const Menu = ({ location }) => {
   const { links } = data;
 
   return (
-    <nav className="eci-menu">
-      <div className="ecl-container">
-        <ul className="eci-menu__list">
-          {links && links.length
-            ? links.map((link, key) => {
+    <>
+      {links && links.length ? (
+        <nav className="eci-menu">
+          <div className="ecl-container">
+            <ul className="eci-menu__list">
+              {links.map((link, key) => {
                 const { label, href } = link;
                 let classActive = '';
 
                 if (
-                  // In case of home page.
+                  // Home page.
                   (href === '/' && !urlPath) ||
-                  // Or any other internal one.
+                  // Internal pages.
                   (urlPath && href.includes(urlPath))
                 ) {
                   classActive = 'eci-menu__option--is-selected';
@@ -51,11 +52,14 @@ const Menu = ({ location }) => {
                     </Link>
                   </li>
                 );
-              })
-            : ''}
-        </ul>
-      </div>
-    </nav>
+              })}
+            </ul>
+          </div>
+        </nav>
+      ) : (
+        ''
+      )}
+    </>
   );
 };
 
