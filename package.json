@@ -40,7 +40,6 @@
     "gatsby-background-image": "0.8.0",
     "gatsby-link": "2.1.1",
     "gatsby-plugin-layout": "1.0.15",
-    "gatsby-plugin-netlify": "2.1.3",
     "gatsby-plugin-react-helmet": "3.0.12",
     "gatsby-plugin-sharp": "2.2.3",
     "gatsby-source-drupal-jsonapi-eci": "^0.1.0",
