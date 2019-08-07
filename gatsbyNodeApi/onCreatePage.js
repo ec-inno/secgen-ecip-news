@@ -3,6 +3,7 @@ const { languages } = require('../languages');
 const onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
+  // Exceptional paths.
   // This goes to /public/404.html, Gatsby seeks it.
   if (page.path === '/404.html') {
     // But we stop the process here as later we manually created the rest of the language-specific 404-s.

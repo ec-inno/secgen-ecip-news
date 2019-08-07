@@ -19,14 +19,24 @@ import LanguageSelector from './LanguageSelector';
 
 const Header = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
-
   const logo = logoPaths[language];
-  const pathParts =
-    location && location.pathname
-      ? location.pathname.split('/').filter(p => p)
-      : [];
-  pathParts.shift(); // Remove the language part.
-  const urlPath = pathParts.join('/');
+
+  let urlPath = '';
+  let pathParts = [];
+
+  if (location && location.pathname) {
+    pathParts = location.pathname.split('/').filter(p => p);
+  }
+
+  // Current logic of language switcher: change language prefix.
+  // This means that we add current in order to make paths for the translations.
+  pathParts.shift();
+
+  urlPath = pathParts.join('/');
+
+  if (location.hash) {
+    urlPath += location.hash;
+  }
 
   const items = languages.map(item => {
     const href = `/${item.lang}/${urlPath}`;

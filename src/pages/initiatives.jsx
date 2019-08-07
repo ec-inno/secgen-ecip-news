@@ -4,28 +4,26 @@ import axios from 'axios';
 import has from 'lodash/has';
 import isArray from 'lodash/isArray';
 
+import getCurrentLanguage from '../utils/getCurrentLanguage';
 import getDateFormatted from '../utils/getDateFormatted';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
 import getInitiative from '../utils/getInitiative';
 import getInitiativeStatusLabel from '../utils/getInitiativeStatusLabel';
 
 // Generic
 import Icon from '../components/Icon';
 import Message from '../components/Message';
-// import Spinner from '../components/Spinner/Spinner';
 
 // Sub-components
 import Progress from '../components/Initiative/Progress';
 
 // Partials
-// This is a client-side page in Gatsby => no `location` parameter.
 import TopMessage from '../components/TopMessage';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import ForumBanner from '../components/ForumBanner';
 import Footer from '../components/Footer/FooterLanguage';
 
-const Initiative = ({ location, pageContext }) => {
+const Initiative = ({ location }) => {
   const messageConfig = {
     variant: 'warning',
     icon: {
@@ -34,25 +32,19 @@ const Initiative = ({ location, pageContext }) => {
     },
   };
 
-  const clientRoute = pageContext.layout === 'dynamic' ? true : false;
-  const defaultLanguage = getDefaultLanguage();
-  let currentLanguage = defaultLanguage;
+  const currentLanguage = getCurrentLanguage(location);
   const hash = location.hash || '#';
-  const parts = hash.slice(1).split('-');
+  const clientRouteParameters = hash.slice(1).split('-');
 
   const [initiativeData, setData] = useState({});
 
-  if (parts && parts.length) {
+  if (clientRouteParameters && clientRouteParameters.length) {
     const endpoint =
       process.env.NODE_ENV === 'development'
         ? '/initiative'
         : 'https://ec.europa.eu/citizens-initiative/services/initiative';
 
-    const [language, status, year, number] = parts;
-
-    if (currentLanguage !== language) {
-      currentLanguage = language;
-    }
+    const [status, year, number] = clientRouteParameters;
 
     useEffect(() => {
       const fetchData = async () => {
@@ -144,9 +136,9 @@ const Initiative = ({ location, pageContext }) => {
   return (
     <>
       <Helmet title={initiativeData.title ? initiativeData.title : '...'} />
-      <TopMessage clientRoute={clientRoute} />
-      <Header clientRoute={clientRoute} />
-      <Menu clientRoute={clientRoute} />
+      <TopMessage location={location} />
+      <Header location={location} />
+      <Menu location={location} />
       <section className="ecl-page-header">
         <div className="ecl-container">
           <div className="ecl-page-header__title-wrapper">
@@ -343,8 +335,8 @@ const Initiative = ({ location, pageContext }) => {
           </div>
         </div>
       </main>
-      <ForumBanner clientRoute={clientRoute} />
-      <Footer clientRoute={clientRoute} />
+      <ForumBanner location={location} />
+      <Footer location={location} />
     </>
   );
 };

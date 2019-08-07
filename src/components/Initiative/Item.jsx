@@ -6,8 +6,7 @@ import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 const InitiativeItem = ({ item, location }) => {
   const currentLanguage = getCurrentLanguage(location);
 
-  // The base of all external links leading the existing portal.
-  let href = 'https://ec.europa.eu/citizens-initiative/public';
+  let href = '#';
   const isOpen = item.searchEntry['@status'] === 'OPEN';
 
   // Set correct address for the initiative's link.
@@ -16,18 +15,18 @@ const InitiativeItem = ({ item, location }) => {
 
     switch (item.searchEntry['@status']) {
       case 'OPEN': {
-        href = `/initiatives/#${currentLanguage}-open-${year}-${number}`;
+        href = `/${currentLanguage}/initiatives/#open-${year}-${number}`;
         break;
       }
 
       case 'SUCCESSFUL': {
-        href = `/initiatives/#${currentLanguage}-successful-${year}-${number}`;
+        href = `/${currentLanguage}/initiatives/#successful-${year}-${number}`;
         break;
       }
 
       case 'WITHDRAWN':
       case 'INSUFFICIENT_SUPPORT': {
-        href = `/initiatives/#${currentLanguage}-obsolete-${year}-${number}`;
+        href = `/${currentLanguage}/initiatives/obsolete-${year}-${number}`;
         break;
       }
 
@@ -70,7 +69,7 @@ const InitiativeItem = ({ item, location }) => {
           <ul className="ecl-card__link-container">
             <li className="ecl-card__link-item">
               <a
-                href={href}
+                href="#"
                 className="ecl-card__link ecl-link ecl-link--standalone"
               >
                 Support this initiative
