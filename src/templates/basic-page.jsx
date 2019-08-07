@@ -3,8 +3,6 @@ import { graphql } from 'gatsby';
 
 import addSlugs from '../utils/addSlugs';
 
-import ForumBanner from '../components/ForumBanner';
-
 const BasicPage = ({ data, location }) => {
   const { inpage_title } = data.file.childBasicpageJson;
   const { title, oe_summary, body } = data.nodeOePage;
@@ -97,7 +95,6 @@ const BasicPage = ({ data, location }) => {
           </div>
         </div>
       </main>
-      <ForumBanner location={location} />
     </>
   );
 };
