@@ -4,7 +4,6 @@ import slugify from 'slugify';
 
 import Accordion2 from '../components/Accordion/Accordion2';
 import Accordion2Item from '../components/Accordion/Accordion2Item';
-import ForumBanner from '../components/ForumBanner';
 
 const FaqPage = ({ data, location }) => {
   const { title, intro, inpage_title } = data.file.childFaqJson;
@@ -105,7 +104,6 @@ const FaqPage = ({ data, location }) => {
           </div>
         </div>
       </main>
-      <ForumBanner location={location} />
     </>
   );
 };

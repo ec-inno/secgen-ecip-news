@@ -3,18 +3,46 @@ const { languages } = require('../languages');
 const onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
+  // Exceptional paths.
+  // This goes to /public/404.html, Gatsby seeks it.
+  if (page.path === '/404.html') {
+    // But we stop the process here as later we manually created the rest of the language-specific 404-s.
+    // And we only want /en/404/index.html and not /en/404.html/index.html
+    return createPage(page);
+  }
+
+  const pageCopy = { ...page };
   deletePage(page);
 
-  if (page.path.match(/^\/initiatives/)) {
-    /* eslint-disable no-param-reassign */
-    page.matchPath = '/initiatives/*';
+  // 404 pages for the different languages.
+  if (page.path.match(/^\/404/)) {
+    return languages.forEach(language => {
+      const { lang } = language;
 
-    return createPage({
-      ...page,
-      context: {
-        ...page.context,
-        layout: 'dynamic',
-      },
+      /* eslint-disable no-param-reassign */
+      pageCopy.matchPath = `/${lang}/*`;
+      pageCopy.path = `/${lang}${page.path}`;
+
+      return createPage(pageCopy);
+    });
+  }
+
+  // Client-only page displaying data from an API.
+  if (page.path.match(/^\/initiatives/)) {
+    return languages.forEach(language => {
+      const { lang } = language;
+
+      /* eslint-disable no-param-reassign */
+      page.matchPath = `/${lang}/initiatives/*`;
+
+      return createPage({
+        ...page,
+        path: `/${lang}/initiatives`,
+        context: {
+          ...page.context,
+          layout: 'dynamic',
+        },
+      });
     });
   }
 
@@ -32,7 +60,7 @@ const onCreatePage = ({ page, actions }) => {
   }
 
   // Pages for each language.
-  return languages.map(language => {
+  return languages.forEach(language => {
     const { lang } = language;
     // And if the page is `lang.jsx`, treat is a 2nd type of landing page: for the specific language.
     const localizedPath =

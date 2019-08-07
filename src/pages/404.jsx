@@ -4,8 +4,6 @@ import { Link } from 'gatsby';
 import SEO from '../components/SEO';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
-import ForumBanner from '../components/ForumBanner';
-
 const NotFound = ({ location }) => {
   const currentLanguage = getCurrentLanguage(location);
 
@@ -25,7 +23,6 @@ const NotFound = ({ location }) => {
           </div>
         </div>
       </main>
-      <ForumBanner location={location} />
     </>
   );
 };

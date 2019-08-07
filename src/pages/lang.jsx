@@ -6,7 +6,6 @@ import SEO from '../components/SEO';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 import LeadParagraph from '../components/LeadParagraph';
 import InitiativesList from '../components/Initiative/List';
-import ForumBanner from '../components/ForumBanner';
 
 const Homepage = ({ data, location }) => {
   const currentLanguage = getCurrentLanguage(location);
@@ -81,7 +80,6 @@ const Homepage = ({ data, location }) => {
           )}
         </div>
       </main>
-      <ForumBanner location={location} />
     </>
   );
 };
