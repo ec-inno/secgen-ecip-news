@@ -2,18 +2,17 @@ import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 
+import getCurrentLanguage from '../utils/getCurrentLanguage';
 import getDefaultLanguage from '../utils/getDefaultLanguage';
 
 const Menu = ({ location }) => {
-  let language = getDefaultLanguage();
-  let urlPath = '';
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
 
-  // Try to extract language from pathname, same as getCurrentLanguage.
-  // Though here we need also the url parts, so we do it manually.
-  const locationParts = location.pathname.split('/').filter(p => p);
-
-  language = locationParts[0];
-  urlPath = locationParts[1];
+  const locationParts =
+    location && location.pathname
+      ? location.pathname.split('/').filter(p => p)
+      : [];
+  const urlPath = locationParts[1]; // undefined is fine, checked later.
 
   const data = require(`../data/menu/${language}.json`);
 

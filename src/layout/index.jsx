@@ -24,8 +24,8 @@ const Layout = ({ children, location, pageContext }) => {
       <Header location={location} />
       <Menu location={location} />
       {children}
-      {/* <Footer location={location} /> */}
-      {/* <ForumBanner location={location} /> */}
+      <ForumBanner location={location} />
+      <Footer location={location} />
     </>
   );
 };

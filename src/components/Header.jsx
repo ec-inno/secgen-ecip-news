@@ -21,7 +21,10 @@ const Header = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
 
   const logo = logoPaths[language];
-  const pathParts = location.pathname.split('/').filter(p => p);
+  const pathParts =
+    location && location.pathname
+      ? location.pathname.split('/').filter(p => p)
+      : [];
   pathParts.shift(); // Remove the language part.
   const urlPath = pathParts.join('/');
 
