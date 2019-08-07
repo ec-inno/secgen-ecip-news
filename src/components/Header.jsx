@@ -14,13 +14,38 @@ import SiteName from './SiteName';
 import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
 import LanguageSelector from './LanguageSelector';
 
-const Header = ({ location }) => {
+const Header = ({ location, clientRoute }) => {
+  let loc = {};
+  let pathParts = [];
+  let langcodeCurrent = defaultLangKey;
+  let urlPath = '';
   let logo = logoPaths[defaultLangKey];
+  // `clientRoute` is contained in `pageContext`, in this context passed from parent.
+  // Based on `dynamic` property communicating client-only route.
+  const isClientRouting = clientRoute || false;
 
-  const { pathname } = location;
-  const pathParts = pathname.split('/').filter(p => p);
-  const langcodeCurrent = pathParts.shift();
-  const urlPath = pathParts.join('/');
+  // If it's used as a client-side only.
+  if (typeof window !== 'undefined') {
+    loc = window.location;
+  }
+  // Respect Gatsby's location if provided.
+  if (location) {
+    loc = location;
+  }
+
+  // Client-only page, currently using hashes in url for passing information.
+  // Change when redirects and rewrites are working instead of the hashes.
+  if (loc && loc.hash && loc.pathname === '/initiatives/') {
+    const pathParts = loc.hash.slice(1).split('-');
+    langcodeCurrent = pathParts.shift();
+    urlPath = pathParts.join('-');
+  }
+  // Non-hash scenario, paths are divided with slashes.
+  else if (loc && loc.pathname) {
+    pathParts = loc.pathname.split('/').filter(p => p);
+    langcodeCurrent = pathParts.shift();
+    urlPath = pathParts.join('/');
+  }
 
   // Change logo to a language-specific one, if applicable.
   if (langcodeCurrent !== defaultLangKey) {
@@ -28,8 +53,13 @@ const Header = ({ location }) => {
   }
 
   const items = languages.map(language => {
-    const href = urlPath ? `/${language.lang}/${urlPath}` : `/${language.lang}`;
-    const isActive = href.includes(langcodeCurrent);
+    const href = isClientRouting
+      ? `/initiatives/#${language.lang}-${urlPath}`
+      : `/${language.lang}/${urlPath}`;
+
+    const isActive =
+      href.includes(`/#${langcodeCurrent}`) ||
+      href.includes(`/${langcodeCurrent}/`);
 
     return {
       href,
@@ -62,7 +92,7 @@ const Header = ({ location }) => {
             />
           </div>
         </div>
-        <SiteName currentLanguage={langcodeCurrent} />
+        <SiteName location={location} clientRoute={clientRoute} />
       </header>
       <LanguageListOverlay
         closeLabel="Close"

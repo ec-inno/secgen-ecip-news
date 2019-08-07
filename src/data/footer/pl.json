@@ -5,23 +5,26 @@
       {
         "variant": "standalone",
         "label": "Communication material",
-        "href": "#"
+        "href": "/pl/communication-material",
+        "internal": "true"
       },
       {
         "variant": "standalone",
         "label": "FAQ",
-        "href": "/en/faq",
+        "href": "/pl/faq",
         "internal": "true"
       },
       {
         "variant": "standalone",
         "label": "Site map",
-        "href": "#"
+        "href": "/pl/sitemap",
+        "internal": "true"
       },
       {
         "variant": "standalone",
         "label": "Contact",
-        "href": "#"
+        "href": "/pl/contact",
+        "internal": "true"
       },
       {
         "variant": "standalone",

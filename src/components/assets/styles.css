@@ -2,18 +2,6 @@
 body {
   margin: 0;
 }
-.eci-name {
-  line-height: 1;
-}
-.eci-name div:nth-child(1) {
-  color: #00b7f3;
-}
-.eci-name div:nth-child(2) {
-  color: #f04c4d;
-}
-.eci-name div:nth-child(3) {
-  color: #52ba59;
-}
 .eci-filter {
   background-color: #f5f5f5;
 }
@@ -155,28 +143,4 @@ body {
 /* ECL footer */
 .ecl-footer__common-container {
   justify-content: center;
-}
-
-/* aria-hidden attribute didn't work? */
-.hidden {
-  display: none;
-}
-
-.loading-opacity {
-  opacity: 0.5;
-}
-.loading-opacity.visible {
-  transition: opacity 1s ease-in;
-  opacity: 1;
-}
-
-/* https://www.gatsbyjs.org/packages/gatsby-background-image/ is used for the background image and it applies the image on before/after attributes overriding ECL's ecl-page-banner--image-shade approach. */
-.eci-gatsby-image-shade {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.7);
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
 }

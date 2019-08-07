@@ -5,7 +5,8 @@
       {
         "variant": "standalone",
         "label": "Communication material",
-        "href": "#"
+        "href": "/en/communication-material",
+        "internal": "true"
       },
       {
         "variant": "standalone",
@@ -16,12 +17,14 @@
       {
         "variant": "standalone",
         "label": "Site map",
-        "href": "#"
+        "href": "/en/sitemap",
+        "internal": "true"
       },
       {
         "variant": "standalone",
         "label": "Contact",
-        "href": "#"
+        "href": "/en/contact",
+        "internal": "true"
       },
       {
         "variant": "standalone",

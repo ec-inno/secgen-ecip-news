@@ -26,13 +26,17 @@ const Message = ({
         className={classnames(icon.className, 'ecl-message__icon')}
       />
       <div className="ecl-message__content">
-        <Button
-          {...close}
-          type="button"
-          className={classnames(close.className, 'ecl-message__close')}
-          data-ecl-message-close
-          onClick={onClose}
-        />
+        {close ? (
+          <Button
+            {...close}
+            type="button"
+            className={classnames(close.className, 'ecl-message__close')}
+            data-ecl-message-close
+            onClick={onClose}
+          />
+        ) : (
+          ''
+        )}
         <div className="ecl-message__title">{title}</div>
         <p className="ecl-message__description">{description}</p>
       </div>

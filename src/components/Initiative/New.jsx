@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import plusSign from '../assets/plus.png';
+import plusSign from '../../images/plus.png';
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 
 const New = ({ location }) => {
@@ -19,7 +19,7 @@ const New = ({ location }) => {
           <h1 className="ecl-card__title ecl-u-type-heading-3">
             <Link
               level="1"
-              to={`/${currentLanguage}/how-to`}
+              to={`/${currentLanguage}/how-to-start`}
               className="ecl-link ecl-link--standalone"
             >
               How to start an initiative?

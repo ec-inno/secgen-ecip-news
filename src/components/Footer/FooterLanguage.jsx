@@ -5,8 +5,15 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Footer from './Footer';
 
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
+import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
 const FooterLanguage = ({ location }) => {
+  if (!location) {
+    const defaultLanguage = getDefaultLanguage();
+    const data = require(`../../data/footer/${defaultLanguage}.json`);
+    return <Footer className="ecl-footer--custom" {...data} />;
+  }
+
   const lang = getCurrentLanguage(location);
 
   const data = useStaticQuery(graphql`
@@ -22,6 +29,7 @@ const FooterLanguage = ({ location }) => {
                   variant
                   label
                   href
+                  internal
                 }
               }
               sections {

@@ -1,7 +1,11 @@
 import React from 'react';
+
+import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
-const InitiativeItem = ({ item }) => {
+const InitiativeItem = ({ item, location }) => {
+  const currentLanguage = getCurrentLanguage(location);
+
   // The base of all external links leading the existing portal.
   let href = 'https://ec.europa.eu/citizens-initiative/public';
   const isOpen = item.searchEntry['@status'] === 'OPEN';
@@ -10,15 +14,26 @@ const InitiativeItem = ({ item }) => {
   if (item.year && item.number) {
     const { year, number } = item;
 
-    if (isOpen) {
-      href += `/initiatives/open/details/${year}/${number}`;
-    } else {
-      href += `/initiatives/obsolete/details/${year}/${number}`;
+    switch (item.searchEntry['@status']) {
+      case 'OPEN': {
+        href = `/initiatives/#${currentLanguage}-open-${year}-${number}`;
+        break;
+      }
+
+      case 'SUCCESSFUL': {
+        href = `/initiatives/#${currentLanguage}-successful-${year}-${number}`;
+        break;
+      }
+
+      case 'WITHDRAWN':
+      case 'INSUFFICIENT_SUPPORT': {
+        href = `/initiatives/#${currentLanguage}-obsolete-${year}-${number}`;
+        break;
+      }
+
+      default:
+        break;
     }
-  } else if (item.searchEntry['@status'] === 'REJECTED') {
-    href += `/initiatives/non-registered`;
-  } else {
-    href += '/welcome';
   }
 
   const supporters =
@@ -38,14 +53,8 @@ const InitiativeItem = ({ item }) => {
           // style="background-image: url('media/initiatives/eat_original-en.png');"
         ></div>
         <h1 className="ecl-card__title">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            level="1"
-            href={href}
-            className="ecl-link ecl-link--standalone"
-          >
-            <span className="ecl-link__label">{item.searchEntry.title}</span>
+          <a level="1" href={href} className="ecl-link ecl-link--standalone">
+            <span className="ecl-link__label">{item.title}</span>
           </a>
         </h1>
       </header>
