@@ -14,8 +14,7 @@ import Footer from '../components/Footer/FooterLanguage';
 import ForumBanner from '../components/ForumBanner';
 
 const Layout = ({ children, location, pageContext }) => {
-  if (pageContext.layout === 'landing' || pageContext.layout === 'dynamic')
-    return children;
+  if (pageContext.layout === 'landing') return children;
 
   return (
     <>

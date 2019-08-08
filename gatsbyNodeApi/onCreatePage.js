@@ -40,7 +40,6 @@ const onCreatePage = ({ page, actions }) => {
         path: `/${lang}/initiatives`,
         context: {
           ...page.context,
-          layout: 'dynamic',
         },
       });
     });

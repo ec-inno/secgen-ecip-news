@@ -41,6 +41,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-json',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-layout',
     {
       resolve: 'gatsby-source-drupal-jsonapi-eci',
       options: {
@@ -51,12 +52,6 @@ module.exports = {
           username: process.env.BASIC_AUTH_USERNAME,
           password: process.env.BASIC_AUTH_PASSWORD,
         },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-layout',
-      options: {
-        component: require.resolve('./src/layout/index.jsx'),
       },
     },
   ],

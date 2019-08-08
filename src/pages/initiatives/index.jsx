@@ -18,13 +18,6 @@ import Message from '../../components/Message';
 // Sub-components, keep out of /src/pages.
 import Progress from '../../components/Initiative/Progress';
 
-// Partials
-import TopMessage from '../../components/TopMessage';
-import Header from '../../components/Header';
-import Menu from '../../components/Menu';
-import ForumBanner from '../../components/ForumBanner';
-import Footer from '../../components/Footer/FooterLanguage';
-
 const Initiative = ({ location }) => {
   const currentLanguage = getCurrentLanguage(location);
 
@@ -42,12 +35,10 @@ const Initiative = ({ location }) => {
   return (
     <>
       <SEO
-        title={has(initiativeData, 'title') ? initiativeData.title : '...'}
         location={location}
+        title={has(initiativeData, 'title') ? initiativeData.title : '...'}
       />
-      <TopMessage location={location} />
-      <Header location={location} />
-      <Menu location={location} />
+
       <section className="ecl-page-header">
         <div className="ecl-container">
           <div className="ecl-page-header__title-wrapper">
@@ -244,8 +235,6 @@ const Initiative = ({ location }) => {
           </div>
         </div>
       </main>
-      <ForumBanner location={location} />
-      <Footer location={location} />
     </>
   );
 };
