@@ -20,8 +20,7 @@ const getInitiativeData = async ({ location }) => {
   let initiativeDetails = {};
 
   const clientRouteParameters = location.hash.slice(1).split('-');
-  /* eslint-disable-next-line no-unused-vars */
-  const [_, year, number] = clientRouteParameters;
+  const [year, number] = clientRouteParameters;
 
   // On netlify.com, which is test environment, use a function.
   if (location.origin && location.origin.includes('netlify.com')) {

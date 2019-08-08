@@ -9,30 +9,10 @@ const InitiativeItem = ({ item, location }) => {
   let href = '#';
   const isOpen = item.searchEntry['@status'] === 'OPEN';
 
-  // Set correct address for the initiative's link.
+  // Try to build a valid path which can display information about an initiative.
   if (item.year && item.number) {
     const { year, number } = item;
-
-    switch (item.searchEntry['@status']) {
-      case 'OPEN': {
-        href = `/${currentLanguage}/initiatives/#open-${year}-${number}`;
-        break;
-      }
-
-      case 'SUCCESSFUL': {
-        href = `/${currentLanguage}/initiatives/#successful-${year}-${number}`;
-        break;
-      }
-
-      case 'WITHDRAWN':
-      case 'INSUFFICIENT_SUPPORT': {
-        href = `/${currentLanguage}/initiatives/obsolete-${year}-${number}`;
-        break;
-      }
-
-      default:
-        break;
-    }
+    href = `/${currentLanguage}/initiatives/#${year}-${number}`;
   }
 
   const supporters =
