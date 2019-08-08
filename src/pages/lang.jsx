@@ -2,8 +2,9 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 
-import SEO from '../components/SEO';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
+
+import SEO from '../components/SEO';
 import LeadParagraph from '../components/LeadParagraph';
 import InitiativesList from '../components/Initiative/List';
 

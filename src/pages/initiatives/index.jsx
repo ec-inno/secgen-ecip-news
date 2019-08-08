@@ -3,6 +3,7 @@ import has from 'lodash/has';
 
 // Generic utils.
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
+import getDefaultLanguage from '../../utils/getDefaultLanguage';
 import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
 // Page-specific utilities
@@ -18,8 +19,10 @@ import Message from '../../components/Message';
 // Sub-components, keep out of /src/pages.
 import Progress from '../../components/Initiative/Progress';
 
+// Folder is in plural in order to have /initiatives/ route, but the component shows data about a single initiative.
 const Initiative = ({ location }) => {
-  const currentLanguage = getCurrentLanguage(location);
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
+  const translation = require(`../../../translations/initiatives/${language}.json`);
 
   const [initiativeData, setData] = useState({});
 
@@ -30,7 +33,7 @@ const Initiative = ({ location }) => {
     };
 
     fetchData();
-  }, [currentLanguage]);
+  }, [language]);
 
   return (
     <>
@@ -53,7 +56,8 @@ const Initiative = ({ location }) => {
                   shape="general--organigram"
                   className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
                 />
-                Current status:{' '}
+                {translation.current_status}
+                {': '}
                 {initiativeData.status
                   ? getInitiativeStatusLabel(initiativeData.status)
                   : '...'}
@@ -63,7 +67,8 @@ const Initiative = ({ location }) => {
                   className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
                   shape="general--edit"
                 />
-                Commission registration number:{' '}
+                {translation.registration_number}
+                {': '}
                 {initiativeData.number ? initiativeData.number : '...'}
               </div>
             </li>
@@ -73,7 +78,8 @@ const Initiative = ({ location }) => {
                   className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
                   shape="general--calendar"
                 />
-                Deadline:{' '}
+                {translation.deadline}
+                {': '}
                 {initiativeData.dateDeadline
                   ? initiativeData.dateDeadline
                   : '...'}
@@ -83,7 +89,8 @@ const Initiative = ({ location }) => {
                   className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
                   shape="general--calendar"
                 />
-                Date of registration:{' '}
+                {translation.date_registration}
+                {': '}
                 {initiativeData.dateRegistration
                   ? initiativeData.dateRegistration
                   : '...'}
@@ -98,7 +105,7 @@ const Initiative = ({ location }) => {
               >
                 <span className="ecl-button__container">
                   <span className="ecl-button__label" data-ecl-label="true">
-                    Support this initiative
+                    {translation.support_cat}
                   </span>
                 </span>
               </a>
@@ -121,7 +128,7 @@ const Initiative = ({ location }) => {
                     registered initiative.
                   </p>
                   <Message
-                    title="Disclaimer"
+                    title={translation.disclaimer}
                     description={
                       'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
                     }
@@ -133,7 +140,9 @@ const Initiative = ({ location }) => {
               )}
               {initiativeData.subjectMatter ? (
                 <>
-                  <h2 className="ecl-u-type-heading-2">Subject-matter</h2>
+                  <h2 className="ecl-u-type-heading-2">
+                    {translation.subject_matter}
+                  </h2>
                   <p
                     className="ecl-u-type-paragraph"
                     dangerouslySetInnerHTML={{
@@ -146,7 +155,9 @@ const Initiative = ({ location }) => {
               )}
               {initiativeData.objectives ? (
                 <>
-                  <h2 className="ecl-u-type-heading-2">Objectives</h2>
+                  <h2 className="ecl-u-type-heading-2">
+                    {translation.objectives}
+                  </h2>
                   <ul className="ecl-u-type-paragraph">
                     {initiativeData.objectives.split(/\n/).map((line, key) => (
                       <li
@@ -165,8 +176,7 @@ const Initiative = ({ location }) => {
               {initiativeData.legalBase ? (
                 <>
                   <h2 className="ecl-u-type-heading-2">
-                    Provisions of the Treaties considered relevant by the
-                    organisers
+                    {translation.legal_base}
                   </h2>
                   <p
                     className="ecl-u-type-paragraph"
@@ -180,7 +190,9 @@ const Initiative = ({ location }) => {
               )}
               {initiativeData.website ? (
                 <>
-                  <h2 className="ecl-u-type-heading-2">Website</h2>
+                  <h2 className="ecl-u-type-heading-2">
+                    {translation.website}
+                  </h2>
                   <p className="ecl-u-type-paragraph">
                     <a
                       href={initiativeData.website}
@@ -197,13 +209,15 @@ const Initiative = ({ location }) => {
               {initiativeData.organisers ? (
                 <>
                   <h2 className="ecl-u-type-heading-2">
-                    Organisers / Members of citizens' committee:
+                    {translation.organisers}
                   </h2>
                   <ul className="ecl-u-type-paragraph">
                     {has(initiativeData, 'organisers.reps')
                       ? initiativeData.organisers.reps.map((rep, key) => (
                           <li key={`r-${key}`}>
-                            Representative: {rep.fullname}
+                            {translation.representative}
+                            {': '}
+                            {rep.fullname}
                             {rep.email ? ` - ${rep.email}` : ''}
                           </li>
                         ))
@@ -211,14 +225,17 @@ const Initiative = ({ location }) => {
                     {has(initiativeData, 'organisers.subs')
                       ? initiativeData.organisers.subs.map((sub, key) => (
                           <li key={`s-${key}`}>
-                            Substitute: {sub.fullname}
+                            {translation.substitute}
+                            {': '}
+                            {sub.fullname}
                             {sub.email ? ` - ${sub.email}` : ''}
                           </li>
                         ))
                       : ''}
                     {has(initiativeData, 'organisers.members') ? (
                       <li key="m-0">
-                        Members:{' '}
+                        {translation.members}
+                        {': '}
                         {initiativeData.organisers.members
                           .map(m => m.fullname)
                           .join(', ')}
