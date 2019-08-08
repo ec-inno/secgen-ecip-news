@@ -1,5 +1,8 @@
 {
   "title": "News (FR)",
   "news_intro": "Access the latest news from ECI. (FR)",
-  "inpage_title": "PAGE CONTENTS"
+  "inpage_title": "PAGE CONTENTS",
+  "previous": "← Previous Page",
+  "next": "Next Page →",
+  "news_source": "News source"
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 
+import getDefaultLanguage from '../utils/getDefaultLanguage';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
 import SEO from '../components/SEO';
@@ -9,37 +10,33 @@ import LeadParagraph from '../components/LeadParagraph';
 import InitiativesList from '../components/Initiative/List';
 
 const Homepage = ({ data, location }) => {
-  const language = getCurrentLanguage(location);
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
 
   const translation = require(`../../translations/lang/${language}.json`);
-
-  const {
-    title,
-    description,
-    more_link,
-    how_works_intro,
-    how_works_link,
-    latest_news_heading,
-  } = translation;
-
   const news = data.allNodeOeNews.edges;
 
   return (
     <>
-      <SEO title={title} description={description} location={location} />
+      <SEO
+        title={translation.title}
+        description={translation.description}
+        location={location}
+      />
       <main>
         <div className="ecl-container">
           <LeadParagraph
             linkPath={`/${language}/how-it-works`}
-            linkText={how_works_link}
-            intro={how_works_intro}
+            linkText={translation.how_works_link}
+            intro={translation.how_works_intro}
           />
 
           <InitiativesList location={location} />
 
           {news && news.length ? (
             <section className="ecl-u-mt-xl">
-              <h2 className="ecl-u-type-heading-2">{latest_news_heading}</h2>
+              <h2 className="ecl-u-type-heading-2">
+                {translation.latest_news_heading}
+              </h2>
               <ul className="ecl-unordered-list">
                 {news.map(newsNode => {
                   const { node } = newsNode;
@@ -77,7 +74,7 @@ const Homepage = ({ data, location }) => {
                   className="ecl-link ecl-link--standalone"
                   to={`/${language}/news`}
                 >
-                  {more_link}
+                  {translation.more_link}
                 </Link>
               </p>
             </section>

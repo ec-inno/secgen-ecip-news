@@ -44,7 +44,6 @@
     "gatsby-plugin-sharp": "2.2.10",
     "gatsby-source-drupal-jsonapi-eci": "^0.1.0",
     "gatsby-source-filesystem": "2.1.9",
-    "gatsby-transformer-json": "2.2.2",
     "gatsby-transformer-sharp": "2.2.5",
     "intersection-observer": "0.7.0",
     "lodash": "4.17.15",

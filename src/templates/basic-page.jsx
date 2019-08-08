@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 
 import addSlugs from '../utils/addSlugs';
+import getCurrentLanguage from '../utils/getCurrentLanguage';
+import getDefaultLanguage from '../utils/getDefaultLanguage';
+
+import SEO from '../components/SEO';
 
 const BasicPage = ({ data, location }) => {
-  const { inpage_title } = data.file.childBasicpageJson;
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
+
+  const translation = require(`../../translations/basicpage/${language}.json`);
   const { title, oe_summary, body } = data.nodeOePage;
 
   const [bodyProcessed, setBody] = useState('');
@@ -38,6 +44,7 @@ const BasicPage = ({ data, location }) => {
 
   return (
     <>
+      <SEO title={title} location={location} />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">
@@ -60,27 +67,26 @@ const BasicPage = ({ data, location }) => {
             <div className="ecl-col-12 ecl-col-sm-3">
               <nav>
                 <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
-                  {inpage_title}
+                  {translation.inpage_title}
                 </div>
               </nav>
               <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
-                {inpageItems
-                  ? Object.keys(inpageItems).map((heading, key) => {
-                      return (
-                        <li
-                          key={key}
-                          className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
+                {inpageItems &&
+                  Object.keys(inpageItems).map((heading, key) => {
+                    return (
+                      <li
+                        key={key}
+                        className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
+                      >
+                        <a
+                          href={`#${heading}`}
+                          className="ecl-link ecl-link--standalone ecl-u-d-block"
                         >
-                          <a
-                            href={`#${heading}`}
-                            className="ecl-link ecl-link--standalone ecl-u-d-block"
-                          >
-                            {inpageItems[heading]}
-                          </a>
-                        </li>
-                      );
-                    })
-                  : ''}
+                          {inpageItems[heading]}
+                        </a>
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
 
@@ -101,11 +107,6 @@ const BasicPage = ({ data, location }) => {
 
 export const query = graphql`
   query getBasicPage($locale: String!, $alias: String!) {
-    file(name: { eq: $locale }, relativeDirectory: { eq: "basicpage" }) {
-      childBasicpageJson {
-        inpage_title
-      }
-    }
     nodeOePage(path: { alias: { eq: $alias }, langcode: { eq: $locale } }) {
       title
       oe_summary {
