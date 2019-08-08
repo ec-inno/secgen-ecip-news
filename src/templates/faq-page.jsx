@@ -22,7 +22,7 @@ const FaqPage = ({ data, location }) => {
 
   return (
     <>
-      <SEO title={translation.title} location={location} />
+      <SEO title={translation.title} description={intro} location={location} />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">

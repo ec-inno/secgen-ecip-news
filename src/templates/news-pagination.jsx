@@ -23,7 +23,11 @@ const News = ({ data, pageContext, location }) => {
 
   return (
     <Fragment>
-      <SEO title={translation.title} location={location} />
+      <SEO
+        title={translation.title}
+        description={translation.news_intro}
+        location={location}
+      />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">
