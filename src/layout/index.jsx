@@ -19,7 +19,7 @@ const Layout = ({ children, location, pageContext }) => {
 
   return (
     <>
-      <SEO />
+      <SEO location={location} />
       <TopMessage location={location} />
       <Header location={location} />
       <Menu location={location} />

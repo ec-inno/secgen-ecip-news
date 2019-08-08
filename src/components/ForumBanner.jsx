@@ -14,7 +14,7 @@ const ForumBanner = ({ location }) => {
     transform: 'rotate-90',
   };
 
-  const data = require(`../data/forumbanner/${language}.json`);
+  const data = require(`../../translations/forumbanner/${language}.json`);
   const { message, button } = data;
 
   return (

@@ -6,7 +6,7 @@ import getDefaultLanguage from '../utils/getDefaultLanguage';
 const TopMessage = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
 
-  const data = require(`../data/topmessage/${language}.json`);
+  const data = require(`../../translations/topmessage/${language}.json`);
   const { message } = data;
 
   return (

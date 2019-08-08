@@ -8,30 +8,35 @@ import LeadParagraph from '../components/LeadParagraph';
 import InitiativesList from '../components/Initiative/List';
 
 const Homepage = ({ data, location }) => {
-  const currentLanguage = getCurrentLanguage(location);
+  const language = getCurrentLanguage(location);
+
+  const translation = require(`../../translations/lang/${language}.json`);
 
   const {
+    title,
+    description,
     more_link,
     how_works_intro,
     how_works_link,
     latest_news_heading,
-  } = data.file.childLangJson;
+  } = translation;
 
   const news = data.allNodeOeNews.edges;
 
   return (
     <>
-      <SEO title="Home" />
+      <SEO title={title} description={description} />
       <main>
         <div className="ecl-container">
           <LeadParagraph
-            linkPath={`/${currentLanguage}/how-it-works`}
+            linkPath={`/${language}/how-it-works`}
             linkText={how_works_link}
             intro={how_works_intro}
           />
 
           <InitiativesList location={location} />
-          {news.length ? (
+
+          {news && news.length ? (
             <section className="ecl-u-mt-xl">
               <h2 className="ecl-u-type-heading-2">{latest_news_heading}</h2>
               <ul className="ecl-unordered-list">
@@ -42,7 +47,7 @@ const Homepage = ({ data, location }) => {
                   return (
                     <li className="ecl-unordered-list__item" key={id}>
                       <Link
-                        to={`/${currentLanguage}/news#${slugify(title, {
+                        to={`/${language}/news#${slugify(title, {
                           lower: true,
                         })}`}
                         className="ecl-u-d-block ecl-link ecl-link--standalone"
@@ -69,7 +74,7 @@ const Homepage = ({ data, location }) => {
               <p className="ecl-u-type-paragraph">
                 <Link
                   className="ecl-link ecl-link--standalone"
-                  to={`/${currentLanguage}/news`}
+                  to={`/${language}/news`}
                 >
                   {more_link}
                 </Link>
@@ -86,14 +91,6 @@ const Homepage = ({ data, location }) => {
 
 export const query = graphql`
   query getNews($locale: String!, $languageRegex: String!) {
-    file(name: { eq: $locale }, relativeDirectory: { eq: "lang" }) {
-      childLangJson {
-        more_link
-        how_works_intro
-        how_works_link
-        latest_news_heading
-      }
-    }
     allNodeOeNews(
       filter: { id: { regex: $languageRegex }, langcode: { eq: $locale } }
       limit: 10

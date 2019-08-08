@@ -6,7 +6,7 @@ import getDefaultLanguage from '../utils/getDefaultLanguage';
 const SiteName = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
 
-  const data = require(`../data/sitename/${language}.json`);
+  const data = require(`../../translations/sitename/${language}.json`);
   const { european, citizens, initiative } = data;
 
   return (

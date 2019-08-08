@@ -14,7 +14,7 @@ const Menu = ({ location }) => {
       : [];
   const urlPath = locationParts[1]; // undefined is fine, checked later.
 
-  const data = require(`../data/menu/${language}.json`);
+  const data = require(`../../translations/menu/${language}.json`);
 
   const { links } = data;
 
