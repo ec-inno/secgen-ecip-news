@@ -10,7 +10,7 @@ const Sitemap = ({ location }) => {
 
   return (
     <>
-      <SEO title="Sitemap" />
+      <SEO title="Sitemap" location={location} />
 
       <main>
         <div className="ecl-container">

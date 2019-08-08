@@ -1,141 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import axios from 'axios';
 import has from 'lodash/has';
-import isArray from 'lodash/isArray';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDateFormatted from '../utils/getDateFormatted';
-import getInitiative from '../utils/getInitiative';
-import getInitiativeStatusLabel from '../utils/getInitiativeStatusLabel';
+// Generic utils.
+import getCurrentLanguage from '../../utils/getCurrentLanguage';
+import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
+
+// Page-specific utilities
+// When components need more than a few attributes, keep config params out.
+import config from './config';
+import getInitiativeData from './getInitiativeData';
 
 // Generic
-import Icon from '../components/Icon';
-import Message from '../components/Message';
+import SEO from '../../components/SEO';
+import Icon from '../../components/Icon';
+import Message from '../../components/Message';
 
-// Sub-components
-import Progress from '../components/Initiative/Progress';
+// Sub-components, keep out of /src/pages.
+import Progress from '../../components/Initiative/Progress';
 
 // Partials
-import TopMessage from '../components/TopMessage';
-import Header from '../components/Header';
-import Menu from '../components/Menu';
-import ForumBanner from '../components/ForumBanner';
-import Footer from '../components/Footer/FooterLanguage';
+import TopMessage from '../../components/TopMessage';
+import Header from '../../components/Header';
+import Menu from '../../components/Menu';
+import ForumBanner from '../../components/ForumBanner';
+import Footer from '../../components/Footer/FooterLanguage';
 
 const Initiative = ({ location }) => {
-  const messageConfig = {
-    variant: 'warning',
-    icon: {
-      shape: 'notifications--warning',
-      size: 'l',
-    },
-  };
-
   const currentLanguage = getCurrentLanguage(location);
-  const hash = location.hash || '#';
-  const clientRouteParameters = hash.slice(1).split('-');
 
   const [initiativeData, setData] = useState({});
 
-  if (clientRouteParameters && clientRouteParameters.length) {
-    const endpoint =
-      process.env.NODE_ENV === 'development'
-        ? '/initiative'
-        : 'https://ec.europa.eu/citizens-initiative/services/initiative';
+  useEffect(() => {
+    const fetchData = async () => {
+      const initiative = await getInitiativeData({ location });
+      setData(initiative);
+    };
 
-    const [status, year, number] = clientRouteParameters;
-
-    useEffect(() => {
-      const fetchData = async () => {
-        let initiativeData = {};
-
-        // On netlify.com, which is test environment, use a function.
-        if (location.origin && location.origin.includes('netlify.com')) {
-          const result = await axios.get(
-            `${location.origin}/.netlify/functions/initiative?year=${year}&number=${number}`
-          );
-          initiativeData = result.data.initiative;
-        }
-        // Otherwise make requests as usual.
-        else {
-          initiativeData = await getInitiative({ endpoint, year, number });
-        }
-
-        const dateRegistration = has(initiativeData, 'registrationDate')
-          ? getDateFormatted(initiativeData.registrationDate)
-          : '';
-
-        console.log('initiativeData', initiativeData);
-
-        let details = {};
-
-        if (has(initiativeData, 'initiativeLanguages.initiativeLanguage')) {
-          // Sometimes `initiativeLanguages.initiativeLanguage` is an array.
-          // This means that the given initiative is available in several languages.
-          if (isArray(initiativeData.initiativeLanguages.initiativeLanguage)) {
-            details = initiativeData.initiativeLanguages.initiativeLanguage.find(
-              l => l['@code'] === currentLanguage
-            );
-
-            // If the list of available translations does not have the currently selected language.
-            // Fallback to default language.
-            if (!details.title && currentLanguage !== defaultLanguage) {
-              details = initiativeData.initiativeLanguages.initiativeLanguage.find(
-                l => l['@code'] === defaultLanguage
-              );
-            }
-          }
-
-          // When not an array, this means that the initiative is available in only 1 language.
-          // This scenario hopes that the currently selected language is the original language of creation.
-          if (
-            initiativeData.initiativeLanguages.initiativeLanguage['@code'] ===
-            currentLanguage
-          ) {
-            details = initiativeData.initiativeLanguages.initiativeLanguage;
-          }
-
-          // If the initiative did not have content in default language or translation.
-          // Fallback to what we can get, better than nothing.
-          if (!details.title) {
-            details = initiativeData.initiativeLanguages.initiativeLanguage;
-          }
-        }
-
-        console.log('details', details);
-
-        const people = has(initiativeData, 'organisers.organiser')
-          ? initiativeData.organisers.organiser
-          : [];
-
-        const reps = people.filter(p => p['@role'] === 'R');
-        const subs = people.filter(p => p['@role'] === 'S');
-        const members = people.filter(p => p['@role'] === 'M');
-
-        const initiative = {
-          title: details.title,
-          status: initiativeData.status,
-          dateRegistration,
-          dateDeadline: 'N/A', // deadlineForCollection available from searchEntry is missing in details endpoint.
-          number: initiativeData.registrationNumber,
-          subjectMatter: details.subjectMatter,
-          objectives: details.mainObjectives,
-          legalBase: details.legalBase,
-          website: details.website,
-          organisers: { reps, subs, members },
-        };
-
-        setData(initiative);
-      };
-
-      fetchData();
-    }, [currentLanguage]);
-  }
+    fetchData();
+  }, [currentLanguage]);
 
   return (
     <>
-      <Helmet title={initiativeData.title ? initiativeData.title : '...'} />
+      <SEO
+        title={has(initiativeData, 'title') ? initiativeData.title : '...'}
+        location={location}
+      />
       <TopMessage location={location} />
       <Header location={location} />
       <Menu location={location} />
@@ -143,7 +52,7 @@ const Initiative = ({ location }) => {
         <div className="ecl-container">
           <div className="ecl-page-header__title-wrapper">
             <h1 className="ecl-page-header__title">
-              {initiativeData.title ? initiativeData.title : '...'}
+              {has(initiativeData, 'title') ? initiativeData.title : '...'}
             </h1>
           </div>
           <ul className="ecl-u-d-flex ecl-u-pl-none ecl-u-mv-l ecl-u-type-m ecl-page-header__info-list">
@@ -225,7 +134,7 @@ const Initiative = ({ location }) => {
                     description={
                       'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
                     }
-                    {...messageConfig}
+                    {...config.message}
                   />
                 </>
               ) : (

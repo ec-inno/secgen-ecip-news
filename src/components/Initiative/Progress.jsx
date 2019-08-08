@@ -19,7 +19,7 @@ const Progress = ({ initiative }) => {
   ];
 
   // In few cases input cannot be handled.
-  if (!initiative.status) return '';
+  if (!initiative || !initiative.status) return '';
 
   if (
     initiative.status &&

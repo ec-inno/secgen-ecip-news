@@ -25,7 +25,7 @@ const Homepage = ({ data, location }) => {
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <SEO title={title} description={description} location={location} />
       <main>
         <div className="ecl-container">
           <LeadParagraph
