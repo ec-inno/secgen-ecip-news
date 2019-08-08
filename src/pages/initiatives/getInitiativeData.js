@@ -28,7 +28,7 @@ const getInitiativeData = async ({ location }) => {
     const result = await axios.get(
       `${location.origin}/.netlify/functions/initiative?year=${year}&number=${number}`
     );
-    initiativeBasicInfo = result.initiativeBasicInfo.initiative;
+    initiativeBasicInfo = result.data.initiative;
   }
   // Otherwise make requests as usual.
   else {
