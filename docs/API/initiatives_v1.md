@@ -51,20 +51,3 @@ If `GATSBY_OFFLINE` is not set, system falls back to online scenarios.
 If you are required to access latest information and it's not acceptable to have a local copy, the setup provides an integration with [Gatsby proxy](https://www.gatsbyjs.org/docs/api-proxy/).
 
 When you make requests to `/initiatives` you will be working with https://ec.europa.eu/citizens-initiative/services under the hood bypassing the no-cors policy.
-
-## Initiatives on websites hosted on netlify.com
-
-When the website is deployed to Netlify hosting, data will be fetched through endpoints provided by [Netlify functions](https://www.netlify.com/docs/functions/).These serverless functions are not used in production.
-
-The functions are stored in `src/api` folder and there is a command to develop locally if necessary:
-
-```sh
-yarn serve:api
-```
-
-This will provide the following endpoints:
-
-- `http://localhost:9000/initiatives` for all initiatives (list initiatives)
-- `http://localhost:9000/initiative` for details of a single initiave, use query string parameters to select an initiative, i.e. `/initiative?year=2018&number=000004`
-
-Please note that these are proxy type of endpoints, they will work only when you are online. If you want to develop offline, refer to "Working locally: offline scenario" section.
