@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "@eci/cli",
+  "version": "0.1.0",
+  "bin": {
+    "eci-cli": "./bin/cli.js"
+  },
+  "engines": {
+    "node": ">=8.0"
+  }
+}
