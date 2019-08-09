@@ -20,6 +20,7 @@ import LanguageSelector from './LanguageSelector';
 const Header = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const logo = logoPaths[language];
+  const translation = require(`../../translations/header/${language}.json`);
 
   let urlPath = '';
   let pathParts = [];
@@ -58,11 +59,11 @@ const Header = ({ location }) => {
             <Link
               className="ecl-link ecl-link--standalone"
               to={`/${language}`}
-              aria-label="European Union"
+              aria-label={translation.european_union}
             >
               <img
-                alt="European Union logo"
-                title="European Union"
+                alt={`${translation.european_union} logo`}
+                title={translation.european_union}
                 className="ecl-site-header__logo-image"
                 src={logo}
               />
@@ -77,8 +78,8 @@ const Header = ({ location }) => {
         <SiteName location={location} />
       </header>
       <LanguageListOverlay
-        closeLabel="Close"
-        title="Select your language"
+        closeLabel={translation.close_label}
+        title={translation.select_language}
         items={items}
       />
     </>
