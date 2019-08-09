@@ -12,7 +12,7 @@ import InitiativesList from '../components/Initiative/List';
 const Homepage = ({ data, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
 
-  const translation = require(`../../translations/lang/${language}.json`);
+  const translation = require(`../../translations/home/${language}.json`);
   const news = data.allNodeOeNews.edges;
 
   return (

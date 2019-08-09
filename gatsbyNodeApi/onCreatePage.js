@@ -61,16 +61,14 @@ const onCreatePage = ({ page, actions }) => {
   // Pages for each language.
   return languages.forEach(language => {
     const { lang } = language;
-    // And if the page is `lang.jsx`, treat is a 2nd type of landing page: for the specific language.
     const localizedPath =
-      page.path === '/lang/' ? `/${lang}` : `/${lang}${page.path}`;
+      page.path === '/home/' ? `/${lang}` : `/${lang}${page.path}`;
 
     const languageRegex = `//${lang}//`;
 
     return createPage({
       ...page,
       path: localizedPath,
-      // Be extra careful with context: https://www.gatsbyjs.org/docs/creating-and-modifying-pages/#pass-context-to-pages
       context: {
         ...page.context,
         locale: lang,
