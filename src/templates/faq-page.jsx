@@ -2,11 +2,18 @@ import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 import slugify from 'slugify';
 
+import getCurrentLanguage from '../utils/getCurrentLanguage';
+import getDefaultLanguage from '../utils/getDefaultLanguage';
+
+import SEO from '../components/SEO';
 import Accordion2 from '../components/Accordion/Accordion2';
 import Accordion2Item from '../components/Accordion/Accordion2Item';
 
 const FaqPage = ({ data, location }) => {
-  const { title, intro, inpage_title } = data.file.childFaqJson;
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
+
+  const translation = require(`../../translations/faq/${language}.json`);
+  const { title, intro, inpage_title } = translation;
   const { edges: faqSections } = data.allNodeFaqSection;
 
   const toggleItem = id => {
@@ -15,6 +22,7 @@ const FaqPage = ({ data, location }) => {
 
   return (
     <>
+      <SEO title={translation.title} description={intro} location={location} />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">
@@ -110,13 +118,6 @@ const FaqPage = ({ data, location }) => {
 
 export const query = graphql`
   query getFaqPage($locale: String!, $languageRegex: String!) {
-    file(name: { eq: $locale }, relativeDirectory: { eq: "faq" }) {
-      childFaqJson {
-        title
-        intro
-        inpage_title
-      }
-    }
     allNodeFaqSection(
       filter: { id: { regex: $languageRegex }, langcode: { eq: $locale } }
     ) {

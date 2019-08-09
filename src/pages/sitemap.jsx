@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import SEO from '../components/SEO';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
+
+import SEO from '../components/SEO';
 
 // Update title and body to use dynamic content coming from Drupal's menu.
 const Sitemap = ({ location }) => {
@@ -10,7 +11,7 @@ const Sitemap = ({ location }) => {
 
   return (
     <>
-      <SEO title="Sitemap" />
+      <SEO title="Sitemap" location={location} />
 
       <main>
         <div className="ecl-container">

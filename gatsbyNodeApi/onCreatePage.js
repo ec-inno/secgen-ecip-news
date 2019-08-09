@@ -28,19 +28,18 @@ const onCreatePage = ({ page, actions }) => {
   }
 
   // Client-only page displaying data from an API.
-  if (page.path.match(/^\/initiatives/)) {
+  if (page.path.match(/^\/initiative/)) {
     return languages.forEach(language => {
       const { lang } = language;
 
       /* eslint-disable no-param-reassign */
-      page.matchPath = `/${lang}/initiatives/*`;
+      page.matchPath = `/${lang}/initiative/*`;
 
       return createPage({
         ...page,
-        path: `/${lang}/initiatives`,
+        path: `/${lang}/initiative`,
         context: {
           ...page.context,
-          layout: 'dynamic',
         },
       });
     });
@@ -62,16 +61,14 @@ const onCreatePage = ({ page, actions }) => {
   // Pages for each language.
   return languages.forEach(language => {
     const { lang } = language;
-    // And if the page is `lang.jsx`, treat is a 2nd type of landing page: for the specific language.
     const localizedPath =
-      page.path === '/lang/' ? `/${lang}` : `/${lang}${page.path}`;
+      page.path === '/home/' ? `/${lang}` : `/${lang}${page.path}`;
 
     const languageRegex = `//${lang}//`;
 
     return createPage({
       ...page,
       path: localizedPath,
-      // Be extra careful with context: https://www.gatsbyjs.org/docs/creating-and-modifying-pages/#pass-context-to-pages
       context: {
         ...page.context,
         locale: lang,

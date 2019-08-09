@@ -4,19 +4,23 @@ import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
+import getDefaultLanguage from '../../utils/getDefaultLanguage';
 import getInitiatives from '../../utils/getInitiatives';
 
 import Item from '../Initiative/Item';
 import Message from '../Message';
 import New from '../Initiative/New';
 import Pagination from './Pagination';
-import Placeholder from '../Initiative/Placeholder';
+import Spinner from '../Spinner/Spinner';
 
 const ALL = 'ALL';
 const OPEN = 'OPEN';
 const SUCCESSFUL = 'SUCCESSFUL';
 
 const List = ({ location }) => {
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
+  const translation = require(`../../../translations/initiative/${language}.json`);
+
   // Scenario when online: either a proxy or production.
   let endpoint =
     process.env.NODE_ENV === 'development'
@@ -31,7 +35,6 @@ const List = ({ location }) => {
   const itemsPerRow = 3;
   const itemsPerPageDefault = 8;
   const rowClass = 'ecl-row';
-  const currentLanguage = getCurrentLanguage(location);
 
   const [errorMessage, setErrorMessage] = useState('');
   const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
@@ -66,10 +69,8 @@ const List = ({ location }) => {
           .filter(initiative => {
             const { initiativeLanguage } = initiative.initiativeLanguages;
             const content = Array.isArray(initiativeLanguage)
-              ? initiativeLanguage.filter(
-                  language => language['@code'] === currentLanguage
-                )
-              : initiativeLanguage['@code'] === currentLanguage;
+              ? initiativeLanguage.filter(l => l['@code'] === language)
+              : initiativeLanguage['@code'] === language;
             if (content) return content;
           })
           // Merge fields:
@@ -81,7 +82,7 @@ const List = ({ location }) => {
 
             if (Array.isArray(initiativeLanguage)) {
               const lang = initiativeLanguage.filter(
-                language => language['@code'] === currentLanguage
+                l => l['@code'] === language
               );
               additional = lang[0];
             } else {
@@ -111,7 +112,7 @@ const List = ({ location }) => {
     },
     close: {
       variant: 'ghost',
-      label: 'Close',
+      label: translation.close,
       icon: {
         shape: 'ui--close',
         size: 's',
@@ -123,14 +124,19 @@ const List = ({ location }) => {
     <Message
       className={errorMessageIsVisible ? '' : 'hidden'}
       onClose={() => setErrorMessageVisibility(false)}
-      title="Issue fetching initiatives"
+      title={translation.error_getting_initiatives}
       description={errorMessage}
       {...errorComponentConfig}
     />
   );
 
   if (isLoading) {
-    page.push(<Placeholder location={location} />);
+    page.push(
+      <div>
+        {translation.fetching_initiatives}
+        <Spinner />
+      </div>
+    );
     return page;
   }
 
@@ -175,7 +181,7 @@ const List = ({ location }) => {
             href="#"
             className="eci-menu__link ecl-link"
           >
-            Ongoing {ongoingCount ? `(${ongoingCount})` : ''}
+            {translation.ongoing} {ongoingCount && `(${ongoingCount})`}
           </a>
         </li>
         <li
@@ -194,7 +200,7 @@ const List = ({ location }) => {
             href="#"
             className="eci-menu__link ecl-link"
           >
-            Answered {answeredCount ? `(${answeredCount})` : ''}
+            {translation.answered} {answeredCount && `(${answeredCount})`}
           </a>
         </li>
         <li
@@ -213,7 +219,7 @@ const List = ({ location }) => {
             href="#"
             className="eci-menu__link ecl-link"
           >
-            All initiatives {allCount ? `(${allCount})` : ''}
+            {translation.all_initiatives} {allCount && `(${allCount})`}
           </a>
         </li>
       </ul>
@@ -257,6 +263,7 @@ const List = ({ location }) => {
   if (resultsPage.length < resultsAll.length) {
     page.push(
       <Pagination
+        location={location}
         onClick={e => {
           e.preventDefault();
           const newItemsPerPage = itemsPerPage * 2 + 1;

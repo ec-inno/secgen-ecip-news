@@ -2,9 +2,14 @@ import React, { Fragment } from 'react';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 
+import getCurrentLanguage from '../utils/getCurrentLanguage';
+import getDefaultLanguage from '../utils/getDefaultLanguage';
+
 import SEO from '../components/SEO';
 
-const News = ({ data, pageContext }) => {
+const News = ({ data, pageContext, location }) => {
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
+
   const { currentPage, numPages, locale } = pageContext;
   const pageRoot = `/${locale}/news/`;
   const isFirst = currentPage === 1;
@@ -13,19 +18,23 @@ const News = ({ data, pageContext }) => {
     currentPage - 1 === 1 ? pageRoot : pageRoot + (currentPage - 1).toString();
   const nextPage = pageRoot + (currentPage + 1).toString();
 
-  const { title, news_intro, inpage_title } = data.file.childNewsJson;
+  const translation = require(`../../translations/news/${language}.json`);
   const { edges: newsItems } = data.allNodeOeNews;
 
   return (
     <Fragment>
-      <SEO title={title} />
+      <SEO
+        title={translation.title}
+        description={translation.news_intro}
+        location={location}
+      />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">
             <div className="ecl-page-header__title-wrapper">
-              <h1 className="ecl-page-header__title">{title}</h1>
+              <h1 className="ecl-page-header__title">{translation.title}</h1>
               <p className="ecl-page-header__slogan ecl-u-type-paragraph ecl-u-mt-l">
-                {news_intro}
+                {translation.news_intro}
               </p>
             </div>
           </div>
@@ -36,7 +45,7 @@ const News = ({ data, pageContext }) => {
             <div className="ecl-col-12 ecl-col-sm-3">
               <nav>
                 <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
-                  {inpage_title}
+                  {translation.inpage_title}
                 </div>
                 <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
                   {newsItems.map((item, i) => {
@@ -64,12 +73,12 @@ const News = ({ data, pageContext }) => {
             <div className="ecl-col-12 ecl-col-sm-9">
               {!isFirst && (
                 <Link to={prevPage} rel="prev">
-                  ← Previous Page
+                  {translation.previous}
                 </Link>
               )}
               {!isLast && (
                 <Link to={nextPage} rel="next">
-                  Next Page →
+                  {translation.next}
                 </Link>
               )}
               {newsItems.map((item, i) => {
@@ -94,7 +103,7 @@ const News = ({ data, pageContext }) => {
                       {oe_publication_date}
                     </p>
 
-                    {oe_summary ? (
+                    {oe_summary && (
                       <div
                         key={i}
                         className="ecl-u-type-paragraph ecl-u-type-paragraph"
@@ -102,17 +111,14 @@ const News = ({ data, pageContext }) => {
                           __html: oe_summary.processed,
                         }}
                       />
-                    ) : (
-                      ''
                     )}
 
-                    {field_source ? (
+                    {field_source && (
                       <p className="ecl-u-type-paragraph">
-                        News source:{' '}
+                        {translation.news_source}
+                        {': '}
                         <Link to={field_source.uri}>{field_source.uri}</Link>
                       </p>
-                    ) : (
-                      ''
                     )}
                   </Fragment>
                 );
@@ -132,13 +138,6 @@ export const query = graphql`
     $skip: Int!
     $limit: Int!
   ) {
-    file(name: { eq: $locale }, relativeDirectory: { eq: "news" }) {
-      childNewsJson {
-        title
-        news_intro
-        inpage_title
-      }
-    }
     allNodeOeNews(
       filter: { id: { regex: $languageRegex }, langcode: { eq: $locale } }
       sort: { fields: [oe_publication_date], order: DESC }

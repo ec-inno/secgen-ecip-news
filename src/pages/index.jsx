@@ -15,7 +15,7 @@ const Index = () => {
 
   return (
     <>
-      <SEO title="Welcome" />
+      <SEO title="Welcome" description="" />
       <div className="ecl-language-list ecl-language-list--splash">
         <header className="ecl-language-list__header">
           <img
