@@ -9,8 +9,8 @@ import getDefaultLanguage from '../../utils/getDefaultLanguage';
 const FooterLanguage = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
 
-  const data = require(`../../../translations/footer/${language}.json`);
-  return <Footer className="ecl-footer--custom" {...data} />;
+  const translation = require(`../../../translations/footer/${language}.json`);
+  return <Footer className="ecl-footer--custom" {...translation} />;
 };
 
 export default FooterLanguage;

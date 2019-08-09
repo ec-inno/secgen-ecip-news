@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import plusSign from '../../images/plus.png';
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
+import getDefaultLanguage from '../../utils/getDefaultLanguage';
+
+import plusSign from '../assets/images/plus.png';
 
 const New = ({ location }) => {
-  const currentLanguage = getCurrentLanguage(location);
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
+  const translation = require(`../../../translations/initiative/${language}.json`);
 
   return (
     <div className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none">
@@ -19,10 +22,10 @@ const New = ({ location }) => {
           <h1 className="ecl-card__title ecl-u-type-heading-3">
             <Link
               level="1"
-              to={`/${currentLanguage}/how-to-start`}
+              to={`/${language}/how-to-start`}
               className="ecl-link ecl-link--standalone"
             >
-              How to start an initiative?
+              {translation.how_to_start}
             </Link>
           </h1>
         </header>

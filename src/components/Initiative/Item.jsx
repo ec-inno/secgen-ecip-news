@@ -1,24 +1,24 @@
 import React from 'react';
 
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
+import getDefaultLanguage from '../../utils/getDefaultLanguage';
 import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
 const InitiativeItem = ({ item, location }) => {
-  const currentLanguage = getCurrentLanguage(location);
-
   let href = '#';
-  const isOpen = item.searchEntry['@status'] === 'OPEN';
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
+  const translation = require(`../../../translations/initiative/${language}.json`);
 
   // Try to build a valid path which can display information about an initiative.
   if (item.year && item.number) {
     const { year, number } = item;
-    href = `/${currentLanguage}/initiatives/#${year}-${number}`;
+    href = `/${language}/initiative/#${year}-${number}`;
   }
 
   const supporters =
     item.fundingSponsors && item.fundingSponsors.fundingSponsor
       ? item.fundingSponsors.fundingSponsor.length
-      : 0;
+      : undefined;
 
   return (
     <article className="ecl-card">
@@ -38,26 +38,10 @@ const InitiativeItem = ({ item, location }) => {
         </h1>
       </header>
       <section className="ecl-card__body">
-        {supporters ? (
+        {supporters && (
           <p className="ecl-u-type-paragraph ecl-u-mv-none">
-            {supporters} supporters
+            {supporters} {translation.supporters}
           </p>
-        ) : (
-          ''
-        )}
-        {isOpen ? (
-          <ul className="ecl-card__link-container">
-            <li className="ecl-card__link-item">
-              <a
-                href="#"
-                className="ecl-card__link ecl-link ecl-link--standalone"
-              >
-                Support this initiative
-              </a>
-            </li>
-          </ul>
-        ) : (
-          ''
         )}
       </section>
     </article>

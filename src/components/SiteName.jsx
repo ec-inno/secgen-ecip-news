@@ -6,8 +6,8 @@ import getDefaultLanguage from '../utils/getDefaultLanguage';
 const SiteName = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
 
-  const data = require(`../../translations/sitename/${language}.json`);
-  const { european, citizens, initiative } = data;
+  const translation = require(`../../translations/sitename/${language}.json`);
+  const { european, citizens, initiative } = translation;
 
   return (
     <div className="ecl-container ecl-u-pb-m ecl-u-type-xl ecl-u-type-bold">

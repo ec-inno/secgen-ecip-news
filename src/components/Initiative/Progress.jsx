@@ -1,5 +1,8 @@
 import React from 'react';
 
+import getCurrentLanguage from '../../utils/getCurrentLanguage';
+import getDefaultLanguage from '../../utils/getDefaultLanguage';
+
 /**
  * When a given status is marked as "assumed", this means that no actual data
  * has been found during the development of the component and named has been
@@ -7,7 +10,10 @@ import React from 'react';
  * fields matched to them currently.
  * Meaning, on "SUBMITTED" and "ANSWERED" we won't display dates.
  */
-const Progress = ({ initiative }) => {
+const Progress = ({ initiative, location }) => {
+  const language = getCurrentLanguage(location) || getDefaultLanguage();
+  const translation = require(`../../../translations/initiative/${language}.json`);
+
   const supportedStatuses = [
     'REGISTERED',
     'COLLECTION_CLOSED',
@@ -27,10 +33,8 @@ const Progress = ({ initiative }) => {
   ) {
     return (
       <>
-        <h3 className="ecl-u-type-heading-3">Initiative progress </h3>
-        <p className="ecl-u-type-paragraph">
-          Given status cannot be mapped to currently supported timeline.
-        </p>
+        <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
+        <p className="ecl-u-type-paragraph">{translation.progress_unmapped}</p>
       </>
     );
   }
@@ -49,44 +53,62 @@ const Progress = ({ initiative }) => {
     case 'REGISTERED': {
       return (
         <>
-          <h3 className="ecl-u-type-heading-3">Initiative progress </h3>
+          <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
           <ol className="ecl-timeline" data-ecl-timeline="true">
             {registrationDate ? (
               <li className="ecl-timeline__item ecl-timeline__item--current">
-                <div className="ecl-timeline__label">Registered</div>
+                <div className="ecl-timeline__label">
+                  {translation.registered}
+                </div>
                 <div className="ecl-timeline__content">
-                  Deadline: {registrationDate}
+                  {translation.deadline}
+                  {': '}
+                  {registrationDate}
                 </div>
               </li>
             ) : (
               <li className="ecl-timeline__item ecl-timeline__item--current">
-                <div className="ecl-timeline__label">Registered</div>
-                <div className="ecl-timeline__content">Current status</div>
+                <div className="ecl-timeline__label">
+                  {translation.registered}
+                </div>
+                <div className="ecl-timeline__content">
+                  {translation.current_status}
+                </div>
               </li>
             )}
             {collectionDeadline ? (
               <li className="ecl-timeline__item">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_ongoing}
+                </div>
                 <div className="ecl-timeline__content">
-                  Deadline: {collectionDeadline}
+                  {translation.deadline}
+                  {': '}
+                  {collectionDeadline}
                 </div>
               </li>
             ) : (
               <li className="ecl-timeline__item ecl-timeline__item--disabled">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_ongoing}
+                </div>
               </li>
             )}
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Collection closed</div>
+              <div className="ecl-timeline__label">
+                {translation.collection_closed}
+              </div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Verification</div>
+              <div className="ecl-timeline__label">
+                {translation.verification}
+              </div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Submitted</div>
+              <div className="ecl-timeline__label">{translation.submitted}</div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Answered</div>
+              <div className="ecl-timeline__label">{translation.answered}</div>
             </li>
           </ol>
         </>
@@ -96,40 +118,50 @@ const Progress = ({ initiative }) => {
     case 'COLLECTION_CLOSED': {
       return (
         <>
-          <h3 className="ecl-u-type-heading-3">Initiative progress </h3>
+          <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
           <ol className="ecl-timeline" data-ecl-timeline="true">
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Registered</div>
-              {registrationDate ? (
+              <div className="ecl-timeline__label">
+                {translation.registered}
+              </div>
+              {registrationDate && (
                 <div className="ecl-timeline__content">{registrationDate}</div>
-              ) : (
-                ''
               )}
             </li>
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Collection ongoing</div>
+              <div className="ecl-timeline__label">
+                {translation.collection_ongoing}
+              </div>
             </li>
             {collectionDeadline ? (
               <li className="ecl-timeline__item ecl-timeline__item--current">
-                <div className="ecl-timeline__label">Collection closed</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_closed}
+                </div>
                 <div className="ecl-timeline__content">
                   {collectionDeadline}
                 </div>
               </li>
             ) : (
               <li className="ecl-timeline__item ecl-timeline__item--current">
-                <div className="ecl-timeline__label">Collection closed</div>
-                <div className="ecl-timeline__content">Current status</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_closed}
+                </div>
+                <div className="ecl-timeline__content">
+                  {translation.current_status}
+                </div>
               </li>
             )}
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Verification</div>
+              <div className="ecl-timeline__label">
+                {translation.verification}
+              </div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Submitted</div>
+              <div className="ecl-timeline__label">{translation.submitted}</div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Answered</div>
+              <div className="ecl-timeline__label">{translation.answered}</div>
             </li>
           </ol>
         </>
@@ -139,40 +171,50 @@ const Progress = ({ initiative }) => {
     case 'VERIFICATION': {
       return (
         <>
-          <h3 className="ecl-u-type-heading-3">Initiative progress </h3>
+          <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
           <ol className="ecl-timeline" data-ecl-timeline="true">
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Registered</div>
-              {registrationDate ? (
+              <div className="ecl-timeline__label">
+                {translation.registered}
+              </div>
+              {registrationDate && (
                 <div className="ecl-timeline__content">{registrationDate}</div>
-              ) : (
-                ''
               )}
             </li>
             {collectionDeadline ? (
               <li className="ecl-timeline__item">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_ongoing}
+                </div>
                 <div className="ecl-timeline__content">
                   {collectionDeadline}
                 </div>
               </li>
             ) : (
               <li className="ecl-timeline__item">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_ongoing}
+                </div>
               </li>
             )}
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Collection closed</div>
+              <div className="ecl-timeline__label">
+                {translation.collection_closed}
+              </div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--current">
-              <div className="ecl-timeline__label">Verification</div>
-              <div className="ecl-timeline__content">Current status</div>
+              <div className="ecl-timeline__label">
+                {translation.verification}
+              </div>
+              <div className="ecl-timeline__content">
+                {translation.current_status}
+              </div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Submitted</div>
+              <div className="ecl-timeline__label">{translation.submitted}</div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Answered</div>
+              <div className="ecl-timeline__label">{translation.answered}</div>
             </li>
           </ol>
         </>
@@ -182,40 +224,50 @@ const Progress = ({ initiative }) => {
     case 'SUBMITTED': {
       return (
         <>
-          <h3 className="ecl-u-type-heading-3">Initiative progress </h3>
+          <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
           <ol className="ecl-timeline" data-ecl-timeline="true">
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Registered</div>
-              {registrationDate ? (
+              <div className="ecl-timeline__label">
+                {translation.registered}
+              </div>
+              {registrationDate && (
                 <div className="ecl-timeline__content">{registrationDate}</div>
-              ) : (
-                ''
               )}
             </li>
             {collectionDeadline ? (
               <li className="ecl-timeline__item">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_ongoing}
+                </div>
                 <div className="ecl-timeline__content">
                   {collectionDeadline}
                 </div>
               </li>
             ) : (
               <li className="ecl-timeline__item">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_ongoing}
+                </div>
               </li>
             )}
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Collection closed</div>
+              <div className="ecl-timeline__label">
+                {translation.collection_closed}
+              </div>
             </li>
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Verification</div>
+              <div className="ecl-timeline__label">
+                {translation.verification}
+              </div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--current">
-              <div className="ecl-timeline__label">Submitted</div>
-              <div className="ecl-timeline__content">Current status</div>
+              <div className="ecl-timeline__label">{translation.submitted}</div>
+              <div className="ecl-timeline__content">
+                {translation.current_status}
+              </div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--disabled">
-              <div className="ecl-timeline__label">Answered</div>
+              <div className="ecl-timeline__label">{translation.answered}</div>
             </li>
           </ol>
         </>
@@ -225,40 +277,50 @@ const Progress = ({ initiative }) => {
     case 'ANSWERED': {
       return (
         <>
-          <h3 className="ecl-u-type-heading-3">Initiative progress </h3>
+          <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
           <ol className="ecl-timeline" data-ecl-timeline="true">
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Registered</div>
-              {registrationDate ? (
+              <div className="ecl-timeline__label">
+                {translation.registered}
+              </div>
+              {registrationDate && (
                 <div className="ecl-timeline__content">{registrationDate}</div>
-              ) : (
-                ''
               )}
             </li>
             {collectionDeadline ? (
               <li className="ecl-timeline__item">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_ongoing}
+                </div>
                 <div className="ecl-timeline__content">
                   {collectionDeadline}
                 </div>
               </li>
             ) : (
               <li className="ecl-timeline__item">
-                <div className="ecl-timeline__label">Collection ongoing</div>
+                <div className="ecl-timeline__label">
+                  {translation.collection_ongoing}
+                </div>
               </li>
             )}
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Collection closed</div>
+              <div className="ecl-timeline__label">
+                {translation.collection_closed}
+              </div>
             </li>
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Verification</div>
+              <div className="ecl-timeline__label">
+                {translation.verification}
+              </div>
             </li>
             <li className="ecl-timeline__item">
-              <div className="ecl-timeline__label">Submitted</div>
+              <div className="ecl-timeline__label">{translation.submitted}</div>
             </li>
             <li className="ecl-timeline__item ecl-timeline__item--current">
-              <div className="ecl-timeline__label">Answered</div>
-              <div className="ecl-timeline__content">Current status</div>
+              <div className="ecl-timeline__label">{translation.answered}</div>
+              <div className="ecl-timeline__content">
+                {translation.current_status}
+              </div>
             </li>
           </ol>
         </>
@@ -269,9 +331,9 @@ const Progress = ({ initiative }) => {
     case 'WITHDRAWN_BY_ORGANISER': {
       return (
         <>
-          <h3 className="ecl-u-type-heading-3">Initiative progress </h3>
+          <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
           <p className="ecl-u-type-paragraph">
-            Initiative hasn't reached registration phase.
+            {translation.registration_not_reached}
           </p>
         </>
       );
@@ -280,8 +342,8 @@ const Progress = ({ initiative }) => {
     default: {
       return (
         <>
-          <h3 className="ecl-u-type-heading-3">Initiative progress </h3>
-          <p className="ecl-u-type-paragraph">N/A</p>
+          <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
+          <p className="ecl-u-type-paragraph">{translation.not_applicable}</p>
         </>
       );
     }

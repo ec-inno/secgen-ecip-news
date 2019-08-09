@@ -19,10 +19,9 @@ import Message from '../../components/Message';
 // Sub-components, keep out of /src/pages.
 import Progress from '../../components/Initiative/Progress';
 
-// Folder is in plural in order to have /initiatives/ route, but the component shows data about a single initiative.
 const Initiative = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiatives/${language}.json`);
+  const translation = require(`../../../translations/initiative/${language}.json`);
 
   const [initiativeData, setData] = useState({});
 
@@ -117,7 +116,7 @@ const Initiative = ({ location }) => {
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              <Progress initiative={initiativeData} />
+              <Progress initiative={initiativeData} location={location} />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
               {initiativeData.status === 'REGISTERED' ? (

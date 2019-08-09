@@ -3,7 +3,7 @@ import React from 'react';
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 import getDefaultLanguage from '../utils/getDefaultLanguage';
 
-import image from '../images/bg-forum.png';
+import image from './assets/images/bg-forum.png';
 import Button from '../components/Button';
 
 const ForumBanner = ({ location }) => {

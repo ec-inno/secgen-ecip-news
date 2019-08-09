@@ -8,13 +8,13 @@ import getDefaultLanguage from '../utils/getDefaultLanguage';
 const SEO = ({ name, title, description, titleTemplate, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
 
-  const data = require(`../../translations/seo/${language}.json`);
+  const translation = require(`../../translations/seo/${language}.json`);
 
   const {
     name: nameDefault,
     title: defaultTitle,
     description: defaultDescription,
-  } = data;
+  } = translation;
 
   const seo = {
     name: name || nameDefault,

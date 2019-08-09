@@ -28,16 +28,16 @@ const onCreatePage = ({ page, actions }) => {
   }
 
   // Client-only page displaying data from an API.
-  if (page.path.match(/^\/initiatives/)) {
+  if (page.path.match(/^\/initiative/)) {
     return languages.forEach(language => {
       const { lang } = language;
 
       /* eslint-disable no-param-reassign */
-      page.matchPath = `/${lang}/initiatives/*`;
+      page.matchPath = `/${lang}/initiative/*`;
 
       return createPage({
         ...page,
-        path: `/${lang}/initiatives`,
+        path: `/${lang}/initiative`,
         context: {
           ...page.context,
         },
