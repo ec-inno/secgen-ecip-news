@@ -25,6 +25,7 @@ const Homepage = ({ data, location }) => {
       <main>
         <div className="ecl-container">
           <LeadParagraph
+            location={location}
             linkPath={`/${language}/how-it-works`}
             linkText={translation.how_works_link}
             intro={translation.how_works_intro}
