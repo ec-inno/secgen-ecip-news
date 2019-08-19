@@ -1,11 +1,19 @@
 {
-  "private": true,
   "name": "@eci/cli",
   "version": "0.1.0",
+  "description": "",
+  "private": true,
   "bin": {
-    "eci-cli": "./bin/cli.js"
+    "eci-cli": "bin/eci-cli"
   },
-  "engines": {
-    "node": ">=8.0"
+  "files": [
+    "src",
+    "README.md",
+    "docs",
+    "bin"
+  ],
+  "dependencies": {
+    "gluegun": "^2.1.0",
+    "xlsx": "0.15.1"
   }
 }
