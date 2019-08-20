@@ -1,11 +1,15 @@
-const XLSX = require('xlsx');
-
 module.exports = {
   name: 'export',
   alias: ['e'],
   run: async toolbox => {
+    // @see https://infinitered.github.io/gluegun/#/guide-architecture?id=performance
+    /* eslint-disable-next-line global-require */
+    const XLSX = require('xlsx');
+    // Temporary components which should be coming from Drupal
+    const skip = ['footer', 'menu'];
+
     const {
-      filesystem: { path, inspectTree, read },
+      filesystem: { path, inspectTree, read, cwd },
       print: { info },
     } = toolbox;
 
@@ -13,7 +17,9 @@ module.exports = {
 
     const wb = XLSX.utils.book_new();
     const tree = inspectTree(path('translations'));
-    const components = tree.children.filter(child => child.type === 'dir');
+    const components = tree.children
+      .filter(child => child.type === 'dir')
+      .filter(component => !skip.includes(component.name));
 
     components.forEach(component => {
       const rows = [];
@@ -54,6 +60,6 @@ module.exports = {
 
     XLSX.writeFile(wb, 'translations.xls');
 
-    info('Translations have been exported');
+    info(`translations.xls is now ready at ${cwd()}`);
   },
 };
