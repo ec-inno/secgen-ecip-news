@@ -5,7 +5,6 @@ import { chunk } from 'lodash';
 
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
-import getInitiatives from '../../utils/getInitiatives';
 
 import Item from '../Initiative/Item';
 import Message from '../Message';
@@ -13,23 +12,11 @@ import New from '../Initiative/New';
 import Pagination from './Pagination';
 import Spinner from '../Spinner/Spinner';
 
-const ALL = 'ALL';
-const OPEN = 'OPEN';
-const SUCCESSFUL = 'SUCCESSFUL';
-
 const List = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const translation = require(`../../../translations/initiative/${language}.json`);
 
-  // Scenario when online: either a proxy or production.
-  let endpoint =
-    process.env.NODE_ENV === 'development'
-      ? '/initiative'
-      : 'https://ec.europa.eu/citizens-initiative/services/initiative';
-
-  // When offline, requires that you have running local server with cached data.
-  // Refer to /docs/InitiativesAPI.md for more information.
-  endpoint = process.env.GATSBY_OFFLINE ? 'http://localhost:4000' : endpoint;
+  const { GATSBY_INITIATIVES_API: api } = process.env;
 
   const page = [];
   const itemsPerRow = 3;
@@ -38,59 +25,22 @@ const List = ({ location }) => {
 
   const [errorMessage, setErrorMessage] = useState('');
   const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
-  const [filter, setFilter] = useState(OPEN);
+  const [filter, setFilter] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL
   const [initiatives, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
   useEffect(() => {
     const fetchData = async () => {
+      const lang = language.toUpperCase();
+      const endpoint = `${api}/register/search/${filter}/${lang}/0/${itemsPerPage}`;
+
       setIsLoading(true);
 
       try {
-        let initiativesFromService = [];
+        const response = await axios.get(endpoint);
 
-        // On netlify.com, which is test environment, use a function.
-        if (location.origin && location.origin.includes('netlify.com')) {
-          const results = await axios.get(
-            `${location.origin}/.netlify/functions/initiatives`
-          );
-          initiativesFromService = results.data.initiatives;
-        }
-        // Otherwise make requests as usual.
-        else {
-          initiativesFromService = await getInitiatives(endpoint);
-        }
-
-        const initiatives = initiativesFromService
-          // Should not display rejected initiatives.
-          .filter(r => r.searchEntry['@status'] !== 'REJECTED')
-          // Will filter those with content available in the given language.
-          .filter(initiative => {
-            const { initiativeLanguage } = initiative.initiativeLanguages;
-            const content = Array.isArray(initiativeLanguage)
-              ? initiativeLanguage.filter(l => l['@code'] === language)
-              : initiativeLanguage['@code'] === language;
-            if (content) return content;
-          })
-          // Merge fields:
-          // - Provides content in the given language.
-          // - Gets title, status, etc. fields on first level, rather than searchEntry, facilitating single item visualization.
-          .map(initiative => {
-            let additional = {};
-            const { initiativeLanguage } = initiative.initiativeLanguages;
-
-            if (Array.isArray(initiativeLanguage)) {
-              const lang = initiativeLanguage.filter(
-                l => l['@code'] === language
-              );
-              additional = lang[0];
-            } else {
-              additional = initiativeLanguage;
-            }
-
-            return Object.assign({}, initiative, additional);
-          });
+        const initiatives = response.data;
 
         setData(initiatives);
       } catch (error) {
@@ -102,7 +52,7 @@ const List = ({ location }) => {
     };
 
     fetchData();
-  }, []);
+  }, [filter, itemsPerPage]);
 
   const errorComponentConfig = {
     variant: 'error',
@@ -140,34 +90,13 @@ const List = ({ location }) => {
     return page;
   }
 
-  // Do not work with results of the side effect directly.
-  const allInitiatives = [...initiatives];
-
-  const allCount = allInitiatives.length;
-  const ongoingCount = allInitiatives.filter(
-    initiative => initiative.searchEntry['@status'] === OPEN
-  ).length;
-  const answeredCount = allInitiatives.filter(
-    initiative => initiative.searchEntry['@status'] === SUCCESSFUL
-  ).length;
-
-  const filtered =
-    filter === ALL
-      ? allInitiatives
-      : allInitiatives.filter(
-          initiative => initiative.searchEntry['@status'] === filter
-        );
-
-  const resultsAll = [...filtered];
-
-  const resultsPage = filtered.splice(0, itemsPerPage);
-
   page.push(
     <div className={errorMessage ? 'hidden' : 'ecl-u-mv-xl'}>
       <ul className="eci-menu__list">
         <li
+          key="latest"
           className={
-            filter === OPEN
+            filter === 'LATEST'
               ? 'eci-menu__option eci-menu__option--is-selected'
               : 'eci-menu__option'
           }
@@ -176,17 +105,18 @@ const List = ({ location }) => {
             onClick={e => {
               e.preventDefault();
               setItemsPerPage(itemsPerPageDefault);
-              setFilter(OPEN);
+              setFilter('LATEST');
             }}
             href="#"
             className="eci-menu__link ecl-link"
           >
-            {translation.ongoing} {ongoingCount && `(${ongoingCount})`}
+            {translation.latest}
           </a>
         </li>
         <li
+          key="ongoing"
           className={
-            filter === SUCCESSFUL
+            filter === 'ONGOING'
               ? 'eci-menu__option eci-menu__option--is-selected'
               : 'eci-menu__option'
           }
@@ -195,17 +125,40 @@ const List = ({ location }) => {
             onClick={e => {
               e.preventDefault();
               setItemsPerPage(itemsPerPageDefault);
-              setFilter(SUCCESSFUL);
+              setFilter('ONGOING');
             }}
             href="#"
             className="eci-menu__link ecl-link"
           >
-            {translation.answered} {answeredCount && `(${answeredCount})`}
+            {translation.ongoing}{' '}
+            {initiatives.ongoing && `(${initiatives.ongoing})`}
           </a>
         </li>
         <li
+          key="answered"
           className={
-            filter === ALL
+            filter === 'ANSWERED'
+              ? 'eci-menu__option eci-menu__option--is-selected'
+              : 'eci-menu__option'
+          }
+        >
+          <a
+            onClick={e => {
+              e.preventDefault();
+              setItemsPerPage(itemsPerPageDefault);
+              setFilter('ANSWERED');
+            }}
+            href="#"
+            className="eci-menu__link ecl-link"
+          >
+            {translation.answered}{' '}
+            {initiatives.answered && `(${initiatives.answered})`}
+          </a>
+        </li>
+        <li
+          key="all"
+          className={
+            filter === 'ALL'
               ? 'eci-menu__option eci-menu__option--is-selected'
               : 'eci-menu__option'
           }
@@ -214,21 +167,22 @@ const List = ({ location }) => {
             onClick={e => {
               e.preventDefault();
               setItemsPerPage(20);
-              setFilter(ALL);
+              setFilter('ALL');
             }}
             href="#"
             className="eci-menu__link ecl-link"
           >
-            {translation.all_initiatives} {allCount && `(${allCount})`}
+            {translation.all_initiatives}{' '}
+            {initiatives.all && `(${initiatives.all})`}
           </a>
         </li>
       </ul>
     </div>
   );
 
-  const groups = Math.ceil(resultsPage.length / itemsPerRow);
+  const groups = Math.ceil(initiatives.entries.length / itemsPerRow);
 
-  chunk(resultsPage, itemsPerRow).map((group, k) => {
+  chunk(initiatives.entries, itemsPerRow).map((group, k) => {
     const groupLength = group.length;
     // If it's either the first or last item, do not add 'md'.
     const rowSpacing =
@@ -260,7 +214,7 @@ const List = ({ location }) => {
     );
   });
 
-  if (resultsPage.length < resultsAll.length) {
+  if (itemsPerPage < initiatives[filter.toLowerCase()]) {
     page.push(
       <Pagination
         location={location}

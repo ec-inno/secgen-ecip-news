@@ -31,5 +31,6 @@
   "verification": "Verification",
   "submitted": "Submitted",
   "registration_not_reached": "Initiative hasn't reached registration phase.",
-  "not_applicable": "N/A"
+  "not_applicable": "N/A",
+  "latest": "Latest"
 }

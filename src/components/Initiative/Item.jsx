@@ -2,47 +2,49 @@ import React from 'react';
 
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
-import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
+
+import defaultImage from '../assets/images/default-image.png';
+
+const formatStatus = s => {
+  if (typeof s !== 'string') return s;
+  return (
+    s.charAt(0).toUpperCase() +
+    s
+      .slice(1)
+      .toLowerCase()
+      .replace('_', ' ')
+  );
+};
 
 const InitiativeItem = ({ item, location }) => {
-  let href = '#';
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const translation = require(`../../../translations/initiative/${language}.json`);
-
-  // Try to build a valid path which can display information about an initiative.
-  if (item.year && item.number) {
-    const { year, number } = item;
-    href = `/${language}/initiative/#${year}-${number}`;
-  }
-
-  const supporters =
-    item.fundingSponsors && item.fundingSponsors.fundingSponsor
-      ? item.fundingSponsors.fundingSponsor.length
-      : undefined;
 
   return (
     <article className="ecl-card">
       <header className="ecl-card__header">
         <a href="#" className="ecl-tag ecl-u-f-r eci-tag">
-          {getInitiativeStatusLabel(item.searchEntry['@status'])}
+          {formatStatus(item.status)}
         </a>
         <div
           className="ecl-card__image"
           alt="card image"
-          // style="background-image: url('media/initiatives/eat_original-en.png');"
+          style={{ backgroundImage: `url('${defaultImage}')` }}
         ></div>
         <h1 className="ecl-card__title">
-          <a level="1" href={href} className="ecl-link ecl-link--standalone">
+          <a
+            level="1"
+            href={`/${language}/initiative/#${item.id}`}
+            className="ecl-link ecl-link--standalone"
+          >
             <span className="ecl-link__label">{item.title}</span>
           </a>
         </h1>
       </header>
       <section className="ecl-card__body">
-        {supporters && (
-          <p className="ecl-u-type-paragraph ecl-u-mv-none">
-            {supporters} {translation.supporters}
-          </p>
-        )}
+        <p className="ecl-u-type-paragraph ecl-u-mv-none">
+          {item.totalSupporters} {translation.supporters}
+        </p>
       </section>
     </article>
   );
