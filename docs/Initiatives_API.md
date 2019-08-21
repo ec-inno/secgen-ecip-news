@@ -1,5 +1,7 @@
 # Initiatives API - version 2
 
+Endpoint is set through `GATSBY_INITIATIVES_API` environment variable.
+
 ## Swagger specification
 
 When requested, you will be provided with a `swagger.json` [specification](https://swagger.io/specification/).
