@@ -6,11 +6,11 @@ import { chunk } from 'lodash';
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
+import SearchForm from './SearchForm';
 import Item from '../Initiative/Item';
 import Message from '../Message';
 import New from '../Initiative/New';
 import Pagination from './Pagination';
-import Spinner from '../Spinner/Spinner';
 
 const List = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
@@ -25,17 +25,14 @@ const List = ({ location }) => {
 
   const [errorMessage, setErrorMessage] = useState('');
   const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
-  const [filter, setFilter] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL
+  const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL
   const [initiatives, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
   useEffect(() => {
     const fetchData = async () => {
-      const lang = language.toUpperCase();
-      const endpoint = `${api}/register/search/${filter}/${lang}/0/${itemsPerPage}`;
-
-      setIsLoading(true);
+      const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
+      const endpoint = `${api}/register/search/${section}/${lang}/0/${itemsPerPage}`;
 
       try {
         const response = await axios.get(endpoint);
@@ -47,12 +44,12 @@ const List = ({ location }) => {
         setErrorMessage(error.message);
         setErrorMessageVisibility(true);
       }
-
-      setIsLoading(false);
     };
 
     fetchData();
-  }, [filter, itemsPerPage]);
+  }, [section, itemsPerPage]);
+
+  page.push(<SearchForm location={location} />);
 
   const errorComponentConfig = {
     variant: 'error',
@@ -80,23 +77,13 @@ const List = ({ location }) => {
     />
   );
 
-  if (isLoading) {
-    page.push(
-      <div>
-        {translation.fetching_initiatives}
-        <Spinner />
-      </div>
-    );
-    return page;
-  }
-
   page.push(
     <div className={errorMessage ? 'hidden' : 'ecl-u-mv-xl'}>
       <ul className="eci-menu__list">
         <li
           key="latest"
           className={
-            filter === 'LATEST'
+            section === 'LATEST'
               ? 'eci-menu__option eci-menu__option--is-selected'
               : 'eci-menu__option'
           }
@@ -105,7 +92,7 @@ const List = ({ location }) => {
             onClick={e => {
               e.preventDefault();
               setItemsPerPage(itemsPerPageDefault);
-              setFilter('LATEST');
+              setSection('LATEST');
             }}
             href="#"
             className="eci-menu__link ecl-link"
@@ -116,7 +103,7 @@ const List = ({ location }) => {
         <li
           key="ongoing"
           className={
-            filter === 'ONGOING'
+            section === 'ONGOING'
               ? 'eci-menu__option eci-menu__option--is-selected'
               : 'eci-menu__option'
           }
@@ -125,7 +112,7 @@ const List = ({ location }) => {
             onClick={e => {
               e.preventDefault();
               setItemsPerPage(itemsPerPageDefault);
-              setFilter('ONGOING');
+              setSection('ONGOING');
             }}
             href="#"
             className="eci-menu__link ecl-link"
@@ -137,7 +124,7 @@ const List = ({ location }) => {
         <li
           key="answered"
           className={
-            filter === 'ANSWERED'
+            section === 'ANSWERED'
               ? 'eci-menu__option eci-menu__option--is-selected'
               : 'eci-menu__option'
           }
@@ -146,7 +133,7 @@ const List = ({ location }) => {
             onClick={e => {
               e.preventDefault();
               setItemsPerPage(itemsPerPageDefault);
-              setFilter('ANSWERED');
+              setSection('ANSWERED');
             }}
             href="#"
             className="eci-menu__link ecl-link"
@@ -158,7 +145,7 @@ const List = ({ location }) => {
         <li
           key="all"
           className={
-            filter === 'ALL'
+            section === 'ALL'
               ? 'eci-menu__option eci-menu__option--is-selected'
               : 'eci-menu__option'
           }
@@ -167,7 +154,7 @@ const List = ({ location }) => {
             onClick={e => {
               e.preventDefault();
               setItemsPerPage(20);
-              setFilter('ALL');
+              setSection('ALL');
             }}
             href="#"
             className="eci-menu__link ecl-link"
@@ -214,7 +201,7 @@ const List = ({ location }) => {
     );
   });
 
-  if (itemsPerPage < initiatives[filter.toLowerCase()]) {
+  if (itemsPerPage < initiatives[section.toLowerCase()]) {
     page.push(
       <Pagination
         location={location}

@@ -45,6 +45,19 @@ const InitiativeItem = ({ item, location }) => {
         <p className="ecl-u-type-paragraph ecl-u-mv-none">
           {item.totalSupporters} {translation.supporters}
         </p>
+        {item.supportLink && (
+          <ul className="ecl-card__link-container">
+            <li className="ecl-card__link-item">
+              <a
+                target="_blank"
+                href={item.supportLink}
+                className="ecl-card__link ecl-link ecl-link--standalone"
+              >
+                {translation.support_cat}
+              </a>
+            </li>
+          </ul>
+        )}
       </section>
     </article>
   );
