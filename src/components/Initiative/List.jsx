@@ -165,9 +165,10 @@ const List = ({ location }) => {
     </div>
   );
 
-  const groups = initiatives.entries
-    ? Math.ceil(initiatives.entries.length / itemsPerRow)
-    : [];
+  // When no results, return tabs as well, they are filters.
+  if (!initiatives.entries) return page;
+
+  const groups = Math.ceil(initiatives.entries.length / itemsPerRow);
 
   chunk(initiatives.entries, itemsPerRow).map((group, k) => {
     const groupLength = group.length;
