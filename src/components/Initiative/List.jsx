@@ -26,7 +26,8 @@ const List = ({ location }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
   const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL
-  const [initiatives, setData] = useState([]);
+  const [filters, setFilters] = useState({});
+  const [initiatives, setInitiatives] = useState([]);
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
   useEffect(() => {
@@ -35,11 +36,8 @@ const List = ({ location }) => {
       const endpoint = `${api}/register/search/${section}/${lang}/0/${itemsPerPage}`;
 
       try {
-        const response = await axios.get(endpoint);
-
-        const initiatives = response.data;
-
-        setData(initiatives);
+        const response = await axios.post(endpoint, filters);
+        setInitiatives(response.data);
       } catch (error) {
         setErrorMessage(error.message);
         setErrorMessageVisibility(true);
@@ -47,9 +45,9 @@ const List = ({ location }) => {
     };
 
     fetchData();
-  }, [section, itemsPerPage]);
+  }, [section, filters, itemsPerPage]);
 
-  page.push(<SearchForm location={location} />);
+  page.push(<SearchForm setFilters={setFilters} location={location} />);
 
   const errorComponentConfig = {
     variant: 'error',
@@ -167,7 +165,9 @@ const List = ({ location }) => {
     </div>
   );
 
-  const groups = Math.ceil(initiatives.entries.length / itemsPerRow);
+  const groups = initiatives.entries
+    ? Math.ceil(initiatives.entries.length / itemsPerRow)
+    : [];
 
   chunk(initiatives.entries, itemsPerRow).map((group, k) => {
     const groupLength = group.length;
