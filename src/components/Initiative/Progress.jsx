@@ -34,9 +34,10 @@ const Progress = ({ progress, location }) => {
     if (match) stages.push(match);
   });
 
-  stages.forEach(stage =>
+  stages.forEach((stage, key) =>
     timeline.push(
       <li
+        key={key}
         className={
           stage.active
             ? 'ecl-timeline__item ecl-timeline__item--current'

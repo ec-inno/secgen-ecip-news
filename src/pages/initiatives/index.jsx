@@ -86,6 +86,17 @@ const Initiative = ({ location }) => {
   // console.log('languageSpecificData', languageSpecificData);
   // console.log('initiativeData', initiativeData);
 
+  const people = has(initiativeData, 'members')
+    ? initiativeData.members.filter(p => !p.privacyApplied)
+    : [];
+  const reps = people.filter(p => p.type === 'REPRESENTATIVE');
+  const subs = people.filter(p => p.type === 'SUBSTITUTE');
+  const members = people.filter(p => p.type === 'MEMBER');
+  const legalEs = people.filter(p => p.type === 'LEGAL_ENTITY');
+  const organisers = { reps, subs, members, legalEs };
+
+  console.log('organisers', organisers);
+
   return (
     <>
       <SEO
@@ -179,9 +190,8 @@ const Initiative = ({ location }) => {
                 location={location}
               />
             </div>
-            <div className="ecl-col-sm-12 ecl-col-md-8"></div>
-            {/* <div className="ecl-col-sm-12 ecl-col-md-8">
-              {initiativeData.status === 'REGISTERED' ? (
+            <div className="ecl-col-sm-12 ecl-col-md-8">
+              {initiativeData.partiallyRegistered ? (
                 <>
                   <p className="ecl-u-type-paragraph ecl-u-type-bold">
                     Only a part(s) of this initiative has(ve) been registered.
@@ -199,107 +209,99 @@ const Initiative = ({ location }) => {
               ) : (
                 ''
               )}
-              {initiativeData.subjectMatter ? (
-                <>
-                  <h2 className="ecl-u-type-heading-2">
-                    {translation.subject_matter}
-                  </h2>
-                  <p
-                    className="ecl-u-type-paragraph"
-                    dangerouslySetInnerHTML={{
-                      __html: initiativeData.subjectMatter,
-                    }}
-                  />
-                </>
-              ) : (
-                ''
-              )}
-              {initiativeData.objectives ? (
+              {languageSpecificData.objectives ? (
                 <>
                   <h2 className="ecl-u-type-heading-2">
                     {translation.objectives}
                   </h2>
                   <ul className="ecl-u-type-paragraph">
-                    {initiativeData.objectives.split(/\n/).map((line, key) => (
-                      <li
-                        key={key}
-                        className="ecl-u-type-paragraph"
-                        dangerouslySetInnerHTML={{
-                          __html: line,
-                        }}
-                      />
-                    ))}
+                    {languageSpecificData.objectives
+                      .split(/\n/)
+                      .map((line, key) => (
+                        <li
+                          key={key}
+                          className="ecl-u-type-paragraph"
+                          dangerouslySetInnerHTML={{
+                            __html: line,
+                          }}
+                        />
+                      ))}
                   </ul>
                 </>
               ) : (
                 ''
               )}
-              {initiativeData.legalBase ? (
-                <>
-                  <h2 className="ecl-u-type-heading-2">
-                    {translation.legal_base}
-                  </h2>
-                  <p
-                    className="ecl-u-type-paragraph"
-                    dangerouslySetInnerHTML={{
-                      __html: initiativeData.legalBase,
-                    }}
-                  />
-                </>
-              ) : (
-                ''
-              )}
-              {initiativeData.website ? (
+              {languageSpecificData.website ? (
                 <>
                   <h2 className="ecl-u-type-heading-2">
                     {translation.website}
                   </h2>
                   <p className="ecl-u-type-paragraph">
                     <a
-                      href={initiativeData.website}
+                      href={languageSpecificData.website}
                       className="ecl-link"
                       target="_blank"
                     >
-                      {initiativeData.website}
+                      {languageSpecificData.website}
                     </a>
                   </p>
                 </>
               ) : (
                 ''
               )}
-              {initiativeData.organisers ? (
+              {languageSpecificData.treaties ? (
+                <>
+                  <h2 className="ecl-u-type-heading-2">
+                    Provisions of the Treaties considered relevant by the
+                    organisers
+                  </h2>
+                  <p className="ecl-u-type-paragraph">
+                    {languageSpecificData.treaties}
+                  </p>
+                </>
+              ) : (
+                ''
+              )}
+              {organisers ? (
                 <>
                   <h2 className="ecl-u-type-heading-2">
                     {translation.organisers}
                   </h2>
                   <ul className="ecl-u-type-paragraph">
-                    {has(initiativeData, 'organisers.reps')
-                      ? initiativeData.organisers.reps.map((rep, key) => (
+                    {has(organisers, 'legalEs') ? (
+                      <li key="le-0">
+                        Legal entities
+                        {': '}
+                        {organisers.legalEs.map(m => m.fullName).join(', ')}
+                      </li>
+                    ) : (
+                      ''
+                    )}
+                    {has(organisers, 'reps')
+                      ? organisers.reps.map((rep, key) => (
                           <li key={`r-${key}`}>
                             {translation.representative}
                             {': '}
-                            {rep.fullname}
+                            {rep.fullName}
                             {rep.email ? ` - ${rep.email}` : ''}
                           </li>
                         ))
                       : ''}
-                    {has(initiativeData, 'organisers.subs')
-                      ? initiativeData.organisers.subs.map((sub, key) => (
+                    {has(organisers, 'subs')
+                      ? organisers.subs.map((sub, key) => (
                           <li key={`s-${key}`}>
                             {translation.substitute}
                             {': '}
-                            {sub.fullname}
+                            {sub.fullName}
                             {sub.email ? ` - ${sub.email}` : ''}
                           </li>
                         ))
                       : ''}
-                    {has(initiativeData, 'organisers.members') ? (
+                    {has(organisers, 'members') ? (
                       <li key="m-0">
                         {translation.members}
                         {': '}
-                        {initiativeData.organisers.members
-                          .map(m => m.fullname)
-                          .join(', ')}
+                        {organisers.members.map(m => m.fullName).join(', ')}
                       </li>
                     ) : (
                       ''
@@ -309,7 +311,7 @@ const Initiative = ({ location }) => {
               ) : (
                 ''
               )}
-            </div> */}
+            </div>
           </div>
         </div>
       </main>
