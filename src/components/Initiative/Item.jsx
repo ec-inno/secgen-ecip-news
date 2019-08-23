@@ -55,7 +55,7 @@ const InitiativeItem = ({ item, location }) => {
         </a>
         <div
           className="ecl-card__image"
-          alt="card image"
+          alt={`Image of ${item.title} initiative`}
           style={{ backgroundImage: `url('${background}')` }}
         ></div>
         <h1 className="ecl-card__title">
