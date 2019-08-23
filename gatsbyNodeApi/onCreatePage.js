@@ -32,16 +32,16 @@ const onCreatePage = ({ page, actions }) => {
    */
 
   // Initiative details page.
-  if (page.path.match(/^\/initiative/)) {
+  if (page.path.match(/^\/initiatives/)) {
     return languages.forEach(language => {
       const { lang } = language;
 
       /* eslint-disable no-param-reassign */
-      page.matchPath = `/${lang}/initiative/*`;
+      page.matchPath = `/${lang}/initiatives/*`;
 
       return createPage({
         ...page,
-        path: `/${lang}/initiative`,
+        path: `/${lang}/initiatives`,
         context: {
           ...page.context,
         },

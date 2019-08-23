@@ -1,21 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import formatStatus from '../../utils/formatStatus';
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
 import defaultImage from '../assets/images/default-image.png';
-
-const formatStatus = s => {
-  if (typeof s !== 'string') return s;
-  return (
-    s.charAt(0).toUpperCase() +
-    s
-      .slice(1)
-      .toLowerCase()
-      .replace('_', ' ')
-  );
-};
 
 const InitiativeItem = ({ item, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
@@ -61,7 +51,7 @@ const InitiativeItem = ({ item, location }) => {
         <h1 className="ecl-card__title">
           <a
             level="1"
-            href={`/${language}/initiative/#${item.id}`}
+            href={`/${language}/initiatives/#${item.id}`}
             className="ecl-link ecl-link--standalone"
           >
             <span className="ecl-link__label">{item.title}</span>

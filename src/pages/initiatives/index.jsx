@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import has from 'lodash/has';
 
 // Generic utils.
+import formatStatus from '../../utils/formatStatus';
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
-import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
 // Page-specific utilities
 // When components need more than a few attributes, keep config params out.
 import config from './config';
-import getInitiativeData from './getInitiativeData';
 
 // Generic
 import SEO from '../../components/SEO';
@@ -23,29 +23,87 @@ const Initiative = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const translation = require(`../../../translations/initiative/${language}.json`);
 
-  const [initiativeData, setData] = useState({});
+  const { GATSBY_INITIATIVES_API: api } = process.env;
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
+  const [initiativeData, setInitiativeData] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
-      const initiative = await getInitiativeData({ location });
-      setData(initiative);
+    const fetchInitiative = async () => {
+      const initiativeId = location.hash.substr(1, location.hash.length);
+      const endpoint = `${api}/register/details/${initiativeId}`;
+
+      try {
+        const response = await axios.get(endpoint);
+        setInitiativeData(response.data);
+      } catch (error) {
+        console.error(`Error while fetching data about initiative #{1}`, error);
+        setErrorMessage(error.message);
+        setErrorMessageVisibility(true);
+      }
     };
 
-    fetchData();
+    fetchInitiative();
   }, [language]);
+
+  if (errorMessage) {
+    const errorComponentConfig = {
+      variant: 'error',
+      icon: {
+        shape: 'notifications--error',
+        size: 'l',
+      },
+      close: {
+        variant: 'ghost',
+        label: 'Close',
+        icon: {
+          shape: 'ui--close',
+          size: 's',
+        },
+      },
+    };
+
+    return (
+      <div className="ecl-container ecl-u-mt-l">
+        <Message
+          className={errorMessageIsVisible ? '' : 'hidden'}
+          onClose={() => setErrorMessageVisibility(false)}
+          title={`Issue while getting data about initiative ${1}`}
+          description={errorMessage}
+          {...errorComponentConfig}
+        />
+      </div>
+    );
+  }
+
+  const languageSpecificData = initiativeData.linguisticVersions
+    ? Object.values(initiativeData.linguisticVersions).find(
+        version => version.languageCode.toLowerCase() === language
+      )
+    : {};
+
+  // console.log('languageSpecificData', languageSpecificData);
+  // console.log('initiativeData', initiativeData);
 
   return (
     <>
       <SEO
         location={location}
-        title={has(initiativeData, 'title') ? initiativeData.title : '...'}
+        title={
+          has(languageSpecificData, 'title')
+            ? languageSpecificData.title
+            : '...'
+        }
       />
 
       <section className="ecl-page-header">
         <div className="ecl-container">
           <div className="ecl-page-header__title-wrapper">
             <h1 className="ecl-page-header__title">
-              {has(initiativeData, 'title') ? initiativeData.title : '...'}
+              {has(languageSpecificData, 'title')
+                ? languageSpecificData.title
+                : '...'}
             </h1>
           </div>
           <ul className="ecl-u-d-flex ecl-u-pl-none ecl-u-mv-l ecl-u-type-m ecl-page-header__info-list">
@@ -57,8 +115,8 @@ const Initiative = ({ location }) => {
                 />
                 {translation.current_status}
                 {': '}
-                {initiativeData.status
-                  ? getInitiativeStatusLabel(initiativeData.status)
+                {has(initiativeData, 'status')
+                  ? formatStatus(initiativeData.status)
                   : '...'}
               </div>
               <div className="ecl-u-d-flex ecl-u-mt-xs">
@@ -68,7 +126,7 @@ const Initiative = ({ location }) => {
                 />
                 {translation.registration_number}
                 {': '}
-                {initiativeData.number ? initiativeData.number : '...'}
+                {initiativeData.comRegNum ? initiativeData.comRegNum : '...'}
               </div>
             </li>
             <li className="ecl-u-ml-l ecl-page-header__info-item">
@@ -79,9 +137,7 @@ const Initiative = ({ location }) => {
                 />
                 {translation.deadline}
                 {': '}
-                {initiativeData.dateDeadline
-                  ? initiativeData.dateDeadline
-                  : '...'}
+                {initiativeData.deadline}
               </div>
               <div className="ecl-u-d-flex ecl-u-mt-xs">
                 <Icon
@@ -90,25 +146,27 @@ const Initiative = ({ location }) => {
                 />
                 {translation.date_registration}
                 {': '}
-                {initiativeData.dateRegistration
-                  ? initiativeData.dateRegistration
+                {initiativeData.registrationDate
+                  ? initiativeData.registrationDate
                   : '...'}
               </div>
             </li>
-            <li className="ecl-u-ml-l ecl-page-header__info-item">
-              <a
-                href="#"
-                target="_blank"
-                type="submit"
-                className="ecl-button ecl-button--call"
-              >
-                <span className="ecl-button__container">
-                  <span className="ecl-button__label" data-ecl-label="true">
-                    {translation.support_cat}
+            {initiativeData.supportLink && (
+              <li className="ecl-u-ml-l ecl-page-header__info-item">
+                <a
+                  href={initiativeData.supportLink}
+                  target="_blank"
+                  type="submit"
+                  className="ecl-button ecl-button--call"
+                >
+                  <span className="ecl-button__container">
+                    <span className="ecl-button__label" data-ecl-label="true">
+                      {translation.support_cat}
+                    </span>
                   </span>
-                </span>
-              </a>
-            </li>
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </section>
@@ -116,9 +174,13 @@ const Initiative = ({ location }) => {
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              <Progress initiative={initiativeData} location={location} />
+              <Progress
+                progress={initiativeData.progress}
+                location={location}
+              />
             </div>
-            <div className="ecl-col-sm-12 ecl-col-md-8">
+            <div className="ecl-col-sm-12 ecl-col-md-8"></div>
+            {/* <div className="ecl-col-sm-12 ecl-col-md-8">
               {initiativeData.status === 'REGISTERED' ? (
                 <>
                   <p className="ecl-u-type-paragraph ecl-u-type-bold">
@@ -247,7 +309,7 @@ const Initiative = ({ location }) => {
               ) : (
                 ''
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       </main>
