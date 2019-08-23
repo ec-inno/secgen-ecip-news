@@ -52,9 +52,12 @@ const Progress = ({ progress, location }) => {
   );
 
   return (
-    <ol className="ecl-timeline" data-ecl-timeline="true">
-      {timeline}
-    </ol>
+    <>
+      <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
+      <ol className="ecl-timeline" data-ecl-timeline="true">
+        {timeline}
+      </ol>
+    </>
   );
 };
 
