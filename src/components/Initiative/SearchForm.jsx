@@ -38,7 +38,7 @@ const SearchForm = ({ location, setFilters }) => {
               <div className="ecl-select__container">
                 <select
                   id="filter-category"
-                  name="select-name"
+                  name="filter-category"
                   className="ecl-select"
                   value={category}
                   onChange={e => setCategory(e.target.value)}
@@ -78,20 +78,18 @@ const SearchForm = ({ location, setFilters }) => {
           </div>
 
           <div className="ecl-col-sm-12 ecl-col-md-5">
-            <div className="ecl-form-group ecl-form-group--select">
-              <div className="ecl-form-group ecl-form-group--text-input">
-                <label className="ecl-form-label" htmlFor="filter-keyword">
-                  {translation.filter_keyword}
-                </label>
-                <input
-                  type="text"
-                  id="filter-keyword"
-                  name="keyword-name"
-                  className="ecl-text-input"
-                  value={keyword}
-                  onChange={e => setKeyword(e.target.value)}
-                />
-              </div>
+            <div className="ecl-form-group ecl-form-group--text-input">
+              <label className="ecl-form-label" htmlFor="filter-keyword">
+                {translation.filter_keyword}
+              </label>
+              <input
+                type="text"
+                id="filter-keyword"
+                name="filter-keyword"
+                className="ecl-text-input"
+                value={keyword}
+                onChange={e => setKeyword(e.target.value)}
+              />
             </div>
           </div>
 
