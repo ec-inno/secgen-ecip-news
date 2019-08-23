@@ -34,8 +34,6 @@ const SearchResults = ({ location }) => {
       const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
       const endpoint = `${api}/register/search/ALL/${lang}/0/${itemsPerPage}`;
 
-      console.log(filters);
-
       try {
         const response = await axios.post(endpoint, filters);
         setInitiatives(response.data);
