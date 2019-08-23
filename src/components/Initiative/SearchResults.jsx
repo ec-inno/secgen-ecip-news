@@ -25,7 +25,6 @@ const SearchResults = ({ location }) => {
 
   const [errorMessage, setErrorMessage] = useState('');
   const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
-  const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL
   const [filters, setFilters] = useState({});
   const [initiatives, setInitiatives] = useState([]);
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
@@ -33,7 +32,9 @@ const SearchResults = ({ location }) => {
   useEffect(() => {
     const fetchData = async () => {
       const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
-      const endpoint = `${api}/register/search/${section}/${lang}/0/${itemsPerPage}`;
+      const endpoint = `${api}/register/search/ALL/${lang}/0/${itemsPerPage}`;
+
+      console.log(filters);
 
       try {
         const response = await axios.post(endpoint, filters);
@@ -45,7 +46,7 @@ const SearchResults = ({ location }) => {
     };
 
     fetchData();
-  }, [section, filters, itemsPerPage]);
+  }, [filters, itemsPerPage]);
 
   page.push(<SearchForm setFilters={setFilters} location={location} />);
 
@@ -73,96 +74,6 @@ const SearchResults = ({ location }) => {
       description={errorMessage}
       {...errorComponentConfig}
     />
-  );
-
-  page.push(
-    <div className={errorMessage ? 'hidden' : 'ecl-u-mv-xl'}>
-      <ul className="eci-menu__list">
-        <li
-          key="latest"
-          className={
-            section === 'LATEST'
-              ? 'eci-menu__option eci-menu__option--is-selected'
-              : 'eci-menu__option'
-          }
-        >
-          <a
-            onClick={e => {
-              e.preventDefault();
-              setItemsPerPage(itemsPerPageDefault);
-              setSection('LATEST');
-            }}
-            href="#"
-            className="eci-menu__link ecl-link"
-          >
-            {translation.latest}
-          </a>
-        </li>
-        <li
-          key="ongoing"
-          className={
-            section === 'ONGOING'
-              ? 'eci-menu__option eci-menu__option--is-selected'
-              : 'eci-menu__option'
-          }
-        >
-          <a
-            onClick={e => {
-              e.preventDefault();
-              setItemsPerPage(itemsPerPageDefault);
-              setSection('ONGOING');
-            }}
-            href="#"
-            className="eci-menu__link ecl-link"
-          >
-            {translation.ongoing}{' '}
-            {initiatives.ongoing && `(${initiatives.ongoing})`}
-          </a>
-        </li>
-        <li
-          key="answered"
-          className={
-            section === 'ANSWERED'
-              ? 'eci-menu__option eci-menu__option--is-selected'
-              : 'eci-menu__option'
-          }
-        >
-          <a
-            onClick={e => {
-              e.preventDefault();
-              setItemsPerPage(itemsPerPageDefault);
-              setSection('ANSWERED');
-            }}
-            href="#"
-            className="eci-menu__link ecl-link"
-          >
-            {translation.answered}{' '}
-            {initiatives.answered && `(${initiatives.answered})`}
-          </a>
-        </li>
-        <li
-          key="all"
-          className={
-            section === 'ALL'
-              ? 'eci-menu__option eci-menu__option--is-selected'
-              : 'eci-menu__option'
-          }
-        >
-          <a
-            onClick={e => {
-              e.preventDefault();
-              setItemsPerPage(20);
-              setSection('ALL');
-            }}
-            href="#"
-            className="eci-menu__link ecl-link"
-          >
-            {translation.all_initiatives}{' '}
-            {initiatives.all && `(${initiatives.all})`}
-          </a>
-        </li>
-      </ul>
-    </div>
   );
 
   // When no results, return tabs as well, they are filters.
@@ -202,7 +113,9 @@ const SearchResults = ({ location }) => {
     );
   });
 
-  if (itemsPerPage < initiatives[section.toLowerCase()]) {
+  // Needs update when information about results is correst
+  // @see https://webgate.ec.europa.eu/CITnet/jira/browse/INNO-1689
+  if (itemsPerPage < initiatives.all) {
     page.push(
       <Pagination
         location={location}

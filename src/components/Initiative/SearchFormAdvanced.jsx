@@ -284,16 +284,14 @@ const SearchForm = ({ location, setFilters }) => {
           </div>
         </fieldset>
 
-        <div className="ecl-row">
-          <div className="ecl-col-sm-12 ecl-col-md-12">
-            <button type="submit" className="ecl-button ecl-button--primary">
-              <span className="ecl-button__container">
-                <span className="ecl-button__label" data-ecl-label="true">
-                  {translation.filter_button}
-                </span>
+        <div className="ecl-u-d-flex ecl-u-justify-content-end">
+          <button type="submit" className="ecl-button ecl-button--primary">
+            <span className="ecl-button__container">
+              <span className="ecl-button__label" data-ecl-label="true">
+                {translation.filter_button}
               </span>
-            </button>
-          </div>
+            </span>
+          </button>
         </div>
       </form>
     </div>
