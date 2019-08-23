@@ -83,8 +83,8 @@ const Initiative = ({ location }) => {
       )
     : {};
 
-  // console.log('languageSpecificData', languageSpecificData);
-  // console.log('initiativeData', initiativeData);
+  console.log('languageSpecificData', languageSpecificData);
+  console.log('initiativeData', initiativeData);
 
   const people = has(initiativeData, 'members')
     ? initiativeData.members.filter(p => !p.privacyApplied)
@@ -94,8 +94,6 @@ const Initiative = ({ location }) => {
   const members = people.filter(p => p.type === 'MEMBER');
   const legalEs = people.filter(p => p.type === 'LEGAL_ENTITY');
   const organisers = { reps, subs, members, legalEs };
-
-  console.log('organisers', organisers);
 
   return (
     <>
