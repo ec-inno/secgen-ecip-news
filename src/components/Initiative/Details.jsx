@@ -13,23 +13,50 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const translation = require(`../../../translations/initiative/${language}.json`);
 
-  let organisers = null;
+  // [REPRESENTATIVE, SUBSTITUTE, MEMBER, LEGAL_ENTITY, OTHER, DPO ]
   const people = has(initiativeData, 'members')
-    ? initiativeData.members.filter(p => !p.privacyApplied)
+    ? initiativeData.members
+        .map(p => {
+          const fullName = p.activityPeriod
+            ? `${fullName} (${p.activityPeriod})`
+            : fullName;
+          return {
+            fullName,
+            ...p,
+          };
+        })
+        .filter(p => !p.privacyApplied)
     : [];
   const reps = people.filter(p => p.type === 'REPRESENTATIVE');
   const subs = people.filter(p => p.type === 'SUBSTITUTE');
   const members = people.filter(p => p.type === 'MEMBER');
   const legalEs = people.filter(p => p.type === 'LEGAL_ENTITY');
-  if (reps.length || subs.length || members.length || legalEs.length) {
-    organisers = { reps, subs, members, legalEs };
-  }
+  const others = people.filter(p => p.type === 'OTHER');
+  const dpos = people.filter(p => p.type === 'DPO');
 
   console.log('initiativeData', initiativeData);
   console.log('languageSpecificData', languageSpecificData);
 
   return (
     <>
+      {has(languageSpecificData, 'decisionUrl') ? (
+        <div className="eci-answer ecl-u-pa-m ecl-u-mb-l">
+          <h2 className="ecl-u-type-heading-2">
+            Answer of the European Commission
+          </h2>
+          <p className="ecl-u-type-paragraph">
+            <a
+              href={languageSpecificData.decisionUrl}
+              className="ecl-link"
+              target="_blank"
+            >
+              {languageSpecificData.decisionUrl}
+            </a>
+          </p>
+        </div>
+      ) : (
+        ''
+      )}
       {has(initiativeData, 'refusalReasons') ? (
         <div className="eci-answer ecl-u-pa-m ecl-u-mb-l">
           <h2 className="ecl-u-type-heading-2">
@@ -127,6 +154,18 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       ) : (
         ''
       )}
+      {has(languageSpecificData, 'treaties') ? (
+        <>
+          <h2 className="ecl-u-type-heading-2">
+            Provisions of the Treaties considered relevant by the organisers
+          </h2>
+          <p className="ecl-u-type-paragraph">
+            {languageSpecificData.treaties}
+          </p>
+        </>
+      ) : (
+        ''
+      )}
       {has(languageSpecificData, 'annexText') ? (
         <>
           <h2 className="ecl-u-type-heading-2">Annex</h2>
@@ -140,34 +179,43 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       ) : (
         ''
       )}
-      {has(languageSpecificData, 'treaties') ? (
+      {has(languageSpecificData, 'additionalDocument') ? (
         <>
-          <h2 className="ecl-u-type-heading-2">
-            Provisions of the Treaties considered relevant by the organisers
-          </h2>
-          <p className="ecl-u-type-paragraph">
-            {languageSpecificData.treaties}
-          </p>
+          <h2 className="ecl-u-type-heading-2">Additional information</h2>
+          <Document file={languageSpecificData.additionalDocument} />
         </>
       ) : (
         ''
       )}
-      {organisers ? (
+      {has(languageSpecificData, 'draftLegal') ? (
+        <>
+          <h2 className="ecl-u-type-heading-2">Draft legal act</h2>
+          <Document file={languageSpecificData.draftLegal} />
+        </>
+      ) : (
+        ''
+      )}
+      {reps.length ||
+      subs.length ||
+      members.length ||
+      legalEs.length ||
+      others.length ||
+      dpos.length ? (
         <>
           <h2 className="ecl-u-type-heading-2">{translation.organisers}</h2>
           <ul className="ecl-u-type-paragraph">
-            {has(organisers, 'legalEs') && organisers.legalEs.length ? (
-              <li key="le-0">
+            {legalEs ? (
+              <li key="legalEntity">
                 Legal entities
                 {': '}
-                {organisers.legalEs.map(m => m.fullName).join(', ')}
+                {legalEs.map(m => m.fullName).join(', ')}
               </li>
             ) : (
               ''
             )}
-            {has(organisers, 'reps') && organisers.reps.length
-              ? organisers.reps.map((rep, key) => (
-                  <li key={`r-${key}`}>
+            {reps
+              ? reps.map((rep, key) => (
+                  <li key={`rep-${key}`}>
                     {translation.representative}
                     {': '}
                     {rep.fullName}
@@ -175,9 +223,9 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
                   </li>
                 ))
               : ''}
-            {has(organisers, 'subs') && organisers.subs.length
-              ? organisers.subs.map((sub, key) => (
-                  <li key={`s-${key}`}>
+            {subs
+              ? subs.map((sub, key) => (
+                  <li key={`sub-${key}`}>
                     {translation.substitute}
                     {': '}
                     {sub.fullName}
@@ -185,11 +233,29 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
                   </li>
                 ))
               : ''}
-            {has(organisers, 'members') && organisers.members.length ? (
-              <li key="m-0">
+            {members ? (
+              <li key="members">
                 {translation.members}
                 {': '}
-                {organisers.members.map(m => m.fullName).join(', ')}
+                {members.map(m => m.fullName).join(', ')}
+              </li>
+            ) : (
+              ''
+            )}
+            {others ? (
+              <li key="others">
+                Others
+                {': '}
+                {others.map(m => m.fullName).join(', ')}
+              </li>
+            ) : (
+              ''
+            )}
+            {dpos ? (
+              <li key="dpos">
+                DPO
+                {': '}
+                {dpos.map(m => m.fullName).join(', ')}
               </li>
             ) : (
               ''

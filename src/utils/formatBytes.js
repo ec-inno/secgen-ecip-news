@@ -7,6 +7,7 @@ const formatBytes = (bytes, decimals = 2) => {
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
+  /* eslint-disable-next-line prefer-template,no-restricted-properties */
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 };
 
