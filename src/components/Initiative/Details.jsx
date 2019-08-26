@@ -7,6 +7,7 @@ import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
 import Document from './Document';
 import Members from './Members';
+import Funding from './Funding';
 import Message from '../Message';
 import config from './config';
 
@@ -176,6 +177,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
         ''
       )}
       <Members initiativeData={initiativeData} location={location} />
+      <Funding funding={initiativeData.funding} />
     </>
   );
 };
