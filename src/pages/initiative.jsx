@@ -105,10 +105,7 @@ const Initiative = ({ location }) => {
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              <Progress
-                progress={initiativeData.progress}
-                location={location}
-              />
+              <Progress initiativeData={initiativeData} location={location} />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
               <Details

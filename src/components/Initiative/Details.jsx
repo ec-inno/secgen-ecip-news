@@ -127,6 +127,19 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       ) : (
         ''
       )}
+      {has(languageSpecificData, 'annexText') ? (
+        <>
+          <h2 className="ecl-u-type-heading-2">Annex</h2>
+          <p
+            className="ecl-u-type-paragraph"
+            dangerouslySetInnerHTML={{
+              __html: languageSpecificData.annexText,
+            }}
+          />
+        </>
+      ) : (
+        ''
+      )}
       {has(languageSpecificData, 'treaties') ? (
         <>
           <h2 className="ecl-u-type-heading-2">
@@ -152,7 +165,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
             ) : (
               ''
             )}
-            {has(organisers, 'reps') && organisers.reps
+            {has(organisers, 'reps') && organisers.reps.length
               ? organisers.reps.map((rep, key) => (
                   <li key={`r-${key}`}>
                     {translation.representative}
@@ -162,7 +175,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
                   </li>
                 ))
               : ''}
-            {has(organisers, 'subs') && organisers.subs
+            {has(organisers, 'subs') && organisers.subs.length
               ? organisers.subs.map((sub, key) => (
                   <li key={`s-${key}`}>
                     {translation.substitute}
@@ -172,7 +185,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
                   </li>
                 ))
               : ''}
-            {has(organisers, 'members') && organisers.members ? (
+            {has(organisers, 'members') && organisers.members.length ? (
               <li key="m-0">
                 {translation.members}
                 {': '}

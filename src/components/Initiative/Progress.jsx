@@ -1,14 +1,15 @@
 import React from 'react';
+import has from 'lodash/has';
 
 import formatStatus from '../../utils/formatStatus';
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
-const Progress = ({ progress, location }) => {
+const Progress = ({ initiativeData, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const translation = require(`../../../translations/initiative/${language}.json`);
 
-  if (!progress) {
+  if (!initiativeData.progress) {
     return (
       <>
         <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
@@ -30,7 +31,7 @@ const Progress = ({ progress, location }) => {
   const timeline = [];
 
   steps.forEach(step => {
-    const match = progress.find(item => item.name === step);
+    const match = initiativeData.progress.find(item => item.name === step);
     if (match) stages.push(match);
   });
 
@@ -58,6 +59,17 @@ const Progress = ({ progress, location }) => {
       <ol className="ecl-timeline" data-ecl-timeline="true">
         {timeline}
       </ol>
+      {has(initiativeData, 'startCollectionDate') && (
+        <p className="ecl-u-type-paragraph">
+          Collection start date: {initiativeData.startCollectionDate}
+        </p>
+      )}
+      {has(initiativeData, 'earlyClosureDate') && (
+        <p className="ecl-u-type-paragraph">
+          Collection closed earlier by the organisers:{' '}
+          {initiativeData.earlyClosureDate}
+        </p>
+      )}
     </>
   );
 };
