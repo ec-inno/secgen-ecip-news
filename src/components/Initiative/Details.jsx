@@ -16,9 +16,6 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const translation = require(`../../../translations/initiative/${language}.json`);
 
-  console.log('initiativeData', initiativeData);
-  console.log('languageSpecificData', languageSpecificData);
-
   return (
     <>
       {has(languageSpecificData, 'decisionUrl') ? (
