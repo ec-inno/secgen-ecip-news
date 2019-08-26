@@ -56,6 +56,20 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
               ))}
             </ul>
           )}
+          {has(initiativeData, 'refusalEURLEXLink') && (
+            <>
+              <h2 className="ecl-u-type-heading-2">EUR-Lex reference</h2>
+              <p className="ecl-u-type-paragraph">
+                <a
+                  href={initiativeData.refusalEURLEXLink}
+                  className="ecl-link"
+                  target="_blank"
+                >
+                  {initiativeData.refusalEURLEXLink}
+                </a>
+              </p>
+            </>
+          )}
           <Document file={initiativeData.refusalDocument} />
         </div>
       ) : (
@@ -129,7 +143,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
         <>
           <h2 className="ecl-u-type-heading-2">{translation.organisers}</h2>
           <ul className="ecl-u-type-paragraph">
-            {has(organisers, 'legalEs') ? (
+            {has(organisers, 'legalEs') && organisers.legalEs.length ? (
               <li key="le-0">
                 Legal entities
                 {': '}
@@ -138,7 +152,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
             ) : (
               ''
             )}
-            {has(organisers, 'reps')
+            {has(organisers, 'reps') && organisers.reps
               ? organisers.reps.map((rep, key) => (
                   <li key={`r-${key}`}>
                     {translation.representative}
@@ -148,7 +162,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
                   </li>
                 ))
               : ''}
-            {has(organisers, 'subs')
+            {has(organisers, 'subs') && organisers.subs
               ? organisers.subs.map((sub, key) => (
                   <li key={`s-${key}`}>
                     {translation.substitute}
@@ -158,7 +172,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
                   </li>
                 ))
               : ''}
-            {has(organisers, 'members') ? (
+            {has(organisers, 'members') && organisers.members ? (
               <li key="m-0">
                 {translation.members}
                 {': '}
