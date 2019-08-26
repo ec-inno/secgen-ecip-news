@@ -32,7 +32,7 @@ const onCreatePage = ({ page, actions }) => {
    */
 
   // Initiative details page.
-  if (page.path.match(/^\/initiatives/)) {
+  if (page.path.match(/^\/initiative/)) {
     return languages.forEach(language => {
       const { lang } = language;
 
