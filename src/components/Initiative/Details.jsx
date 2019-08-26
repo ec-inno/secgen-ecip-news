@@ -9,6 +9,7 @@ import Document from './Document';
 import Members from './Members';
 import Funding from './Funding';
 import Message from '../Message';
+import SoS from './SoS';
 import config from './config';
 
 const Details = ({ languageSpecificData, initiativeData, location }) => {
@@ -135,6 +136,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       ) : (
         ''
       )}
+      <SoS submission={initiativeData.submission} />
       {has(languageSpecificData, 'treaties') ? (
         <>
           <h2 className="ecl-u-type-heading-2">

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Document from './Document';
+
 const Funding = ({ funding }) => {
   if (!funding) return '';
 
@@ -41,6 +43,12 @@ const Funding = ({ funding }) => {
         [2] Actual amount of funding provided or estimated value of in kind
         contribution.
       </p>
+      {funding.document && (
+        <p className="ecl-u-type-paragraph ecl-u-type-bold">
+          Further information on support and funding:
+          <Document file={funding.document} />
+        </p>
+      )}
     </>
   );
 };
@@ -49,11 +57,13 @@ Funding.propTypes = {
   funding: PropTypes.shape({
     lastUpdate: PropTypes.string,
     totalAmount: PropTypes.number,
-    sponsors: PropTypes.arrayOf({
-      name: PropTypes.string,
-      date: PropTypes.string,
-      amount: PropTypes.number,
-    }),
+    sponsors: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        date: PropTypes.string,
+        amount: PropTypes.number,
+      })
+    ),
   }),
 };
 

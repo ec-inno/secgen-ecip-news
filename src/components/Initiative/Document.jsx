@@ -12,17 +12,17 @@ const Document = ({ file }) => {
   if (!file) return '';
 
   return (
-    <div class="ecl-file" data-ecl-file>
-      <div class="ecl-file__container">
+    <div className="ecl-file" data-ecl-file>
+      <div className="ecl-file__container">
         <Icon
           className="ecl-file__icon ecl-icon ecl-icon--2xl"
           shape="general--copy"
         />
 
-        <div class="ecl-file__info">
-          <div class="ecl-file__title">{file.name}</div>
+        <div className="ecl-file__info">
+          <div className="ecl-file__title">{file.name}</div>
           {file.mimeType && file.size && (
-            <div class="ecl-file__meta">
+            <div className="ecl-file__meta">
               ({formatBytes(file.size)} -{' '}
               {mime.getExtension(file.mimeType).toUpperCase()})
             </div>
@@ -30,10 +30,10 @@ const Document = ({ file }) => {
         </div>
         <a
           href={`${api}/register/document/${file.id}`}
-          class="ecl-link ecl-link--standalone"
+          className="ecl-link ecl-link--standalone"
           download
         >
-          <span class="ecl-link__label">Download</span>{' '}
+          <span className="ecl-link__label">Download</span>{' '}
           <Icon
             className="ecl-icon ecl-icon--fluid ecl-link__icon"
             shape="ui--download"

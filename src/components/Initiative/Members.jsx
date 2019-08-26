@@ -4,7 +4,7 @@ import has from 'lodash/has';
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
-const Members = ({ initiativeData }) => {
+const Members = ({ initiativeData, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const translation = require(`../../../translations/initiative/${language}.json`);
 
