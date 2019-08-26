@@ -7,7 +7,7 @@ import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
 import SearchForm from './SearchForm';
-import Item from '../Initiative/Item';
+import Card from '../Initiative/Card';
 import Message from '../Message';
 import New from '../Initiative/New';
 import Pagination from './Pagination';
@@ -188,7 +188,7 @@ const List = ({ location }) => {
               key={key}
               className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none"
             >
-              <Item key={key} item={item} location={location} />
+              <Card key={key} item={item} location={location} />
             </div>
           );
 

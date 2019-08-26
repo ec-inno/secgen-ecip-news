@@ -6,33 +6,13 @@ import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
 import Document from './Document';
+import Members from './Members';
 import Message from '../Message';
 import config from './config';
 
 const Details = ({ languageSpecificData, initiativeData, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const translation = require(`../../../translations/initiative/${language}.json`);
-
-  // [REPRESENTATIVE, SUBSTITUTE, MEMBER, LEGAL_ENTITY, OTHER, DPO ]
-  const people = has(initiativeData, 'members')
-    ? initiativeData.members
-        .map(p => {
-          const fullName = p.activityPeriod
-            ? `${fullName} (${p.activityPeriod})`
-            : fullName;
-          return {
-            fullName,
-            ...p,
-          };
-        })
-        .filter(p => !p.privacyApplied)
-    : [];
-  const reps = people.filter(p => p.type === 'REPRESENTATIVE');
-  const subs = people.filter(p => p.type === 'SUBSTITUTE');
-  const members = people.filter(p => p.type === 'MEMBER');
-  const legalEs = people.filter(p => p.type === 'LEGAL_ENTITY');
-  const others = people.filter(p => p.type === 'OTHER');
-  const dpos = people.filter(p => p.type === 'DPO');
 
   console.log('initiativeData', initiativeData);
   console.log('languageSpecificData', languageSpecificData);
@@ -195,76 +175,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       ) : (
         ''
       )}
-      {reps.length ||
-      subs.length ||
-      members.length ||
-      legalEs.length ||
-      others.length ||
-      dpos.length ? (
-        <>
-          <h2 className="ecl-u-type-heading-2">{translation.organisers}</h2>
-          <ul className="ecl-u-type-paragraph">
-            {legalEs ? (
-              <li key="legalEntity">
-                Legal entities
-                {': '}
-                {legalEs.map(m => m.fullName).join(', ')}
-              </li>
-            ) : (
-              ''
-            )}
-            {reps
-              ? reps.map((rep, key) => (
-                  <li key={`rep-${key}`}>
-                    {translation.representative}
-                    {': '}
-                    {rep.fullName}
-                    {rep.email ? ` - ${rep.email}` : ''}
-                  </li>
-                ))
-              : ''}
-            {subs
-              ? subs.map((sub, key) => (
-                  <li key={`sub-${key}`}>
-                    {translation.substitute}
-                    {': '}
-                    {sub.fullName}
-                    {sub.email ? ` - ${sub.email}` : ''}
-                  </li>
-                ))
-              : ''}
-            {members ? (
-              <li key="members">
-                {translation.members}
-                {': '}
-                {members.map(m => m.fullName).join(', ')}
-              </li>
-            ) : (
-              ''
-            )}
-            {others ? (
-              <li key="others">
-                Others
-                {': '}
-                {others.map(m => m.fullName).join(', ')}
-              </li>
-            ) : (
-              ''
-            )}
-            {dpos ? (
-              <li key="dpos">
-                DPO
-                {': '}
-                {dpos.map(m => m.fullName).join(', ')}
-              </li>
-            ) : (
-              ''
-            )}
-          </ul>
-        </>
-      ) : (
-        ''
-      )}
+      <Members initiativeData={initiativeData} location={location} />
     </>
   );
 };

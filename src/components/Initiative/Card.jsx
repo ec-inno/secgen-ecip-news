@@ -7,7 +7,7 @@ import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
 import defaultImage from '../assets/images/default-image.png';
 
-const InitiativeItem = ({ item, location }) => {
+const Card = ({ item, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
   const translation = require(`../../../translations/initiative/${language}.json`);
 
@@ -80,4 +80,4 @@ const InitiativeItem = ({ item, location }) => {
   );
 };
 
-export default InitiativeItem;
+export default Card;

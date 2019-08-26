@@ -7,7 +7,7 @@ import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
 import SearchForm from './SearchFormAdvanced';
-import Item from './Item';
+import Card from './Card';
 import Message from '../Message';
 import New from './New';
 import Pagination from './Pagination';
@@ -97,7 +97,7 @@ const SearchResults = ({ location }) => {
               key={key}
               className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none"
             >
-              <Item key={key} item={item} location={location} />
+              <Card key={key} item={item} location={location} />
             </div>
           );
 
