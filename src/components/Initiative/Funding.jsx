@@ -9,7 +9,11 @@ const Funding = ({ funding }) => {
   return (
     <>
       <h2 className="ecl-u-type-heading-2">Sources of support and funding</h2>
-      <p className="ecl-u-type-paragraph">Last update: {funding.lastUpdate}</p>
+      {funding.lastUpdate && (
+        <p className="ecl-u-type-paragraph">
+          Last update: {funding.lastUpdate}
+        </p>
+      )}
 
       <table className="eci-table ecl-u-type-paragraph">
         <tbody>
@@ -22,20 +26,24 @@ const Funding = ({ funding }) => {
               Amount in EUR<sup>[2]</sup>
             </th>
           </tr>
-          {funding.sponsors.map((sponsor, key) => {
-            return (
-              <tr className={key % 2 === 1 ? 'dark-row' : ''} key={key}>
-                <td>{sponsor.name}</td>
-                <td>{sponsor.date}</td>
-                <td>{sponsor.amount}</td>
-              </tr>
-            );
-          })}
+          {funding.sponsors
+            ? funding.sponsors.map((sponsor, key) => {
+                return (
+                  <tr className={key % 2 === 1 ? 'dark-row' : ''} key={key}>
+                    <td>{sponsor.name}</td>
+                    <td>{sponsor.date}</td>
+                    <td>{sponsor.amount}</td>
+                  </tr>
+                );
+              })
+            : ''}
         </tbody>
       </table>
-      <p className="ecl-u-type-paragraph ecl-u-type-bold">
-        Total amount of support and funding: €{funding.totalAmount}
-      </p>
+      {funding.totalAmount && (
+        <p className="ecl-u-type-paragraph ecl-u-type-bold">
+          Total amount of support and funding: €{funding.totalAmount}
+        </p>
+      )}
       <p className="ecl-u-type-paragraph-s">
         [1] Date when the contribution was received. In case of in kind
         contributions, date when the in kind contribution started.

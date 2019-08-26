@@ -60,17 +60,13 @@ const Progress = ({ initiativeData, location }) => {
         {timeline}
       </ol>
       {has(initiativeData, 'startCollectionDate') && (
-        <p className="ecl-u-type-paragraph">
-          <span className="ecl-u-type-bold">
-            Collection start date: {initiativeData.startCollectionDate}
-          </span>
+        <p class="ecl-u-type-paragraph-s ecl-u-type-bold">
+          Collection start date: {initiativeData.startCollectionDate}
         </p>
       )}
       {has(initiativeData, 'earlyClosureDate') && (
-        <p className="ecl-u-type-paragraph">
-          <span className="ecl-u-type-bold">
-            Collection closed earlier by the organisers:
-          </span>{' '}
+        <p class="ecl-u-type-paragraph-s ecl-u-type-bold">
+          Collection closed earlier by the organisers:{' '}
           {initiativeData.earlyClosureDate}
         </p>
       )}

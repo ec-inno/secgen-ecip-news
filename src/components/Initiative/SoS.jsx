@@ -11,20 +11,24 @@ const SoS = ({ submission }) => {
       </h2>
       <table className="eci-table ecl-u-type-paragraph">
         <tbody>
-          {submission.entry.map((e, key) => {
-            return (
-              <tr key={key}>
-                <td>{e.countryCodeType}</td>
-                <td>
-                  {e.afterSubmission ? `${e.total}<sup>*</sup>` : e.total}
-                </td>
-              </tr>
-            );
-          })}
-          <tr className="ecl-u-type-bold">
-            <td>Total number of signatories</td>
-            <td>{submission.totalSignatures}</td>
-          </tr>
+          {submission.entry
+            ? submission.entry.map((e, key) => {
+                return (
+                  <tr key={key}>
+                    <td>{e.countryCodeType}</td>
+                    <td>
+                      {e.afterSubmission ? `${e.total}<sup>*</sup>` : e.total}
+                    </td>
+                  </tr>
+                );
+              })
+            : ''}
+          {submission.totalSignatures && (
+            <tr className="ecl-u-type-bold">
+              <td>Total number of signatories</td>
+              <td>{submission.totalSignatures}</td>
+            </tr>
+          )}
         </tbody>
       </table>
       <p class="ecl-u-type-paragraph-s">
