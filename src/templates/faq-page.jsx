@@ -2,17 +2,15 @@ import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 import slugify from 'slugify';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import useTranslations from '../utils/useTranslations';
 
 import SEO from '../components/SEO';
 import Accordion2 from '../components/Accordion/Accordion2';
 import Accordion2Item from '../components/Accordion/Accordion2Item';
 
-const FaqPage = ({ data, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+const FaqPage = ({ data }) => {
+  const translation = useTranslations('faq');
 
-  const translation = require(`../../translations/faq/${language}.json`);
   const { title, intro, inpage_title } = translation;
   const { edges: faqSections } = data.allNodeFaqSection;
 

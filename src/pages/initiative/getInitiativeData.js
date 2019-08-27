@@ -1,9 +1,6 @@
-import React from 'react';
 import axios from 'axios';
 import has from 'lodash/has';
 import isArray from 'lodash/isArray';
-
-import I18nContext from '../../context/I18n';
 
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
 import getDateFormatted from '../../utils/getDateFormatted';
@@ -14,11 +11,10 @@ const endpoint =
     ? '/initiative'
     : 'https://ec.europa.eu/citizens-initiative/services/initiative';
 
-const getInitiativeData = async () => {
+const getInitiativeData = async ({ location, locale }) => {
   let initiativeDetails = {};
   let initiativeBasicInfo = {};
   const defaultLanguage = getDefaultLanguage();
-  const { location, locale } = React.useContext(I18nContext);
 
   const clientRouteParameters = location.hash.slice(1).split('-');
   const [year, number] = clientRouteParameters;

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 
+import useTranslations from '../utils/useTranslations';
+
 import addSlugs from '../utils/addSlugs';
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
 
 import SEO from '../components/SEO';
 
-const BasicPage = ({ data, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+const BasicPage = ({ data }) => {
+  const translation = useTranslations('basicpage');
 
-  const translation = require(`../../translations/basicpage/${language}.json`);
   const { title, oe_summary, body } = data.nodeOePage;
 
   const [bodyProcessed, setBody] = useState('');

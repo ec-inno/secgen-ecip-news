@@ -18,12 +18,12 @@ import Message from '../../components/Message';
 // Sub-components, keep out of /src/pages.
 import Progress from '../../components/Initiative/Progress';
 
-const Initiative = ({ pageContext: { locale } }) => {
+const Initiative = ({ pageContext: { locale }, location }) => {
   const translation = useTranslations('initiative');
   const [initiativeData, setData] = useState({});
 
   useEffect(() => {
-    getInitiativeData()
+    getInitiativeData({ location, locale })
       .then(data => {
         setData(data);
       })
