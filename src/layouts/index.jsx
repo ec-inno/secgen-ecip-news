@@ -38,4 +38,4 @@ Layout.propTypes = {
   children: PropTypes.node,
 };
 
-export { Layout as default, I18nContext };
+export default Layout;

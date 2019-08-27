@@ -105,8 +105,8 @@ const BasicPage = ({ data }) => {
 };
 
 export const query = graphql`
-  query getBasicPage($locale: String!, $alias: String!) {
-    nodeOePage(path: { alias: { eq: $alias }, langcode: { eq: $locale } }) {
+  query getBasicPage($langcode: String!, $alias: String!) {
+    nodeOePage(path: { alias: { eq: $alias }, langcode: { eq: $langcode } }) {
       title
       oe_summary {
         processed

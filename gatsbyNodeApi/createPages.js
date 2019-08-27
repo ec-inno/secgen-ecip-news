@@ -56,6 +56,7 @@ const createPages = async ({ graphql, actions }) => {
       component: path.resolve('./src/templates/basic-page.jsx'),
       context: {
         locale: languageDefault,
+        langcode: languageDefault,
         alias: aliasDefault,
       },
     });
@@ -76,15 +77,16 @@ const createPages = async ({ graphql, actions }) => {
           : aliasDefault;
 
       // Fallback to default language for the content.
-      const locale = translation ? language : languageDefault;
+      const langcode = translation ? language : languageDefault;
 
       createPage({
         path: `/${language}${alias}`,
         component: path.resolve('./src/templates/basic-page.jsx'),
         context: {
-          locale,
+          locale: language,
           // If translation has a different path than original language, language switcher won't land user to translation.
           // It's unlikely, but it's worth noting we respect paths from Drupal even if that would cause issues in Gatsby.
+          langcode,
           alias,
         },
       });
