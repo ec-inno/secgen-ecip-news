@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 
-import Context, { SET_LANGUAGE_OVERLAY_VISIBILITY } from '../../Context';
+import Context, {
+  SET_LANGUAGE_OVERLAY_VISIBILITY,
+} from '../../context/Context';
 
 import LanguageListOverlay from './LanguageListOverlay';
 

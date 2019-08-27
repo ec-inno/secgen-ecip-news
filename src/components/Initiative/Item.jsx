@@ -1,18 +1,19 @@
 import React from 'react';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+import I18nContext from '../../context/I18n';
+
+import useTranslations from '../../utils/useTranslations';
 import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
-const InitiativeItem = ({ item, location }) => {
-  let href = '#';
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
+const InitiativeItem = ({ item }) => {
+  const { locale } = React.useContext(I18nContext);
+  const translation = useTranslations('initiative');
 
   // Try to build a valid path which can display information about an initiative.
+  let href = '#';
   if (item.year && item.number) {
     const { year, number } = item;
-    href = `/${language}/initiative/#${year}-${number}`;
+    href = `/${locale}/initiative/#${year}-${number}`;
   }
 
   const supporters =

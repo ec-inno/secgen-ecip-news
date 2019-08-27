@@ -2,13 +2,13 @@ import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 
-import { I18nContext } from '../layouts';
+import I18nContext from '../context/I18n';
 
-import getTranslations from '../utils/getTranslations';
+import useTranslations from '../utils/useTranslations';
 
 const Menu = () => {
   const { locale, location } = React.useContext(I18nContext);
-  const translation = getTranslations('menu');
+  const translation = useTranslations('menu');
   const { links } = translation;
 
   const locationParts =

@@ -1,11 +1,9 @@
 import React from 'react';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+import useTranslations from '../../utils/useTranslations';
 
-const Pagination = ({ onClick, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
+const Pagination = ({ onClick }) => {
+  const translation = useTranslations('initiative');
 
   return (
     <div className="ecl-row ecl-u-mt-l">

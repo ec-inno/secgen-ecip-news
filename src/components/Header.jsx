@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import { languages } from '../../languages';
-import { I18nContext } from '../layouts';
+import I18nContext from '../context/I18n';
 
 import logoPaths from '../utils/logoPaths';
-import getTranslations from '../utils/getTranslations';
+import useTranslations from '../utils/useTranslations';
 
 import SiteName from './SiteName';
 import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
@@ -19,7 +19,7 @@ const languageMap = languages.reduce((obj, item) => {
 
 const Header = () => {
   const { locale, location } = React.useContext(I18nContext);
-  const translation = getTranslations('header');
+  const translation = useTranslations('header');
   const logo = logoPaths[locale];
 
   let urlPath = '';

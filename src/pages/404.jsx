@@ -1,20 +1,18 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import useTranslations from '../utils/useTranslations';
 
 import SEO from '../components/SEO';
 
-const NotFound = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../translations/notfound/${language}.json`);
+const NotFound = ({ pageContext: { locale } }) => {
+  const translation = useTranslations('notfound');
 
   const { title, description, message, back } = translation;
 
   return (
     <>
-      <SEO location={location} title={title} description={description} />
+      <SEO title={title} description={description} />
 
       <main>
         <div className="ecl-container">
@@ -22,7 +20,7 @@ const NotFound = ({ location }) => {
             <div className="ecl-col-sm-12 ecl-col-md-12">
               <h1 className="ecl-u-type-heading-1">{title}</h1>
               <p className="ecl-u-type-paragraph">
-                {message} <Link to={`/${language}`}>{back}</Link>.
+                {message} <Link to={`/${locale}`}>{back}</Link>.
               </p>
             </div>
           </div>

@@ -5,33 +5,32 @@ import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
 import '../components/assets/custom.css';
 
-import SEO from '../components/SEO';
+import I18nContext from '../context/I18n';
 
+import SEO from '../components/SEO';
 import TopMessage from '../components/TopMessage';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer/FooterLanguage';
 import ForumBanner from '../components/ForumBanner';
 
-const I18nContext = React.createContext();
-
-const Layout = ({ children, location, pageContext }) => {
-  if (pageContext.layout === 'landing') return children;
-
-  const { locale } = pageContext;
-
+const Layout = ({ children, location, pageContext: { locale, layout } }) => {
   return (
-    <>
-      <I18nContext.Provider value={{ locale, location }}>
-        <SEO />
-        <TopMessage />
-        <Header />
-        <Menu />
-        {children}
-        <ForumBanner location={location} />
-        <Footer location={location} />
-      </I18nContext.Provider>
-    </>
+    <I18nContext.Provider value={{ locale, location }}>
+      {layout === 'landing' ? (
+        children
+      ) : (
+        <>
+          <SEO />
+          <TopMessage />
+          <Header />
+          <Menu />
+          {children}
+          <ForumBanner />
+          <Footer />
+        </>
+      )}
+    </I18nContext.Provider>
   );
 };
 

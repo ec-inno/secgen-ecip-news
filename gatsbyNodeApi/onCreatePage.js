@@ -1,4 +1,4 @@
-const { languages } = require('../languages');
+const { languages, defaultLangKey } = require('../languages');
 
 const onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
@@ -8,7 +8,13 @@ const onCreatePage = ({ page, actions }) => {
   if (page.path === '/404.html') {
     // But we stop the process here as later we manually created the rest of the language-specific 404-s.
     // And we only want /en/404/index.html and not /en/404.html/index.html
-    return createPage(page);
+    return createPage({
+      ...page,
+      context: {
+        ...page.context,
+        locale: defaultLangKey,
+      },
+    });
   }
 
   deletePage(page);
@@ -19,13 +25,13 @@ const onCreatePage = ({ page, actions }) => {
       const { lang } = language;
 
       return createPage({
+        ...page,
         matchPath: `/${lang}/*`,
         path: `/${lang}${page.path}`,
         context: {
           ...page.context,
           locale: lang,
         },
-        ...page,
       });
     });
   }
@@ -56,6 +62,7 @@ const onCreatePage = ({ page, actions }) => {
       context: {
         ...page.context,
         layout: 'landing',
+        locale: defaultLangKey,
       },
     });
   }

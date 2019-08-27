@@ -2,10 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import getTranslations from '../utils/getTranslations';
+import useTranslations from '../utils/useTranslations';
 
 const SEO = ({ name, title, description, titleTemplate }) => {
-  const translation = getTranslations('seo');
+  const translation = useTranslations('seo');
 
   const {
     name: nameDefault,

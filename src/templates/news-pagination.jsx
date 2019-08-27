@@ -2,13 +2,12 @@ import React, { Fragment } from 'react';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import useTranslations from '../utils/useTranslations';
 
 import SEO from '../components/SEO';
 
-const News = ({ data, pageContext, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+const News = ({ data, pageContext }) => {
+  const translation = useTranslations('news');
 
   const { currentPage, numPages, locale } = pageContext;
   const pageRoot = `/${locale}/news/`;
@@ -18,16 +17,11 @@ const News = ({ data, pageContext, location }) => {
     currentPage - 1 === 1 ? pageRoot : pageRoot + (currentPage - 1).toString();
   const nextPage = pageRoot + (currentPage + 1).toString();
 
-  const translation = require(`../../translations/news/${language}.json`);
   const { edges: newsItems } = data.allNodeOeNews;
 
   return (
     <Fragment>
-      <SEO
-        title={translation.title}
-        description={translation.news_intro}
-        location={location}
-      />
+      <SEO title={translation.title} description={translation.news_intro} />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">

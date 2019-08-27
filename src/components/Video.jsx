@@ -1,14 +1,12 @@
 import React from 'react';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import useTranslations from '../utils/useTranslations';
 
 import image from '../components/assets/images/video-image.png';
 
-const Video = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+const Video = () => {
+  const translation = useTranslations('video');
 
-  const translation = require(`../../translations/video/${language}.json`);
   const { caption } = translation;
 
   return (

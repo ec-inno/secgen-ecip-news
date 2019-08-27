@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+import I18nContext from '../../context/I18n';
+
+import useTranslations from '../../utils/useTranslations';
 
 import plusSign from '../assets/images/plus.png';
 
-const New = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
+const New = () => {
+  const { locale } = React.useContext(I18nContext);
+  const translation = useTranslations('initiative');
 
   return (
     <div className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none">
@@ -22,7 +23,7 @@ const New = ({ location }) => {
           <h1 className="ecl-card__title ecl-u-type-heading-3">
             <Link
               level="1"
-              to={`/${language}/how-to-start`}
+              to={`/${locale}/how-to-start`}
               className="ecl-link ecl-link--standalone"
             >
               {translation.how_to_start}

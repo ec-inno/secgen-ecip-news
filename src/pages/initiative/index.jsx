@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import has from 'lodash/has';
 
 // Generic utils.
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+import useTranslations from '../../utils/useTranslations';
 import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
 // Page-specific utilities
@@ -19,25 +18,23 @@ import Message from '../../components/Message';
 // Sub-components, keep out of /src/pages.
 import Progress from '../../components/Initiative/Progress';
 
-const Initiative = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
-
+const Initiative = ({ pageContext: { locale } }) => {
+  const translation = useTranslations('initiative');
   const [initiativeData, setData] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
-      const initiative = await getInitiativeData({ location });
-      setData(initiative);
-    };
-
-    fetchData();
-  }, [language]);
+    getInitiativeData()
+      .then(data => {
+        setData(data);
+      })
+      .catch(e => {
+        console.error(e);
+      });
+  }, [locale]);
 
   return (
     <>
       <SEO
-        location={location}
         title={has(initiativeData, 'title') ? initiativeData.title : '...'}
       />
 
@@ -116,7 +113,7 @@ const Initiative = ({ location }) => {
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              <Progress initiative={initiativeData} location={location} />
+              <Progress initiative={initiativeData} />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
               {initiativeData.status === 'REGISTERED' ? (

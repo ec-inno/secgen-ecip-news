@@ -1,9 +1,9 @@
 import React from 'react';
 
-import getTranslations from '../utils/getTranslations';
+import useTranslations from '../utils/useTranslations';
 
 const TopMessage = () => {
-  const translation = getTranslations('topmessage');
+  const translation = useTranslations('topmessage');
   const { message } = translation;
 
   return (

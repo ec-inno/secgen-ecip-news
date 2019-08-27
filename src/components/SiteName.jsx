@@ -1,9 +1,9 @@
 import React from 'react';
 
-import getTranslations from '../utils/getTranslations';
+import useTranslations from '../utils/useTranslations';
 
 const SiteName = () => {
-  const translation = getTranslations('sitename');
+  const translation = useTranslations('sitename');
   const { european, citizens, initiative } = translation;
 
   return (

@@ -3,8 +3,9 @@ import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+import I18nContext from '../../context/I18n';
+
+import useTranslations from '../../utils/useTranslations';
 import getInitiatives from '../../utils/getInitiatives';
 
 import Item from '../Initiative/Item';
@@ -17,9 +18,9 @@ const ALL = 'ALL';
 const OPEN = 'OPEN';
 const SUCCESSFUL = 'SUCCESSFUL';
 
-const List = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
+const List = () => {
+  const { location, locale } = React.useContext(I18nContext);
+  const translation = useTranslations('initiative');
 
   // Scenario when online: either a proxy or production.
   let endpoint =
@@ -69,8 +70,8 @@ const List = ({ location }) => {
           .filter(initiative => {
             const { initiativeLanguage } = initiative.initiativeLanguages;
             const content = Array.isArray(initiativeLanguage)
-              ? initiativeLanguage.filter(l => l['@code'] === language)
-              : initiativeLanguage['@code'] === language;
+              ? initiativeLanguage.filter(l => l['@code'] === locale)
+              : initiativeLanguage['@code'] === locale;
             if (content) return content;
           })
           // Merge fields:
@@ -82,7 +83,7 @@ const List = ({ location }) => {
 
             if (Array.isArray(initiativeLanguage)) {
               const lang = initiativeLanguage.filter(
-                l => l['@code'] === language
+                l => l['@code'] === locale
               );
               additional = lang[0];
             } else {
@@ -246,12 +247,12 @@ const List = ({ location }) => {
               key={key}
               className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none"
             >
-              <Item key={key} item={item} location={location} />
+              <Item key={key} item={item} />
             </div>
           );
 
           if (k + 1 === groups && key + 1 === groupLength) {
-            list.push(<New key={key + 1} location={location} />);
+            list.push(<New key={key + 1} />);
           }
 
           return list;
@@ -263,7 +264,6 @@ const List = ({ location }) => {
   if (resultsPage.length < resultsAll.length) {
     page.push(
       <Pagination
-        location={location}
         onClick={e => {
           e.preventDefault();
           const newItemsPerPage = itemsPerPage * 2 + 1;

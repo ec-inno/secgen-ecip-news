@@ -1,7 +1,6 @@
 import React from 'react';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+import useTranslations from '../../utils/useTranslations';
 
 /**
  * When a given status is marked as "assumed", this means that no actual data
@@ -10,9 +9,8 @@ import getDefaultLanguage from '../../utils/getDefaultLanguage';
  * fields matched to them currently.
  * Meaning, on "SUBMITTED" and "ANSWERED" we won't display dates.
  */
-const Progress = ({ initiative, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
+const Progress = ({ initiative }) => {
+  const translation = useTranslations('initiative');
 
   const supportedStatuses = [
     'REGISTERED',

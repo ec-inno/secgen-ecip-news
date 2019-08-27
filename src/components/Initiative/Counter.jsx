@@ -1,13 +1,11 @@
 import React from 'react';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+import useTranslations from '../../utils/useTranslations';
 
 import Icon from '../Icon';
 
-const Counter = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/counter/${language}.json`);
+const Counter = () => {
+  const translation = useTranslations('counter');
 
   return (
     <p className="ecl-u-type-paragraph ecl-u-mt-l ecl-u-d-flex ecl-u-justify-content-between">

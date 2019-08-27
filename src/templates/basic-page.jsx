@@ -44,7 +44,7 @@ const BasicPage = ({ data, location }) => {
 
   return (
     <>
-      <SEO title={title} location={location} />
+      <SEO title={title} />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">

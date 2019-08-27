@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { ContextProviderWithReducer } from './src/Context';
+import { ContextProviderWithReducer } from './src/context/Context';
 
 export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
   const App = () => (

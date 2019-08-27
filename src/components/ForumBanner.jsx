@@ -1,22 +1,19 @@
 import React from 'react';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import useTranslations from '../utils/useTranslations';
 
 import image from './assets/images/bg-forum.png';
 import Button from '../components/Button';
 
-const ForumBanner = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+const ForumBanner = () => {
+  const translation = useTranslations('forumbanner');
+  const { message, button } = translation;
 
   const arrowIcon = {
     shape: 'ui--corner-arrow',
     size: 'xs',
     transform: 'rotate-90',
   };
-
-  const translation = require(`../../translations/forumbanner/${language}.json`);
-  const { message, button } = translation;
 
   return (
     <section className="ecl-page-banner ecl-page-banner--image-shade ecl-page-banner--centered ecl-u-mt-l">
