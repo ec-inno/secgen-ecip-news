@@ -14,8 +14,8 @@ const Sitemap = ({ pageContext: { locale } }) => {
           <div className="ecl-row ecl-u-mt-l">
             <div className="ecl-col-sm-12 ecl-col-md-12">
               <h1 className="ecl-u-type-heading-1">Sitemap</h1>
-              <ul class="ecl-unordered-list">
-                <li class="ecl-unordered-list__item">
+              <ul className="ecl-unordered-list">
+                <li className="ecl-unordered-list__item">
                   <Link
                     to={`/${locale}/`}
                     className="ecl-link ecl-link--standalone"
@@ -23,7 +23,7 @@ const Sitemap = ({ pageContext: { locale } }) => {
                     Home
                   </Link>
                 </li>
-                <li class="ecl-unordered-list__item">
+                <li className="ecl-unordered-list__item">
                   <Link
                     to={`/${locale}/news`}
                     className="ecl-link ecl-link--standalone"
@@ -31,7 +31,7 @@ const Sitemap = ({ pageContext: { locale } }) => {
                     News
                   </Link>
                 </li>
-                <li class="ecl-unordered-list__item">
+                <li className="ecl-unordered-list__item">
                   <Link
                     to={`/${locale}/how-to-start`}
                     className="ecl-link ecl-link--standalone"
@@ -39,7 +39,7 @@ const Sitemap = ({ pageContext: { locale } }) => {
                     How to start
                   </Link>
                 </li>
-                <li class="ecl-unordered-list__item">
+                <li className="ecl-unordered-list__item">
                   <Link
                     to={`/${locale}/faq`}
                     className="ecl-link ecl-link--standalone"
@@ -47,7 +47,7 @@ const Sitemap = ({ pageContext: { locale } }) => {
                     FAQ
                   </Link>
                 </li>
-                <li class="ecl-unordered-list__item">
+                <li className="ecl-unordered-list__item">
                   <Link
                     to={`/${locale}/contact`}
                     className="ecl-link ecl-link--standalone"
@@ -55,7 +55,7 @@ const Sitemap = ({ pageContext: { locale } }) => {
                     Contact
                   </Link>
                 </li>
-                <li class="ecl-unordered-list__item">
+                <li className="ecl-unordered-list__item">
                   <Link
                     to={`/${locale}/sitemap`}
                     className="ecl-link ecl-link--standalone"
@@ -63,7 +63,7 @@ const Sitemap = ({ pageContext: { locale } }) => {
                     Sitemap
                   </Link>
                 </li>
-                <li class="ecl-unordered-list__item">
+                <li className="ecl-unordered-list__item">
                   <Link
                     to={`/${locale}/communication-material`}
                     className="ecl-link ecl-link--standalone"
@@ -71,15 +71,15 @@ const Sitemap = ({ pageContext: { locale } }) => {
                     Communication material
                   </Link>
                 </li>
-                <li class="ecl-unordered-list__item">
+                <li className="ecl-unordered-list__item">
                   <Link
                     to={`/${locale}/how-it-works`}
                     className="ecl-link ecl-link--standalone"
                   >
                     How it works
                   </Link>
-                  <ul class="ecl-unordered-list">
-                    <li class="ecl-unordered-list__item">
+                  <ul className="ecl-unordered-list">
+                    <li className="ecl-unordered-list__item">
                       <Link
                         to={`/${locale}/how-it-works/regulatory-framework`}
                         className="ecl-link ecl-link--standalone"
@@ -87,7 +87,7 @@ const Sitemap = ({ pageContext: { locale } }) => {
                         Regulatory framework
                       </Link>
                     </li>
-                    <li class="ecl-unordered-list__item">
+                    <li className="ecl-unordered-list__item">
                       <Link
                         to={`/${locale}/how-it-works/implementation-national-level`}
                         className="ecl-link ecl-link--standalone"
@@ -95,7 +95,7 @@ const Sitemap = ({ pageContext: { locale } }) => {
                         Implementation national level
                       </Link>
                     </li>
-                    <li class="ecl-unordered-list__item">
+                    <li className="ecl-unordered-list__item">
                       <Link
                         to={`/${locale}/how-it-works/data-protection`}
                         className="ecl-link ecl-link--standalone"
@@ -103,7 +103,7 @@ const Sitemap = ({ pageContext: { locale } }) => {
                         Data protection
                       </Link>
                     </li>
-                    <li class="ecl-unordered-list__item">
+                    <li className="ecl-unordered-list__item">
                       <Link
                         to={`/${locale}/how-it-works/history`}
                         className="ecl-link ecl-link--standalone"
