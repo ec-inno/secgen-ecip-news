@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import logoPaths from '../utils/logoPaths';
 import { languages } from '../../languages';
+import { LocaleContext } from '../layouts';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import logoPaths from '../utils/logoPaths';
+import getTranslations from '../utils/getTranslations';
 
 // Create a map of language code to language label.
 const languageMap = languages.reduce((obj, item) => {
@@ -18,9 +18,9 @@ import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
 import LanguageSelector from './LanguageSelector';
 
 const Header = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const logo = logoPaths[language];
-  const translation = require(`../../translations/header/${language}.json`);
+  const { locale } = React.useContext(LocaleContext);
+  const translation = getTranslations('header');
+  const logo = logoPaths[locale];
 
   let urlPath = '';
   let pathParts = [];
@@ -42,7 +42,7 @@ const Header = ({ location }) => {
   const items = languages.map(item => {
     const href = `/${item.lang}/${urlPath}`;
 
-    const isActive = href.includes(`/${language}/`);
+    const isActive = href.includes(`/${locale}/`);
 
     return {
       href,
@@ -58,7 +58,7 @@ const Header = ({ location }) => {
           <div className="ecl-site-header__banner">
             <Link
               className="ecl-link ecl-link--standalone"
-              to={`/${language}`}
+              to={`/${locale}`}
               aria-label={translation.european_union}
             >
               <img
@@ -69,13 +69,13 @@ const Header = ({ location }) => {
               />
             </Link>
             <LanguageSelector
-              code={language}
-              name={languageMap[language]}
+              code={locale}
+              name={languageMap[locale]}
               href="#"
             />
           </div>
         </div>
-        <SiteName location={location} />
+        <SiteName />
       </header>
       <LanguageListOverlay
         closeLabel={translation.close_label}

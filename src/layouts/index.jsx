@@ -13,18 +13,24 @@ import Menu from '../components/Menu';
 import Footer from '../components/Footer/FooterLanguage';
 import ForumBanner from '../components/ForumBanner';
 
+const LocaleContext = React.createContext();
+
 const Layout = ({ children, location, pageContext }) => {
   if (pageContext.layout === 'landing') return children;
 
+  const { locale } = pageContext;
+
   return (
     <>
-      <SEO location={location} />
-      <TopMessage location={location} />
-      <Header location={location} />
-      <Menu location={location} />
-      {children}
-      <ForumBanner location={location} />
-      <Footer location={location} />
+      <LocaleContext.Provider value={{ locale }}>
+        <SEO />
+        <TopMessage />
+        <Header location={location} />
+        <Menu location={location} />
+        {children}
+        <ForumBanner location={location} />
+        <Footer location={location} />
+      </LocaleContext.Provider>
     </>
   );
 };
@@ -33,4 +39,4 @@ Layout.propTypes = {
   children: PropTypes.node,
 };
 
-export default Layout;
+export { Layout as default, LocaleContext };

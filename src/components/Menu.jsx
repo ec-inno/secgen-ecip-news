@@ -2,21 +2,20 @@ import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import { LocaleContext } from '../layouts';
+
+import getTranslations from '../utils/getTranslations';
 
 const Menu = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+  const { locale } = React.useContext(LocaleContext);
+  const translation = getTranslations('menu');
+  const { links } = translation;
 
   const locationParts =
     location && location.pathname
       ? location.pathname.split('/').filter(p => p)
       : [];
   const urlPath = locationParts[1]; // undefined is fine, checked later.
-
-  const translation = require(`../../translations/menu/${language}.json`);
-
-  const { links } = translation;
 
   return (
     <>
@@ -44,7 +43,7 @@ const Menu = ({ location }) => {
                     <Link
                       to={
                         // If the user has left a base path, correct it, as there's always a language.
-                        href === '/' ? `/${language}` : `/${language}${href}`
+                        href === '/' ? `/${locale}` : `/${locale}${href}`
                       }
                       className="eci-menu__link ecl-link"
                     >

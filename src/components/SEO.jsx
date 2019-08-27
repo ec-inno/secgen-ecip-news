@@ -2,13 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import getTranslations from '../utils/getTranslations';
 
-const SEO = ({ name, title, description, titleTemplate, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-
-  const translation = require(`../../translations/seo/${language}.json`);
+const SEO = ({ name, title, description, titleTemplate }) => {
+  const translation = getTranslations('seo');
 
   const {
     name: nameDefault,

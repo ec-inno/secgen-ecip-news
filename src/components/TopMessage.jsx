@@ -1,12 +1,9 @@
 import React from 'react';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import getTranslations from '../utils/getTranslations';
 
-const TopMessage = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-
-  const translation = require(`../../translations/topmessage/${language}.json`);
+const TopMessage = () => {
+  const translation = getTranslations('topmessage');
   const { message } = translation;
 
   return (

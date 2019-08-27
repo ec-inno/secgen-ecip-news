@@ -1,12 +1,9 @@
 import React from 'react';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import getTranslations from '../utils/getTranslations';
 
-const SiteName = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-
-  const translation = require(`../../translations/sitename/${language}.json`);
+const SiteName = () => {
+  const translation = getTranslations('sitename');
   const { european, citizens, initiative } = translation;
 
   return (
