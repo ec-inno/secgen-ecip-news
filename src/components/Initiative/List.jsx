@@ -31,52 +31,20 @@ const List = ({ location }) => {
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
-      const endpoint = `${api}/register/search/${section}/${lang}/0/${itemsPerPage}`;
+    const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
+    const endpoint = `${api}/register/search/${section}/${lang}/0/${itemsPerPage}`;
 
-      try {
-        const response = await axios.post(endpoint, filters);
-        setInitiatives(response.data);
-      } catch (error) {
+    axios
+      .post(endpoint, filters)
+      .then(response => setInitiatives(response.data))
+      .catch(e => {
         setErrorMessage(error.message);
         setErrorMessageVisibility(true);
-      }
-    };
-
-    fetchData();
+      });
   }, [section, filters, itemsPerPage]);
 
-  page.push(<SearchForm setFilters={setFilters} location={location} />);
-
-  const errorComponentConfig = {
-    variant: 'error',
-    icon: {
-      shape: 'notifications--error',
-      size: 'l',
-    },
-    close: {
-      variant: 'ghost',
-      label: translation.close,
-      icon: {
-        shape: 'ui--close',
-        size: 's',
-      },
-    },
-  };
-
   page.push(
-    <Message
-      className={errorMessageIsVisible ? '' : 'hidden'}
-      onClose={() => setErrorMessageVisibility(false)}
-      title={translation.error_getting_initiatives}
-      description={errorMessage}
-      {...errorComponentConfig}
-    />
-  );
-
-  page.push(
-    <div className={errorMessage ? 'hidden' : 'ecl-u-mv-xl'}>
+    <div className="ecl-u-mv-xl">
       <ul className="eci-menu__list">
         <li
           key="latest"
@@ -163,6 +131,34 @@ const List = ({ location }) => {
         </li>
       </ul>
     </div>
+  );
+
+  page.push(<SearchForm setFilters={setFilters} location={location} />);
+
+  const errorComponentConfig = {
+    variant: 'error',
+    icon: {
+      shape: 'notifications--error',
+      size: 'l',
+    },
+    close: {
+      variant: 'ghost',
+      label: translation.close,
+      icon: {
+        shape: 'ui--close',
+        size: 's',
+      },
+    },
+  };
+
+  page.push(
+    <Message
+      className={errorMessageIsVisible ? '' : 'hidden'}
+      onClose={() => setErrorMessageVisibility(false)}
+      title={translation.error_getting_initiatives}
+      description={errorMessage}
+      {...errorComponentConfig}
+    />
   );
 
   // When no results, return tabs as well, they are filters.
