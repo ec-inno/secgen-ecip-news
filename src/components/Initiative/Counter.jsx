@@ -17,8 +17,8 @@ const Counter = ({ location }) => {
   useEffect(() => {
     axios
       .get(`${api}/${language}/api/counters`)
-      .then(data => {
-        setStats(data);
+      .then(response => {
+        setStats(response.data);
       })
       .catch(e => {
         console.error(`Failed to fetch initiatives statistics`, e);
