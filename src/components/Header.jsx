@@ -2,10 +2,14 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import { languages } from '../../languages';
-import { LocaleContext } from '../layouts';
+import { I18nContext } from '../layouts';
 
 import logoPaths from '../utils/logoPaths';
 import getTranslations from '../utils/getTranslations';
+
+import SiteName from './SiteName';
+import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
+import LanguageSelector from './LanguageSelector';
 
 // Create a map of language code to language label.
 const languageMap = languages.reduce((obj, item) => {
@@ -13,12 +17,8 @@ const languageMap = languages.reduce((obj, item) => {
   return obj;
 }, {});
 
-import SiteName from './SiteName';
-import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
-import LanguageSelector from './LanguageSelector';
-
-const Header = ({ location }) => {
-  const { locale } = React.useContext(LocaleContext);
+const Header = () => {
+  const { locale, location } = React.useContext(I18nContext);
   const translation = getTranslations('header');
   const logo = logoPaths[locale];
 
