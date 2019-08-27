@@ -11,7 +11,6 @@ const onCreatePage = ({ page, actions }) => {
     return createPage(page);
   }
 
-  const pageCopy = { ...page };
   deletePage(page);
 
   // 404 pages for the different languages.
@@ -19,11 +18,15 @@ const onCreatePage = ({ page, actions }) => {
     return languages.forEach(language => {
       const { lang } = language;
 
-      /* eslint-disable no-param-reassign */
-      pageCopy.matchPath = `/${lang}/*`;
-      pageCopy.path = `/${lang}${page.path}`;
-
-      return createPage(pageCopy);
+      return createPage({
+        matchPath: `/${lang}/*`,
+        path: `/${lang}${page.path}`,
+        context: {
+          ...page.context,
+          locale: lang,
+        },
+        ...page,
+      });
     });
   }
 
@@ -32,14 +35,13 @@ const onCreatePage = ({ page, actions }) => {
     return languages.forEach(language => {
       const { lang } = language;
 
-      /* eslint-disable no-param-reassign */
-      page.matchPath = `/${lang}/initiative/*`;
-
       return createPage({
         ...page,
+        matchPath: `/${lang}/initiative/*`,
         path: `/${lang}/initiative`,
         context: {
           ...page.context,
+          locale: lang,
         },
       });
     });
@@ -64,15 +66,13 @@ const onCreatePage = ({ page, actions }) => {
     const localizedPath =
       page.path === '/home/' ? `/${lang}` : `/${lang}${page.path}`;
 
-    const languageRegex = `//${lang}//`;
-
     return createPage({
       ...page,
       path: localizedPath,
       context: {
         ...page.context,
         locale: lang,
-        languageRegex,
+        languageRegex: `//${lang}//`,
       },
     });
   });
