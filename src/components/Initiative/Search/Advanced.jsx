@@ -69,10 +69,11 @@ const Area = ({ location }) => {
           <h2 className="ecl-u-type-heading-2 ecl-u-d-none ecl-u-d-lg-block ecl-u-mv-none">
             Search results
           </h2>
-          <h3 className="ecl-u-type-heading-3 ecl-u-mb-none ecl-u-mt-3xl ecl-u-mt-lg-l">
-            {hasEntries === true &&
-              `Showing results ${initiatives.entries.length} of ${initiatives.all}`}
-          </h3>
+
+          {initiatives.entries && initiatives.entries.length !== 0 && (
+            <h3 className="ecl-u-type-heading-3 ecl-u-mb-none ecl-u-mt-3xl ecl-u-mt-lg-l">{`Showing results ${initiatives.entries.length} of ${initiatives.all}`}</h3>
+          )}
+
           {filters.filters && (
             <div className="ecl-u-mt-l ecl-u-mb-l ecl-u-d-flex ecl-u-flex-column ecl-u-flex-lg-row ecl-u-align-items-lg-center">
               {Object.keys(filters.filters)

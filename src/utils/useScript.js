@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // Inspired by https://usehooks.com/useScript/
+// if (cachedScripts.includes(src)) returns in order to not load script multiple times in HMR
 const useScript = src => {
   const cachedScripts = [];
 
