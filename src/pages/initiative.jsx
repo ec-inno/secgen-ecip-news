@@ -9,6 +9,7 @@ import getDefaultLanguage from '../utils/getDefaultLanguage';
 // Generic
 import SEO from '../components/SEO';
 import Message from '../components/Message';
+import Share from '../components/Share';
 
 // Sub-components, keep out of /src/pages.
 import Meta from '../components/Initiative/Meta';
@@ -113,6 +114,7 @@ const Initiative = ({ location }) => {
                 initiativeData={initiativeData}
                 location={location}
               />
+              <Share />
             </div>
           </div>
         </div>
