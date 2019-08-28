@@ -31,7 +31,7 @@ const SoS = ({ submission }) => {
           )}
         </tbody>
       </table>
-      <p class="ecl-u-type-paragraph-s">
+      <p className="ecl-u-type-paragraph-s">
         * Certificates received after the time of submission. Figures not
         included in the total number of signatories.
       </p>

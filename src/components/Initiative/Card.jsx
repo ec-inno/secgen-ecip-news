@@ -12,11 +12,12 @@ const Card = ({ item, location }) => {
   const translation = require(`../../../translations/initiative/${language}.json`);
 
   const { GATSBY_INITIATIVES_API: api } = process.env;
+  const hasLogo = item.logo && item.logo.id && item.logo.mimeType;
 
   const [logo, setLogo] = useState('');
 
   useEffect(() => {
-    if (item.logo && item.logo.id) {
+    if (hasLogo) {
       axios
         .get(`${api}/register/logo/${item.logo.id}`, {
           responseType: 'arraybuffer',
@@ -33,10 +34,9 @@ const Card = ({ item, location }) => {
     }
   }, []);
 
-  const background =
-    logo && item.logo & item.logo.mimeType
-      ? `data:${item.logo.mimeType};base64,${logo}`
-      : defaultImage;
+  const background = hasLogo
+    ? `data:${item.logo.mimeType};base64,${logo}`
+    : defaultImage;
 
   return (
     <article className="ecl-card">

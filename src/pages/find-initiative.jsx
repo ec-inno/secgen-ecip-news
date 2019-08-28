@@ -6,7 +6,7 @@ import getDefaultLanguage from '../utils/getDefaultLanguage';
 
 // Generic
 import SEO from '../components/SEO';
-import SearchResults from '../components/Initiative/SearchResults';
+import SearchAdvanced from '../components/Initiative/Search/Advanced';
 
 const FindInitiative = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
@@ -23,10 +23,8 @@ const FindInitiative = ({ location }) => {
           </div>
         </div>
       </section>
-      <main className="ecl-u-pv-xl">
-        <div className="ecl-container">
-          <SearchResults location={location} />
-        </div>
+      <main className="ecl-u-pv-3xl">
+        <SearchAdvanced location={location} />
       </main>
     </>
   );
