@@ -6,11 +6,12 @@ import { chunk } from 'lodash';
 import getCurrentLanguage from '../../utils/getCurrentLanguage';
 import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
-import SearchForm from './SearchForm';
 import Card from '../Initiative/Card';
 import Message from '../Message';
 import New from '../Initiative/New';
 import Pagination from './Pagination';
+import SearchForm from './SearchForm';
+import Spinner from '../Spinner';
 
 const List = ({ location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
@@ -28,18 +29,24 @@ const List = ({ location }) => {
   const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL
   const [filters, setFilters] = useState({});
   const [initiatives, setInitiatives] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
   useEffect(() => {
+    setIsLoading(true);
     const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
     const endpoint = `${api}/register/search/${section}/${lang}/0/${itemsPerPage}`;
 
     axios
       .post(endpoint, filters)
-      .then(response => setInitiatives(response.data))
-      .catch(e => {
+      .then(response => {
+        setInitiatives(response.data);
+        setIsLoading(false);
+      })
+      .catch(error => {
         setErrorMessage(error.message);
         setErrorMessageVisibility(true);
+        setIsLoading(false);
       });
   }, [section, filters, itemsPerPage]);
 
@@ -135,6 +142,10 @@ const List = ({ location }) => {
 
   page.push(<SearchForm setFilters={setFilters} location={location} />);
 
+  if (isLoading) {
+    page.push(<Spinner />);
+  }
+
   const errorComponentConfig = {
     variant: 'error',
     icon: {
@@ -162,7 +173,18 @@ const List = ({ location }) => {
   );
 
   // When no results, return tabs as well, they are filters.
-  if (!initiatives.entries) return page;
+  if (!initiatives.entries) {
+    page.push(
+      <div className="ecl-row">
+        <div className="ecl-col-sm-12 ecl-col-md-12">
+          <p className="ecl-u-type-paragraph">
+            There are no initiatives meeting current filter criteria.
+          </p>
+        </div>
+      </div>
+    );
+    return page;
+  }
 
   const groups = Math.ceil(initiatives.entries.length / itemsPerRow);
 
@@ -197,6 +219,10 @@ const List = ({ location }) => {
       </div>
     );
   });
+
+  if (isLoading) {
+    page.push(<Spinner />);
+  }
 
   if (itemsPerPage < initiatives[section.toLowerCase()]) {
     page.push(

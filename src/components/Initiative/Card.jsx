@@ -33,9 +33,10 @@ const Card = ({ item, location }) => {
     }
   }, []);
 
-  const background = logo
-    ? `data:${item.logo.mimeType};base64,${logo}`
-    : defaultImage;
+  const background =
+    logo && item.logo & item.logo.mimeType
+      ? `data:${item.logo.mimeType};base64,${logo}`
+      : defaultImage;
 
   return (
     <article className="ecl-card">
