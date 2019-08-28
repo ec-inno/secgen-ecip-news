@@ -1,31 +1,10 @@
 import i18 from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-// @see https://react.i18next.com/guides/quick-start#configure-i-18-next
-const resources = {
-  en: {
-    translation: {
-      'An official website of the European union':
-        'An official website of the European union',
-    },
-  },
-  bg: {
-    translation: {
-      'An official website of the European union':
-        'An official website of the European union (bg)',
-    },
-  },
-  fr: {
-    translation: {
-      'An official website of the European union':
-        'An official website of the European union (fr)',
-    },
-  },
-};
+import { defaultLangKey } from '../languages';
+import resources from '../locale/resources';
 
-i18.use(initReactI18next).init({
-  resources,
-  fallbackLng: 'en',
-});
+// @see https://react.i18next.com/guides/quick-start#configure-i-18-next
+i18.use(initReactI18next).init({ resources, fallbackLng: defaultLangKey });
 
 export default i18;
