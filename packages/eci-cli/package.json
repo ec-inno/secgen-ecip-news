@@ -1,0 +1,19 @@
+{
+  "name": "@eci/cli",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "bin": {
+    "eci-cli": "bin/eci-cli"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "docs",
+    "bin"
+  ],
+  "dependencies": {
+    "gluegun": "^2.1.0",
+    "xlsx": "0.15.1"
+  }
+}
