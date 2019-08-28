@@ -1,14 +1,14 @@
 import React from 'react';
-
-import useTranslations from '../utils/useTranslations';
+import { useTranslation } from 'react-i18next';
 
 const TopMessage = () => {
-  const translation = useTranslations('topmessage');
-  const { message } = translation;
+  const { t } = useTranslation();
 
   return (
     <div className="eci-menu" id="top">
-      <div className="ecl-container">{message}</div>
+      <div className="ecl-container">
+        {t('An official website of the European union')}
+      </div>
     </div>
   );
 };

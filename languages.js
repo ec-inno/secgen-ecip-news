@@ -2,7 +2,7 @@ module.exports = {
   defaultLangKey: 'en',
   // The `languages` list follows ECL spec. (splash page, language swticher, etc.)
   languages: [
-    // { lang: 'bg', label: 'български' },
+    { lang: 'bg', label: 'български' },
     // { lang: 'es', label: 'español' },
     // { lang: 'cs', label: 'čeština' },
     // { lang: 'da', label: 'dansk' },
