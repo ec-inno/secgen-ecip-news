@@ -1,9 +1,9 @@
-import React from 'react';
+import { useContext } from 'react';
 
 import I18nContext from '../context/I18n';
 
 const useTranslations = component => {
-  const { locale } = React.useContext(I18nContext);
+  const { locale } = useContext(I18nContext);
 
   /* eslint-disable-next-line */
   const translations = require(`../../translations/${component}/${locale}.json`);

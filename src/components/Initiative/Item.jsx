@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import I18nContext from '../../context/I18n';
 
@@ -6,7 +6,7 @@ import useTranslations from '../../utils/useTranslations';
 import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
 const InitiativeItem = ({ item }) => {
-  const { locale } = React.useContext(I18nContext);
+  const { locale } = useContext(I18nContext);
   const translation = useTranslations('initiative');
 
   // Try to build a valid path which can display information about an initiative.

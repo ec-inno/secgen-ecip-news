@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
@@ -19,7 +19,7 @@ const OPEN = 'OPEN';
 const SUCCESSFUL = 'SUCCESSFUL';
 
 const List = () => {
-  const { location, locale } = React.useContext(I18nContext);
+  const { location, locale } = useContext(I18nContext);
   const translation = useTranslations('initiative');
 
   // Scenario when online: either a proxy or production.

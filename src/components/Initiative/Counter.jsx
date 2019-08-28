@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import I18nContext from '../../context/I18n';
@@ -7,7 +7,7 @@ import useTranslations from '../../utils/useTranslations';
 import Icon from '../Icon';
 
 const Counter = () => {
-  const { locale } = React.useContext(I18nContext);
+  const { locale } = useContext(I18nContext);
   const translation = useTranslations('counter');
 
   const { GATSBY_SITE_BASE_URL: api } = process.env;

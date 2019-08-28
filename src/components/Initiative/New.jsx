@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 
 import I18nContext from '../../context/I18n';
@@ -8,7 +8,7 @@ import useTranslations from '../../utils/useTranslations';
 import plusSign from '../assets/images/plus.png';
 
 const New = () => {
-  const { locale } = React.useContext(I18nContext);
+  const { locale } = useContext(I18nContext);
   const translation = useTranslations('initiative');
 
   return (

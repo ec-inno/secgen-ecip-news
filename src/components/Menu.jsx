@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 
@@ -7,7 +7,7 @@ import I18nContext from '../context/I18n';
 import useTranslations from '../utils/useTranslations';
 
 const Menu = () => {
-  const { locale, location } = React.useContext(I18nContext);
+  const { locale, location } = useContext(I18nContext);
   const translation = useTranslations('menu');
   const { links } = translation;
 

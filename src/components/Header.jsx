@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 
 import { languages } from '../../languages';
@@ -18,7 +18,7 @@ const languageMap = languages.reduce((obj, item) => {
 }, {});
 
 const Header = () => {
-  const { locale, location } = React.useContext(I18nContext);
+  const { locale, location } = useContext(I18nContext);
   const translation = useTranslations('header');
   const logo = logoPaths[locale];
 
