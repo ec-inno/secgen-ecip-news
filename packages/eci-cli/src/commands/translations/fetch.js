@@ -7,33 +7,34 @@ module.exports = {
       print: { info, error },
     } = toolbox;
 
-    info('Fetching translations from Drupal ...');
+    info('Fetching translations ...');
 
     const api = http.create({ baseURL: `${process.env.SITE_BASE_URL}/en/api` });
-    const payload = read(path('locale/strings.json'), 'json');
+    const exportedStrings = read(path('i18n/exported-strings.json'), 'json');
+    const payload = Object.keys(exportedStrings);
 
     try {
-      const translations = await api.post('/string-translations', payload);
-
       const resources = {};
+      const response = await api.post('/string-translations', payload);
 
-      translations.data.data.forEach(tSet => {
-        let locale = tSet.langcode;
+      if (response.data && response.data.data) {
+        response.data.data.forEach(item => {
+          let locale = item.langcode;
 
-        if (locale === 'pt-pt') {
-          // Yes, it is pity, indeed.
-          locale = 'pt';
-        }
+          if (locale === 'pt-pt') {
+            // Yes, it is pity, indeed.
+            locale = 'pt';
+          }
 
-        resources[locale] = { translation: tSet.translations };
-      });
+          resources[locale] = { translation: item.translations };
+        });
 
-      write(path('locale/resources.json'), resources);
-
-      info(`Ready at ${path('locale/resources.json')}`);
+        write(path('i18n/resources.json'), resources);
+        info('Done fetching translations.');
+      }
     } catch (e) {
       error(
-        'An error occured while trying fetch latest translations from Drupal.',
+        'An error occured while trying fetch latest translations from translations.',
         e
       );
     }
