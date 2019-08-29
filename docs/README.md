@@ -6,5 +6,4 @@
 - [Third party APIs](./API)
 - [Gatsby Node APIs](../gatsbyNodeApi)
 - [Drupal content sourcing](../packages/gatsby-source-drupal-jsonapi-eci/README.md)
-- [Translations](../translations/README.md)
 - [Project CLI](../packages/eci-cli/README.md)

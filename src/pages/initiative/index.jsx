@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import has from 'lodash/has';
 
 // Generic utils.
-import useTranslations from '../../utils/useTranslations';
 import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
 // Page-specific utilities
@@ -19,17 +19,13 @@ import Message from '../../components/Message';
 import Progress from '../../components/Initiative/Progress';
 
 const Initiative = ({ pageContext: { locale }, location }) => {
-  const translation = useTranslations('initiative');
+  const { t } = useTranslation();
   const [initiativeData, setData] = useState({});
 
   useEffect(() => {
     getInitiativeData({ location, locale })
-      .then(data => {
-        setData(data);
-      })
-      .catch(e => {
-        console.error(e);
-      });
+      .then(data => setData(data))
+      .catch(console.error);
   }, [locale]);
 
   return (
@@ -52,7 +48,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
                   shape="general--organigram"
                   className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
                 />
-                {translation.current_status}
+                {t('Current status')}
                 {': '}
                 {initiativeData.status
                   ? getInitiativeStatusLabel(initiativeData.status)
@@ -63,7 +59,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
                   className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
                   shape="general--edit"
                 />
-                {translation.registration_number}
+                {t('Commission registration number')}
                 {': '}
                 {initiativeData.number ? initiativeData.number : '...'}
               </div>
@@ -74,7 +70,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
                   className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
                   shape="general--calendar"
                 />
-                {translation.deadline}
+                {t('Deadline')}
                 {': '}
                 {initiativeData.dateDeadline
                   ? initiativeData.dateDeadline
@@ -85,7 +81,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
                   className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
                   shape="general--calendar"
                 />
-                {translation.date_registration}
+                {t('Date of registration')}
                 {': '}
                 {initiativeData.dateRegistration
                   ? initiativeData.dateRegistration
@@ -101,7 +97,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
               >
                 <span className="ecl-button__container">
                   <span className="ecl-button__label" data-ecl-label="true">
-                    {translation.support_cat}
+                    {t('Support this initiative')}
                   </span>
                 </span>
               </a>
@@ -124,7 +120,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
                     registered initiative.
                   </p>
                   <Message
-                    title={translation.disclaimer}
+                    title={t('Disclaimer')}
                     description={
                       'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
                     }
@@ -137,7 +133,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
               {initiativeData.subjectMatter ? (
                 <>
                   <h2 className="ecl-u-type-heading-2">
-                    {translation.subject_matter}
+                    {t('Subject-matter')}
                   </h2>
                   <p
                     className="ecl-u-type-paragraph"
@@ -151,9 +147,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
               )}
               {initiativeData.objectives ? (
                 <>
-                  <h2 className="ecl-u-type-heading-2">
-                    {translation.objectives}
-                  </h2>
+                  <h2 className="ecl-u-type-heading-2">{t('Objectives')}</h2>
                   <ul className="ecl-u-type-paragraph">
                     {initiativeData.objectives.split(/\n/).map((line, key) => (
                       <li
@@ -172,7 +166,9 @@ const Initiative = ({ pageContext: { locale }, location }) => {
               {initiativeData.legalBase ? (
                 <>
                   <h2 className="ecl-u-type-heading-2">
-                    {translation.legal_base}
+                    {t(
+                      'Provisions of the Treaties considered relevant by the organisers'
+                    )}
                   </h2>
                   <p
                     className="ecl-u-type-paragraph"
@@ -186,9 +182,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
               )}
               {initiativeData.website ? (
                 <>
-                  <h2 className="ecl-u-type-heading-2">
-                    {translation.website}
-                  </h2>
+                  <h2 className="ecl-u-type-heading-2">{t('Website')}</h2>
                   <p className="ecl-u-type-paragraph">
                     <a
                       href={initiativeData.website}
@@ -205,13 +199,13 @@ const Initiative = ({ pageContext: { locale }, location }) => {
               {initiativeData.organisers ? (
                 <>
                   <h2 className="ecl-u-type-heading-2">
-                    {translation.organisers}
+                    {t("Organisers / Members of citizens' committee")}
                   </h2>
                   <ul className="ecl-u-type-paragraph">
                     {has(initiativeData, 'organisers.reps')
                       ? initiativeData.organisers.reps.map((rep, key) => (
                           <li key={`r-${key}`}>
-                            {translation.representative}
+                            {t('Representative')}
                             {': '}
                             {rep.fullname}
                             {rep.email ? ` - ${rep.email}` : ''}
@@ -221,7 +215,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
                     {has(initiativeData, 'organisers.subs')
                       ? initiativeData.organisers.subs.map((sub, key) => (
                           <li key={`s-${key}`}>
-                            {translation.substitute}
+                            {t('Substitute')}
                             {': '}
                             {sub.fullname}
                             {sub.email ? ` - ${sub.email}` : ''}
@@ -230,7 +224,7 @@ const Initiative = ({ pageContext: { locale }, location }) => {
                       : ''}
                     {has(initiativeData, 'organisers.members') ? (
                       <li key="m-0">
-                        {translation.members}
+                        {t('Members')}
                         {': '}
                         {initiativeData.organisers.members
                           .map(m => m.fullname)

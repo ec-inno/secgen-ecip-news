@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 import I18nContext from '../../context/I18n';
 
-import useTranslations from '../../utils/useTranslations';
 import getInitiatives from '../../utils/getInitiatives';
 
 import Item from '../Initiative/Item';
@@ -20,7 +20,7 @@ const SUCCESSFUL = 'SUCCESSFUL';
 
 const List = () => {
   const { location, locale } = useContext(I18nContext);
-  const translation = useTranslations('initiative');
+  const { t } = useTranslation();
 
   // Scenario when online: either a proxy or production.
   let endpoint =
@@ -113,7 +113,7 @@ const List = () => {
     },
     close: {
       variant: 'ghost',
-      label: translation.close,
+      label: t('Close'),
       icon: {
         shape: 'ui--close',
         size: 's',
@@ -125,19 +125,14 @@ const List = () => {
     <Message
       className={errorMessageIsVisible ? '' : 'hidden'}
       onClose={() => setErrorMessageVisibility(false)}
-      title={translation.error_getting_initiatives}
+      title={t('Issue fetching initiatives')}
       description={errorMessage}
       {...errorComponentConfig}
     />
   );
 
   if (isLoading) {
-    page.push(
-      <div>
-        {translation.fetching_initiatives}
-        <Spinner />
-      </div>
-    );
+    page.push(<Spinner />);
     return page;
   }
 
@@ -182,7 +177,7 @@ const List = () => {
             href="#"
             className="eci-menu__link ecl-link"
           >
-            {translation.ongoing} {ongoingCount && `(${ongoingCount})`}
+            {t('Ongoing')} {ongoingCount && `(${ongoingCount})`}
           </a>
         </li>
         <li
@@ -201,7 +196,7 @@ const List = () => {
             href="#"
             className="eci-menu__link ecl-link"
           >
-            {translation.answered} {answeredCount && `(${answeredCount})`}
+            {t('Answered')} {answeredCount && `(${answeredCount})`}
           </a>
         </li>
         <li
@@ -220,7 +215,7 @@ const List = () => {
             href="#"
             className="eci-menu__link ecl-link"
           >
-            {translation.all_initiatives} {allCount && `(${allCount})`}
+            {t('All initiatives')} {allCount && `(${allCount})`}
           </a>
         </li>
       </ul>

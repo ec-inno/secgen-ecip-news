@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 
 import I18nContext from '../../context/I18n';
-
-import useTranslations from '../../utils/useTranslations';
 
 import plusSign from '../assets/images/plus.png';
 
 const New = () => {
   const { locale } = useContext(I18nContext);
-  const translation = useTranslations('initiative');
+  const { t } = useTranslation();
 
   return (
     <div className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none">
@@ -26,7 +25,7 @@ const New = () => {
               to={`/${locale}/how-to-start`}
               className="ecl-link ecl-link--standalone"
             >
-              {translation.how_to_start}
+              {t('How to start an initiative?')}
             </Link>
           </h1>
         </header>

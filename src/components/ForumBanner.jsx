@@ -1,13 +1,11 @@
 import React from 'react';
-
-import useTranslations from '../utils/useTranslations';
+import { useTranslation } from 'react-i18next';
 
 import image from './assets/images/bg-forum.png';
 import Button from '../components/Button';
 
 const ForumBanner = () => {
-  const translation = useTranslations('forumbanner');
-  const { message, button } = translation;
+  const { t } = useTranslation();
 
   const arrowIcon = {
     shape: 'ui--corner-arrow',
@@ -23,11 +21,13 @@ const ForumBanner = () => {
       ></div>
       <div className="ecl-container ecl-page-banner__container">
         <div className="ecl-page-banner__content">
-          <h1 className="ecl-page-banner__title">{message}</h1>
+          <h1 className="ecl-page-banner__title">
+            {t('Want to learn and collaborate?')}
+          </h1>
           <Button
             className="ecl-page-banner__button"
             variant="call"
-            label={button}
+            label={t('Join the forum')}
             icon={arrowIcon}
             iconPosition="after"
           />

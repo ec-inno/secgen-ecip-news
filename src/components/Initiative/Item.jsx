@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import I18nContext from '../../context/I18n';
 
-import useTranslations from '../../utils/useTranslations';
 import getInitiativeStatusLabel from '../../utils/getInitiativeStatusLabel';
 
 const InitiativeItem = ({ item }) => {
+  const { t } = useTranslation();
   const { locale } = useContext(I18nContext);
-  const translation = useTranslations('initiative');
 
   // Try to build a valid path which can display information about an initiative.
   let href = '#';
@@ -41,7 +41,7 @@ const InitiativeItem = ({ item }) => {
       <section className="ecl-card__body">
         {supporters && (
           <p className="ecl-u-type-paragraph ecl-u-mv-none">
-            {supporters} {translation.supporters}
+            {supporters} {t('Supporters')}
           </p>
         )}
       </section>

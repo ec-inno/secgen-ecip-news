@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
-
-import useTranslations from '../utils/useTranslations';
 
 import addSlugs from '../utils/addSlugs';
 
 import SEO from '../components/SEO';
 
 const BasicPage = ({ data }) => {
-  const translation = useTranslations('basicpage');
+  const { t } = useTranslation();
 
   const { title, oe_summary, body } = data.nodeOePage;
 
   const [bodyProcessed, setBody] = useState('');
-  const [inpageItems, setInpageItems] = useState('');
+  const [inpageItems, setInpageItems] = useState({});
 
   useEffect(() => {
     const processData = async () => {
@@ -41,6 +40,8 @@ const BasicPage = ({ data }) => {
     processData();
   }, []);
 
+  const hasHeadings = Object.keys(inpageItems).length !== 0;
+
   return (
     <>
       <SEO title={title} />
@@ -64,15 +65,15 @@ const BasicPage = ({ data }) => {
         <div className="ecl-container ecl-u-mt-xl">
           <div className="ecl-row ecl-u-mt-l">
             <div className="ecl-col-12 ecl-col-sm-3">
-              <nav>
-                <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
-                  {translation.inpage_title}
-                </div>
-              </nav>
-              <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
-                {inpageItems &&
-                  Object.keys(inpageItems).map((heading, key) => {
-                    return (
+              {hasHeadings && (
+                <>
+                  <nav>
+                    <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
+                      {t('Page contents').toUpperCase()}
+                    </div>
+                  </nav>
+                  <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
+                    {Object.keys(inpageItems).map((heading, key) => (
                       <li
                         key={key}
                         className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
@@ -84,9 +85,10 @@ const BasicPage = ({ data }) => {
                           {inpageItems[heading]}
                         </a>
                       </li>
-                    );
-                  })}
-              </ul>
+                    ))}
+                  </ul>
+                </>
+              )}
             </div>
 
             <div className="ecl-col-12 ecl-col-sm-9">

@@ -7,7 +7,7 @@ import '../components/assets/styles.css';
 import '../components/assets/custom.css';
 
 import I18nContext from '../context/I18n'; // locale and location store
-import '../i18n'; // i18next
+import '../../i18n/config'; // i18next
 
 import SEO from '../components/SEO';
 import TopMessage from '../components/TopMessage';

@@ -1,35 +1,34 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
-
-import useTranslations from '../utils/useTranslations';
 
 import SEO from '../components/SEO';
 import LeadParagraph from '../components/LeadParagraph';
 import InitiativesList from '../components/Initiative/List';
 
 const Homepage = ({ data, pageContext: { locale } }) => {
-  const translation = useTranslations('home');
+  const { t } = useTranslation();
   const news = data.allNodeOeNews.edges;
 
   return (
     <>
-      <SEO title={translation.title} description={translation.description} />
+      <SEO title={t('Home')} description={t('Home description')} />
       <main>
         <div className="ecl-container">
           <LeadParagraph
             linkPath={`/${locale}/how-it-works`}
-            linkText={translation.how_works_link}
-            intro={translation.how_works_intro}
+            linkText={t('See how it works step by step')}
+            intro={t(
+              "Get a greater say in the policies that affect your lives. The European Citizens' Initiative is a unique and innovative way for citizens to shape Europe by calling on the European Commission to make a legislative proposal. Once an initiative gathers 1 million signatures, the Commission decides on what follow-up action to take."
+            )}
           />
 
           <InitiativesList />
 
           {news && news.length ? (
             <section className="ecl-u-mt-xl">
-              <h2 className="ecl-u-type-heading-2">
-                {translation.latest_news_heading}
-              </h2>
+              <h2 className="ecl-u-type-heading-2">{t('Latest news')}</h2>
               <ul className="ecl-unordered-list">
                 {news.map(newsNode => {
                   const { node } = newsNode;
@@ -67,7 +66,7 @@ const Homepage = ({ data, pageContext: { locale } }) => {
                   className="ecl-link ecl-link--standalone"
                   to={`/${locale}/news`}
                 >
-                  {translation.more_link}
+                  {t('See more news')}
                 </Link>
               </p>
             </section>

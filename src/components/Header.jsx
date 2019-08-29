@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 
 import { languages } from '../../languages';
 import I18nContext from '../context/I18n';
 
 import logoPaths from '../utils/logoPaths';
-import useTranslations from '../utils/useTranslations';
 
 import SiteName from './SiteName';
 import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
@@ -19,7 +19,7 @@ const languageMap = languages.reduce((obj, item) => {
 
 const Header = () => {
   const { locale, location } = useContext(I18nContext);
-  const translation = useTranslations('header');
+  const { t } = useTranslation();
   const logo = logoPaths[locale];
 
   let urlPath = '';
@@ -59,11 +59,11 @@ const Header = () => {
             <Link
               className="ecl-link ecl-link--standalone"
               to={`/${locale}`}
-              aria-label={translation.european_union}
+              aria-label={t('European Union')}
             >
               <img
-                alt={`${translation.european_union} logo`}
-                title={translation.european_union}
+                alt={`${t('European Union')} logo`}
+                title={t('European Union')}
                 className="ecl-site-header__logo-image"
                 src={logo}
               />
@@ -78,8 +78,8 @@ const Header = () => {
         <SiteName />
       </header>
       <LanguageListOverlay
-        closeLabel={translation.close_label}
-        title={translation.select_language}
+        closeLabel={t('Close')}
+        title={t('Select your language')}
         items={items}
       />
     </>

@@ -1,17 +1,15 @@
 import React, { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
 import slugify from 'slugify';
-
-import useTranslations from '../utils/useTranslations';
 
 import SEO from '../components/SEO';
 import Accordion2 from '../components/Accordion/Accordion2';
 import Accordion2Item from '../components/Accordion/Accordion2Item';
 
 const FaqPage = ({ data }) => {
-  const translation = useTranslations('faq');
+  const { t } = useTranslation();
 
-  const { title, intro, inpage_title } = translation;
   const { edges: faqSections } = data.allNodeFaqSection;
 
   const toggleItem = id => {
@@ -20,14 +18,14 @@ const FaqPage = ({ data }) => {
 
   return (
     <>
-      <SEO title={translation.title} description={intro} />
+      <SEO title={t('FAQ')} description={t('FAQ intro')} />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">
             <div className="ecl-page-header__title-wrapper">
-              <h1 className="ecl-page-header__title">{title}</h1>
+              <h1 className="ecl-page-header__title">{t('FAQ')}</h1>
               <p className="ecl-page-header__slogan ecl-u-type-paragraph ecl-u-mt-l">
-                {intro}
+                {t('FAQ intro')}
               </p>
             </div>
           </div>
@@ -38,7 +36,7 @@ const FaqPage = ({ data }) => {
             <div className="ecl-col-12 ecl-col-sm-3">
               <nav>
                 <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
-                  {inpage_title}
+                  {t('Page contents').toUpperCase()}
                 </div>
                 <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
                   {faqSections.map((item, i) => {
