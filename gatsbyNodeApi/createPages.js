@@ -2,6 +2,7 @@ const path = require('path');
 const has = require('lodash/has');
 
 const { languages, defaultLangKey } = require('../languages');
+const getLocaleData = require('../src/utils/getLocaleData');
 
 const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -56,6 +57,7 @@ const createPages = async ({ graphql, actions }) => {
       component: path.resolve('./src/templates/basic-page.jsx'),
       context: {
         locale: languageDefault,
+        localeData: getLocaleData(languageDefault),
         langcode: languageDefault,
         alias: aliasDefault,
       },
@@ -84,6 +86,7 @@ const createPages = async ({ graphql, actions }) => {
         component: path.resolve('./src/templates/basic-page.jsx'),
         context: {
           locale: language,
+          localeData: getLocaleData(language),
           // If translation has a different path than original language, language switcher won't land user to translation.
           // It's unlikely, but it's worth noting we respect paths from Drupal even if that would cause issues in Gatsby.
           langcode,
@@ -129,6 +132,7 @@ const createPages = async ({ graphql, actions }) => {
             numPages,
             currentPage: i + 1,
             locale: language,
+            localeData: getLocaleData(language),
             languageRegex,
           },
         });
@@ -140,6 +144,7 @@ const createPages = async ({ graphql, actions }) => {
         component: path.resolve('./src/templates/faq-page.jsx'),
         context: {
           locale: language,
+          localeData: getLocaleData(language),
           languageRegex,
         },
       });

@@ -1,11 +1,11 @@
 const { languages, defaultLangKey } = require('../languages');
+const getLocaleData = require('../src/utils/getLocaleData');
 
 const onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
 
   // Exceptional paths.
-  // This goes to /public/404.html, Gatsby seeks it.
-  if (page.path === '/404.html') {
+  if (page.path === '/404.html' || page.path.match(/^\/dev-404-page/)) {
     // But we stop the process here as later we manually created the rest of the language-specific 404-s.
     // And we only want /en/404/index.html and not /en/404.html/index.html
     return createPage({
@@ -13,6 +13,7 @@ const onCreatePage = ({ page, actions }) => {
       context: {
         ...page.context,
         locale: defaultLangKey,
+        localeData: getLocaleData(defaultLangKey),
       },
     });
   }
@@ -31,6 +32,7 @@ const onCreatePage = ({ page, actions }) => {
         context: {
           ...page.context,
           locale: lang,
+          localeData: getLocaleData(lang),
         },
       });
     });
@@ -48,6 +50,7 @@ const onCreatePage = ({ page, actions }) => {
         context: {
           ...page.context,
           locale: lang,
+          localeData: getLocaleData(lang),
         },
       });
     });
@@ -63,6 +66,7 @@ const onCreatePage = ({ page, actions }) => {
         ...page.context,
         layout: 'landing',
         locale: defaultLangKey,
+        localeData: getLocaleData(defaultLangKey),
       },
     });
   }
@@ -79,6 +83,7 @@ const onCreatePage = ({ page, actions }) => {
       context: {
         ...page.context,
         locale: lang,
+        localeData: getLocaleData(lang),
         languageRegex: `//${lang}//`,
       },
     });

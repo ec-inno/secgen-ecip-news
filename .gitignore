@@ -72,5 +72,4 @@ yarn-error.log
 /api
 
 # Generated on prod/test bulid in CI
-i18n/exported-strings.json
-i18n/resources.json
+i18n_exports

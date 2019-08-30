@@ -25,6 +25,7 @@
     "deploy": "./scripts/deploy.sh",
     "develop": "gatsby develop",
     "format": "prettier --write \"{gatsby-*.js,src/**/*.js}\"",
+    "i18n:clean": "rm -rf i18n_exports",
     "i18n:export": "i18next-scanner",
     "i18n:fetch": "eci-cli translations fetch",
     "i18n:update": "run-s i18n:export i18n:fetch",

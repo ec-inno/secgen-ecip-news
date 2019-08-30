@@ -1,5 +1,7 @@
 const { defaultLangKey } = require('./languages');
 
+const exportsFolder = 'i18n_exports';
+
 // @see https://github.com/i18next/i18next-scanner#default-options
 module.exports = {
   input: ['src/**/*.{js,jsx}'],
@@ -12,7 +14,7 @@ module.exports = {
       extensions: ['.js', '.jsx'],
     },
     resource: {
-      savePath: 'i18n/exported-strings.json',
+      savePath: `${exportsFolder}/exported-strings.json`,
     },
     nsSeparator: false,
     keySeparator: false,
