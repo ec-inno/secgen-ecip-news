@@ -1,5 +1,5 @@
 {
-  "name": "ecgen-ecip-client-reference",
+  "name": "secgen-ecip-client-reference",
   "description": "The Gatsby.js client-side using digit-eci-reference Drupal 8 backend.",
   "version": "0.1.0",
   "author": "European Commission",

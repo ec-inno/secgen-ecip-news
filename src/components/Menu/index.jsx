@@ -2,21 +2,28 @@ import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
-
 const Menu = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+  const data = require('./data.json');
 
+  const remove = '/multisite/ecip/';
   const locationParts =
     location && location.pathname
       ? location.pathname.split('/').filter(p => p)
       : [];
-  const urlPath = locationParts[1]; // undefined is fine, checked later.
+  const urlPath = locationParts[1];
 
-  const translation = require(`../../translations/menu/${language}.json`);
-
-  const { links } = translation;
+  const links = data.length
+    ? data
+        // Keep only items which are enabled are meant to be displayed.
+        .filter(link => link.attributes.enabled)
+        // Keep only first-level menu items.
+        .filter(link => !link.attributes.parent)
+        .map(link => ({
+          id: link.id,
+          label: link.attributes.title,
+          href: '/' + link.attributes.fetched_alias.replace(remove, ''),
+        }))
+    : [];
 
   return (
     <>
@@ -24,13 +31,14 @@ const Menu = ({ location }) => {
         <nav className="eci-menu">
           <div className="ecl-container">
             <ul className="eci-menu__list">
-              {links.map((link, key) => {
-                const { label, href } = link;
+              {links.map(link => {
+                const { id, label, href } = link;
+
                 let classActive = '';
 
                 if (
                   // Home page.
-                  (href === '/' && !urlPath) ||
+                  (urlPath === undefined && location.pathname === href) ||
                   // Internal pages.
                   (urlPath && href.includes(urlPath))
                 ) {
@@ -40,14 +48,8 @@ const Menu = ({ location }) => {
                 const classNames = classnames(classActive, 'eci-menu__option');
 
                 return (
-                  <li className={classNames} key={key}>
-                    <Link
-                      to={
-                        // If the user has left a base path, correct it, as there's always a language.
-                        href === '/' ? `/${language}` : `/${language}${href}`
-                      }
-                      className="eci-menu__link ecl-link"
-                    >
+                  <li className={classNames} key={id}>
+                    <Link to={href} className="eci-menu__link ecl-link">
                       {label}
                     </Link>
                   </li>
