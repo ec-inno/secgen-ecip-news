@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link as LinkInternal } from 'gatsby';
-import LinkExternal from '../components/Link/LinkEcl';
 
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
 import SEO from '../components/SEO';
+import ListItemNested from '../components/ListItemNested';
 
 const Sitemap = ({ location, data }) => {
   const list = [];
@@ -43,8 +42,6 @@ const Sitemap = ({ location, data }) => {
   list.push(...menu);
   list.push(...pages);
 
-  console.log('list', list);
-
   return (
     <>
       <SEO title="Sitemap" location={location} />
@@ -56,27 +53,9 @@ const Sitemap = ({ location, data }) => {
               <h1 className="ecl-u-type-heading-1">Sitemap</h1>
               {list.length ? (
                 <ul className="ecl-unordered-list">
-                  {list.map((listItem, key) => {
-                    return (
-                      <li key={key} className="ecl-unordered-list__item">
-                        {listItem.external ? (
-                          <LinkExternal
-                            href={listItem.href}
-                            className="ecl-link ecl-link--standalone"
-                          >
-                            {listItem.title}
-                          </LinkExternal>
-                        ) : (
-                          <LinkInternal
-                            to={listItem.href}
-                            className="ecl-link ecl-link--standalone"
-                          >
-                            {listItem.title}
-                          </LinkInternal>
-                        )}
-                      </li>
-                    );
-                  })}
+                  {list.map((item, id) => (
+                    <ListItemNested item={item} id={id} />
+                  ))}
                 </ul>
               ) : (
                 ''
