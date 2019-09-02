@@ -23,18 +23,11 @@ const withI18next = () => Comp => {
     // @see https://www.i18next.com/overview/api#resource-handling
     // `translation` is the default NS we use consistently.
     addResources = pageContext => {
-      if (
-        pageContext &&
-        pageContext.localeData &&
-        pageContext.localeData.translation
-      ) {
-        const {
-          locale: lng,
-          localeData: { translation },
-        } = pageContext;
+      if (pageContext && pageContext.localeData) {
+        const { locale: lng, localeData } = pageContext;
 
         if (!this.i18n.hasResourceBundle(lng, 'translation')) {
-          this.i18n.addResourceBundle(lng, 'translation', translation);
+          this.i18n.addResourceBundle(lng, 'translation', localeData);
         }
       }
     };

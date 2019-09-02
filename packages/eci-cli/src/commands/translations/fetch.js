@@ -33,16 +33,21 @@ module.exports = {
       if (response.data && response.data.data) {
         response.data.data.forEach(item => {
           let locale = item.langcode;
+          const translation = item.translations;
 
           if (locale === 'pt-pt') {
             // Yes, it is pity, indeed.
             locale = 'pt';
           }
 
-          resources[locale] = { translation: item.translations };
+          resources[locale] = { translation };
+
+          write(
+            path(`${exportsFolder}/translations/${locale}.json`),
+            translation
+          );
         });
 
-        write(path(`${exportsFolder}/resources.json`), resources);
         info('Done fetching translations.');
       }
     } catch (e) {
