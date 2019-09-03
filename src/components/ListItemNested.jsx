@@ -4,12 +4,17 @@ import LinkExternal from './Link/LinkEcl';
 
 const ListItemNested = ({ item, id }) => {
   let children = null;
+  const props = ['href', 'hrefNew', 'title', 'hrefFormatted', 'external'];
 
-  if (item.children) {
+  const itemChildren = Object.keys(item).filter(
+    child => !props.includes(child)
+  );
+
+  if (itemChildren) {
     children = (
       <ul className="ecl-unordered-list">
-        {item.children.map((item, key) => (
-          <ListItemNested item={item} key={key} />
+        {itemChildren.map((childPath, key) => (
+          <ListItemNested item={item[childPath]} key={key} />
         ))}
       </ul>
     );

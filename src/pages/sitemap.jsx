@@ -1,13 +1,17 @@
 import React from 'react';
+import { graphql } from 'gatsby';
+import { unflatten } from 'flat';
 
 import getCurrentLanguage from '../utils/getCurrentLanguage';
 
 import SEO from '../components/SEO';
-import ListItemNested from '../components/ListItemNested';
+import ListNested from '../components/ListNested';
 
 const Sitemap = ({ location, data }) => {
   const list = [];
+  const listGroupPrepare = {};
   const remove = '/multisite/ecip/';
+
   const currentLanguage = getCurrentLanguage(location);
 
   const menuTmp = require('../components/Menu/data.json'); // From query when API comes
@@ -33,14 +37,40 @@ const Sitemap = ({ location, data }) => {
 
   const pages =
     data.allNodeOePage && data.allNodeOePage.edges
-      ? data.allNodeOePage.edges.map(({ node }) => ({
-          title: node.title,
-          href: `/${currentLanguage}${node.path.alias}`,
-        }))
+      ? data.allNodeOePage.edges
+          .map(({ node }) => ({
+            title: node.title,
+            href: `/${currentLanguage}${node.path.alias}`,
+          }))
+          // Keep only items which are not already present in the menu.
+          .filter(link => {
+            const exists = menu.find(m => m.href === link.href);
+            if (!exists) return link;
+          })
       : [];
 
   list.push(...menu);
   list.push(...pages);
+
+  list
+    .map(item => {
+      const path = item.href.split('/').filter(a => a);
+      path.shift();
+      const href = path.join('.');
+
+      return {
+        hrefNew: href,
+        ...item,
+      };
+    })
+    .filter(item => item.hrefNew)
+    .forEach(item => {
+      if (!listGroupPrepare[item.hrefNew]) {
+        listGroupPrepare[item.hrefNew] = item;
+      }
+    });
+
+  const listNested = unflatten(listGroupPrepare);
 
   return (
     <>
@@ -51,15 +81,7 @@ const Sitemap = ({ location, data }) => {
           <div className="ecl-row ecl-u-mt-l">
             <div className="ecl-col-sm-12 ecl-col-md-12">
               <h1 className="ecl-u-type-heading-1">Sitemap</h1>
-              {list.length ? (
-                <ul className="ecl-unordered-list">
-                  {list.map((item, id) => (
-                    <ListItemNested item={item} id={id} />
-                  ))}
-                </ul>
-              ) : (
-                ''
-              )}
+              <ListNested list={listNested} />
             </div>
           </div>
         </div>
