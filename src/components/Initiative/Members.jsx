@@ -1,12 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import has from 'lodash/has';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
-
-const Members = ({ initiativeData, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
+const Members = ({ initiativeData }) => {
+  const { t } = useTranslation();
 
   // [REPRESENTATIVE, SUBSTITUTE, MEMBER, LEGAL_ENTITY, OTHER, DPO ]
   const people = has(initiativeData, 'members')
@@ -22,6 +19,7 @@ const Members = ({ initiativeData, location }) => {
         })
         .filter(p => !p.privacyApplied)
     : [];
+
   const reps = people.filter(p => p.type === 'REPRESENTATIVE');
   const subs = people.filter(p => p.type === 'SUBSTITUTE');
   const members = people.filter(p => p.type === 'MEMBER');
@@ -33,11 +31,11 @@ const Members = ({ initiativeData, location }) => {
     <>
       {reps || subs || members || legalEs || others || dpos ? (
         <>
-          <h2 className="ecl-u-type-heading-2">{translation.organisers}</h2>
+          <h2 className="ecl-u-type-heading-2">{t('Organisers')}</h2>
           <ul className="ecl-u-type-paragraph">
             {legalEs && legalEs.length > 0 ? (
               <li key="legalEntity">
-                Legal entities
+                {t('Legal entities')}
                 {': '}
                 {legalEs.map(m => m.fullName).join(', ')}
               </li>
@@ -47,7 +45,7 @@ const Members = ({ initiativeData, location }) => {
             {reps && reps.length > 0
               ? reps.map((rep, key) => (
                   <li key={`rep-${key}`}>
-                    {translation.representative}
+                    {t('Representative')}
                     {': '}
                     {rep.fullName}
                     {rep.email ? ` - ${rep.email}` : ''}
@@ -57,7 +55,7 @@ const Members = ({ initiativeData, location }) => {
             {subs && subs.length > 0
               ? subs.map((sub, key) => (
                   <li key={`sub-${key}`}>
-                    {translation.substitute}
+                    {t('Substitude')}
                     {': '}
                     {sub.fullName}
                     {sub.email ? ` - ${sub.email}` : ''}
@@ -66,7 +64,7 @@ const Members = ({ initiativeData, location }) => {
               : ''}
             {members && members.length > 0 ? (
               <li key="members">
-                {translation.members}
+                {t('Members')}
                 {': '}
                 {members.map(m => m.fullName).join(', ')}
               </li>
@@ -75,7 +73,7 @@ const Members = ({ initiativeData, location }) => {
             )}
             {others && others.length > 0 ? (
               <li key="others">
-                Others
+                {t('Others')}
                 {': '}
                 {others.map(m => m.fullName).join(', ')}
               </li>
@@ -84,7 +82,7 @@ const Members = ({ initiativeData, location }) => {
             )}
             {dpos && dpos.length > 0 ? (
               <li key="dpos">
-                DPO
+                {t('DPO')}
                 {': '}
                 {dpos.map(m => m.fullName).join(', ')}
               </li>

@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 import config from '../config';
-
-import getCurrentLanguage from '../../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../../utils/getDefaultLanguage';
+import I18nContext from '../../../context/I18n';
 
 import Card from '../Card';
 import Message from '../../Message';
@@ -16,10 +15,9 @@ import Pagination from '../Pagination';
 import SearchForm from './FormBasic';
 import Spinner from '../../Spinner';
 
-const Basic = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../../translations/initiative/${language}.json`);
-
+const Basic = () => {
+  const { t } = useTranslation();
+  const { locale } = useContext(I18nContext);
   const { GATSBY_INITIATIVES_API: api } = process.env;
 
   const itemsPerRow = 3;
@@ -36,7 +34,7 @@ const Basic = ({ location }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
+    const lang = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
     const endpoint = `${api}/register/search/${section}/${lang}/0/${itemsPerPage}`;
 
     axios
@@ -78,7 +76,7 @@ const Basic = ({ location }) => {
               href="#"
               className="eci-menu__link ecl-link"
             >
-              {translation.latest}
+              {t('Latest')}
             </a>
           </li>
           <li
@@ -98,8 +96,7 @@ const Basic = ({ location }) => {
               href="#"
               className="eci-menu__link ecl-link"
             >
-              {translation.ongoing}{' '}
-              {initiatives.ongoing && `(${initiatives.ongoing})`}
+              {t('Ongoing')} {initiatives.ongoing && `(${initiatives.ongoing})`}
             </a>
           </li>
           <li
@@ -119,7 +116,7 @@ const Basic = ({ location }) => {
               href="#"
               className="eci-menu__link ecl-link"
             >
-              {translation.answered}{' '}
+              {t('Answered')}{' '}
               {initiatives.answered && `(${initiatives.answered})`}
             </a>
           </li>
@@ -140,17 +137,16 @@ const Basic = ({ location }) => {
               href="#"
               className="eci-menu__link ecl-link"
             >
-              {translation.all_initiatives}{' '}
-              {initiatives.all && `(${initiatives.all})`}
+              {t('All initiatives')} {initiatives.all && `(${initiatives.all})`}
             </a>
           </li>
         </ul>
       </div>
       <div className="ecl-u-pa-m eci-filter ecl-u-mv-xl">
-        <SearchForm setFilters={setFilters} location={location} />
+        <SearchForm setFilters={setFilters} />
         <p className="ecl-u-type-paragraph ecl-u-mb-none">
-          <Link className="ecl-link" to={`/${language}/find-initiative`}>
-            {translation.get_more_filters}
+          <Link className="ecl-link" to={`/${locale}/find-initiative`}>
+            {t('Get more filters')}
           </Link>
         </p>
       </div>
@@ -158,7 +154,7 @@ const Basic = ({ location }) => {
       <Message
         className={errorMessageIsVisible ? '' : 'hidden'}
         onClose={() => setErrorMessageVisibility(false)}
-        title={translation.error_getting_initiatives}
+        title={t('An error occurred while fetching initiatives.')}
         description={errorMessage}
         {...config.error}
       />
@@ -181,12 +177,12 @@ const Basic = ({ location }) => {
                     key={key}
                     className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none"
                   >
-                    <Card key={key} item={item} location={location} />
+                    <Card key={key} item={item} />
                   </div>
                 );
 
                 if (k + 1 === groups && key + 1 === groupLength) {
-                  list.push(<New key={key + 1} location={location} />);
+                  list.push(<New key={key + 1} />);
                 }
 
                 return list;
@@ -198,7 +194,7 @@ const Basic = ({ location }) => {
         <div className="ecl-row">
           <div className="ecl-col-sm-12 ecl-col-md-12">
             <p className="ecl-u-type-paragraph">
-              There are no initiatives meeting current filter criteria.
+              {t('There are no initiatives meeting current filter criteria.')}
             </p>
           </div>
         </div>
@@ -206,7 +202,6 @@ const Basic = ({ location }) => {
       {isLoading && <Spinner />}
       {itemsPerPage < initiatives[section.toLowerCase()] && (
         <Pagination
-          location={location}
           onClick={e => {
             e.preventDefault();
             const newItemsPerPage = itemsPerPage * 2 + 1;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import mime from 'mime';
 
@@ -7,9 +8,10 @@ import formatBytes from '../../utils/formatBytes';
 import Icon from '../Icon';
 
 const Document = ({ file }) => {
-  const { GATSBY_INITIATIVES_API: api } = process.env;
-
   if (!file) return '';
+
+  const { t } = useTranslation();
+  const { GATSBY_INITIATIVES_API: api } = process.env;
 
   return (
     <div className="ecl-file" data-ecl-file>
@@ -33,7 +35,7 @@ const Document = ({ file }) => {
           className="ecl-link ecl-link--standalone"
           download
         >
-          <span className="ecl-link__label">Download</span>{' '}
+          <span className="ecl-link__label">{t('Download')}</span>{' '}
           <Icon
             className="ecl-icon ecl-icon--fluid ecl-link__icon"
             shape="ui--download"

@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import I18nContext from '../../context/I18n';
 
 // ECL native component.
 import Footer from './Footer';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+const FooterLanguage = () => {
+  const { locale } = useContext(I18nContext);
+  const data = require(`./data/${locale}.json`);
 
-const FooterLanguage = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-
-  const translation = require(`../../../translations/footer/${language}.json`);
-  return <Footer className="ecl-footer--custom" {...translation} />;
+  return <Footer className="ecl-footer--custom" {...data} />;
 };
 
 export default FooterLanguage;

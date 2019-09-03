@@ -1,11 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
-
-const Pagination = ({ onClick, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
+const Pagination = ({ onClick }) => {
+  const { t } = useTranslation();
 
   return (
     <div className="ecl-row ecl-u-mt-l">
@@ -15,11 +12,13 @@ const Pagination = ({ onClick, location }) => {
             <li className="ecl-pagination__item ecl-pagination__item--next">
               <a
                 onClick={onClick}
-                aria-label={translation.next_page}
+                aria-label={t('Go to next page')}
                 href="#"
                 className="ecl-pagination__link ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"
               >
-                <span className="ecl-link__label">{translation.see_more}</span>
+                <span className="ecl-link__label">
+                  {t('See more initiatives')}
+                </span>
               </a>
             </li>
           </ul>

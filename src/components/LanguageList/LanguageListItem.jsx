@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 // This Link is specific to this component. It has the logic of an ECL link component to handle icons, but also at the same time uses GatsbyJS's Link link for it's benefits.
 import Link from '../Link/LinkGatsby';
 
-import Context, { SET_LANGUAGE_OVERLAY_VISIBILITY } from '../../Context';
+import Context, {
+  SET_LANGUAGE_OVERLAY_VISIBILITY,
+} from '../../context/Overlay';
 
 // As close as possible to https://github.com/ec-europa/europa-component-library/blob/v2-dev/src/systems/ec/implementations/react/page-structure/language-list/src/LanguageListItem.jsx
 const LanguageListItem = ({ label, lang, href, isActive, isOverlay }) => {

@@ -1,17 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-
 import SEO from '../components/SEO';
 
 // Update title and body to use dynamic content coming from Drupal's menu.
-const Sitemap = ({ location }) => {
-  const currentLanguage = getCurrentLanguage(location);
-
+const Sitemap = ({ pageContext: { locale } }) => {
   return (
     <>
-      <SEO title="Sitemap" location={location} />
+      <SEO title="Sitemap" />
 
       <main>
         <div className="ecl-container">
@@ -21,7 +17,7 @@ const Sitemap = ({ location }) => {
               <ul className="ecl-unordered-list">
                 <li className="ecl-unordered-list__item">
                   <Link
-                    to={`/${currentLanguage}/`}
+                    to={`/${locale}/`}
                     className="ecl-link ecl-link--standalone"
                   >
                     Home
@@ -29,7 +25,7 @@ const Sitemap = ({ location }) => {
                 </li>
                 <li className="ecl-unordered-list__item">
                   <Link
-                    to={`/${currentLanguage}/news`}
+                    to={`/${locale}/news`}
                     className="ecl-link ecl-link--standalone"
                   >
                     News
@@ -37,7 +33,7 @@ const Sitemap = ({ location }) => {
                 </li>
                 <li className="ecl-unordered-list__item">
                   <Link
-                    to={`/${currentLanguage}/how-to-start`}
+                    to={`/${locale}/how-to-start`}
                     className="ecl-link ecl-link--standalone"
                   >
                     How to start
@@ -45,7 +41,7 @@ const Sitemap = ({ location }) => {
                 </li>
                 <li className="ecl-unordered-list__item">
                   <Link
-                    to={`/${currentLanguage}/faq`}
+                    to={`/${locale}/faq`}
                     className="ecl-link ecl-link--standalone"
                   >
                     FAQ
@@ -53,7 +49,7 @@ const Sitemap = ({ location }) => {
                 </li>
                 <li className="ecl-unordered-list__item">
                   <Link
-                    to={`/${currentLanguage}/contact`}
+                    to={`/${locale}/contact`}
                     className="ecl-link ecl-link--standalone"
                   >
                     Contact
@@ -61,7 +57,7 @@ const Sitemap = ({ location }) => {
                 </li>
                 <li className="ecl-unordered-list__item">
                   <Link
-                    to={`/${currentLanguage}/sitemap`}
+                    to={`/${locale}/sitemap`}
                     className="ecl-link ecl-link--standalone"
                   >
                     Sitemap
@@ -69,7 +65,7 @@ const Sitemap = ({ location }) => {
                 </li>
                 <li className="ecl-unordered-list__item">
                   <Link
-                    to={`/${currentLanguage}/communication-material`}
+                    to={`/${locale}/communication-material`}
                     className="ecl-link ecl-link--standalone"
                   >
                     Communication material
@@ -77,7 +73,7 @@ const Sitemap = ({ location }) => {
                 </li>
                 <li className="ecl-unordered-list__item">
                   <Link
-                    to={`/${currentLanguage}/how-it-works`}
+                    to={`/${locale}/how-it-works`}
                     className="ecl-link ecl-link--standalone"
                   >
                     How it works
@@ -85,7 +81,7 @@ const Sitemap = ({ location }) => {
                   <ul className="ecl-unordered-list">
                     <li className="ecl-unordered-list__item">
                       <Link
-                        to={`/${currentLanguage}/how-it-works/regulatory-framework`}
+                        to={`/${locale}/how-it-works/regulatory-framework`}
                         className="ecl-link ecl-link--standalone"
                       >
                         Regulatory framework
@@ -93,7 +89,7 @@ const Sitemap = ({ location }) => {
                     </li>
                     <li className="ecl-unordered-list__item">
                       <Link
-                        to={`/${currentLanguage}/how-it-works/implementation-national-level`}
+                        to={`/${locale}/how-it-works/implementation-national-level`}
                         className="ecl-link ecl-link--standalone"
                       >
                         Implementation national level
@@ -101,7 +97,7 @@ const Sitemap = ({ location }) => {
                     </li>
                     <li className="ecl-unordered-list__item">
                       <Link
-                        to={`/${currentLanguage}/how-it-works/data-protection`}
+                        to={`/${locale}/how-it-works/data-protection`}
                         className="ecl-link ecl-link--standalone"
                       >
                         Data protection
@@ -109,7 +105,7 @@ const Sitemap = ({ location }) => {
                     </li>
                     <li className="ecl-unordered-list__item">
                       <Link
-                        to={`/${currentLanguage}/how-it-works/history`}
+                        to={`/${locale}/how-it-works/history`}
                         className="ecl-link ecl-link--standalone"
                       >
                         History

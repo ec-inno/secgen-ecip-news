@@ -1,19 +1,19 @@
 import React from 'react';
 import has from 'lodash/has';
+import { useTranslation } from 'react-i18next';
 
 import formatStatus from '../../utils/formatStatus';
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
 
-const Progress = ({ initiativeData, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
+const Progress = ({ initiativeData }) => {
+  const { t } = useTranslation();
 
   if (!initiativeData.progress) {
     return (
       <>
-        <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
-        <p className="ecl-u-type-paragraph">{translation.not_applicable}</p>
+        <h3 className="ecl-u-type-heading-3">{t('Initiative progress')}</h3>
+        <p className="ecl-u-type-paragraph">
+          {t('Given status cannot be mapped to currently supported timeline.')}
+        </p>
       </>
     );
   }
@@ -55,18 +55,21 @@ const Progress = ({ initiativeData, location }) => {
 
   return (
     <>
-      <h3 className="ecl-u-type-heading-3">{translation.progress_label}</h3>
+      <h3 className="ecl-u-type-heading-3">{t('Initiative progress')}</h3>
       <ol className="ecl-timeline" data-ecl-timeline="true">
         {timeline}
       </ol>
       {has(initiativeData, 'startCollectionDate') && (
         <p className="ecl-u-type-paragraph-s ecl-u-type-bold">
-          Collection start date: {initiativeData.startCollectionDate}
+          {t('Collection start date')}
+          {': '}
+          {initiativeData.startCollectionDate}
         </p>
       )}
       {has(initiativeData, 'earlyClosureDate') && (
         <p className="ecl-u-type-paragraph-s ecl-u-type-bold">
-          Collection closed earlier by the organisers:{' '}
+          {t('Collection closed earlier by the organisers')}
+          {': '}
           {initiativeData.earlyClosureDate}
         </p>
       )}

@@ -1,5 +1,7 @@
 const { build } = require('gluegun');
 
+require('dotenv').config();
+
 async function run(argv) {
   const cli = build()
     .brand('eci-cli')

@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 import Counter from '../components/Initiative/Counter';
 import Video from '../components/Video';
 
-const LeadParagraph = ({ intro, linkText, linkPath, location }) => (
+const LeadParagraph = ({ intro, linkText, linkPath }) => (
   <div className="ecl-row ecl-u-mt-l">
     <div className="ecl-col-sm-12 ecl-col-md-8 ecl-u-mv-m">
       <p className="ecl-u-type-paragraph-lead ecl-u-mt-none">{intro}</p>
@@ -15,10 +15,10 @@ const LeadParagraph = ({ intro, linkText, linkPath, location }) => (
       >
         {linkText}
       </Link>
-      <Counter location={location} />
+      <Counter />
     </div>
     <div className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mv-m">
-      <Video location={location} />
+      <Video />
     </div>
   </div>
 );

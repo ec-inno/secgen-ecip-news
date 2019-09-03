@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import I18nContext from '../../../context/I18n';
 
 import { languages } from '../../../../languages';
-import getCurrentLanguage from '../../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../../utils/getDefaultLanguage';
 
-const FormAdvanced = ({ location, setFilters }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../../translations/initiative/${language}.json`);
+const FormAdvanced = setFilters => {
+  const { t } = useTranslation();
+  const { locale } = useContext(I18nContext);
 
   const [textFree, setTextFree] = useState('');
   const [textExact, setTextExact] = useState('');
@@ -16,7 +17,7 @@ const FormAdvanced = ({ location, setFilters }) => {
   const [dateTo, setDateTo] = useState('');
   const [category, setCategory] = useState('');
   const [status, setStatus] = useState('');
-  const [initiativeLanguage, setInitiativeLanguage] = useState(language);
+  const [initiativeLanguage, setInitiativeLanguage] = useState(locale);
 
   return (
     <form
@@ -67,7 +68,7 @@ const FormAdvanced = ({ location, setFilters }) => {
     >
       <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-text-free">
-          All these words
+          {t('All these words')}
         </label>
         <input
           type="text"
@@ -80,7 +81,7 @@ const FormAdvanced = ({ location, setFilters }) => {
       </div>
       <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-text-exact">
-          Exact wording or phrase
+          {t('Exact wording or phrase')}
         </label>
         <input
           type="text"
@@ -93,7 +94,7 @@ const FormAdvanced = ({ location, setFilters }) => {
       </div>
       <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-text-conditional">
-          One or more of
+          {t('One or more of')}
         </label>
         <input
           type="text"
@@ -106,7 +107,7 @@ const FormAdvanced = ({ location, setFilters }) => {
       </div>
       <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-organisers">
-          Organiser
+          {t('Organiser')}
         </label>
         <input
           type="text"
@@ -120,7 +121,7 @@ const FormAdvanced = ({ location, setFilters }) => {
 
       <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-date-from">
-          From (format: dd/mm/yyyy)
+          {t('From (format: dd/mm/yyyy)')}
         </label>
         <input
           type="text"
@@ -133,7 +134,7 @@ const FormAdvanced = ({ location, setFilters }) => {
       </div>
       <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-date-to">
-          To (format: dd/mm/yyyy)
+          {t('To (format: dd/mm/yyyy)')}
         </label>
         <input
           type="text"
@@ -147,7 +148,7 @@ const FormAdvanced = ({ location, setFilters }) => {
 
       <div className="ecl-form-group ecl-form-group--select ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-category">
-          {translation.filter_category}
+          {t('Filter by category')}
         </label>
         <div className="ecl-select__container">
           <select
@@ -157,29 +158,29 @@ const FormAdvanced = ({ location, setFilters }) => {
             value={category}
             onChange={e => setCategory(e.target.value)}
           >
-            <option value="any">{translation.any}</option>
-            <option value="AGRI">{translation.AGRI}</option>
-            <option value="DEVCO">{translation.DEVCO}</option>
-            <option value="EURO">{translation.EURO}</option>
-            <option value="SANTE">{translation.SANTE}</option>
-            <option value="CULT">{translation.CULT}</option>
-            <option value="DECO">{translation.DEVCO}</option>
-            <option value="EDU">{translation.EDU}</option>
-            <option value="EMPL">{translation.EMPL}</option>
-            <option value="ENER">{translation.ENER}</option>
-            <option value="ENV">{translation.ENV}</option>
-            <option value="TRADE">{translation.TRADE}</option>
-            <option value="JUST">{translation.JUST}</option>
-            <option value="MARE">{translation.MARE}</option>
-            <option value="MIGR">{translation.MIGR}</option>
-            <option value="REGIO">{translation.REGIO}</option>
-            <option value="RSH">{translation.RSH}</option>
-            <option value="SEC">{translation.SEC}</option>
-            <option value="TRA">{translation.TRA}</option>
-            <option value="REGFRA">{translation.REGFRA}</option>
-            <option value="REGECI">{translation.REGECI}</option>
-            <option value="COLLECI">{translation.COLLECI}</option>
-            <option value="EXAECI">{translation.EXAECI}</option>
+            <option value="any">{t('any')}</option>
+            <option value="AGRI">{t('AGRI')}</option>
+            <option value="DEVCO">{t('DEVCO')}</option>
+            <option value="EURO">{t('EURO')}</option>
+            <option value="SANTE">{t('SANTE')}</option>
+            <option value="CULT">{t('CULT')}</option>
+            <option value="DECO">{t('DEVCO')}</option>
+            <option value="EDU">{t('EDU')}</option>
+            <option value="EMPL">{t('EMPL')}</option>
+            <option value="ENER">{t('ENER')}</option>
+            <option value="ENV">{t('ENV')}</option>
+            <option value="TRADE">{t('TRADE')}</option>
+            <option value="JUST">{t('JUST')}</option>
+            <option value="MARE">{t('MARE')}</option>
+            <option value="MIGR">{t('MIGR')}</option>
+            <option value="REGIO">{t('REGIO')}</option>
+            <option value="RSH">{t('RSH')}</option>
+            <option value="SEC">{t('SEC')}</option>
+            <option value="TRA">{t('TRA')}</option>
+            <option value="REGFRA">{t('REGFRA')}</option>
+            <option value="REGECI">{t('REGECI')}</option>
+            <option value="COLLECI">{t('COLLECI')}</option>
+            <option value="EXAECI">{t('EXAECI')}</option>
           </select>
           <div
             className="ecl-select__icon ecl-u-type-heading-1"
@@ -191,7 +192,7 @@ const FormAdvanced = ({ location, setFilters }) => {
       </div>
       <div className="ecl-form-group ecl-form-group--select ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-status">
-          Status
+          {t('Status')}
         </label>
         <div className="ecl-select__container">
           <select
@@ -202,10 +203,10 @@ const FormAdvanced = ({ location, setFilters }) => {
             onChange={e => setStatus(e.target.value)}
           >
             <option value="any">{''}</option>
-            <option value="ALL">All</option>
-            <option value="OPEN">Open</option>
-            <option value="SUCCESSFUL">Successful</option>
-            <option value="ARCHIVED">Archived</option>
+            <option value="ALL">{t('All')}</option>
+            <option value="OPEN">{t('Open')}</option>
+            <option value="SUCCESSFUL">{t('Successful')}</option>
+            <option value="ARCHIVED">{t('Archived')}</option>
           </select>
           <div
             className="ecl-select__icon ecl-u-type-heading-1"
@@ -217,7 +218,7 @@ const FormAdvanced = ({ location, setFilters }) => {
       </div>
       <div className="ecl-form-group ecl-form-group--select ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-language">
-          Language
+          {t('Language')}
         </label>
         <div className="ecl-select__container">
           <select
@@ -246,7 +247,7 @@ const FormAdvanced = ({ location, setFilters }) => {
       >
         <span className="ecl-button__container">
           <span className="ecl-button__label" data-ecl-label="true">
-            {translation.filter_button}
+            {t('Apply filters')}
           </span>
         </span>
       </button>

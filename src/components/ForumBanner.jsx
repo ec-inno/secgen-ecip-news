@@ -1,22 +1,17 @@
 import React from 'react';
-
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import { useTranslation } from 'react-i18next';
 
 import image from './assets/images/bg-forum.png';
 import Button from '../components/Button';
 
-const ForumBanner = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+const ForumBanner = () => {
+  const { t } = useTranslation();
 
   const arrowIcon = {
     shape: 'ui--corner-arrow',
     size: 'xs',
     transform: 'rotate-90',
   };
-
-  const translation = require(`../../translations/forumbanner/${language}.json`);
-  const { message, button } = translation;
 
   return (
     <section className="ecl-page-banner ecl-page-banner--image-shade ecl-page-banner--centered ecl-u-mt-l">
@@ -26,11 +21,13 @@ const ForumBanner = ({ location }) => {
       ></div>
       <div className="ecl-container ecl-page-banner__container">
         <div className="ecl-page-banner__content">
-          <h1 className="ecl-page-banner__title">{message}</h1>
+          <h1 className="ecl-page-banner__title">
+            {t('Want to learn and collaborate?')}
+          </h1>
           <Button
             className="ecl-page-banner__button"
             variant="call"
-            label={button}
+            label={t('Join the forum')}
             icon={arrowIcon}
             iconPosition="after"
           />

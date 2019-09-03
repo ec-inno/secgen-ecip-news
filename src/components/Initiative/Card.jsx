@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
-import formatStatus from '../../utils/formatStatus';
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+import I18nContext from '../../context/I18n';
 
 import defaultImage from '../assets/images/default-image.png';
+import formatStatus from '../../utils/formatStatus';
 
-const Card = ({ item, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
-
+const Card = ({ item }) => {
+  const { t } = useTranslation();
+  const { locale } = useContext(I18nContext);
   const { GATSBY_INITIATIVES_API: api } = process.env;
+
   const hasLogo = item.logo && item.logo.id && item.logo.mimeType;
 
   const [logo, setLogo] = useState('');
@@ -52,7 +52,7 @@ const Card = ({ item, location }) => {
         <h1 className="ecl-card__title">
           <a
             level="1"
-            href={`/${language}/initiatives/#${item.id}`}
+            href={`/${locale}/initiatives/#${item.id}`}
             className="ecl-link ecl-link--standalone"
           >
             <span className="ecl-link__label">{item.title}</span>
@@ -61,7 +61,7 @@ const Card = ({ item, location }) => {
       </header>
       <section className="ecl-card__body">
         <p className="ecl-u-type-paragraph ecl-u-mv-none">
-          {item.totalSupporters} {translation.supporters}
+          {item.totalSupporters} {t('supporters')}
         </p>
         {item.supportLink && (
           <ul className="ecl-card__link-container">
@@ -71,7 +71,7 @@ const Card = ({ item, location }) => {
                 href={item.supportLink}
                 className="ecl-card__link ecl-link ecl-link--standalone"
               >
-                {translation.support_cat}
+                {t('Support this initiative')}
               </a>
             </li>
           </ul>

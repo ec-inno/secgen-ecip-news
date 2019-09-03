@@ -13,6 +13,7 @@
     "bin"
   ],
   "dependencies": {
+    "dotenv": "8.0.0",
     "gluegun": "^2.1.0",
     "xlsx": "0.15.1"
   }

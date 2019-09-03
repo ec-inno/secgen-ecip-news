@@ -11,7 +11,7 @@ packages/gatsby-source-eci-remote-initiatives
 /scripts
 
 # Were not worth the effots to lint
-src/Context.js
+src/context
 gatsby-browser.js
 gatsby-ssr.js
 

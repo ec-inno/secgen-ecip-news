@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import classnames from 'classnames';
 import { chunk, cloneDeep } from 'lodash';
 
 import config from '../config';
-
-import getCurrentLanguage from '../../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../../utils/getDefaultLanguage';
+import I18nContext from '../../../context/I18n';
 
 import Card from '../Card';
 import Icon from '../../Icon';
@@ -16,10 +15,9 @@ import Pagination from '../Pagination';
 import SearchForm from './FormAdvanced';
 import Spinner from '../../Spinner';
 
-const Area = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../../translations/initiative/${language}.json`);
-
+const Area = () => {
+  const { t } = useTranslation();
+  const { locale } = useContext(I18nContext);
   const { GATSBY_INITIATIVES_API: api } = process.env;
 
   const itemsPerRow = 3;
@@ -35,7 +33,7 @@ const Area = ({ location }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
+    const lang = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
     const endpoint = `${api}/register/search/ALL/${lang}/0/${itemsPerPage}`;
 
     axios
@@ -63,7 +61,7 @@ const Area = ({ location }) => {
           <h3 className="ecl-u-type-heading-3 ecl-u-mt-l ecl-u-mt-lg-none">
             Search options
           </h3>
-          <SearchForm setFilters={setFilters} location={location} />
+          <SearchForm setFilters={setFilters} />
         </aside>
         <section className="ecl-col-12 ecl-col-lg-9">
           <h2 className="ecl-u-type-heading-2 ecl-u-d-none ecl-u-d-lg-block ecl-u-mv-none">
@@ -131,7 +129,7 @@ const Area = ({ location }) => {
           <Message
             className={errorMessageIsVisible ? '' : 'hidden'}
             onClose={() => setErrorMessageVisibility(false)}
-            title={translation.error_getting_initiatives}
+            title={t('An error occurred while fetching initiatives.')}
             description={errorMessage}
             {...config.error}
           />
@@ -154,12 +152,12 @@ const Area = ({ location }) => {
                         key={key}
                         className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none"
                       >
-                        <Card key={key} item={item} location={location} />
+                        <Card key={key} item={item} />
                       </div>
                     );
 
                     if (k + 1 === groups && key + 1 === groupLength) {
-                      list.push(<New key={key + 1} location={location} />);
+                      list.push(<New key={key + 1} />);
                     }
 
                     return list;
@@ -179,7 +177,6 @@ const Area = ({ location }) => {
           {isLoading && <Spinner />}
           {itemsPerPage < initiatives.all && hasEntries && (
             <Pagination
-              location={location}
               onClick={e => {
                 e.preventDefault();
                 const newItemsPerPage = itemsPerPage * 2 + 1;

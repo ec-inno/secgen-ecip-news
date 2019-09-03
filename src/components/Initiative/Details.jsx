@@ -1,27 +1,23 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import has from 'lodash/has';
 
-// Generic utils.
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
-
+import config from './config';
 import Document from './Document';
-import Members from './Members';
 import Funding from './Funding';
+import Members from './Members';
 import Message from '../Message';
 import SoS from './SoS';
-import config from './config';
 
-const Details = ({ languageSpecificData, initiativeData, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/initiative/${language}.json`);
+const Details = ({ languageSpecificData, initiativeData }) => {
+  const { t } = useTranslation();
 
   return (
     <>
       {has(languageSpecificData, 'decisionUrl') ? (
         <div className="eci-answer ecl-u-pa-m ecl-u-mb-l">
           <h2 className="ecl-u-type-heading-2">
-            Answer of the European Commission
+            {t('Answer of the European Commission')}
           </h2>
           <p className="ecl-u-type-paragraph">
             <a
@@ -39,7 +35,9 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       {has(initiativeData, 'refusalReasons') ? (
         <div className="eci-answer ecl-u-pa-m ecl-u-mb-l">
           <h2 className="ecl-u-type-heading-2">
-            Commission's reply stating the reasons for refusal of registration
+            {t(
+              "Commission's reply stating the reasons for refusal of registration"
+            )}
           </h2>
           {typeof initiativeData.refusalReasons === 'string' ? (
             <p
@@ -64,7 +62,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
           )}
           {has(initiativeData, 'refusalEURLEXLink') && (
             <>
-              <h2 className="ecl-u-type-heading-2">EUR-Lex reference</h2>
+              <h2 className="ecl-u-type-heading-2">{t('EUR-Lex reference')}</h2>
               <p className="ecl-u-type-paragraph">
                 <a
                   href={initiativeData.refusalEURLEXLink}
@@ -84,24 +82,24 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       {has(initiativeData, 'partiallyRegistered') ? (
         <>
           <p className="ecl-u-type-paragraph ecl-u-type-bold">
-            Only a part(s) of this initiative has(ve) been registered. Please
-            read the Commission Decision for the scope of the registered
-            initiative.
+            {t(
+              'Only a part(s) of this initiative has(ve) been registered. Please read the Commission Decision for the scope of the registered initiative.'
+            )}
           </p>
         </>
       ) : (
         ''
       )}
       <Message
-        title={translation.disclaimer}
-        description={
+        title={t('Disclaimer')}
+        description={t(
           'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
-        }
+        )}
         {...config.message}
       />
       {has(languageSpecificData, 'objectives') ? (
         <>
-          <h2 className="ecl-u-type-heading-2">{translation.objectives}</h2>
+          <h2 className="ecl-u-type-heading-2">{t('Objectives')}</h2>
           <ul className="ecl-u-type-paragraph">
             {languageSpecificData.objectives.split(/\n/).map((line, key) => (
               <li
@@ -119,7 +117,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       )}
       {has(languageSpecificData, 'website') ? (
         <>
-          <h2 className="ecl-u-type-heading-2">{translation.website}</h2>
+          <h2 className="ecl-u-type-heading-2">{t('Website')}</h2>
           <p className="ecl-u-type-paragraph">
             <a
               href={languageSpecificData.website}
@@ -137,7 +135,9 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       {has(languageSpecificData, 'treaties') ? (
         <>
           <h2 className="ecl-u-type-heading-2">
-            Provisions of the Treaties considered relevant by the organisers
+            {t(
+              'Provisions of the Treaties considered relevant by the organisers'
+            )}
           </h2>
           <p className="ecl-u-type-paragraph">
             {languageSpecificData.treaties}
@@ -148,7 +148,7 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       )}
       {has(languageSpecificData, 'annexText') ? (
         <>
-          <h2 className="ecl-u-type-heading-2">Annex</h2>
+          <h2 className="ecl-u-type-heading-2">{t('Annex')}</h2>
           <p
             className="ecl-u-type-paragraph"
             dangerouslySetInnerHTML={{
@@ -161,7 +161,9 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       )}
       {has(languageSpecificData, 'additionalDocument') ? (
         <>
-          <h2 className="ecl-u-type-heading-2">Additional information</h2>
+          <h2 className="ecl-u-type-heading-2">
+            {t('Additional information')}
+          </h2>
           <Document file={languageSpecificData.additionalDocument} />
         </>
       ) : (
@@ -169,13 +171,13 @@ const Details = ({ languageSpecificData, initiativeData, location }) => {
       )}
       {has(languageSpecificData, 'draftLegal') ? (
         <>
-          <h2 className="ecl-u-type-heading-2">Draft legal act</h2>
+          <h2 className="ecl-u-type-heading-2">{t('Draft legal act')}</h2>
           <Document file={languageSpecificData.draftLegal} />
         </>
       ) : (
         ''
       )}
-      <Members initiativeData={initiativeData} location={location} />
+      <Members initiativeData={initiativeData} />
       <Funding funding={initiativeData.funding} />
     </>
   );

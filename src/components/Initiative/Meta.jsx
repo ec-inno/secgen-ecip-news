@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import has from 'lodash/has';
 
 import formatStatus from '../../utils/formatStatus';
@@ -6,6 +7,8 @@ import formatStatus from '../../utils/formatStatus';
 import Icon from '../Icon';
 
 const Meta = ({ initiativeData }) => {
+  const { t } = useTranslation();
+
   return (
     <ul className="ecl-u-d-flex ecl-u-pl-none ecl-u-mv-l ecl-u-type-m ecl-page-header__info-list">
       <li className="ecl-page-header__info-item">
@@ -15,7 +18,7 @@ const Meta = ({ initiativeData }) => {
               shape="general--organigram"
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
             />
-            Current status
+            {t('Current status')}
             {': '}
             {formatStatus(initiativeData.status)}
           </div>
@@ -26,7 +29,7 @@ const Meta = ({ initiativeData }) => {
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
               shape="general--edit"
             />
-            Commission registration number
+            {t('Commission registration number')}
             {': '}
             {initiativeData.comRegNum ? initiativeData.comRegNum : '...'}
           </div>
@@ -39,7 +42,7 @@ const Meta = ({ initiativeData }) => {
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
               shape="general--calendar"
             />
-            Deadline
+            {t('Deadline')}
             {': '}
             {initiativeData.deadline}
           </div>
@@ -50,7 +53,7 @@ const Meta = ({ initiativeData }) => {
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
               shape="general--calendar"
             />
-            Date of refulsal
+            {t('Date of refulsal')}
             {': '}
             {initiativeData.refusalDate}
           </div>
@@ -61,7 +64,7 @@ const Meta = ({ initiativeData }) => {
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
               shape="general--calendar"
             />
-            Date of registration
+            {t('Date of registration')}
             {': '}
             {initiativeData.registrationDate}
           </div>
@@ -78,7 +81,7 @@ const Meta = ({ initiativeData }) => {
           >
             <span className="ecl-button__container">
               <span className="ecl-button__label" data-ecl-label="true">
-                {translation.support_cat}
+                {t('Support this initiative')}
               </span>
             </span>
           </a>

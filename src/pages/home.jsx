@@ -1,43 +1,34 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
-
-import getDefaultLanguage from '../utils/getDefaultLanguage';
-import getCurrentLanguage from '../utils/getCurrentLanguage';
 
 import SEO from '../components/SEO';
 import LeadParagraph from '../components/LeadParagraph';
 import InitiativesSearchBasic from '../components/Initiative/Search/Basic';
 
-const Homepage = ({ data, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-
-  const translation = require(`../../translations/home/${language}.json`);
+const Homepage = ({ data, pageContext: { locale } }) => {
+  const { t } = useTranslation();
   const news = data.allNodeOeNews.edges;
 
   return (
     <>
-      <SEO
-        title={translation.title}
-        description={translation.description}
-        location={location}
-      />
+      <SEO title={t('Home')} description={t('Home description')} />
       <main>
         <div className="ecl-container">
           <LeadParagraph
-            location={location}
-            linkPath={`/${language}/how-it-works`}
-            linkText={translation.how_works_link}
-            intro={translation.how_works_intro}
+            linkPath={`/${locale}/how-it-works`}
+            linkText={t('See how it works step by step')}
+            intro={t(
+              "Get a greater say in the policies that affect your lives. The European Citizens' Initiative is a unique and innovative way for citizens to shape Europe by calling on the European Commission to make a legislative proposal. Once an initiative gathers 1 million signatures, the Commission decides on what follow-up action to take."
+            )}
           />
 
-          <InitiativesSearchBasic location={location} />
+          <InitiativesSearchBasic />
 
           {news && news.length ? (
             <section className="ecl-u-mt-xl">
-              <h2 className="ecl-u-type-heading-2">
-                {translation.latest_news_heading}
-              </h2>
+              <h2 className="ecl-u-type-heading-2">{t('Latest news')}</h2>
               <ul className="ecl-unordered-list">
                 {news.map(newsNode => {
                   const { node } = newsNode;
@@ -46,7 +37,7 @@ const Homepage = ({ data, location }) => {
                   return (
                     <li className="ecl-unordered-list__item" key={id}>
                       <Link
-                        to={`/${language}/news#${slugify(title, {
+                        to={`/${locale}/news#${slugify(title, {
                           lower: true,
                         })}`}
                         className="ecl-u-d-block ecl-link ecl-link--standalone"
@@ -73,9 +64,9 @@ const Homepage = ({ data, location }) => {
               <p className="ecl-u-type-paragraph">
                 <Link
                   className="ecl-link ecl-link--standalone"
-                  to={`/${language}/news`}
+                  to={`/${locale}/news`}
                 >
-                  {translation.more_link}
+                  {t('See more news')}
                 </Link>
               </p>
             </section>

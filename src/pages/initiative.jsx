@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import has from 'lodash/has';
-
-// Generic utils.
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
 
 // Generic
 import SEO from '../components/SEO';
@@ -16,9 +13,8 @@ import Meta from '../components/Initiative/Meta';
 import Details from '../components/Initiative/Details';
 import Progress from '../components/Initiative/Progress';
 
-const Initiative = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-
+const Initiative = ({ location, pageContext: { locale } }) => {
+  const { t } = useTranslation();
   const { GATSBY_INITIATIVES_API: api } = process.env;
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -26,22 +22,18 @@ const Initiative = ({ location }) => {
   const [initiativeData, setInitiativeData] = useState({});
 
   useEffect(() => {
-    const fetchInitiative = async () => {
-      const initiativeId = location.hash.substr(1, location.hash.length);
-      const endpoint = `${api}/register/details/${initiativeId}`;
+    const initiativeId = location.hash.substr(1, location.hash.length);
+    const endpoint = `${api}/register/details/${initiativeId}`;
 
-      try {
-        const response = await axios.get(endpoint);
-        setInitiativeData(response.data);
-      } catch (error) {
-        console.error(`Error while fetching data about initiative #{1}`, error);
+    axios
+      .get(endpoint)
+      .then(response => setInitiativeData(response.data))
+      .catch(error => {
+        console.error(t('Issue occurred while getting initiative data'), error);
         setErrorMessage(error.message);
         setErrorMessageVisibility(true);
-      }
-    };
-
-    fetchInitiative();
-  }, [language]);
+      });
+  }, [locale]);
 
   if (errorMessage) {
     const errorComponentConfig = {
@@ -52,7 +44,7 @@ const Initiative = ({ location }) => {
       },
       close: {
         variant: 'ghost',
-        label: 'Close',
+        label: t('Close'),
         icon: {
           shape: 'ui--close',
           size: 's',
@@ -65,7 +57,7 @@ const Initiative = ({ location }) => {
         <Message
           className={errorMessageIsVisible ? '' : 'hidden'}
           onClose={() => setErrorMessageVisibility(false)}
-          title={`Issue while getting data about initiative ${1}`}
+          title={t('Issue occurred while getting initiative data')}
           description={errorMessage}
           {...errorComponentConfig}
         />
@@ -75,14 +67,13 @@ const Initiative = ({ location }) => {
 
   const languageSpecificData = initiativeData.linguisticVersions
     ? Object.values(initiativeData.linguisticVersions).find(
-        version => version.languageCode.toLowerCase() === language
+        version => version.languageCode.toLowerCase() === locale
       )
     : {};
 
   return (
     <>
       <SEO
-        location={location}
         title={
           has(languageSpecificData, 'title')
             ? languageSpecificData.title
@@ -106,13 +97,12 @@ const Initiative = ({ location }) => {
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              <Progress initiativeData={initiativeData} location={location} />
+              <Progress initiativeData={initiativeData} />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
               <Details
                 languageSpecificData={languageSpecificData}
                 initiativeData={initiativeData}
-                location={location}
               />
               <Share />
             </div>
