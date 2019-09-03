@@ -71,6 +71,5 @@ yarn-error.log
 .netlify
 /api
 
-# eci-cli
-# default translations export
-translations.xls
+# Generated on prod/test bulid in CI
+i18n_exports

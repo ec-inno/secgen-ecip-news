@@ -1,17 +1,14 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
-
-const TopMessage = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-
-  const translation = require(`../../translations/topmessage/${language}.json`);
-  const { message } = translation;
+const TopMessage = () => {
+  const { t } = useTranslation();
 
   return (
     <div className="eci-menu" id="top">
-      <div className="ecl-container">{message}</div>
+      <div className="ecl-container">
+        {t('An official website of the European union')}
+      </div>
     </div>
   );
 };

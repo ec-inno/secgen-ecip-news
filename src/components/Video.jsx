@@ -1,21 +1,20 @@
 import React from 'react';
-
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import { useTranslation } from 'react-i18next';
 
 import image from '../components/assets/images/video-image.png';
 
-const Video = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-
-  const translation = require(`../../translations/video/${language}.json`);
-  const { caption } = translation;
+const Video = () => {
+  const { t } = useTranslation();
 
   return (
     <figure className="ecl-media-container">
-      <img className="ecl-media-container__media" src={image} alt={caption} />
+      <img
+        className="ecl-media-container__media"
+        src={image}
+        alt={t("The European Citizens' Initiative in video.")}
+      />
       <figcaption className="ecl-media-container__caption">
-        {caption}
+        {t("The European Citizens' Initiative in video.")}
       </figcaption>
     </figure>
   );

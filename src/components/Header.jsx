@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 
-import logoPaths from '../utils/logoPaths';
 import { languages } from '../../languages';
+import I18nContext from '../context/I18n';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
+import logoPaths from '../utils/logoPaths';
+
+import SiteName from './SiteName';
+import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
+import LanguageSelector from './LanguageSelector';
 
 // Create a map of language code to language label.
 const languageMap = languages.reduce((obj, item) => {
@@ -13,14 +17,10 @@ const languageMap = languages.reduce((obj, item) => {
   return obj;
 }, {});
 
-import SiteName from './SiteName';
-import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
-import LanguageSelector from './LanguageSelector';
-
-const Header = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const logo = logoPaths[language];
-  const translation = require(`../../translations/header/${language}.json`);
+const Header = () => {
+  const { locale, location } = useContext(I18nContext);
+  const { t } = useTranslation();
+  const logo = logoPaths[locale];
 
   let urlPath = '';
   let pathParts = [];
@@ -42,7 +42,7 @@ const Header = ({ location }) => {
   const items = languages.map(item => {
     const href = `/${item.lang}/${urlPath}`;
 
-    const isActive = href.includes(`/${language}/`);
+    const isActive = href.includes(`/${locale}/`);
 
     return {
       href,
@@ -58,28 +58,28 @@ const Header = ({ location }) => {
           <div className="ecl-site-header__banner">
             <Link
               className="ecl-link ecl-link--standalone"
-              to={`/${language}`}
-              aria-label={translation.european_union}
+              to={`/${locale}`}
+              aria-label={t('European Union')}
             >
               <img
-                alt={`${translation.european_union} logo`}
-                title={translation.european_union}
+                alt={`${t('European Union')} logo`}
+                title={t('European Union')}
                 className="ecl-site-header__logo-image"
                 src={logo}
               />
             </Link>
             <LanguageSelector
-              code={language}
-              name={languageMap[language]}
+              code={locale}
+              name={languageMap[locale]}
               href="#"
             />
           </div>
         </div>
-        <SiteName location={location} />
+        <SiteName />
       </header>
       <LanguageListOverlay
-        closeLabel={translation.close_label}
-        title={translation.select_language}
+        closeLabel={t('Close')}
+        title={t('Select your language')}
         items={items}
       />
     </>

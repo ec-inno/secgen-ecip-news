@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
-
 import SEO from '../components/SEO';
 
-const News = ({ data, pageContext, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+const News = ({ data, pageContext }) => {
+  const { t } = useTranslation();
 
   const { currentPage, numPages, locale } = pageContext;
   const pageRoot = `/${locale}/news/`;
@@ -18,23 +16,21 @@ const News = ({ data, pageContext, location }) => {
     currentPage - 1 === 1 ? pageRoot : pageRoot + (currentPage - 1).toString();
   const nextPage = pageRoot + (currentPage + 1).toString();
 
-  const translation = require(`../../translations/news/${language}.json`);
   const { edges: newsItems } = data.allNodeOeNews;
 
   return (
     <Fragment>
       <SEO
-        title={translation.title}
-        description={translation.news_intro}
-        location={location}
+        title={t('News')}
+        description={t('Access the latest news from ECI.')}
       />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">
             <div className="ecl-page-header__title-wrapper">
-              <h1 className="ecl-page-header__title">{translation.title}</h1>
+              <h1 className="ecl-page-header__title">{t('News')}</h1>
               <p className="ecl-page-header__slogan ecl-u-type-paragraph ecl-u-mt-l">
-                {translation.news_intro}
+                {t('Access the latest news from ECI.')}
               </p>
             </div>
           </div>
@@ -45,7 +41,7 @@ const News = ({ data, pageContext, location }) => {
             <div className="ecl-col-12 ecl-col-sm-3">
               <nav>
                 <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
-                  {translation.inpage_title}
+                  {t('Page contents')}
                 </div>
                 <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
                   {newsItems.map((item, i) => {
@@ -73,12 +69,14 @@ const News = ({ data, pageContext, location }) => {
             <div className="ecl-col-12 ecl-col-sm-9">
               {!isFirst && (
                 <Link to={prevPage} rel="prev">
-                  {translation.previous}
+                  {'← '}
+                  {t('Previous page')}
                 </Link>
               )}
               {!isLast && (
                 <Link to={nextPage} rel="next">
-                  {translation.next}
+                  {' →'}
+                  {t('Next page')}
                 </Link>
               )}
               {newsItems.map((item, i) => {
@@ -115,7 +113,7 @@ const News = ({ data, pageContext, location }) => {
 
                     {field_source && (
                       <p className="ecl-u-type-paragraph">
-                        {translation.news_source}
+                        {t('News source')}
                         {': '}
                         <Link to={field_source.uri}>{field_source.uri}</Link>
                       </p>

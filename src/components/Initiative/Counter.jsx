@@ -1,46 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
-import getCurrentLanguage from '../../utils/getCurrentLanguage';
-import getDefaultLanguage from '../../utils/getDefaultLanguage';
+import I18nContext from '../../context/I18n';
 
 import Icon from '../Icon';
 
-const Counter = ({ location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
-  const translation = require(`../../../translations/counter/${language}.json`);
-
+const Counter = () => {
+  const { t } = useTranslation();
+  const { locale } = useContext(I18nContext);
   const { GATSBY_SITE_BASE_URL: api } = process.env;
 
   const [stats, setStats] = useState({});
 
   useEffect(() => {
     axios
-      .get(`${api}/${language}/api/counters`)
-      .then(response => {
-        setStats(response.data);
-      })
+      .get(`${api}/${locale}/api/counters`)
+      .then(data => setStats(data))
       .catch(e => {
-        console.error(`Failed to fetch initiatives statistics`, e);
+        console.error(t('Failed to fetch initiatives statistics'), e);
       });
-  }, [language]);
+  }, [locale]);
 
   return (
     <p className="ecl-u-type-paragraph ecl-u-mt-l ecl-u-d-flex ecl-u-justify-content-between">
       <span className="ecl-u-d-flex ecl-u-align-items-center">
         <Icon className="ecl-u-mr-xs" shape="general--file" />
-        {stats.requests ? stats.requests : '...'}{' '}
-        {translation.registration_requests}
+        {stats.requests ? stats.requests : '...'} {t('registration requests')}
       </span>
       <span className="ecl-u-d-flex ecl-u-align-items-center">
         <Icon className="ecl-u-mr-xs" shape="general--edit" />
         {stats.registered ? stats.registered : '...'}{' '}
-        {translation.initiatives_registered}
+        {t('initiatives registered')}
       </span>
       <span className="ecl-u-d-flex ecl-u-align-items-center">
         <Icon className="ecl-u-mr-xs" shape="ui--check-filled" />
         {stats.successful ? stats.successful : '...'}{' '}
-        {translation.successful_initiatives}
+        {t('successful initiatives')}
       </span>
     </p>
   );

@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
 
 import addSlugs from '../utils/addSlugs';
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-import getDefaultLanguage from '../utils/getDefaultLanguage';
 
 import SEO from '../components/SEO';
 
-const BasicPage = ({ data, location }) => {
-  const language = getCurrentLanguage(location) || getDefaultLanguage();
+const BasicPage = ({ data }) => {
+  const { t } = useTranslation();
 
-  const translation = require(`../../translations/basicpage/${language}.json`);
   const { title, oe_summary, body } = data.nodeOePage;
 
   const [bodyProcessed, setBody] = useState('');
-  const [inpageItems, setInpageItems] = useState('');
+  const [inpageItems, setInpageItems] = useState({});
 
   useEffect(() => {
     const processData = async () => {
@@ -42,9 +40,11 @@ const BasicPage = ({ data, location }) => {
     processData();
   }, []);
 
+  const hasHeadings = Object.keys(inpageItems).length !== 0;
+
   return (
     <>
-      <SEO title={title} location={location} />
+      <SEO title={title} />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">
@@ -65,15 +65,15 @@ const BasicPage = ({ data, location }) => {
         <div className="ecl-container ecl-u-mt-xl">
           <div className="ecl-row ecl-u-mt-l">
             <div className="ecl-col-12 ecl-col-sm-3">
-              <nav>
-                <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
-                  {translation.inpage_title}
-                </div>
-              </nav>
-              <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
-                {inpageItems &&
-                  Object.keys(inpageItems).map((heading, key) => {
-                    return (
+              {hasHeadings && (
+                <>
+                  <nav>
+                    <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
+                      {t('Page contents').toUpperCase()}
+                    </div>
+                  </nav>
+                  <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
+                    {Object.keys(inpageItems).map((heading, key) => (
                       <li
                         key={key}
                         className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
@@ -85,9 +85,10 @@ const BasicPage = ({ data, location }) => {
                           {inpageItems[heading]}
                         </a>
                       </li>
-                    );
-                  })}
-              </ul>
+                    ))}
+                  </ul>
+                </>
+              )}
             </div>
 
             <div className="ecl-col-12 ecl-col-sm-9">
@@ -106,8 +107,8 @@ const BasicPage = ({ data, location }) => {
 };
 
 export const query = graphql`
-  query getBasicPage($locale: String!, $alias: String!) {
-    nodeOePage(path: { alias: { eq: $alias }, langcode: { eq: $locale } }) {
+  query getBasicPage($langcode: String!, $alias: String!) {
+    nodeOePage(path: { alias: { eq: $alias }, langcode: { eq: $langcode } }) {
       title
       oe_summary {
         processed

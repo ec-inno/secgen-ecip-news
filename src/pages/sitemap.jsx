@@ -2,36 +2,29 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { unflatten } from 'flat';
 
-import getCurrentLanguage from '../utils/getCurrentLanguage';
-
 import SEO from '../components/SEO';
 import ListNested from '../components/ListNested';
 
-const Sitemap = ({ location, data }) => {
+const Sitemap = ({ data, pageContext: { locale } }) => {
   const list = [];
   const listGroupPrepare = {};
   const remove = '/multisite/ecip/';
 
-  const currentLanguage = getCurrentLanguage(location);
-
-  const menuTmp = require('../components/Menu/data.json'); // From query when API comes
-
-  const menu = menuTmp.length
-    ? menuTmp
-        .filter(link => link.attributes.enabled)
+  const menu = data.allMenu.edges.length
+    ? data.allMenu.edges
+        .map(({ node }) => node)
+        .filter(link => link.enabled)
         .map(link => ({
-          title: link.attributes.title,
-          hrefFormatted: link.attributes.fetched_alias
+          title: link.title,
+          hrefFormatted: link.fetched_alias
             .replace(remove, '')
-            .replace(`${currentLanguage}/`, `/${currentLanguage}/`),
-          external: link.attributes.external,
+            .replace(`${locale}/`, `/${locale}/`),
+          external: link.external,
         }))
         .map(link => ({
           ...link,
           href:
-            link.hrefFormatted === currentLanguage
-              ? `/${currentLanguage}`
-              : link.hrefFormatted,
+            link.hrefFormatted === locale ? `/${locale}` : link.hrefFormatted,
         }))
     : [];
 
@@ -40,7 +33,7 @@ const Sitemap = ({ location, data }) => {
       ? data.allNodeOePage.edges
           .map(({ node }) => ({
             title: node.title,
-            href: `/${currentLanguage}${node.path.alias}`,
+            href: `/${locale}${node.path.alias}`,
           }))
           // Keep only items which are not already present in the menu.
           .filter(link => {
@@ -74,7 +67,7 @@ const Sitemap = ({ location, data }) => {
 
   return (
     <>
-      <SEO title="Sitemap" location={location} />
+      <SEO title="Sitemap" />
 
       <main>
         <div className="ecl-container">
@@ -91,7 +84,21 @@ const Sitemap = ({ location, data }) => {
 };
 
 export const query = graphql`
-  query getPages($locale: String!, $languageRegex: String!) {
+  query getSitemap($locale: String!, $languageRegex: String!) {
+    allMenu(filter: { id: { regex: $languageRegex } }) {
+      edges {
+        node {
+          id
+          title
+          external
+          fetched_alias
+          enabled
+          parent {
+            id
+          }
+        }
+      }
+    }
     allNodeOePage(
       filter: {
         id: { regex: $languageRegex }
