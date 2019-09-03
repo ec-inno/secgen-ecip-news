@@ -9,7 +9,6 @@ import Icon from '../Icon';
 const Counter = () => {
   const { t } = useTranslation();
   const { locale } = useContext(I18nContext);
-
   const { GATSBY_SITE_BASE_URL: api } = process.env;
 
   const [stats, setStats] = useState({});

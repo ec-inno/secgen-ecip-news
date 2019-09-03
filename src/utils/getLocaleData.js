@@ -20,10 +20,7 @@ const getLocaleData = lang => {
   } catch (error) {
     const localeDataDefault = {};
 
-    const exportedStrings = path.resolve(
-      __dirname,
-      `../../${exportsFolder}/exported-strings.json`
-    );
+    const exportedStrings = require(`../../${exportsFolder}/exported-strings.json`);
 
     Object.keys(exportedStrings).forEach(
       field => (localeDataDefault[field] = field)
