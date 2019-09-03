@@ -27,17 +27,39 @@ const onCreatePage = ({ page, actions }) => {
     });
   }
 
-  // Client-only page displaying data from an API.
+  /**
+   * Initiatives are client-only asset fetched and displayed from external API.
+   */
+
+  // Initiative details page.
   if (page.path.match(/^\/initiative/)) {
     return languages.forEach(language => {
       const { lang } = language;
 
       /* eslint-disable no-param-reassign */
-      page.matchPath = `/${lang}/initiative/*`;
+      page.matchPath = `/${lang}/initiatives/*`;
 
       return createPage({
         ...page,
-        path: `/${lang}/initiative`,
+        path: `/${lang}/initiatives`,
+        context: {
+          ...page.context,
+        },
+      });
+    });
+  }
+
+  // Initiatives search.
+  if (page.path.match(/^\/find-initiative/)) {
+    return languages.forEach(language => {
+      const { lang } = language;
+
+      /* eslint-disable no-param-reassign */
+      page.matchPath = `/${lang}/find-initiative/*`;
+
+      return createPage({
+        ...page,
+        path: `/${lang}/find-initiative`,
         context: {
           ...page.context,
         },

@@ -1,6 +1,6 @@
 # Initiatives API - version 2
 
-Because the API is work in progress, information is focused on providing the developer with the means to inspect the API and work with it, rather than detailing on technical implementations which are a moving target.
+Endpoint is set through `GATSBY_INITIATIVES_API` environment variable.
 
 ## Swagger specification
 

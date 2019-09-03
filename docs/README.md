@@ -2,8 +2,7 @@
 
 - [Getting started](./GETTING_STARTED.md)
 - [Technical overview](./TECHNICAL.md)
-- [Netlify functions](../src/api)
-- [Third party APIs](./API)
+- [Initiatives API](./Initiatives_API.md)
 - [Gatsby Node APIs](../gatsbyNodeApi)
 - [Drupal content sourcing](../packages/gatsby-source-drupal-jsonapi-eci/README.md)
 - [Translations](../translations/README.md)

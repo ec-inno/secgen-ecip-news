@@ -7,7 +7,7 @@ import getCurrentLanguage from '../utils/getCurrentLanguage';
 
 import SEO from '../components/SEO';
 import LeadParagraph from '../components/LeadParagraph';
-import InitiativesList from '../components/Initiative/List';
+import InitiativesSearchBasic from '../components/Initiative/Search/Basic';
 
 const Homepage = ({ data, location }) => {
   const language = getCurrentLanguage(location) || getDefaultLanguage();
@@ -31,7 +31,7 @@ const Homepage = ({ data, location }) => {
             intro={translation.how_works_intro}
           />
 
-          <InitiativesList location={location} />
+          <InitiativesSearchBasic location={location} />
 
           {news && news.length ? (
             <section className="ecl-u-mt-xl">
