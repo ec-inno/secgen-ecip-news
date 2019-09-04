@@ -49,8 +49,8 @@ const onCreatePage = ({ page, actions }) => {
 
       return createPage({
         ...page,
-        matchPath: `/${lang}/initiative/*`,
-        path: `/${lang}/initiative`,
+        matchPath: `/${lang}/initiatives/*`,
+        path: `/${lang}/initiatives`,
         context: {
           ...page.context,
           locale: lang,
