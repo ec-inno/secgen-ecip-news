@@ -7,7 +7,11 @@ import I18nContext from '../context/I18n';
 const Menu = () => {
   const { location, locale } = useContext(I18nContext);
 
-  const remove = '/multisite/ecip/';
+  // Menu information about `fetched_alias` contains site folder we don't need.
+  const drupalSiteFolder = process.env.GATSBY_SITE_FOLDER
+    ? `/${process.env.GATSBY_SITE_FOLDER}/`
+    : '';
+
   const locationParts =
     location && location.pathname
       ? location.pathname.split('/').filter(p => p)
@@ -15,14 +19,14 @@ const Menu = () => {
   const urlPath = locationParts[1];
 
   const data = useStaticQuery(graphql`
-    query getMenus {
-      allMenu {
+    query getMainMenu {
+      allMenu(filter: { menu_name: { eq: "main" }, enabled: { eq: true } }) {
         edges {
           node {
             id
             title
             external
-            fetched_alias
+            href: fetched_alias
             enabled
             parent {
               id
@@ -37,8 +41,6 @@ const Menu = () => {
     ? data.allMenu.edges
         // Take essential information.
         .map(({ node }) => node)
-        // Keep only items which are enabled are meant to be displayed.
-        .filter(link => link.enabled)
         // Keep only first-level menu items.
         .filter(link => !link.parent)
         // Keep items in the given language because static query does not support variables at the moment.
@@ -46,7 +48,7 @@ const Menu = () => {
         .map(link => ({
           id: link.id,
           label: link.title,
-          href: '/' + link.fetched_alias.replace(remove, ''),
+          href: '/' + link.href.replace(drupalSiteFolder, ''),
         }))
     : [];
 

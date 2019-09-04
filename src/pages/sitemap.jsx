@@ -7,17 +7,20 @@ import ListNested from '../components/ListNested';
 
 const Sitemap = ({ data, pageContext: { locale } }) => {
   const list = [];
-  const listGroupPrepare = {};
-  const remove = '/multisite/ecip/';
+  let listGroupPrepare = {};
+
+  // Menu information about `fetched_alias` contains site folder we don't need.
+  const drupalSiteFolder = process.env.GATSBY_SITE_FOLDER
+    ? `/${process.env.GATSBY_SITE_FOLDER}/`
+    : '';
 
   const menu = data.allMenu.edges.length
     ? data.allMenu.edges
         .map(({ node }) => node)
-        .filter(link => link.enabled)
         .map(link => ({
           title: link.title,
-          hrefFormatted: link.fetched_alias
-            .replace(remove, '')
+          hrefFormatted: link.href
+            .replace(drupalSiteFolder, '')
             .replace(`${locale}/`, `/${locale}/`),
           external: link.external,
         }))
@@ -36,15 +39,15 @@ const Sitemap = ({ data, pageContext: { locale } }) => {
             href: `/${locale}${node.path.alias}`,
           }))
           // Keep only items which are not already present in the menu.
-          .filter(link => {
-            const exists = menu.find(m => m.href === link.href);
-            if (!exists) return link;
-          })
+          .filter(link => !menu.find(m => m.href === link.href))
       : [];
 
   list.push(...menu);
   list.push(...pages);
 
+  const home = list.shift();
+
+  // Prepare list for a nested structure.
   list
     .map(item => {
       const path = item.href.split('/').filter(a => a);
@@ -62,6 +65,9 @@ const Sitemap = ({ data, pageContext: { locale } }) => {
         listGroupPrepare[item.hrefNew] = item;
       }
     });
+
+  // Add back the link to Home.
+  listGroupPrepare = Object.assign({ [home.title]: home }, listGroupPrepare);
 
   const listNested = unflatten(listGroupPrepare);
 
@@ -85,13 +91,19 @@ const Sitemap = ({ data, pageContext: { locale } }) => {
 
 export const query = graphql`
   query getSitemap($locale: String!, $languageRegex: String!) {
-    allMenu(filter: { id: { regex: $languageRegex } }) {
+    allMenu(
+      filter: {
+        id: { regex: $languageRegex }
+        menu_name: { eq: "main" }
+        enabled: { eq: true }
+      }
+    ) {
       edges {
         node {
           id
           title
           external
-          fetched_alias
+          href: fetched_alias
           enabled
           parent {
             id
