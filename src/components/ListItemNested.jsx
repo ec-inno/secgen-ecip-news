@@ -3,18 +3,15 @@ import { Link as LinkInternal } from 'gatsby';
 import LinkExternal from './Link/LinkEcl';
 
 const ListItemNested = ({ item, id }) => {
+  if (!item) return '';
+
   let children = null;
-  const props = ['href', 'hrefNew', 'title', 'hrefFormatted', 'external'];
 
-  const itemChildren = Object.keys(item).filter(
-    child => !props.includes(child)
-  );
-
-  if (itemChildren) {
+  if (item.children) {
     children = (
       <ul className="ecl-unordered-list">
-        {itemChildren.map((childPath, key) => (
-          <ListItemNested item={item[childPath]} key={key} />
+        {Object.keys(item.children).map((childPath, key) => (
+          <ListItemNested item={item.children[childPath]} key={key} />
         ))}
       </ul>
     );

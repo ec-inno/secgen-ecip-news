@@ -1,86 +1,26 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
-import { unflatten } from 'flat';
+
+import getSitemap from '../utils/getSitemap';
 
 import SEO from '../components/SEO';
 import ListNested from '../components/ListNested';
 
 const Sitemap = ({ data, pageContext: { locale } }) => {
-  const list = [];
-  let listGroupPrepare = {};
-
-  // Menu information about `fetched_alias` contains site folder we don't need.
-  const drupalSiteFolder = process.env.GATSBY_SITE_FOLDER
-    ? `/${process.env.GATSBY_SITE_FOLDER}/`
-    : '';
-
-  const menu = data.allMenu.edges.length
-    ? data.allMenu.edges
-        .map(({ node }) => node)
-        .map(link => ({
-          title: link.title,
-          hrefFormatted: link.href
-            .replace(drupalSiteFolder, '')
-            .replace(`${locale}/`, `/${locale}/`),
-          external: link.external,
-        }))
-        .map(link => ({
-          ...link,
-          href:
-            link.hrefFormatted === locale ? `/${locale}` : link.hrefFormatted,
-        }))
-    : [];
-
-  const pages =
-    data.allNodeOePage && data.allNodeOePage.edges
-      ? data.allNodeOePage.edges
-          .map(({ node }) => ({
-            title: node.title,
-            href: `/${locale}${node.path.alias}`,
-          }))
-          // Keep only items which are not already present in the menu.
-          .filter(link => !menu.find(m => m.href === link.href))
-      : [];
-
-  list.push(...menu);
-  list.push(...pages);
-
-  const home = list.shift();
-
-  // Prepare list for a nested structure.
-  list
-    .map(item => {
-      const path = item.href.split('/').filter(a => a);
-      path.shift();
-      const href = path.join('.');
-
-      return {
-        hrefNew: href,
-        ...item,
-      };
-    })
-    .filter(item => item.hrefNew)
-    .forEach(item => {
-      if (!listGroupPrepare[item.hrefNew]) {
-        listGroupPrepare[item.hrefNew] = item;
-      }
-    });
-
-  // Add back the link to Home.
-  listGroupPrepare = Object.assign({ [home.title]: home }, listGroupPrepare);
-
-  const listNested = unflatten(listGroupPrepare);
+  const { t } = useTranslation();
+  const list = getSitemap({ data, locale });
 
   return (
     <>
-      <SEO title="Sitemap" />
+      <SEO title={t('Sitemap')} />
 
       <main>
         <div className="ecl-container">
           <div className="ecl-row ecl-u-mt-l">
             <div className="ecl-col-sm-12 ecl-col-md-12">
-              <h1 className="ecl-u-type-heading-1">Sitemap</h1>
-              <ListNested list={listNested} />
+              <h1 className="ecl-u-type-heading-1">{t('Sitemap')}</h1>
+              <ListNested list={list} />
             </div>
           </div>
         </div>
