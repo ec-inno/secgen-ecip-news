@@ -14,6 +14,10 @@ pipeline:
     secrets:
       [
         site_base_url,
+        gatsby_site_base_url,
+        gatsby_initiatives_api,
+        site_folder,
+        gatsby_site_folder,
         netlify_auth_token,
         netlify_site_id,
         basic_auth_username,
