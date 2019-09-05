@@ -196,6 +196,7 @@ const Basic = () => {
             <p className="ecl-u-type-paragraph">
               {t('There are no initiatives meeting current filter criteria.')}
             </p>
+            <New />
           </div>
         </div>
       )}
