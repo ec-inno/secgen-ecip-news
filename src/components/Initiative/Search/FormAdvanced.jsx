@@ -121,7 +121,7 @@ const FormAdvanced = setFilters => {
 
       <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-date-from">
-          {t('From (format: dd/mm/yyyy)')}
+          {t('From (dd/mm/yyyy)')}
         </label>
         <input
           type="text"
@@ -134,7 +134,7 @@ const FormAdvanced = setFilters => {
       </div>
       <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-date-to">
-          {t('To (format: dd/mm/yyyy)')}
+          {t('To (dd/mm/yyyy)')}
         </label>
         <input
           type="text"
