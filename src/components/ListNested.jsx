@@ -5,7 +5,7 @@ const ListNested = ({ list }) =>
   list && Object.keys(list).length ? (
     <ul className="ecl-unordered-list">
       {Object.keys(list).map((item, id) => (
-        <ListItemNested item={list[item]} id={id} />
+        <ListItemNested item={list[item]} key={id} id={id} />
       ))}
     </ul>
   ) : (

@@ -1,18 +1,19 @@
 import { unflatten } from 'flat';
 
 const organizeChildren = (obj, result = {}) => {
+  if (!obj || Object.keys(obj).length === 0) return result;
+
   const keep = ['href', 'title', 'external'];
 
   for (let key in obj) {
-    if (!result[key]) {
-      result[key] = {};
-    }
-
     if (typeof obj[key] === 'object') {
       const children = {};
 
       Object.keys(obj[key]).forEach(k => {
         if (keep.includes(k)) {
+          if (!result[key]) {
+            result[key] = {};
+          }
           result[key][k] = obj[key][k];
         }
 
@@ -21,13 +22,11 @@ const organizeChildren = (obj, result = {}) => {
         }
       });
 
-      if (Object.keys(children).length) {
-        result[key].children = children;
-      }
+      result[key].children = children;
+
+      delete obj[key];
     }
   }
-
-  return result;
 };
 
 /**
@@ -103,6 +102,8 @@ const getSitemap = ({ data, locale }) => {
   const listNested = unflatten(listGroupPrepare);
 
   organizeChildren(listNested, list);
+
+  console.log('list', list);
 
   return list;
 };
