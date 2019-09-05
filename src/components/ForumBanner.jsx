@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import image from './assets/images/bg-forum.png';
-import Button from '../components/Button';
+import Link from '../components/Link/LinkButton';
 
 const ForumBanner = () => {
   const { t } = useTranslation();
@@ -24,7 +24,8 @@ const ForumBanner = () => {
           <h1 className="ecl-page-banner__title">
             {t('Want to learn and collaborate?')}
           </h1>
-          <Button
+          <Link
+            href="#"
             className="ecl-page-banner__button"
             variant="call"
             label={t('Join the forum')}

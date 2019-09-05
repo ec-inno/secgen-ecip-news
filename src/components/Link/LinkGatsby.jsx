@@ -40,20 +40,20 @@ const LinkGatsby = ({
   if (iconMarkup) {
     if (iconPosition === 'before') {
       return (
-        <a {...props} href={href} className={classNames}>
+        <Link {...props} to={href} className={classNames}>
           {iconMarkup}
           &nbsp;
           <span className="ecl-link__label">{label}</span>
-        </a>
+        </Link>
       );
     }
 
     return (
-      <a {...props} href={href} className={classNames}>
+      <Link {...props} to={href} className={classNames}>
         <span className="ecl-link__label">{label}</span>
         &nbsp;
         {iconMarkup}
-      </a>
+      </Link>
     );
   }
 

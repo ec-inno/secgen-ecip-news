@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-// This Link is specific to this component. It has the logic of an ECL link component to handle icons, but also at the same time uses GatsbyJS's Link link for it's benefits.
 import Link from '../Link/LinkGatsby';
 
 import Context, {
