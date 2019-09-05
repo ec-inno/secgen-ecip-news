@@ -1,41 +1,11 @@
 import { unflatten } from 'flat';
 
-const organizeChildren = (obj, result = {}) => {
-  if (!obj || Object.keys(obj).length === 0) return result;
-
-  const keep = ['href', 'title', 'external'];
-
-  for (let key in obj) {
-    if (typeof obj[key] === 'object') {
-      const children = {};
-
-      Object.keys(obj[key]).forEach(k => {
-        if (keep.includes(k)) {
-          if (!result[key]) {
-            result[key] = {};
-          }
-          result[key][k] = obj[key][k];
-        }
-
-        if (!keep.includes(k) && typeof obj[key][k] === 'object') {
-          children[k] = obj[key][k];
-        }
-      });
-
-      result[key].children = children;
-
-      delete obj[key];
-    }
-  }
-};
-
 /**
  * Provides a nested structure representing a sitemap, based on main menu and pages.
  * @param {Object} data Pages' graphql queries result.
  * @param {Object} location The `location` object passed to pages.
  */
 const getSitemap = ({ data, locale }) => {
-  const list = {};
   const listPrepare = [];
   let listGroupPrepare = {};
 
@@ -99,11 +69,15 @@ const getSitemap = ({ data, locale }) => {
   // Add back the link to Home.
   listGroupPrepare = Object.assign({ [home.title]: home }, listGroupPrepare);
 
-  const listNested = unflatten(listGroupPrepare);
+  // Keep a set of link attributes, the rest will be treated as children for rendering nested unordered lists.
+  const listFormatted = {};
 
-  organizeChildren(listNested, list);
+  Object.keys(listGroupPrepare).forEach(key => {
+    const { title, href, external: ex } = listGroupPrepare[key];
+    listFormatted[key] = { title, href, external: ex || false };
+  });
 
-  console.log('list', list);
+  const list = unflatten(listFormatted);
 
   return list;
 };
