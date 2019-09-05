@@ -15,6 +15,7 @@ const FaqPage = ({ data }) => {
   const toggleItem = id => {
     document.getElementById(`${id}-content`).toggleAttribute('hidden');
   };
+  const hasFaqs = Object.keys(faqSections).length !== 0;
 
   return (
     <>
@@ -33,78 +34,84 @@ const FaqPage = ({ data }) => {
 
         <div className="ecl-container ecl-u-mt-xl">
           <div className="ecl-row ecl-u-mt-l">
-            <div className="ecl-col-12 ecl-col-sm-3">
-              <nav>
-                <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
-                  {t('Page contents').toUpperCase()}
-                </div>
-                <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
-                  {faqSections.map((item, i) => {
-                    const { node } = item;
-                    const { title } = node;
+            {hasFaqs && (
+              <>
+                <div className="ecl-col-12 ecl-col-sm-3">
+                  <nav>
+                    <div className="ecl-u-color-grey-100 ecl-u-type-m ecl-u-pv-xs">
+                      {t('Page contents').toUpperCase()}
+                    </div>
+                    <ul className="ecl-unordered-list ecl-unordered-list--no-bullet ecl-u-pl-none ecl-u-mt-s">
+                      {faqSections.map((item, i) => {
+                        const { node } = item;
+                        const { title } = node;
 
+                        return (
+                          <li
+                            key={i}
+                            className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
+                          >
+                            <a
+                              href={`#${slugify(title, { lower: true })}`}
+                              className="ecl-link ecl-link--standalone ecl-u-d-block"
+                            >
+                              {title}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </nav>
+                </div>
+                <div className="ecl-col-12 ecl-col-sm-9">
+                  {faqSections.map((faqSection, sectionIndex) => {
                     return (
-                      <li
-                        key={i}
-                        className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
-                      >
-                        <a
-                          href={`#${slugify(title, { lower: true })}`}
-                          className="ecl-link ecl-link--standalone ecl-u-d-block"
+                      <Fragment key={sectionIndex}>
+                        <h2
+                          className={`ecl-u-type-heading-2 ${
+                            sectionIndex === 0 ? 'ecl-u-mt-none' : ''
+                          }`}
+                          id={`${slugify(faqSection.node.title, {
+                            lower: true,
+                          })}`}
                         >
-                          {title}
-                        </a>
-                      </li>
+                          {faqSection.node.title}
+                        </h2>
+                        <Accordion2>
+                          {faqSection.node.relationships.field_faq_entries.map(
+                            (faqSectionItem, sectionItemIndex) => {
+                              return (
+                                <Accordion2Item
+                                  key={sectionItemIndex}
+                                  id={`faq-item-${sectionIndex}-${sectionItemIndex}`}
+                                  level={1}
+                                  toggle={{
+                                    label: faqSectionItem.title,
+                                    iconShape: 'ui--plus',
+                                  }}
+                                  onClick={() =>
+                                    toggleItem(
+                                      `faq-item-${sectionIndex}-${sectionItemIndex}`
+                                    )
+                                  }
+                                >
+                                  <span
+                                    dangerouslySetInnerHTML={{
+                                      __html:
+                                        faqSectionItem.field_answer.processed,
+                                    }}
+                                  />
+                                </Accordion2Item>
+                              );
+                            }
+                          )}
+                        </Accordion2>
+                      </Fragment>
                     );
                   })}
-                </ul>
-              </nav>
-            </div>
-
-            <div className="ecl-col-12 ecl-col-sm-9">
-              {faqSections.map((faqSection, sectionIndex) => {
-                return (
-                  <Fragment key={sectionIndex}>
-                    <h2
-                      className={`ecl-u-type-heading-2 ${
-                        sectionIndex === 0 ? 'ecl-u-mt-none' : ''
-                      }`}
-                      id={`${slugify(faqSection.node.title, { lower: true })}`}
-                    >
-                      {faqSection.node.title}
-                    </h2>
-                    <Accordion2>
-                      {faqSection.node.relationships.field_faq_entries.map(
-                        (faqSectionItem, sectionItemIndex) => {
-                          return (
-                            <Accordion2Item
-                              key={sectionItemIndex}
-                              id={`faq-item-${sectionIndex}-${sectionItemIndex}`}
-                              level={1}
-                              toggle={{
-                                label: faqSectionItem.title,
-                                iconShape: 'ui--plus',
-                              }}
-                              onClick={() =>
-                                toggleItem(
-                                  `faq-item-${sectionIndex}-${sectionItemIndex}`
-                                )
-                              }
-                            >
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: faqSectionItem.field_answer.processed,
-                                }}
-                              />
-                            </Accordion2Item>
-                          );
-                        }
-                      )}
-                    </Accordion2>
-                  </Fragment>
-                );
-              })}
-            </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </main>
