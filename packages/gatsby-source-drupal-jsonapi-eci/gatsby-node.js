@@ -16,11 +16,12 @@ exports.sourceNodes = async (
   languages = languages || [];
 
   const nodes = [];
-  const contentTypes = [
+  const entityTypes = [
     'node--faq',
     'node--faq_section',
     'node--oe_news',
     'node--oe_page',
+    'menu',
   ];
 
   reporter.info('Getting content from Drupal ...');
@@ -40,7 +41,7 @@ exports.sourceNodes = async (
         let drafts = [];
 
         // Early exit on insufficient or edge case input.
-        if (!type || !url || type === 'self' || !contentTypes.includes(type))
+        if (!type || !url || type === 'self' || !entityTypes.includes(type))
           return;
 
         const defaultEndpoint = `${baseUrl}/${apiBase}`;
@@ -57,7 +58,7 @@ exports.sourceNodes = async (
             basicAuth,
           });
 
-          if (process.env.DRAFT_PREVIEW) {
+          if (process.env.DRAFT_PREVIEW && type !== 'menu') {
             url.href += '?resourceVersion=rel%3Aworking-copy';
 
             drafts = await getLinkData(url, [], {
