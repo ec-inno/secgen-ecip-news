@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
@@ -14,7 +15,13 @@ import Menu from '../components/Menu';
 import Footer from '../components/Footer/FooterLanguage';
 import ForumBanner from '../components/ForumBanner';
 
-const Layout = ({ children, pageContext: { layout } }) => {
+const Layout = ({ children, location, pageContext: { layout, locale } }) => {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    i18n.changeLanguage(locale);
+  }, [location]);
+
   if (layout === 'landing') return children;
 
   return (
