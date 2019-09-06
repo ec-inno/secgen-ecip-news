@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'gatsby';
 import axios from 'axios';
 
 import I18nContext from '../../context/I18n';
@@ -50,13 +51,14 @@ const Card = ({ item }) => {
           style={{ backgroundImage: `url('${background}')` }}
         ></div>
         <h1 className="ecl-card__title">
-          <a
-            level="1"
-            href={`/${locale}/initiatives/#${item.id}`}
+          <Link
+            to={`/${locale}/initiatives/#${item.id}`}
             className="ecl-link ecl-link--standalone"
+            aria-label={`${t('See details about')} ${item.title}`}
+            level="1"
           >
-            <span className="ecl-link__label">{item.title}</span>
-          </a>
+            {item.title}
+          </Link>
         </h1>
       </header>
       <section className="ecl-card__body">
