@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-const SEO = ({ name, title, description, titleTemplate }) => {
+const Head = ({ name, title, description, titleTemplate, htmlAttributes }) => {
   const { t } = useTranslation();
 
   const nameDefault = t('Site name');
@@ -16,13 +16,18 @@ const SEO = ({ name, title, description, titleTemplate }) => {
     name: name || nameDefault,
     title: title || titleDefault,
     description: description || descriptionDefault,
+    htmlAttributes: htmlAttributes || {},
   };
 
   const template = titleTemplate || `%s | ${seo.name}`;
 
   return (
     <>
-      <Helmet title={seo.title} titleTemplate={template}>
+      <Helmet
+        title={seo.title}
+        titleTemplate={template}
+        htmlAttributes={seo.htmlAttributes}
+      >
         <meta name="description" content={seo.description} />
         {seo.title && <meta property="og:title" content={seo.title} />}
         {seo.description && (
@@ -37,18 +42,20 @@ const SEO = ({ name, title, description, titleTemplate }) => {
   );
 };
 
-export default SEO;
+export default Head;
 
-SEO.propTypes = {
+Head.propTypes = {
   name: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   titleTemplate: PropTypes.string,
+  htmlAttributes: PropTypes.object,
 };
 
-SEO.defaultProps = {
+Head.defaultProps = {
   name: '',
   title: '',
   description: '',
   titleTemplate: '',
+  htmlAttributes: {},
 };

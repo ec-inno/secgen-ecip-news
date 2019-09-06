@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 
-import SEO from '../components/SEO';
+import Head from '../components/Head';
 import LeadParagraph from '../components/LeadParagraph';
 import InitiativesSearchBasic from '../components/Initiative/Search/Basic';
 
@@ -13,7 +13,7 @@ const Homepage = ({ data, pageContext: { locale } }) => {
 
   return (
     <>
-      <SEO title={t('Home')} description={t('Home description')} />
+      <Head title={t('Home')} description={t('Home description')} />
       <main>
         <div className="ecl-container">
           <LeadParagraph

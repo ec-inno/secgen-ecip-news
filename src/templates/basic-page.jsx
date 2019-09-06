@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 
 import addSlugs from '../utils/addSlugs';
 
-import SEO from '../components/SEO';
+import Head from '../components/Head';
 
 const BasicPage = ({ data }) => {
   const { t } = useTranslation();
@@ -44,7 +44,7 @@ const BasicPage = ({ data }) => {
 
   return (
     <>
-      <SEO title={title} />
+      <Head title={title} />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">

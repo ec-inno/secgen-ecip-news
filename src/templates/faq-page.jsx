@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
 import slugify from 'slugify';
 
-import SEO from '../components/SEO';
+import Head from '../components/Head';
 import Accordion2 from '../components/Accordion/Accordion2';
 import Accordion2Item from '../components/Accordion/Accordion2Item';
 
@@ -19,7 +19,7 @@ const FaqPage = ({ data }) => {
 
   return (
     <>
-      <SEO title={t('FAQ')} description={t('FAQ intro')} />
+      <Head title={t('FAQ')} description={t('FAQ intro')} />
       <main>
         <section className="ecl-page-header">
           <div className="ecl-container">

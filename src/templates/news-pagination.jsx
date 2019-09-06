@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 
-import SEO from '../components/SEO';
+import Head from '../components/Head';
 
 const News = ({ data, pageContext }) => {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ const News = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO
+      <Head
         title={t('News')}
         description={t('Access the latest news from ECI.')}
       />

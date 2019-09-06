@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 
 import getSitemap from '../utils/getSitemap';
 
-import SEO from '../components/SEO';
+import Head from '../components/Head';
 import ListNested from '../components/ListNested';
 
 const Sitemap = ({ data, pageContext: { locale } }) => {
@@ -13,7 +13,7 @@ const Sitemap = ({ data, pageContext: { locale } }) => {
 
   return (
     <>
-      <SEO title={t('Sitemap')} />
+      <Head title={t('Sitemap')} />
 
       <main>
         <div className="ecl-container">

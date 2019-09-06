@@ -2,14 +2,14 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 
-import SEO from '../components/SEO';
+import Head from '../components/Head';
 
 const NotFound = ({ pageContext: { locale } }) => {
   const { t } = useTranslation();
 
   return (
     <>
-      <SEO
+      <Head
         title={t('Page not found title')}
         description={t('Page not found description')}
       />

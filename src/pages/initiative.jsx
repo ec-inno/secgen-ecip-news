@@ -4,7 +4,7 @@ import axios from 'axios';
 import has from 'lodash/has';
 
 // Generic
-import SEO from '../components/SEO';
+import Head from '../components/Head';
 import Message from '../components/Message';
 import Share from '../components/Share';
 
@@ -73,7 +73,7 @@ const Initiative = ({ location, pageContext: { locale } }) => {
 
   return (
     <>
-      <SEO
+      <Head
         title={
           has(languageSpecificData, 'title')
             ? languageSpecificData.title

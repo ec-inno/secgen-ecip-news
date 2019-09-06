@@ -2,7 +2,7 @@ import React from 'react';
 
 import logoSvg from '@ecl/eu-preset-website/dist/images/logo/logo--mute.svg';
 
-import SEO from '../components/SEO';
+import Head from '../components/Head';
 import LanguageList from '../components/LanguageList/LanguageList';
 
 import { languages } from '../../languages';
@@ -15,7 +15,7 @@ const Index = () => {
 
   return (
     <>
-      <SEO title="Welcome" description="" />
+      <Head title="Welcome" description="" />
       <div className="ecl-language-list ecl-language-list--splash">
         <header className="ecl-language-list__header">
           <img
