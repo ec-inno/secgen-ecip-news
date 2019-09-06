@@ -60,11 +60,14 @@ const Area = () => {
         </aside>
         <section className="ecl-col-12 ecl-col-lg-9">
           <h2 className="ecl-u-type-heading-2 ecl-u-d-none ecl-u-d-lg-block ecl-u-mv-none">
-            {t('Search results')}
+            {t('Search results')}{' '}
+            {initiatives.all ? `(${initiatives.all})` : ''}
           </h2>
 
           {initiatives.entries && initiatives.entries.length !== 0 && (
-            <h3 className="ecl-u-type-heading-3 ecl-u-mb-none ecl-u-mt-3xl ecl-u-mt-lg-l">{`Showing results ${initiatives.entries.length} of ${initiatives.all}`}</h3>
+            <h3 className="ecl-u-type-heading-3 ecl-u-mb-none ecl-u-mt-3xl ecl-u-mt-lg-l">
+              {t('Showing results')} {pagination}
+            </h3>
           )}
 
           {filters.filters && (

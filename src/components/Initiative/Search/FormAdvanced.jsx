@@ -5,7 +5,7 @@ import I18nContext from '../../../context/I18n';
 
 import { languages } from '../../../../languages';
 
-const FormAdvanced = setFilters => {
+const FormAdvanced = ({ setFilters }) => {
   const { t } = useTranslation();
   const { locale } = useContext(I18nContext);
 
