@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
-import classnames from 'classnames';
-import { chunk, cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash';
 
 import config from '../config';
 import I18nContext from '../../../context/I18n';
+import getPagination from './getPagination';
 
-import Card from '../Card';
+import Result from './Result';
 import Icon from '../../Icon';
 import Message from '../../Message';
-import New from '../New';
-import Pagination from '../Pagination';
+import Pagination from '../../Pagination';
 import SearchForm from './FormAdvanced';
 import Spinner from '../../Spinner';
 
@@ -20,21 +19,17 @@ const Area = () => {
   const { locale } = useContext(I18nContext);
   const { GATSBY_INITIATIVES_API: api } = process.env;
 
-  const itemsPerRow = 3;
-  const itemsPerPageDefault = 8;
-  const rowClass = 'ecl-row';
-
   const [errorMessage, setErrorMessage] = useState('');
   const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
   const [filters, setFilters] = useState({});
   const [initiatives, setInitiatives] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
+  const [pagination, setPagination] = useState('0/10');
 
   useEffect(() => {
     setIsLoading(true);
     const lang = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
-    const endpoint = `${api}/register/search/ALL/${lang}/0/${itemsPerPage}`;
+    const endpoint = `${api}/register/search/ALL/${lang}/${pagination}`;
 
     axios
       .post(endpoint, filters)
@@ -47,29 +42,32 @@ const Area = () => {
         setErrorMessageVisibility(true);
         setIsLoading(false);
       });
-  }, [filters, itemsPerPage]);
+  }, [filters, pagination]);
 
   const hasEntries = initiatives.entries && initiatives.entries.length;
-  const groups = hasEntries
-    ? Math.ceil(initiatives.entries.length / itemsPerRow)
-    : null;
+
+  const options = { t, initiatives, pagination, setPagination };
+  const paginationConfig = getPagination(options);
 
   return (
     <div className="ecl-container">
       <div className="ecl-row">
         <aside className="ecl-col-12 ecl-col-lg-3">
           <h3 className="ecl-u-type-heading-3 ecl-u-mt-l ecl-u-mt-lg-none">
-            Search options
+            {t('Search options')}
           </h3>
           <SearchForm setFilters={setFilters} />
         </aside>
         <section className="ecl-col-12 ecl-col-lg-9">
           <h2 className="ecl-u-type-heading-2 ecl-u-d-none ecl-u-d-lg-block ecl-u-mv-none">
-            Search results
+            {t('Search results')}{' '}
+            {initiatives.all ? `(${initiatives.all})` : ''}
           </h2>
 
           {initiatives.entries && initiatives.entries.length !== 0 && (
-            <h3 className="ecl-u-type-heading-3 ecl-u-mb-none ecl-u-mt-3xl ecl-u-mt-lg-l">{`Showing results ${initiatives.entries.length} of ${initiatives.all}`}</h3>
+            <h3 className="ecl-u-type-heading-3 ecl-u-mb-none ecl-u-mt-3xl ecl-u-mt-lg-l">
+              {t('Showing results')} {pagination}
+            </h3>
           )}
 
           {filters.filters && (
@@ -134,56 +132,30 @@ const Area = () => {
             {...config.error}
           />
           {hasEntries ? (
-            chunk(initiatives.entries, itemsPerRow).map((group, k) => {
-              const groupLength = group.length;
-              // If it's either the first or last item, do not add 'md'.
-              const rowSpacing =
-                k === 0 || k + 1 === groups ? 'ecl-u-mt-l' : 'ecl-u-mt-md-l';
-
-              const classNames = classnames(rowClass, rowSpacing);
-
-              return (
-                <div className={classNames} key={k}>
-                  {group.map((item, key) => {
-                    const list = [];
-
-                    list.push(
-                      <div
-                        key={key}
-                        className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none"
-                      >
-                        <Card key={key} item={item} />
-                      </div>
-                    );
-
-                    if (k + 1 === groups && key + 1 === groupLength) {
-                      list.push(<New key={key + 1} />);
-                    }
-
-                    return list;
-                  })}
-                </div>
-              );
-            })
+            initiatives.entries.map((item, k, items) => (
+              <>
+                <Result
+                  key={k}
+                  title={item.title}
+                  pubRegNum={item.pubRegNum}
+                  href={`/${locale}/initiatives/#${item.id}`}
+                />
+                {k < items.length - 1 ? <hr className="ecl-u-mv-none" /> : ''}
+              </>
+            ))
           ) : (
             <div className="ecl-row">
               <div className="ecl-col-sm-12 ecl-col-md-12">
                 <p className="ecl-u-type-paragraph">
-                  There are no initiatives meeting current filter criteria.
+                  {t(
+                    'There are no initiatives meeting current filter criteria.'
+                  )}
                 </p>
               </div>
             </div>
           )}
           {isLoading && <Spinner />}
-          {itemsPerPage < initiatives.all && hasEntries && (
-            <Pagination
-              onClick={e => {
-                e.preventDefault();
-                const newItemsPerPage = itemsPerPage * 2 + 1;
-                setItemsPerPage(newItemsPerPage);
-              }}
-            />
-          )}
+          <Pagination {...paginationConfig} />
         </section>
       </div>
     </div>
