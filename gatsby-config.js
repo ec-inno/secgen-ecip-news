@@ -44,5 +44,6 @@ module.exports = {
         icon: 'static/logo.svg',
       },
     },
+    'gatsby-plugin-offline',
   ],
 };
