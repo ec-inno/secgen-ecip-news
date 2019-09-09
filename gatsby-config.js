@@ -32,5 +32,17 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: "European citizens' initiative",
+        short_name: "European citizens' initiative",
+        start_url: `/`,
+        background_color: '#034ea1',
+        theme_color: '#034ea1',
+        display: 'standalone',
+        icon: 'static/logo.png',
+      },
+    },
   ],
 };

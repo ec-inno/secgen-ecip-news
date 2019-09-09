@@ -17,8 +17,10 @@ const getPagination = ({ t, initiatives, pagination, setPagination }) => {
 
           const previous =
             Number(start) - 1 === itemsPerPage
-              ? `0/${itemsPerPage}`
-              : `${Number(start) - itemsPerPage}/${Number(offset) -
+              ? // First page.
+                `0/${itemsPerPage}`
+              : // Any other previous.
+                `${Number(start) - itemsPerPage}/${Number(offset) -
                   itemsPerPage}`;
 
           setPagination(previous);
@@ -36,8 +38,7 @@ const getPagination = ({ t, initiatives, pagination, setPagination }) => {
     });
   }
 
-  /* eslint-disable-next-line compat/compat */
-  Array.from({ length: itemsCount }).forEach((_, i) => {
+  for (let i = 0; i < itemsCount; i++) {
     const label = i + 1;
 
     const marker =
@@ -65,7 +66,7 @@ const getPagination = ({ t, initiatives, pagination, setPagination }) => {
         },
       });
     }
-  });
+  }
 
   if (Number(offset) / itemsPerPage < itemsCount) {
     items.push({
