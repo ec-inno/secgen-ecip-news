@@ -97,7 +97,7 @@ const onCreatePage = ({ page, actions }) => {
   return languages.forEach(language => {
     const { lang } = language;
     const localizedPath =
-      page.path === '/home/' ? `/${lang}` : `/${lang}${page.path}`;
+      page.path === '/home' ? `/${lang}` : `/${lang}${page.path}`;
 
     return createPage({
       ...page,

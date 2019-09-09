@@ -40,9 +40,8 @@ const Header = () => {
   }
 
   const items = languages.map(item => {
-    const href = `/${item.lang}/${urlPath}`;
-
-    const isActive = href.includes(`/${locale}/`);
+    const href = urlPath ? `/${item.lang}/${urlPath}` : `/${item.lang}`;
+    const isActive = href.startsWith(`/${locale}`);
 
     return {
       href,

@@ -67,7 +67,7 @@ const getSitemap = ({ data, locale }) => {
     });
 
   // Add back the link to Home.
-  /* eslint-disable-next-line compat/compat */
+  /* eslint-disable-next-line */
   listGroupPrepare = Object.assign({ [home.title]: home }, listGroupPrepare);
 
   // Keep a set of link attributes, the rest will be treated as children for rendering nested unordered lists.

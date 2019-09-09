@@ -42,6 +42,7 @@
     "gatsby-plugin-layout": "1.1.6",
     "gatsby-plugin-manifest": "2.2.15",
     "gatsby-plugin-react-helmet": "3.1.6",
+    "gatsby-plugin-remove-trailing-slashes": "2.1.5",
     "gatsby-source-drupal-jsonapi-eci": "^0.1.0",
     "i18next": "17.0.13",
     "lodash": "4.17.15",

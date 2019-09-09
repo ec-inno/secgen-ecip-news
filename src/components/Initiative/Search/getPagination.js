@@ -38,7 +38,7 @@ const getPagination = ({ t, initiatives, pagination, setPagination }) => {
     });
   }
 
-  for (let i = 0; i < itemsCount; i++) {
+  for (let i = 0; i < itemsCount; i += 1) {
     const label = i + 1;
 
     const marker =

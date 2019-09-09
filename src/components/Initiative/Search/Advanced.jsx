@@ -44,8 +44,6 @@ const Area = () => {
       });
   }, [filters, pagination]);
 
-  const hasEntries = initiatives.entries && initiatives.entries.length;
-
   const options = { t, initiatives, pagination, setPagination };
   const paginationConfig = getPagination(options);
 
@@ -78,7 +76,7 @@ const Area = () => {
                 .map((filter, key) => {
                   return (
                     <span
-                      key={key}
+                      key={`filter-${key}`}
                       className={
                         key > 0
                           ? 'ecl-u-ml-lg-m ecl-u-mt-m ecl-u-mt-lg-none'
@@ -131,16 +129,20 @@ const Area = () => {
             description={errorMessage}
             {...config.error}
           />
-          {hasEntries ? (
-            initiatives.entries.map((item, k, items) => (
+          {initiatives &&
+          initiatives.entries &&
+          Array.isArray(initiatives.entries) ? (
+            initiatives.entries.map((item, k) => (
               <>
                 <Result
-                  key={k}
+                  key={`result-${k}`}
                   title={item.title}
                   pubRegNum={item.pubRegNum}
                   href={`/${locale}/initiatives/#${item.id}`}
                 />
-                {k < items.length - 1 ? <hr className="ecl-u-mv-none" /> : ''}
+                {k !== initiatives.entries.length - 1 && (
+                  <hr key={`hr-${k}`} className="ecl-u-mv-none" />
+                )}
               </>
             ))
           ) : (

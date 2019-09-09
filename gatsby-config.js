@@ -20,6 +20,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-layout',
+    'gatsby-plugin-remove-trailing-slashes',
     {
       resolve: 'gatsby-source-drupal-jsonapi-eci',
       options: {
