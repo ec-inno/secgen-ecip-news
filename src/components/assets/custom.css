@@ -1,29 +1,3 @@
 .hidden {
   display: none;
 }
-
-.loading-opacity {
-  opacity: 0.5;
-}
-
-.loading-opacity.visible {
-  transition: opacity 1s ease-in;
-  opacity: 1;
-}
-
-/* https://www.gatsbyjs.org/packages/gatsby-background-image/ is used for the background image and it applies the image on before/after attributes overriding ECL's ecl-page-banner--image-shade approach. */
-.eci-gatsby-image-shade {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.7);
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
-/* Fix for BackgroundImage */
-.ecl-card__image--fixed {
-  height: 200px;
-  overflow: hidden;
-}

@@ -179,7 +179,16 @@ const Basic = () => {
                     key={key}
                     className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none"
                   >
-                    <Card key={key} item={item} />
+                    <Card
+                      key={key}
+                      item={item}
+                      logo={item.logo}
+                      title={item.title}
+                      status={item.status}
+                      href={`/${locale}/initiatives/#${item.id}`}
+                      totalSupporters={item.totalSupporters}
+                      supportLink={item.supportLink}
+                    />
                   </div>
                 );
 

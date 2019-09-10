@@ -136,7 +136,9 @@ const Area = () => {
               <>
                 <Result
                   key={`result-${k}`}
+                  logo={item.logo}
                   title={item.title}
+                  status={item.status}
                   pubRegNum={item.pubRegNum}
                   href={`/${locale}/initiatives/#${item.id}`}
                 />
