@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
+import svg4everybody from 'svg4everybody';
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
 import '../components/assets/custom.css';
@@ -21,6 +22,11 @@ const Layout = ({ children, location, pageContext: { layout, locale } }) => {
 
   useEffect(() => {
     i18n.changeLanguage(locale);
+
+    // IE fix for SVGs.
+    if (typeof window !== 'undefined') {
+      svg4everybody();
+    }
   }, [location]);
 
   if (layout === 'landing') return children;
