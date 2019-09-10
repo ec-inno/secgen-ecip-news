@@ -65,7 +65,9 @@ const Menu = () => {
 
                 if (
                   // Home page.
-                  (urlPath === undefined && location.pathname === href) ||
+                  (urlPath === undefined &&
+                    // Without trailing slash.
+                    location.pathname.replace(/\/$/, '') === href) ||
                   // Internal pages.
                   (urlPath && href.includes(urlPath))
                 ) {

@@ -142,14 +142,16 @@ const Basic = () => {
           </li>
         </ul>
       </div>
-      <div className="ecl-u-pa-m eci-filter ecl-u-mv-xl">
-        <SearchForm setFilters={setFilters} />
-        <p className="ecl-u-type-paragraph ecl-u-mb-none">
-          <Link className="ecl-link" to={`/${locale}/find-initiative`}>
-            {t('Get more filters')}
-          </Link>
-        </p>
-      </div>
+      {section !== 'LATEST' && (
+        <div className="ecl-u-pa-m eci-filter ecl-u-mv-xl">
+          <SearchForm setFilters={setFilters} />
+          <p className="ecl-u-type-paragraph ecl-u-mb-none">
+            <Link className="ecl-link" to={`/${locale}/find-initiative`}>
+              {t('Get more filters')}
+            </Link>
+          </p>
+        </div>
+      )}
       {isLoading && <Spinner />}
       <Message
         className={errorMessageIsVisible ? '' : 'hidden'}
