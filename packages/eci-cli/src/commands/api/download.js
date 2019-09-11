@@ -11,6 +11,7 @@ module.exports = {
     ];
 
     const { SITE_BASE_URL: baseURL } = process.env;
+    const localhost = 'http://localhost:3000';
 
     if (!baseURL) {
       return error('Cannot work without value for SITE_BASE_URL.');
@@ -28,31 +29,33 @@ module.exports = {
 
     const client = http.create({ baseURL });
 
+    const updateLinksToLocal = o => {
+      Object.keys(o).forEach(k => {
+        // Make the change.
+        if (k === 'href') {
+          o[k] = o[k].replace(baseURL, localhost);
+        }
+        // Recurse if nested.
+        if (o[k] !== null && typeof o[k] === 'object') {
+          updateLinksToLocal(o[k]);
+        }
+      });
+    };
+
+    // Used to create data.json files in a given resource path mimicking api resources.
     const saveDataLocally = (resourcePath, data) => {
+      // Copy original data.
       const updated = JSON.parse(JSON.stringify(data));
-
-      const convertLinksToRelative = o => {
-        Object.keys(o).forEach(k => {
-          // Make the change.
-          if (k === 'href') {
-            o[k] = o[k].replace(baseURL, '');
-          }
-          // Recurse if nested.
-          if (o[k] !== null && typeof o[k] === 'object') {
-            convertLinksToRelative(o[k]);
-          }
-        });
-      };
-
-      convertLinksToRelative(updated);
-
+      // Convert remote links to local one.
+      updateLinksToLocal(updated);
+      // Persist results.
       write(path(`drupal_jsonapi/${resourcePath}/data.json`), updated);
     };
 
     // Inline utility to get links data.
     const getLinkData = async (url, data = []) => {
       let linkData;
-      const resourcePath = url.replace(baseURL, '');
+      const resourcePath = url.replace(baseURL, localhost);
 
       try {
         linkData = await client.get(url);
