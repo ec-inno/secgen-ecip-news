@@ -13,6 +13,7 @@ const New = () => {
   return (
     <div className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none">
       <Link
+        aria-label={t('How to start an initiative?')}
         level="1"
         to={`/${locale}/how-to-start`}
         className="ecl-link ecl-link--standalone"
