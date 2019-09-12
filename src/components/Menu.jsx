@@ -8,8 +8,8 @@ const Menu = () => {
   const { location, locale } = useContext(I18nContext);
 
   // Menu information about `fetched_alias` contains site folder we don't need.
-  const drupalSiteFolder = process.env.GATSBY_SITE_FOLDER
-    ? `/${process.env.GATSBY_SITE_FOLDER}/`
+  const drupalSiteFolder = process.env.GATSBY_DRUPAL_SITE_FOLDER
+    ? `/${process.env.GATSBY_DRUPAL_SITE_FOLDER}/`
     : '';
 
   const locationParts =

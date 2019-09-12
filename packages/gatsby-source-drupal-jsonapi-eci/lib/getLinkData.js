@@ -39,7 +39,7 @@ const getLinkData = async (url, data = [], options) => {
 
   data = data.concat(linkData.data.data);
 
-  if (linkData.data.links.next) {
+  if (linkData.data.links && linkData.data.links.next) {
     data = await getLinkData(linkData.data.links.next, data);
   }
 

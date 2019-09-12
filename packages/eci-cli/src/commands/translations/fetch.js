@@ -11,7 +11,9 @@ module.exports = {
 
     info('Fetching translations ...');
 
-    const api = http.create({ baseURL: `${process.env.SITE_BASE_URL}/en/api` });
+    const api = http.create({
+      baseURL: `${process.env.GATSBY_DRUPAL_API}/en/api`,
+    });
     const exportedStrings = read(
       path(`${exportsFolder}/exported-strings.json`),
       'json'
