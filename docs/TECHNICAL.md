@@ -14,7 +14,7 @@ You will need a running Drupal 8 website with a JSONAPI endpoint before being ab
 
 Given you have a running Drupal 8 API, set the following environment variables:
 
-- `SITE_BASE_URL`: defaults to `http://localhost:8080/web` if not provided
+- `GATSBY_DRUPAL_BASE_URL`: defaults to `http://localhost:8080/web` if not provided
 - `DRAFT_PREVIEW`: flag whether client is to fetch unpublished content.
 
 If `DRAFT_PREVIEW` is to be truthy, please provide also:

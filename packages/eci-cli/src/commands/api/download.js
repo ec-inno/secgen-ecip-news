@@ -10,8 +10,10 @@ module.exports = {
       'menu',
     ];
 
-    const { SITE_BASE_URL: baseURL } = process.env;
-    const localhost = 'http://localhost:3000';
+    const {
+      GATSBY_DRUPAL_BASE_URL: baseURL,
+      DRUPAL_BASE_URL_OFFLINE: localhost,
+    } = process.env;
 
     if (!baseURL) {
       return error('Cannot work without value for SITE_BASE_URL.');
@@ -23,7 +25,7 @@ module.exports = {
 
     const {
       http,
-      filesystem: { path, write },
+      filesystem: { write },
       print: { info, error },
     } = toolbox;
 
@@ -43,7 +45,7 @@ module.exports = {
     };
 
     const saveData = (resourcePath, data) =>
-      write(path(`drupal_jsonapi/${resourcePath}/data.json`), data);
+      write(`${__dirname}/drupal_jsonapi/${resourcePath}/data.json`, data);
 
     const getData = async (url, data = []) => {
       let response;

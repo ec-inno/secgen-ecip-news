@@ -13,15 +13,13 @@ pipeline:
     image: node:dubnium
     secrets:
       [
-        site_base_url,
-        gatsby_site_base_url,
+        basic_auth_password,
+        basic_auth_username,
+        gatsby_drupal_base_url,
+        gatsby_drupal_site_folder,
         gatsby_initiatives_api,
-        site_folder,
-        gatsby_site_folder,
         netlify_auth_token,
         netlify_site_id,
-        basic_auth_username,
-        basic_auth_password,
       ]
     commands:
       - yarn deploy

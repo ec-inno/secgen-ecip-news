@@ -10,8 +10,8 @@ const getSitemap = ({ data, locale }) => {
   let listGroupPrepare = {};
 
   // Menu information about `fetched_alias`, aliased as `href` below, contains site folder we don't need.
-  const drupalSiteFolder = process.env.GATSBY_SITE_FOLDER
-    ? `/${process.env.GATSBY_SITE_FOLDER}/`
+  const drupalSiteFolder = process.env.GATSBY_DRUPAL_SITE_FOLDER
+    ? `/${process.env.GATSBY_DRUPAL_SITE_FOLDER}/`
     : '';
 
   const menu = data.allMenu.edges.length

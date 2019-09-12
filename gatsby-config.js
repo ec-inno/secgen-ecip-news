@@ -6,8 +6,8 @@ const langs = require('./languages');
 // Convert array of objects to an array of language codes.
 const languages = langs.languages.map(language => language.lang);
 
-const baseUrl = process.env.SITE_BASE_URL
-  ? process.env.SITE_BASE_URL
+const baseUrl = process.env.GATSBY_DRUPAL_BASE_URL
+  ? process.env.GATSBY_DRUPAL_BASE_URL
   : 'http://localhost:8080/web';
 
 module.exports = {
