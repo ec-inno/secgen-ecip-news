@@ -159,7 +159,9 @@ const Area = () => {
             </div>
           )}
           {isLoading && <Spinner />}
-          <Pagination {...paginationConfig} />
+          {initiatives.recordsFound > 10 && (
+            <Pagination {...paginationConfig} />
+          )}
         </section>
       </div>
     </div>
