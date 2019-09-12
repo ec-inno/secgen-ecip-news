@@ -14,7 +14,7 @@ You will need a running Drupal 8 website with a JSONAPI endpoint before being ab
 
 Given you have a running Drupal 8 API, set the following environment variables:
 
-- `GATSBY_DRUPAL_BASE_URL`: defaults to `http://localhost:8080/web` if not provided
+- `GATSBY_DRUPAL_BASE_URL`: defaults to `http://localhost:8080/web`
 - `DRAFT_PREVIEW`: flag whether client is to fetch unpublished content.
 
 If `DRAFT_PREVIEW` is to be truthy, please provide also:
@@ -51,6 +51,28 @@ Having the project running, you will be able to reach the following:
 
 - Test: `yarn build:test` (draft content)
 - Prod: `yarn build:prod` (published content)
+
+## Working offline
+
+If you do not have a local Drupal installation to provide backend API, but you rather fetch information from a remote server, you might want to save API data locally:
+
+```sh
+yarn eci-cli api download
+```
+
+When you can serve the mirror through:
+
+```sh
+yarn eci-cli api serve
+```
+
+This way data from `GATSBY_DRUPAL_BASE_URL` is available through `http://localhost:3000` and now you can start or build the project without depending on Drupal:
+
+```sh
+GATSBY_DRUPAL_BASE_URL=http://localhost:3000 yarn start
+```
+
+Please make sure the value in this case matches the value of `DRUPAL_BASE_URL_OFFLINE`.
 
 ## Automation systems
 
