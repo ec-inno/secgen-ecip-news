@@ -5,18 +5,17 @@ module.exports = {
       print: { info, error },
     } = toolbox;
 
-    const { DRUPAL_BASE_URL_OFFLINE: localhost } = process.env;
+    const { GATSBY_DRUPAL_API_OFFLINE: localhost } = process.env;
     const [protocol, hostname, port] = localhost.split(':');
-    // Load either http or https.
     const http = require('http');
 
     if (!localhost) {
-      return error('Cannot work without value for DRUPAL_BASE_URL_OFFLINE.');
+      return error('Cannot work without value for GATSBY_DRUPAL_API_OFFLINE.');
     }
 
     if (!hostname.includes('localhost')) {
       return error(
-        'Required pattern for DRUPAL_BASE_URL_OFFLINE: http://localhost:3000'
+        'Required pattern for GATSBY_DRUPAL_API_OFFLINE: http://localhost:3000'
       );
     }
 

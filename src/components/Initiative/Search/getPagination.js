@@ -2,8 +2,8 @@ const getPagination = ({ t, initiatives, pagination, setPagination }) => {
   const items = [];
   const itemsPerPage = 10;
   const [start, offset] = pagination.split('/');
-  const itemsCount = initiatives.all
-    ? Math.ceil(initiatives.all / itemsPerPage)
+  const itemsCount = initiatives.recordsFound
+    ? Math.ceil(initiatives.recordsFound / itemsPerPage)
     : 0;
 
   // If not on first page.

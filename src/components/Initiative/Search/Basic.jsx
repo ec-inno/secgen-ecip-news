@@ -33,12 +33,20 @@ const Basic = () => {
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
   useEffect(() => {
+    let request = null;
     setIsLoading(true);
     const lang = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
     const endpoint = `${api}/register/search/${section}/${lang}/0/${itemsPerPage}`;
 
-    axios
-      .post(endpoint, filters)
+    // For the service empty filters is not same as no filters.
+    // We don't send payload if not needed.
+    if (Object.keys(filters).length !== 0) {
+      request = axios.post(endpoint, filters);
+    } else {
+      request = axios.get(endpoint);
+    }
+
+    request
       .then(response => {
         setInitiatives(response.data);
         setIsLoading(false);

@@ -59,7 +59,7 @@ const Area = () => {
         <section className="ecl-col-12 ecl-col-lg-9">
           <h2 className="ecl-u-type-heading-2 ecl-u-d-none ecl-u-d-lg-block ecl-u-mv-none">
             {t('Search results')}{' '}
-            {initiatives.all ? `(${initiatives.all})` : ''}
+            {initiatives.recordsFound ? `(${initiatives.recordsFound})` : ''}
           </h2>
 
           {initiatives.entries && initiatives.entries.length !== 0 && (

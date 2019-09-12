@@ -72,7 +72,7 @@ This way data from `GATSBY_DRUPAL_API` is available through `http://localhost:30
 GATSBY_DRUPAL_API=http://localhost:3000 yarn start
 ```
 
-Please make sure the value in this case matches the value of `DRUPAL_BASE_URL_OFFLINE`.
+Please make sure the value in this case matches the value of `GATSBY_DRUPAL_API_OFFLINE`.
 
 ## Automation systems
 

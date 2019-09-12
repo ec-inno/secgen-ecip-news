@@ -12,7 +12,7 @@ module.exports = {
 
     const {
       GATSBY_DRUPAL_API: baseURL,
-      DRUPAL_BASE_URL_OFFLINE: localhost,
+      GATSBY_DRUPAL_API_OFFLINE: localhost,
     } = process.env;
 
     if (!baseURL) {
