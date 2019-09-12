@@ -15,7 +15,7 @@ pipeline:
       [
         basic_auth_password,
         basic_auth_username,
-        gatsby_drupal_base_url,
+        gatsby_drupal_api,
         gatsby_drupal_site_folder,
         gatsby_initiatives_api,
         netlify_auth_token,
