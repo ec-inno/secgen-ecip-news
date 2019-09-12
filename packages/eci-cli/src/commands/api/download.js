@@ -42,23 +42,14 @@ module.exports = {
       });
     };
 
-    // Used to create data.json files in a given resource path mimicking api resources.
-    const saveDataLocally = (resourcePath, data) => {
-      // Copy original data.
-      const updated = JSON.parse(JSON.stringify(data));
-      // Convert remote links to local one.
-      updateLinksToLocal(updated);
-      // Persist results.
-      write(path(`drupal_jsonapi/${resourcePath}/data.json`), updated);
-    };
+    const saveData = (resourcePath, data) =>
+      write(path(`drupal_jsonapi/${resourcePath}/data.json`), data);
 
-    // Inline utility to get links data.
-    const getLinkData = async (url, data = []) => {
-      let linkData;
-      const resourcePath = url.replace(baseURL, localhost);
+    const getData = async (url, data = []) => {
+      let response;
 
       try {
-        linkData = await client.get(url);
+        response = await client.get(url);
       } catch (error) {
         if (
           error.response &&
@@ -74,27 +65,25 @@ module.exports = {
         }
       }
 
-      data = data.concat(linkData.data.data);
+      data = data.concat(response.data.data);
 
-      saveDataLocally(resourcePath, data);
-
-      if (linkData.data.links.next) {
-        data = await getLinkData(linkData.data.links.next, data);
+      if (response.data.links.next) {
+        data = await getData(response.data.links.next, data);
       }
 
-      return data;
+      return { data, ...response.data };
     };
 
-    info('Making a local copy of the JSONAPI ...');
+    info('Downloading JSON API data locally  ...');
 
     try {
       languages.map(async language => {
         const resource = `${language}/api`;
         const response = await client.get(`/${resource}`);
-
-        saveDataLocally(resource, response.data);
-
         const { links } = response.data;
+
+        // The initial list of entityTypes.
+        saveData(resource, response.data);
 
         if (links) {
           // Correction for Drupal's JSON API issue dropping the language.
@@ -110,7 +99,14 @@ module.exports = {
               languageEndpoint
             );
 
-            getLinkData(url);
+            const data = await getData(url);
+
+            // Remove the base URL to create a local mirror of the resource.
+            const resourcePath = url.replace(baseURL, '');
+            // Convert the other links inside the data for local use too.
+            updateLinksToLocal(data);
+            // Persist it.
+            saveData(resourcePath, data);
           });
         }
       });
