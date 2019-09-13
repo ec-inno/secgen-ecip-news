@@ -1,16 +1,19 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Category from './filters/Category';
+import ArrowDD from '../../ArrowDD';
+import Select from '../../Select';
 import TextInput from '../../TextInput';
+import Button from '../../Button';
 
-import I18nContext from '../../../context/I18n';
-
-import { languages } from '../../../../languages';
+import getCategories from '../../../utils/getCategoriesTranslated';
+import getLanguages from '../../../utils/getLanguagesTranslated';
 
 const FormAdvanced = ({ setFilters }) => {
   const { t } = useTranslation();
-  const { locale } = useContext(I18nContext);
+
+  const categories = getCategories(t);
+  const languages = getLanguages(t);
 
   const [textFree, setTextFree] = useState('');
   const [textExact, setTextExact] = useState('');
@@ -20,7 +23,7 @@ const FormAdvanced = ({ setFilters }) => {
   const [dateTo, setDateTo] = useState('');
   const [category, setCategory] = useState('');
   const [status, setStatus] = useState('');
-  const [initiativeLanguage, setInitiativeLanguage] = useState(locale);
+  const [initiativeLanguage, setInitiativeLanguage] = useState('');
 
   return (
     <form
@@ -119,75 +122,43 @@ const FormAdvanced = ({ setFilters }) => {
         helperText={t('dd/mm/yyyy')}
       />
 
-      <Category
-        className="ecl-u-mb-s"
+      <Select
+        id="filter-category"
+        label={t('Filter by category')}
+        groupClassName="ecl-u-mb-s"
         value={category}
-        onChangeHandler={setCategory}
+        options={categories}
+        onChange={e => setCategory(e.target.value)}
+        arrow={<ArrowDD />}
       />
 
-      <div className="ecl-form-group ecl-form-group--select ecl-u-mb-s">
-        <label className="ecl-form-label" htmlFor="filter-status">
-          {t('Status')}
-        </label>
-        <div className="ecl-select__container">
-          <select
-            id="filter-status"
-            className="filter-status"
-            className="ecl-select"
-            value={status}
-            onChange={e => setStatus(e.target.value)}
-          >
-            <option value="any">{''}</option>
-            <option value="ALL">{t('All')}</option>
-            <option value="OPEN">{t('Open')}</option>
-            <option value="SUCCESSFUL">{t('Successful')}</option>
-            <option value="ARCHIVED">{t('Archived')}</option>
-          </select>
-          <div
-            className="ecl-select__icon ecl-u-type-heading-1"
-            style={{ color: '#fff' }}
-          >
-            ▾
-          </div>
-        </div>
-      </div>
-      <div className="ecl-form-group ecl-form-group--select ecl-u-mb-s">
-        <label className="ecl-form-label" htmlFor="filter-language">
-          {t('Language')}
-        </label>
-        <div className="ecl-select__container">
-          <select
-            id="filter-language"
-            className="filter-language"
-            className="ecl-select"
-            value={initiativeLanguage}
-            onChange={e => setInitiativeLanguage(e.target.value)}
-          >
-            {languages.map((l, i) => (
-              <option value={l.lang} key={i}>
-                {l.label}
-              </option>
-            ))}
-          </select>
-          <div
-            className="ecl-select__icon ecl-u-type-heading-1"
-            style={{ color: '#fff' }}
-          >
-            ▾
-          </div>
-        </div>
-      </div>
+      <Select
+        id="filter-status"
+        label={t('Status')}
+        groupClassName="ecl-u-mb-s"
+        value={status}
+        options={[
+          { value: 'any', label: '' },
+          { value: 'ALL', label: t('All') },
+          { value: 'OPEN', label: t('Open') },
+          { value: 'SUCCESSFUL', label: t('Successful') },
+          { value: 'ARCHIVED', label: t('Archived') },
+        ]}
+        onChange={e => setStatus(e.target.value)}
+        arrow={<ArrowDD />}
+      />
 
-      <button
-        type="submit"
-        className="ecl-u-mt-l ecl-button ecl-button--primary"
-      >
-        <span className="ecl-button__container">
-          <span className="ecl-button__label" data-ecl-label="true">
-            {t('Apply filters')}
-          </span>
-        </span>
-      </button>
+      <Select
+        id="filter-language"
+        label={t('Language')}
+        groupClassName="ecl-u-mb-s"
+        value={initiativeLanguage}
+        options={languages}
+        onChange={e => setInitiativeLanguage(e.target.value)}
+        arrow={<ArrowDD />}
+      />
+
+      <Button label={t('Apply filters')} />
     </form>
   );
 };

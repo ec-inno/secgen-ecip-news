@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Category from './filters/Category';
-import TextField from './filters/TextField';
+import ArrowDD from '../../ArrowDD';
+import Select from '../../Select';
+import TextInput from '../../TextInput';
+import Button from '../../Button';
+
+import getCategories from '../../../utils/getCategoriesTranslated';
 
 const FormBasic = ({ setFilters }) => {
   const { t } = useTranslation();
-
   const [category, setCategory] = useState('');
   const [keyword, setKeyword] = useState('');
+
+  const categories = getCategories(t);
 
   return (
     <form
@@ -29,25 +34,27 @@ const FormBasic = ({ setFilters }) => {
     >
       <div className="ecl-row">
         <div className="ecl-col-sm-12 ecl-col-md-5">
-          <Category value={category} onChangeHandler={setCategory} />
+          <Select
+            id="filter-category"
+            label={t('Filter by category')}
+            value={category}
+            options={categories}
+            onChange={e => setCategory(e.target.value)}
+            arrow={<ArrowDD />}
+          />
         </div>
 
         <div className="ecl-col-sm-12 ecl-col-md-5">
-          <TextField
+          <TextInput
+            id="filter-text-keywords"
             label={t('Filter by keyword')}
             value={keyword}
-            onChangeHandler={setKeyword}
+            onChange={e => setKeyword(e.target.value)}
           />
         </div>
 
         <div className="ecl-col-sm-12 ecl-col-md-2 ecl-u-d-flex ecl-u-align-items-end">
-          <button type="submit" className="ecl-button ecl-button--primary">
-            <span className="ecl-button__container">
-              <span className="ecl-button__label" data-ecl-label="true">
-                {t('Apply filters')}
-              </span>
-            </span>
-          </button>
+          <Button label={t('Apply filters')} />
         </div>
       </div>
     </form>
