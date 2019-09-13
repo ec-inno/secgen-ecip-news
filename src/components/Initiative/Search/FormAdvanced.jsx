@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Category from './filters/Category';
-import Keywords from './filters/Keywords';
+import TextInput from '../../TextInput';
 
 import I18nContext from '../../../context/I18n';
 
@@ -69,79 +69,55 @@ const FormAdvanced = ({ setFilters }) => {
         setFilters({ filters });
       }}
     >
-      <Keywords
+      <TextInput
+        groupClassName="ecl-u-mb-s"
+        id="filter-text-free"
         label={t('All these words')}
-        className="ecl-u-mb-s"
         value={textFree}
-        onChangeHandler={setTextFree}
+        onChange={e => setTextFree(e.target.value)}
       />
 
-      <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
-        <label className="ecl-form-label" htmlFor="filter-text-exact">
-          {t('Exact wording or phrase')}
-        </label>
-        <input
-          type="text"
-          id="filter-text-exact"
-          className="filter-text-exact"
-          className="ecl-text-input"
-          value={textExact}
-          onChange={e => setTextExact(e.target.value)}
-        />
-      </div>
-      <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
-        <label className="ecl-form-label" htmlFor="filter-text-conditional">
-          {t('One or more of')}
-        </label>
-        <input
-          type="text"
-          id="filter-text-conditional"
-          className="filter-text-conditional"
-          className="ecl-text-input"
-          value={textConditional}
-          onChange={e => setTextConditional(e.target.value)}
-        />
-      </div>
-      <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
-        <label className="ecl-form-label" htmlFor="filter-organisers">
-          {t('Organiser')}
-        </label>
-        <input
-          type="text"
-          id="filter-organisers"
-          className="filter-organisers"
-          className="ecl-text-input"
-          value={organisers}
-          onChange={e => setOrganisers(e.target.value)}
-        />
-      </div>
+      <TextInput
+        groupClassName="ecl-u-mb-s"
+        id="filter-text-exact"
+        label={t('Exact wording or phrase')}
+        value={textExact}
+        onChange={e => setTextExact(e.target.value)}
+      />
 
-      <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
-        <label className="ecl-form-label" htmlFor="filter-date-from">
-          {t('From (dd/mm/yyyy)')}
-        </label>
-        <input
-          type="text"
-          id="filter-date-from"
-          className="filter-date-from"
-          className="ecl-text-input"
-          value={dateFrom}
-          onChange={e => setDateFrom(e.target.value)}
-        />
-      </div>
-      <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
-        <label className="ecl-form-label" htmlFor="filter-date-to">
-          {t('To (dd/mm/yyyy)')}
-        </label>
-        <input
-          type="text"
-          id="filter-date-to"
-          className="filter-date-to"
-          className="ecl-text-input"
-          value={dateTo}
-          onChange={e => setDateTo(e.target.value)}
-        />
-      </div>
+      <TextInput
+        groupClassName="ecl-u-mb-s"
+        id="filter-text-conditional"
+        label={t('One or more of')}
+        value={textConditional}
+        onChange={e => setTextConditional(e.target.value)}
+      />
+
+      <TextInput
+        groupClassName="ecl-u-mb-s"
+        id="filter-organisers"
+        label={t('Organiser')}
+        value={organisers}
+        onChange={e => setOrganisers(e.target.value)}
+      />
+
+      <TextInput
+        groupClassName="ecl-u-mb-s"
+        id="filter-date-from"
+        label={t('From')}
+        value={dateFrom}
+        onChange={e => setDateFrom(e.target.value)}
+        helperText={t('dd/mm/yyyy')}
+      />
+
+      <TextInput
+        groupClassName="ecl-u-mb-s"
+        id="filter-date-to"
+        label={t('To')}
+        value={dateTo}
+        onChange={e => setDateTo(e.target.value)}
+        helperText={t('dd/mm/yyyy')}
+      />
 
       <Category
         className="ecl-u-mb-s"

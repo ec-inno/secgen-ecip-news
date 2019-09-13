@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Category from './filters/Category';
-import Keywords from './filters/Keywords';
+import TextField from './filters/TextField';
 
 const FormBasic = ({ setFilters }) => {
   const { t } = useTranslation();
@@ -33,7 +33,7 @@ const FormBasic = ({ setFilters }) => {
         </div>
 
         <div className="ecl-col-sm-12 ecl-col-md-5">
-          <Keywords
+          <TextField
             label={t('Filter by keyword')}
             value={keyword}
             onChangeHandler={setKeyword}

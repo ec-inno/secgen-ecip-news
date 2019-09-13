@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Keywords = ({ label, value, onChangeHandler, className }) => (
+const TextFree = ({ label, value, onChangeHandler, className }) => (
   <div
     className={classnames(
       'ecl-form-group ecl-form-group--text-input',
@@ -23,11 +23,11 @@ const Keywords = ({ label, value, onChangeHandler, className }) => (
   </div>
 );
 
-Keywords.propTypes = {
+TextFree.propTypes = {
   label: PropTypes.string,
   value: PropTypes.string,
   onChangeHandler: PropTypes.func,
   className: PropTypes.string,
 };
 
-export default Keywords;
+export default TextFree;
