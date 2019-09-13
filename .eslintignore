@@ -5,7 +5,6 @@ public
 # Source plugins are essentially forks of community plugins.
 # They contain loads of violations unnecessary to fix.
 packages/gatsby-source-drupal-jsonapi-eci
-packages/gatsby-source-eci-remote-initiatives
 
 # Utilities for local development
 /scripts

@@ -20,17 +20,22 @@ const Menu = () => {
 
   const data = useStaticQuery(graphql`
     query getMainMenu {
-      allMenu(filter: { menu_name: { eq: "main" }, enabled: { eq: true } }) {
+      allMenu(
+        filter: {
+          menu_name: { eq: "main" }
+          enabled: { eq: true }
+          menu_has_parent: { eq: false }
+        }
+      ) {
         edges {
           node {
+            menu_name
             id
             title
             external
             href: fetched_alias
             enabled
-            parent {
-              id
-            }
+            menu_has_parent
           }
         }
       }
@@ -41,8 +46,6 @@ const Menu = () => {
     ? data.allMenu.edges
         // Take essential information.
         .map(({ node }) => node)
-        // Keep only first-level menu items.
-        .filter(link => !link.parent)
         // Keep items in the given language because static query does not support variables at the moment.
         .filter(link => link.id.includes(`/${locale}/`))
         .map(link => ({
