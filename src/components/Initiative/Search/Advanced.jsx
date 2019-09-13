@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { cloneDeep } from 'lodash';
@@ -133,9 +133,8 @@ const Area = () => {
           initiatives.entries &&
           Array.isArray(initiatives.entries) ? (
             initiatives.entries.map((item, k) => (
-              <>
+              <Fragment key={`result-${k}`}>
                 <Result
-                  key={`result-${k}`}
                   logo={item.logo}
                   title={item.title}
                   status={item.status}
@@ -145,7 +144,7 @@ const Area = () => {
                 {k !== initiatives.entries.length - 1 && (
                   <hr key={`hr-${k}`} className="ecl-u-mv-none" />
                 )}
-              </>
+              </Fragment>
             ))
           ) : (
             <div className="ecl-row">

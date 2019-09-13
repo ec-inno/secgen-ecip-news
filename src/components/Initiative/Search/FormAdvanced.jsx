@@ -5,6 +5,8 @@ import I18nContext from '../../../context/I18n';
 
 import { languages } from '../../../../languages';
 
+import Category from './filters/Category/index';
+
 const FormAdvanced = ({ setFilters }) => {
   const { t } = useTranslation();
   const { locale } = useContext(I18nContext);
@@ -146,50 +148,12 @@ const FormAdvanced = ({ setFilters }) => {
         />
       </div>
 
-      <div className="ecl-form-group ecl-form-group--select ecl-u-mb-s">
-        <label className="ecl-form-label" htmlFor="filter-category">
-          {t('Filter by category')}
-        </label>
-        <div className="ecl-select__container">
-          <select
-            id="filter-category"
-            className="filter-category"
-            className="ecl-select"
-            value={category}
-            onChange={e => setCategory(e.target.value)}
-          >
-            <option value="any">{t('any')}</option>
-            <option value="AGRI">{t('AGRI')}</option>
-            <option value="DEVCO">{t('DEVCO')}</option>
-            <option value="EURO">{t('EURO')}</option>
-            <option value="SANTE">{t('SANTE')}</option>
-            <option value="CULT">{t('CULT')}</option>
-            <option value="DECO">{t('DEVCO')}</option>
-            <option value="EDU">{t('EDU')}</option>
-            <option value="EMPL">{t('EMPL')}</option>
-            <option value="ENER">{t('ENER')}</option>
-            <option value="ENV">{t('ENV')}</option>
-            <option value="TRADE">{t('TRADE')}</option>
-            <option value="JUST">{t('JUST')}</option>
-            <option value="MARE">{t('MARE')}</option>
-            <option value="MIGR">{t('MIGR')}</option>
-            <option value="REGIO">{t('REGIO')}</option>
-            <option value="RSH">{t('RSH')}</option>
-            <option value="SEC">{t('SEC')}</option>
-            <option value="TRA">{t('TRA')}</option>
-            <option value="REGFRA">{t('REGFRA')}</option>
-            <option value="REGECI">{t('REGECI')}</option>
-            <option value="COLLECI">{t('COLLECI')}</option>
-            <option value="EXAECI">{t('EXAECI')}</option>
-          </select>
-          <div
-            className="ecl-select__icon ecl-u-type-heading-1"
-            style={{ color: '#fff' }}
-          >
-            ▾
-          </div>
-        </div>
-      </div>
+      <Category
+        className="ecl-u-mb-s"
+        value={category}
+        onChangeHandler={setCategory}
+      />
+
       <div className="ecl-form-group ecl-form-group--select ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-status">
           {t('Status')}
@@ -228,8 +192,10 @@ const FormAdvanced = ({ setFilters }) => {
             value={initiativeLanguage}
             onChange={e => setInitiativeLanguage(e.target.value)}
           >
-            {languages.map(l => (
-              <option value={l.lang}>{l.label}</option>
+            {languages.map((l, i) => (
+              <option value={l.lang} key={i}>
+                {l.label}
+              </option>
             ))}
           </select>
           <div
