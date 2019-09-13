@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Category from './filters/Category';
+import Keywords from './filters/Keywords';
+
 import I18nContext from '../../../context/I18n';
 
 import { languages } from '../../../../languages';
-
-import Category from './filters/Category/index';
 
 const FormAdvanced = ({ setFilters }) => {
   const { t } = useTranslation();
@@ -68,19 +69,13 @@ const FormAdvanced = ({ setFilters }) => {
         setFilters({ filters });
       }}
     >
-      <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
-        <label className="ecl-form-label" htmlFor="filter-text-free">
-          {t('All these words')}
-        </label>
-        <input
-          type="text"
-          id="filter-text-free"
-          className="filter-text-free"
-          className="ecl-text-input"
-          value={textFree}
-          onChange={e => setTextFree(e.target.value)}
-        />
-      </div>
+      <Keywords
+        label={t('All these words')}
+        className="ecl-u-mb-s"
+        value={textFree}
+        onChangeHandler={setTextFree}
+      />
+
       <div className="ecl-form-group ecl-form-group--text-input ecl-u-mb-s">
         <label className="ecl-form-label" htmlFor="filter-text-exact">
           {t('Exact wording or phrase')}

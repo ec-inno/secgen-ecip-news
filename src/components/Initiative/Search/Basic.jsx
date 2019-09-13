@@ -40,7 +40,7 @@ const Basic = () => {
 
     // For the service empty filters is not same as no filters.
     // We don't send payload if not needed.
-    if (Object.keys(filters).length !== 0) {
+    if (filters.filters && Object.keys(filters.filters).length !== 0) {
       request = axios.post(endpoint, filters);
     } else {
       request = axios.get(endpoint);
