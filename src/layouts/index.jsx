@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import svg4everybody from 'svg4everybody';
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
-import '../components/assets/custom.css';
 
 // HOC providing i18n, locale and location to children.
 import withI18next from '../i18n/withI18next';

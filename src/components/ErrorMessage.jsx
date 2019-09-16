@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-import Message from '../../Message';
+import Message from './Message';
 
 const ErrorMessage = ({ title, error }) => {
   const { t } = useTranslation();
@@ -34,6 +35,13 @@ const ErrorMessage = ({ title, error }) => {
       }}
     />
   );
+};
+
+ErrorMessage.propTypes = {
+  title: PropTypes.string,
+  error: PropTypes.shape({
+    message: PropTypes.string,
+  }),
 };
 
 export default ErrorMessage;

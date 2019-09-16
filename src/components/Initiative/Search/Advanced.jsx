@@ -6,10 +6,9 @@ import useApi from './useApi';
 import I18nContext from '../../../context/I18n';
 
 import getPagination from './getPagination';
-
-import ErrorMessage from './ErrorMessage';
 import Result from './Result';
 
+import ErrorMessage from '../../ErrorMessage';
 import Icon from '../../Icon';
 import Pagination from '../../Pagination';
 import SearchForm from './FormAdvanced';
@@ -27,9 +26,6 @@ const Area = () => {
     pagination,
     language: locale,
   });
-
-  const options = { t, initiatives, pagination, setPagination };
-  const paginationConfig = getPagination(options);
 
   return (
     <div className="ecl-container">
@@ -132,7 +128,14 @@ const Area = () => {
           )}
           {isLoading && <Spinner />}
           {initiatives.recordsFound > 10 && (
-            <Pagination {...paginationConfig} />
+            <Pagination
+              {...getPagination({
+                t,
+                initiatives,
+                pagination,
+                setPagination,
+              })}
+            />
           )}
         </section>
       </div>

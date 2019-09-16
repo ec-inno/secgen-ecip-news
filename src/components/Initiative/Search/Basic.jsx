@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 import I18nContext from '../../../context/I18n';
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from '../../ErrorMessage';
 
 import Card from '../Card';
 import New from '../New';
