@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import ArrowDD from '../../ArrowDD';
-import Select from '../../Select';
-import TextInput from '../../TextInput';
-import Button from '../../Button';
+import ArrowDD from '../../../ArrowDD';
+import Select from '../../../Select';
+import TextInput from '../../../TextInput';
+import Button from '../../../Button';
 
-import getCategories from '../../../utils/getCategoriesTranslated';
+import getCategories from '../../utils/getCategories';
 
-const FormBasic = ({ setFilters }) => {
+const InitiativesSearchBasicForm = ({ setFilters }) => {
   const { t } = useTranslation();
   const [category, setCategory] = useState('');
   const [keyword, setKeyword] = useState('');
@@ -61,4 +61,4 @@ const FormBasic = ({ setFilters }) => {
   );
 };
 
-export default FormBasic;
+export default InitiativesSearchBasicForm;

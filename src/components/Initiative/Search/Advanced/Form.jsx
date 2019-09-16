@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import ArrowDD from '../../ArrowDD';
-import Select from '../../Select';
-import TextInput from '../../TextInput';
-import Button from '../../Button';
+import ArrowDD from '../../../ArrowDD';
+import Select from '../../../Select';
+import TextInput from '../../../TextInput';
+import Button from '../../../Button';
 
-import getCategories from '../../../utils/getCategoriesTranslated';
-import getLanguages from '../../../utils/getLanguagesTranslated';
+import getCategories from '../../utils/getCategories';
+import getLanguages from '../../utils/getLanguages';
 
-const FormAdvanced = ({ setFilters }) => {
+const InitiativesSearchAdvancedForm = ({ setFilters }) => {
   const { t } = useTranslation();
 
   const [textFree, setTextFree] = useState('');
@@ -173,17 +173,15 @@ const FormAdvanced = ({ setFilters }) => {
       />
 
       <Button label={t('Apply filters')} />
-      <>
-        <br />
-        <Button
-          onClick={clearAll}
-          className="ecl-u-mt-m ecl-u-mt-lg-l"
-          variant="secondary"
-          label={t('Clear all')}
-        />
-      </>
+      <br />
+      <Button
+        onClick={clearAll}
+        className="ecl-u-mt-m ecl-u-mt-lg-l"
+        variant="secondary"
+        label={t('Clear all')}
+      />
     </form>
   );
 };
 
-export default FormAdvanced;
+export default InitiativesSearchAdvancedForm;

@@ -5,16 +5,16 @@ import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
-import I18nContext from '../../../context/I18n';
-import ErrorMessage from '../../ErrorMessage';
+import I18nContext from '../../../../context/I18n';
+import ErrorMessage from '../../../ErrorMessage';
 
-import Card from '../Card';
-import New from '../New';
-import Pagination from '../Pagination';
-import SearchForm from './FormBasic';
-import Spinner from '../../Spinner';
+import Card from '../../Card';
+import New from '../../New';
+import Pagination from '../../Pagination';
+import SearchForm from './Form';
+import Spinner from '../../../Spinner';
 
-const Basic = () => {
+const SearchBasic = () => {
   const { t } = useTranslation();
   const { locale } = useContext(I18nContext);
   const { GATSBY_INITIATIVES_API: api } = process.env;
@@ -227,4 +227,4 @@ const Basic = () => {
   );
 };
 
-export default Basic;
+export default SearchBasic;

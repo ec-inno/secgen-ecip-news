@@ -2,19 +2,18 @@ import React, { Fragment, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { cloneDeep } from 'lodash';
 
-import useApi from './useApi';
-import I18nContext from '../../../context/I18n';
+import useApi from '../useApi';
+import I18nContext from '../../../../context/I18n';
+import getPagination from '../../utils/getPagination';
 
-import getPagination from './getPagination';
-import Result from './Result';
+import SearchForm from './Form';
+import Result from '../Result';
+import ErrorMessage from '../../../ErrorMessage';
+import Icon from '../../../Icon';
+import Pagination from '../../../Pagination';
+import Spinner from '../../../Spinner';
 
-import ErrorMessage from '../../ErrorMessage';
-import Icon from '../../Icon';
-import Pagination from '../../Pagination';
-import SearchForm from './FormAdvanced';
-import Spinner from '../../Spinner';
-
-const Area = () => {
+const SearchAdvanced = () => {
   const { t } = useTranslation();
   const { locale } = useContext(I18nContext);
 
@@ -143,4 +142,4 @@ const Area = () => {
   );
 };
 
-export default Area;
+export default SearchAdvanced;
