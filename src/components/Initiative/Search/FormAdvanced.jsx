@@ -12,9 +12,6 @@ import getLanguages from '../../../utils/getLanguagesTranslated';
 const FormAdvanced = ({ setFilters }) => {
   const { t } = useTranslation();
 
-  const categories = getCategories(t);
-  const languages = getLanguages(t);
-
   const [textFree, setTextFree] = useState('');
   const [textExact, setTextExact] = useState('');
   const [textConditional, setTextConditional] = useState('');
@@ -25,51 +22,68 @@ const FormAdvanced = ({ setFilters }) => {
   const [status, setStatus] = useState('');
   const [initiativeLanguage, setInitiativeLanguage] = useState('');
 
+  const categories = getCategories(t);
+  const languages = getLanguages(t);
+
+  const clearAll = e => {
+    e.preventDefault();
+    setTextFree('');
+    setTextExact('');
+    setTextConditional('');
+    setOrganisers('');
+    setDateFrom('');
+    setDateTo('');
+    setCategory('');
+    setStatus('');
+    setInitiativeLanguage('');
+    setFilters({});
+  };
+
   return (
     <form
       onSubmit={e => {
         // Place for validations.
-        const filters = {};
+        const filtersLocal = {};
         e.preventDefault();
 
         if (textFree !== '') {
-          filters.TEXT_FREE = [textFree];
+          filtersLocal.TEXT_FREE = [textFree];
         }
 
         if (textExact !== '') {
-          filters.TEXT_EXACT = [textExact];
+          filtersLocal.TEXT_EXACT = [textExact];
         }
 
         if (textConditional !== '') {
           const parts = textConditional.split(' ');
-          filters.TEXT_CONDITIONAL = parts;
+          filtersLocal.TEXT_CONDITIONAL = parts;
         }
 
         if (organisers !== '') {
-          filters.ORGANISERS = [organisers];
+          filtersLocal.ORGANISERS = [organisers];
         }
 
         if (dateFrom !== '') {
-          filters.DATE_FROM = [dateFrom];
+          filtersLocal.DATE_FROM = [dateFrom];
         }
 
         if (dateTo !== '') {
-          filters.DATE_TO = [dateTo];
+          filtersLocal.DATE_TO = [dateTo];
         }
 
         if (category !== '' && category !== 'any') {
-          filters.CATEGORY = [category];
+          filtersLocal.CATEGORY = [category];
         }
 
         if (status !== '' && status !== 'any') {
-          filters.STATUS = [status];
+          filtersLocal.STATUS = [status];
         }
 
         if (initiativeLanguage !== '') {
-          filters.LANGUAGE = [initiativeLanguage];
+          filtersLocal.LANGUAGE = [initiativeLanguage];
         }
 
-        setFilters({ filters });
+        setFilters({ filters: filtersLocal });
       }}
     >
       <TextInput
@@ -159,6 +173,15 @@ const FormAdvanced = ({ setFilters }) => {
       />
 
       <Button label={t('Apply filters')} />
+      <>
+        <br />
+        <Button
+          onClick={clearAll}
+          className="ecl-u-mt-m ecl-u-mt-lg-l"
+          variant="secondary"
+          label={t('Clear all')}
+        />
+      </>
     </form>
   );
 };
