@@ -1,15 +1,16 @@
-import React, { Fragment, useState, useEffect, useContext } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import { cloneDeep } from 'lodash';
 
-import config from '../config';
+import useApi from './useApi';
 import I18nContext from '../../../context/I18n';
+
 import getPagination from './getPagination';
 
+import ErrorMessage from './ErrorMessage';
 import Result from './Result';
+
 import Icon from '../../Icon';
-import Message from '../../Message';
 import Pagination from '../../Pagination';
 import SearchForm from './FormAdvanced';
 import Spinner from '../../Spinner';
@@ -17,32 +18,15 @@ import Spinner from '../../Spinner';
 const Area = () => {
   const { t } = useTranslation();
   const { locale } = useContext(I18nContext);
-  const { GATSBY_INITIATIVES_API: api } = process.env;
 
-  const [errorMessage, setErrorMessage] = useState('');
-  const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
   const [filters, setFilters] = useState({});
-  const [initiatives, setInitiatives] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [pagination, setPagination] = useState('0/10');
 
-  useEffect(() => {
-    setIsLoading(true);
-    const lang = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
-    const endpoint = `${api}/register/search/ALL/${lang}/${pagination}`;
-
-    axios
-      .post(endpoint, filters)
-      .then(response => {
-        setInitiatives(response.data);
-        setIsLoading(false);
-      })
-      .catch(error => {
-        setErrorMessage(error.message);
-        setErrorMessageVisibility(true);
-        setIsLoading(false);
-      });
-  }, [locale, pagination, filters]);
+  const { initiatives, isLoading, error } = useApi({
+    filters,
+    pagination,
+    language: locale,
+  });
 
   const options = { t, initiatives, pagination, setPagination };
   const paginationConfig = getPagination(options);
@@ -54,7 +38,7 @@ const Area = () => {
           <h3 className="ecl-u-type-heading-3 ecl-u-mt-l ecl-u-mt-lg-none">
             {t('Search options')}
           </h3>
-          <SearchForm filters={filters} setFilters={setFilters} />
+          <SearchForm setFilters={setFilters} />
         </aside>
         <section className="ecl-col-12 ecl-col-lg-9">
           <h2 className="ecl-u-type-heading-2 ecl-u-d-none ecl-u-d-lg-block ecl-u-mv-none">
@@ -114,12 +98,9 @@ const Area = () => {
             </div>
           )}
           {isLoading && <Spinner />}
-          <Message
-            className={errorMessageIsVisible ? '' : 'hidden'}
-            onClose={() => setErrorMessageVisibility(false)}
+          <ErrorMessage
             title={t('An error occurred while fetching initiatives.')}
-            description={errorMessage}
-            {...config.error}
+            error={error}
           />
           {initiatives &&
           initiatives.entries &&

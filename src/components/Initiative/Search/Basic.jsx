@@ -5,11 +5,10 @@ import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
-import config from '../config';
 import I18nContext from '../../../context/I18n';
+import ErrorMessage from './ErrorMessage';
 
 import Card from '../Card';
-import Message from '../../Message';
 import New from '../New';
 import Pagination from '../Pagination';
 import SearchForm from './FormBasic';
@@ -24,8 +23,7 @@ const Basic = () => {
   const itemsPerPageDefault = 8;
   const rowClass = 'ecl-row';
 
-  const [errorMessage, setErrorMessage] = useState('');
-  const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
+  const [error, setError] = useState({});
   const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL
   const [filters, setFilters] = useState({});
   const [initiatives, setInitiatives] = useState([]);
@@ -51,9 +49,8 @@ const Basic = () => {
         setInitiatives(response.data);
         setIsLoading(false);
       })
-      .catch(error => {
-        setErrorMessage(error.message);
-        setErrorMessageVisibility(true);
+      .catch(e => {
+        setError(e);
         setIsLoading(false);
       });
   }, [section, filters, itemsPerPage]);
@@ -161,12 +158,9 @@ const Basic = () => {
         </div>
       )}
       {isLoading && <Spinner />}
-      <Message
-        className={errorMessageIsVisible ? '' : 'hidden'}
-        onClose={() => setErrorMessageVisibility(false)}
+      <ErrorMessage
         title={t('An error occurred while fetching initiatives.')}
-        description={errorMessage}
-        {...config.error}
+        error={error}
       />
       {hasEntries ? (
         chunk(initiatives.entries, itemsPerRow).map((group, k) => {
