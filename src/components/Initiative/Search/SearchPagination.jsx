@@ -1,4 +1,12 @@
-const getPagination = ({ t, initiatives, pagination, setPagination }) => {
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+import Pagination from '../../Pagination';
+
+const SearchPagination = ({ initiatives, query, dispachQuery }) => {
+  const { t } = useTranslation();
+  const { pagination } = query;
+
   const items = [];
   const itemsPerPage = 10;
   const [start, offset] = pagination.split('/');
@@ -23,7 +31,7 @@ const getPagination = ({ t, initiatives, pagination, setPagination }) => {
                 `${Number(start) - itemsPerPage}/${Number(offset) -
                   itemsPerPage}`;
 
-          setPagination(previous);
+          dispachQuery({ type: 'paginate', pagination: previous });
         },
         variant: 'standalone',
         href: '#',
@@ -58,7 +66,7 @@ const getPagination = ({ t, initiatives, pagination, setPagination }) => {
         link: {
           onClick: e => {
             e.preventDefault();
-            setPagination(marker);
+            dispachQuery({ type: 'paginate', pagination: marker });
           },
           variant: 'standalone',
           href: '#',
@@ -82,7 +90,8 @@ const getPagination = ({ t, initiatives, pagination, setPagination }) => {
               : Number(start) + itemsPerPage;
           const to = Number(offset) + itemsPerPage;
           const next = `${from}/${to}`;
-          setPagination(next);
+
+          dispachQuery({ type: 'paginate', pagination: next });
         },
         variant: 'standalone',
         href: '#',
@@ -97,12 +106,7 @@ const getPagination = ({ t, initiatives, pagination, setPagination }) => {
     });
   }
 
-  const config = {
-    label: t('Browse initiatives'),
-    items,
-  };
-
-  return config;
+  return <Pagination label={t('Browse initiatives')} items={items} />;
 };
 
-export default getPagination;
+export default SearchPagination;

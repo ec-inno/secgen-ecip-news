@@ -1,6 +1,5 @@
 const getLanguagesTranslated = t => {
   return [
-    { value: 'any', label: '' },
     { value: 'bg', label: t('Bulgarian') },
     { value: 'es', label: t('Spanish') },
     { value: 'cs', label: t('Czech') },

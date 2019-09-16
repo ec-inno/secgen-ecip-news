@@ -10,8 +10,8 @@ import ErrorMessage from '../../../ErrorMessage';
 
 import Card from '../../Card';
 import New from '../../New';
-import Pagination from '../../Pagination';
 import SearchForm from './Form';
+import SeeMore from '../../../SeeMore';
 import Spinner from '../../../Spinner';
 
 const SearchBasic = () => {
@@ -24,7 +24,7 @@ const SearchBasic = () => {
   const rowClass = 'ecl-row';
 
   const [error, setError] = useState({});
-  const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL
+  const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL. Refused are not to be shown on home page by spec.
   const [filters, setFilters] = useState({});
   const [initiatives, setInitiatives] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -215,7 +215,9 @@ const SearchBasic = () => {
       )}
       {isLoading && <Spinner />}
       {itemsPerPage < initiatives[section.toLowerCase()] && (
-        <Pagination
+        <SeeMore
+          ariaLabel={t('Go to next page')}
+          label={t('See more initiatives')}
           onClick={e => {
             e.preventDefault();
             const newItemsPerPage = itemsPerPage * 2 + 1;

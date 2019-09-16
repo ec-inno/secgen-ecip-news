@@ -1,19 +1,30 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const useApi = ({ filters, pagination, language }) => {
+const useApi = ({ query }) => {
   const { GATSBY_INITIATIVES_API: api } = process.env;
+  const { pagination, status, language: locale, filters } = query;
 
   const [initiatives, setInitiatives] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({});
 
   useEffect(() => {
-    const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
-    const endpoint = `${api}/register/search/ALL/${lang}/${pagination}`;
+    let request = null;
 
-    axios
-      .post(endpoint, filters)
+    setIsLoading(true);
+    const language = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
+    const endpoint = `${api}/register/search/${status}/${language}/${pagination}`;
+
+    // For the service empty filters is not same as no filters.
+    // We don't send payload if not needed.
+    if (filters && Object.keys(filters).length !== 0) {
+      request = axios.post(endpoint, { filters });
+    } else {
+      request = axios.get(endpoint);
+    }
+
+    request
       .then(response => {
         setInitiatives(response.data);
         setIsLoading(false);
@@ -22,7 +33,7 @@ const useApi = ({ filters, pagination, language }) => {
         setError(e);
         setIsLoading(false);
       });
-  }, [filters, pagination, language]);
+  }, [query]);
 
   return { initiatives, isLoading, error };
 };

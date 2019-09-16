@@ -9,7 +9,7 @@ import Button from '../../../Button';
 import getCategories from '../../utils/getCategories';
 import getLanguages from '../../utils/getLanguages';
 
-const InitiativesSearchAdvancedForm = ({ setFilters }) => {
+const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
   const { t } = useTranslation();
 
   const [textFree, setTextFree] = useState('');
@@ -27,63 +27,53 @@ const InitiativesSearchAdvancedForm = ({ setFilters }) => {
 
   const clearAll = e => {
     e.preventDefault();
-    setTextFree('');
-    setTextExact('');
-    setTextConditional('');
-    setOrganisers('');
-    setDateFrom('');
-    setDateTo('');
-    setCategory('');
-    setStatus('');
-    setInitiativeLanguage('');
-    setFilters({});
+    // setTextFree('');
+    // setTextExact('');
+    // setTextConditional('');
+    // setOrganisers('');
+    // setDateFrom('');
+    // setDateTo('');
+    // setCategory('');
+    // setStatus('');
+    // setInitiativeLanguage('');
+    // setFilters({});
   };
 
   return (
     <form
       onSubmit={e => {
         // Place for validations.
-        const filtersLocal = {};
-        e.preventDefault();
-
-        if (textFree !== '') {
-          filtersLocal.TEXT_FREE = [textFree];
-        }
-
-        if (textExact !== '') {
-          filtersLocal.TEXT_EXACT = [textExact];
-        }
-
-        if (textConditional !== '') {
-          const parts = textConditional.split(' ');
-          filtersLocal.TEXT_CONDITIONAL = parts;
-        }
-
-        if (organisers !== '') {
-          filtersLocal.ORGANISERS = [organisers];
-        }
-
-        if (dateFrom !== '') {
-          filtersLocal.DATE_FROM = [dateFrom];
-        }
-
-        if (dateTo !== '') {
-          filtersLocal.DATE_TO = [dateTo];
-        }
-
-        if (category !== '' && category !== 'any') {
-          filtersLocal.CATEGORY = [category];
-        }
-
-        if (status !== '' && status !== 'any') {
-          filtersLocal.STATUS = [status];
-        }
-
-        if (initiativeLanguage !== '') {
-          filtersLocal.LANGUAGE = [initiativeLanguage];
-        }
-
-        setFilters({ filters: filtersLocal });
+        // const filtersLocal = {};
+        // e.preventDefault();
+        // if (textFree !== '') {
+        //   filtersLocal.TEXT_FREE = [textFree];
+        // }
+        // if (textExact !== '') {
+        //   filtersLocal.TEXT_EXACT = [textExact];
+        // }
+        // if (textConditional !== '') {
+        //   const parts = textConditional.split(' ');
+        //   filtersLocal.TEXT_CONDITIONAL = parts;
+        // }
+        // if (organisers !== '') {
+        //   filtersLocal.ORGANISERS = [organisers];
+        // }
+        // if (dateFrom !== '') {
+        //   filtersLocal.DATE_FROM = [dateFrom];
+        // }
+        // if (dateTo !== '') {
+        //   filtersLocal.DATE_TO = [dateTo];
+        // }
+        // if (category !== '' && category !== 'any') {
+        //   filtersLocal.CATEGORY = [category];
+        // }
+        // if (status !== '' && status !== 'any') {
+        //   filtersLocal.STATUS = [status];
+        // }
+        // if (initiativeLanguage !== '') {
+        //   filtersLocal.LANGUAGE = [initiativeLanguage];
+        // }
+        // setFilters({ filters: filtersLocal });
       }}
     >
       <TextInput
@@ -140,9 +130,22 @@ const InitiativesSearchAdvancedForm = ({ setFilters }) => {
         id="filter-category"
         label={t('Filter by category')}
         groupClassName="ecl-u-mb-s"
-        value={category}
+        value={
+          query.filters &&
+          query.filters &&
+          query.filters.CATEGORY &&
+          query.filters.CATEGORY.length
+            ? query.filters.CATEGORY[0]
+            : 'any'
+        }
         options={categories}
-        onChange={e => setCategory(e.target.value)}
+        onChange={e =>
+          dispachQuery({
+            type: 'changeFilter',
+            filter: 'CATEGORY',
+            filterValue: [e.target.value],
+          })
+        }
         arrow={<ArrowDD />}
       />
 
@@ -150,15 +153,16 @@ const InitiativesSearchAdvancedForm = ({ setFilters }) => {
         id="filter-status"
         label={t('Status')}
         groupClassName="ecl-u-mb-s"
-        value={status}
+        value={query.status}
         options={[
-          { value: 'any', label: '' },
           { value: 'ALL', label: t('All') },
-          { value: 'OPEN', label: t('Open') },
-          { value: 'SUCCESSFUL', label: t('Successful') },
-          { value: 'ARCHIVED', label: t('Archived') },
+          { value: 'ONGOING', label: t('Ongoing') },
+          { value: 'ANSWERED', label: t('Answered') },
+          { value: 'REFUSED', label: t('Refused') },
         ]}
-        onChange={e => setStatus(e.target.value)}
+        onChange={e =>
+          dispachQuery({ type: 'changeStatus', status: e.target.value })
+        }
         arrow={<ArrowDD />}
       />
 
@@ -166,9 +170,14 @@ const InitiativesSearchAdvancedForm = ({ setFilters }) => {
         id="filter-language"
         label={t('Language')}
         groupClassName="ecl-u-mb-s"
-        value={initiativeLanguage}
+        value={query.language}
         options={languages}
-        onChange={e => setInitiativeLanguage(e.target.value)}
+        onChange={e =>
+          dispachQuery({
+            type: 'changeLanguage',
+            language: e.target.value,
+          })
+        }
         arrow={<ArrowDD />}
       />
 
