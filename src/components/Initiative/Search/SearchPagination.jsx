@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import InitiativesSearch from '../../../context/InitiativesSearch';
 
 import Pagination from '../../Pagination';
 
-const SearchPagination = ({ initiatives, query, dispachQuery }) => {
+const SearchPagination = ({ initiatives }) => {
   const { t } = useTranslation();
+  const { query, dispachQuery } = useContext(InitiativesSearch);
   const { pagination } = query;
 
   const items = [];

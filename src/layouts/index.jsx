@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -6,8 +6,14 @@ import svg4everybody from 'svg4everybody';
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
 
-// HOC providing i18n, locale and location to children.
+// HOC providing i18n, locale and location.
 import withI18next from '../i18n/withI18next';
+
+// Advanced search tools.
+import InitiativesSearchContext, {
+  queryInit,
+  queryReducer,
+} from '../context/InitiativesSearch';
 
 import Head from '../components/Head';
 import TopMessage from '../components/TopMessage';
@@ -18,6 +24,8 @@ import ForumBanner from '../components/ForumBanner';
 
 const Layout = ({ children, location, pageContext: { layout, locale } }) => {
   const { i18n } = useTranslation();
+
+  const [query, dispachQuery] = useReducer(queryReducer, queryInit);
 
   useEffect(() => {
     i18n.changeLanguage(locale);
@@ -32,13 +40,15 @@ const Layout = ({ children, location, pageContext: { layout, locale } }) => {
 
   return (
     <>
-      <Head htmlAttributes={{ lang: locale }} />
-      <TopMessage />
-      <Header />
-      <Menu />
-      {children}
-      <ForumBanner />
-      <Footer />
+      <InitiativesSearchContext.Provider value={{ query, dispachQuery }}>
+        <Head htmlAttributes={{ lang: locale }} />
+        <TopMessage />
+        <Header />
+        <Menu />
+        {children}
+        <ForumBanner />
+        <Footer />
+      </InitiativesSearchContext.Provider>
     </>
   );
 };

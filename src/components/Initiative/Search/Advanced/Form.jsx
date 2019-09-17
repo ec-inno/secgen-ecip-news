@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import InitiativesSearch from '../../../../context/InitiativesSearch';
 
 import ArrowDD from '../../../ArrowDD';
 import Button from '../../../Button';
@@ -10,8 +12,9 @@ import TextInput from '../../../TextInput';
 import getCategories from '../../utils/getCategories';
 import getLanguages from '../../utils/getLanguages';
 
-const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
+const InitiativesSearchAdvancedForm = () => {
   const { t } = useTranslation();
+  const { query, dispachQuery } = useContext(InitiativesSearch);
 
   const [textFree, setTextFree] = useState('');
   const [textExact, setTextExact] = useState('');
