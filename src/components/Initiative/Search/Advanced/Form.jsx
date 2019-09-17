@@ -19,11 +19,24 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
   const [KWinvalid, setKWInvalid] = useState(false);
   const [KWValidationMessage, setKWValidationMessage] = useState('');
   const [organisers, setOrganisers] = useState('');
+  const [orgInvalid, setOrgInvalid] = useState(false);
+  const [orgInvalidMessage, setOrgInvalidMessage] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
+  const [dateInvalid, setDateInvalid] = useState(false);
+  const [dateInvalidMessage, setDateInvalidMessage] = useState('');
 
   const categories = getCategories(t);
   const languages = getLanguages(t);
+
+  const errorsReset = () => {
+    setKWValidationMessage('');
+    setKWInvalid(false);
+    setOrgInvalidMessage('');
+    setOrgInvalid(false);
+    setDateInvalidMessage('');
+    setDateInvalid(false);
+  };
 
   return (
     <form
@@ -50,8 +63,31 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
           return setKWValidationMessage(t('At least 3 characters required.'));
         }
 
-        setKWInvalid(false);
-        setKWValidationMessage('');
+        if (organisers !== '' && organisers.length < 3) {
+          setOrgInvalid(true);
+          return setOrgInvalidMessage(t('At least 3 characters required.'));
+        }
+
+        if (
+          (dateFrom !== '' &&
+            !dateFrom.match(
+              /^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$/g
+            )) ||
+          (dateTo !== '' &&
+            !dateTo.match(
+              /^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$/g
+            ))
+        ) {
+          setDateInvalid(true);
+          return setDateInvalidMessage(t('Wrong formatting.'));
+        }
+
+        if (dateFrom === '' && dateTo !== '') {
+          setDateInvalid(true);
+          return setDateInvalidMessage(t('Initial date missing.'));
+        }
+
+        errorsReset();
 
         dispachQuery({
           type: 'setFilters',
@@ -59,6 +95,9 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
             TEXT_FREE: [textFree],
             TEXT_EXACT: [textExact],
             TEXT_CONDITIONAL: textConditional.split(' '),
+            ORGANISERS: [organisers],
+            DATE_FROM: [dateFrom],
+            DATE_TO: [dateTo],
           },
         });
       }}
@@ -100,46 +139,34 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
         label={t('Organiser')}
         value={organisers}
         onChange={e => setOrganisers(e.target.value)}
-        onBlur={e =>
-          dispachQuery({
-            type: 'changeFilter',
-            filter: 'ORGANISERS',
-            filterValue: [e.target.value],
-          })
-        }
+        invalid={orgInvalid}
+        invalidText={orgInvalidMessage}
       />
 
-      <TextInput
-        groupClassName="ecl-u-mb-s"
-        id="filter-date-from"
-        label={t('From')}
-        value={dateFrom}
-        onChange={e => setDateFrom(e.target.value)}
-        onBlur={e =>
-          dispachQuery({
-            type: 'changeFilter',
-            filter: 'DATE_FROM',
-            filterValue: [e.target.value],
-          })
-        }
-        helperText={t('dd/mm/yyyy')}
-      />
+      <Fieldset
+        className="ecl-u-mb-s"
+        legend={t('Date range')}
+        invalid={dateInvalid}
+        invalidText={dateInvalidMessage}
+      >
+        <TextInput
+          groupClassName="ecl-u-mb-s"
+          id="filter-date-from"
+          label={t('From')}
+          value={dateFrom}
+          onChange={e => setDateFrom(e.target.value)}
+          helperText={t('dd/mm/yyyy')}
+        />
 
-      <TextInput
-        groupClassName="ecl-u-mb-s"
-        id="filter-date-to"
-        label={t('To')}
-        value={dateTo}
-        onChange={e => setDateTo(e.target.value)}
-        onBlur={e =>
-          dispachQuery({
-            type: 'changeFilter',
-            filter: 'DATE_TO',
-            filterValue: [e.target.value],
-          })
-        }
-        helperText={t('dd/mm/yyyy')}
-      />
+        <TextInput
+          groupClassName="ecl-u-mb-s"
+          id="filter-date-to"
+          label={t('To')}
+          value={dateTo}
+          onChange={e => setDateTo(e.target.value)}
+          helperText={t('dd/mm/yyyy')}
+        />
+      </Fieldset>
 
       <Select
         id="filter-category"
@@ -202,10 +229,10 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
         onClick={e => {
           e.preventDefault();
 
-          setKWValidationMessage('');
-          setKWInvalid(false);
+          // Errors.
+          errorsReset();
 
-          // Clear text fields.
+          // Text fields.
           setTextFree('');
           setTextExact('');
           setTextConditional('');
@@ -213,7 +240,7 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
           setDateFrom('');
           setDateTo('');
 
-          // And the rest depending on query state store.
+          // Query state.
           dispachQuery({ type: 'reset' });
         }}
         className="ecl-u-mt-m ecl-u-mt-lg-l"
