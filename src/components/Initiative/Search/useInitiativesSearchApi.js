@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const useApi = ({ query }) => {
-  console.log('query:init', query);
+const useInitiativesSearchApi = ({ query }) => {
   const { GATSBY_INITIATIVES_API: api } = process.env;
   const { pagination, status, language: locale, filters } = query;
 
@@ -14,7 +13,7 @@ const useApi = ({ query }) => {
     }
   });
 
-  const [initiatives, setInitiatives] = useState([]);
+  const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({});
 
@@ -24,8 +23,6 @@ const useApi = ({ query }) => {
     setIsLoading(true);
     const language = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
     const endpoint = `${api}/register/search/${status}/${language}/${pagination}`;
-
-    console.log('endpoint, filters', endpoint, filters);
 
     // For the service empty filters is not same as no filters.
     // We don't send payload if not needed.
@@ -37,7 +34,7 @@ const useApi = ({ query }) => {
 
     request
       .then(response => {
-        setInitiatives(response.data);
+        setResults(response.data);
         setIsLoading(false);
       })
       .catch(e => {
@@ -46,7 +43,7 @@ const useApi = ({ query }) => {
       });
   }, [query]);
 
-  return { initiatives, isLoading, error };
+  return { results, isLoading, error };
 };
 
-export default useApi;
+export default useInitiativesSearchApi;

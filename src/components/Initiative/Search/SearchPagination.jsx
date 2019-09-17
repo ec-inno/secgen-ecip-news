@@ -5,7 +5,7 @@ import InitiativesSearch from '../../../context/InitiativesSearch';
 
 import Pagination from '../../Pagination';
 
-const SearchPagination = ({ initiatives }) => {
+const SearchPagination = ({ results }) => {
   const { t } = useTranslation();
   const { query, dispachQuery } = useContext(InitiativesSearch);
   const { pagination } = query;
@@ -13,8 +13,8 @@ const SearchPagination = ({ initiatives }) => {
   const items = [];
   const itemsPerPage = 10;
   const [start, offset] = pagination.split('/');
-  const itemsCount = initiatives.recordsFound
-    ? Math.ceil(initiatives.recordsFound / itemsPerPage)
+  const itemsCount = results.recordsFound
+    ? Math.ceil(results.recordsFound / itemsPerPage)
     : 0;
 
   // If not on first page.
