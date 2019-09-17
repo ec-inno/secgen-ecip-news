@@ -59,6 +59,18 @@ const SearchAdvanced = () => {
         };
       }
 
+      case 'setFilters': {
+        console.log('action.filters', action.filters);
+        return {
+          ...state,
+          pagination: queryInit.pagination,
+          filters: {
+            ...state.filters,
+            ...action.filters,
+          },
+        };
+      }
+
       case 'reset':
       default: {
         return queryInit;

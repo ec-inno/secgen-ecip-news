@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import ArrowDD from '../../../ArrowDD';
+import Button from '../../../Button';
+import Fieldset from '../../../Fieldset';
 import Select from '../../../Select';
 import TextInput from '../../../TextInput';
-import Button from '../../../Button';
 
 import getCategories from '../../utils/getCategories';
 import getLanguages from '../../utils/getLanguages';
@@ -15,6 +16,8 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
   const [textFree, setTextFree] = useState('');
   const [textExact, setTextExact] = useState('');
   const [textConditional, setTextConditional] = useState('');
+  const [KWinvalid, setKWInvalid] = useState(false);
+  const [KWValidationMessage, setKWValidationMessage] = useState('');
   const [organisers, setOrganisers] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
@@ -26,54 +29,70 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
     <form
       onSubmit={e => {
         e.preventDefault();
+
+        if (
+          (textFree !== '' && textExact !== '') ||
+          (textFree !== '' && textConditional !== '') ||
+          (textExact !== '' && textConditional !== '')
+        ) {
+          setKWInvalid(true);
+          return setKWValidationMessage(
+            t('Only one field in this group can be used at the same time.')
+          );
+        }
+
+        if (
+          (textFree !== '' && textFree.length < 3) ||
+          (textExact !== '' && textExact.length < 3) ||
+          (textConditional !== '' && textConditional.length < 3)
+        ) {
+          setKWInvalid(true);
+          return setKWValidationMessage(t('At least 3 characters required.'));
+        }
+
+        setKWInvalid(false);
+        setKWValidationMessage('');
+
+        dispachQuery({
+          type: 'setFilters',
+          filters: {
+            TEXT_FREE: [textFree],
+            TEXT_EXACT: [textExact],
+            TEXT_CONDITIONAL: textConditional.split(' '),
+          },
+        });
       }}
     >
-      <TextInput
-        groupClassName="ecl-u-mb-s"
-        id="filter-text-free"
-        label={t('All these words')}
-        value={textFree}
-        onChange={e => setTextFree(e.target.value)}
-        onBlur={e =>
-          dispachQuery({
-            type: 'changeFilter',
-            filter: 'TEXT_FREE',
-            filterValue: [e.target.value],
-          })
-        }
-      />
+      <Fieldset
+        className="ecl-u-mb-s"
+        legend={t('Keywords search')}
+        invalid={KWinvalid}
+        invalidText={KWValidationMessage}
+      >
+        <TextInput
+          groupClassName="ecl-u-mb-s"
+          id="filter-text-free"
+          label={t('All these words')}
+          value={textFree}
+          onChange={e => setTextFree(e.target.value)}
+        />
 
-      <TextInput
-        groupClassName="ecl-u-mb-s"
-        id="filter-text-exact"
-        label={t('Exact wording or phrase')}
-        value={textExact}
-        onChange={e => setTextExact(e.target.value)}
-        onBlur={e =>
-          dispachQuery({
-            type: 'changeFilter',
-            filter: 'TEXT_EXACT',
-            filterValue: [e.target.value],
-          })
-        }
-      />
+        <TextInput
+          groupClassName="ecl-u-mb-s"
+          id="filter-text-exact"
+          label={t('Exact wording or phrase')}
+          value={textExact}
+          onChange={e => setTextExact(e.target.value)}
+        />
 
-      <TextInput
-        groupClassName="ecl-u-mb-s"
-        id="filter-text-conditional"
-        label={t('One or more of')}
-        value={textConditional}
-        onChange={e => setTextConditional(e.target.value)}
-        onBlur={e => {
-          const keywordsOr = e.target.value.split(' ');
-
-          dispachQuery({
-            type: 'changeFilter',
-            filter: 'TEXT_CONDITIONAL',
-            filterValue: keywordsOr,
-          });
-        }}
-      />
+        <TextInput
+          groupClassName="ecl-u-mb-s"
+          id="filter-text-conditional"
+          label={t('One or more of')}
+          value={textConditional}
+          onChange={e => setTextConditional(e.target.value)}
+        />
+      </Fieldset>
 
       <TextInput
         groupClassName="ecl-u-mb-s"
@@ -182,6 +201,9 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
       <Button
         onClick={e => {
           e.preventDefault();
+
+          setKWValidationMessage('');
+          setKWInvalid(false);
 
           // Clear text fields.
           setTextFree('');
