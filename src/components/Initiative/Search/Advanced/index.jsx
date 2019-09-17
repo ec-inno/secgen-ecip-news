@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useContext, useReducer } from 'react';
 import { useTranslation } from 'react-i18next';
-import { cloneDeep } from 'lodash';
 
 import useApi from '../useApi';
 import I18nContext from '../../../../context/I18n';
@@ -17,7 +16,7 @@ const SearchAdvanced = () => {
   const { t } = useTranslation();
   const { locale } = useContext(I18nContext);
 
-  const queryDefault = {
+  const queryInit = {
     filters: {},
     status: 'ALL',
     language: locale,
@@ -36,7 +35,7 @@ const SearchAdvanced = () => {
       case 'changeStatus': {
         return {
           ...state,
-          pagination: queryDefault.pagination,
+          pagination: queryInit.pagination,
           status: action.status,
         };
       }
@@ -44,7 +43,7 @@ const SearchAdvanced = () => {
       case 'changeLanguage': {
         return {
           ...state,
-          pagination: queryDefault.pagination,
+          pagination: queryInit.pagination,
           language: action.language,
         };
       }
@@ -52,7 +51,7 @@ const SearchAdvanced = () => {
       case 'changeFilter': {
         return {
           ...state,
-          pagination: queryDefault.pagination,
+          pagination: queryInit.pagination,
           filters: {
             ...state.filters,
             [action.filter]: action.filterValue,
@@ -60,13 +59,14 @@ const SearchAdvanced = () => {
         };
       }
 
+      case 'reset':
       default: {
-        return queryDefault;
+        return queryInit;
       }
     }
   };
 
-  const [query, dispachQuery] = useReducer(queryReducer, queryDefault);
+  const [query, dispachQuery] = useReducer(queryReducer, queryInit);
 
   const { initiatives, isLoading, error } = useApi({ query });
 

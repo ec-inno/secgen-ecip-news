@@ -18,62 +18,14 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
   const [organisers, setOrganisers] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
-  const [category, setCategory] = useState('');
-  const [status, setStatus] = useState('');
-  const [initiativeLanguage, setInitiativeLanguage] = useState('');
 
   const categories = getCategories(t);
   const languages = getLanguages(t);
 
-  const clearAll = e => {
-    e.preventDefault();
-    // setTextFree('');
-    // setTextExact('');
-    // setTextConditional('');
-    // setOrganisers('');
-    // setDateFrom('');
-    // setDateTo('');
-    // setCategory('');
-    // setStatus('');
-    // setInitiativeLanguage('');
-    // setFilters({});
-  };
-
   return (
     <form
       onSubmit={e => {
-        // Place for validations.
-        // const filtersLocal = {};
-        // e.preventDefault();
-        // if (textFree !== '') {
-        //   filtersLocal.TEXT_FREE = [textFree];
-        // }
-        // if (textExact !== '') {
-        //   filtersLocal.TEXT_EXACT = [textExact];
-        // }
-        // if (textConditional !== '') {
-        //   const parts = textConditional.split(' ');
-        //   filtersLocal.TEXT_CONDITIONAL = parts;
-        // }
-        // if (organisers !== '') {
-        //   filtersLocal.ORGANISERS = [organisers];
-        // }
-        // if (dateFrom !== '') {
-        //   filtersLocal.DATE_FROM = [dateFrom];
-        // }
-        // if (dateTo !== '') {
-        //   filtersLocal.DATE_TO = [dateTo];
-        // }
-        // if (category !== '' && category !== 'any') {
-        //   filtersLocal.CATEGORY = [category];
-        // }
-        // if (status !== '' && status !== 'any') {
-        //   filtersLocal.STATUS = [status];
-        // }
-        // if (initiativeLanguage !== '') {
-        //   filtersLocal.LANGUAGE = [initiativeLanguage];
-        // }
-        // setFilters({ filters: filtersLocal });
+        e.preventDefault();
       }}
     >
       <TextInput
@@ -82,6 +34,13 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
         label={t('All these words')}
         value={textFree}
         onChange={e => setTextFree(e.target.value)}
+        onBlur={e =>
+          dispachQuery({
+            type: 'changeFilter',
+            filter: 'TEXT_FREE',
+            filterValue: [e.target.value],
+          })
+        }
       />
 
       <TextInput
@@ -90,6 +49,13 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
         label={t('Exact wording or phrase')}
         value={textExact}
         onChange={e => setTextExact(e.target.value)}
+        onBlur={e =>
+          dispachQuery({
+            type: 'changeFilter',
+            filter: 'TEXT_EXACT',
+            filterValue: [e.target.value],
+          })
+        }
       />
 
       <TextInput
@@ -98,6 +64,15 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
         label={t('One or more of')}
         value={textConditional}
         onChange={e => setTextConditional(e.target.value)}
+        onBlur={e => {
+          const keywordsOr = e.target.value.split(' ');
+
+          dispachQuery({
+            type: 'changeFilter',
+            filter: 'TEXT_CONDITIONAL',
+            filterValue: keywordsOr,
+          });
+        }}
       />
 
       <TextInput
@@ -106,6 +81,13 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
         label={t('Organiser')}
         value={organisers}
         onChange={e => setOrganisers(e.target.value)}
+        onBlur={e =>
+          dispachQuery({
+            type: 'changeFilter',
+            filter: 'ORGANISERS',
+            filterValue: [e.target.value],
+          })
+        }
       />
 
       <TextInput
@@ -114,6 +96,13 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
         label={t('From')}
         value={dateFrom}
         onChange={e => setDateFrom(e.target.value)}
+        onBlur={e =>
+          dispachQuery({
+            type: 'changeFilter',
+            filter: 'DATE_FROM',
+            filterValue: [e.target.value],
+          })
+        }
         helperText={t('dd/mm/yyyy')}
       />
 
@@ -123,6 +112,13 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
         label={t('To')}
         value={dateTo}
         onChange={e => setDateTo(e.target.value)}
+        onBlur={e =>
+          dispachQuery({
+            type: 'changeFilter',
+            filter: 'DATE_TO',
+            filterValue: [e.target.value],
+          })
+        }
         helperText={t('dd/mm/yyyy')}
       />
 
@@ -136,7 +132,7 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
           query.filters.CATEGORY &&
           query.filters.CATEGORY.length
             ? query.filters.CATEGORY[0]
-            : 'any'
+            : ''
         }
         options={categories}
         onChange={e =>
@@ -184,7 +180,20 @@ const InitiativesSearchAdvancedForm = ({ query, dispachQuery }) => {
       <Button label={t('Apply filters')} />
       <br />
       <Button
-        onClick={clearAll}
+        onClick={e => {
+          e.preventDefault();
+
+          // Clear text fields.
+          setTextFree('');
+          setTextExact('');
+          setTextConditional('');
+          setOrganisers('');
+          setDateFrom('');
+          setDateTo('');
+
+          // And the rest depending on query state store.
+          dispachQuery({ type: 'reset' });
+        }}
         className="ecl-u-mt-m ecl-u-mt-lg-l"
         variant="secondary"
         label={t('Clear all')}
