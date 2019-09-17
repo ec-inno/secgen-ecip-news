@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import InitiativesSearch from '../../context/InitiativesSearch';
+import InitiativesSearch from './Search/context/query';
 
 import Icon from '../Icon';
 

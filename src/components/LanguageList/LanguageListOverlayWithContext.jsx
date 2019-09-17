@@ -1,22 +1,16 @@
 import React, { useContext } from 'react';
 
-import Context, {
-  SET_LANGUAGE_OVERLAY_VISIBILITY,
-} from '../../context/Overlay';
+import OverlayContext from '../../context/Overlay';
 
 import LanguageListOverlay from './LanguageListOverlay';
 
 const LanguageListOverlayWithContext = props => {
-  const { dispatch, store } = useContext(Context);
-  const { hideOverlay } = store;
-
-  const closeHandler = () =>
-    dispatch({ type: SET_LANGUAGE_OVERLAY_VISIBILITY, hideOverlay: true });
+  const { overlayIsHidden, setOverlayIsHidden } = useContext(OverlayContext);
 
   return (
     <LanguageListOverlay
-      hidden={hideOverlay}
-      closeHandler={closeHandler}
+      hidden={overlayIsHidden}
+      closeHandler={() => setOverlayIsHidden(true)}
       {...props}
     />
   );

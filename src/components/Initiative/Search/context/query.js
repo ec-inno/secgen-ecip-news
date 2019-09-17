@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { defaultLangKey } from '../../languages';
+import { defaultLangKey } from '../../../../../languages';
 
 const queryInit = {
   filters: {},
@@ -57,7 +57,7 @@ const queryReducer = (state, action) => {
     }
 
     case 'removeFilter': {
-      const filters = state.filters;
+      const { filters } = state;
       delete filters[action.filter];
 
       return {

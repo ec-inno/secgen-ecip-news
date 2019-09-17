@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -6,14 +6,10 @@ import svg4everybody from 'svg4everybody';
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import '../components/assets/styles.css';
 
+import OverlayContext from '../context/Overlay';
+
 // HOC providing i18n, locale and location.
 import withI18next from '../i18n/withI18next';
-
-// Advanced search tools.
-import InitiativesSearchContext, {
-  queryInit,
-  queryReducer,
-} from '../context/InitiativesSearch';
 
 import Head from '../components/Head';
 import TopMessage from '../components/TopMessage';
@@ -23,9 +19,8 @@ import Footer from '../components/Footer/FooterLanguage';
 import ForumBanner from '../components/ForumBanner';
 
 const Layout = ({ children, location, pageContext: { layout, locale } }) => {
+  const [overlayIsHidden, setOverlayIsHidden] = useState(true);
   const { i18n } = useTranslation();
-
-  const [query, dispachQuery] = useReducer(queryReducer, queryInit);
 
   useEffect(() => {
     i18n.changeLanguage(locale);
@@ -36,11 +31,21 @@ const Layout = ({ children, location, pageContext: { layout, locale } }) => {
     }
   }, [location]);
 
-  if (layout === 'landing') return children;
+  if (layout === 'landing') {
+    return (
+      <>
+        <OverlayContext.Provider
+          value={{ overlayIsHidden, setOverlayIsHidden }}
+        >
+          {children}
+        </OverlayContext.Provider>
+      </>
+    );
+  }
 
   return (
     <>
-      <InitiativesSearchContext.Provider value={{ query, dispachQuery }}>
+      <OverlayContext.Provider value={{ overlayIsHidden, setOverlayIsHidden }}>
         <Head htmlAttributes={{ lang: locale }} />
         <TopMessage />
         <Header />
@@ -48,7 +53,7 @@ const Layout = ({ children, location, pageContext: { layout, locale } }) => {
         {children}
         <ForumBanner />
         <Footer />
-      </InitiativesSearchContext.Provider>
+      </OverlayContext.Provider>
     </>
   );
 };
