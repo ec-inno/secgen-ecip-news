@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import InitiativesSearch from './Search/context/query';
+import getCategories from './utils/getCategories';
+import queryContext from './Search/context/query';
 
 import Icon from '../Icon';
 
 const FilterTags = () => {
   const { t } = useTranslation();
-  const { query, dispachQuery } = useContext(InitiativesSearch);
+  const { query, dispachQuery } = useContext(queryContext);
 
-  const getPrettyLabel = filterMachineReadable => {
+  const getPrettyLabel = machineReadable => {
     const map = {
       TEXT_FREE: t('Free keywords'),
       TEXT_EXACT: t('Exact keywords'),
@@ -19,11 +20,20 @@ const FilterTags = () => {
       DATE_TO: t('To'),
     };
 
-    if (filterMachineReadable in map) {
-      return map[filterMachineReadable];
+    if (machineReadable in map) {
+      return map[machineReadable];
     }
 
-    return filterMachineReadable;
+    return machineReadable;
+  };
+
+  const getPrettyValue = machineReadable => {
+    const categories = getCategories(t);
+    const category = categories.find(cat => cat.value === machineReadable);
+
+    if (category && category.label) return category.label;
+
+    return machineReadable;
   };
 
   if (query.filters && Object.keys(query.filters).length === 0) {
@@ -50,7 +60,7 @@ const FilterTags = () => {
               });
             }}
           >
-            {query.filters[filter].join(' ')}
+            {query.filters[filter].map(getPrettyValue).join(' ')}
             <span className="ecl-tag__icon">
               <Icon
                 className="ecl-tag__icon-close"

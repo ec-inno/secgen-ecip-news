@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import InitiativesSearch from '../context/query';
+import queryContext from '../context/query';
 
 import ArrowDD from '../../../ArrowDD';
 import Button from '../../../Button';
@@ -14,7 +14,7 @@ import getLanguages from '../../utils/getLanguages';
 
 const InitiativesSearchAdvancedForm = () => {
   const { t } = useTranslation();
-  const { query, dispachQuery } = useContext(InitiativesSearch);
+  const { query, dispachQuery } = useContext(queryContext);
 
   const [textFree, setTextFree] = useState('');
   const [textExact, setTextExact] = useState('');
@@ -28,6 +28,7 @@ const InitiativesSearchAdvancedForm = () => {
   const [dateTo, setDateTo] = useState('');
   const [dateInvalid, setDateInvalid] = useState(false);
   const [dateInvalidMessage, setDateInvalidMessage] = useState('');
+  const [category, setCategory] = useState('any');
 
   const categories = getCategories(t);
   const languages = getLanguages(t);
@@ -39,6 +40,16 @@ const InitiativesSearchAdvancedForm = () => {
     setOrgInvalid(false);
     setDateInvalidMessage('');
     setDateInvalid(false);
+  };
+
+  const filtersReset = () => {
+    setTextFree('');
+    setTextExact('');
+    setTextConditional('');
+    setOrganisers('');
+    setDateFrom('');
+    setDateTo('');
+    setCategory('any');
   };
 
   return (
@@ -101,6 +112,7 @@ const InitiativesSearchAdvancedForm = () => {
             ORGANISERS: [organisers],
             DATE_FROM: [dateFrom],
             DATE_TO: [dateTo],
+            CATEGORY: [category],
           },
         });
       }}
@@ -175,22 +187,9 @@ const InitiativesSearchAdvancedForm = () => {
         id="filter-category"
         label={t('Filter by category')}
         groupClassName="ecl-u-mb-s"
-        value={
-          query.filters &&
-          query.filters &&
-          query.filters.CATEGORY &&
-          query.filters.CATEGORY.length
-            ? query.filters.CATEGORY[0]
-            : ''
-        }
+        value={category}
         options={categories}
-        onChange={e =>
-          dispachQuery({
-            type: 'changeFilter',
-            filter: 'CATEGORY',
-            filterValue: [e.target.value],
-          })
-        }
+        onChange={e => setCategory(e.target.value)}
         arrow={<ArrowDD />}
       />
 
@@ -231,19 +230,8 @@ const InitiativesSearchAdvancedForm = () => {
       <Button
         onClick={e => {
           e.preventDefault();
-
-          // Errors.
           errorsReset();
-
-          // Text fields.
-          setTextFree('');
-          setTextExact('');
-          setTextConditional('');
-          setOrganisers('');
-          setDateFrom('');
-          setDateTo('');
-
-          // Query state.
+          filtersReset();
           dispachQuery({ type: 'reset' });
         }}
         className="ecl-u-mt-m ecl-u-mt-lg-l"
