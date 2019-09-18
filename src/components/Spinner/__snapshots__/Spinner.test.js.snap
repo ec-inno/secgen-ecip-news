@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner renders correctly 1`] = `
+<div
+  className="ecl-component--spinner"
+>
+  <svg
+    aria-hidden="true"
+    className="ecl-u-mr-xs ecl-icon ecl-icon--m"
+    focusable="false"
+  >
+    
+    
+    <use
+      xlinkHref="file#general--spinner"
+    />
+  </svg>
+</div>
+`;
