@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import svg4everybody from 'svg4everybody';
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
-import '../components/assets/styles.css';
+import '../styles.css';
 
 import OverlayContext from '../context/Overlay';
 
@@ -31,28 +31,22 @@ const Layout = ({ children, location, pageContext: { layout, locale } }) => {
     }
   }, [location]);
 
-  if (layout === 'landing') {
-    return (
-      <>
-        <OverlayContext.Provider
-          value={{ overlayIsHidden, setOverlayIsHidden }}
-        >
-          {children}
-        </OverlayContext.Provider>
-      </>
-    );
-  }
-
   return (
     <>
       <OverlayContext.Provider value={{ overlayIsHidden, setOverlayIsHidden }}>
-        <Head htmlAttributes={{ lang: locale }} />
-        <TopMessage />
-        <Header />
-        <Menu />
-        {children}
-        <ForumBanner />
-        <Footer />
+        {layout === 'landing' ? (
+          children
+        ) : (
+          <>
+            <Head htmlAttributes={{ lang: locale }} />
+            <TopMessage />
+            <Header />
+            <Menu />
+            {children}
+            <ForumBanner />
+            <Footer />
+          </>
+        )}
       </OverlayContext.Provider>
     </>
   );

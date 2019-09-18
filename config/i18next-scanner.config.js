@@ -1,4 +1,4 @@
-const { defaultLangKey } = require('./languages');
+const { defaultLangKey } = require('../languages');
 
 const exportsFolder = 'i18n_exports';
 

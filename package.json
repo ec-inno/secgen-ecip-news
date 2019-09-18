@@ -21,7 +21,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"{gatsby-*.js,src/**/*.js}\"",
     "i18n:clean": "rm -rf i18n_exports",
-    "i18n:export": "i18next-scanner",
+    "i18n:export": "i18next-scanner --config config/i18next-scanner.config.js",
     "i18n:fetch": "eci-cli translations fetch",
     "i18n:update": "run-s i18n:export i18n:fetch",
     "lint-staged": "lint-staged",
@@ -29,7 +29,10 @@
     "serve": "gatsby serve",
     "start": "npm run develop",
     "test:lint": "npm run lint:js",
-    "test": "npm-run-all -p test:* -cn"
+    "test:coverage": "jest --coverage --config ./jest/jest.config.js",
+    "test:watch": "jest --watch --config ./jest/jest.config.js",
+    "test:js": "jest --config ./jest/jest.config.js",
+    "test": "run-p test:lint test:js -cn"
   },
   "dependencies": {
     "@eci/cli": "^0.1.0",
@@ -57,23 +60,29 @@
   },
   "devDependencies": {
     "babel-eslint": "10.0.3",
+    "babel-jest": "24.9.0",
+    "babel-preset-gatsby": "0.2.13",
     "dotenv": "8.1.0",
     "eslint": "6.3.0",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "6.2.0",
     "eslint-plugin-compat": "3.3.0",
     "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jest": "22.17.0",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-prettier": "3.1.0",
     "eslint-plugin-react": "7.14.3",
     "husky": "3.0.5",
     "i18next-scanner": "2.10.2",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "24.9.0",
     "lerna": "3.16.4",
     "lint-staged": "9.2.5",
     "netlify-cli": "2.13.1",
     "npm-run-all": "4.1.5",
     "prettier": "1.18.2",
-    "prop-types": "15.7.2"
+    "prop-types": "15.7.2",
+    "react-test-renderer": "16.9.0"
   },
   "workspaces": {
     "packages": [
