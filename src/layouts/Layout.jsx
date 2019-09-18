@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import svg4everybody from 'svg4everybody';
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
-import '../styles.css';
+import './styles.css';
 
 import OverlayContext from '../context/Overlay';
 
