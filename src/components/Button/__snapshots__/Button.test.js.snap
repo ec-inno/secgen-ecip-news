@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+<button
+  className="ecl-button ecl-button--primary"
+  disabled={false}
+  type="submit"
+>
+  <span
+    className="ecl-button__container"
+  >
+    <span
+      className="ecl-button__label"
+      data-ecl-label={true}
+    >
+      test
+    </span>
+    
+  </span>
+</button>
+`;
