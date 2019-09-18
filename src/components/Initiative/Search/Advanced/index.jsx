@@ -25,6 +25,10 @@ const SearchAdvanced = () => {
   const [query, dispachQuery] = useReducer(queryReducer, queryInit);
   const { results, isLoading, error } = useInitiativesSearchApi({ query });
 
+  const [start, offset] = query.pagination.split('/');
+  const resultsPagination =
+    start === '0' ? `${Number(start) + 1}/${offset}` : `${start}/${offset}`;
+
   return (
     <>
       <InitiativesSearchContext.Provider value={{ query, dispachQuery }}>
@@ -44,7 +48,7 @@ const SearchAdvanced = () => {
 
               {results.entries && results.entries.length !== 0 && (
                 <h3 className="ecl-u-type-heading-3 ecl-u-mb-none ecl-u-mt-3xl ecl-u-mt-lg-l">
-                  {t('Showing results')} {query.pagination}
+                  {t('Showing results')} {resultsPagination}
                 </h3>
               )}
               <FilterTags />
