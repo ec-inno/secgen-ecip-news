@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import image from './assets/images/bg-forum.png';
-import Link from '../components/Link/LinkEcl';
+import image from '../assets/images/bg-forum.png';
+import Link from '../Link/LinkEcl';
 
 const ForumBanner = () => {
   const { t } = useTranslation();

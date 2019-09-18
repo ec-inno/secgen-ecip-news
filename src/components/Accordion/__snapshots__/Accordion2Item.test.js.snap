@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion2Item renders correctly 1`] = `
+<div
+  className="ecl-accordion2__item"
+>
+  <div
+    className="ecl-accordion2__content"
+    hidden={true}
+    id="accordion-item-test-content"
+    role="region"
+  >
+    test
+  </div>
+</div>
+`;

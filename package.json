@@ -32,7 +32,7 @@
     "test:coverage": "jest --coverage --config ./jest/jest.config.js",
     "test:watch": "jest --watch --config ./jest/jest.config.js",
     "test:js": "jest --config ./jest/jest.config.js",
-    "test": "run-p test:lint test:js -cn"
+    "test": "run-p test:lint test:js"
   },
   "dependencies": {
     "@eci/cli": "^0.1.0",

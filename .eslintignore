@@ -6,13 +6,9 @@ public
 # They contain loads of violations unnecessary to fix.
 packages/gatsby-source-drupal-jsonapi-eci
 
-# Utilities for local development
-/scripts
-
 # Were not worth the effots to lint
 src/context
 gatsby-browser.js
 gatsby-ssr.js
 
-# netlify functions
-api
+__mocks__
