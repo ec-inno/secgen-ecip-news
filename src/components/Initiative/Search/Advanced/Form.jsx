@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import I18nContext from '../../../../context/I18n';
 import queryContext from '../context/query';
 
 import ArrowDD from '../../../ArrowDD';
@@ -14,7 +15,9 @@ import getLanguages from '../../utils/getLanguages';
 
 const InitiativesSearchAdvancedForm = () => {
   const { t } = useTranslation();
+  const { locale } = useContext(I18nContext);
   const { query, dispachQuery } = useContext(queryContext);
+  const { filters } = query;
 
   const [textFree, setTextFree] = useState('');
   const [textExact, setTextExact] = useState('');
@@ -29,6 +32,35 @@ const InitiativesSearchAdvancedForm = () => {
   const [dateInvalid, setDateInvalid] = useState(false);
   const [dateInvalidMessage, setDateInvalidMessage] = useState('');
   const [category, setCategory] = useState('any');
+  const [language, setLanguage] = useState(locale);
+
+  const filtersResetHandlers = {
+    TEXT_FREE: () => setTextFree(''),
+    TEXT_EXACT: () => setTextExact(''),
+    TEXT_CONDITIONAL: () => setTextConditional(''),
+    ORGANISERS: () => setOrganisers(''),
+    DATE_FROM: () => setDateFrom(''),
+    DATE_TO: () => setDateTo(''),
+    CATEGORY: () => setCategory('any'),
+    LANGUAGE: () => setLanguage(locale),
+  };
+
+  const filtersReset = () =>
+    Object.values(filtersResetHandlers).forEach(handler => handler());
+
+  // Change preferred language for initiatives' content on change of interface language.
+  useEffect(() => {
+    dispachQuery({ type: 'changeLanguage', language: locale });
+  }, [locale]);
+
+  useEffect(() => {
+    Object.keys(filters).forEach(filter => {
+      if (filter in filtersResetHandlers) {
+        delete filtersResetHandlers[filter];
+      }
+    });
+    filtersReset();
+  }, [filters]);
 
   const categories = getCategories(t);
   const languages = getLanguages(t);
@@ -40,16 +72,6 @@ const InitiativesSearchAdvancedForm = () => {
     setOrgInvalid(false);
     setDateInvalidMessage('');
     setDateInvalid(false);
-  };
-
-  const filtersReset = () => {
-    setTextFree('');
-    setTextExact('');
-    setTextConditional('');
-    setOrganisers('');
-    setDateFrom('');
-    setDateTo('');
-    setCategory('any');
   };
 
   return (
@@ -113,6 +135,8 @@ const InitiativesSearchAdvancedForm = () => {
             DATE_FROM: [dateFrom],
             DATE_TO: [dateTo],
             CATEGORY: [category],
+            // Consider the language filter only if it's different than the current interface.
+            LANGUAGE: language !== locale ? [language] : [],
           },
         });
       }}
@@ -214,14 +238,9 @@ const InitiativesSearchAdvancedForm = () => {
         id="filter-language"
         label={t('Language')}
         groupClassName="ecl-u-mb-s"
-        value={query.language}
+        value={language}
         options={languages}
-        onChange={e =>
-          dispachQuery({
-            type: 'changeLanguage',
-            language: e.target.value,
-          })
-        }
+        onChange={e => setLanguage(e.target.value)}
         arrow={<ArrowDD />}
       />
 
