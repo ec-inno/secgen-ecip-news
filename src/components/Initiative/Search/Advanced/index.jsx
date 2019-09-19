@@ -1,4 +1,10 @@
-import React, { Fragment, useContext, useReducer } from 'react';
+import React, {
+  Fragment,
+  useContext,
+  useReducer,
+  useEffect,
+  useRef,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useInitiativesSearchApi from '../useInitiativesSearchApi';
@@ -20,12 +26,17 @@ import ErrorMessage from '../../../ErrorMessage';
 import Spinner from '../../../Spinner';
 
 const SearchAdvanced = () => {
+  const containerRef = useRef();
   const { t } = useTranslation();
   const { locale } = useContext(I18nContext);
   const [query, dispachQuery] = useReducer(queryReducer, queryInit);
 
   // Send current state of `query` store to the service.
   const { results, isLoading, error } = useInitiativesSearchApi({ query });
+
+  useEffect(() => {
+    containerRef.current.scrollIntoView({ behavior: 'smooth' });
+  });
 
   const [start, offset] = query.pagination.split('/');
   const resultsPagination =
@@ -34,7 +45,7 @@ const SearchAdvanced = () => {
   return (
     <>
       <InitiativesSearchContext.Provider value={{ query, dispachQuery }}>
-        <div className="ecl-container">
+        <div ref={containerRef} className="ecl-container">
           <div className="ecl-row">
             <aside className="ecl-col-12 ecl-col-lg-3">
               <h3 className="ecl-u-type-heading-3 ecl-u-mt-l ecl-u-mt-lg-none">
