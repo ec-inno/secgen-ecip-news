@@ -11,6 +11,7 @@ import Select from '../../../Select';
 import TextInput from '../../../TextInput';
 
 import getCategories from '../../utils/getCategories';
+import getStatuses from '../../utils/getStatuses';
 import getLanguages from '../../utils/getLanguages';
 
 const InitiativesSearchAdvancedForm = () => {
@@ -32,6 +33,7 @@ const InitiativesSearchAdvancedForm = () => {
   const [dateInvalid, setDateInvalid] = useState(false);
   const [dateInvalidMessage, setDateInvalidMessage] = useState('');
   const [category, setCategory] = useState('any');
+  const [status, setStatus] = useState('ALL');
   const [language, setLanguage] = useState(locale);
 
   const filtersResetHandlers = {
@@ -42,6 +44,7 @@ const InitiativesSearchAdvancedForm = () => {
     DATE_FROM: () => setDateFrom(''),
     DATE_TO: () => setDateTo(''),
     CATEGORY: () => setCategory('any'),
+    STATUS: () => setStatus('ALL'),
     LANGUAGE: () => setLanguage(locale),
   };
 
@@ -63,6 +66,7 @@ const InitiativesSearchAdvancedForm = () => {
   }, [filters]);
 
   const categories = getCategories(t);
+  const statuses = getStatuses(t);
   const languages = getLanguages(t);
 
   const errorsReset = () => {
@@ -78,7 +82,9 @@ const InitiativesSearchAdvancedForm = () => {
     <form
       onSubmit={e => {
         e.preventDefault();
+        const dateFormatPattern = /^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$/g;
 
+        // Validate input:
         if (
           (textFree !== '' && textExact !== '') ||
           (textFree !== '' && textConditional !== '') ||
@@ -105,14 +111,8 @@ const InitiativesSearchAdvancedForm = () => {
         }
 
         if (
-          (dateFrom !== '' &&
-            !dateFrom.match(
-              /^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$/g
-            )) ||
-          (dateTo !== '' &&
-            !dateTo.match(
-              /^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$/g
-            ))
+          (dateFrom !== '' && !dateFrom.match(dateFormatPattern)) ||
+          (dateTo !== '' && !dateTo.match(dateFormatPattern))
         ) {
           setDateInvalid(true);
           return setDateInvalidMessage(t('Wrong formatting.'));
@@ -123,6 +123,7 @@ const InitiativesSearchAdvancedForm = () => {
           return setDateInvalidMessage(t('Initial date missing.'));
         }
 
+        // If input is fine, reset feedback and send data to the API.
         errorsReset();
 
         dispachQuery({
@@ -135,6 +136,7 @@ const InitiativesSearchAdvancedForm = () => {
             DATE_FROM: [dateFrom],
             DATE_TO: [dateTo],
             CATEGORY: [category],
+            STATUS: status !== 'ALL' ? [status] : [],
             // Consider the language filter only if it's different than the current interface.
             LANGUAGE: language !== locale ? [language] : [],
           },
@@ -221,16 +223,9 @@ const InitiativesSearchAdvancedForm = () => {
         id="filter-status"
         label={t('Status')}
         groupClassName="ecl-u-mb-s"
-        value={query.status}
-        options={[
-          { value: 'ALL', label: t('All') },
-          { value: 'ONGOING', label: t('Ongoing') },
-          { value: 'ANSWERED', label: t('Answered') },
-          { value: 'REFUSED', label: t('Refused') },
-        ]}
-        onChange={e =>
-          dispachQuery({ type: 'changeStatus', status: e.target.value })
-        }
+        value={status}
+        options={statuses}
+        onChange={e => setStatus(e.target.value)}
         arrow={<ArrowDD />}
       />
 

@@ -18,30 +18,11 @@ const queryReducer = (state, action) => {
       };
     }
 
-    case 'changeStatus': {
-      return {
-        ...state,
-        pagination: queryInit.pagination,
-        status: action.status,
-      };
-    }
-
     case 'changeLanguage': {
       return {
         ...state,
         pagination: queryInit.pagination,
         language: action.language,
-      };
-    }
-
-    case 'changeFilter': {
-      return {
-        ...state,
-        pagination: queryInit.pagination,
-        filters: {
-          ...state.filters,
-          [action.filter]: action.filterValue,
-        },
       };
     }
 
@@ -56,7 +37,7 @@ const queryReducer = (state, action) => {
       };
     }
 
-    case 'removeFilter': {
+    case 'unsetFilter': {
       const { filters } = state;
       delete filters[action.filter];
 

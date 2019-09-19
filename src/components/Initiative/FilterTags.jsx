@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import getCategories from './utils/getCategories';
 import getLanguages from './utils/getLanguages';
+import getStatuses from './utils/getStatuses';
+
 import queryContext from './Search/context/query';
 
 import Icon from '../Icon';
@@ -19,6 +21,8 @@ const FilterTags = () => {
       ORGANISERS: t('Orgnisers'),
       DATE_FROM: t('From'),
       DATE_TO: t('To'),
+      CATEGORY: t('Category'),
+      STATUS: t('Status'),
       LANGUAGE: t('Language'),
     };
 
@@ -39,6 +43,11 @@ const FilterTags = () => {
     const language = languages.find(l => l.value === machineReadable);
 
     if (language && language.label) return language.label;
+
+    const statuses = getStatuses(t);
+    const status = statuses.find(s => s.value === machineReadable);
+
+    if (status && status.label) return status.label;
 
     return machineReadable;
   };
@@ -62,7 +71,7 @@ const FilterTags = () => {
                   e.preventDefault();
 
                   dispachQuery({
-                    type: 'removeFilter',
+                    type: 'unsetFilter',
                     filter: e.target.value,
                   });
                 }}
