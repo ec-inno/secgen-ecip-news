@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 
-import I18nContext from '../context/I18n';
+import { useI18nContext } from '../context/I18n';
 
 const Menu = () => {
-  const { location, locale } = useContext(I18nContext);
+  const { location, locale } = useI18nContext();
 
   // Menu information about `fetched_alias` contains site folder we don't need.
   const drupalSiteFolder = process.env.GATSBY_DRUPAL_SITE_FOLDER

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-const I18n = React.createContext();
+const I18nContext = React.createContext();
 
-export default I18n;
+const useI18nContext = () => useContext(I18nContext);
+
+export { useI18nContext, I18nContext as default };

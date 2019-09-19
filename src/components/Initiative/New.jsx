@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 
-import I18nContext from '../../context/I18n';
+import { useI18nContext } from '../../context/I18n';
 
 import plusSign from '../assets/images/plus.png';
 
 const New = () => {
-  const { locale } = useContext(I18nContext);
+  const { locale } = useI18nContext();
   const { t } = useTranslation();
 
   return (

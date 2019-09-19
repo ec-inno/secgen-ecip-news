@@ -3,12 +3,8 @@ import renderer from 'react-test-renderer';
 import ForumBanner from './ForumBanner';
 
 describe('ForumBanner', () => {
-  const props = {
-    label: 'test',
-  };
-
   it('renders correctly', () => {
-    const tree = renderer.create(<ForumBanner {...props} />).toJSON();
+    const tree = renderer.create(<ForumBanner />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 const initialState = {
   hideOverlay: true,
@@ -23,6 +23,8 @@ const reducer = (state, action) => {
 
 const Context = React.createContext();
 
+const useOverlayContext = () => useContext(Context);
+
 const ContextProviderWithReducer = ({ children }) => {
   const [store, dispatch] = React.useReducer(reducer, initialState);
 
@@ -31,4 +33,4 @@ const ContextProviderWithReducer = ({ children }) => {
   );
 };
 
-export { ContextProviderWithReducer, Context as default };
+export { ContextProviderWithReducer, useOverlayContext, Context as default };
