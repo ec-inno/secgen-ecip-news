@@ -22,11 +22,6 @@ const Counter = () => {
       });
   }, [locale]);
 
-  // No need to display when no data.
-  if (Object.keys(stats).length === 0) {
-    return '';
-  }
-
   return (
     <p className="ecl-u-type-paragraph ecl-u-mt-l ecl-u-d-flex ecl-u-justify-content-between">
       <span className="ecl-u-d-flex ecl-u-align-items-center">

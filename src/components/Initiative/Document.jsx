@@ -37,7 +37,7 @@ const Document = ({ file }) => {
         >
           <span className="ecl-link__label">{t('Download')}</span>{' '}
           <Icon
-            className="ecl-icon ecl-icon--fluid ecl-link__icon"
+            className="ecl-icon--fluid ecl-link__icon"
             shape="ui--download"
           />
         </a>

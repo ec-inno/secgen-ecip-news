@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import {
   useOverlayContext,
   SET_LANGUAGE_OVERLAY_VISIBILITY,
-} from '../context/Overlay';
+} from '../../context/Overlay';
 
-import Icon from './Icon';
+import Icon from '../Icon';
 
 const LanguageSelector = ({ href, name, code }) => {
   const { dispatch } = useOverlayContext();
@@ -40,6 +40,12 @@ LanguageSelector.propTypes = {
   href: PropTypes.string,
   name: PropTypes.string,
   code: PropTypes.string,
+};
+
+LanguageSelector.defaultProps = {
+  href: '',
+  name: '',
+  code: '',
 };
 
 export default LanguageSelector;

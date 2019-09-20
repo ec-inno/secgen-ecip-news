@@ -17,9 +17,9 @@ const Homepage = ({ data, pageContext: { locale } }) => {
       <main>
         <div className="ecl-container">
           <LeadParagraph
-            linkPath={`/${locale}/how-it-works`}
-            linkText={t('See how it works step by step')}
-            intro={t(
+            href={`/${locale}/how-it-works`}
+            label={t('See how it works step by step')}
+            text={t(
               "Get a greater say in the policies that affect your lives. The European Citizens' Initiative is a unique and innovative way for citizens to shape Europe by calling on the European Commission to make a legislative proposal. Once an initiative gathers 1 million signatures, the Commission decides on what follow-up action to take."
             )}
           />

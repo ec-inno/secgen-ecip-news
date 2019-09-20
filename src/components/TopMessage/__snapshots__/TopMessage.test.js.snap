@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopMessage renders correctly 1`] = `
+<div
+  className="eci-menu"
+  id="top"
+>
+  <div
+    className="ecl-container"
+  >
+    An official website of the European union
+  </div>
+</div>
+`;
