@@ -1,3 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Item Returns an empty string on missing input 1`] = `""`;
+exports[`Item Can handle nested item case 1`] = `
+<li
+  className="ecl-unordered-list__item"
+>
+  <a
+    className="ecl-link ecl-link--standalone"
+    href="#"
+  >
+    first level
+  </a>
+  <ul
+    className="ecl-unordered-list"
+  >
+    <li
+      className="ecl-unordered-list__item"
+    >
+      <a
+        className="ecl-link ecl-link--standalone"
+        href="#"
+      >
+        second level
+      </a>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`Item Can handle nested item case: 3 levels 1`] = `
+<li
+  className="ecl-unordered-list__item"
+>
+  <a
+    className="ecl-link ecl-link--standalone"
+    href="#"
+  >
+    first level
+  </a>
+  <ul
+    className="ecl-unordered-list"
+  >
+    <li
+      className="ecl-unordered-list__item"
+    >
+      <a
+        className="ecl-link ecl-link--standalone"
+        href="#"
+      >
+        second level
+      </a>
+      <ul
+        className="ecl-unordered-list"
+      >
+        <li
+          className="ecl-unordered-list__item"
+        >
+          <a
+            className="ecl-link ecl-link--standalone"
+            href="#"
+          >
+            third level
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`Item Can handle single item case 1`] = `
+<li
+  className="ecl-unordered-list__item"
+>
+  <a
+    className="ecl-link ecl-link--standalone"
+    href="#"
+  >
+    test
+  </a>
+</li>
+`;

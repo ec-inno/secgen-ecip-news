@@ -5,6 +5,6 @@ import ListNested from './ListNested';
 describe('ListNested', () => {
   it('Returns an empty string on missing input', () => {
     const tree = renderer.create(<ListNested />).toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(tree).toBe('');
   });
 });
