@@ -12,7 +12,7 @@ describe('Pagination', () => {
   it('Renders list items', () => {
     const props = {
       label: 'test',
-      items: [{ label: '1', href: '#1', label: 'Page 1' }],
+      items: [{ href: '#1', label: 'Page 1' }],
     };
     const tree = renderer.create(<Pagination {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
