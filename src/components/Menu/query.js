@@ -1,5 +1,8 @@
+/* eslint import/prefer-default-export: 0 */
+
 import { useStaticQuery, graphql } from 'gatsby';
 
+// When importing * from this module, the function below will be possible to spy on.
 export const useQuery = () => {
   const data = useStaticQuery(graphql`
     query getMainMenu {
