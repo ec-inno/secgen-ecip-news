@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu renders correctly 1`] = `
+<nav
+  className="eci-menu"
+>
+  <div
+    className="ecl-container"
+  >
+    <ul
+      className="eci-menu__list"
+    >
+      <li
+        className="eci-menu__option"
+      >
+        <a
+          className="eci-menu__link ecl-link"
+          href="/#"
+        >
+          Home
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
