@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import image from '../components/assets/images/video-image.png';
+import image from '../assets/images/video-image.png';
 
 const Video = () => {
   const { t } = useTranslation();

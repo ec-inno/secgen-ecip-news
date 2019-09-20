@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForumBanner renders correctly 1`] = `
+<section
+  className="ecl-page-banner ecl-page-banner--image-shade ecl-page-banner--centered ecl-u-mt-l"
+>
+  <div
+    className="ecl-page-banner__image"
+    style={
+      Object {
+        "backgroundImage": "url('file')",
+      }
+    }
+  />
+  <div
+    className="ecl-container ecl-page-banner__container"
+  >
+    <div
+      className="ecl-page-banner__content"
+    >
+      <h1
+        className="ecl-page-banner__title"
+      >
+        Want to learn and collaborate?
+      </h1>
+      <a
+        className="ecl-page-banner__button ecl-link ecl-link--cta ecl-link--icon ecl-link--icon-after"
+        href="#"
+      >
+        <span
+          className="ecl-link__label"
+        >
+          Join the forum
+        </span>
+         
+        <svg
+          aria-hidden="true"
+          className="ecl-link__icon ecl-icon ecl-icon--xs ecl-icon--rotate-90"
+          focusable="false"
+        >
+          
+          
+          <use
+            xlinkHref="file#ui--corner-arrow"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+`;

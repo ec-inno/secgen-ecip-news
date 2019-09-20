@@ -6,5 +6,4 @@ public
 # They contain loads of violations unnecessary to fix.
 packages/gatsby-source-drupal-jsonapi-eci
 
-# Utilities for local development
-/scripts
+__mocks__

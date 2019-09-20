@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LanguageSelector renders correctly 1`] = `
+<div
+  className="ecl-site-header__selector"
+>
+  <a
+    className="ecl-link ecl-link--standalone"
+    data-ecl-language-selector={true}
+    href="#"
+    onClick={[Function]}
+  >
+    English
+    <span
+      className="ecl-site-header__language-icon"
+    >
+      <svg
+        aria-hidden="true"
+        className="ecl-icon ecl-icon--m"
+        focusable="false"
+      >
+        
+        
+        <use
+          xlinkHref="file#general--language"
+        />
+      </svg>
+      <span
+        className="ecl-site-header__language-code"
+      >
+        en
+      </span>
+    </span>
+  </a>
+</div>
+`;

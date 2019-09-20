@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
-import I18nContext from '../../../../context/I18n';
+import { useI18nContext } from '../../../../context/I18n';
 import ErrorMessage from '../../../ErrorMessage';
 
 import Card from '../../Card';
@@ -16,7 +16,7 @@ import Spinner from '../../../Spinner';
 
 const SearchBasic = () => {
   const { t } = useTranslation();
-  const { locale } = useContext(I18nContext);
+  const { locale } = useI18nContext();
   const { GATSBY_INITIATIVES_API: api } = process.env;
 
   const itemsPerRow = 3;

@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeadParagraph renders correctly 1`] = `
+<div
+  className="ecl-row ecl-u-mt-l"
+>
+  <div
+    className="ecl-col-sm-12 ecl-col-md-8 ecl-u-mv-m"
+  >
+    <p
+      className="ecl-u-type-paragraph-lead ecl-u-mt-none"
+    >
+      intro
+    </p>
+    <a
+      className="ecl-u-type-xl ecl-link ecl-link--standalone"
+      href="#"
+    >
+      Call to action
+    </a>
+    <p
+      className="ecl-u-type-paragraph ecl-u-mt-l ecl-u-d-flex ecl-u-justify-content-between"
+    >
+      <span
+        className="ecl-u-d-flex ecl-u-align-items-center"
+      >
+        <svg
+          aria-hidden="true"
+          className="ecl-u-mr-xs ecl-icon ecl-icon--m"
+          focusable="false"
+        >
+          
+          
+          <use
+            xlinkHref="file#general--file"
+          />
+        </svg>
+        ...
+         
+        registration requests
+      </span>
+      <span
+        className="ecl-u-d-flex ecl-u-align-items-center"
+      >
+        <svg
+          aria-hidden="true"
+          className="ecl-u-mr-xs ecl-icon ecl-icon--m"
+          focusable="false"
+        >
+          
+          
+          <use
+            xlinkHref="file#general--edit"
+          />
+        </svg>
+        ...
+         
+        initiatives registered
+      </span>
+      <span
+        className="ecl-u-d-flex ecl-u-align-items-center"
+      >
+        <svg
+          aria-hidden="true"
+          className="ecl-u-mr-xs ecl-icon ecl-icon--m"
+          focusable="false"
+        >
+          
+          
+          <use
+            xlinkHref="file#ui--check-filled"
+          />
+        </svg>
+        ...
+         
+        successful initiatives
+      </span>
+    </p>
+  </div>
+  <div
+    className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mv-m"
+  >
+    <figure
+      className="ecl-media-container"
+    >
+      <img
+        alt="The European Citizens' Initiative in video."
+        className="ecl-media-container__media"
+        src="file"
+      />
+      <figcaption
+        className="ecl-media-container__caption"
+      >
+        The European Citizens' Initiative in video.
+      </figcaption>
+    </figure>
+  </div>
+</div>
+`;

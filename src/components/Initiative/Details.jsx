@@ -90,6 +90,7 @@ const Details = ({ languageSpecificData, initiativeData }) => {
         ''
       )}
       <Message
+        onClose={null}
         variant="warning"
         title={t('Disclaimer')}
         description={t(

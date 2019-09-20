@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SiteName renders correctly 1`] = `
+<div
+  className="ecl-container ecl-u-pb-m ecl-u-type-xl ecl-u-type-bold"
+>
+  <span>
+    European
+  </span>
+  <span
+    className="ecl-u-ml-2xs"
+  >
+    Citizens'
+  </span>
+  <span
+    className="ecl-u-ml-2xs"
+  >
+    Initiative
+  </span>
+</div>
+`;

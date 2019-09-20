@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 const Context = React.createContext();
 
-export default Context;
+const useOverlayContext = () => useContext(Context);
+
+export { useOverlayContext, Context as default };

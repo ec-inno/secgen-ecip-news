@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import OverlayContext from '../../context/Overlay';
+import { useOverlayContext } from '../../context/Overlay';
 
 import LanguageListOverlay from './LanguageListOverlay';
 
 const LanguageListOverlayWithContext = props => {
-  const { overlayIsHidden, setOverlayIsHidden } = useContext(OverlayContext);
+  const { overlayIsHidden, setOverlayIsHidden } = useOverlayContext();
 
   return (
     <LanguageListOverlay
