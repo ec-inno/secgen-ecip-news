@@ -91,6 +91,7 @@ const Details = ({ languageSpecificData, initiativeData }) => {
         ''
       )}
       <Message
+        close={null}
         title={t('Disclaimer')}
         description={t(
           'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'

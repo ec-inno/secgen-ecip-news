@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as LinkInternal } from 'gatsby';
-import LinkExternal from './Link/LinkEcl';
+import LinkExternal from '../Link/LinkEcl';
 
-const ListItemNested = ({ item, id }) => {
+const Item = ({ item, id }) => {
   const accepted = ['href', 'title', 'external'];
 
   if (!item) return '';
@@ -21,7 +21,7 @@ const ListItemNested = ({ item, id }) => {
     ul = (
       <ul className="ecl-unordered-list">
         {Object.keys(children).map((childPath, key) => (
-          <ListItemNested item={children[childPath]} key={key} />
+          <Item item={children[childPath]} key={key} />
         ))}
       </ul>
     );
@@ -46,7 +46,7 @@ const ListItemNested = ({ item, id }) => {
   );
 };
 
-ListItemNested.propTypes = {
+Item.propTypes = {
   item: PropTypes.shape({
     title: PropTypes.string,
     href: PropTypes.string,
@@ -55,4 +55,4 @@ ListItemNested.propTypes = {
   id: PropTypes.string,
 };
 
-export default ListItemNested;
+export default Item;

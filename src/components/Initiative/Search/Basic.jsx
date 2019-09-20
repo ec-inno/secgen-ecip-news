@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 import axios from 'axios';
@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 import config from '../config';
-import I18nContext from '../../../context/I18n';
+import { useI18nContext } from '../../../context/I18n';
 
 import Card from '../Card';
 import Message from '../../Message';
@@ -17,7 +17,7 @@ import Spinner from '../../Spinner';
 
 const Basic = () => {
   const { t } = useTranslation();
-  const { locale } = useContext(I18nContext);
+  const { locale } = useI18nContext();
   const { GATSBY_INITIATIVES_API: api } = process.env;
 
   const itemsPerRow = 3;

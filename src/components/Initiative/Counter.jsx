@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
-import I18nContext from '../../context/I18n';
+import { useI18nContext } from '../../context/I18n';
 
 import Icon from '../Icon';
 
 const Counter = () => {
   const { t } = useTranslation();
-  const { locale } = useContext(I18nContext);
+  const { locale } = useI18nContext();
   const { GATSBY_DRUPAL_API: api } = process.env;
 
   const [stats, setStats] = useState({});
@@ -21,11 +21,6 @@ const Counter = () => {
         console.error(t('Failed to fetch initiatives statistics'), e);
       });
   }, [locale]);
-
-  // No need to display when no data.
-  if (Object.keys(stats).length === 0) {
-    return '';
-  }
 
   return (
     <p className="ecl-u-type-paragraph ecl-u-mt-l ecl-u-d-flex ecl-u-justify-content-between">

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message renders correctly 1`] = `
+<div
+  className="ecl-message ecl-message--warning"
+  data-ecl-message={true}
+  role="alert"
+>
+  <svg
+    aria-hidden="true"
+    className="ecl-message__icon ecl-icon ecl-icon--l"
+    focusable="false"
+  >
+    
+    
+    <use
+      xlinkHref="file#notifications--warning"
+    />
+  </svg>
+  <div
+    className="ecl-message__content"
+  >
+    
+    <div
+      className="ecl-message__title"
+    >
+      Disclaimer
+    </div>
+    <p
+      className="ecl-message__description"
+    >
+      The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.
+    </p>
+  </div>
+</div>
+`;

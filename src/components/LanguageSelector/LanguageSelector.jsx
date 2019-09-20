@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import Context, { SET_LANGUAGE_OVERLAY_VISIBILITY } from '../context/Overlay';
+import {
+  useOverlayContext,
+  SET_LANGUAGE_OVERLAY_VISIBILITY,
+} from '../../context/Overlay';
 
-import Icon from './Icon';
+import Icon from '../Icon';
 
 const LanguageSelector = ({ href, name, code }) => {
-  const { dispatch } = useContext(Context);
+  const { dispatch } = useOverlayContext();
 
   return (
     <div className="ecl-site-header__selector">
@@ -37,6 +40,12 @@ LanguageSelector.propTypes = {
   href: PropTypes.string,
   name: PropTypes.string,
   code: PropTypes.string,
+};
+
+LanguageSelector.defaultProps = {
+  href: '',
+  name: '',
+  code: '',
 };
 
 export default LanguageSelector;

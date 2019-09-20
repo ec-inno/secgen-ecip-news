@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion2 renders correctly 1`] = `
+<div
+  className="ecl-accordion2"
+  data-ecl-accordion2={true}
+>
+  test
+</div>
+`;

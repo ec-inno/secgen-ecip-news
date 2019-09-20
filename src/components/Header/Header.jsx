@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 
-import { languages } from '../../languages';
-import I18nContext from '../context/I18n';
+import { languages } from '../../../languages';
+import { useI18nContext } from '../../context/I18n';
 
-import logoPaths from '../utils/logoPaths';
+import logoPaths from '../../utils/logoPaths';
 
-import SiteName from './SiteName';
-import LanguageListOverlay from './LanguageList/LanguageListOverlayWithContext';
-import LanguageSelector from './LanguageSelector';
+import SiteName from '../SiteName';
+import LanguageListOverlay from '../LanguageList/LanguageListOverlayWithContext';
+import LanguageSelector from '../LanguageSelector';
 
 // Create a map of language code to language label.
 const languageMap = languages.reduce((obj, item) => {
@@ -18,7 +18,7 @@ const languageMap = languages.reduce((obj, item) => {
 }, {});
 
 const Header = () => {
-  const { locale, location } = useContext(I18nContext);
+  const { locale, location } = useI18nContext();
   const { t } = useTranslation();
   const logo = logoPaths[locale];
 

@@ -10,11 +10,11 @@ module.exports = {
     const http = require('http');
 
     if (!localhost) {
-      return error('Cannot work without value for GATSBY_DRUPAL_API_OFFLINE.');
+      error('Cannot work without value for GATSBY_DRUPAL_API_OFFLINE.');
     }
 
     if (!hostname.includes('localhost')) {
-      return error(
+      error(
         'Required pattern for GATSBY_DRUPAL_API_OFFLINE: http://localhost:3000'
       );
     }
@@ -28,7 +28,8 @@ module.exports = {
       try {
         const data = require(`${__dirname}/drupal_jsonapi/${req.url}/data.json`);
         res.end(JSON.stringify(data));
-      } catch (error) {
+      } catch (e) {
+        error(e.message);
         res.end('');
       }
     });

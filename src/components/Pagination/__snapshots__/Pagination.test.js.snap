@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination Renders list items 1`] = `
+<nav
+  aria-label="test"
+  className="ecl-pagination"
+>
+  <ul
+    className="ecl-pagination__list"
+  >
+    <li
+      className="ecl-pagination__item"
+    >
+      <span
+        className="ecl-pagination__text ecl-pagination__text--summary"
+      >
+        Page 1
+      </span>
+      <span
+        className="ecl-pagination__text ecl-pagination__text--full"
+      />
+    </li>
+  </ul>
+</nav>
+`;

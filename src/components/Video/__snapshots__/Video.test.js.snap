@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video renders correctly 1`] = `
+<figure
+  className="ecl-media-container"
+>
+  <img
+    alt="The European Citizens' Initiative in video."
+    className="ecl-media-container__media"
+    src="file"
+  />
+  <figcaption
+    className="ecl-media-container__caption"
+  >
+    The European Citizens' Initiative in video.
+  </figcaption>
+</figure>
+`;

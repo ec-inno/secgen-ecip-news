@@ -1,0 +1,407 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly given default language data 1`] = `
+<footer
+  className="ecl-footer ecl-footer--updated ecl-footer--custom"
+>
+  <section
+    className="ecl-footer__identity"
+  >
+    <div
+      className="ecl-container"
+    >
+      <h1
+        className="ecl-footer__identity-title"
+      >
+        European Citizens' Initiative
+      </h1>
+      <div
+        className="ecl-row"
+      >
+        
+        <div
+          className="ecl-footer__identity-info ecl-col-12 ecl-col-md-6"
+        >
+          <a
+            className="ecl-footer__identity-link ecl-link ecl-link--standalone"
+            href="/en/communication-material"
+            internal="true"
+          >
+            Communication material
+          </a>
+          <a
+            className="ecl-footer__identity-link ecl-link ecl-link--standalone"
+            href="/en/faq"
+            internal="true"
+          >
+            FAQ
+          </a>
+          <a
+            className="ecl-footer__identity-link ecl-link ecl-link--standalone"
+            href="/en/sitemap"
+            internal="true"
+          >
+            Site map
+          </a>
+          <a
+            className="ecl-footer__identity-link ecl-link ecl-link--standalone"
+            href="/en/contact"
+            internal="true"
+          >
+            Contact
+          </a>
+          <a
+            className="ecl-footer__identity-link ecl-link ecl-link--standalone"
+            href="#"
+          >
+            Newsletter
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div
+    className="ecl-footer__sections"
+  >
+    <div
+      className="ecl-container"
+    >
+      <div
+        className="ecl-row"
+      >
+        <section
+          className="ecl-footer__section ecl-col-12 ecl-col-md-4"
+        >
+          <h1
+            className="ecl-footer__section-title"
+          >
+            Contact the EU
+          </h1>
+          <ul
+            className="ecl-footer__section-list"
+          >
+            <li
+              className="ecl-footer__section-item"
+            >
+              <span>
+                <span>
+                  Call us 
+                </span>
+                <a
+                  className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                  href="#"
+                >
+                  00 800 6 7 8 9 10 11
+                </a>
+              </span>
+              <span>
+                <span>
+                   or use other 
+                </span>
+                <a
+                  className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                  href="#"
+                >
+                  telephone options
+                </a>
+              </span>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <span>
+                <span>
+                  E-mail us via our 
+                </span>
+                <a
+                  className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                  href="#"
+                >
+                  contact form
+                </a>
+              </span>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <span>
+                <span>
+                  Visit our 
+                </span>
+                <a
+                  className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                  href="#"
+                >
+                  contact points
+                </a>
+                <span>
+                   in your country
+                </span>
+              </span>
+            </li>
+          </ul>
+          <h1
+            className="ecl-footer__section-title"
+          >
+            Find an EU social media account
+          </h1>
+          <ul
+            className="ecl-footer__section-list"
+          >
+            <li
+              className="ecl-footer__section-item"
+            >
+              <span>
+                <span>
+                  Search for 
+                </span>
+                <a
+                  className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                  href="#"
+                >
+                  EU social media channels
+                </a>
+              </span>
+            </li>
+          </ul>
+        </section>
+        <section
+          className="ecl-footer__section ecl-col-12 ecl-col-md-8"
+        >
+          <h1
+            className="ecl-footer__section-title"
+          >
+            Find a European institution
+          </h1>
+          <ul
+            className="ecl-footer__section-list ecl-footer__section-list--long ecl-footer__columns"
+          >
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Parliament
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Council
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                Council of the European Union
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Commission
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                Court of Justice of the European Union
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Central Bank
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Court of Auditors
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European External Action Service
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Economic and Social Committee
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Committee of the Regions
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Investment Bank
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Ombudsman
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Data Protection Supervisor
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                European Personnel Selection Office
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                Publications Office of the European Union
+              </a>
+            </li>
+            <li
+              className="ecl-footer__section-item"
+            >
+              <a
+                className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                href="#"
+              >
+                Agencies
+              </a>
+            </li>
+          </ul>
+          <ul
+            className="ecl-footer__section-list ecl-footer__section-list--short"
+          >
+            <li
+              className="ecl-footer__section-item"
+            >
+              <span>
+                <span>
+                  Search for 
+                </span>
+                <a
+                  className="ecl-footer__section-link ecl-link ecl-link--standalone"
+                  href="#"
+                >
+                  EU institutions
+                </a>
+              </span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+  <section
+    className="ecl-footer__common"
+  >
+    <div
+      className="ecl-container ecl-footer__common-container"
+    >
+      <span
+        className="ecl-footer__common-label"
+      >
+        Last published 26/06/2018
+      </span>
+      <a
+        className="ecl-footer__common-link ecl-link ecl-link--standalone"
+        href="#"
+      >
+        Language policy
+      </a>
+      <a
+        className="ecl-footer__common-link ecl-link ecl-link--standalone"
+        href="#"
+      >
+        Privacy policy
+      </a>
+      <a
+        className="ecl-footer__common-link ecl-link ecl-link--standalone"
+        href="#"
+      >
+        Legal notice
+      </a>
+      <a
+        className="ecl-footer__common-link ecl-link ecl-link--standalone"
+        href="#"
+      >
+        Cookies
+      </a>
+      <a
+        className="ecl-footer__common-link ecl-link ecl-link--standalone"
+        href="#"
+      >
+        Web accessibility
+      </a>
+    </div>
+  </section>
+</footer>
+`;

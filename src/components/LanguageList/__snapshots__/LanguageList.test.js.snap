@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LanguageList renders correctly 1`] = `
+<div
+  className="ecl-row"
+>
+  <div
+    className="ecl-language-list__column ecl-col-12 ecl-col-lg-4 ecl-offset-lg-2"
+  >
+    <ul
+      className="ecl-language-list__list"
+    />
+  </div>
+  <div
+    className="ecl-language-list__column ecl-col-12 ecl-col-lg-4"
+  >
+    <ul
+      className="ecl-language-list__list"
+    />
+  </div>
+</div>
+`;

@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import I18nContext from '../../../context/I18n';
+import { useI18nContext } from '../../../context/I18n';
 
 import { languages } from '../../../../languages';
 
 const FormAdvanced = ({ setFilters }) => {
   const { t } = useTranslation();
-  const { locale } = useContext(I18nContext);
+  const { locale } = useI18nContext();
 
   const [textFree, setTextFree] = useState('');
   const [textExact, setTextExact] = useState('');

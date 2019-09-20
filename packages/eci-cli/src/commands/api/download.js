@@ -1,6 +1,14 @@
+/* eslint no-param-reassign: 0 */
+
 module.exports = {
   name: 'download',
   run: async toolbox => {
+    const {
+      http,
+      filesystem: { write },
+      print: { info, error },
+    } = toolbox;
+
     // We care only for these at the moment.
     const entityTypes = [
       'node--faq',
@@ -16,18 +24,12 @@ module.exports = {
     } = process.env;
 
     if (!baseURL) {
-      return error('Cannot work without value for SITE_BASE_URL.');
+      error('Cannot work without value for SITE_BASE_URL.');
     }
 
     // Dependencies.
     const getLanguages = require('../../utils/getLanguages');
     const languages = getLanguages();
-
-    const {
-      http,
-      filesystem: { write },
-      print: { info, error },
-    } = toolbox;
 
     const client = http.create({ baseURL });
 
@@ -52,19 +54,9 @@ module.exports = {
 
       try {
         response = await client.get(url);
-      } catch (error) {
-        if (
-          error.response &&
-          error.response.status &&
-          error.response.status === 405
-        ) {
-          // The endpoint doesn't support the GET method, so just skip it.
-          return [];
-        } else {
-          console.error(`Failed to fetch ${url}`, error.message);
-          console.error(error);
-          throw error;
-        }
+      } catch (e) {
+        error(`Failed to fetch ${url}`, e.message);
+        return [];
       }
 
       data = data.concat(response.data.data);

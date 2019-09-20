@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Link from '../Link/LinkGatsby';
 
-import Context, {
+import {
+  useOverlayContext,
   SET_LANGUAGE_OVERLAY_VISIBILITY,
 } from '../../context/Overlay';
 
 // As close as possible to https://github.com/ec-europa/europa-component-library/blob/v2-dev/src/systems/ec/implementations/react/page-structure/language-list/src/LanguageListItem.jsx
 const LanguageListItem = ({ label, lang, href, isActive, isOverlay }) => {
-  const { dispatch } = useContext(Context);
+  const { dispatch } = useOverlayContext();
 
   return (
     <Link

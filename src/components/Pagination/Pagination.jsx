@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import Link from './Link/LinkEcl';
+import Link from '../Link/LinkEcl';
 
 const Pagination = ({ label, items, className, ...props }) => {
   const classNames = classnames(className, 'ecl-pagination');
