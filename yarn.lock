@@ -8024,7 +8024,7 @@ globby@^9.2.0:
     pify "^4.0.1"
     slash "^2.0.0"
 
-gluegun@3.3.4:
+gluegun@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/gluegun/-/gluegun-3.3.4.tgz#f65449ef908658a2fa9072606f691289826ef9f1"
   integrity sha512-XapJyKEE/Iqn1CYeWxLklGicZ8mM9k0Bdvj2JdYuy6hcCZ9nkDqxAbO5ZvzhPl+naX9K96S40y/XTVHabZ+ZSA==
@@ -16744,7 +16744,7 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xlsx@0.15.1:
+xlsx@^0.15.1:
   version "0.15.1"
   resolved "https://registry.yarnpkg.com/xlsx/-/xlsx-0.15.1.tgz#a767c4d412cbd0c95b30dbcd48bed7de428eb107"
   integrity sha512-z+o4+QPMc32EPboLCzJAz94o0Zyy+8jrmWTsVpfzwknFln9qDO6/HN1KrGGVC4//sGA7dh4R3HA4fhbGIKCDOA==
