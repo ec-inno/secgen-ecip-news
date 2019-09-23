@@ -45,7 +45,7 @@ const SearchAdvanced = () => {
   return (
     <>
       <InitiativesSearchContext.Provider value={{ query, dispachQuery }}>
-        <div ref={containerRef} className="ecl-container">
+        <div className="ecl-container">
           <div className="ecl-row">
             <aside className="ecl-col-12 ecl-col-lg-3">
               <h3 className="ecl-u-type-heading-3 ecl-u-mt-l ecl-u-mt-lg-none">
@@ -53,7 +53,7 @@ const SearchAdvanced = () => {
               </h3>
               <SearchForm />
             </aside>
-            <section className="ecl-col-12 ecl-col-lg-9">
+            <section ref={containerRef} className="ecl-col-12 ecl-col-lg-9">
               <h2 className="ecl-u-type-heading-2 ecl-u-d-none ecl-u-d-lg-block ecl-u-mv-none">
                 {t('Search results')}{' '}
                 {results.recordsFound ? `(${results.recordsFound})` : ''}
