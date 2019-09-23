@@ -2,10 +2,13 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
+import getCountries from './utils/getCountries';
+
 const SoS = ({ submission }) => {
   if (!submission) return '';
 
   const { t } = useTranslation();
+  const countries = getCountries(t);
 
   return (
     <>
@@ -18,9 +21,13 @@ const SoS = ({ submission }) => {
         <tbody>
           {submission.entry
             ? submission.entry.map((e, key) => {
+                console.log(e);
+                const code = e.countryCodeType.toLowerCase();
+                const country = countries[code] || code;
+
                 return (
                   <tr key={key}>
-                    <td>{e.countryCodeType}</td>
+                    <td>{country}</td>
                     <td>
                       {e.afterSubmission ? `${e.total}<sup>*</sup>` : e.total}
                     </td>
