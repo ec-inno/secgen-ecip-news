@@ -8,7 +8,7 @@ const getLinkData = async (url, data = [], options) => {
   url = url.href;
 
   // Apply any filters configured in gatsby-config.js. Filters
-  // can be any valid JSON API filter query string.
+  // can be any valid JSON:API filter query string.
   // See https://www.drupal.org/docs/8/modules/jsonapi/filtering
   if (typeof filters === 'object') {
     if (type in filters) {

@@ -1,7 +1,7 @@
 {
   "name": "@eci/cli",
   "version": "0.1.0",
-  "description": "",
+  "description": "The CLI of the project.",
   "private": true,
   "bin": {
     "eci-cli": "bin/eci-cli"
@@ -13,8 +13,8 @@
     "bin"
   ],
   "dependencies": {
-    "dotenv": "8.1.0",
-    "gluegun": "3.3.4",
-    "xlsx": "0.15.1"
+    "dotenv": "^8.1.0",
+    "gluegun": "^3.3.4",
+    "xlsx": "^0.15.1"
   }
 }

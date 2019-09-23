@@ -1,4 +1,4 @@
-# Drupal content sourcing (`gatsby-source-drupal-jsonapi-eci`)
+# Drupal content sourcing through JSON:API endpoints
 
 Started off [`gatsby-source-drupal`](https://www.gatsbyjs.org/packages/gatsby-source-drupal/) plugin.
 
@@ -11,8 +11,8 @@ Started off [`gatsby-source-drupal`](https://www.gatsbyjs.org/packages/gatsby-so
 
 ## Reasoning
 
-- JSON API module in Drupal 8 has [issues with multilingualism](https://www.drupal.org/project/issues/jsonapi?text=translations&status=Open&priorities=All&categories=All&version=All&component=All)
-- Hard to pass per-node list of available translations from Drupal. (Normalizer pattern has been deprecated in JSON API module and the new Field Enhancer Plugin does not cover for the scenario to add translations in node's `attributes` in JSON API responses. Adding the list of translations in a computed field is also not optimal because values are calculated on each entity load.
+- JSON:API module in Drupal 8 has [issues with multilingualism](https://www.drupal.org/project/issues/jsonapi?text=translations&status=Open&priorities=All&categories=All&version=All&component=All)
+- Hard to pass per-node list of available translations from Drupal. (Normalizer pattern has been deprecated in JSON:API module and the new Field Enhancer Plugin does not cover for the scenario to add translations in node's `attributes` in JSON:API responses. Adding the list of translations in a computed field is also not optimal because values are calculated on each entity load.
 
 ## Notes
 
@@ -26,3 +26,27 @@ For this reason, to be able to build a Gatsby site based on Drupal backend:
 Based on this, Gatsby site will be able to create at least one page for the required data requirements (GraphQL). Missing translations will fallback to default one, which has already been created.
 
 For example, to start the website, one needs to have at least 1 page `/en/how-it-works` and if there are no translations, going to `/bg/how-it-works` Gatsby site will display the English content until there is an actual one.
+
+## Offline use
+
+It's possible to mirror data coming from JSON:API endpoints through the use of `eci-cli`.
+
+Mirror content locally:
+
+```sh
+yarn eci-cli api download
+```
+
+Start a local server:
+
+and then:
+
+```sh
+yarn eci-cli api serve
+```
+
+Start developing using this local mirror:
+
+```sh
+GATSBY_DRUPAL_API=http://localhost:3000 yarn start
+```

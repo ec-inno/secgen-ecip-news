@@ -68,7 +68,7 @@ module.exports = {
       return { data, ...response.data };
     };
 
-    info('Downloading JSON API data locally  ...');
+    info('Downloading JSON:API data locally  ...');
 
     try {
       languages.map(async language => {
@@ -80,7 +80,7 @@ module.exports = {
         saveData(resource, response.data);
 
         if (links) {
-          // Correction for Drupal's JSON API issue dropping the language.
+          // Correction for Drupal's JSON:API issue dropping the language.
           // Make the correction at this stage in order to follow `links` crrectly.
           const defaultEndpoint = `${baseURL}/api`;
           const languageEndpoint = `${baseURL}/${language}/api`;

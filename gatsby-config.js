@@ -21,7 +21,7 @@ module.exports = {
     'gatsby-plugin-layout',
     'gatsby-plugin-remove-trailing-slashes',
     {
-      resolve: 'gatsby-source-drupal-jsonapi-eci',
+      resolve: '@eci/gatsby-source-drupal-jsonapi',
       options: {
         baseUrl,
         apiBase: 'api',

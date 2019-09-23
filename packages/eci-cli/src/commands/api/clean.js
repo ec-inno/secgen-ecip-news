@@ -6,7 +6,7 @@ module.exports = {
       system: { run },
     } = toolbox;
 
-    info('Cleaning previously saved data from Drupal JSONAPI ...');
+    info('Cleaning previously saved data from Drupal JSON:API ...');
 
     const dir = `${__dirname}/drupal_jsonapi`;
 

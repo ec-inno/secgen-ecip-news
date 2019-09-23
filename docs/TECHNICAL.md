@@ -10,7 +10,7 @@ To pass information from to client-only code (dynamic data fetching), please use
 
 ## Backend API
 
-You will need a running Drupal 8 website with a JSONAPI endpoint before being able to run or build the client website. Content from Drupal is sourced (Gatsby term), which means that data is cached and HTML is rendered server-side during Gatsby build task.
+You will need a running Drupal 8 website with a JSON:API endpoint before being able to run or build the client website. Content from Drupal is sourced (Gatsby term), which means that data is cached and HTML is rendered server-side during Gatsby build task.
 
 Given you have a running Drupal 8 API, set the following environment variables:
 

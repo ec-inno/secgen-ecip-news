@@ -48,7 +48,7 @@ exports.sourceNodes = async (
         const languageEndpoint = `${baseUrl}/${language}/${apiBase}`;
 
         if (url.href && !url.href.includes('skos')) {
-          // Drupal's JSONAPI needs corrections for its language dropping in links.
+          // Drupal's JSON:API needs corrections for its language dropping in links.
           url.href = url.href.replace(defaultEndpoint, languageEndpoint);
 
           published = await getLinkData(url, [], {
