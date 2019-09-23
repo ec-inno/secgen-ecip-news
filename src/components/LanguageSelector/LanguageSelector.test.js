@@ -7,8 +7,8 @@ import LanguageSelector from './LanguageSelector';
 describe('LanguageSelector', () => {
   it('renders correctly', () => {
     jest.spyOn(OverlayContext, 'useOverlayContext').mockImplementation(() => ({
-      store: { hideOverlay: true },
-      dispatch: () => {},
+      overlayIsHidden: true,
+      setOverlayIsHidden: () => true,
     }));
 
     const props = {

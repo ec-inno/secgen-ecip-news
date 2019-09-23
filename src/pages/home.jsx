@@ -5,7 +5,7 @@ import slugify from 'slugify';
 
 import Head from '../components/Head';
 import LeadParagraph from '../components/LeadParagraph';
-import InitiativesSearchBasic from '../components/Initiative/Search/Basic';
+import SearchForm from '../components/Initiative/Search/Basic';
 
 const Homepage = ({ data, pageContext: { locale } }) => {
   const { t } = useTranslation();
@@ -24,7 +24,7 @@ const Homepage = ({ data, pageContext: { locale } }) => {
             )}
           />
 
-          <InitiativesSearchBasic />
+          <SearchForm />
 
           {news && news.length ? (
             <section className="ecl-u-mt-xl">

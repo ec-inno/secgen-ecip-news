@@ -1,5 +1,5 @@
-const createPages = require('./gatsbyNodeApi/createPages');
-const onCreatePage = require('./gatsbyNodeApi/onCreatePage');
+const createPages = require('./gatsby/createPages');
+const onCreatePage = require('./gatsby/onCreatePage');
 
 exports.createPages = createPages;
 exports.onCreatePage = onCreatePage;

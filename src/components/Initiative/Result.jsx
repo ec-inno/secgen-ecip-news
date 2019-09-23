@@ -5,9 +5,9 @@ import axios from 'axios';
 import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 
-import Icon from '../../Icon';
-import defaultImage from '../../assets/images/default-image.png';
-import formatStatus from '../../../utils/formatStatus';
+import Icon from '../Icon';
+import defaultImage from '../assets/images/default-image.png';
+import formatStatus from '../../utils/formatStatus';
 
 const Result = ({ title, href, status, pubRegNum, logo }) => {
   const { t } = useTranslation();

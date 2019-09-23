@@ -5,20 +5,19 @@ import has from 'lodash/has';
 
 // Generic
 import Head from '../components/Head';
-import Message from '../components/Message';
 import Share from '../components/Share';
 
 // Sub-components, keep out of /src/pages.
-import Meta from '../components/Initiative/Meta';
 import Details from '../components/Initiative/Details';
+import ErrorMessage from '../components/ErrorMessage';
+import Meta from '../components/Initiative/Meta';
 import Progress from '../components/Initiative/Progress';
 
 const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
   const { GATSBY_INITIATIVES_API: api } = process.env;
 
-  const [errorMessage, setErrorMessage] = useState('');
-  const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
+  const [error, setError] = useState({});
   const [initiativeData, setInitiativeData] = useState({});
 
   useEffect(() => {
@@ -28,38 +27,15 @@ const Initiative = ({ location, pageContext: { locale } }) => {
     axios
       .get(endpoint)
       .then(response => setInitiativeData(response.data))
-      .catch(error => {
-        console.error(t('Issue occurred while getting initiative data'), error);
-        setErrorMessage(error.message);
-        setErrorMessageVisibility(true);
-      });
+      .catch(setError);
   }, [locale]);
 
-  if (errorMessage) {
-    const errorComponentConfig = {
-      variant: 'error',
-      icon: {
-        shape: 'notifications--error',
-        size: 'l',
-      },
-      close: {
-        variant: 'ghost',
-        label: t('Close'),
-        icon: {
-          shape: 'ui--close',
-          size: 's',
-        },
-      },
-    };
-
+  if (error.message) {
     return (
       <div className="ecl-container ecl-u-mt-l">
-        <Message
-          className={errorMessageIsVisible ? '' : 'hidden'}
-          onClose={() => setErrorMessageVisibility(false)}
+        <ErrorMessage
           title={t('Issue occurred while getting initiative data')}
-          description={errorMessage}
-          {...errorComponentConfig}
+          error={error}
         />
       </div>
     );

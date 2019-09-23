@@ -13,8 +13,8 @@ describe('Header', () => {
     }));
 
     jest.spyOn(OverlayContext, 'useOverlayContext').mockImplementation(() => ({
-      store: { hideOverlay: true },
-      dispatch: () => {},
+      overlayIsHidden: true,
+      setOverlayIsHidden: () => true,
     }));
 
     const tree = renderer.create(<Header />).toJSON();

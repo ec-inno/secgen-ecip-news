@@ -2,7 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import has from 'lodash/has';
 
-import config from './config';
 import Document from './Document';
 import Funding from './Funding';
 import Members from './Members';
@@ -91,12 +90,16 @@ const Details = ({ languageSpecificData, initiativeData }) => {
         ''
       )}
       <Message
-        close={null}
+        onClose={null}
+        variant="warning"
         title={t('Disclaimer')}
         description={t(
           'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
         )}
-        {...config.message}
+        icon={{
+          shape: 'notifications--warning',
+          size: 'l',
+        }}
       />
       {has(languageSpecificData, 'objectives') ? (
         <>

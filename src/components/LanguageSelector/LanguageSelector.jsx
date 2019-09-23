@@ -1,26 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  useOverlayContext,
-  SET_LANGUAGE_OVERLAY_VISIBILITY,
-} from '../../context/Overlay';
+import { useOverlayContext } from '../../context/Overlay';
 
 import Icon from '../Icon';
 
 const LanguageSelector = ({ href, name, code }) => {
-  const { dispatch } = useOverlayContext();
+  const { setOverlayIsHidden } = useOverlayContext();
 
   return (
     <div className="ecl-site-header__selector">
       <a
         onClick={e => {
           e.preventDefault();
-
-          dispatch({
-            type: SET_LANGUAGE_OVERLAY_VISIBILITY,
-            hideOverlay: false,
-          });
+          setOverlayIsHidden(false);
         }}
         className="ecl-link ecl-link--standalone"
         href={href}

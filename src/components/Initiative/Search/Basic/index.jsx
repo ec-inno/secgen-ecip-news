@@ -5,17 +5,16 @@ import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
-import config from '../config';
-import { useI18nContext } from '../../../context/I18n';
+import { useI18nContext } from '../../../../context/I18n';
+import ErrorMessage from '../../../ErrorMessage';
 
-import Card from '../Card';
-import Message from '../../Message';
-import New from '../New';
-import Pagination from '../Pagination';
-import SearchForm from './FormBasic';
-import Spinner from '../../Spinner';
+import Card from '../../Card';
+import New from '../../New';
+import SearchForm from './Form';
+import SeeMore from '../../../SeeMore';
+import Spinner from '../../../Spinner';
 
-const Basic = () => {
+const SearchBasic = () => {
   const { t } = useTranslation();
   const { locale } = useI18nContext();
   const { GATSBY_INITIATIVES_API: api } = process.env;
@@ -24,9 +23,8 @@ const Basic = () => {
   const itemsPerPageDefault = 8;
   const rowClass = 'ecl-row';
 
-  const [errorMessage, setErrorMessage] = useState('');
-  const [errorMessageIsVisible, setErrorMessageVisibility] = useState(false);
-  const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL
+  const [error, setError] = useState({});
+  const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL. Refused are not to be shown on home page by spec.
   const [filters, setFilters] = useState({});
   const [initiatives, setInitiatives] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +38,7 @@ const Basic = () => {
 
     // For the service empty filters is not same as no filters.
     // We don't send payload if not needed.
-    if (Object.keys(filters).length !== 0) {
+    if (filters.filters && Object.keys(filters.filters).length !== 0) {
       request = axios.post(endpoint, filters);
     } else {
       request = axios.get(endpoint);
@@ -51,9 +49,8 @@ const Basic = () => {
         setInitiatives(response.data);
         setIsLoading(false);
       })
-      .catch(error => {
-        setErrorMessage(error.message);
-        setErrorMessageVisibility(true);
+      .catch(e => {
+        setError(e);
         setIsLoading(false);
       });
   }, [section, filters, itemsPerPage]);
@@ -161,12 +158,9 @@ const Basic = () => {
         </div>
       )}
       {isLoading && <Spinner />}
-      <Message
-        className={errorMessageIsVisible ? '' : 'hidden'}
-        onClose={() => setErrorMessageVisibility(false)}
+      <ErrorMessage
         title={t('An error occurred while fetching initiatives.')}
-        description={errorMessage}
-        {...config.error}
+        error={error}
       />
       {hasEntries ? (
         chunk(initiatives.entries, itemsPerRow).map((group, k) => {
@@ -221,7 +215,9 @@ const Basic = () => {
       )}
       {isLoading && <Spinner />}
       {itemsPerPage < initiatives[section.toLowerCase()] && (
-        <Pagination
+        <SeeMore
+          ariaLabel={t('Go to next page')}
+          label={t('See more initiatives')}
           onClick={e => {
             e.preventDefault();
             const newItemsPerPage = itemsPerPage * 2 + 1;
@@ -233,4 +229,4 @@ const Basic = () => {
   );
 };
 
-export default Basic;
+export default SearchBasic;

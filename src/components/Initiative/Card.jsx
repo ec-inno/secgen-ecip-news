@@ -86,7 +86,7 @@ Card.propTypes = {
   title: PropTypes.string,
   href: PropTypes.string,
   status: PropTypes.string,
-  totalSupporters: PropTypes.string,
+  totalSupporters: PropTypes.number,
   supportLink: PropTypes.string,
   logo: PropTypes.shape({
     id: PropTypes.number,
