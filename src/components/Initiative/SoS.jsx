@@ -21,7 +21,6 @@ const SoS = ({ submission }) => {
         <tbody>
           {submission.entry
             ? submission.entry.map((e, key) => {
-                console.log(e);
                 const code = e.countryCodeType.toLowerCase();
                 const country = countries[code] || code;
 
