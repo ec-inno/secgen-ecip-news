@@ -1,10 +1,12 @@
+/**
+ * Inspired by https://usehooks.com/useScript
+ */
+
 import { useState, useEffect } from 'react';
 
-// Inspired by https://usehooks.com/useScript/
-// if (cachedScripts.includes(src)) returns in order to not load script multiple times in HMR
-const useScript = src => {
-  const cachedScripts = [];
+const cachedScripts = [];
 
+const useScript = src => {
   const [state, setState] = useState({
     loaded: false,
     error: false,
@@ -24,8 +26,9 @@ const useScript = src => {
     script.src = src;
     script.async = true;
 
+    // Script event listener callbacks for load and error
     const onScriptLoad = () => {
-      setState({
+      return setState({
         loaded: true,
         error: false,
       });
@@ -36,7 +39,7 @@ const useScript = src => {
       if (index >= 0) cachedScripts.splice(index, 1);
       script.remove();
 
-      setState({
+      return setState({
         loaded: true,
         error: true,
       });
@@ -47,7 +50,6 @@ const useScript = src => {
 
     document.body.appendChild(script);
 
-    // Remove event listeners on cleanup
     return () => {
       script.removeEventListener('load', onScriptLoad);
       script.removeEventListener('error', onScriptError);
