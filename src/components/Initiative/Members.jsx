@@ -2,12 +2,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import has from 'lodash/has';
 
-const Members = ({ initiativeData }) => {
+const Members = ({ details }) => {
   const { t } = useTranslation();
 
   // [REPRESENTATIVE, SUBSTITUTE, MEMBER, LEGAL_ENTITY, OTHER, DPO ]
-  const people = has(initiativeData, 'members')
-    ? initiativeData.members
+  const people = has(details, 'members')
+    ? details.members
         .map(p => {
           const fullName = p.activityPeriod
             ? `${fullName} (${p.activityPeriod})`

@@ -10,11 +10,11 @@ import Share from '../components/Share';
 // Utilities
 import useDetailsApi from '../components/Initiative/utils/useDetailsApi';
 
-// Sub-components, keep out of /src/pages.
+import Meta from '../components/Meta';
+import Progress from '../components/Progress';
+
 import Details from '../components/Initiative/Details';
 import ErrorMessage from '../components/ErrorMessage';
-import Meta from '../components/Meta';
-import Progress from '../components/Initiative/Progress';
 
 const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
