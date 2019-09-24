@@ -50,10 +50,17 @@ const Initiative = ({ location, pageContext: { locale } }) => {
     linguisticVersion = linguisticVersions.find(version => version.original);
   }
 
+  const isFallbackLinguisticVersion =
+    linguisticVersion &&
+    linguisticVersion.languageCode &&
+    linguisticVersion.languageCode.toLowerCase() !== locale;
+
   const title =
     linguisticVersion && linguisticVersion.title
       ? linguisticVersion.title
       : '...';
+
+  const progress = details && details.progress ? details.progress : [];
 
   return (
     <>
@@ -78,24 +85,26 @@ const Initiative = ({ location, pageContext: { locale } }) => {
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              <Progress details={details} />
+              <Progress
+                progress={progress}
+                dateStart={details.startCollectionDate}
+                dateEnd={details.earlyClosureDate}
+              />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
-              {linguisticVersion &&
-                linguisticVersion.languageCode &&
-                linguisticVersion.languageCode.toLowerCase() !== locale && (
-                  <Message
-                    variant="warning"
-                    title={t('Disclaimer')}
-                    description={t(
-                      'The initiative is not available in the current language. Original language version is currently displayed.'
-                    )}
-                    icon={{
-                      shape: 'notifications--warning',
-                      size: 'l',
-                    }}
-                  />
-                )}
+              {isFallbackLinguisticVersion && (
+                <Message
+                  variant="warning"
+                  title={t('Disclaimer')}
+                  description={t(
+                    'The initiative is not available in the current language. Original language version is currently displayed.'
+                  )}
+                  icon={{
+                    shape: 'notifications--warning',
+                    size: 'l',
+                  }}
+                />
+              )}
               <Details
                 linguisticVersion={linguisticVersion}
                 details={details}

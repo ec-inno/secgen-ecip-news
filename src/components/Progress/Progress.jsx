@@ -1,13 +1,13 @@
 import React from 'react';
-import has from 'lodash/has';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import formatStatus from '../../utils/formatStatus';
 
-const Progress = ({ details }) => {
+const Progress = ({ progress, dateStart, dateEnd }) => {
   const { t } = useTranslation();
 
-  if (!details.progress) {
+  if (!progress || progress.length === 0) {
     return (
       <>
         <h3 className="ecl-u-type-heading-3">{t('Initiative progress')}</h3>
@@ -30,11 +30,13 @@ const Progress = ({ details }) => {
   const stages = [];
   const timeline = [];
 
+  // Reorder progress stages to match order of `steps`.
   steps.forEach(step => {
-    const match = details.progress.find(item => item.name === step);
+    const match = progress.find(item => item.name === step);
     if (match) stages.push(match);
   });
 
+  // Build the timeline elements.
   stages.forEach((stage, key) =>
     timeline.push(
       <li
@@ -59,22 +61,34 @@ const Progress = ({ details }) => {
       <ol className="ecl-timeline" data-ecl-timeline="true">
         {timeline}
       </ol>
-      {has(details, 'startCollectionDate') && (
+      {dateStart && (
         <p className="ecl-u-type-paragraph-s ecl-u-type-bold">
           {t('Collection start date')}
           {': '}
-          {details.startCollectionDate}
+          {dateStart}
         </p>
       )}
-      {has(details, 'earlyClosureDate') && (
+      {dateEnd && (
         <p className="ecl-u-type-paragraph-s ecl-u-type-bold">
           {t('Collection closed earlier by the organisers')}
           {': '}
-          {details.earlyClosureDate}
+          {dateEnd}
         </p>
       )}
     </>
   );
+};
+
+Progress.propTypes = {
+  progress: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      active: PropTypes.bool,
+      date: PropTypes.string,
+    })
+  ),
+  dateStart: PropTypes.string,
+  dateEnd: PropTypes.string,
 };
 
 export default Progress;
