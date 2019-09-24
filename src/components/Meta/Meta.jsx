@@ -1,18 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import has from 'lodash/has';
 
 import formatStatus from '../../utils/formatStatus';
 
 import Icon from '../Icon';
+import Link from '../Link/LinkEcl';
 
-const Meta = ({ details }) => {
+const Meta = ({
+  status,
+  registrationNumber,
+  deadline,
+  dateRefusal,
+  dateRegistration,
+  supportLink,
+}) => {
+  if (
+    !status &&
+    !registrationNumber &&
+    !deadline &&
+    !dateRefusal &&
+    !dateRegistration &&
+    !supportLink
+  ) {
+    return '';
+  }
+
   const { t } = useTranslation();
 
   return (
     <ul className="ecl-u-d-flex ecl-u-pl-none ecl-u-mv-l ecl-u-type-m ecl-page-header__info-list">
       <li className="ecl-page-header__info-item">
-        {has(details, 'status') && (
+        {status && (
           <div className="ecl-u-d-flex">
             <Icon
               shape="general--organigram"
@@ -20,10 +39,10 @@ const Meta = ({ details }) => {
             />
             {t('Current status')}
             {': '}
-            {formatStatus(details.status)}
+            {formatStatus(status)}
           </div>
         )}
-        {has(details, 'comRegNum') && (
+        {registrationNumber && (
           <div className="ecl-u-d-flex ecl-u-mt-xs">
             <Icon
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
@@ -31,12 +50,12 @@ const Meta = ({ details }) => {
             />
             {t('Commission registration number')}
             {': '}
-            {details.comRegNum ? details.comRegNum : '...'}
+            {registrationNumber ? registrationNumber : '...'}
           </div>
         )}
       </li>
       <li className="ecl-u-ml-l ecl-page-header__info-item">
-        {has(details, 'deadline') && (
+        {deadline && (
           <div className="ecl-u-d-flex">
             <Icon
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
@@ -44,10 +63,10 @@ const Meta = ({ details }) => {
             />
             {t('Deadline')}
             {': '}
-            {details.deadline}
+            {deadline}
           </div>
         )}
-        {has(details, 'refusalDate') && (
+        {dateRefusal && (
           <div className="ecl-u-d-flex">
             <Icon
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
@@ -55,10 +74,10 @@ const Meta = ({ details }) => {
             />
             {t('Date of refulsal')}
             {': '}
-            {details.refusalDate}
+            {dateRefusal}
           </div>
         )}
-        {has(details, 'registrationDate') && (
+        {dateRegistration && (
           <div className="ecl-u-d-flex ecl-u-mt-xs">
             <Icon
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
@@ -66,29 +85,31 @@ const Meta = ({ details }) => {
             />
             {t('Date of registration')}
             {': '}
-            {details.registrationDate}
+            {dateRegistration}
           </div>
         )}
       </li>
 
-      {has(details, 'supportLink') && (
+      {supportLink && (
         <li className="ecl-u-ml-l ecl-page-header__info-item">
-          <a
-            href={details.supportLink}
-            target="_blank"
-            type="submit"
-            className="ecl-button ecl-button--call"
-          >
-            <span className="ecl-button__container">
-              <span className="ecl-button__label" data-ecl-label="true">
-                {t('Support this initiative')}
-              </span>
-            </span>
-          </a>
+          <Link
+            href={supportLink}
+            variant="cta"
+            label={t('Support this initiative')}
+          />
         </li>
       )}
     </ul>
   );
+};
+
+Meta.propTypes = {
+  status: PropTypes.string,
+  registrationNumber: PropTypes.string,
+  deadline: PropTypes.string,
+  dateRefusal: PropTypes.string,
+  dateRegistration: PropTypes.string,
+  supportLink: PropTypes.string,
 };
 
 export default Meta;

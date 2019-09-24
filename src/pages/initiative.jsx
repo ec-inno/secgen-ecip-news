@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import has from 'lodash/has';
 
 // Generic
 import Head from '../components/Head';
@@ -14,7 +13,7 @@ import useDetailsApi from '../components/Initiative/utils/useDetailsApi';
 // Sub-components, keep out of /src/pages.
 import Details from '../components/Initiative/Details';
 import ErrorMessage from '../components/ErrorMessage';
-import Meta from '../components/Initiative/Meta';
+import Meta from '../components/Meta';
 import Progress from '../components/Initiative/Progress';
 
 const Initiative = ({ location, pageContext: { locale } }) => {
@@ -51,24 +50,28 @@ const Initiative = ({ location, pageContext: { locale } }) => {
     linguisticVersion = linguisticVersions.find(version => version.original);
   }
 
+  const title =
+    linguisticVersion && linguisticVersion.title
+      ? linguisticVersion.title
+      : '...';
+
   return (
     <>
-      <Head
-        title={
-          has(linguisticVersion, 'title') ? linguisticVersion.title : '...'
-        }
-      />
+      <Head title={title} />
 
       <section className="ecl-page-header">
         <div className="ecl-container">
           <div className="ecl-page-header__title-wrapper">
-            <h1 className="ecl-page-header__title">
-              {has(linguisticVersion, 'title')
-                ? linguisticVersion.title
-                : '...'}
-            </h1>
+            <h1 className="ecl-page-header__title">{title}</h1>
           </div>
-          <Meta details={details} />
+          <Meta
+            status={details.status}
+            registrationNumber={details.comRegNum}
+            deadline={details.deadline}
+            dateRefusal={details.refusalDate}
+            dateRegistration={details.registrationDate}
+            supportLink={details.supportLink}
+          />
         </div>
       </section>
       <main className="ecl-u-pv-xl">
