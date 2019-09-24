@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 import formatStatus from '../../utils/formatStatus';
 
-const Progress = ({ initiativeData }) => {
+const Progress = ({ details }) => {
   const { t } = useTranslation();
 
-  if (!initiativeData.progress) {
+  if (!details.progress) {
     return (
       <>
         <h3 className="ecl-u-type-heading-3">{t('Initiative progress')}</h3>
@@ -31,7 +31,7 @@ const Progress = ({ initiativeData }) => {
   const timeline = [];
 
   steps.forEach(step => {
-    const match = initiativeData.progress.find(item => item.name === step);
+    const match = details.progress.find(item => item.name === step);
     if (match) stages.push(match);
   });
 
@@ -59,18 +59,18 @@ const Progress = ({ initiativeData }) => {
       <ol className="ecl-timeline" data-ecl-timeline="true">
         {timeline}
       </ol>
-      {has(initiativeData, 'startCollectionDate') && (
+      {has(details, 'startCollectionDate') && (
         <p className="ecl-u-type-paragraph-s ecl-u-type-bold">
           {t('Collection start date')}
           {': '}
-          {initiativeData.startCollectionDate}
+          {details.startCollectionDate}
         </p>
       )}
-      {has(initiativeData, 'earlyClosureDate') && (
+      {has(details, 'earlyClosureDate') && (
         <p className="ecl-u-type-paragraph-s ecl-u-type-bold">
           {t('Collection closed earlier by the organisers')}
           {': '}
-          {initiativeData.earlyClosureDate}
+          {details.earlyClosureDate}
         </p>
       )}
     </>

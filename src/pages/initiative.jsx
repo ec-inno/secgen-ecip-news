@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import has from 'lodash/has';
 
 // Generic
 import Head from '../components/Head';
+import Spinner from '../components/Spinner';
 import Share from '../components/Share';
+
+// Utilities
+import useDetailsApi from '../components/Initiative/utils/useDetailsApi';
 
 // Sub-components, keep out of /src/pages.
 import Details from '../components/Initiative/Details';
@@ -15,22 +18,13 @@ import Progress from '../components/Initiative/Progress';
 
 const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
-  const { GATSBY_INITIATIVES_API: api } = process.env;
+  const { details, isLoading, error } = useDetailsApi({ location, locale });
 
-  const [error, setError] = useState({});
-  const [initiativeData, setInitiativeData] = useState({});
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-  useEffect(() => {
-    const initiativeId = location.hash.substr(1, location.hash.length);
-    const endpoint = `${api}/register/details/${initiativeId}`;
-
-    axios
-      .get(endpoint)
-      .then(response => setInitiativeData(response.data))
-      .catch(setError);
-  }, [locale]);
-
-  if (error.message) {
+  if (error && error.message) {
     return (
       <div className="ecl-container ecl-u-mt-l">
         <ErrorMessage
@@ -41,8 +35,8 @@ const Initiative = ({ location, pageContext: { locale } }) => {
     );
   }
 
-  const languageSpecificData = initiativeData.linguisticVersions
-    ? Object.values(initiativeData.linguisticVersions).find(
+  const languageSpecificData = details.linguisticVersions
+    ? Object.values(details.linguisticVersions).find(
         version => version.languageCode.toLowerCase() === locale
       )
     : {};
@@ -66,19 +60,19 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                 : '...'}
             </h1>
           </div>
-          <Meta initiativeData={initiativeData} />
+          <Meta details={details} />
         </div>
       </section>
       <main className="ecl-u-pv-xl">
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              <Progress initiativeData={initiativeData} />
+              <Progress details={details} />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
               <Details
                 languageSpecificData={languageSpecificData}
-                initiativeData={initiativeData}
+                details={details}
               />
               <Share />
             </div>

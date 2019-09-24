@@ -8,7 +8,7 @@ import Members from './Members';
 import Message from '../Message';
 import SoS from './SoS';
 
-const Details = ({ languageSpecificData, initiativeData }) => {
+const Details = ({ languageSpecificData, details }) => {
   const { t } = useTranslation();
 
   return (
@@ -31,24 +31,24 @@ const Details = ({ languageSpecificData, initiativeData }) => {
       ) : (
         ''
       )}
-      {has(initiativeData, 'refusalReasons') ? (
+      {has(details, 'refusalReasons') ? (
         <div className="eci-answer ecl-u-pa-m ecl-u-mb-l">
           <h2 className="ecl-u-type-heading-2">
             {t(
               "Commission's reply stating the reasons for refusal of registration"
             )}
           </h2>
-          {typeof initiativeData.refusalReasons === 'string' ? (
+          {typeof details.refusalReasons === 'string' ? (
             <p
               key={key}
               className="ecl-u-type-paragraph"
               dangerouslySetInnerHTML={{
-                __html: initiativeData.refusalReasons,
+                __html: details.refusalReasons,
               }}
             />
           ) : (
             <ul className="ecl-u-type-paragraph">
-              {initiativeData.refusalReasons.map((reason, key) => (
+              {details.refusalReasons.map((reason, key) => (
                 <li
                   key={key}
                   className="ecl-u-type-paragraph"
@@ -59,26 +59,26 @@ const Details = ({ languageSpecificData, initiativeData }) => {
               ))}
             </ul>
           )}
-          {has(initiativeData, 'refusalEURLEXLink') && (
+          {has(details, 'refusalEURLEXLink') && (
             <>
               <h2 className="ecl-u-type-heading-2">{t('EUR-Lex reference')}</h2>
               <p className="ecl-u-type-paragraph">
                 <a
-                  href={initiativeData.refusalEURLEXLink}
+                  href={details.refusalEURLEXLink}
                   className="ecl-link"
                   target="_blank"
                 >
-                  {initiativeData.refusalEURLEXLink}
+                  {details.refusalEURLEXLink}
                 </a>
               </p>
             </>
           )}
-          <Document file={initiativeData.refusalDocument} />
+          <Document file={details.refusalDocument} />
         </div>
       ) : (
         ''
       )}
-      {has(initiativeData, 'partiallyRegistered') ? (
+      {has(details, 'partiallyRegistered') ? (
         <>
           <p className="ecl-u-type-paragraph ecl-u-type-bold">
             {t(
@@ -135,7 +135,7 @@ const Details = ({ languageSpecificData, initiativeData }) => {
       ) : (
         ''
       )}
-      <SoS submission={initiativeData.submission} />
+      <SoS submission={details.submission} />
       {has(languageSpecificData, 'treaties') ? (
         <>
           <h2 className="ecl-u-type-heading-2">
@@ -181,8 +181,8 @@ const Details = ({ languageSpecificData, initiativeData }) => {
       ) : (
         ''
       )}
-      <Members initiativeData={initiativeData} />
-      <Funding funding={initiativeData.funding} />
+      <Members details={details} />
+      <Funding funding={details.funding} />
     </>
   );
 };

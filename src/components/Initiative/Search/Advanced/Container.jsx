@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import useInitiativesSearchApi from '../useInitiativesSearchApi';
+import useInitiativesSearchApi from '../../utils/useInitiativesSearchApi';
 import I18nContext from '../../../../context/I18n';
 
 // Advanced search tools.

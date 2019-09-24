@@ -6,13 +6,13 @@ import formatStatus from '../../utils/formatStatus';
 
 import Icon from '../Icon';
 
-const Meta = ({ initiativeData }) => {
+const Meta = ({ details }) => {
   const { t } = useTranslation();
 
   return (
     <ul className="ecl-u-d-flex ecl-u-pl-none ecl-u-mv-l ecl-u-type-m ecl-page-header__info-list">
       <li className="ecl-page-header__info-item">
-        {has(initiativeData, 'status') && (
+        {has(details, 'status') && (
           <div className="ecl-u-d-flex">
             <Icon
               shape="general--organigram"
@@ -20,10 +20,10 @@ const Meta = ({ initiativeData }) => {
             />
             {t('Current status')}
             {': '}
-            {formatStatus(initiativeData.status)}
+            {formatStatus(details.status)}
           </div>
         )}
-        {has(initiativeData, 'comRegNum') && (
+        {has(details, 'comRegNum') && (
           <div className="ecl-u-d-flex ecl-u-mt-xs">
             <Icon
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
@@ -31,12 +31,12 @@ const Meta = ({ initiativeData }) => {
             />
             {t('Commission registration number')}
             {': '}
-            {initiativeData.comRegNum ? initiativeData.comRegNum : '...'}
+            {details.comRegNum ? details.comRegNum : '...'}
           </div>
         )}
       </li>
       <li className="ecl-u-ml-l ecl-page-header__info-item">
-        {has(initiativeData, 'deadline') && (
+        {has(details, 'deadline') && (
           <div className="ecl-u-d-flex">
             <Icon
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
@@ -44,10 +44,10 @@ const Meta = ({ initiativeData }) => {
             />
             {t('Deadline')}
             {': '}
-            {initiativeData.deadline}
+            {details.deadline}
           </div>
         )}
-        {has(initiativeData, 'refusalDate') && (
+        {has(details, 'refusalDate') && (
           <div className="ecl-u-d-flex">
             <Icon
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
@@ -55,10 +55,10 @@ const Meta = ({ initiativeData }) => {
             />
             {t('Date of refulsal')}
             {': '}
-            {initiativeData.refusalDate}
+            {details.refusalDate}
           </div>
         )}
-        {has(initiativeData, 'registrationDate') && (
+        {has(details, 'registrationDate') && (
           <div className="ecl-u-d-flex ecl-u-mt-xs">
             <Icon
               className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s"
@@ -66,15 +66,15 @@ const Meta = ({ initiativeData }) => {
             />
             {t('Date of registration')}
             {': '}
-            {initiativeData.registrationDate}
+            {details.registrationDate}
           </div>
         )}
       </li>
 
-      {has(initiativeData, 'supportLink') && (
+      {has(details, 'supportLink') && (
         <li className="ecl-u-ml-l ecl-page-header__info-item">
           <a
-            href={initiativeData.supportLink}
+            href={details.supportLink}
             target="_blank"
             type="submit"
             className="ecl-button ecl-button--call"
