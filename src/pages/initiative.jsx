@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 // Generic
 import Head from '../components/Head';
 import Message from '../components/Message';
-import Spinner from '../components/Spinner';
 import Share from '../components/Share';
 
 // Utilities
@@ -18,16 +17,12 @@ import ErrorMessage from '../components/ErrorMessage';
 
 const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
-  const { details, isLoading, error } = useDetailsApi({ location, locale });
+  const { details, _, error } = useDetailsApi({ location, locale });
 
   const linguisticVersions =
     details && Object.keys(details).length !== 0
       ? Object.values(details.linguisticVersions)
       : [];
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   if (error && error.message) {
     return (
@@ -50,7 +45,7 @@ const Initiative = ({ location, pageContext: { locale } }) => {
     linguisticVersion = linguisticVersions.find(version => version.original);
   }
 
-  const isFallbackLinguisticVersion =
+  const linguisticVersionIsFallback =
     linguisticVersion &&
     linguisticVersion.languageCode &&
     linguisticVersion.languageCode.toLowerCase() !== locale;
@@ -92,7 +87,7 @@ const Initiative = ({ location, pageContext: { locale } }) => {
               />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
-              {isFallbackLinguisticVersion && (
+              {linguisticVersionIsFallback && (
                 <Message
                   variant="warning"
                   title={t('Disclaimer')}
