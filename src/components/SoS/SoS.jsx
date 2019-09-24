@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
-import getCountries from './utils/getCountries';
+import getCountries from '../Initiative/utils/getCountries';
 
 const SoS = ({ submission }) => {
   if (!submission) return '';

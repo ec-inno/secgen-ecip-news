@@ -2,11 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import has from 'lodash/has';
 
-import Document from './Document';
-import Funding from './Funding';
-import Members from './Members';
+import File from '../File';
 import Message from '../Message';
-import SoS from './SoS';
+import SoS from '../SoS';
 
 const Details = ({ linguisticVersion, details }) => {
   const { t } = useTranslation();
@@ -73,7 +71,7 @@ const Details = ({ linguisticVersion, details }) => {
               </p>
             </>
           )}
-          <Document file={details.refusalDocument} />
+          <File file={details.refusalDocument} />
         </div>
       ) : (
         ''
@@ -171,16 +169,6 @@ const Details = ({ linguisticVersion, details }) => {
       ) : (
         ''
       )}
-      {has(linguisticVersion, 'draftLegal') ? (
-        <>
-          <h2 className="ecl-u-type-heading-2">{t('Draft legal act')}</h2>
-          <Document file={linguisticVersion.draftLegal} />
-        </>
-      ) : (
-        ''
-      )}
-      <Members details={details} />
-      <Funding funding={details.funding} />
     </>
   );
 };

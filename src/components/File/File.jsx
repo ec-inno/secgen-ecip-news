@@ -1,3 +1,7 @@
+/**
+ * If this component gets cases of more than 1 language.
+ * @see https://github.com/ec-europa/europa-component-library/blob/v2-dev/src/systems/ec/implementations/react/components/file/src/FileDownload.jsx
+ */
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
@@ -7,7 +11,7 @@ import formatBytes from '../../utils/formatBytes';
 
 import Icon from '../Icon';
 
-const Document = ({ file }) => {
+const File = ({ file }) => {
   if (!file) return '';
 
   const { t } = useTranslation();
@@ -46,7 +50,7 @@ const Document = ({ file }) => {
   );
 };
 
-Document.propTypes = {
+File.propTypes = {
   file: PropTypes.shape({
     name: PropTypes.string,
     mimeType: PropTypes.string,
@@ -55,4 +59,4 @@ Document.propTypes = {
   }),
 };
 
-export default Document;
+export default File;

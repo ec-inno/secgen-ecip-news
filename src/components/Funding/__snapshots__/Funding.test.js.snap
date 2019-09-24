@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Funding Renders a file section when document property is present 1`] = `
+Array [
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Sources of support and funding
+  </h2>,
+  <p
+    className="ecl-u-type-paragraph ecl-u-type-bold"
+  >
+    Further information on support and funding
+    :
+    <div
+      className="ecl-file"
+      data-ecl-file={true}
+    >
+      <div
+        className="ecl-file__container"
+      >
+        <svg
+          aria-hidden="true"
+          className="ecl-file__icon ecl-icon ecl-icon--2xl ecl-icon ecl-icon--m"
+          focusable="false"
+        >
+          
+          
+          <use
+            xlinkHref="file#general--copy"
+          />
+        </svg>
+        <div
+          className="ecl-file__info"
+        >
+          <div
+            className="ecl-file__title"
+          >
+            DummyMemberDoc1.txt
+          </div>
+          <div
+            className="ecl-file__meta"
+          >
+            (
+            10 Bytes
+             -
+             
+            TXT
+            )
+          </div>
+        </div>
+        <a
+          className="ecl-link ecl-link--standalone"
+          download={true}
+          href="undefined/register/document/16806"
+        >
+          <span
+            className="ecl-link__label"
+          >
+            Download
+          </span>
+           
+          <svg
+            aria-hidden="true"
+            className="ecl-icon--fluid ecl-link__icon ecl-icon ecl-icon--m"
+            focusable="false"
+          >
+            
+            
+            <use
+              xlinkHref="file#ui--download"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </p>,
+]
+`;
+
+exports[`Funding Renders a table when sponsors 1`] = `
+Array [
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Sources of support and funding
+  </h2>,
+  <table
+    className="eci-table ecl-u-type-paragraph"
+  >
+    <tbody>
+      <tr>
+        <th>
+          Name of sponsor
+        </th>
+        <th>
+          Date
+          <sup>
+            [1]
+          </sup>
+        </th>
+        <th>
+          Amount in EUR
+          <sup>
+            [2]
+          </sup>
+        </th>
+      </tr>
+      <tr
+        className=""
+      >
+        <td>
+          foo
+        </td>
+        <td>
+          now
+        </td>
+        <td>
+          1
+        </td>
+      </tr>
+      <tr
+        className="dark-row"
+      >
+        <td>
+          bar
+        </td>
+        <td>
+          then
+        </td>
+        <td>
+          2
+        </td>
+      </tr>
+      <tr
+        className=""
+      >
+        <td>
+          baz
+        </td>
+        <td>
+          never
+        </td>
+        <td>
+          3
+        </td>
+      </tr>
+    </tbody>
+  </table>,
+  <p
+    className="ecl-u-type-paragraph-s"
+  >
+    [1]
+     
+    Date when the contribution was received. In case of in kind contributions, date when the in kind contribution started.
+    <br />
+    [2]
+     
+    Actual amount of funding provided or estimated value of in kind contribution.
+  </p>,
+]
+`;
+
+exports[`Funding can render only lastUpdate 1`] = `
+Array [
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Sources of support and funding
+  </h2>,
+  <p
+    className="ecl-u-type-paragraph"
+  >
+    Last update
+    : 
+    last update string
+  </p>,
+]
+`;
+
+exports[`Funding can render only totalAmount 1`] = `
+Array [
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Sources of support and funding
+  </h2>,
+  <p
+    className="ecl-u-type-paragraph ecl-u-type-bold"
+  >
+    Total amount of support and funding
+    : 
+    €
+    100
+  </p>,
+]
+`;

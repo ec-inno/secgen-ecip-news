@@ -1,19 +1,20 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-// Generic
-import Head from '../components/Head';
-import Message from '../components/Message';
-import Share from '../components/Share';
-
 // Utilities
 import useDetailsApi from '../components/Initiative/utils/useDetailsApi';
 
+import DraftLegal from '../components/DraftLegal';
+import ErrorMessage from '../components/ErrorMessage';
+import Funding from '../components/Funding';
+import Head from '../components/Head';
+import Members from '../components/Members';
+import Message from '../components/Message';
 import Meta from '../components/Meta';
 import Progress from '../components/Progress';
+import Share from '../components/Share';
 
-import Details from '../components/Initiative/Details';
-import ErrorMessage from '../components/ErrorMessage';
+import Details from '../components/Details';
 
 const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
@@ -36,26 +37,37 @@ const Initiative = ({ location, pageContext: { locale } }) => {
   }
 
   // Try to get content for the current locale.
+  let linguisticVersionIsFallback = false;
   let linguisticVersion = linguisticVersions.find(
     version => version.languageCode.toLowerCase() === locale
   );
 
   if (!linguisticVersion) {
     // Fallback to original language.
+    // Information display should be "all or nothing", so we override, and all other props are coming from the original.
     linguisticVersion = linguisticVersions.find(version => version.original);
+    linguisticVersionIsFallback = true;
   }
 
-  const linguisticVersionIsFallback =
-    linguisticVersion &&
-    linguisticVersion.languageCode &&
-    linguisticVersion.languageCode.toLowerCase() !== locale;
+  /**
+   * Information from `details`.
+   */
+  const progress = details && details.progress ? details.progress : [];
 
+  const funding = details && details.funding ? details.funding : {};
+
+  /**
+   * Information from `linguisticVersion`.
+   */
   const title =
     linguisticVersion && linguisticVersion.title
       ? linguisticVersion.title
       : '...';
 
-  const progress = details && details.progress ? details.progress : [];
+  const draftLegal =
+    linguisticVersion && linguisticVersion.draftLegal
+      ? linguisticVersion.draftLegal
+      : {};
 
   return (
     <>
@@ -104,6 +116,9 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                 linguisticVersion={linguisticVersion}
                 details={details}
               />
+              <DraftLegal file={draftLegal} />
+              <Members details={details} />
+              <Funding funding={funding} />
               <Share />
             </div>
           </div>
