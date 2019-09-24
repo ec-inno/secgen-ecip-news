@@ -4,6 +4,7 @@ import has from 'lodash/has';
 
 // Generic
 import Head from '../components/Head';
+import Message from '../components/Message';
 import Spinner from '../components/Spinner';
 import Share from '../components/Share';
 
@@ -20,6 +21,11 @@ const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
   const { details, isLoading, error } = useDetailsApi({ location, locale });
 
+  const linguisticVersions =
+    details && Object.keys(details).length !== 0
+      ? Object.values(details.linguisticVersions)
+      : [];
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -35,19 +41,21 @@ const Initiative = ({ location, pageContext: { locale } }) => {
     );
   }
 
-  const languageSpecificData = details.linguisticVersions
-    ? Object.values(details.linguisticVersions).find(
-        version => version.languageCode.toLowerCase() === locale
-      )
-    : {};
+  // Try to get content for the current locale.
+  let linguisticVersion = linguisticVersions.find(
+    version => version.languageCode.toLowerCase() === locale
+  );
+
+  if (!linguisticVersion) {
+    // Fallback to original language.
+    linguisticVersion = linguisticVersions.find(version => version.original);
+  }
 
   return (
     <>
       <Head
         title={
-          has(languageSpecificData, 'title')
-            ? languageSpecificData.title
-            : '...'
+          has(linguisticVersion, 'title') ? linguisticVersion.title : '...'
         }
       />
 
@@ -55,8 +63,8 @@ const Initiative = ({ location, pageContext: { locale } }) => {
         <div className="ecl-container">
           <div className="ecl-page-header__title-wrapper">
             <h1 className="ecl-page-header__title">
-              {has(languageSpecificData, 'title')
-                ? languageSpecificData.title
+              {has(linguisticVersion, 'title')
+                ? linguisticVersion.title
                 : '...'}
             </h1>
           </div>
@@ -70,8 +78,23 @@ const Initiative = ({ location, pageContext: { locale } }) => {
               <Progress details={details} />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
+              {linguisticVersion &&
+                linguisticVersion.languageCode &&
+                linguisticVersion.languageCode.toLowerCase() !== locale && (
+                  <Message
+                    variant="warning"
+                    title={t('Disclaimer')}
+                    description={t(
+                      'The initiative is not available in the current language. Original language version is currently displayed.'
+                    )}
+                    icon={{
+                      shape: 'notifications--warning',
+                      size: 'l',
+                    }}
+                  />
+                )}
               <Details
-                languageSpecificData={languageSpecificData}
+                linguisticVersion={linguisticVersion}
                 details={details}
               />
               <Share />

@@ -8,23 +8,23 @@ import Members from './Members';
 import Message from '../Message';
 import SoS from './SoS';
 
-const Details = ({ languageSpecificData, details }) => {
+const Details = ({ linguisticVersion, details }) => {
   const { t } = useTranslation();
 
   return (
     <>
-      {has(languageSpecificData, 'decisionUrl') ? (
+      {has(linguisticVersion, 'decisionUrl') ? (
         <div className="eci-answer ecl-u-pa-m ecl-u-mb-l">
           <h2 className="ecl-u-type-heading-2">
             {t('Answer of the European Commission')}
           </h2>
           <p className="ecl-u-type-paragraph">
             <a
-              href={languageSpecificData.decisionUrl}
+              href={linguisticVersion.decisionUrl}
               className="ecl-link"
               target="_blank"
             >
-              {languageSpecificData.decisionUrl}
+              {linguisticVersion.decisionUrl}
             </a>
           </p>
         </div>
@@ -101,11 +101,11 @@ const Details = ({ languageSpecificData, details }) => {
           size: 'l',
         }}
       />
-      {has(languageSpecificData, 'objectives') ? (
+      {has(linguisticVersion, 'objectives') ? (
         <>
           <h2 className="ecl-u-type-heading-2">{t('Objectives')}</h2>
           <ul className="ecl-u-type-paragraph">
-            {languageSpecificData.objectives.split(/\n/).map((line, key) => (
+            {linguisticVersion.objectives.split(/\n/).map((line, key) => (
               <li
                 key={key}
                 className="ecl-u-type-paragraph"
@@ -119,16 +119,16 @@ const Details = ({ languageSpecificData, details }) => {
       ) : (
         ''
       )}
-      {has(languageSpecificData, 'website') ? (
+      {has(linguisticVersion, 'website') ? (
         <>
           <h2 className="ecl-u-type-heading-2">{t('Website')}</h2>
           <p className="ecl-u-type-paragraph">
             <a
-              href={languageSpecificData.website}
+              href={linguisticVersion.website}
               className="ecl-link"
               target="_blank"
             >
-              {languageSpecificData.website}
+              {linguisticVersion.website}
             </a>
           </p>
         </>
@@ -136,47 +136,45 @@ const Details = ({ languageSpecificData, details }) => {
         ''
       )}
       <SoS submission={details.submission} />
-      {has(languageSpecificData, 'treaties') ? (
+      {has(linguisticVersion, 'treaties') ? (
         <>
           <h2 className="ecl-u-type-heading-2">
             {t(
               'Provisions of the Treaties considered relevant by the organisers'
             )}
           </h2>
-          <p className="ecl-u-type-paragraph">
-            {languageSpecificData.treaties}
-          </p>
+          <p className="ecl-u-type-paragraph">{linguisticVersion.treaties}</p>
         </>
       ) : (
         ''
       )}
-      {has(languageSpecificData, 'annexText') ? (
+      {has(linguisticVersion, 'annexText') ? (
         <>
           <h2 className="ecl-u-type-heading-2">{t('Annex')}</h2>
           <p
             className="ecl-u-type-paragraph"
             dangerouslySetInnerHTML={{
-              __html: languageSpecificData.annexText,
+              __html: linguisticVersion.annexText,
             }}
           />
         </>
       ) : (
         ''
       )}
-      {has(languageSpecificData, 'additionalDocument') ? (
+      {has(linguisticVersion, 'additionalDocument') ? (
         <>
           <h2 className="ecl-u-type-heading-2">
             {t('Additional information')}
           </h2>
-          <Document file={languageSpecificData.additionalDocument} />
+          <Document file={linguisticVersion.additionalDocument} />
         </>
       ) : (
         ''
       )}
-      {has(languageSpecificData, 'draftLegal') ? (
+      {has(linguisticVersion, 'draftLegal') ? (
         <>
           <h2 className="ecl-u-type-heading-2">{t('Draft legal act')}</h2>
-          <Document file={languageSpecificData.draftLegal} />
+          <Document file={linguisticVersion.draftLegal} />
         </>
       ) : (
         ''
