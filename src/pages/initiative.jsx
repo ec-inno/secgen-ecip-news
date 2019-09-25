@@ -14,6 +14,7 @@ import Meta from '../components/Meta';
 import Progress from '../components/Progress';
 import Section from '../components/Section';
 import Share from '../components/Share';
+import SoSReport from '../components/SoSReport';
 
 import Details from '../components/Details';
 
@@ -56,6 +57,7 @@ const Initiative = ({ location, pageContext: { locale } }) => {
   const progress = details && details.progress ? details.progress : [];
   const funding = details && details.funding ? details.funding : {};
   const members = details && details.members ? details.members : [];
+  const submission = details && details.submission ? details.submission : {};
 
   /**
    * Information from `linguisticVersion`.
@@ -133,6 +135,7 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                 details={details}
               />
 
+              <SoSReport submission={submission} />
               <Section
                 title={t(
                   'Provisions of the Treaties considered relevant by the organisers'

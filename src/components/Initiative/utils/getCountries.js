@@ -4,6 +4,7 @@ const getCountriesTranslated = t => {
     ad: t('Andorra'),
     am: t('Armenia'),
     at: t('Austria'),
+    dk: t('Denmark'),
     be: t('Belgium'),
     bg: t('Bulgaria'),
     es: t('Spain'),

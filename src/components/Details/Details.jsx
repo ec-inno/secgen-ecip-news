@@ -4,7 +4,6 @@ import has from 'lodash/has';
 
 import File from '../File';
 import Message from '../Message';
-import SoS from '../SoS';
 
 const Details = ({ linguisticVersion, details }) => {
   const { t } = useTranslation();
@@ -133,7 +132,6 @@ const Details = ({ linguisticVersion, details }) => {
       ) : (
         ''
       )}
-      <SoS submission={details.submission} />
     </>
   );
 };

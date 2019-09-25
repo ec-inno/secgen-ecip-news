@@ -4,8 +4,15 @@ import PropTypes from 'prop-types';
 
 import getCountries from '../Initiative/utils/getCountries';
 
-const SoS = ({ submission }) => {
+const SoSReport = ({ submission }) => {
   if (!submission) return '';
+
+  const hasEntries = submission.entry && submission.entry.length !== 0;
+  const hasTotalSignatures = Boolean(
+    submission.totalSignatures && Number(submission.totalSignatures) > 1
+  );
+
+  if (!hasEntries && !hasTotalSignatures) return '';
 
   const { t } = useTranslation();
   const countries = getCountries(t);
@@ -19,22 +26,21 @@ const SoS = ({ submission }) => {
       </h2>
       <table className="eci-table ecl-u-type-paragraph">
         <tbody>
-          {submission.entry
-            ? submission.entry.map((e, key) => {
-                const code = e.countryCodeType.toLowerCase();
-                const country = countries[code] || code;
+          {hasEntries &&
+            submission.entry.map((e, key) => {
+              const code = e.countryCodeType.toLowerCase();
+              const country = countries[code] || code;
 
-                return (
-                  <tr key={key}>
-                    <td>{country}</td>
-                    <td>
-                      {e.afterSubmission ? `${e.total}<sup>*</sup>` : e.total}
-                    </td>
-                  </tr>
-                );
-              })
-            : ''}
-          {submission.totalSignatures && (
+              return (
+                <tr key={key}>
+                  <td>{country}</td>
+                  <td>
+                    {e.afterSubmission ? `${e.total}<sup>*</sup>` : e.total}
+                  </td>
+                </tr>
+              );
+            })}
+          {hasTotalSignatures && (
             <tr className="ecl-u-type-bold">
               <td>{t('Total number of signatories')}</td>
               <td>{submission.totalSignatures}</td>
@@ -52,7 +58,7 @@ const SoS = ({ submission }) => {
   );
 };
 
-SoS.propTypes = {
+SoSReport.propTypes = {
   submission: PropTypes.shape({
     totalSignatures: PropTypes.number,
     entry: PropTypes.arrayOf(
@@ -65,4 +71,4 @@ SoS.propTypes = {
   }),
 };
 
-export default SoS;
+export default SoSReport;

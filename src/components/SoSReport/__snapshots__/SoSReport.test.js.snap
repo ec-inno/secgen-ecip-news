@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SoSReport renders entries when provided 1`] = `
+Array [
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Number of statements of support collected as reported by the organisers
+  </h2>,
+  <table
+    className="eci-table ecl-u-type-paragraph"
+  >
+    <tbody>
+      <tr>
+        <td>
+          Bulgaria
+        </td>
+        <td>
+          12598
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Denmark
+        </td>
+        <td>
+          4610
+        </td>
+      </tr>
+    </tbody>
+  </table>,
+  <p
+    className="ecl-u-type-paragraph-s"
+  >
+    *
+     
+    Certificates received after the time of submission. Figures not included in the total number of signatories.
+  </p>,
+]
+`;
+
+exports[`SoSReport renders signatures information when greater than 1 by totalSignatures 1`] = `
+Array [
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Number of statements of support collected as reported by the organisers
+  </h2>,
+  <table
+    className="eci-table ecl-u-type-paragraph"
+  >
+    <tbody>
+      <tr
+        className="ecl-u-type-bold"
+      >
+        <td>
+          Total number of signatories
+        </td>
+        <td>
+          2
+        </td>
+      </tr>
+    </tbody>
+  </table>,
+  <p
+    className="ecl-u-type-paragraph-s"
+  >
+    *
+     
+    Certificates received after the time of submission. Figures not included in the total number of signatories.
+  </p>,
+]
+`;
