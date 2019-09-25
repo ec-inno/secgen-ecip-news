@@ -53,8 +53,8 @@ const Initiative = ({ location, pageContext: { locale } }) => {
    * Information from `details`.
    */
   const progress = details && details.progress ? details.progress : [];
-
   const funding = details && details.funding ? details.funding : {};
+  const members = details && details.members ? details.members : [];
 
   /**
    * Information from `linguisticVersion`.
@@ -117,7 +117,7 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                 details={details}
               />
               <DraftLegal file={draftLegal} />
-              <Members details={details} />
+              <Members members={members} />
               <Funding funding={funding} />
               <Share />
             </div>

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Members Handles members of the following types: REPRESENTATIVE, SUBSTITUTE, MEMBER, LEGAL_ENTITY, OTHER, DPO 1`] = `
+Array [
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Organisers
+  </h2>,
+  <ul
+    className="ecl-u-type-paragraph"
+  >
+    <li>
+      Legal entities
+      : 
+      John LEGAL_ENTITY
+    </li>
+    <li>
+      Representative
+      : 
+      John REPRESENTATIVE
+      
+    </li>
+    <li>
+      Substitude
+      : 
+      John SUBSTITUDE
+      
+    </li>
+    <li>
+      Members
+      : 
+      John MEMBER
+    </li>
+    <li>
+      Others
+      : 
+      John OTHER
+    </li>
+    <li>
+      DPO
+      : 
+      John DPO
+    </li>
+  </ul>,
+]
+`;
+
+exports[`Members respects privacyApplied flag 1`] = `
+Array [
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Organisers
+  </h2>,
+  <ul
+    className="ecl-u-type-paragraph"
+  >
+    
+    
+    
+    <li>
+      Members
+      : 
+      John DOE
+    </li>
+    
+    
+  </ul>,
+]
+`;
