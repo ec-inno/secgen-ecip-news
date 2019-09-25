@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 // Utilities
 import useDetailsApi from '../components/Initiative/utils/useDetailsApi';
 
-import DraftLegal from '../components/DraftLegal';
 import ErrorMessage from '../components/ErrorMessage';
+import FileSection from '../components/FileSection';
 import Funding from '../components/Funding';
 import Head from '../components/Head';
 import Members from '../components/Members';
@@ -69,6 +69,11 @@ const Initiative = ({ location, pageContext: { locale } }) => {
       ? linguisticVersion.draftLegal
       : {};
 
+  const additionalDocument =
+    linguisticVersion && linguisticVersion.additionalDocument
+      ? linguisticVersion.additionalDocument
+      : {};
+
   return (
     <>
       <Head title={title} />
@@ -116,7 +121,11 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                 linguisticVersion={linguisticVersion}
                 details={details}
               />
-              <DraftLegal file={draftLegal} />
+              <FileSection
+                title={t('Additional information')}
+                file={additionalDocument}
+              />
+              <FileSection title={t('Draft legal act')} file={draftLegal} />
               <Members members={members} />
               <Funding funding={funding} />
               <Share />

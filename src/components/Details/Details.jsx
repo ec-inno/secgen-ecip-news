@@ -159,16 +159,6 @@ const Details = ({ linguisticVersion, details }) => {
       ) : (
         ''
       )}
-      {has(linguisticVersion, 'additionalDocument') ? (
-        <>
-          <h2 className="ecl-u-type-heading-2">
-            {t('Additional information')}
-          </h2>
-          <Document file={linguisticVersion.additionalDocument} />
-        </>
-      ) : (
-        ''
-      )}
     </>
   );
 };
