@@ -8,15 +8,15 @@ import ErrorMessage from '../components/ErrorMessage';
 import File from '../components/File';
 import Funding from '../components/Funding';
 import Head from '../components/Head';
+import Link from '../components/Link/LinkEcl';
 import Members from '../components/Members';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import Progress from '../components/Progress';
+import Refusal from '../components/Refusal';
 import Section from '../components/Section';
 import Share from '../components/Share';
 import SoSReport from '../components/SoSReport';
-
-import Details from '../components/Details';
 
 const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
@@ -58,6 +58,9 @@ const Initiative = ({ location, pageContext: { locale } }) => {
   const funding = details && details.funding ? details.funding : {};
   const members = details && details.members ? details.members : [];
   const submission = details && details.submission ? details.submission : {};
+  const isPartiallyRegistered =
+    details && details.partiallyRegistered ? true : false;
+  const refusalReasons = details.refusalReasons ? details.refusalReasons : [];
 
   /**
    * Information from `linguisticVersion`.
@@ -85,6 +88,21 @@ const Initiative = ({ location, pageContext: { locale } }) => {
   const treaties =
     linguisticVersion && linguisticVersion.treaties
       ? linguisticVersion.treaties
+      : '';
+
+  const website =
+    linguisticVersion && linguisticVersion.website
+      ? linguisticVersion.website
+      : '';
+
+  const objectives =
+    linguisticVersion && linguisticVersion.objectives
+      ? linguisticVersion.objectives
+      : '';
+
+  const decisionUrl =
+    linguisticVersion && linguisticVersion.decisionUrl
+      ? linguisticVersion.decisionUrl
       : '';
 
   return (
@@ -130,11 +148,49 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                   }}
                 />
               )}
-              <Details
-                linguisticVersion={linguisticVersion}
-                details={details}
-              />
 
+              <Section title={t('Answer of the European Commission')}>
+                <p className="ecl-u-type-paragraph">
+                  <Link
+                    href={decisionUrl}
+                    label={decisionUrl}
+                    target="_blank"
+                  />
+                </p>
+              </Section>
+              <Refusal reasons={refusalReasons} />
+              {isPartiallyRegistered && (
+                <p className="ecl-u-type-paragraph ecl-u-type-bold">
+                  {t(
+                    'Only a part(s) of this initiative has(ve) been registered. Please read the Commission Decision for the scope of the registered initiative.'
+                  )}
+                </p>
+              )}
+              <Message
+                onClose={null}
+                variant="warning"
+                title={t('Disclaimer')}
+                description={t(
+                  'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
+                )}
+                icon={{
+                  shape: 'notifications--warning',
+                  size: 'l',
+                }}
+              />
+              <Section title={t('Objectives')}>
+                <p
+                  className="ecl-u-type-paragraph"
+                  dangerouslySetInnerHTML={{
+                    __html: objectives,
+                  }}
+                />
+              </Section>
+              <Section title={t('Website')}>
+                <p className="ecl-u-type-paragraph">
+                  <Link href={website} label={website} target="_blank" />
+                </p>
+              </Section>
               <SoSReport submission={submission} />
               <Section
                 title={t(
