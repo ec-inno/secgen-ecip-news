@@ -12,7 +12,7 @@ import formatBytes from '../../utils/formatBytes';
 import Icon from '../Icon';
 
 const File = ({ file }) => {
-  if (!file) return '';
+  if (!file || Object.keys(file).length === 0) return '';
 
   const { t } = useTranslation();
   const { GATSBY_INITIATIVES_API: api } = process.env;

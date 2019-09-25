@@ -134,31 +134,6 @@ const Details = ({ linguisticVersion, details }) => {
         ''
       )}
       <SoS submission={details.submission} />
-      {has(linguisticVersion, 'treaties') ? (
-        <>
-          <h2 className="ecl-u-type-heading-2">
-            {t(
-              'Provisions of the Treaties considered relevant by the organisers'
-            )}
-          </h2>
-          <p className="ecl-u-type-paragraph">{linguisticVersion.treaties}</p>
-        </>
-      ) : (
-        ''
-      )}
-      {has(linguisticVersion, 'annexText') ? (
-        <>
-          <h2 className="ecl-u-type-heading-2">{t('Annex')}</h2>
-          <p
-            className="ecl-u-type-paragraph"
-            dangerouslySetInnerHTML={{
-              __html: linguisticVersion.annexText,
-            }}
-          />
-        </>
-      ) : (
-        ''
-      )}
     </>
   );
 };

@@ -5,13 +5,14 @@ import { useTranslation } from 'react-i18next';
 import useDetailsApi from '../components/Initiative/utils/useDetailsApi';
 
 import ErrorMessage from '../components/ErrorMessage';
-import FileSection from '../components/FileSection';
+import File from '../components/File';
 import Funding from '../components/Funding';
 import Head from '../components/Head';
 import Members from '../components/Members';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import Progress from '../components/Progress';
+import Section from '../components/Section';
 import Share from '../components/Share';
 
 import Details from '../components/Details';
@@ -74,6 +75,16 @@ const Initiative = ({ location, pageContext: { locale } }) => {
       ? linguisticVersion.additionalDocument
       : {};
 
+  const annexText =
+    linguisticVersion && linguisticVersion.annexText
+      ? linguisticVersion.annexText
+      : '';
+
+  const treaties =
+    linguisticVersion && linguisticVersion.treaties
+      ? linguisticVersion.treaties
+      : '';
+
   return (
     <>
       <Head title={title} />
@@ -121,11 +132,33 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                 linguisticVersion={linguisticVersion}
                 details={details}
               />
-              <FileSection
-                title={t('Additional information')}
-                file={additionalDocument}
-              />
-              <FileSection title={t('Draft legal act')} file={draftLegal} />
+
+              <Section
+                title={t(
+                  'Provisions of the Treaties considered relevant by the organisers'
+                )}
+              >
+                <p
+                  className="ecl-u-type-paragraph"
+                  dangerouslySetInnerHTML={{
+                    __html: treaties,
+                  }}
+                />
+              </Section>
+              <Section title={t('Annex')}>
+                <p
+                  className="ecl-u-type-paragraph"
+                  dangerouslySetInnerHTML={{
+                    __html: annexText,
+                  }}
+                />
+              </Section>
+              <Section title={t('Additional information')}>
+                <File file={additionalDocument} />
+              </Section>
+              <Section title={t('Draft legal act')}>
+                <File file={draftLegal} />
+              </Section>
               <Members members={members} />
               <Funding funding={funding} />
               <Share />

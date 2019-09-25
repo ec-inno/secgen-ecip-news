@@ -9,6 +9,11 @@ describe('File', () => {
     expect(tree).toBe('');
   });
 
+  it('empty object input: returns an empty string', () => {
+    const tree = renderer.create(<File file={{}} />).toJSON();
+    expect(tree).toBe('');
+  });
+
   it('renders correctly provided an input', () => {
     const props = {
       file: {
