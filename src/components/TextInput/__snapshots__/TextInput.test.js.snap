@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInput renders correctly 1`] = `
+<div
+  className="ecl-form-group ecl-form-group--text-input"
+>
+  
+  
+  <input
+    className="ecl-text-input"
+    disabled={false}
+    id="foo"
+    required={false}
+    type="text"
+  />
+</div>
+`;

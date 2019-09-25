@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 // Utilities
 import useDetailsApi from '../components/Initiative/utils/useDetailsApi';
+import extractInitiativesDetails from '../utils/extractInitiativesDetails';
 
 import ErrorMessage from '../components/ErrorMessage';
 import File from '../components/File';
@@ -22,11 +23,6 @@ const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
   const { details, _, error } = useDetailsApi({ location, locale });
 
-  const linguisticVersions =
-    details && Object.keys(details).length !== 0
-      ? Object.values(details.linguisticVersions)
-      : [];
-
   if (error && error.message) {
     return (
       <div className="ecl-container ecl-u-mt-l">
@@ -38,72 +34,31 @@ const Initiative = ({ location, pageContext: { locale } }) => {
     );
   }
 
-  // Try to get content for the current locale.
-  let linguisticVersionIsFallback = false;
-  let linguisticVersion = linguisticVersions.find(
-    version => version.languageCode.toLowerCase() === locale
-  );
-
-  if (!linguisticVersion) {
-    // Fallback to original language.
-    // Information display should be "all or nothing", so we override, and all other props are coming from the original.
-    linguisticVersion = linguisticVersions.find(version => version.original);
-    linguisticVersionIsFallback = true;
-  }
-
-  /**
-   * Information from `details`.
-   */
-  const progress = details && details.progress ? details.progress : [];
-  const funding = details && details.funding ? details.funding : {};
-  const members = details && details.members ? details.members : [];
-  const submission = details && details.submission ? details.submission : {};
-  const isPartiallyRegistered =
-    details && details.partiallyRegistered ? true : false;
-  const refusalReasons = details.refusalReasons ? details.refusalReasons : [];
-
-  /**
-   * Information from `linguisticVersion`.
-   */
-  const title =
-    linguisticVersion && linguisticVersion.title
-      ? linguisticVersion.title
-      : '...';
-
-  const draftLegal =
-    linguisticVersion && linguisticVersion.draftLegal
-      ? linguisticVersion.draftLegal
-      : {};
-
-  const additionalDocument =
-    linguisticVersion && linguisticVersion.additionalDocument
-      ? linguisticVersion.additionalDocument
-      : {};
-
-  const annexText =
-    linguisticVersion && linguisticVersion.annexText
-      ? linguisticVersion.annexText
-      : '';
-
-  const treaties =
-    linguisticVersion && linguisticVersion.treaties
-      ? linguisticVersion.treaties
-      : '';
-
-  const website =
-    linguisticVersion && linguisticVersion.website
-      ? linguisticVersion.website
-      : '';
-
-  const objectives =
-    linguisticVersion && linguisticVersion.objectives
-      ? linguisticVersion.objectives
-      : '';
-
-  const decisionUrl =
-    linguisticVersion && linguisticVersion.decisionUrl
-      ? linguisticVersion.decisionUrl
-      : '';
+  const {
+    additionalDocument,
+    annexText,
+    dateEnd,
+    dateRefusal,
+    dateRegistration,
+    dateStart,
+    deadline,
+    decisionUrl,
+    draftLegal,
+    funding,
+    isPartiallyRegistered,
+    linguisticVersionIsFallback,
+    members,
+    objectives,
+    progress,
+    refusalReasons,
+    registrationNumber,
+    status,
+    submission,
+    supportLink,
+    title,
+    treaties,
+    website,
+  } = extractInitiativesDetails({ details, locale });
 
   return (
     <>
@@ -115,12 +70,12 @@ const Initiative = ({ location, pageContext: { locale } }) => {
             <h1 className="ecl-page-header__title">{title}</h1>
           </div>
           <Meta
-            status={details.status}
-            registrationNumber={details.comRegNum}
-            deadline={details.deadline}
-            dateRefusal={details.refusalDate}
-            dateRegistration={details.registrationDate}
-            supportLink={details.supportLink}
+            status={status}
+            registrationNumber={registrationNumber}
+            deadline={deadline}
+            dateRefusal={dateRefusal}
+            dateRegistration={dateRegistration}
+            supportLink={supportLink}
           />
         </div>
       </section>
@@ -130,8 +85,8 @@ const Initiative = ({ location, pageContext: { locale } }) => {
             <div className="ecl-col-sm-12 ecl-col-md-4">
               <Progress
                 progress={progress}
-                dateStart={details.startCollectionDate}
-                dateEnd={details.earlyClosureDate}
+                dateStart={dateStart}
+                dateEnd={dateEnd}
               />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
@@ -146,18 +101,21 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                     shape: 'notifications--warning',
                     size: 'l',
                   }}
+                  className="ecl-u-mb-2xs"
                 />
               )}
 
-              <Section title={t('Answer of the European Commission')}>
-                <p className="ecl-u-type-paragraph">
-                  <Link
-                    href={decisionUrl}
-                    label={decisionUrl}
-                    target="_blank"
-                  />
-                </p>
-              </Section>
+              {decisionUrl && (
+                <Section title={t('Answer of the European Commission')}>
+                  <p className="ecl-u-type-paragraph">
+                    <Link
+                      href={decisionUrl}
+                      label={decisionUrl}
+                      target="_blank"
+                    />
+                  </p>
+                </Section>
+              )}
               <Refusal reasons={refusalReasons} />
               {isPartiallyRegistered && (
                 <p className="ecl-u-type-paragraph ecl-u-type-bold">
@@ -178,46 +136,58 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                   size: 'l',
                 }}
               />
-              <Section title={t('Objectives')}>
-                <p
-                  className="ecl-u-type-paragraph"
-                  dangerouslySetInnerHTML={{
-                    __html: objectives,
-                  }}
-                />
-              </Section>
-              <Section title={t('Website')}>
-                <p className="ecl-u-type-paragraph">
-                  <Link href={website} label={website} target="_blank" />
-                </p>
-              </Section>
+              {objectives && (
+                <Section title={t('Objectives')}>
+                  <p
+                    className="ecl-u-type-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: objectives,
+                    }}
+                  />
+                </Section>
+              )}
+              {website && (
+                <Section title={t('Website')}>
+                  <p className="ecl-u-type-paragraph">
+                    <Link href={website} label={website} target="_blank" />
+                  </p>
+                </Section>
+              )}
               <SoSReport submission={submission} />
-              <Section
-                title={t(
-                  'Provisions of the Treaties considered relevant by the organisers'
-                )}
-              >
-                <p
-                  className="ecl-u-type-paragraph"
-                  dangerouslySetInnerHTML={{
-                    __html: treaties,
-                  }}
-                />
-              </Section>
-              <Section title={t('Annex')}>
-                <p
-                  className="ecl-u-type-paragraph"
-                  dangerouslySetInnerHTML={{
-                    __html: annexText,
-                  }}
-                />
-              </Section>
-              <Section title={t('Additional information')}>
-                <File file={additionalDocument} />
-              </Section>
-              <Section title={t('Draft legal act')}>
-                <File file={draftLegal} />
-              </Section>
+              {treaties && (
+                <Section
+                  title={t(
+                    'Provisions of the Treaties considered relevant by the organisers'
+                  )}
+                >
+                  <p
+                    className="ecl-u-type-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: treaties,
+                    }}
+                  />
+                </Section>
+              )}
+              {annexText && (
+                <Section title={t('Annex')}>
+                  <p
+                    className="ecl-u-type-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: annexText,
+                    }}
+                  />
+                </Section>
+              )}
+              {Object.keys(additionalDocument).length !== 0 && (
+                <Section title={t('Additional information')}>
+                  <File file={additionalDocument} />
+                </Section>
+              )}
+              {Object.keys(draftLegal).length !== 0 && (
+                <Section title={t('Draft legal act')}>
+                  <File file={draftLegal} />
+                </Section>
+              )}
               <Members members={members} />
               <Funding funding={funding} />
               <Share />

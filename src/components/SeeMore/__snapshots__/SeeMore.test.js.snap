@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SeeMore renders correctly 1`] = `
+<div
+  className="ecl-row ecl-u-mt-l"
+>
+  <div
+    className="ecl-col-sm-12 ecl-col-md-12"
+  >
+    <nav
+      aria-label="Pagination"
+      className="ecl-pagination"
+    >
+      <ul
+        className="ecl-pagination__list"
+      >
+        <li
+          className="ecl-pagination__item ecl-pagination__item--next"
+        >
+          <a
+            aria-label=""
+            className="ecl-pagination__link ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"
+            href="#"
+            onClick={[Function]}
+          >
+            <span
+              className="ecl-link__label"
+            >
+              
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+`;
