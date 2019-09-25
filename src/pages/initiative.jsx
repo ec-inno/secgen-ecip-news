@@ -1,9 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-// Utilities
-import useDetailsApi from '../components/Initiative/utils/useDetailsApi';
-import extractInitiativesDetails from '../utils/extractInitiativesDetails';
+import useDetailsApi from '@eci/utils/useDetailsApi';
+import extractInitiativesDetails from '@eci/utils/extractInitiativesDetails';
 
 import ErrorMessage from '../components/ErrorMessage';
 import File from '../components/File';

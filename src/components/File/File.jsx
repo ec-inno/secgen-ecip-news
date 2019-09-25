@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import mime from 'mime';
 
-import formatBytes from '../../utils/formatBytes';
+import formatBytes from '@eci/utils/formatBytes';
 
 import Icon from '../Icon';
 

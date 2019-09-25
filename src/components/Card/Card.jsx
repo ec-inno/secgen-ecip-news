@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
+import upperCaseFirstChar from '@eci/utils/upperCaseFirstChar';
 
 import defaultImage from '../assets/images/default-image.png';
-import formatStatus from '../../utils/formatStatus';
 
 const Card = ({ title, status, logo, href, totalSupporters, supportLink }) => {
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ const Card = ({ title, status, logo, href, totalSupporters, supportLink }) => {
     <article className="ecl-card">
       <header className="ecl-card__header">
         <span className="ecl-tag ecl-u-f-r eci-tag">
-          {formatStatus(status)}
+          {upperCaseFirstChar(status)}
         </span>
         <div
           role="img"

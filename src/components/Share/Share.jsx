@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import useScript from '@eci/utils/useScript';
+
 import ErrorMessage from '../ErrorMessage';
-import useScript from '../../utils/useScript';
 import { useI18nContext } from '../../context/I18n';
 import config from './config';
 

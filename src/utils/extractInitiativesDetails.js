@@ -28,8 +28,7 @@ const extractInitiativesDetails = ({ details, locale }) => {
   const funding = details && details.funding ? details.funding : {};
   const members = details && details.members ? details.members : [];
   const submission = details && details.submission ? details.submission : {};
-  const isPartiallyRegistered =
-    details && details.partiallyRegistered ? true : false;
+  const isPartiallyRegistered = details && details.partiallyRegistered;
   const dateRefusal = details.refusalDate ? details.refusalDate : '';
   const dateRegistration = details.registrationDate
     ? details.registrationDate

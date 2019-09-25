@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-import formatStatus from '../../utils/formatStatus';
+import upperCaseFirstChar from '@eci/utils/upperCaseFirstChar';
 
 const Progress = ({ progress, dateStart, dateEnd }) => {
   const { t } = useTranslation();
@@ -47,7 +47,9 @@ const Progress = ({ progress, dateStart, dateEnd }) => {
             : 'ecl-timeline__item'
         }
       >
-        <div className="ecl-timeline__label">{formatStatus(stage.name)}</div>
+        <div className="ecl-timeline__label">
+          {upperCaseFirstChar(stage.name)}
+        </div>
         {stage.date && (
           <div className="ecl-timeline__content">{stage.date}</div>
         )}

@@ -12,7 +12,7 @@
     "graphql": true
   },
   "rules": {
-    "compat/compat": 2,
+    "compat/compat": 0,
     "prettier/prettier": [
       "error",
       { "trailingComma": "es5", "singleQuote": true }

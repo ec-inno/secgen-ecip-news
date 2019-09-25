@@ -1,8 +1,8 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
-import getCountries from '../Initiative/utils/getCountries';
+import getCountries from '@eci/utils/getCountries';
 
 const SoSReport = ({ submission }) => {
   if (!submission) return '';

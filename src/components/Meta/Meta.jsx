@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-import formatStatus from '../../utils/formatStatus';
+import upperCaseFirstChar from '@eci/utils/upperCaseFirstChar';
 
 import Icon from '../Icon';
 import Link from '../Link/LinkEcl';
@@ -39,7 +39,7 @@ const Meta = ({
             />
             {t('Current status')}
             {': '}
-            {formatStatus(status)}
+            {upperCaseFirstChar(status)}
           </div>
         )}
         {registrationNumber && (
