@@ -7,18 +7,16 @@ import slug from 'rehype-slug';
  * @returns {Promise} The trimmed version of the input text with ID attributes.
  */
 const addSlugs = input => {
-  // Contents comes from Drupal, it's sanitized but contains loads of unnecessary extra white space.
   const trimmed = input.replace(/\s+/g, ' ').trim();
 
   return new Promise((resolve, reject) => {
     rehype()
       .data('settings', { fragment: true })
       .use(slug)
-      .process(trimmed, (err, file) => {
-        if (err) {
-          reject();
-        }
-        resolve(String(file));
+      .process(trimmed, (err, html) => {
+        if (err) return reject();
+
+        return resolve(String(html));
       });
   });
 };

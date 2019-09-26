@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getCategories utlity returns a list of values 1`] = `
+Array [
+  Object {
+    "label": "All categories",
+    "value": "any",
+  },
+  Object {
+    "label": "Agriculture",
+    "value": "AGRI",
+  },
+  Object {
+    "label": "Aid and development cooperation",
+    "value": "DEVCO",
+  },
+  Object {
+    "label": "Business and economy",
+    "value": "EURO",
+  },
+  Object {
+    "label": "Consumers and health",
+    "value": "SANTE",
+  },
+  Object {
+    "label": "Culture and media",
+    "value": "CULT",
+  },
+  Object {
+    "label": "Digital economy and society",
+    "value": "DECO",
+  },
+  Object {
+    "label": "Education, youth and sport",
+    "value": "EDU",
+  },
+  Object {
+    "label": "Employment and social affairs",
+    "value": "EMPL",
+  },
+  Object {
+    "label": "Energy",
+    "value": "ENER",
+  },
+  Object {
+    "label": "Environment and climate",
+    "value": "ENV",
+  },
+  Object {
+    "label": "External trade and relations",
+    "value": "TRADE",
+  },
+  Object {
+    "label": "Justice and fundamental rights",
+    "value": "JUST",
+  },
+  Object {
+    "label": "Maritime affairs and fisheries",
+    "value": "MARE",
+  },
+  Object {
+    "label": "Migration and asylum",
+    "value": "MIGR",
+  },
+  Object {
+    "label": "Regional development",
+    "value": "REGIO",
+  },
+  Object {
+    "label": "Research",
+    "value": "RSH",
+  },
+  Object {
+    "label": "Security",
+    "value": "SEC",
+  },
+  Object {
+    "label": "Transport",
+    "value": "TRA",
+  },
+  Object {
+    "label": "Regulatory Framework",
+    "value": "REGFRA",
+  },
+  Object {
+    "label": "Registration of initiatives",
+    "value": "REGECI",
+  },
+  Object {
+    "label": "Signature collection",
+    "value": "COLLECI",
+  },
+  Object {
+    "label": "Examination of initiatives",
+    "value": "EXAECI",
+  },
+]
+`;

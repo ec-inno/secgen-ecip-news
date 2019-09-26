@@ -1,3 +1,7 @@
+/**
+ * Returns a list of categories.
+ * @param {Function} t String translation function such as https://www.i18next.com/overview/api#t
+ */
 const getCategories = t => {
   return [
     { value: 'any', label: t('All categories') },
@@ -19,10 +23,10 @@ const getCategories = t => {
     { value: 'RSH', label: t('Research') },
     { value: 'SEC', label: t('Security') },
     { value: 'TRA', label: t('Transport') },
-    { value: 'REGFRA', label: t('REGFRA') },
-    { value: 'REGECI', label: t('REGECI') },
-    { value: 'COLLECI', label: t('COLLECI') },
-    { value: 'EXAECI', label: t('EXAECI') },
+    { value: 'REGFRA', label: t('Regulatory Framework') },
+    { value: 'REGECI', label: t('Registration of initiatives') },
+    { value: 'COLLECI', label: t('Signature collection') },
+    { value: 'EXAECI', label: t('Examination of initiatives') },
   ];
 };
 
