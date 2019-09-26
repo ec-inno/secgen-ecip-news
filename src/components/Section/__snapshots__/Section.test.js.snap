@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section can render children even if no title is provided 1`] = `
+<div
+  className="ecl-file"
+  data-ecl-file={true}
+>
+  <div
+    className="ecl-file__container"
+  >
+    <svg
+      aria-hidden="true"
+      className="ecl-file__icon ecl-icon ecl-icon--2xl ecl-icon ecl-icon--m"
+      focusable="false"
+    >
+      
+      
+      <use
+        xlinkHref="file#general--copy"
+      />
+    </svg>
+    <div
+      className="ecl-file__info"
+    >
+      <div
+        className="ecl-file__title"
+      >
+        test
+      </div>
+      <div
+        className="ecl-file__meta"
+      >
+        (
+        10 Bytes
+         -
+         
+        TXT
+        )
+      </div>
+    </div>
+    <a
+      className="ecl-link ecl-link--standalone"
+      download={true}
+      href="undefined/register/document/16806"
+    >
+      <span
+        className="ecl-link__label"
+      >
+        Download
+      </span>
+       
+      <svg
+        aria-hidden="true"
+        className="ecl-icon--fluid ecl-link__icon ecl-icon ecl-icon--m"
+        focusable="false"
+      >
+        
+        
+        <use
+          xlinkHref="file#ui--download"
+        />
+      </svg>
+    </a>
+  </div>
+</div>
+`;

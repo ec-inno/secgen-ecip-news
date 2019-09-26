@@ -2,10 +2,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 
+import logoPaths from '@eci/utils/logoPaths';
+
 import { languages } from '../../../languages';
 import { useI18nContext } from '../../context/I18n';
-
-import logoPaths from '../../utils/logoPaths';
 
 import SiteName from '../SiteName';
 import LanguageListOverlay from '../LanguageList/LanguageListOverlayWithContext';

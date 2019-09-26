@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Meta renders correctly given a non-empty input 1`] = `
+<ul
+  className="ecl-u-d-flex ecl-u-pl-none ecl-u-mv-l ecl-u-type-m ecl-page-header__info-list"
+>
+  <li
+    className="ecl-page-header__info-item"
+  >
+    <div
+      className="ecl-u-d-flex"
+    >
+      <svg
+        aria-hidden="true"
+        className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s ecl-icon ecl-icon--m"
+        focusable="false"
+      >
+        
+        
+        <use
+          xlinkHref="file#general--organigram"
+        />
+      </svg>
+      Current status
+      : 
+      Test
+    </div>
+    <div
+      className="ecl-u-d-flex ecl-u-mt-xs"
+    >
+      <svg
+        aria-hidden="true"
+        className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s ecl-icon ecl-icon--m"
+        focusable="false"
+      >
+        
+        
+        <use
+          xlinkHref="file#general--edit"
+        />
+      </svg>
+      Commission registration number
+      : 
+      test
+    </div>
+  </li>
+  <li
+    className="ecl-u-ml-l ecl-page-header__info-item"
+  >
+    <div
+      className="ecl-u-d-flex"
+    >
+      <svg
+        aria-hidden="true"
+        className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s ecl-icon ecl-icon--m"
+        focusable="false"
+      >
+        
+        
+        <use
+          xlinkHref="file#general--calendar"
+        />
+      </svg>
+      Deadline
+      : 
+      test
+    </div>
+    <div
+      className="ecl-u-d-flex"
+    >
+      <svg
+        aria-hidden="true"
+        className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s ecl-icon ecl-icon--m"
+        focusable="false"
+      >
+        
+        
+        <use
+          xlinkHref="file#general--calendar"
+        />
+      </svg>
+      Date of refulsal
+      : 
+      test
+    </div>
+    <div
+      className="ecl-u-d-flex ecl-u-mt-xs"
+    >
+      <svg
+        aria-hidden="true"
+        className="ecl-u-mr-xs ecl-page-header__info-icon ecl-icon--s ecl-icon ecl-icon--m"
+        focusable="false"
+      >
+        
+        
+        <use
+          xlinkHref="file#general--calendar"
+        />
+      </svg>
+      Date of registration
+      : 
+      test
+    </div>
+  </li>
+  <li
+    className="ecl-u-ml-l ecl-page-header__info-item"
+  >
+    <a
+      className="ecl-link ecl-link--cta"
+      href="test"
+    >
+      Support this initiative
+    </a>
+  </li>
+</ul>
+`;

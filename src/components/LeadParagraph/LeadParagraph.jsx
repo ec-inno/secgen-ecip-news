@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-import Counter from '../Initiative/Counter';
+import Counter from '../Counter';
 import Video from '../Video';
 
 const LeadParagraph = ({ text, label, href }) => (

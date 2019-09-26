@@ -37,10 +37,10 @@
   "dependencies": {
     "@eci/cli": "^0.1.0",
     "@eci/gatsby-source-drupal-jsonapi": "^0.1.0",
+    "@eci/utils": "^0.1.0",
     "@ecl/eu-preset-website": "2.8.0",
     "axios": "0.19.0",
     "classnames": "2.2.6",
-    "flat": "4.1.0",
     "gatsby": "2.15.21",
     "gatsby-link": "2.2.15",
     "gatsby-plugin-layout": "1.1.8",
@@ -53,8 +53,6 @@
     "react-dom": "16.9.0",
     "react-helmet": "5.2.1",
     "react-i18next": "10.12.5",
-    "rehype": "9.0.0",
-    "rehype-slug": "2.0.3",
     "slugify": "1.3.5",
     "svg4everybody": "2.1.9"
   },
@@ -86,7 +84,8 @@
   },
   "workspaces": {
     "packages": [
-      "packages/**"
+      "packages/**",
+      "src/utils"
     ]
   },
   "repository": {

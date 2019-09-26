@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import getCategories from './utils/getCategories';
-import getLanguages from './utils/getLanguages';
-import getStatuses from './utils/getStatuses';
+import getCategories from '@eci/utils/getCategories';
+import getLanguages from '@eci/utils/getLanguages';
+import getStatuses from '@eci/utils/getStatuses';
 
 import queryContext from './Search/context/query';
 

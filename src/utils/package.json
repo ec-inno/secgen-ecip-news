@@ -1,0 +1,14 @@
+{
+  "name": "@eci/utils",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "@ecl/eu-preset-website": "2.8.0",
+    "axios": "0.19.0",
+    "flat": "4.1.0",
+    "react": "16.9.0",
+    "rehype": "9.0.0",
+    "rehype-slug": "2.0.3"
+  }
+}

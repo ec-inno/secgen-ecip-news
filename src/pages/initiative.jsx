@@ -1,36 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
-import has from 'lodash/has';
 
-// Generic
-import Head from '../components/Head';
-import Share from '../components/Share';
+import useDetailsApi from '@eci/utils/useDetailsApi';
+import extractInitiativesDetails from '@eci/utils/extractInitiativesDetails';
 
-// Sub-components, keep out of /src/pages.
-import Details from '../components/Initiative/Details';
 import ErrorMessage from '../components/ErrorMessage';
-import Meta from '../components/Initiative/Meta';
-import Progress from '../components/Initiative/Progress';
+import File from '../components/File';
+import Funding from '../components/Funding';
+import Head from '../components/Head';
+import Link from '../components/Link/LinkEcl';
+import Members from '../components/Members';
+import Message from '../components/Message';
+import Meta from '../components/Meta';
+import Progress from '../components/Progress';
+import Refusal from '../components/Refusal';
+import Section from '../components/Section';
+import Share from '../components/Share';
+import SoSReport from '../components/SoSReport';
 
 const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
-  const { GATSBY_INITIATIVES_API: api } = process.env;
+  const { details, _, error } = useDetailsApi({ location, locale });
 
-  const [error, setError] = useState({});
-  const [initiativeData, setInitiativeData] = useState({});
-
-  useEffect(() => {
-    const initiativeId = location.hash.substr(1, location.hash.length);
-    const endpoint = `${api}/register/details/${initiativeId}`;
-
-    axios
-      .get(endpoint)
-      .then(response => setInitiativeData(response.data))
-      .catch(setError);
-  }, [locale]);
-
-  if (error.message) {
+  if (error && error.message) {
     return (
       <div className="ecl-container ecl-u-mt-l">
         <ErrorMessage
@@ -41,45 +33,162 @@ const Initiative = ({ location, pageContext: { locale } }) => {
     );
   }
 
-  const languageSpecificData = initiativeData.linguisticVersions
-    ? Object.values(initiativeData.linguisticVersions).find(
-        version => version.languageCode.toLowerCase() === locale
-      )
-    : {};
+  const {
+    additionalDocument,
+    annexText,
+    dateEnd,
+    dateRefusal,
+    dateRegistration,
+    dateStart,
+    deadline,
+    decisionUrl,
+    draftLegal,
+    funding,
+    isPartiallyRegistered,
+    linguisticVersionIsFallback,
+    members,
+    objectives,
+    progress,
+    refusalReasons,
+    registrationNumber,
+    status,
+    submission,
+    supportLink,
+    title,
+    treaties,
+    website,
+  } = extractInitiativesDetails({ details, locale });
 
   return (
     <>
-      <Head
-        title={
-          has(languageSpecificData, 'title')
-            ? languageSpecificData.title
-            : '...'
-        }
-      />
+      <Head title={title} />
 
       <section className="ecl-page-header">
         <div className="ecl-container">
           <div className="ecl-page-header__title-wrapper">
-            <h1 className="ecl-page-header__title">
-              {has(languageSpecificData, 'title')
-                ? languageSpecificData.title
-                : '...'}
-            </h1>
+            <h1 className="ecl-page-header__title">{title}</h1>
           </div>
-          <Meta initiativeData={initiativeData} />
+          <Meta
+            status={status}
+            registrationNumber={registrationNumber}
+            deadline={deadline}
+            dateRefusal={dateRefusal}
+            dateRegistration={dateRegistration}
+            supportLink={supportLink}
+          />
         </div>
       </section>
       <main className="ecl-u-pv-xl">
         <div className="ecl-container">
           <div className="ecl-row">
             <div className="ecl-col-sm-12 ecl-col-md-4">
-              <Progress initiativeData={initiativeData} />
+              <Progress
+                progress={progress}
+                dateStart={dateStart}
+                dateEnd={dateEnd}
+              />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
-              <Details
-                languageSpecificData={languageSpecificData}
-                initiativeData={initiativeData}
+              {linguisticVersionIsFallback && (
+                <Message
+                  variant="warning"
+                  title={t('Disclaimer')}
+                  description={t(
+                    'The initiative is not available in the current language. Original language version is currently displayed.'
+                  )}
+                  icon={{
+                    shape: 'notifications--warning',
+                    size: 'l',
+                  }}
+                  className="ecl-u-mb-2xs"
+                />
+              )}
+
+              {decisionUrl && (
+                <Section title={t('Answer of the European Commission')}>
+                  <p className="ecl-u-type-paragraph">
+                    <Link
+                      href={decisionUrl}
+                      label={decisionUrl}
+                      target="_blank"
+                    />
+                  </p>
+                </Section>
+              )}
+              <Refusal reasons={refusalReasons} />
+              {isPartiallyRegistered && (
+                <p className="ecl-u-type-paragraph ecl-u-type-bold">
+                  {t(
+                    'Only a part(s) of this initiative has(ve) been registered. Please read the Commission Decision for the scope of the registered initiative.'
+                  )}
+                </p>
+              )}
+              <Message
+                onClose={null}
+                variant="warning"
+                title={t('Disclaimer')}
+                description={t(
+                  'The contents on this page are the sole responsibility of the organisers of the initiatives. The texts reflect solely the views of their authors and can in no way be taken to reflect the views of the European Commission.'
+                )}
+                icon={{
+                  shape: 'notifications--warning',
+                  size: 'l',
+                }}
               />
+              {objectives && (
+                <Section title={t('Objectives')}>
+                  <p
+                    className="ecl-u-type-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: objectives,
+                    }}
+                  />
+                </Section>
+              )}
+              {website && (
+                <Section title={t('Website')}>
+                  <p className="ecl-u-type-paragraph">
+                    <Link href={website} label={website} target="_blank" />
+                  </p>
+                </Section>
+              )}
+              <SoSReport submission={submission} />
+              {treaties && (
+                <Section
+                  title={t(
+                    'Provisions of the Treaties considered relevant by the organisers'
+                  )}
+                >
+                  <p
+                    className="ecl-u-type-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: treaties,
+                    }}
+                  />
+                </Section>
+              )}
+              {annexText && (
+                <Section title={t('Annex')}>
+                  <p
+                    className="ecl-u-type-paragraph"
+                    dangerouslySetInnerHTML={{
+                      __html: annexText,
+                    }}
+                  />
+                </Section>
+              )}
+              {Object.keys(additionalDocument).length !== 0 && (
+                <Section title={t('Additional information')}>
+                  <File file={additionalDocument} />
+                </Section>
+              )}
+              {Object.keys(draftLegal).length !== 0 && (
+                <Section title={t('Draft legal act')}>
+                  <File file={draftLegal} />
+                </Section>
+              )}
+              <Members members={members} />
+              <Funding funding={funding} />
               <Share />
             </div>
           </div>

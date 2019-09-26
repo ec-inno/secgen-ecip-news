@@ -5,9 +5,10 @@ import axios from 'axios';
 import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 
+import upperCaseFirstChar from '@eci/utils/upperCaseFirstChar';
+
 import Icon from '../Icon';
 import defaultImage from '../assets/images/default-image.png';
-import formatStatus from '../../utils/formatStatus';
 
 const Result = ({ title, href, status, pubRegNum, logo }) => {
   const { t } = useTranslation();
@@ -53,7 +54,7 @@ const Result = ({ title, href, status, pubRegNum, logo }) => {
             <span className="ecl-u-type-s ecl-u-ml-s">
               {t('Current status')}
               {': '}
-              {formatStatus(status)}
+              {upperCaseFirstChar(status)}
             </span>
           </li>
           <li className="ecl-u-d-flex ecl-u-align-items-center ecl-u-type-color-grey-75 ecl-unordered-list__item">

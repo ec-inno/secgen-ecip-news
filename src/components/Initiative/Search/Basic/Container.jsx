@@ -8,7 +8,7 @@ import { chunk } from 'lodash';
 import { useI18nContext } from '../../../../context/I18n';
 import ErrorMessage from '../../../ErrorMessage';
 
-import Card from '../../Card';
+import Card from '../../../Card';
 import New from '../../New';
 import SearchForm from './Form';
 import SeeMore from '../../../SeeMore';

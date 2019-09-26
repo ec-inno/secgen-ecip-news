@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import useScript from '@eci/utils/useScript';
+
 import ErrorMessage from '../ErrorMessage';
-import useScript from '../../utils/useScript';
 import { useI18nContext } from '../../context/I18n';
 import config from './config';
 
@@ -10,6 +11,7 @@ const Share = () => {
   const { t } = useTranslation();
   const { locale } = useI18nContext();
 
+  // Error will reflect only the load of the below script, not https://europa.eu/webtools/webtools.sbkm.js which smart autoloader tries to load later!
   const [loaded, error] = useScript('//europa.eu/webtools/load.js');
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const Share = () => {
     );
   }
 
-  if (loaded)
+  if (loaded) {
     return (
       <>
         <h2 className="ecl-u-type-heading-2">{t('Share this page')}</h2>
@@ -43,6 +45,7 @@ const Share = () => {
         </div>
       </>
     );
+  }
 
   return '';
 };

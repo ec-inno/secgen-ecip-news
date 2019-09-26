@@ -1,6 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import getCategories from '@eci/utils/getCategories';
+import getStatuses from '@eci/utils/getStatuses';
+import getLanguages from '@eci/utils/getLanguages';
+
 import I18nContext from '../../../../context/I18n';
 import queryContext from '../context/query';
 
@@ -9,10 +13,6 @@ import Button from '../../../Button';
 import Fieldset from '../../../Fieldset';
 import Select from '../../../Select';
 import TextInput from '../../../TextInput';
-
-import getCategories from '../../utils/getCategories';
-import getStatuses from '../../utils/getStatuses';
-import getLanguages from '../../utils/getLanguages';
 
 const InitiativesSearchAdvancedForm = () => {
   const { t } = useTranslation();

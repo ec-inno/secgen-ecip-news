@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
 
-import getSitemap from '../utils/getSitemap';
+import getSitemap from '@eci/utils/getSitemap';
 
 import Head from '../components/Head';
 import ListNested from '../components/ListNested';

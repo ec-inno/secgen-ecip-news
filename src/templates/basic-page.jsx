@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
 
-import addSlugs from '../utils/addSlugs';
+import addSlugs from '@eci/utils/addSlugs';
 
 import Head from '../components/Head';
 

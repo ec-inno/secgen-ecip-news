@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Refusal shows a list of reasons when they are in the list of unsupported reasons 1`] = `
+<div
+  className="eci-answer ecl-u-pa-m ecl-u-mb-l"
+>
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Commission's reply stating the reasons for refusal of registration
+  </h2>
+  <ul
+    className="ecl-u-type-paragraph"
+  >
+    <li
+      className="ecl-u-type-paragraph"
+    >
+      reason.action.registration.reject.abuse
+    </li>
+  </ul>
+</div>
+`;

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorMessage renders correctly 1`] = `
+<div
+  className="ecl-u-d-none ecl-message ecl-message--error"
+  data-ecl-message={true}
+  role="alert"
+>
+  <svg
+    aria-hidden="true"
+    className="ecl-message__icon ecl-icon ecl-icon--l"
+    focusable="false"
+  >
+    
+    
+    <use
+      xlinkHref="file#notifications--error"
+    />
+  </svg>
+  <div
+    className="ecl-message__content"
+  >
+    <button
+      className="ecl-message__close ecl-button ecl-button--ghost"
+      data-ecl-message-close={true}
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="ecl-button__container"
+      >
+        <span
+          className="ecl-button__label"
+          data-ecl-label={true}
+        >
+          Close
+        </span>
+        <svg
+          aria-hidden="true"
+          className="ecl-button__icon ecl-button__icon--after ecl-icon ecl-icon--s"
+          data-ecl-icon={true}
+          focusable="false"
+        >
+          
+          
+          <use
+            xlinkHref="file#ui--close"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      className="ecl-message__title"
+    >
+      title
+    </div>
+    <p
+      className="ecl-message__description"
+    >
+      foo
+    </p>
+  </div>
+</div>
+`;

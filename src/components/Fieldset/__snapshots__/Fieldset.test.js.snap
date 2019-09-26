@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fieldset renders correctly 1`] = `
+<fieldset
+  className="ecl-form-group"
+>
+  
+  
+  
+</fieldset>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArrowDD renders correctly 1`] = `
+<div
+  className="ecl-select__icon ecl-u-type-heading-1"
+  style={
+    Object {
+      "color": "#fff",
+    }
+  }
+>
+  ▾
+</div>
+`;

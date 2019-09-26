@@ -6,7 +6,7 @@ import Select from '../../../Select';
 import TextInput from '../../../TextInput';
 import Button from '../../../Button';
 
-import getCategories from '../../utils/getCategories';
+import getCategories from '@eci/utils/getCategories';
 
 const InitiativesSearchBasicForm = ({ setFilters }) => {
   const { t } = useTranslation();
