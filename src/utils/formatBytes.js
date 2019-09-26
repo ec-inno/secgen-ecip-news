@@ -1,5 +1,11 @@
+/**
+ * Returns a formatted string based on input bytes and decimals values.
+ * @param {Number} bytes
+ * @param {Number} decimals
+ */
 const formatBytes = (bytes, decimals = 2) => {
-  if (bytes === 0) return '0 Bytes';
+  if (bytes === 0 || typeof bytes !== 'number') return '0 Bytes';
+  if (typeof bytes === 'number' && bytes < 0) return '0 Bytes';
 
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;

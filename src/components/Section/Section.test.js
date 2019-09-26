@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import File from '../File';
+import FileDownload from '../FileDownload';
 import Section from './Section';
 
 describe('Section', () => {
@@ -19,7 +19,7 @@ describe('Section', () => {
     const tree = renderer
       .create(
         <Section>
-          <File
+          <FileDownload
             file={{
               name: 'test',
               mimeType: 'text/plain',

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Section can render children even if no title is provided 1`] = `
+exports[`FileDownloadImpl renders correctly provided an input 1`] = `
 <div
   className="ecl-file"
   data-ecl-file={true}
