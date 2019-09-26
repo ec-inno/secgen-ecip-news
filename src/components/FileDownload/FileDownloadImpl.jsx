@@ -4,17 +4,18 @@ import PropTypes from 'prop-types';
 import mime from 'mime';
 
 import formatBytes from '@eci/utils/formatBytes';
+import { useDocumentApi, getResource } from '@eci/utils/useDocumentApi';
 
+import ErrorMessage from '../ErrorMessage';
 import { FileDownload } from './FileDownload';
 
 const FileDownloadImpl = ({ file }) => {
   if (!file || Object.keys(file).length === 0) return '';
-
   if (!file.id) return '';
 
   const { t } = useTranslation();
-  const { GATSBY_INITIATIVES_API: api } = process.env;
-  const href = `${api}/register/document/${file.id}`;
+  const { error } = useDocumentApi(file.id);
+  const resource = getResource(file.id);
 
   let meta = '';
 
@@ -29,12 +30,16 @@ const FileDownloadImpl = ({ file }) => {
     meta += mime.getExtension(file.mimeType).toUpperCase();
   }
 
+  if (Object.keys(error).length !== 0) {
+    return <ErrorMessage title={t('File service error')} error={error} />;
+  }
+
   return (
     <FileDownload
       title={title}
       language=""
       meta={meta}
-      download={{ label: t('Download'), href }}
+      download={{ label: t('Download'), href: resource }}
       icon={{ shape: 'general--copy', size: '2xl' }}
     />
   );

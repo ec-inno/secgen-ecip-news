@@ -1,24 +1,18 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
+import * as useDocumentApi from '@eci/utils/useDocumentApi';
 import FileDownloadImpl from './FileDownloadImpl';
 
 describe('FileDownloadImpl', () => {
-  it('no input: returns an empty string', () => {
-    const tree = renderer.create(<FileDownloadImpl />).toJSON();
-    expect(tree).toBe('');
+  it('does not render on missing input', () => {
+    const { container } = render(<FileDownloadImpl />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('empty object input: returns an empty string', () => {
-    const tree = renderer.create(<FileDownloadImpl file={{}} />).toJSON();
-    expect(tree).toBe('');
-  });
-
-  it('missing id input: returns an empty string', () => {
-    const tree = renderer
-      .create(<FileDownloadImpl file={{ name: 'test' }} />)
-      .toJSON();
-    expect(tree).toBe('');
+  it('does not render anything on missing id', () => {
+    const { container } = render(<FileDownloadImpl file={{}} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders correctly provided an input', () => {
@@ -31,7 +25,27 @@ describe('FileDownloadImpl', () => {
       },
     };
 
-    const tree = renderer.create(<FileDownloadImpl {...props} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<FileDownloadImpl {...props} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders an error message when file is not reachable', () => {
+    jest.spyOn(useDocumentApi, 'useDocumentApi').mockImplementation(() => ({
+      response: '',
+      isLoading: false,
+      error: { message: 'File not found.' },
+    }));
+
+    const props = {
+      file: {
+        name: 'test',
+        mimeType: 'text/plain',
+        id: 16806,
+        size: 10,
+      },
+    };
+
+    const { container } = render(<FileDownloadImpl {...props} />);
+    expect(container).toMatchSnapshot();
   });
 });
