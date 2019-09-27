@@ -1,41 +1,19 @@
-import React, { useState, useEffect } from 'react';
+/**
+ * Based on "Content item" composition
+ * @see https://ec.europa.eu/component-library/ec/templates/compositions/content-item/usage/
+ */
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import axios from 'axios';
 import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 
 import upperCaseFirstChar from '@eci/utils/upperCaseFirstChar';
 
 import Icon from '../Icon';
-import defaultImage from '../assets/images/default-image.png';
 
-const Result = ({ title, href, status, pubRegNum, logo }) => {
+const Result = ({ title, background, href, status, pubRegNum }) => {
   const { t } = useTranslation();
-  const [logoData, setLogoData] = useState('');
-  const { GATSBY_INITIATIVES_API: api } = process.env;
-
-  const hasLogo = logo && logo.id && logo.mimeType;
-
-  useEffect(() => {
-    if (hasLogo) {
-      axios
-        .get(`${api}/register/logo/${logo.id}`, {
-          responseType: 'arraybuffer',
-        })
-        .then(r => {
-          const data = Buffer.from(r.data, 'binary').toString('base64');
-          setLogoData(data);
-        })
-        .catch(e => {
-          console.error(`Failed to fetch logo ${logo.id}`, e);
-        });
-    }
-  }, []);
-
-  const background = hasLogo
-    ? `data:${logo.mimeType};base64,${logoData}`
-    : defaultImage;
 
   return (
     <article className="ecl-u-d-flex ecl-u-border-bottom ecl-u-border-color-grey-15 ecl-u-pv-m">
@@ -100,12 +78,7 @@ Result.propTypes = {
   href: PropTypes.string,
   status: PropTypes.string,
   pubRegNum: PropTypes.string,
-  logo: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    mimeType: PropTypes.string,
-    size: PropTypes.number,
-  }),
+  background: PropTypes.string,
 };
 
 export default Result;

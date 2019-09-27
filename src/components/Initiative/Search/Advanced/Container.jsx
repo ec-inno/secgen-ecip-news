@@ -7,22 +7,20 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import useInitiativesSearchApi from '@eci/utils/useInitiativesSearchApi';
-
 import I18nContext from '@eci/context/I18n';
-
+import useInitiativesSearchApi from '@eci/utils/useInitiativesSearchApi';
 import InitiativesSearchContext, {
   queryInit,
   queryReducer,
 } from '@eci/context/Query';
 
 import SearchForm from './Form';
-import Pagination from '../../../Pagination';
 
 import FilterTags from '../../FilterTags';
-import Result from '../../Result';
 
 import ErrorMessage from '../../../ErrorMessage';
+import Pagination from '../../../Pagination';
+import Result from '../../../Result';
 import Spinner from '../../../Spinner';
 
 const SearchAdvanced = () => {
