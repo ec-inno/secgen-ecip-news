@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Link from '../Link/LinkGatsby';
 
-import { useOverlayContext } from '../../context/Overlay';
+import { useOverlayContext } from '@eci/context/Overlay';
 
 // As close as possible to https://github.com/ec-europa/europa-component-library/blob/v2-dev/src/systems/ec/implementations/react/page-structure/language-list/src/LanguageListItem.jsx
 const LanguageListItem = ({ label, lang, href, isActive, isOverlay }) => {

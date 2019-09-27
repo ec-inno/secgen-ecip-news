@@ -6,7 +6,7 @@ import svg4everybody from 'svg4everybody';
 import '@ecl/eu-preset-website/dist/styles/ecl-eu-preset-website.css';
 import './styles.css';
 
-import OverlayContext from '../context/Overlay';
+import OverlayContext from '@eci/context/Overlay';
 
 // HOC providing i18n, locale and location.
 import withI18next from '../i18n/withI18next';

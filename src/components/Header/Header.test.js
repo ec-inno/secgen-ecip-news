@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import * as I18nContext from '../../context/I18n';
-import * as OverlayContext from '../../context/Overlay';
+import * as I18nContext from '@eci/context/I18n';
+import * as OverlayContext from '@eci/context/Overlay';
 import Header from './Header';
 
 describe('Header', () => {

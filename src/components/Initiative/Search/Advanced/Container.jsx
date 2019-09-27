@@ -9,13 +9,12 @@ import { useTranslation } from 'react-i18next';
 
 import useInitiativesSearchApi from '@eci/utils/useInitiativesSearchApi';
 
-import I18nContext from '../../../../context/I18n';
+import I18nContext from '@eci/context/I18n';
 
-// Advanced search tools.
 import InitiativesSearchContext, {
   queryInit,
   queryReducer,
-} from '../context/query';
+} from '@eci/context/Query';
 
 import SearchForm from './Form';
 import SearchPagination from '../SearchPagination';

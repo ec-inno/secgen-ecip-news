@@ -5,8 +5,8 @@ import getCategories from '@eci/utils/getCategories';
 import getStatuses from '@eci/utils/getStatuses';
 import getLanguages from '@eci/utils/getLanguages';
 
-import I18nContext from '../../../../context/I18n';
-import queryContext from '../context/query';
+import I18nContext from '@eci/context/I18n';
+import queryContext from '@eci/context/Query';
 
 import ArrowDD from '../../../ArrowDD';
 import Button from '../../../Button';
@@ -186,7 +186,7 @@ const InitiativesSearchAdvancedForm = () => {
 
       <Fieldset
         className="ecl-u-mb-s"
-        legend={t('Date range')}
+        legend={t('Date of registration')}
         invalid={dateInvalid}
         invalidText={dateInvalidMessage}
       >

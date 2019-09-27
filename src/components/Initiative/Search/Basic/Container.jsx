@@ -5,7 +5,7 @@ import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
-import { useI18nContext } from '../../../../context/I18n';
+import { useI18nContext } from '@eci/context/I18n';
 import ErrorMessage from '../../../ErrorMessage';
 
 import Card from '../../../Card';

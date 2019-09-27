@@ -1,0 +1,10 @@
+{
+  "name": "@eci/context",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "@ecl/eu-preset-website": "2.8.0",
+    "react": "16.9.0"
+  }
+}

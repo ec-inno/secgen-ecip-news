@@ -2,7 +2,7 @@ import React from 'react';
 
 import Menu from './Menu';
 import { useQuery } from './query';
-import { useI18nContext } from '../../context/I18n';
+import { useI18nContext } from '@eci/context/I18n';
 
 const MenuWithData = () => {
   const { location, locale } = useI18nContext();

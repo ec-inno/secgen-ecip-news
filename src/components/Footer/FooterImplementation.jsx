@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useI18nContext } from '../../context/I18n';
+import { useI18nContext } from '@eci/context/I18n';
 
 // ECL native component.
 import Footer from './Footer';

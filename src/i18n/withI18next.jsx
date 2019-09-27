@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { I18nextProvider } from 'react-i18next';
 
-import I18nECI from '../context/I18n';
+import I18nECI from '@eci/context/I18n';
 import setupI18next from './setupI18next';
 
 const withI18next = () => Comp => {

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import useScript from '@eci/utils/useScript';
 
 import ErrorMessage from '../ErrorMessage';
-import { useI18nContext } from '../../context/I18n';
+import { useI18nContext } from '@eci/context/I18n';
 import config from './config';
 
 const Share = () => {

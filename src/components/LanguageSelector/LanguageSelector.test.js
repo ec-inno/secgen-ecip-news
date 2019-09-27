@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import * as OverlayContext from '../../context/Overlay';
+import * as OverlayContext from '@eci/context/Overlay';
 import LanguageSelector from './LanguageSelector';
 
 describe('LanguageSelector', () => {

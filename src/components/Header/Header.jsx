@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 import logoPaths from '@eci/utils/logoPaths';
 
 import { languages } from '../../../languages';
-import { useI18nContext } from '../../context/I18n';
+import { useI18nContext } from '@eci/context/I18n';
 
 import SiteName from '../SiteName';
 import LanguageListOverlay from '../LanguageList/LanguageListOverlayWithContext';

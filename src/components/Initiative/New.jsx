@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
 
-import { useI18nContext } from '../../context/I18n';
+import { useI18nContext } from '@eci/context/I18n';
 
 import plusSign from '../assets/images/plus.png';
 

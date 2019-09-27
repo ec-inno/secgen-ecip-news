@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import queryContext from './context/query';
+import queryContext from '@eci/context/Query';
 
 import Pagination from '../../Pagination';
 

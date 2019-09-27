@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useOverlayContext } from '../../context/Overlay';
+import { useOverlayContext } from '@eci/context/Overlay';
 
 import LanguageListOverlay from './LanguageListOverlay';
 

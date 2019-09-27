@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import * as I18nContext from '../../context/I18n';
+import * as I18nContext from '@eci/context/I18n';
 import * as query from './query';
 import Menu from './MenuWithData';
 

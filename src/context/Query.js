@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { defaultLangKey } from '../../../../../languages';
+import { defaultLangKey } from '../../languages';
 
 const queryInit = {
   filters: {},
@@ -59,4 +59,6 @@ const queryReducer = (state, action) => {
 
 const Context = React.createContext();
 
-export { queryInit, queryReducer, Context as default };
+const useQueryContext = () => useContext(Context);
+
+export { queryInit, queryReducer, Context as default, useQueryContext };

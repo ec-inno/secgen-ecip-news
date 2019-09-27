@@ -5,7 +5,7 @@ import getCategories from '@eci/utils/getCategories';
 import getLanguages from '@eci/utils/getLanguages';
 import getStatuses from '@eci/utils/getStatuses';
 
-import queryContext from './Search/context/query';
+import queryContext from '@eci/context/Query';
 
 import Icon from '../Icon';
 
