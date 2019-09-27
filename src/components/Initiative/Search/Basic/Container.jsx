@@ -6,11 +6,12 @@ import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 import { useI18nContext } from '@eci/context/I18n';
-import ErrorMessage from '../../../ErrorMessage';
+
+import SearchForm from './Form';
 
 import Card from '../../../Card';
-import New from '../../New';
-import SearchForm from './Form';
+import ErrorMessage from '../../../ErrorMessage';
+import New from '../../../NewInitiative';
 import SeeMore from '../../../SeeMore';
 import Spinner from '../../../Spinner';
 

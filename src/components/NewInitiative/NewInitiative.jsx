@@ -6,7 +6,7 @@ import { useI18nContext } from '@eci/context/I18n';
 
 import plusSign from '../assets/images/plus.png';
 
-const New = () => {
+const NewInitiative = () => {
   const { locale } = useI18nContext();
   const { t } = useTranslation();
 
@@ -35,4 +35,4 @@ const New = () => {
   );
 };
 
-export default New;
+export default NewInitiative;

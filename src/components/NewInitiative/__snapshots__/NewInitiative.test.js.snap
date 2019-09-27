@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewInitiative renders correctly 1`] = `
+<div
+  className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mt-s ecl-u-mt-md-none"
+>
+  <a
+    aria-label="How to start an initiative?"
+    className="ecl-link ecl-link--standalone"
+    href="/en/how-to-start"
+    level="1"
+  >
+    <article
+      className="ecl-card ecl-card--plus"
+    >
+      <header
+        className="ecl-card__header"
+      >
+        <div
+          alt="card image"
+          className="ecl-card__image"
+          style={
+            Object {
+              "backgroundImage": "url(file)",
+            }
+          }
+        />
+        <h1
+          className="ecl-card__title ecl-u-type-heading-3"
+        >
+          How to start an initiative?
+        </h1>
+      </header>
+    </article>
+  </a>
+</div>
+`;
