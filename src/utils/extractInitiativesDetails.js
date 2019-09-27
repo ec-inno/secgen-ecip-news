@@ -1,3 +1,8 @@
+/**
+ * Prepares data for display in an internal initiative page.
+ * @param {Object} details The result of `useDetailsApi`.
+ * @param {String} locale Current interface language.
+ */
 const extractInitiativesDetails = ({ details, locale }) => {
   const linguisticVersions =
     details && Object.keys(details).length !== 0

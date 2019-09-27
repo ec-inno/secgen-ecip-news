@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extractInitiativesDetails utlity ongoing initiative case: English locale 1`] = `
+Object {
+  "additionalDocument": Object {
+    "id": 17003,
+    "mimeType": "text/plain",
+    "name": "testAnnex5.txt",
+    "size": 19,
+  },
+  "annexText": "",
+  "dateEnd": "",
+  "dateRefusal": "",
+  "dateRegistration": "31/10/2018",
+  "dateStart": "13/03/2019",
+  "deadline": "",
+  "decisionUrl": "http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:ABACECD323&from=EN",
+  "draftLegal": Object {
+    "id": 16806,
+    "mimeType": "text/plain",
+    "name": "DummyMemberDoc1.txt",
+    "size": 10,
+  },
+  "funding": Object {
+    "totalAmount": 0,
+  },
+  "isPartiallyRegistered": undefined,
+  "linguisticVersionIsFallback": false,
+  "members": Array [
+    Object {
+      "fullName": "dfsadasdasd ASDASDASD",
+      "privacyApplied": false,
+      "type": "MEMBER",
+    },
+    Object {
+      "fullName": "ewrwerwer EWRWER",
+      "privacyApplied": false,
+      "type": "MEMBER",
+    },
+    Object {
+      "email": "asdasdqewrwe3@pepe.com",
+      "fullName": "asdasdasdas ASDASDA",
+      "privacyApplied": false,
+      "type": "SUBSTITUTE",
+    },
+    Object {
+      "fullName": "tyutyutyutyuty UTYUTY",
+      "privacyApplied": false,
+      "type": "MEMBER",
+    },
+    Object {
+      "email": "eciinitiative1@gmail.com",
+      "fullName": "ECI TEST",
+      "privacyApplied": false,
+      "type": "REPRESENTATIVE",
+    },
+    Object {
+      "fullName": "qweqeqeqw QWEQWEQWE",
+      "privacyApplied": false,
+      "type": "MEMBER",
+    },
+    Object {
+      "fullName": "asdsasda DASDAS",
+      "privacyApplied": false,
+      "type": "MEMBER",
+    },
+  ],
+  "objectives": "End roaming fees across Europe now, ",
+  "progress": Array [
+    Object {
+      "active": true,
+      "date": "26/03/2019",
+      "name": "ONGOING",
+    },
+    Object {
+      "active": false,
+      "date": "02/02/2019",
+      "name": "ONGOING",
+    },
+    Object {
+      "active": false,
+      "date": "31/10/2018",
+      "name": "REGISTERED",
+    },
+  ],
+  "refusalReasons": Array [],
+  "registrationNumber": "",
+  "status": "ONGOING",
+  "submission": Object {},
+  "supportLink": "",
+  "title": "DEVSingle Communication ",
+  "treaties": "Article 114 ",
+  "website": "https://webgate.ec.europa.eu/CITnet/confluence/display/",
+}
+`;

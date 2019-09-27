@@ -20,7 +20,7 @@ import SoSReport from '../components/SoSReport';
 
 const Initiative = ({ location, pageContext: { locale } }) => {
   const { t } = useTranslation();
-  const { details, _, error } = useDetailsApi({ location, locale });
+  const { details, error } = useDetailsApi({ location, locale });
 
   if (error && error.message) {
     return (

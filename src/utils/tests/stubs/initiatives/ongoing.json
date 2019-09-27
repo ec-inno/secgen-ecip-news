@@ -1,0 +1,383 @@
+{
+  "id": 1,
+  "status": "ONGOING",
+  "latestUpdateDate": "16/07/2019 16:29",
+  "registrationDate": "31/10/2018",
+  "deadline": "",
+  "startCollectionDate": "13/03/2019",
+  "linguisticVersions": [
+    {
+      "original": true,
+      "languageCode": "EN",
+      "title": "DEVSingle Communication ",
+      "objectives": "End roaming fees across Europe now, ",
+      "treaties": "Article 114 ",
+      "website": "https://webgate.ec.europa.eu/CITnet/confluence/display/",
+      "additionalDocument": {
+        "id": 17003,
+        "name": "testAnnex5.txt",
+        "mimeType": "text/plain",
+        "size": 19
+      },
+      "draftLegal": {
+        "id": 16806,
+        "name": "DummyMemberDoc1.txt",
+        "mimeType": "text/plain",
+        "size": 10
+      },
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:ABACECD323&from=EN"
+    },
+    {
+      "original": false,
+      "languageCode": "FR",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Content",
+      "treaties": "Article 114 TFUE",
+      "website": "TEST1531400182820",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:ABACECD323&from=FR"
+    },
+    {
+      "original": false,
+      "languageCode": "IT",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Eliminare i costi del roaming in Europa, creare un mercato unico della telefonia per i cittadini europei.",
+      "treaties": "Articolo 114 TFUE",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/IT/TXT/PDF/?uri=CELEX:ABACECD323&from=IT"
+    },
+    {
+      "original": false,
+      "languageCode": "ES",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Terminar ya con las tarifas de roaming en la Unión Europea, completar el mercado común europeo para todos los clientes de telefonía móvil.",
+      "treaties": "Artículo 114 TFUE",
+      "website": "http://twitter.com/onesingletariff",
+      "additionalDocument": {
+        "id": 16572,
+        "name": "ECAS Client Installation and Configuration Guide - Basic(1).pdf",
+        "mimeType": "application/pdf",
+        "size": 488507
+      },
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/ES/TXT/PDF/?uri=CELEX:ABACECD323&from=ES"
+    },
+    {
+      "original": false,
+      "languageCode": "DE",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Abschaffung der Roaming-Gebühren in der Europäischen Union, Vollendung des Binnenmarktes für alle Mobilfunkkunden in der EU.",
+      "treaties": "Artikel 114 VAEU",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:ABACECD323&from=DE"
+    },
+    {
+      "original": false,
+      "languageCode": "BG",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Да се прекратят всички такси роуминг в рамките на Европа в момента, да се завърши Европейският общ пазар за всички клиенти на мобилни услуги",
+      "treaties": "член 114 ДфЕс",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/BG/TXT/PDF/?uri=CELEX:ABACECD323&from=BG"
+    },
+    {
+      "original": false,
+      "languageCode": "FI",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Roaming-maksujen lopettaminen, sekä Euroopan yhteisten sisämarkkinoiden viimeistely kaikille matkapuhelin asiakkaille.",
+      "treaties": "Euroopan unionin toiminnasta tehdyn sopimuksen 114 artikla",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/FI/TXT/PDF/?uri=CELEX:ABACECD323&from=FI"
+    },
+    {
+      "original": false,
+      "languageCode": "GA",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Deireadh le táillí fánaíochta san Eorap agus an margadh aonair curtha i bhfeidhm i gcomhair gach custaiméara fón póca.",
+      "treaties": "CFAE: Airteagail 114",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/GA/TXT/PDF/?uri=CELEX:ABACECD323&from=GA"
+    },
+    {
+      "original": false,
+      "languageCode": "RO",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "A elimina imediat tarifele de roaming, a duce la bun sfârşit Piaţa comună de telefonie mobilă, în Uniunea europeană.",
+      "treaties": "TFUE: Articolele 114",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/RO/TXT/PDF/?uri=CELEX:ABACECD323&from=RO"
+    },
+    {
+      "original": false,
+      "languageCode": "CS",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Zruseni roamingovych poplatku na uzemi Evropske Unie, a dokoncit projekt jednotneho evropskeho trhu pro vsechny uzivatele mobilnich telefonu.",
+      "treaties": "SFEU: článek 114",
+      "additionalDocument": {
+        "id": 16591,
+        "name": "ECAS - Technical Guide.pdf",
+        "mimeType": "application/pdf",
+        "size": 498174
+      },
+      "draftLegal": {
+        "id": 16592,
+        "name": "ECAS Client Installation and Configuration Guide - Basic(1).pdf",
+        "mimeType": "application/pdf",
+        "size": 488507
+      },
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/CS/TXT/PDF/?uri=CELEX:ABACECD323&from=CS"
+    },
+    {
+      "original": false,
+      "languageCode": "HU",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Azonnal véget vetni az Európán belüli roaming díjaknak, s kiteljesíteni az Európai közös piacot minden mobiltelefon-felhasználó számára.",
+      "treaties": "EUMSZ: 114. cikk",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/HU/TXT/PDF/?uri=CELEX:ABACECD323&from=HU"
+    },
+    {
+      "original": false,
+      "languageCode": "DA",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Stop roaming afgifter i EU nu, fuldend det indre marked for alle mobiltelefon kunder.",
+      "treaties": "TEUF: Artikel 114",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/DA/TXT/PDF/?uri=CELEX:ABACECD323&from=DA"
+    },
+    {
+      "original": false,
+      "languageCode": "SL",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Prenehati s plačevanjem gostovanja v mobilnih omrežjih po Evropi in zaključiti izgradnjo enotnega evropskega trga za vse uporabnike mobilnih telefonov.",
+      "treaties": "PDEU: Člen 114",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/SL/TXT/PDF/?uri=CELEX:ABACECD323&from=SL"
+    },
+    {
+      "original": false,
+      "languageCode": "NL",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Einde aan roaming tarieven in Europa, vervolmaken van de Europese interne markt voor mobiele telefonie.",
+      "treaties": "VWEU: Artikel 114",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/NL/TXT/PDF/?uri=CELEX:ABACECD323&from=NL"
+    },
+    {
+      "original": false,
+      "languageCode": "LV",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Izbeigt viesabonēšanas maksu visā Eiropā tagad, sakārtot Eiropas kopējo tirgu visiem mobilo telefonu klientiem",
+      "treaties": "LESS: 114. pants",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/LV/TXT/PDF/?uri=CELEX:ABACECD323&from=LV"
+    },
+    {
+      "original": false,
+      "languageCode": "PL",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Natychmiastowe zniesienie opłat za roaming w Unii Europejskiej, dokończenie europejskiego wspólnego rynku dla telefonii komórkowej.",
+      "treaties": "TFUE: Artykuł 114",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/PL/TXT/PDF/?uri=CELEX:ABACECD323&from=PL"
+    },
+    {
+      "original": false,
+      "languageCode": "ET",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Lõpetada rändlustasud kogu Euroopas ja korrastada Euroopa ühisturg kõikidele mobiiltelefoni kasutajatele.",
+      "treaties": "ELTL: Artikkel 114",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/ET/TXT/PDF/?uri=CELEX:ABACECD323&from=ET"
+    },
+    {
+      "original": false,
+      "languageCode": "LT",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Nedelsiant panaikinti skambučių užsienyje sujungimo mokesčius Europoje, užbaigti Europos vieningos rinkos kūrimą visiems mobiliojo ryšio vartotojams.",
+      "treaties": "s. dėl ES veikimo: 114 straipsnis",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/LT/TXT/PDF/?uri=CELEX:ABACECD323&from=LT"
+    },
+    {
+      "original": false,
+      "languageCode": "SK",
+      "title": "DEVSingle Communication Tariff Act",
+      "objectives": "Koniec roamingových poplatkov v Európe, vytvorime spoločný európsky trh pre všetkých zákazníkov mobilných telefónov.",
+      "treaties": "ZFEÚ: Článok 114",
+      "website": "http://twitter.com/onesingletariff",
+      "decisionUrl": "http://eur-lex.europa.eu/legal-content/SK/TXT/PDF/?uri=CELEX:ABACECD323&from=SK"
+    }
+  ],
+  "members": [
+    {
+      "type": "MEMBER",
+      "fullName": "dfsadasdasd ASDASDASD",
+      "privacyApplied": false
+    },
+    {
+      "type": "MEMBER",
+      "fullName": "ewrwerwer EWRWER",
+      "privacyApplied": false
+    },
+    {
+      "type": "SUBSTITUTE",
+      "fullName": "asdasdasdas ASDASDA",
+      "email": "asdasdqewrwe3@pepe.com",
+      "privacyApplied": false
+    },
+    {
+      "type": "MEMBER",
+      "fullName": "tyutyutyutyuty UTYUTY",
+      "privacyApplied": false
+    },
+    {
+      "type": "REPRESENTATIVE",
+      "fullName": "ECI TEST",
+      "email": "eciinitiative1@gmail.com",
+      "privacyApplied": false
+    },
+    {
+      "type": "MEMBER",
+      "fullName": "qweqeqeqw QWEQWEQWE",
+      "privacyApplied": false
+    },
+    {
+      "type": "MEMBER",
+      "fullName": "asdsasda DASDAS",
+      "privacyApplied": false
+    }
+  ],
+  "progress": [
+    {
+      "name": "ONGOING",
+      "active": true,
+      "date": "26/03/2019"
+    },
+    {
+      "name": "ONGOING",
+      "active": false,
+      "date": "02/02/2019"
+    },
+    {
+      "name": "REGISTERED",
+      "active": false,
+      "date": "31/10/2018"
+    }
+  ],
+  "funding": {
+    "totalAmount": 0
+  },
+  "sosReport": {
+    "totalSignatures": 2965289,
+    "entry": [
+      {
+        "countryCodeType": "FI",
+        "total": 108072
+      },
+      {
+        "countryCodeType": "LV",
+        "total": 118080
+      },
+      {
+        "countryCodeType": "SI",
+        "total": 154285
+      },
+      {
+        "countryCodeType": "NL",
+        "total": 130065
+      },
+      {
+        "countryCodeType": "SE",
+        "total": 116557
+      },
+      {
+        "countryCodeType": "FR",
+        "total": 48003
+      },
+      {
+        "countryCodeType": "PL",
+        "total": 86906
+      },
+      {
+        "countryCodeType": "CZ",
+        "total": 44348
+      },
+      {
+        "countryCodeType": "BE",
+        "total": 191208
+      },
+      {
+        "countryCodeType": "SK",
+        "total": 91858
+      },
+      {
+        "countryCodeType": "DK",
+        "total": 120959
+      },
+      {
+        "countryCodeType": "PT",
+        "total": 71405
+      },
+      {
+        "countryCodeType": "EE",
+        "total": 185728
+      },
+      {
+        "countryCodeType": "BG",
+        "total": 88935
+      },
+      {
+        "countryCodeType": "CY",
+        "total": 84092
+      },
+      {
+        "countryCodeType": "GB",
+        "total": 51160
+      },
+      {
+        "countryCodeType": "DE",
+        "total": 137742
+      },
+      {
+        "countryCodeType": "AT",
+        "total": 63704
+      },
+      {
+        "countryCodeType": "IE",
+        "total": 52530
+      },
+      {
+        "countryCodeType": "HR",
+        "total": 157704
+      },
+      {
+        "countryCodeType": "LT",
+        "total": 37377
+      },
+      {
+        "countryCodeType": "RO",
+        "total": 124963
+      },
+      {
+        "countryCodeType": "GR",
+        "total": 165367
+      },
+      {
+        "countryCodeType": "ES",
+        "total": 80983
+      },
+      {
+        "countryCodeType": "MT",
+        "total": 101462
+      },
+      {
+        "countryCodeType": "IT",
+        "total": 106385
+      },
+      {
+        "countryCodeType": "LU",
+        "total": 132386
+      },
+      {
+        "countryCodeType": "HU",
+        "total": 113025
+      }
+    ]
+  }
+}
