@@ -5,7 +5,7 @@ import useDetailsApi from '@eci/utils/useDetailsApi';
 import extractInitiativesDetails from '@eci/utils/extractInitiativesDetails';
 
 import ErrorMessage from '../components/ErrorMessage';
-import File from '../components/File';
+import FileDownload from '../components/FileDownload';
 import Funding from '../components/Funding';
 import Head from '../components/Head';
 import Link from '../components/Link/LinkEcl';
@@ -179,12 +179,12 @@ const Initiative = ({ location, pageContext: { locale } }) => {
               )}
               {Object.keys(additionalDocument).length !== 0 && (
                 <Section title={t('Additional information')}>
-                  <File file={additionalDocument} />
+                  <FileDownload file={additionalDocument} />
                 </Section>
               )}
               {Object.keys(draftLegal).length !== 0 && (
                 <Section title={t('Draft legal act')}>
-                  <File file={draftLegal} />
+                  <FileDownload file={draftLegal} />
                 </Section>
               )}
               <Members members={members} />

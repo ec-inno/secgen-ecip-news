@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileDownloadImpl does not render anything on missing id 1`] = `
+<div>
+  
+</div>
+`;
+
+exports[`FileDownloadImpl does not render on missing input 1`] = `
+<div>
+  
+</div>
+`;
+
+exports[`FileDownloadImpl renders an error message when file is not reachable 1`] = `
+<div>
+  <div
+    class="ecl-message ecl-message--error"
+    data-ecl-message="true"
+    role="alert"
+  >
+    <svg
+      aria-hidden="true"
+      class="ecl-message__icon ecl-icon ecl-icon--l"
+      focusable="false"
+    >
+      
+      
+      <use
+        xlink:href="file#notifications--error"
+      />
+    </svg>
+    <div
+      class="ecl-message__content"
+    >
+      <button
+        class="ecl-message__close ecl-button ecl-button--ghost"
+        data-ecl-message-close="true"
+        type="button"
+      >
+        <span
+          class="ecl-button__container"
+        >
+          <span
+            class="ecl-button__label"
+            data-ecl-label="true"
+          >
+            Close
+          </span>
+          <svg
+            aria-hidden="true"
+            class="ecl-button__icon ecl-button__icon--after ecl-icon ecl-icon--s"
+            data-ecl-icon="true"
+            focusable="false"
+          >
+            
+            
+            <use
+              xlink:href="file#ui--close"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        class="ecl-message__title"
+      >
+        File service error
+      </div>
+      <p
+        class="ecl-message__description"
+      >
+        File not found.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FileDownloadImpl renders correctly provided an input 1`] = `
+<div>
+  <div
+    class="ecl-file"
+    data-ecl-file="true"
+  >
+    <div
+      class="ecl-file__container"
+    >
+      <svg
+        aria-hidden="true"
+        class="ecl-file__icon ecl-icon ecl-icon--2xl"
+        focusable="false"
+      >
+        
+        
+        <use
+          xlink:href="file#general--copy"
+        />
+      </svg>
+      <div
+        class="ecl-file__info"
+      >
+        <div
+          class="ecl-file__title"
+        >
+          test
+        </div>
+        <div
+          class="ecl-file__language"
+        />
+        <div
+          class="ecl-file__meta"
+        >
+          10 Bytes - TXT
+        </div>
+      </div>
+      <a
+        class="ecl-file__download ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"
+        download=""
+        href="undefined/register/document/16806"
+      >
+        <span
+          class="ecl-link__label"
+        >
+          Download
+        </span>
+         
+        <svg
+          aria-hidden="true"
+          class="ecl-link__icon ecl-icon ecl-icon--fluid"
+          focusable="false"
+        >
+          
+          
+          <use
+            xlink:href="file#ui--download"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+`;

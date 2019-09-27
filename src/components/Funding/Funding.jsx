@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
-import File from '../File';
+import FileDownload from '../FileDownload';
 
 const Funding = ({ funding }) => {
   if (!funding) return '';
@@ -84,7 +84,7 @@ const Funding = ({ funding }) => {
       {funding.document && (
         <p className="ecl-u-type-paragraph ecl-u-type-bold">
           {t('Further information on support and funding')}:
-          <File file={funding.document} />
+          <FileDownload file={funding.document} />
         </p>
       )}
     </>

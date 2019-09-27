@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`File renders correctly provided an input 1`] = `
+exports[`FileDownload renders correctly 1`] = `
 <div
   className="ecl-file"
   data-ecl-file={true}
@@ -10,13 +10,13 @@ exports[`File renders correctly provided an input 1`] = `
   >
     <svg
       aria-hidden="true"
-      className="ecl-file__icon ecl-icon ecl-icon--2xl ecl-icon ecl-icon--m"
+      className="ecl-file__icon ecl-icon ecl-icon--m"
       focusable="false"
     >
       
       
       <use
-        xlinkHref="file#general--copy"
+        xlinkHref="file#"
       />
     </svg>
     <div
@@ -25,33 +25,33 @@ exports[`File renders correctly provided an input 1`] = `
       <div
         className="ecl-file__title"
       >
-        test
+        
+      </div>
+      <div
+        className="ecl-file__language"
+      >
+        
       </div>
       <div
         className="ecl-file__meta"
       >
-        (
-        10 Bytes
-         -
-         
-        TXT
-        )
+        
       </div>
     </div>
     <a
-      className="ecl-link ecl-link--standalone"
+      className="ecl-file__download ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"
       download={true}
-      href="undefined/register/document/16806"
+      href=""
     >
       <span
         className="ecl-link__label"
       >
-        Download
+        
       </span>
-       
+       
       <svg
         aria-hidden="true"
-        className="ecl-icon--fluid ecl-link__icon ecl-icon ecl-icon--m"
+        className="ecl-link__icon ecl-icon ecl-icon--fluid"
         focusable="false"
       >
         

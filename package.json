@@ -57,6 +57,7 @@
     "svg4everybody": "2.1.9"
   },
   "devDependencies": {
+    "@testing-library/react": "9.1.4",
     "babel-eslint": "10.0.3",
     "babel-jest": "24.9.0",
     "babel-preset-gatsby": "0.2.14",
@@ -74,6 +75,7 @@
     "i18next-scanner": "2.10.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
+    "jest-mock-axios": "3.1.1",
     "lerna": "3.16.4",
     "lint-staged": "9.3.0",
     "netlify-cli": "2.15.0",

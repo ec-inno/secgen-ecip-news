@@ -21,7 +21,7 @@ Array [
       >
         <svg
           aria-hidden="true"
-          className="ecl-file__icon ecl-icon ecl-icon--2xl ecl-icon ecl-icon--m"
+          className="ecl-file__icon ecl-icon ecl-icon--2xl"
           focusable="false"
         >
           
@@ -39,18 +39,18 @@ Array [
             DummyMemberDoc1.txt
           </div>
           <div
+            className="ecl-file__language"
+          >
+            
+          </div>
+          <div
             className="ecl-file__meta"
           >
-            (
-            10 Bytes
-             -
-             
-            TXT
-            )
+            10 Bytes - TXT
           </div>
         </div>
         <a
-          className="ecl-link ecl-link--standalone"
+          className="ecl-file__download ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"
           download={true}
           href="undefined/register/document/16806"
         >
@@ -59,10 +59,10 @@ Array [
           >
             Download
           </span>
-           
+           
           <svg
             aria-hidden="true"
-            className="ecl-icon--fluid ecl-link__icon ecl-icon ecl-icon--m"
+            className="ecl-link__icon ecl-icon ecl-icon--fluid"
             focusable="false"
           >
             
