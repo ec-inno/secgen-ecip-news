@@ -1,21 +1,21 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { useQueryContext } from '@eci/context/Query';
 
-import queryContext from '@eci/context/Query';
+import Pagination from './Pagination';
 
-import Pagination from '../../Pagination';
+const PaginationImpl = ({ itemsNumber }) => {
+  if (!itemsNumber || itemsNumber === 0) return '';
 
-const SearchPagination = ({ results }) => {
   const { t } = useTranslation();
-  const { query, dispachQuery } = useContext(queryContext);
+  const { query, dispachQuery } = useQueryContext();
   const { pagination } = query;
 
   const items = [];
   const itemsPerPage = 10;
   const [start, offset] = pagination.split('/');
-  const itemsCount = results.recordsFound
-    ? Math.ceil(results.recordsFound / itemsPerPage)
-    : 0;
+  const itemsCount = itemsNumber ? Math.ceil(itemsNumber / itemsPerPage) : 0;
 
   // If not on first page.
   if (Number(offset) !== itemsPerPage) {
@@ -112,4 +112,8 @@ const SearchPagination = ({ results }) => {
   return <Pagination label={t('Browse initiatives')} items={items} />;
 };
 
-export default SearchPagination;
+PaginationImpl.propTypes = {
+  itemsNumber: PropTypes.number,
+};
+
+export default PaginationImpl;

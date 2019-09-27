@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationImpl does not render anything on input of zero results 1`] = `
+<div>
+  
+</div>
+`;
+
+exports[`PaginationImpl does not render on missing input 1`] = `
+<div>
+  
+</div>
+`;
+
+exports[`PaginationImpl shows one page when less than 10 1`] = `
+<div>
+  <nav
+    aria-label="Browse initiatives"
+    class="ecl-pagination"
+  >
+    <ul
+      class="ecl-pagination__list"
+    >
+      <li
+        class="ecl-pagination__item ecl-pagination__item--current"
+      >
+        <span
+          aria-current="true"
+          aria-label="Page 1"
+          class="ecl-pagination__text ecl-pagination__text--summary"
+        >
+          1
+        </span>
+        <span
+          aria-current="true"
+          class="ecl-pagination__text ecl-pagination__text--full"
+        >
+          Page 1
+        </span>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
+
+exports[`PaginationImpl shows two pages with Next button when more than 10 1`] = `
+<div>
+  <nav
+    aria-label="Browse initiatives"
+    class="ecl-pagination"
+  >
+    <ul
+      class="ecl-pagination__list"
+    >
+      <li
+        class="ecl-pagination__item ecl-pagination__item--current"
+      >
+        <span
+          aria-current="true"
+          aria-label="Page 1"
+          class="ecl-pagination__text ecl-pagination__text--summary"
+        >
+          1
+        </span>
+        <span
+          aria-current="true"
+          class="ecl-pagination__text ecl-pagination__text--full"
+        >
+          Page 1
+        </span>
+      </li>
+      <li
+        class="ecl-pagination__item"
+      >
+        <a
+          aria-label="Go to page 2"
+          class="ecl-pagination__link ecl-link ecl-link--standalone"
+          href="#"
+        >
+          2
+        </a>
+      </li>
+      <li
+        class="ecl-pagination__item ecl-pagination__item--next"
+      >
+        <a
+          aria-label="Go to next page"
+          class="ecl-pagination__link ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"
+          href="#"
+        >
+          <span
+            class="ecl-link__label"
+          >
+            Next
+          </span>
+           
+          <svg
+            aria-hidden="true"
+            class="ecl-link__icon ecl-icon ecl-icon--xs ecl-icon--rotate-90"
+            focusable="false"
+          >
+            
+            
+            <use
+              xlink:href="file#ui--corner-arrow"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

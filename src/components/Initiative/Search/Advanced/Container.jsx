@@ -17,7 +17,7 @@ import InitiativesSearchContext, {
 } from '@eci/context/Query';
 
 import SearchForm from './Form';
-import SearchPagination from '../SearchPagination';
+import Pagination from '../../../Pagination';
 
 import FilterTags from '../../FilterTags';
 import Result from '../../Result';
@@ -41,6 +41,7 @@ const SearchAdvanced = () => {
   const [start, offset] = query.pagination.split('/');
   const resultsPagination =
     start === '0' ? `${Number(start) + 1}/${offset}` : `${start}/${offset}`;
+  const { recordsFound: itemsNumber } = results;
 
   return (
     <>
@@ -98,7 +99,7 @@ const SearchAdvanced = () => {
               )}
               {isLoading && <Spinner />}
               {results.recordsFound > 10 && (
-                <SearchPagination results={results} />
+                <Pagination itemsNumber={itemsNumber} />
               )}
             </section>
           </div>
