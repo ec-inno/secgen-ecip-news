@@ -53,6 +53,8 @@ const extractInitiativesDetails = ({ details, locale }) => {
       ? linguisticVersion.title
       : '...';
 
+  const language = linguisticVersion && linguisticVersion.languageCode;
+
   const draftLegal =
     linguisticVersion && linguisticVersion.draftLegal
       ? linguisticVersion.draftLegal
@@ -60,8 +62,23 @@ const extractInitiativesDetails = ({ details, locale }) => {
 
   const additionalDocument =
     linguisticVersion && linguisticVersion.additionalDocument
-      ? linguisticVersion.additionalDocument
+      ? {
+          ...linguisticVersion.additionalDocument,
+          language: language.toLowerCase(),
+        }
       : {};
+
+  if (!additionalDocument.language && !additionalDocument.id) {
+    const languages = [];
+
+    linguisticVersions.forEach(version => {
+      if (version.additionalDocument) {
+        languages.push(version.languageCode.toLowerCase());
+      }
+    });
+
+    additionalDocument.languages = languages;
+  }
 
   const annexText =
     linguisticVersion && linguisticVersion.annexText

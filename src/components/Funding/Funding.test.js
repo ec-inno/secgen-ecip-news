@@ -1,6 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
+import * as I18nContext from '@eci/context/I18n';
+
 import Funding from './Funding';
 
 describe('Funding', () => {
@@ -43,6 +45,15 @@ describe('Funding', () => {
   });
 
   it('Renders a file section when document property is present', () => {
+    jest.spyOn(I18nContext, 'useI18nContext').mockImplementation(() => ({
+      locale: 'en',
+      location: {
+        href: 'http://localhost:8000/en/initiatives/#1',
+        pathname: '/en/initiatives/',
+        hash: '#1',
+      },
+    }));
+
     const props = {
       funding: {
         document: {
@@ -50,6 +61,7 @@ describe('Funding', () => {
           name: 'DummyMemberDoc1.txt',
           mimeType: 'text/plain',
           size: 10,
+          languages: [],
         },
       },
     };

@@ -4,6 +4,7 @@ exports[`extractInitiativesDetails utlity ongoing initiative case: English local
 Object {
   "additionalDocument": Object {
     "id": 17003,
+    "language": "en",
     "mimeType": "text/plain",
     "name": "testAnnex5.txt",
     "size": 19,
