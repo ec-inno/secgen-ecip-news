@@ -19,23 +19,19 @@ const FileDownloadImpl = ({ file }) => {
 
   const { location } = useI18nContext();
   const { t } = useTranslation();
-  const languageTranslations = getLanguages(t);
+  const langsT = getLanguages(t);
 
   const { otherLanguages, language: fileLanguage } = file;
 
-  const languageTranslation = languageTranslations.find(
-    l => l.value === fileLanguage
-  );
-  const language = languageTranslation ? languageTranslation.label : '';
+  const langT = langsT.find(l => l.value === fileLanguage);
+  const language = langT ? langT.label : '';
 
   const languages = otherLanguages
     ? otherLanguages.map(language => {
         let urlPath = '';
         let pathParts = [];
 
-        const translation = languageTranslations.find(
-          l => l.value === language
-        );
+        const translation = langsT.find(l => l.value === language);
 
         pathParts = location.pathname.split('/').filter(p => p);
 
@@ -100,7 +96,7 @@ FileDownloadImpl.propTypes = {
   file: PropTypes.shape({
     name: PropTypes.string,
     language: PropTypes.string,
-    languages: PropTypes.arrayOf(PropTypes.string),
+    otherLanguages: PropTypes.arrayOf(PropTypes.string),
     mimeType: PropTypes.string,
     id: PropTypes.number,
     size: PropTypes.number,
