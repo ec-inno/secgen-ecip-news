@@ -92,10 +92,10 @@ const Initiative = ({ location, pageContext: { locale } }) => {
             <div className="ecl-col-sm-12 ecl-col-md-8">
               {linguisticVersionIsFallback && (
                 <Message
-                  variant="warning"
-                  title={t('Disclaimer')}
+                  variant="info"
+                  title={t('Notice')}
                   description={t(
-                    'The initiative is not available in the current language. Original language version is currently displayed.'
+                    'The initiative is not available in this language. The original language version is currently displayed.'
                   )}
                   icon={{
                     shape: 'notifications--warning',
