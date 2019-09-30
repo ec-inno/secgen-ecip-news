@@ -73,8 +73,11 @@ const FileDownloadImpl = ({ file }) => {
   }
 
   if (file.mimeType) {
-    meta += ' - ';
-    meta += mime.getExtension(file.mimeType).toUpperCase();
+    const extension = mime.getExtension(file.mimeType);
+    if (extension) {
+      meta += ' - ';
+      meta += extension.toUpperCase();
+    }
   }
 
   if (Object.keys(error).length !== 0) {

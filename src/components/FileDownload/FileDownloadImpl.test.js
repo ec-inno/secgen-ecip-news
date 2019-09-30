@@ -39,6 +39,29 @@ describe('FileDownloadImpl', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('renders file extension only if mimeType is actually useful', () => {
+    jest.spyOn(I18nContext, 'useI18nContext').mockImplementation(() => ({
+      locale: 'en',
+      location: {
+        href: 'http://localhost:8000/en/initiatives/#1',
+        pathname: '/en/initiatives/',
+        hash: '#1',
+      },
+    }));
+
+    const props = {
+      file: {
+        name: 'test',
+        mimeType: 'unknown',
+        id: 16806,
+        size: 10,
+      },
+    };
+
+    const { container } = render(<FileDownloadImpl {...props} />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('renders language label when provided', () => {
     jest.spyOn(I18nContext, 'useI18nContext').mockImplementation(() => ({
       locale: 'en',
