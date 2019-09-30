@@ -61,7 +61,6 @@ describe('Funding', () => {
           name: 'DummyMemberDoc1.txt',
           mimeType: 'text/plain',
           size: 10,
-          languages: [],
         },
       },
     };

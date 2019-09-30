@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import useDetailsApi from '@eci/utils/useDetailsApi';
 import extractInitiativesDetails from '@eci/utils/extractInitiativesDetails';
+import shouldDisplayFile from '@eci/utils/shouldDisplayFile';
 
 import ErrorMessage from '../components/ErrorMessage';
 import FileDownload from '../components/FileDownload';
@@ -177,12 +178,12 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                   />
                 </Section>
               )}
-              {Object.keys(additionalDocument).length !== 0 && (
+              {shouldDisplayFile(additionalDocument) && (
                 <Section title={t('Additional information')}>
                   <FileDownload file={additionalDocument} />
                 </Section>
               )}
-              {Object.keys(draftLegal).length !== 0 && (
+              {shouldDisplayFile(draftLegal) && (
                 <Section title={t('Draft legal act')}>
                   <FileDownload file={draftLegal} />
                 </Section>

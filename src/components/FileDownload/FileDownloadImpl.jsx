@@ -14,13 +14,14 @@ import { FileDownload } from './FileDownload';
 
 const FileDownloadImpl = ({ file }) => {
   if (!file || Object.keys(file).length === 0) return '';
-  if (!file.id && (!file.languages || file.languages.length === 0)) return '';
+  if (!file.id && (!file.otherLanguages || file.otherLanguages.length === 0))
+    return '';
 
   const { location } = useI18nContext();
   const { t } = useTranslation();
   const languageTranslations = getLanguages(t);
 
-  const { languages: otherLanguages, language: fileLanguage } = file;
+  const { otherLanguages, language: fileLanguage } = file;
 
   const languageTranslation = languageTranslations.find(
     l => l.value === fileLanguage

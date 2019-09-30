@@ -25,6 +25,10 @@ describe('extractInitiativesDetails utlity', () => {
       locale: 'fr',
     });
     expect(result.additionalDocument.language).toBe(undefined);
-    expect(result.additionalDocument.languages).toEqual(['en', 'es', 'cs']);
+    expect(result.additionalDocument.otherLanguages).toEqual([
+      'en',
+      'es',
+      'cs',
+    ]);
   });
 });

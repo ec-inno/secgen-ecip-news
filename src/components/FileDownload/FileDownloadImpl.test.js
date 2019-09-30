@@ -32,7 +32,6 @@ describe('FileDownloadImpl', () => {
         mimeType: 'text/plain',
         id: 16806,
         size: 10,
-        languages: [],
       },
     };
 
@@ -52,12 +51,11 @@ describe('FileDownloadImpl', () => {
 
     const props = {
       file: {
+        language: 'en',
         name: 'test',
         mimeType: 'text/plain',
         id: 16806,
         size: 10,
-        language: 'en',
-        languages: [],
       },
     };
 
@@ -77,7 +75,7 @@ describe('FileDownloadImpl', () => {
 
     const props = {
       file: {
-        languages: ['bg', 'cs'],
+        otherLanguages: ['bg', 'cs'],
       },
     };
 
@@ -98,7 +96,6 @@ describe('FileDownloadImpl', () => {
         mimeType: 'text/plain',
         id: 16806,
         size: 10,
-        languages: [],
       },
     };
 

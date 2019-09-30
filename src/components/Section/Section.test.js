@@ -36,7 +36,6 @@ describe('Section', () => {
               mimeType: 'text/plain',
               id: 16806,
               size: 10,
-              languages: [],
             }}
           />
         </Section>

@@ -53,12 +53,36 @@ const extractInitiativesDetails = ({ details, locale }) => {
       ? linguisticVersion.title
       : '...';
 
+  /**
+   * We have to take into consideration files languages in addition to content languages.
+   * If the given language-specific linguisticVersion has enough information for the file, we use it.
+   * When file information is insufficient, we try to gather a non-ECL FileDownload property otherLanguages.
+   * It's a property to mark a given file has _alternatives_ in other languages.
+   * Content of a file is not a translation, it's an alternative content!
+   */
   const language = linguisticVersion && linguisticVersion.languageCode;
 
   const draftLegal =
     linguisticVersion && linguisticVersion.draftLegal
-      ? linguisticVersion.draftLegal
+      ? {
+          ...linguisticVersion.draftLegal,
+          language: language.toLowerCase(),
+        }
       : {};
+
+  if (!draftLegal.id) {
+    const otherLanguages = [];
+
+    linguisticVersions.forEach(version => {
+      if (version.draftLegal) {
+        otherLanguages.push(version.languageCode.toLowerCase());
+      }
+    });
+
+    if (otherLanguages.length) {
+      draftLegal.otherLanguages = otherLanguages;
+    }
+  }
 
   const additionalDocument =
     linguisticVersion && linguisticVersion.additionalDocument
@@ -68,16 +92,18 @@ const extractInitiativesDetails = ({ details, locale }) => {
         }
       : {};
 
-  if (!additionalDocument.language && !additionalDocument.id) {
-    const languages = [];
+  if (!additionalDocument.id) {
+    const otherLanguages = [];
 
     linguisticVersions.forEach(version => {
       if (version.additionalDocument) {
-        languages.push(version.languageCode.toLowerCase());
+        otherLanguages.push(version.languageCode.toLowerCase());
       }
     });
 
-    additionalDocument.languages = languages;
+    if (otherLanguages.length) {
+      additionalDocument.otherLanguages = otherLanguages;
+    }
   }
 
   const annexText =
