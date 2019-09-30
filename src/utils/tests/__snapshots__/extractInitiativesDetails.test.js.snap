@@ -4,6 +4,7 @@ exports[`extractInitiativesDetails utlity ongoing initiative case: English local
 Object {
   "additionalDocument": Object {
     "id": 17003,
+    "language": "en",
     "mimeType": "text/plain",
     "name": "testAnnex5.txt",
     "size": 19,
@@ -17,6 +18,7 @@ Object {
   "decisionUrl": "http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:ABACECD323&from=EN",
   "draftLegal": Object {
     "id": 16806,
+    "language": "en",
     "mimeType": "text/plain",
     "name": "DummyMemberDoc1.txt",
     "size": 10,

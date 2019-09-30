@@ -1,6 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
+import * as I18nContext from '@eci/context/I18n';
+
 import FileDownload from '../FileDownload';
 import Section from './Section';
 
@@ -16,6 +18,15 @@ describe('Section', () => {
   });
 
   it('can render children even if no title is provided', () => {
+    jest.spyOn(I18nContext, 'useI18nContext').mockImplementation(() => ({
+      locale: 'en',
+      location: {
+        href: 'http://localhost:8000/en/initiatives/#1',
+        pathname: '/en/initiatives/',
+        hash: '#1',
+      },
+    }));
+
     const tree = renderer
       .create(
         <Section>
