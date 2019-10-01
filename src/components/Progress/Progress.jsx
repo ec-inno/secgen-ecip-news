@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import upperCaseFirstChar from '@eci/utils/upperCaseFirstChar';
 
+import { steps } from './utils';
+
 const Progress = ({ progress, dateStart, dateEnd }) => {
   const { t } = useTranslation();
 
@@ -17,15 +19,6 @@ const Progress = ({ progress, dateStart, dateEnd }) => {
       </>
     );
   }
-
-  const steps = [
-    'REGISTERED',
-    'ONGOING',
-    'CLOSED',
-    'VERIFICATION',
-    'SUBMITTED',
-    'ANSWERED',
-  ];
 
   const stages = [];
   const timeline = [];

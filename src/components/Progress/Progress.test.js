@@ -3,6 +3,22 @@ import renderer from 'react-test-renderer';
 
 import Progress from './Progress';
 
+describe('Progress utilities', () => {
+  it('steps supported are public', () => {
+    const { steps } = require('./utils');
+    expect(steps).not.toBe(undefined);
+    expect(Array.isArray(steps)).toBe(true);
+    expect(steps.length > 0).toBe(true);
+    expect(steps).toMatchSnapshot();
+  });
+
+  it('contains information about collection start and early closure dates in specific places', () => {
+    const { steps } = require('./utils');
+    expect(steps[1]).toBe('COLLECTION_START_DATE');
+    expect(steps[3]).toBe('COLLECTION_EARLY_CLOSURE');
+  });
+});
+
 describe('Progress', () => {
   it('no input: provides feedback for unsupported timeline', () => {
     const tree = renderer.create(<Progress />).toJSON();

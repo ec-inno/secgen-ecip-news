@@ -1,0 +1,10 @@
+export const steps = [
+  'REGISTERED',
+  'COLLECTION_START_DATE',
+  'ONGOING',
+  'COLLECTION_EARLY_CLOSURE',
+  'CLOSED',
+  'VERIFICATION',
+  'SUBMITTED',
+  'ANSWERED',
+];

@@ -148,3 +148,16 @@ exports[`Progress renders timeline in right order regardless of input order 3`] 
   </div>
 </li>
 `;
+
+exports[`Progress utilities steps supported are public 1`] = `
+Array [
+  "REGISTERED",
+  "COLLECTION_START_DATE",
+  "ONGOING",
+  "COLLECTION_EARLY_CLOSURE",
+  "CLOSED",
+  "VERIFICATION",
+  "SUBMITTED",
+  "ANSWERED",
+]
+`;
