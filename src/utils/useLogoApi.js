@@ -25,7 +25,9 @@ const useLogoApi = logoId => {
     axios
       .get(resource, { responseType: 'arraybuffer' })
       .then(response => {
-        setData(Buffer.from(response.data, 'binary').toString('base64'));
+        const { data: src } = response;
+        const dataBase64 = Buffer.from(src, 'binary').toString('base64');
+        setData(dataBase64);
         setIsLoading(false);
       })
       .catch(e => {

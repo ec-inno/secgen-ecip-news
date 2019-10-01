@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getStatuses utlity returns a list of values 1`] = `
+Array [
+  Object {
+    "label": "All",
+    "value": "ALL",
+  },
+  Object {
+    "label": "Ongoing",
+    "value": "ONGOING",
+  },
+  Object {
+    "label": "Answered",
+    "value": "ANSWERED",
+  },
+]
+`;

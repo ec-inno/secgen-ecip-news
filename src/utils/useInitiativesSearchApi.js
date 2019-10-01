@@ -41,7 +41,7 @@ const useInitiativesSearchApi = ({ query }) => {
         setError(e);
         setIsLoading(false);
       });
-  }, [query]);
+  }, [pagination, status, locale, filters]);
 
   return { results, isLoading, error };
 };
