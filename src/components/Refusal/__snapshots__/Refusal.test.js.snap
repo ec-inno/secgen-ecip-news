@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Refusal shows a list of reasons when they are in the list of unsupported reasons 1`] = `
+exports[`Refusal respects current language through the locale 1`] = `
 <div
   className="eci-answer ecl-u-pa-m ecl-u-mb-l"
 >
@@ -15,8 +15,38 @@ exports[`Refusal shows a list of reasons when they are in the list of unsupporte
     <li
       className="ecl-u-type-paragraph"
     >
-      reason.action.registration.reject.abuse
+      a javasolt polgári kezdeményezés egyértelműen visszaélésszerű, komolytalan vagy zaklató jellegű;
     </li>
   </ul>
 </div>
+`;
+
+exports[`Refusal shows a list of reasons when they are in the list of supported reasons 1`] = `
+<div
+  className="eci-answer ecl-u-pa-m ecl-u-mb-l"
+>
+  <h2
+    className="ecl-u-type-heading-2"
+  >
+    Commission's reply stating the reasons for refusal of registration
+  </h2>
+  <ul
+    className="ecl-u-type-paragraph"
+  >
+    <li
+      className="ecl-u-type-paragraph"
+    >
+      The proposed citizens' initiative is manifestly abusive, frivolous or vexatious.
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Requirements supported reasons are public 1`] = `
+Array [
+  "reason.action.registration.reject.abuse",
+  "reason.action.registration.reject.competences",
+  "reason.action.registration.reject.requirements",
+  "reason.action.registration.reject.values",
+]
 `;

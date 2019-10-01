@@ -13,8 +13,8 @@
     "bin"
   ],
   "dependencies": {
+    "csv-parse": "^4.4.7",
     "dotenv": "^8.1.0",
-    "gluegun": "^3.3.4",
-    "xlsx": "^0.15.1"
+    "gluegun": "^3.3.4"
   }
 }

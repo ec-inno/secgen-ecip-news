@@ -1,24 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-const Refusal = ({ reasons }) => {
-  if (!reasons || reasons.length === 0) return '';
+import { useI18nContext } from '@eci/context/I18n';
+import { getReasons } from './utils';
 
-  const list = [];
-  const listSupported = [
-    'reason.action.registration.reject.abuse',
-    'reason.action.registration.reject.competences',
-    'reason.action.registration.reject.requirements',
-    'reason.action.registration.reject.values',
-  ];
+const Refusal = ({ reasons: input }) => {
+  if (!input || input.length === 0 || !Array.isArray(input)) return '';
 
-  reasons.forEach(reason => {
-    if (listSupported.includes(reason)) {
-      list.push(reason);
-    }
-  });
+  const { locale: language } = useI18nContext();
+  const reasons = getReasons({ input, language });
 
-  if (list.length === 0) return '';
+  if (reasons.length === 0) return '';
 
   const { t } = useTranslation();
 
@@ -30,14 +23,18 @@ const Refusal = ({ reasons }) => {
         )}
       </h2>
       <ul className="ecl-u-type-paragraph">
-        {list.map((item, key) => (
+        {reasons.map((reason, key) => (
           <li key={key} className="ecl-u-type-paragraph">
-            {item}
+            {reason.RTR_MESSAGE}
           </li>
         ))}
       </ul>
     </div>
   );
+};
+
+Refusal.propTypes = {
+  reasons: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Refusal;

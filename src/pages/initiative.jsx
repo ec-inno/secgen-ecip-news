@@ -82,7 +82,7 @@ const Initiative = ({ location, pageContext: { locale } }) => {
       <main className="ecl-u-pv-xl">
         <div className="ecl-container">
           <div className="ecl-row">
-            <div className="ecl-col-sm-12 ecl-col-md-4">
+            <div className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mb-l">
               <Progress
                 progress={progress}
                 dateStart={dateStart}
@@ -101,7 +101,7 @@ const Initiative = ({ location, pageContext: { locale } }) => {
                     shape: 'notifications--warning',
                     size: 'l',
                   }}
-                  className="ecl-u-mb-2xs"
+                  className="ecl-u-mb-l"
                 />
               )}
 

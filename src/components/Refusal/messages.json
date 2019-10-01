@@ -1,0 +1,482 @@
+[
+  {
+    "LNG_CODE": "bg",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "предложената от Вас гражданска инициатива е явно в злоупотреба, несериозна или злонамерена."
+  },
+  {
+    "LNG_CODE": "cs",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "Vámi navrhovaná občanská iniciativa je zjevně zneužívající, bezdůvodná nebo šikanózní."
+  },
+  {
+    "LNG_CODE": "da",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "dit forslag til borgerinitiativ er utilstedeligt, uunderbygget eller af chikanøs karakter."
+  },
+  {
+    "LNG_CODE": "de",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "Ihre geplante Bürgerinitiative ist offenkundig missbräuchlich, unseriös oder schikanös."
+  },
+  {
+    "LNG_CODE": "el",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "η προτεινόμενη πρωτοβουλία πολιτών είναι κατάφωρα καταχρηστική, επιπόλαια ή κακόβουλη."
+  },
+  {
+    "LNG_CODE": "en",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "The proposed citizens' initiative is manifestly abusive, frivolous or vexatious."
+  },
+  {
+    "LNG_CODE": "es",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "La iniciativa ciudadana propuesta es manifiestamente abusiva, frívola o temeraria."
+  },
+  {
+    "LNG_CODE": "et",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "teie kavandatud kodanikualgatus on ilmselgelt ebaõiglane, põhjendamatu ja pahatahtlik."
+  },
+  {
+    "LNG_CODE": "fi",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "ehdotettu kansalaisaloite on selvästi oikeuden väärinkäyttöä, se on aiheeton tai tehty haitantekotarkoituksessa."
+  },
+  {
+    "LNG_CODE": "fr",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "votre proposition d’initiative citoyenne est manifestement abusive, fantaisiste ou vexatoire."
+  },
+  {
+    "LNG_CODE": "ga",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "tá bhur dtionscnamh beartaithe ó na saoránaigh go follasach míchuí, suaibhreosach nó cráiteach.  "
+  },
+  {
+    "LNG_CODE": "hu",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "a javasolt polgári kezdeményezés egyértelműen visszaélésszerű, komolytalan vagy zaklató jellegű;"
+  },
+  {
+    "LNG_CODE": "it",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "la proposta d'iniziativa è manifestamente ingiuriosa, futile o vessatoria."
+  },
+  {
+    "LNG_CODE": "lt",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "jūsų siūloma piliečių iniciatyva aiškiai siekiama piktnaudžiauti, ji lengvabūdiška arba nepagrįsta."
+  },
+  {
+    "LNG_CODE": "lv",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "jūsu ierosinātā pilsoņu iniciatīva ir aizskaroša, nenozīmīga vai maldinoša;"
+  },
+  {
+    "LNG_CODE": "mt",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "l-inizjattiva taċ-ċittadini proposta tagħkom hi manifestament abużiva, frivola jew vessatorja."
+  },
+  {
+    "LNG_CODE": "nl",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "Het voorgestelde burgerinitiatief is manifest onrechtmatig, lichtzinnig of ergerlijk."
+  },
+  {
+    "LNG_CODE": "pl",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "proponowana inicjatywa obywatelska jest oczywistym nadużyciem, jest w sposób oczywisty niepoważna lub dokuczliwa."
+  },
+  {
+    "LNG_CODE": "pt",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "A proposta de iniciativa de cidadania é manifestamente abusiva, frívola ou vexatória."
+  },
+  {
+    "LNG_CODE": "ro",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "propunerea dumneavoastră de iniţiativă cetăţenească este vădit abuzivă, neserioasă sau vexatorie."
+  },
+  {
+    "LNG_CODE": "sk",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "vami navrhovaná iniciatíva občanov predstavuje zjavné zneužitie práva, je zjavne neopodstatnená alebo šikanujúca."
+  },
+  {
+    "LNG_CODE": "sl",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "predlagana državljanska pobuda je očitno žaljiva, neresna ali provokativna."
+  },
+  {
+    "LNG_CODE": "sv",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "Initiativförslaget är uppenbart otillbörligt, av okynneskaraktär eller förargelseväckande."
+  },
+  {
+    "LNG_CODE": "hr",
+    "RTR_KEY": "reason.action.registration.reject.abuse",
+    "RTR_MESSAGE": "Predložena građanska inicijativa očito je uvredljiva, isprazna i uznemirujuća."
+  },
+  {
+    "LNG_CODE": "bg",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "предложената от Вас гражданска инициатива попада по очевиден начин извън обхвата на правомощията на Комисията да представи предложение за правен акт на Съюза с цел изпълнение на Договорите."
+  },
+  {
+    "LNG_CODE": "cs",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "Vámi navrhovaná občanská iniciativa zjevně spadá mimo rámec pravomocí Komise na předložení návrhu právního aktu Unie pro účely provedení Smluv."
+  },
+  {
+    "LNG_CODE": "da",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "dit forslag til borgerinitiativ falder åbenbart uden for Kommissionens beføjelse til at fremsætte et forslag til EU-retsakt med henblik på gennemførelsen af traktaterne."
+  },
+  {
+    "LNG_CODE": "de",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "Ihre geplante Bürgerinitiative liegt offenkundig außerhalb des Rahmens, in dem die Kommission befugt ist, einen Vorschlag für einen Rechtsakt der Union vorzulegen, um die Verträge umzusetzen."
+  },
+  {
+    "LNG_CODE": "el",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "η προτεινόμενη πρωτοβουλία πολιτών βρίσκεται καταφανώς εκτός του πλαισίου των αρμοδιοτήτων της Επιτροπής να υποβάλλει πρόταση για την έκδοση νομικής πράξης της Ένωσης για την εφαρμογή των Συνθηκών."
+  },
+  {
+    "LNG_CODE": "en",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "The proposed citizens' initiative falls manifestly outside the framework of the Commission's powers to submit a proposal for a legal act of the Union for the purpose of implementing the Treaties."
+  },
+  {
+    "LNG_CODE": "es",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "La iniciativa ciudadana propuesta está manifiestamente fuera del ámbito de competencias de la Comisión para presentar una propuesta de acto jurídico de la Unión para los fines de aplicación de los Tratados."
+  },
+  {
+    "LNG_CODE": "et",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "teie kavandatud kodanikualgatus jääb ilmselgelt välja komisjoni volituste ulatusest, mille kohaselt komisjon on pädev esitama ELi õigusakti ettepaneku aluslepingute rakendamiseks."
+  },
+  {
+    "LNG_CODE": "fi",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "ehdotettu kansalaisaloite ylittää selvästi komission toimivallan tehdä ehdotus unionin säädökseksi, jolla sovelletaan perussopimuksia."
+  },
+  {
+    "LNG_CODE": "fr",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "votre proposition d’initiative citoyenne est manifestement en dehors du cadre des attributions de la Commission en vertu desquelles elle peut présenter une proposition d’acte juridique de l’Union aux fins de l’application des traités. "
+  },
+  {
+    "LNG_CODE": "ga",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "tá bhur dtionscnamh beartaithe ó na saoránaigh, go follasach, lasmuigh de chreat chumhachtaí an Choimisiúin chun togra do ghníomh reachtach de chuid an Aontais a thíolacadh chun na Conarthaí a chur chun feidhme.  "
+  },
+  {
+    "LNG_CODE": "hu",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "a javasolt polgári kezdeményezés egyértelműen kívül esik a Bizottság azon hatáskörén, hogy a Szerződések végrehajtásához uniós jogi aktusra irányuló javaslatot nyújtson be;"
+  },
+  {
+    "LNG_CODE": "it",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "la proposta d'iniziativa esula manifestamente dalla competenza della Commissione di presentare una proposta di atto legislativo dell'Unione ai fini dell'applicazione dei trattati."
+  },
+  {
+    "LNG_CODE": "lt",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "jūsų siūloma piliečių iniciatyva akivaizdžiai nepatenka į Komisijos įgaliojimus pateikti pasiūlymą dėl Sąjungos teisės akto siekiant įgyvendinti Sutartis."
+  },
+  {
+    "LNG_CODE": "lv",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "jūsu ierosinātā pilsoņu iniciatīva acīmredzami neatbilst Komisijas pilnvarām iesniegt Eiropas Savienības tiesību akta priekšlikumu Līgumu īstenošanas nolūkā;"
+  },
+  {
+    "LNG_CODE": "mt",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "l-inizjattiva taċ-ċittadini proposta tagħkom mhix fl-ambitu tas-setgħat tal-Kummissjoni biex din tkun tista' tissottometti proposta għal att legali tal-Unjoni biex jiġu implimentati t-Trattati."
+  },
+  {
+    "LNG_CODE": "nl",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "Het voorgestelde burgerinitiatief valt manifest buiten het kader van de bevoegdheden van de Commissie om een voorstel in te dienen voor een rechtshandeling van de Unie ter uitvoering van de Verdragen."
+  },
+  {
+    "LNG_CODE": "pl",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "proponowana przez Państwa inicjatywa obywatelska wykracza w sposób oczywisty poza kompetencje Komisji w zakresie przedkładania wniosku dotyczącego unijnego aktu prawnego w celu wprowadzenia w życie Traktatów."
+  },
+  {
+    "LNG_CODE": "pt",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "A proposta de iniciativa de cidadania está manifestamente fora da competência da Comissão para apresentar uma proposta de acto jurídico da União para efeitos de aplicação dos Tratados."
+  },
+  {
+    "LNG_CODE": "ro",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "propunerea de iniţiativă cetăţenească se află vădit în afara sferei de competenţă a Comisiei în ceea ce priveşte prezentarea unei propuneri de act juridic al Uniunii în scopul punerii în aplicare a tratatelor."
+  },
+  {
+    "LNG_CODE": "sk",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "vami navrhovaná iniciatíva občanov je zjavne mimo rámca právomocí Komisie predložiť návrh právneho aktu Únie na účely vykonávania zmlúv."
+  },
+  {
+    "LNG_CODE": "sl",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "predlagana državljanska pobuda očitno ne sodi med pristojnosti Komisije za predložitev predlogov pravnih aktov Evropske unije za namen izvajanja Pogodb."
+  },
+  {
+    "LNG_CODE": "sv",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "Initiativförslaget faller uppenbart utanför kommissionens befogenhet att lägga fram ett förslag till EU-rättsakt för att tillämpa fördragen."
+  },
+  {
+    "LNG_CODE": "hr",
+    "RTR_KEY": "reason.action.registration.reject.competences",
+    "RTR_MESSAGE": "Razvidno je da predložena građanska inicijativa izlazi iz okvira ovlasti Komisije da podnese prijedlog pravnog akta Unije za provedbu Ugovorâ."
+  },
+  {
+    "LNG_CODE": "bg",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "вашият граждански комитет не отговаря на изискванията на член 3 от <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Регламент (ЕС) № 211/2011</a> на Европейския парламент и на Съвета от 16 февруари 2011 г. относно гражданската инициатива."
+  },
+  {
+    "LNG_CODE": "cs",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "složení výboru občanů nesplňuje požadavky stanovené v článku 3 <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">nařízení Evropského parlamentu a Rady (EU) č. 211/2011</a> ze dne 16. února 2011 o občanské iniciativě."
+  },
+  {
+    "LNG_CODE": "da",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "din borgerkomité opfylder ikke betingelserne i artikel 3 i <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Europa-Parlamentets og Rådets forordning (EU) nr. 211 /2011</a> af 16. februar 2011 om borgerinitiativer."
+  },
+  {
+    "LNG_CODE": "de",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "Ihr Bürgerausschuss erfüllt nicht die Bedingungen des Artikels 3 der <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Verordnung (EU) Nr. 211 /2011</a> des Europäischen Parlaments und des Rates vom 16. Februar 2011 über die Bürgerinitiative."
+  },
+  {
+    "LNG_CODE": "el",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "η επιτροπή πολιτών δεν πληροί τις προϋποθέσεις του άρθρου 3 του <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">κανονισμού (ΕΕ) αριθ. 211 /2011</a> του Ευρωπαϊκού Κοινοβουλίου και του Συμβουλίου, της 16ης Φεβρουαρίου 2011, σχετικά με την πρωτοβουλία πολιτών."
+  },
+  {
+    "LNG_CODE": "en",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "The citizens' committee does not comply with the requirements of Article 3 of <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\" target=\"_blank\">Regulation (EU) No 211 /2011</a> of the European Parliament and of the Council of 16 February 2011 on the citizens' initiative."
+  },
+  {
+    "LNG_CODE": "es",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "El comité de ciudadanos no cumple los requisitos establecidos en el artículo 3 del <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Reglamento (UE) nº 211/2011</a> del Parlamento Europeo y del Consejo, de 16 de febrero de 2011, sobre la iniciativa ciudadana."
+  },
+  {
+    "LNG_CODE": "et",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "teie kodanike komitee ei täida kodanikualgatust käsitleva Euroopa Parlamendi ja nõukogu 16. veebruari 2011. aasta <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">määruse (EL) nr 211 /2011</a> artiklis 3 sätestatud nõudeid."
+  },
+  {
+    "LNG_CODE": "fi",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "kansalaistoimikuntanne ei ole kansalaisaloitteesta 16.2.2011 annetun Euroopan parlamentin ja neuvoston <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">asetuksen (EU) N:o 211/2011</a> 3 artiklan vaatimusten mukainen."
+  },
+  {
+    "LNG_CODE": "fr",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "votre comité des citoyens n'est pas conforme aux exigences de l'article 3 du <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">règlement (UE) n° 211 /2011</a>  du Parlement européen et du Conseil du 16 février 2011 sur l'initiative citoyenne."
+  },
+  {
+    "LNG_CODE": "ga",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "ní ghéilleann bhur gcoiste saoránach do riachtanais Airteagail 3 de <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Rialachán (AE) Uimh 211 /2011</a> ó Pharlaimint na hEorpa agus ón gComhairle an 16 Feabhra 2011 maidir leis an tionscnamh ó na saoránaigh.  "
+  },
+  {
+    "LNG_CODE": "hu",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "az Önök polgári bizottsága nem felel meg az Európai Parlament és a Tanács polgári kezdeményezésekről szóló, 2011. február 16-i <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">211/2011/EU rendeletének</a> 3. cikkében rögzített követelményeknek."
+  },
+  {
+    "LNG_CODE": "it",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "il comitato dei cittadini non risponde ai requisiti di cui all'articolo 3 del  <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">regolamento (UE) n. 211/2011</a> del Parlamento europeo e del Consiglio, del 16 febbraio 2011, riguardante l'iniziativa dei cittadini."
+  },
+  {
+    "LNG_CODE": "lt",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "jūsų piliečių komitetas neatitinka 2011 m. vasario 16 d. Europos Parlamento ir Tarybos <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">reglamento (ES) Nr. 211/2011</a> dėl piliečių iniciatyvos 3 straipsnio reikalavimų."
+  },
+  {
+    "LNG_CODE": "lv",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "jūsu pilsoņu komiteja nav ievērojusi prasības, kas paredzētas Eiropas Parlamenta un Padomes 2011. gada 16. februāra <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Regulas (ES) Nr. 211/2011</a> par pilsoņu iniciatīvu 3. pantā;"
+  },
+  {
+    "LNG_CODE": "mt",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "il-kumitat taċ-ċittadini tagħkom ma jikkonformax mar-rekwiżiti tal-Artikolu 3 tar-<a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Regolament (UE) Nru 211 /2011</a> tal-Parlament Ewropew u tal-Kunsill tas-16 ta' Frar 2011 dwar l-inizjattiva taċ-ċittadini."
+  },
+  {
+    "LNG_CODE": "nl",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "Uw burgercomité voldoet niet aan de voorwaarden van artikel 3 van <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:NL:PDF\">Verordening (EU) nr. 211 /2011</a> van het Europees Parlement en de Raad van 16 februari 2011 over het burgerinitiatief."
+  },
+  {
+    "LNG_CODE": "pl",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "komitet obywatelski nie spełnia wymogów art. 3 <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">rozporządzenia (UE) nr 211/2011</a> Parlamentu Europejskiego i Rady z dnia 16 lutego 2011 r. w sprawie inicjatywy obywatelskiej."
+  },
+  {
+    "LNG_CODE": "pt",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "O comité de cidadãos não cumpre os requisitos especificados no artigo 3.º do <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Regulamento (UE) n.º 211/2011</a> do Parlamento Europeu e do Conselho, de 16 de Fevereiro de 2011, sobre a iniciativa de cidadania."
+  },
+  {
+    "LNG_CODE": "ro",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "comitetul cetăţenilor corespunzător iniţiativei propuse de dumneavoastră nu respectă cerinţele prevăzute de articolul 3 din <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Regulamentul (UE) nr. 211/2011</a> al Parlamentului European şi al Consiliului din 16 februarie 2011 privind iniţiativa cetăţenească."
+  },
+  {
+    "LNG_CODE": "sk",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "váš občiansky výbor nespĺňa požiadavky uvedené v článku 3 <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">nariadenia Európskeho parlamentu a Rady (EÚ) č. 211/2011</a> zo 16. februára 2011 o iniciatíve občanov."
+  },
+  {
+    "LNG_CODE": "sl",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "državljanski odbor ne izpolnjuje pogojev iz člena 3 <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Uredbe (EU) št. 211/2011</a> Evropskega parlamenta in Sveta z dne 16. februarja 2011 o državljanski pobudi."
+  },
+  {
+    "LNG_CODE": "sv",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "Medborgarkommittén uppfyller inte kraven i artikel 3 i <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">förordningen</a>."
+  },
+  {
+    "LNG_CODE": "hr",
+    "RTR_KEY": "reason.action.registration.reject.requirements",
+    "RTR_MESSAGE": "Građanski odbor ne ispunjava zahtjeve iz članka 3. <a target=\"_blank\" href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:065:0001:0022:EN:PDF\">Uredbe (EU) br. 211/2011</a> Europskog parlamenta i Vijeća od 16. veljače 2011. o građanskoj inicijativi."
+  },
+  {
+    "LNG_CODE": "bg",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "предложената от Вас гражданска инициатива е в явно противоречие с ценностите на Съюза, установени в член 2 от <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Договора за Европейския съюз</a>."
+  },
+  {
+    "LNG_CODE": "cs",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "Vámi navrhovaná občanská iniciativa je zjevně v rozporu s hodnotami Unie uvedenými v článku 2 <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Smlouvy o EU</a>."
+  },
+  {
+    "LNG_CODE": "da",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "dit forslag til initiativ er åbenbart i strid med Unionens værdier, som fastsat i artikel 2 i <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">traktaten om Den Europæiske Union</a>."
+  },
+  {
+    "LNG_CODE": "de",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "Ihre geplante Bürgerinitiative verstößt offenkundig gegen die Werte der Union, wie sie in Artikel 2 des <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Vertrags über die Europäischen Union</a> festgeschrieben sind."
+  },
+  {
+    "LNG_CODE": "el",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "η προτεινόμενη πρωτοβουλία πολιτών αντίκειται προφανώς στις αξίες της Ένωσης όπως αυτές ορίζονται με το άρθρο 2 της <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Συνθήκης για την Ευρωπαϊκή Ένωση</a>."
+  },
+  {
+    "LNG_CODE": "en",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "The proposed citizens' initiative is manifestly contrary to the values of the Union as set out in Article 2 of the <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\" target=\"_blank\">Treaty on European Union</a>."
+  },
+  {
+    "LNG_CODE": "es",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "La iniciativa ciudadana propuesta es manifiestamente contraria a los valores de la Unión establecidos en el artículo 2 del <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Tratado de la Unión Europea</a>."
+  },
+  {
+    "LNG_CODE": "et",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "teie kavandatud kodanikualgatus on ilmselgelt vastuolus liidu väärtustega, mis on sätestatud <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Euroopa Liidu lepingu</a> artiklis 2."
+  },
+  {
+    "LNG_CODE": "fi",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "ehdotettu kansalaisaloite on selvästi <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Euroopan unionista tehdyn sopimuksen</a> 2 artiklassa esitettyjen unionin arvojen vastainen."
+  },
+  {
+    "LNG_CODE": "fr",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "votre proposition d'initiative est manifestement contraire aux valeurs de l'Union telles qu'énoncées à l'article 2 du <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">traité sur l'Union européenne</a>. "
+  },
+  {
+    "LNG_CODE": "ga",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "tá bhur dtionscnamh beartaithe ó na saoránaigh go follasach contrártha do luachanna an Aontais mar a leagtar amach iad in Airteagal 2 an <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Chonartha ar an Aontas Eorpach</a>."
+  },
+  {
+    "LNG_CODE": "hu",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "a javasolt polgári kezdeményezés egyértelműen ellentétes az <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Európai Unióról szóló szerződés</a> 2. cikkében foglalt uniós értékekkel."
+  },
+  {
+    "LNG_CODE": "it",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "la proposta d'iniziativa è manifestamente contraria ai valori dell'Unione quali stabiliti nell'articolo 2 del <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">trattato sull'Unione europea</a>."
+  },
+  {
+    "LNG_CODE": "lt",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "jūsų siūloma piliečių iniciatyva akivaizdžiai prieštarauja Sąjungos vertybėms, nustatytoms <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Europos Sąjungos sutarties</a> 2 straipsnyje."
+  },
+  {
+    "LNG_CODE": "lv",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "jūsu ierosinātā pilsoņu iniciatīva ir acīmredzamā pretrunā Eiropas Savienības vērtībām, kas minētas <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Līguma par Eiropas Savienību</a> 2. pantā."
+  },
+  {
+    "LNG_CODE": "mt",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "l-inizjattiva taċ-ċittadini proposta tagħkom manifestament tmur kontra l-valuri tal-Unjoni kif stipulati fl-Artikolu 2 tat-<a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Trattat dwar l-Unjoni Ewropea</a>."
+  },
+  {
+    "LNG_CODE": "nl",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "Het voorgestelde burgerinitiatief druist manifest in tegen de in artikel 2 van het <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:NL:PDF\">Verdrag betreffende de Europese Unie</a> vastgelegde waarden van de Unie."
+  },
+  {
+    "LNG_CODE": "pl",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "proponowana inicjatywa obywatelska jest w sposób oczywisty sprzeczna z wartościami Unii określonymi w art. 2 <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Traktatu o Unii Europejskiej</a>."
+  },
+  {
+    "LNG_CODE": "pt",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "A proposta de iniciativa de cidadania é manifestamente contrária aos valores da União consagrados no artigo 2.º do <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Tratado da União Europeia</a>."
+  },
+  {
+    "LNG_CODE": "ro",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "propunerea de iniţiativă cetăţenească contravine vădit valorilor Uniunii, prevăzute la articolul 2 din <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Tratatul privind Uniunea Europeană</a>."
+  },
+  {
+    "LNG_CODE": "sk",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "vami navrhovaná iniciatíva občanov je zjavne v rozpore s hodnotami Únie uvedenými v článku 2 <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Zmluvy o Európskej únii</a>."
+  },
+  {
+    "LNG_CODE": "sl",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "predlagana državljanska pobuda je v očitnem nasprotju z vrednotami Unije, kot so določene v členu 2 <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Pogodbe o Evropski uniji</a>."
+  },
+  {
+    "LNG_CODE": "sv",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "Initiativförslaget strider uppenbart mot unionens värden enligt artikel 2 i <a href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">EU-fördraget</a>."
+  },
+  {
+    "LNG_CODE": "hr",
+    "RTR_KEY": "reason.action.registration.reject.values",
+    "RTR_MESSAGE": "Razvidno je da je predložena građanska inicijativa u suprotnosti s vrijednostima Unije, kako su utvrđene u članku 2. <a target=\"_blank\" href=\"http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:C:2010:083:0013:0046:EN:PDF\">Ugovora o Europskoj uniji</a>."
+  }
+]
