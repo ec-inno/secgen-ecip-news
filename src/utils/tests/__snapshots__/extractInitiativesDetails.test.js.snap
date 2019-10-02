@@ -10,10 +10,10 @@ Object {
     "size": 19,
   },
   "annexText": "",
-  "dateEnd": "",
+  "dateCollectionEarlyClosure": "",
+  "dateCollectionStart": "13/03/2019",
   "dateRefusal": "",
   "dateRegistration": "31/10/2018",
-  "dateStart": "13/03/2019",
   "deadline": "",
   "decisionUrl": "http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:ABACECD323&from=EN",
   "draftLegal": Object {
