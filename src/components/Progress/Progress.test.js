@@ -45,6 +45,31 @@ describe('Progress', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('does not display misleading/malformed input', () => {
+    const props = {
+      progress: [
+        {
+          name: 'ITEMS',
+          active: false,
+          date: '11/08/2019',
+        },
+        {
+          name: 'NOT',
+          active: true,
+          date: '09/09/2019',
+        },
+        {
+          name: 'SUPPORTED',
+          active: false,
+          date: '11/08/2019',
+        },
+      ],
+    };
+
+    const tree = renderer.create(<Progress {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders timeline in right order regardless of input order', () => {
     const props = {
       progress: [

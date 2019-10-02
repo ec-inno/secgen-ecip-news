@@ -228,6 +228,21 @@ Array [
 ]
 `;
 
+exports[`Progress does not display misleading/malformed input 1`] = `
+Array [
+  <h3
+    className="ecl-u-type-heading-3"
+  >
+    Initiative progress
+  </h3>,
+  <p
+    className="ecl-u-type-paragraph"
+  >
+    Malformed or unsupported data.
+  </p>,
+]
+`;
+
 exports[`Progress footnote is displayed given a flag for earlier closure date 1`] = `
 Array [
   <h3

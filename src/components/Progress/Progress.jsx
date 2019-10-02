@@ -86,6 +86,17 @@ const Progress = ({
     );
   });
 
+  if (stages.length === 0) {
+    return (
+      <>
+        <h3 className="ecl-u-type-heading-3">{t('Initiative progress')}</h3>
+        <p className="ecl-u-type-paragraph">
+          {t('Malformed or unsupported data.')}
+        </p>
+      </>
+    );
+  }
+
   return (
     <>
       <h3 className="ecl-u-type-heading-3">{t('Initiative progress')}</h3>
