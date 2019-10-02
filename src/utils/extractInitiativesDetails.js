@@ -40,9 +40,9 @@ const extractInitiativesDetails = ({ details, locale }) => {
     : '';
   const supportLink = details.supportLink ? details.supportLink : '';
   const refusalReasons = details.refusalReasons ? details.refusalReasons : [];
-  const dateStart =
+  const dateCollectionStart =
     details && details.startCollectionDate ? details.startCollectionDate : '';
-  const dateEnd =
+  const dateCollectionEarlyClosure =
     details && details.earlyClosureDate ? details.earlyClosureDate : '';
 
   /**
@@ -134,10 +134,10 @@ const extractInitiativesDetails = ({ details, locale }) => {
   return {
     additionalDocument,
     annexText,
-    dateEnd,
+    dateCollectionEarlyClosure,
+    dateCollectionStart,
     dateRefusal,
     dateRegistration,
-    dateStart,
     deadline,
     decisionUrl,
     draftLegal,

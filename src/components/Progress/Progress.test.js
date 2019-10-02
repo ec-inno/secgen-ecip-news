@@ -17,6 +17,26 @@ describe('Progress utilities', () => {
     expect(steps[1]).toBe('COLLECTION_START_DATE');
     expect(steps[3]).toBe('COLLECTION_EARLY_CLOSURE');
   });
+
+  it('getStages() reorders items if not in correct order', () => {
+    const progress = [
+      {
+        name: 'ONGOING',
+        active: true,
+        date: '09/09/2019',
+      },
+      {
+        name: 'REGISTERED',
+        active: false,
+        date: '11/08/2019',
+      },
+    ];
+    const { getStages } = require('./utils');
+
+    const stages = getStages(progress);
+    expect(stages[0].name).toBe('REGISTERED');
+    expect(stages[1].name).toBe('ONGOING');
+  });
 });
 
 describe('Progress', () => {
@@ -43,13 +63,55 @@ describe('Progress', () => {
 
     const tree = renderer.create(<Progress {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
-
-    expect(tree[1].type).toBe('ol');
-    expect(tree[1].children[0]).toMatchSnapshot(); // Registered
-    expect(tree[1].children[1]).toMatchSnapshot(); // Ongoing
   });
 
-  it('input of dates: renders them below timeline', () => {
+  it('collection start date can be passed as a parameter', () => {
+    const props = {
+      progress: [
+        {
+          name: 'ONGOING',
+          active: true,
+          date: '09/09/2019',
+        },
+        {
+          name: 'REGISTERED', // Yes, spec says this step will be given conditionally, but we still add it to ensure registration start date comes right after registration.
+          active: false,
+          date: '11/08/2019',
+        },
+      ],
+      dateCollectionStart: '11/08/2019',
+    };
+
+    const tree = renderer.create(<Progress {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('collection start date can be passed as a step', () => {
+    const props = {
+      progress: [
+        {
+          name: 'ONGOING',
+          active: true,
+          date: '09/09/2019',
+        },
+        {
+          name: 'REGISTERED',
+          active: false,
+          date: '11/08/2019',
+        },
+        {
+          name: 'COLLECTION_START_DATE',
+          active: false,
+          date: '22/09/2019',
+        },
+      ],
+    };
+
+    const tree = renderer.create(<Progress {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('collection early closure date can be passed as a parameter', () => {
     const props = {
       progress: [
         {
@@ -63,8 +125,33 @@ describe('Progress', () => {
           date: '11/08/2019',
         },
       ],
-      dateStart: '11/08/2019',
-      dateEnd: '09/09/2020',
+      dateCollectionEarlyClosure: '11/08/2019',
+    };
+
+    const tree = renderer.create(<Progress {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('collection early closure date can be passed as a step', () => {
+    // Sample props are not to be passed like this from the service, but we double-check rendered order.
+    const props = {
+      progress: [
+        {
+          name: 'ONGOING',
+          active: true,
+          date: '09/09/2019',
+        },
+        {
+          name: 'CLOSED',
+          active: false,
+          date: '11/08/2019',
+        },
+        {
+          name: 'COLLECTION_EARLY_CLOSURE',
+          active: false,
+          date: '11/08/2019',
+        },
+      ],
     };
 
     const tree = renderer.create(<Progress {...props} />).toJSON();

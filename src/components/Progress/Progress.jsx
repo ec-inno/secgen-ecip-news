@@ -4,9 +4,13 @@ import { useTranslation } from 'react-i18next';
 
 import upperCaseFirstChar from '@eci/utils/upperCaseFirstChar';
 
-import { steps } from './utils';
+import { getStages } from './utils';
 
-const Progress = ({ progress, dateStart, dateEnd }) => {
+const Progress = ({
+  progress,
+  dateCollectionStart,
+  dateCollectionEarlyClosure,
+}) => {
   const { t } = useTranslation();
 
   if (!progress || progress.length === 0) {
@@ -20,16 +24,39 @@ const Progress = ({ progress, dateStart, dateEnd }) => {
     );
   }
 
-  const stages = [];
   const timeline = [];
+  const stages = getStages(progress);
 
-  // Reorder progress stages to match order of `steps`.
-  steps.forEach(step => {
-    const match = progress.find(item => item.name === step);
-    if (match) stages.push(match);
-  });
+  if (
+    dateCollectionStart &&
+    !stages.find(stage => stage.name === 'COLLECTION_START_DATE')
+  ) {
+    const stepPrev = stages.findIndex(stage => stage.name === 'REGISTERED');
 
-  // Build the timeline elements.
+    if (stepPrev >= 0) {
+      stages.splice(stepPrev + 1, 0, {
+        name: 'COLLECTION_START_DATE',
+        active: false,
+        date: dateCollectionStart,
+      });
+    }
+  }
+
+  if (
+    dateCollectionEarlyClosure &&
+    !stages.find(stage => stage.name === 'COLLECTION_EARLY_CLOSURE')
+  ) {
+    const stepPrev = stages.findIndex(stage => stage.name === 'ONGOING');
+
+    if (stepPrev >= 0) {
+      stages.splice(stepPrev + 1, 0, {
+        name: 'COLLECTION_EARLY_CLOSURE',
+        active: false,
+        date: dateCollectionEarlyClosure,
+      });
+    }
+  }
+
   stages.forEach((stage, key) =>
     timeline.push(
       <li
@@ -56,20 +83,6 @@ const Progress = ({ progress, dateStart, dateEnd }) => {
       <ol className="ecl-timeline" data-ecl-timeline="true">
         {timeline}
       </ol>
-      {dateStart && (
-        <p className="ecl-u-type-paragraph-s ecl-u-type-bold">
-          {t('Collection start date')}
-          {': '}
-          {dateStart}
-        </p>
-      )}
-      {dateEnd && (
-        <p className="ecl-u-type-paragraph-s ecl-u-type-bold">
-          {t('Collection closed earlier by the organisers')}
-          {': '}
-          {dateEnd}
-        </p>
-      )}
     </>
   );
 };
@@ -80,10 +93,11 @@ Progress.propTypes = {
       name: PropTypes.string,
       active: PropTypes.bool,
       date: PropTypes.string,
+      footnoteType: PropTypes.string,
     })
   ),
-  dateStart: PropTypes.string,
-  dateEnd: PropTypes.string,
+  dateCollectionStart: PropTypes.string,
+  dateCollectionEarlyClosure: PropTypes.string,
 };
 
 export default Progress;

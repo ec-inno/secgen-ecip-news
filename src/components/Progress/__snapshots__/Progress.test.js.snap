@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Progress input of dates: renders them below timeline 1`] = `
+exports[`Progress collection early closure date can be passed as a parameter 1`] = `
 Array [
   <h3
     className="ecl-u-type-heading-3"
@@ -39,21 +39,192 @@ Array [
         09/09/2019
       </div>
     </li>
+    <li
+      className="ecl-timeline__item"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Collection early closure
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        11/08/2019
+      </div>
+    </li>
   </ol>,
-  <p
-    className="ecl-u-type-paragraph-s ecl-u-type-bold"
+]
+`;
+
+exports[`Progress collection early closure date can be passed as a step 1`] = `
+Array [
+  <h3
+    className="ecl-u-type-heading-3"
   >
-    Collection start date
-    : 
-    11/08/2019
-  </p>,
-  <p
-    className="ecl-u-type-paragraph-s ecl-u-type-bold"
+    Initiative progress
+  </h3>,
+  <ol
+    className="ecl-timeline"
+    data-ecl-timeline="true"
   >
-    Collection closed earlier by the organisers
-    : 
-    09/09/2020
-  </p>,
+    <li
+      className="ecl-timeline__item ecl-timeline__item--current"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Ongoing
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        09/09/2019
+      </div>
+    </li>
+    <li
+      className="ecl-timeline__item"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Collection early closure
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        11/08/2019
+      </div>
+    </li>
+    <li
+      className="ecl-timeline__item"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Closed
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        11/08/2019
+      </div>
+    </li>
+  </ol>,
+]
+`;
+
+exports[`Progress collection start date can be passed as a parameter 1`] = `
+Array [
+  <h3
+    className="ecl-u-type-heading-3"
+  >
+    Initiative progress
+  </h3>,
+  <ol
+    className="ecl-timeline"
+    data-ecl-timeline="true"
+  >
+    <li
+      className="ecl-timeline__item"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Registered
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        11/08/2019
+      </div>
+    </li>
+    <li
+      className="ecl-timeline__item"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Collection start date
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        11/08/2019
+      </div>
+    </li>
+    <li
+      className="ecl-timeline__item ecl-timeline__item--current"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Ongoing
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        09/09/2019
+      </div>
+    </li>
+  </ol>,
+]
+`;
+
+exports[`Progress collection start date can be passed as a step 1`] = `
+Array [
+  <h3
+    className="ecl-u-type-heading-3"
+  >
+    Initiative progress
+  </h3>,
+  <ol
+    className="ecl-timeline"
+    data-ecl-timeline="true"
+  >
+    <li
+      className="ecl-timeline__item"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Registered
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        11/08/2019
+      </div>
+    </li>
+    <li
+      className="ecl-timeline__item"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Collection start date
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        22/09/2019
+      </div>
+    </li>
+    <li
+      className="ecl-timeline__item ecl-timeline__item--current"
+    >
+      <div
+        className="ecl-timeline__label"
+      >
+        Ongoing
+      </div>
+      <div
+        className="ecl-timeline__content"
+      >
+        09/09/2019
+      </div>
+    </li>
+  </ol>,
 ]
 `;
 
@@ -113,40 +284,6 @@ Array [
     </li>
   </ol>,
 ]
-`;
-
-exports[`Progress renders timeline in right order regardless of input order 2`] = `
-<li
-  className="ecl-timeline__item"
->
-  <div
-    className="ecl-timeline__label"
-  >
-    Registered
-  </div>
-  <div
-    className="ecl-timeline__content"
-  >
-    11/08/2019
-  </div>
-</li>
-`;
-
-exports[`Progress renders timeline in right order regardless of input order 3`] = `
-<li
-  className="ecl-timeline__item ecl-timeline__item--current"
->
-  <div
-    className="ecl-timeline__label"
-  >
-    Ongoing
-  </div>
-  <div
-    className="ecl-timeline__content"
-  >
-    09/09/2019
-  </div>
-</li>
 `;
 
 exports[`Progress utilities steps supported are public 1`] = `

@@ -37,10 +37,10 @@ const Initiative = ({ location, pageContext: { locale } }) => {
   const {
     additionalDocument,
     annexText,
-    dateEnd,
+    dateCollectionEarlyClosure,
+    dateCollectionStart,
     dateRefusal,
     dateRegistration,
-    dateStart,
     deadline,
     decisionUrl,
     draftLegal,
@@ -85,8 +85,8 @@ const Initiative = ({ location, pageContext: { locale } }) => {
             <div className="ecl-col-sm-12 ecl-col-md-4 ecl-u-mb-l">
               <Progress
                 progress={progress}
-                dateStart={dateStart}
-                dateEnd={dateEnd}
+                dateCollectionStart={dateCollectionStart}
+                dateCollectionEarlyClosure={dateCollectionEarlyClosure}
               />
             </div>
             <div className="ecl-col-sm-12 ecl-col-md-8">
