@@ -11,6 +11,7 @@ const Progress = ({
   dateCollectionStart,
   dateCollectionEarlyClosure,
 }) => {
+  let closedEarlier = false;
   const { t } = useTranslation();
 
   if (!progress || progress.length === 0) {
@@ -57,7 +58,14 @@ const Progress = ({
     }
   }
 
-  stages.forEach((stage, key) =>
+  stages.forEach((stage, key) => {
+    if (
+      stage.footnoteType &&
+      stage.footnoteType === 'COLLECTION_EARLY_CLOSURE'
+    ) {
+      closedEarlier = true;
+    }
+
     timeline.push(
       <li
         key={key}
@@ -69,13 +77,14 @@ const Progress = ({
       >
         <div className="ecl-timeline__label">
           {upperCaseFirstChar(stage.name)}
+          {closedEarlier && <span className="ecl-u-type-color-red"> *</span>}
         </div>
         {stage.date && (
           <div className="ecl-timeline__content">{stage.date}</div>
         )}
       </li>
-    )
-  );
+    );
+  });
 
   return (
     <>
@@ -83,6 +92,11 @@ const Progress = ({
       <ol className="ecl-timeline" data-ecl-timeline="true">
         {timeline}
       </ol>
+      {closedEarlier && (
+        <p class="ecl-u-type-paragraph-s ecl-u-type-color-red">
+          {t('Collection closed earlier by organisers.')}
+        </p>
+      )}
     </>
   );
 };

@@ -157,4 +157,25 @@ describe('Progress', () => {
     const tree = renderer.create(<Progress {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('footnote is displayed given a flag for earlier closure date', () => {
+    const props = {
+      progress: [
+        {
+          name: 'ONGOING',
+          active: true,
+          date: '09/09/2019',
+        },
+        {
+          name: 'CLOSED',
+          active: false,
+          date: '11/08/2019',
+          footnoteType: 'COLLECTION_EARLY_CLOSURE',
+        },
+      ],
+    };
+
+    const tree = renderer.create(<Progress {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
