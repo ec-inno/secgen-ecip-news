@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CounterImpl can render statistics 1`] = `
+<p
+  className="ecl-u-type-paragraph ecl-u-mt-l ecl-u-d-flex ecl-u-justify-content-between"
+>
+  <span
+    className="ecl-u-d-flex ecl-u-align-items-center"
+  >
+    <svg
+      aria-hidden="true"
+      className="ecl-u-mr-xs ecl-icon ecl-icon--m"
+      focusable="false"
+    >
+      
+      
+      <use
+        xlinkHref="file#general--file"
+      />
+    </svg>
+    1
+     
+    registration requests
+  </span>
+  <span
+    className="ecl-u-d-flex ecl-u-align-items-center"
+  >
+    <svg
+      aria-hidden="true"
+      className="ecl-u-mr-xs ecl-icon ecl-icon--m"
+      focusable="false"
+    >
+      
+      
+      <use
+        xlinkHref="file#general--edit"
+      />
+    </svg>
+    2
+     
+    initiatives registered
+  </span>
+  <span
+    className="ecl-u-d-flex ecl-u-align-items-center"
+  >
+    <svg
+      aria-hidden="true"
+      className="ecl-u-mr-xs ecl-icon ecl-icon--m"
+      focusable="false"
+    >
+      
+      
+      <use
+        xlinkHref="file#ui--check-filled"
+      />
+    </svg>
+    3
+     
+    successful initiatives
+  </span>
+</p>
+`;
+
+exports[`CounterImpl does not show on lack of data 1`] = `""`;
