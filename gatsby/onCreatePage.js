@@ -1,7 +1,9 @@
 const { languages, defaultLangKey } = require('../languages');
 const getLocaleData = require('../src/utils/getLocaleData');
+const setupI18next = require('../src/i18n/setupI18nextFsSyncBackend');
 
 const onCreatePage = ({ page, actions }) => {
+  const i18n = setupI18next();
   const { createPage, deletePage } = actions;
 
   deletePage(page);
@@ -64,6 +66,7 @@ const onCreatePage = ({ page, actions }) => {
   if (page.path.match(/^\/find-initiative/)) {
     return languages.forEach(language => {
       const { lang } = language;
+      i18n.changeLanguage(lang);
 
       return createPage({
         ...page,
@@ -73,6 +76,8 @@ const onCreatePage = ({ page, actions }) => {
           ...page.context,
           locale: lang,
           localeData: getLocaleData(lang),
+          includeInSitemap: true,
+          title: i18n.t('Find initiative'),
         },
       });
     });

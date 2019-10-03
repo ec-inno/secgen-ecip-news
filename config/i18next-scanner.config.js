@@ -2,9 +2,12 @@ const { defaultLangKey } = require('../languages');
 
 const exportsFolder = 'i18n_exports';
 
-// @see https://github.com/i18next/i18next-scanner#default-options
+/**
+ * Allow for automated extractions of translatable items.
+ * @see https://github.com/i18next/i18next-scanner#default-options
+ */
 module.exports = {
-  input: ['src/**/*.{js,jsx}'],
+  input: ['src/**/*.{js,jsx}', 'gatsby/*.js'],
   output: './',
   options: {
     lngs: [defaultLangKey],

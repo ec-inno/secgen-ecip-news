@@ -3,8 +3,10 @@ const has = require('lodash/has');
 
 const { languages, defaultLangKey } = require('../languages');
 const getLocaleData = require('../src/utils/getLocaleData');
+const setupI18next = require('../src/i18n/setupI18nextFsSyncBackend');
 
 const createPages = async ({ graphql, actions }) => {
+  const i18n = setupI18next();
   const { createPage } = actions;
 
   const itemsPerPage = 10;
@@ -115,6 +117,7 @@ const createPages = async ({ graphql, actions }) => {
   languages
     .map(l => l.lang)
     .forEach(language => {
+      i18n.changeLanguage(language);
       const languageRegex = `//${language}//`;
 
       // Create news sections with paginations for each language.
@@ -134,6 +137,8 @@ const createPages = async ({ graphql, actions }) => {
             locale: language,
             localeData: getLocaleData(language),
             languageRegex,
+            includeInSitemap: i === 0 || false,
+            title: i18n.t('News'),
           },
         });
       });
@@ -146,6 +151,8 @@ const createPages = async ({ graphql, actions }) => {
           locale: language,
           localeData: getLocaleData(language),
           languageRegex,
+          includeInSitemap: true,
+          title: i18n.t('FAQ'),
         },
       });
     });
