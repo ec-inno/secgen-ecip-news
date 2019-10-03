@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getSitemap utlity returns a structure of links 1`] = `
+Object {
+  "Home": Object {
+    "external": false,
+    "href": "/multisite/ecip/en",
+    "title": "Home",
+  },
+  "contact": Object {
+    "external": false,
+    "href": "/en/contact",
+    "title": "Contact",
+  },
+  "faq": Object {
+    "external": false,
+    "href": "/en/faq",
+    "title": "FAQ",
+  },
+  "find-initiative": Object {
+    "external": false,
+    "href": "/en/find-initiative",
+    "title": "Find initiative",
+  },
+  "how-it-works": Object {
+    "data-protection": Object {
+      "external": false,
+      "href": "/en/how-it-works/data-protection",
+      "title": "Data protection",
+    },
+    "external": false,
+    "href": "/en/how-it-works",
+    "implementation-national-level": Object {
+      "external": false,
+      "href": "/en/how-it-works/implementation-national-level",
+      "title": "Implementation at national level",
+    },
+    "regulatory-framework": Object {
+      "external": false,
+      "href": "/en/how-it-works/regulatory-framework",
+      "title": "Regulatory framework for the European Citizens' Initiative",
+    },
+    "title": "How it works",
+  },
+  "how-to-start": Object {
+    "competences": Object {
+      "external": false,
+      "href": "/en/how-to-start/competences",
+      "title": "Can your idea be a citizens' initiative?",
+    },
+    "external": false,
+    "href": "/en/how-to-start",
+    "prepare-system": Object {
+      "external": false,
+      "href": "/en/how-to-start/prepare-system",
+      "title": "Prepare your online collection system",
+    },
+    "title": "How to start an initiative",
+  },
+  "news": Object {
+    "external": false,
+    "href": "/en/news",
+    "title": "News",
+  },
+}
+`;

@@ -2,10 +2,13 @@ import { unflatten } from 'flat';
 
 /**
  * Provides a nested structure representing a sitemap, based on main menu and pages.
- * @param {Object} data Pages' graphql queries result.
- * @param {String} locale
+ * @param {Object} options
+ * @param {Object} options.data Pages' graphql queries result.
+ * @param {String} options.locale
  */
-const getSitemap = ({ data, locale }) => {
+const getSitemap = ({ data, locale } = {}) => {
+  if (!data || !locale) return {};
+
   const listPrepare = [];
   let listGroupPrepare = {};
 

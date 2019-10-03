@@ -32,9 +32,12 @@ module.exports = {
      * Drupal does not return default (en) language, but i18next's init function needs it.
      */
     const defaultLangKey = 'en';
-    const original = {};
     const payload = Object.keys(exportedStrings);
-    payload.forEach(key => (original[key] = key));
+    // Save original values.
+    const original = {};
+    payload.forEach(key => {
+      original[key] = key;
+    });
 
     info(`Saving strings defaults for: "${defaultLangKey}"`);
     write(
