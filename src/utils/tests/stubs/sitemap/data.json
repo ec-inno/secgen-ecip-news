@@ -1,0 +1,123 @@
+{
+  "allMenu": {
+    "edges": [
+      {
+        "node": {
+          "id": "api/en/7049b1c0-0052-52f5-9028-2987e19a92da",
+          "title": "Home",
+          "external": false,
+          "href": "/multisite/ecip/en",
+          "enabled": true,
+          "parent": null
+        }
+      }
+    ]
+  },
+  "allNodeOePage": {
+    "edges": [
+      {
+        "node": {
+          "id": "api/en/1a8bb5b7-c741-5c31-8953-76d05c2d9406",
+          "title": "Contact",
+          "path": {
+            "alias": "/contact"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "api/en/64228c2b-616a-530a-bee6-c539f3725d45",
+          "title": "How it works",
+          "path": {
+            "alias": "/how-it-works"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "api/en/e5c96b08-0de9-5fbb-b707-7ecb4c202dd8",
+          "title": "Data protection",
+          "path": {
+            "alias": "/how-it-works/data-protection"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "api/en/ed83f228-4187-5ccb-94b7-0942cf3e4a98",
+          "title": "Implementation at national level",
+          "path": {
+            "alias": "/how-it-works/implementation-national-level"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "api/en/a5ad5711-a652-551a-9a95-d28529b7d4cb",
+          "title": "Regulatory framework for the European Citizens' Initiative",
+          "path": {
+            "alias": "/how-it-works/regulatory-framework"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "api/en/3627996c-f0e0-5501-9b0e-9d4e1f05a6cb",
+          "title": "How to start an initiative",
+          "path": {
+            "alias": "/how-to-start"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "api/en/06b46966-1f0b-5d1c-a819-affd05fa67d7",
+          "title": "Can your idea be a citizens' initiative?",
+          "path": {
+            "alias": "/how-to-start/competences"
+          }
+        }
+      },
+      {
+        "node": {
+          "id": "api/en/6582d73c-0c63-5791-adc0-8f6aaf789ccd",
+          "title": "Prepare your online collection system",
+          "path": {
+            "alias": "/how-to-start/prepare-system"
+          }
+        }
+      }
+    ]
+  },
+  "allSitePage": {
+    "edges": [
+      {
+        "node": {
+          "path": "/en/news",
+          "context": {
+            "title": "News",
+            "includeInSitemap": true
+          }
+        }
+      },
+      {
+        "node": {
+          "path": "/en/faq",
+          "context": {
+            "title": "FAQ",
+            "includeInSitemap": true
+          }
+        }
+      },
+      {
+        "node": {
+          "path": "/en/find-initiative",
+          "context": {
+            "title": "Find initiative",
+            "includeInSitemap": true
+          }
+        }
+      }
+    ]
+  }
+}

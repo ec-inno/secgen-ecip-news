@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListNested Rendered output is sorted alphabetically 1`] = `
+<ul
+  className="ecl-unordered-list"
+>
+  <li
+    className="ecl-unordered-list__item"
+  >
+    <a
+      className="ecl-link ecl-link--standalone"
+      href="/en"
+    >
+      Home
+    </a>
+  </li>
+  <li
+    className="ecl-unordered-list__item"
+  >
+    <a
+      className="ecl-link ecl-link--standalone"
+      href="/en/faq"
+    >
+      FAQ
+    </a>
+  </li>
+  <li
+    className="ecl-unordered-list__item"
+  >
+    <a
+      className="ecl-link ecl-link--standalone"
+      href="/en/find-initiative"
+    >
+      Find initiative
+    </a>
+  </li>
+  <li
+    className="ecl-unordered-list__item"
+  >
+    <a
+      className="ecl-link ecl-link--standalone"
+      href="/en/how-it-works"
+    >
+      How it works
+    </a>
+    <ul
+      className="ecl-unordered-list"
+    >
+      <li
+        className="ecl-unordered-list__item"
+      >
+        <a
+          className="ecl-link ecl-link--standalone"
+          href="/en/how-it-works/data-protection"
+        >
+          Data protection
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li
+    className="ecl-unordered-list__item"
+  >
+    <a
+      className="ecl-link ecl-link--standalone"
+      href="/en/how-to-start"
+    >
+      How to start an initiative
+    </a>
+    <ul
+      className="ecl-unordered-list"
+    >
+      <li
+        className="ecl-unordered-list__item"
+      >
+        <a
+          className="ecl-link ecl-link--standalone"
+          href="/en/how-to-start/competences"
+        >
+          Can your idea be a citizens' initiative?
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+`;

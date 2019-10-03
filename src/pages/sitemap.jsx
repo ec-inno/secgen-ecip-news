@@ -68,6 +68,22 @@ export const query = graphql`
         }
       }
     }
+    allSitePage(
+      filter: {
+        path: { regex: $languageRegex }
+        context: { includeInSitemap: { eq: true } }
+      }
+    ) {
+      edges {
+        node {
+          path
+          context {
+            title
+            includeInSitemap
+          }
+        }
+      }
+    }
   }
 `;
 

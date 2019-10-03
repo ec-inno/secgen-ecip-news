@@ -2,10 +2,13 @@ import { unflatten } from 'flat';
 
 /**
  * Provides a nested structure representing a sitemap, based on main menu and pages.
- * @param {Object} data Pages' graphql queries result.
- * @param {Object} location The `location` object passed to pages.
+ * @param {Object} options
+ * @param {Object} options.data Pages' graphql queries result.
+ * @param {String} options.locale
  */
-const getSitemap = ({ data, locale }) => {
+const getSitemap = ({ data, locale } = {}) => {
+  if (!data || !locale) return {};
+
   const listPrepare = [];
   let listGroupPrepare = {};
 
@@ -42,8 +45,18 @@ const getSitemap = ({ data, locale }) => {
           .filter(link => !menu.find(m => m.href === link.href))
       : [];
 
+  const others =
+    data.allSitePage && data.allSitePage.edges
+      ? data.allSitePage.edges.map(({ node }) => ({
+          title:
+            node.context && node.context.title ? node.context.title : 'test',
+          href: node.path,
+        }))
+      : [];
+
   listPrepare.push(...menu);
   listPrepare.push(...pages);
+  listPrepare.push(...others);
 
   const home = listPrepare.shift();
 

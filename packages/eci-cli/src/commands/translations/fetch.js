@@ -14,6 +14,7 @@ module.exports = {
     const api = http.create({
       baseURL: `${process.env.GATSBY_DRUPAL_API}/en/api`,
     });
+
     const exportedStrings = read(
       path(`${exportsFolder}/exported-strings.json`),
       'json'
@@ -26,10 +27,25 @@ module.exports = {
       return;
     }
 
+    /**
+     * Keep default's/original language information.
+     * Drupal does not return default (en) language, but i18next's init function needs it.
+     */
+    const defaultLangKey = 'en';
     const payload = Object.keys(exportedStrings);
+    // Save original values.
+    const original = {};
+    payload.forEach(key => {
+      original[key] = key;
+    });
+
+    info(`Saving strings defaults for: "${defaultLangKey}"`);
+    write(
+      path(`${exportsFolder}/translations/${defaultLangKey}.json`),
+      original
+    );
 
     try {
-      const resources = {};
       const response = await api.post('/string-translations', payload);
 
       if (response.data && response.data.data) {
@@ -42,8 +58,6 @@ module.exports = {
             locale = 'pt';
           }
 
-          resources[locale] = { translation };
-
           write(
             path(`${exportsFolder}/translations/${locale}.json`),
             translation
@@ -53,10 +67,7 @@ module.exports = {
         info('Done fetching translations.');
       }
     } catch (e) {
-      error(
-        'An error occured while trying fetch latest translations from translations.',
-        e
-      );
+      error("Counldn't fetch translations.", e);
     }
   },
 };
