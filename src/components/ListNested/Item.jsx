@@ -52,7 +52,7 @@ Item.propTypes = {
     href: PropTypes.string,
     external: PropTypes.bool,
   }),
-  id: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Item;

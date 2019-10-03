@@ -8,9 +8,11 @@ const ListNested = ({ list }) => {
 
   return (
     <ul className="ecl-unordered-list">
-      {Object.keys(list).map((item, id) => (
-        <Item item={list[item]} key={id} id={id} />
-      ))}
+      {Object.keys(list)
+        .sort()
+        .map((item, id) => (
+          <Item item={list[item]} key={id} id={id} />
+        ))}
     </ul>
   );
 };
