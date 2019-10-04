@@ -1,4 +1,5 @@
 import React from 'react';
+import FocusLock from 'react-focus-lock';
 
 import { useOverlayContext } from '@eci/context/Overlay';
 
@@ -8,11 +9,21 @@ const LanguageListOverlayWithContext = props => {
   const { overlayIsHidden, setOverlayIsHidden } = useOverlayContext();
 
   return (
-    <LanguageListOverlay
-      hidden={overlayIsHidden}
-      closeHandler={() => setOverlayIsHidden(true)}
-      {...props}
-    />
+    <>
+      <FocusLock>
+        <LanguageListOverlay
+          onKeyDown={e => {
+            // Listen to Esc key.
+            if (e.keyCode === 27) {
+              setOverlayIsHidden(true);
+            }
+          }}
+          hidden={overlayIsHidden}
+          closeHandler={() => setOverlayIsHidden(true)}
+          {...props}
+        />
+      </FocusLock>
+    </>
   );
 };
 
