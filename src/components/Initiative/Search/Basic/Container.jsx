@@ -59,46 +59,50 @@ const SearchBasic = () => {
               {t('Latest')}
             </a>
           </li>
-          <li
-            key="ongoing"
-            className={
-              section === 'ONGOING'
-                ? 'eci-menu__option eci-menu__option--is-selected'
-                : 'eci-menu__option'
-            }
-          >
-            <a
-              onClick={e => {
-                e.preventDefault();
-                setItemsPerPage(itemsPerPageDefault);
-                setSection('ONGOING');
-              }}
-              href="#"
-              className="eci-menu__link ecl-link"
+          {Boolean(results.ongoing && results.ongoing !== 0) && (
+            <li
+              key="ongoing"
+              className={
+                section === 'ONGOING'
+                  ? 'eci-menu__option eci-menu__option--is-selected'
+                  : 'eci-menu__option'
+              }
             >
-              {t('Ongoing')} {results.ongoing && `(${results.ongoing})`}
-            </a>
-          </li>
-          <li
-            key="answered"
-            className={
-              section === 'ANSWERED'
-                ? 'eci-menu__option eci-menu__option--is-selected'
-                : 'eci-menu__option'
-            }
-          >
-            <a
-              onClick={e => {
-                e.preventDefault();
-                setItemsPerPage(itemsPerPageDefault);
-                setSection('ANSWERED');
-              }}
-              href="#"
-              className="eci-menu__link ecl-link"
+              <a
+                onClick={e => {
+                  e.preventDefault();
+                  setItemsPerPage(itemsPerPageDefault);
+                  setSection('ONGOING');
+                }}
+                href="#"
+                className="eci-menu__link ecl-link"
+              >
+                {t('Ongoing')} {results.ongoing && `(${results.ongoing})`}
+              </a>
+            </li>
+          )}
+          {Boolean(results.answered && results.answered !== 0) && (
+            <li
+              key="answered"
+              className={
+                section === 'ANSWERED'
+                  ? 'eci-menu__option eci-menu__option--is-selected'
+                  : 'eci-menu__option'
+              }
             >
-              {t('Answered')} {results.answered && `(${results.answered})`}
-            </a>
-          </li>
+              <a
+                onClick={e => {
+                  e.preventDefault();
+                  setItemsPerPage(itemsPerPageDefault);
+                  setSection('ANSWERED');
+                }}
+                href="#"
+                className="eci-menu__link ecl-link"
+              >
+                {t('Answered')} {results.answered && `(${results.answered})`}
+              </a>
+            </li>
+          )}
           <li
             key="all"
             className={

@@ -4,7 +4,6 @@
   "description": "",
   "private": true,
   "dependencies": {
-    "@ecl/eu-preset-website": "2.8.0",
     "react": "16.9.0"
   }
 }
