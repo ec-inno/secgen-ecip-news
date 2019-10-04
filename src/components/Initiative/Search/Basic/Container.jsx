@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'gatsby';
-import axios from 'axios';
 import classnames from 'classnames';
 import { chunk } from 'lodash';
 
 import { useI18nContext } from '@eci/context/I18n';
+import useInitiativesSearchApi from '@eci/utils/useInitiativesSearchApi';
 
 import SearchForm from './Form';
 
@@ -17,48 +17,22 @@ import Spinner from '../../../Spinner';
 
 const SearchBasic = () => {
   const { t } = useTranslation();
-  const { locale } = useI18nContext();
-  const { GATSBY_INITIATIVES_API: api } = process.env;
+  const { locale: language } = useI18nContext();
 
   const itemsPerRow = 3;
   const itemsPerPageDefault = 8;
   const rowClass = 'ecl-row';
 
-  const [error, setError] = useState({});
   const [section, setSection] = useState('LATEST'); // LATEST, ONGOING, ANSWERED, ALL. Refused are not to be shown on home page by spec.
   const [filters, setFilters] = useState({});
-  const [initiatives, setInitiatives] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageDefault);
 
-  useEffect(() => {
-    let request = null;
-    setIsLoading(true);
-    const lang = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
-    const endpoint = `${api}/register/search/${section}/${lang}/0/${itemsPerPage}`;
+  const query = { filters, section, language, pagination: `0/${itemsPerPage}` };
+  const { results, isLoading, error } = useInitiativesSearchApi({ query });
 
-    // For the service empty filters is not same as no filters.
-    // We don't send payload if not needed.
-    if (filters.filters && Object.keys(filters.filters).length !== 0) {
-      request = axios.post(endpoint, filters);
-    } else {
-      request = axios.get(endpoint);
-    }
-
-    request
-      .then(response => {
-        setInitiatives(response.data);
-        setIsLoading(false);
-      })
-      .catch(e => {
-        setError(e);
-        setIsLoading(false);
-      });
-  }, [section, filters, itemsPerPage]);
-
-  const hasEntries = initiatives.entries && initiatives.entries.length;
+  const hasEntries = results.entries && results.entries.length;
   const groups = hasEntries
-    ? Math.ceil(initiatives.entries.length / itemsPerRow)
+    ? Math.ceil(results.entries.length / itemsPerRow)
     : null;
 
   return (
@@ -102,7 +76,7 @@ const SearchBasic = () => {
               href="#"
               className="eci-menu__link ecl-link"
             >
-              {t('Ongoing')} {initiatives.ongoing && `(${initiatives.ongoing})`}
+              {t('Ongoing')} {results.ongoing && `(${results.ongoing})`}
             </a>
           </li>
           <li
@@ -122,8 +96,7 @@ const SearchBasic = () => {
               href="#"
               className="eci-menu__link ecl-link"
             >
-              {t('Answered')}{' '}
-              {initiatives.answered && `(${initiatives.answered})`}
+              {t('Answered')} {results.answered && `(${results.answered})`}
             </a>
           </li>
           <li
@@ -143,7 +116,7 @@ const SearchBasic = () => {
               href="#"
               className="eci-menu__link ecl-link"
             >
-              {t('All initiatives')} {initiatives.all && `(${initiatives.all})`}
+              {t('All initiatives')} {results.all && `(${results.all})`}
             </a>
           </li>
         </ul>
@@ -152,7 +125,7 @@ const SearchBasic = () => {
         <div className="ecl-u-pa-m eci-filter ecl-u-mv-xl">
           <SearchForm setFilters={setFilters} />
           <p className="ecl-u-type-paragraph ecl-u-mb-none">
-            <Link className="ecl-link" to={`/${locale}/find-initiative`}>
+            <Link className="ecl-link" to={`/${language}/find-initiative`}>
               {t('Get more filters')}
             </Link>
           </p>
@@ -160,11 +133,11 @@ const SearchBasic = () => {
       )}
       {isLoading && <Spinner />}
       <ErrorMessage
-        title={t('An error occurred while fetching initiatives.')}
+        title={t('An error occurred while fetching results.')}
         error={error}
       />
       {hasEntries ? (
-        chunk(initiatives.entries, itemsPerRow).map((group, k) => {
+        chunk(results.entries, itemsPerRow).map((group, k) => {
           const groupLength = group.length;
           // If it's either the first or last item, do not add 'md'.
           const rowSpacing =
@@ -188,7 +161,7 @@ const SearchBasic = () => {
                       logo={item.logo}
                       title={item.title}
                       status={item.status}
-                      href={`/${locale}/initiatives/#${item.id}`}
+                      href={`/${language}/initiatives/#${item.id}`}
                       totalSupporters={item.totalSupporters}
                       supportLink={item.supportLink}
                     />
@@ -215,7 +188,7 @@ const SearchBasic = () => {
         </div>
       )}
       {isLoading && <Spinner />}
-      {itemsPerPage < initiatives[section.toLowerCase()] && (
+      {itemsPerPage < results[section.toLowerCase()] && (
         <SeeMore
           ariaLabel={t('Go to next page')}
           label={t('See more initiatives')}

@@ -3,15 +3,20 @@ import { useState, useEffect } from 'react';
 
 const useInitiativesSearchApi = ({ query }) => {
   const { GATSBY_INITIATIVES_API: api } = process.env;
-  const { pagination, section, language: locale, filters } = query;
+  const { pagination, section, language, filters } = query;
+
+  const hasFilters =
+    filters && typeof filters === 'object' && Object.keys(filters).length !== 0;
 
   // Remove filters with empty values or `any`.
-  Object.keys(filters).forEach(filter => {
-    const values = filters[filter].filter(f => f).filter(f => f !== 'any');
-    if (values.length === 0) {
-      delete filters[filter];
-    }
-  });
+  if (hasFilters) {
+    Object.keys(filters).forEach(filter => {
+      const values = filters[filter].filter(f => f).filter(f => f !== 'any');
+      if (values.length === 0) {
+        delete filters[filter];
+      }
+    });
+  }
 
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,12 +26,12 @@ const useInitiativesSearchApi = ({ query }) => {
     let request = null;
 
     setIsLoading(true);
-    const language = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
-    const endpoint = `${api}/register/search/${section}/${language}/${pagination}`;
+    const lang = language.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
+    const endpoint = `${api}/register/search/${section}/${lang}/${pagination}`;
 
     // For the service empty filters is not same as no filters.
     // We don't send payload if not needed.
-    if (filters && Object.keys(filters).length !== 0) {
+    if (hasFilters) {
       request = axios.post(endpoint, { filters });
     } else {
       request = axios.get(endpoint);
@@ -41,7 +46,7 @@ const useInitiativesSearchApi = ({ query }) => {
         setError(e);
         setIsLoading(false);
       });
-  }, [pagination, section, locale, filters]);
+  }, [pagination, section, language, filters]);
 
   return { results, isLoading, error };
 };

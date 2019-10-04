@@ -29,7 +29,7 @@ const InitiativesSearchBasicForm = ({ setFilters }) => {
           filters.TEXT_FREE = [keyword];
         }
 
-        setFilters({ filters });
+        setFilters(filters);
       }}
     >
       <div className="ecl-row">
