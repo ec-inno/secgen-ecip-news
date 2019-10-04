@@ -29,7 +29,6 @@ const SearchAdvanced = () => {
   const { locale } = useContext(I18nContext);
   const [query, dispachQuery] = useReducer(queryReducer, queryInit);
 
-  // Send current state of `query` store to the service.
   const { results, isLoading, error } = useInitiativesSearchApi({ query });
 
   useEffect(() => {

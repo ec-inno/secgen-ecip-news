@@ -4,28 +4,13 @@ import { defaultLangKey } from '../../languages';
 
 const queryInit = {
   filters: {},
-  status: 'ALL',
+  section: 'ALL',
   language: defaultLangKey,
   pagination: '0/10',
 };
 
 const queryReducer = (state, action) => {
   switch (action.type) {
-    case 'paginate': {
-      return {
-        ...state,
-        pagination: action.pagination,
-      };
-    }
-
-    case 'changeLanguage': {
-      return {
-        ...state,
-        pagination: queryInit.pagination,
-        language: action.language,
-      };
-    }
-
     case 'setFilters': {
       return {
         ...state,
@@ -47,6 +32,29 @@ const queryReducer = (state, action) => {
         filters: {
           ...filters,
         },
+      };
+    }
+
+    case 'changeSection': {
+      return {
+        ...state,
+        pagination: queryInit.pagination,
+        section: action.section,
+      };
+    }
+
+    case 'changeLanguage': {
+      return {
+        ...state,
+        pagination: queryInit.pagination,
+        language: action.language,
+      };
+    }
+
+    case 'paginate': {
+      return {
+        ...state,
+        pagination: action.pagination,
       };
     }
 

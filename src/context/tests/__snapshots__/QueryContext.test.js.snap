@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QueryContext exports initial state 1`] = `
+Object {
+  "filters": Object {},
+  "language": "en",
+  "pagination": "0/10",
+  "section": "ALL",
+}
+`;
+
+exports[`QueryContext filters can be set through the reducer 1`] = `
+Object {
+  "filters": Object {
+    "foo": "bar",
+  },
+  "language": "en",
+  "pagination": "0/10",
+  "section": "ALL",
+}
+`;
+
+exports[`QueryContext language can be changed through the reducer 1`] = `
+Object {
+  "filters": Object {},
+  "language": "bg",
+  "pagination": "0/10",
+  "section": "ALL",
+}
+`;
+
+exports[`QueryContext pagination is possible through the reducer 1`] = `
+Object {
+  "filters": Object {},
+  "language": "en",
+  "pagination": "11/20",
+  "section": "ALL",
+}
+`;
+
+exports[`QueryContext section can be changed through the reducer 1`] = `
+Object {
+  "filters": Object {},
+  "language": "en",
+  "pagination": "0/10",
+  "section": "LATEST",
+}
+`;

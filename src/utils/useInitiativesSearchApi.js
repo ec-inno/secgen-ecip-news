@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 const useInitiativesSearchApi = ({ query }) => {
   const { GATSBY_INITIATIVES_API: api } = process.env;
-  const { pagination, status, language: locale, filters } = query;
+  const { pagination, section, language: locale, filters } = query;
 
   // Remove filters with empty values or `any`.
   Object.keys(filters).forEach(filter => {
@@ -22,7 +22,7 @@ const useInitiativesSearchApi = ({ query }) => {
 
     setIsLoading(true);
     const language = locale.toUpperCase(); // Accepted values in service match the list in Gatsby, it's ensured.
-    const endpoint = `${api}/register/search/${status}/${language}/${pagination}`;
+    const endpoint = `${api}/register/search/${section}/${language}/${pagination}`;
 
     // For the service empty filters is not same as no filters.
     // We don't send payload if not needed.
@@ -41,7 +41,7 @@ const useInitiativesSearchApi = ({ query }) => {
         setError(e);
         setIsLoading(false);
       });
-  }, [pagination, status, locale, filters]);
+  }, [pagination, section, locale, filters]);
 
   return { results, isLoading, error };
 };
