@@ -112,7 +112,7 @@ exports[`CardImpl renders default image when logo is not provided 1`] = `
       <span
         class="ecl-tag ecl-u-f-r eci-tag"
       >
-        TEST status
+        Test status
       </span>
       <div
         aria-label="Test title"

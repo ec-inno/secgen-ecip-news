@@ -34,7 +34,7 @@ const CardImpl = ({
     <Card
       title={title}
       href={href}
-      status={status}
+      status={upperCaseFirstChar(status)}
       totalSupporters={totalSupporters}
       supportLink={supportLink}
       background={defaultImage}
