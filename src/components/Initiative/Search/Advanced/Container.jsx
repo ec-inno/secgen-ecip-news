@@ -16,9 +16,8 @@ import InitiativesSearchContext, {
 
 import SearchForm from './Form';
 
-import FilterTags from '../../FilterTags';
-
 import ErrorMessage from '../../../ErrorMessage';
+import FilterTags from '../../../FilterTags/FilterTags';
 import Pagination from '../../../Pagination';
 import Result from '../../../Result';
 import Spinner from '../../../Spinner';

@@ -35,6 +35,14 @@ const SearchBasic = () => {
     ? Math.ceil(results.entries.length / itemsPerRow)
     : null;
 
+  const canDisplayMore = Boolean(
+    results &&
+      results.recordsFound &&
+      results.recordsFound !== 0 &&
+      results.recordsFound > itemsPerPage &&
+      section !== 'LATEST'
+  );
+
   return (
     <>
       <div className="ecl-u-mv-xl">
@@ -192,7 +200,7 @@ const SearchBasic = () => {
         </div>
       )}
       {isLoading && <Spinner />}
-      {itemsPerPage < results[section.toLowerCase()] && (
+      {canDisplayMore && (
         <SeeMore
           ariaLabel={t('Go to next page')}
           label={t('See more initiatives')}
