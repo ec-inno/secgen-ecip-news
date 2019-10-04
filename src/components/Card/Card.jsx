@@ -1,46 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import axios from 'axios';
 import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
-import upperCaseFirstChar from '@eci/utils/upperCaseFirstChar';
 
-import defaultImage from '../assets/images/default-image.png';
-
-const Card = ({ title, status, logo, href, totalSupporters, supportLink }) => {
+const Card = ({
+  title,
+  status,
+  background,
+  href,
+  totalSupporters,
+  supportLink,
+}) => {
   const { t } = useTranslation();
-  const [logoData, setLogoData] = useState('');
-
-  const { GATSBY_INITIATIVES_API: api } = process.env;
-  const hasLogo = logo && logo.id && logo.mimeType;
-
-  useEffect(() => {
-    if (hasLogo) {
-      axios
-        .get(`${api}/register/logo/${logo.id}`, {
-          responseType: 'arraybuffer',
-        })
-        .then(r => {
-          const data = Buffer.from(r.data, 'binary').toString('base64');
-          setLogoData(data);
-        })
-        .catch(e => {
-          console.error(`Failed to fetch logo ${logo.id}`, e);
-        });
-    }
-  }, []);
-
-  const background = hasLogo
-    ? `data:${logo.mimeType};base64,${logoData}`
-    : defaultImage;
 
   return (
     <article className="ecl-card">
       <header className="ecl-card__header">
-        <span className="ecl-tag ecl-u-f-r eci-tag">
-          {upperCaseFirstChar(status)}
-        </span>
+        <span className="ecl-tag ecl-u-f-r eci-tag">{status}</span>
         <div
           role="img"
           className="ecl-card__image"
@@ -88,12 +65,7 @@ Card.propTypes = {
   status: PropTypes.string,
   totalSupporters: PropTypes.number,
   supportLink: PropTypes.string,
-  logo: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    mimeType: PropTypes.string,
-    size: PropTypes.number,
-  }),
+  background: PropTypes.string,
 };
 
 export default Card;

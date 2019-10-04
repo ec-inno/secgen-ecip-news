@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardImpl displays custom background image when logo is provided 1`] = `
+<div>
+  <article
+    class="ecl-card"
+  >
+    <header
+      class="ecl-card__header"
+    >
+      <span
+        class="ecl-tag ecl-u-f-r eci-tag"
+      >
+        Test status
+      </span>
+      <div
+        aria-label="Test title"
+        class="ecl-card__image"
+        role="img"
+        style="background-image: url(data:image/jpeg;base64,undefined);"
+      />
+      <h1
+        class="ecl-card__title"
+      >
+        <a
+          aria-label="Test title"
+          class="ecl-link ecl-link--standalone"
+          href="#"
+          level="1"
+        >
+          Test title
+        </a>
+      </h1>
+    </header>
+    <section
+      class="ecl-card__body"
+    >
+      <p
+        class="ecl-u-type-paragraph ecl-u-mv-none"
+      >
+        1000
+         
+        supporters
+      </p>
+      <ul
+        class="ecl-card__link-container"
+      >
+        <li
+          class="ecl-card__link-item"
+        >
+          <a
+            class="ecl-card__link ecl-link ecl-link--standalone"
+            href="#"
+            target="_blank"
+          >
+            Support this initiative
+          </a>
+        </li>
+      </ul>
+    </section>
+  </article>
+</div>
+`;
+
+exports[`CardImpl render even on missing input parameters 1`] = `
+<div>
+  <article
+    class="ecl-card"
+  >
+    <header
+      class="ecl-card__header"
+    >
+      <span
+        class="ecl-tag ecl-u-f-r eci-tag"
+      />
+      <div
+        class="ecl-card__image"
+        role="img"
+        style="background-image: url(file);"
+      />
+      <h1
+        class="ecl-card__title"
+      >
+        <a
+          class="ecl-link ecl-link--standalone"
+          level="1"
+        />
+      </h1>
+    </header>
+    <section
+      class="ecl-card__body"
+    >
+      <p
+        class="ecl-u-type-paragraph ecl-u-mv-none"
+      >
+         
+        supporters
+      </p>
+    </section>
+  </article>
+</div>
+`;
+
+exports[`CardImpl renders default image when logo is not provided 1`] = `
+<div>
+  <article
+    class="ecl-card"
+  >
+    <header
+      class="ecl-card__header"
+    >
+      <span
+        class="ecl-tag ecl-u-f-r eci-tag"
+      >
+        TEST status
+      </span>
+      <div
+        aria-label="Test title"
+        class="ecl-card__image"
+        role="img"
+        style="background-image: url(file);"
+      />
+      <h1
+        class="ecl-card__title"
+      >
+        <a
+          aria-label="Test title"
+          class="ecl-link ecl-link--standalone"
+          href="#"
+          level="1"
+        >
+          Test title
+        </a>
+      </h1>
+    </header>
+    <section
+      class="ecl-card__body"
+    >
+      <p
+        class="ecl-u-type-paragraph ecl-u-mv-none"
+      >
+        1000
+         
+        supporters
+      </p>
+      <ul
+        class="ecl-card__link-container"
+      >
+        <li
+          class="ecl-card__link-item"
+        >
+          <a
+            class="ecl-card__link ecl-link ecl-link--standalone"
+            href="#"
+            target="_blank"
+          >
+            Support this initiative
+          </a>
+        </li>
+      </ul>
+    </section>
+  </article>
+</div>
+`;

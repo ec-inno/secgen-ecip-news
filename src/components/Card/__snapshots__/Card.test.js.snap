@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card displays support link when target is provided 1`] = `
+<article
+  className="ecl-card"
+>
+  <header
+    className="ecl-card__header"
+  >
+    <span
+      className="ecl-tag ecl-u-f-r eci-tag"
+    />
+    <div
+      className="ecl-card__image"
+      role="img"
+      style={
+        Object {
+          "backgroundImage": "url('undefined')",
+        }
+      }
+    />
+    <h1
+      className="ecl-card__title"
+    >
+      <a
+        className="ecl-link ecl-link--standalone"
+        level="1"
+      />
+    </h1>
+  </header>
+  <section
+    className="ecl-card__body"
+  >
+    <p
+      className="ecl-u-type-paragraph ecl-u-mv-none"
+    >
+       
+      supporters
+    </p>
+    <ul
+      className="ecl-card__link-container"
+    >
+      <li
+        className="ecl-card__link-item"
+      >
+        <a
+          className="ecl-card__link ecl-link ecl-link--standalone"
+          href="#"
+          target="_blank"
+        >
+          Support this initiative
+        </a>
+      </li>
+    </ul>
+  </section>
+</article>
+`;
+
+exports[`Card renders correctly 1`] = `
+<article
+  className="ecl-card"
+>
+  <header
+    className="ecl-card__header"
+  >
+    <span
+      className="ecl-tag ecl-u-f-r eci-tag"
+    />
+    <div
+      className="ecl-card__image"
+      role="img"
+      style={
+        Object {
+          "backgroundImage": "url('undefined')",
+        }
+      }
+    />
+    <h1
+      className="ecl-card__title"
+    >
+      <a
+        className="ecl-link ecl-link--standalone"
+        level="1"
+      />
+    </h1>
+  </header>
+  <section
+    className="ecl-card__body"
+  >
+    <p
+      className="ecl-u-type-paragraph ecl-u-mv-none"
+    >
+       
+      supporters
+    </p>
+  </section>
+</article>
+`;
