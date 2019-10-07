@@ -137,9 +137,9 @@ const createPages = async ({ graphql, actions }) => {
 
       // Create news sections with paginations for each language.
       const items = newsPerLanguage[language];
-      const numPages = items ? Math.ceil(items.length / itemsPerPage) : 1;
+      const pagesCount = items ? Math.ceil(items.length / itemsPerPage) : 1;
 
-      Array.from({ length: numPages }).forEach((_, i) => {
+      Array.from({ length: pagesCount }).forEach((_, i) => {
         createPage({
           path: i === 0 ? `/${language}/news` : `/${language}/news/${i + 1}`,
           component: path.resolve('./src/templates/news-pagination.jsx'),
@@ -154,10 +154,8 @@ const createPages = async ({ graphql, actions }) => {
             limit: itemsPerPage,
             skip: i * itemsPerPage,
             pagination: {
-              itemsNumber: items ? items.length : 0,
-              numPages,
-              itemsPerPage,
-              pageNumber: i,
+              pagesCount,
+              pageCurrent: i,
             },
           },
         });

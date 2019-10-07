@@ -7,27 +7,18 @@ import Head from '../components/Head';
 import LinkExternal from '../components/Link/LinkEcl';
 import Pagination from '../components/Pagination/PaginationInternal';
 
-const News = ({
-  data,
-  pageContext: {
-    locale,
-    pagination: { itemsNumber, numPages, itemsPerPage, pageNumber },
-  },
-}) => {
+const News = ({ data, pageContext: { locale, pagination } }) => {
   const { t } = useTranslation();
 
-  console.log('{ itemsNumber, numPages,itemsPerPage, pageNumber }', {
-    itemsNumber,
-    numPages,
-    itemsPerPage,
-    pageNumber,
-  });
-
+  /**
+   * Prepare pagination.
+   */
   const items = [];
+  const { pagesCount, pageCurrent } = pagination;
   const section = `/${locale}/news`;
 
-  if (pageNumber !== 0) {
-    const previous = pageNumber === 1 ? '' : `/${pageNumber}`;
+  if (pageCurrent !== 0) {
+    const previous = pageCurrent === 1 ? '' : `/${pageCurrent}`;
 
     items.push({
       isPrevious: true,
@@ -46,12 +37,12 @@ const News = ({
     });
   }
 
-  for (let i = 0; i < numPages; i += 1) {
+  for (let i = 0; i < pagesCount; i += 1) {
     const displayNum = i + 1;
     const label = String(displayNum);
-    const href = pageNumber === 1 ? section : `${section}/${displayNum}`;
+    const href = pageCurrent === 1 ? section : `${section}/${displayNum}`;
 
-    if (i === pageNumber) {
+    if (i === pageCurrent) {
       items.push({
         isCurrent: true,
         ariaLabel: `${t('Page')} ${label}`,
@@ -69,8 +60,8 @@ const News = ({
     }
   }
 
-  if (pageNumber >= 0 && numPages !== pageNumber + 1) {
-    const next = pageNumber === 0 ? 2 : pageNumber + 2;
+  if (pageCurrent >= 0 && pagesCount !== pageCurrent + 1) {
+    const next = pageCurrent === 0 ? 2 : pageCurrent + 2;
 
     items.push({
       isNext: true,
@@ -89,8 +80,10 @@ const News = ({
     });
   }
 
+  /**
+   * Prepare news.
+   */
   const { edges: newsItems } = data.allNodeOeNews;
-
   const hasNews = Object.keys(newsItems).length !== 0;
 
   return (
@@ -189,11 +182,7 @@ const News = ({
                       </Fragment>
                     );
                   })}
-                  <Pagination
-                    label={t('Browse news')}
-                    items={items}
-                    linksAreInternal={true}
-                  />
+                  <Pagination label={t('Browse news')} items={items} />
                 </div>
               </>
             )}
