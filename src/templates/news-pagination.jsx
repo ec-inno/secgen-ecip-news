@@ -1,20 +1,93 @@
 import React, { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import slugify from 'slugify';
 
 import Head from '../components/Head';
+import LinkExternal from '../components/Link/LinkEcl';
+import Pagination from '../components/Pagination/PaginationInternal';
 
-const News = ({ data, pageContext }) => {
+const News = ({
+  data,
+  pageContext: {
+    locale,
+    pagination: { itemsNumber, numPages, itemsPerPage, pageNumber },
+  },
+}) => {
   const { t } = useTranslation();
 
-  const { currentPage, numPages, locale } = pageContext;
-  const pageRoot = `/${locale}/news/`;
-  const isFirst = currentPage === 1;
-  const isLast = currentPage === numPages;
-  const prevPage =
-    currentPage - 1 === 1 ? pageRoot : pageRoot + (currentPage - 1).toString();
-  const nextPage = pageRoot + (currentPage + 1).toString();
+  console.log('{ itemsNumber, numPages,itemsPerPage, pageNumber }', {
+    itemsNumber,
+    numPages,
+    itemsPerPage,
+    pageNumber,
+  });
+
+  const items = [];
+  const section = `/${locale}/news`;
+
+  if (pageNumber !== 0) {
+    const previous = pageNumber === 1 ? '' : `/${pageNumber}`;
+
+    items.push({
+      isPrevious: true,
+      ariaLabel: t('Go to previous page'),
+      link: {
+        variant: 'standalone',
+        href: `${section}${previous}`,
+        label: t('Previous'),
+        iconPosition: 'before',
+        icon: {
+          shape: 'ui--corner-arrow',
+          size: 'xs',
+          transform: 'rotate-270',
+        },
+      },
+    });
+  }
+
+  for (let i = 0; i < numPages; i += 1) {
+    const displayNum = i + 1;
+    const label = String(displayNum);
+    const href = pageNumber === 1 ? section : `${section}/${displayNum}`;
+
+    if (i === pageNumber) {
+      items.push({
+        isCurrent: true,
+        ariaLabel: `${t('Page')} ${label}`,
+        label,
+      });
+    } else {
+      items.push({
+        ariaLabel: `${t('Go to page')} ${label}`,
+        link: {
+          variant: 'standalone',
+          href,
+          label,
+        },
+      });
+    }
+  }
+
+  if (pageNumber >= 0 && numPages !== pageNumber + 1) {
+    const next = pageNumber === 0 ? 2 : pageNumber + 2;
+
+    items.push({
+      isNext: true,
+      ariaLabel: t('Go to next page'),
+      link: {
+        variant: 'standalone',
+        href: `${section}/${next}`,
+        label: t('Next'),
+        iconPosition: 'after',
+        icon: {
+          shape: 'ui--corner-arrow',
+          size: 'xs',
+          transform: 'rotate-90',
+        },
+      },
+    });
+  }
 
   const { edges: newsItems } = data.allNodeOeNews;
 
@@ -57,12 +130,12 @@ const News = ({ data, pageContext }) => {
                             key={i}
                             className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
                           >
-                            <a
+                            <LinkExternal
+                              label={title}
                               href={`#${slugify(title, { lower: true })}`}
-                              className="ecl-link ecl-link--standalone ecl-u-d-block"
-                            >
-                              {title}
-                            </a>
+                              variant="standalone"
+                              className="ecl-u-d-block"
+                            />
                           </li>
                         );
                       })}
@@ -70,18 +143,6 @@ const News = ({ data, pageContext }) => {
                   </nav>
                 </div>
                 <div className="ecl-col-12 ecl-col-sm-9">
-                  {!isFirst && (
-                    <Link to={prevPage} rel="prev">
-                      {'← '}
-                      {t('Previous page')}
-                    </Link>
-                  )}
-                  {!isLast && (
-                    <Link to={nextPage} rel="next">
-                      {' →'}
-                      {t('Next page')}
-                    </Link>
-                  )}
                   {newsItems.map((item, i) => {
                     const { node } = item;
                     const {
@@ -118,14 +179,21 @@ const News = ({ data, pageContext }) => {
                           <p className="ecl-u-type-paragraph">
                             {t('News source')}
                             {': '}
-                            <Link to={field_source.uri}>
-                              {field_source.uri}
-                            </Link>
+                            <LinkExternal
+                              target="_blank"
+                              href={field_source.uri}
+                              label={field_source.uri}
+                            />
                           </p>
                         )}
                       </Fragment>
                     );
                   })}
+                  <Pagination
+                    label={t('Browse news')}
+                    items={items}
+                    linksAreInternal={true}
+                  />
                 </div>
               </>
             )}

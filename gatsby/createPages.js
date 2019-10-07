@@ -9,9 +9,6 @@ const createPages = async ({ graphql, actions }) => {
   const i18n = setupI18next();
   const { createPage } = actions;
 
-  const itemsPerPage = 10;
-  const newsPerLanguage = {};
-
   const result = await graphql(`
     query getDrupalContent {
       allNodeOePage {
@@ -39,13 +36,25 @@ const createPages = async ({ graphql, actions }) => {
   const oeNews = allNodeOeNews.edges;
   const oePages = allNodeOePage.edges;
 
-  // We'll start off the default (English) language.
+  /**
+   * createPage() creating individual pages for each Gatsby node.
+   */
+
+  /**
+   * Creation of static pages (OePage) happens in 2 stages:
+   * 1) Create pages for the default language
+   * 2) Create pages for translations
+   *
+   * Translations are used when provided, fallback uses default language.
+   */
+
+  // Default language pages.
   const basicPages = oePages.filter(({ node }) =>
     node.id.includes(`/${defaultLangKey}/`)
   );
 
+  // And others, non-default.
   const otherLanguages = languages.map(l => l.lang);
-  // Remove default language from the list.
   otherLanguages.splice(otherLanguages.indexOf(defaultLangKey), 1);
 
   basicPages.forEach(({ node }) => {
@@ -98,6 +107,12 @@ const createPages = async ({ graphql, actions }) => {
     });
   });
 
+  /**
+   * createPage() creating page sections of several Gatsby nodes.
+   */
+  const itemsPerPage = 10;
+  const newsPerLanguage = {};
+
   // Prepare pagination for news content type.
   oeNews.forEach(({ node }) => {
     const langcode = node.id.split('/')[1];
@@ -124,21 +139,26 @@ const createPages = async ({ graphql, actions }) => {
       const items = newsPerLanguage[language];
       const numPages = items ? Math.ceil(items.length / itemsPerPage) : 1;
 
-      /* eslint-disable-next-line compat/compat */
       Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
           path: i === 0 ? `/${language}/news` : `/${language}/news/${i + 1}`,
           component: path.resolve('./src/templates/news-pagination.jsx'),
           context: {
-            limit: itemsPerPage,
-            skip: i * itemsPerPage,
-            numPages,
-            currentPage: i + 1,
+            title: i18n.t('News'),
+            includeInSitemap: i === 0 || false,
+            languageRegex,
             locale: language,
             localeData: getLocaleData(language),
-            languageRegex,
-            includeInSitemap: i === 0 || false,
-            title: i18n.t('News'),
+
+            // Pagination
+            limit: itemsPerPage,
+            skip: i * itemsPerPage,
+            pagination: {
+              itemsNumber: items ? items.length : 0,
+              numPages,
+              itemsPerPage,
+              pageNumber: i,
+            },
           },
         });
       });
@@ -148,11 +168,11 @@ const createPages = async ({ graphql, actions }) => {
         path: `/${language}/faq`,
         component: path.resolve('./src/templates/faq-page.jsx'),
         context: {
+          title: i18n.t('FAQ'),
+          includeInSitemap: true,
+          languageRegex,
           locale: language,
           localeData: getLocaleData(language),
-          languageRegex,
-          includeInSitemap: true,
-          title: i18n.t('FAQ'),
         },
       });
     });
