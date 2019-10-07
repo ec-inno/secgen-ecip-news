@@ -47,6 +47,24 @@ Having the project running, you will be able to reach the following:
 - Website: `http://localhost:8000/`
 - GraphiQL IDE: `http://localhost:8000/___graphql`
 
+## Refresh source data
+
+By default, it's necessary to restart the project (re-run `yarn start`) when source data change.
+
+There's is an environment variable `ENABLE_GATSBY_REFRESH_ENDPOINT` which could be used to save time from restarts in the following way:
+
+```sh
+ENABLE_GATSBY_REFRESH_ENDPOINT=true yarn start
+```
+
+Having started the project with this flag, Gatsby will expose an `/__refresh` endpoint through which sourced content can be refreshed without restarting the whole build process.
+
+A simple way to refresh content would be:
+
+```sh
+curl -X POST http://localhost:8000/__refresh
+```
+
 ## Building the site
 
 - Test: `yarn build:test` (draft content)
