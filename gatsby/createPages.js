@@ -2,6 +2,8 @@ const path = require('path');
 const has = require('lodash/has');
 
 const { languages, defaultLangKey } = require('../languages');
+
+const getNodesPerLanguage = require('../src/utils/getNodesPerLanguage');
 const getLocaleData = require('../src/utils/getLocaleData');
 const setupI18next = require('../src/i18n/setupI18nextFsSyncBackend');
 
@@ -26,6 +28,9 @@ const createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
+            path {
+              langcode
+            }
           }
         }
       }
@@ -111,24 +116,8 @@ const createPages = async ({ graphql, actions }) => {
    * createPage() creating page sections of several Gatsby nodes.
    */
   const itemsPerPage = 10;
-  const newsPerLanguage = {};
+  const newsPerLanguage = getNodesPerLanguage(oeNews, defaultLangKey);
 
-  // Prepare pagination for news content type.
-  oeNews.forEach(({ node }) => {
-    const langcode = node.id.split('/')[1];
-
-    if (!newsPerLanguage[langcode]) {
-      newsPerLanguage[langcode] = [];
-    }
-
-    const nodeExists = newsPerLanguage[langcode].find(
-      n => n.id === node.id && n.path.langcode === langcode
-    );
-
-    if (!nodeExists) newsPerLanguage[langcode].push(node);
-  });
-
-  // Create per-language pages containing collections of nodes.
   languages
     .map(l => l.lang)
     .forEach(language => {

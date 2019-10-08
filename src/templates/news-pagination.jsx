@@ -40,7 +40,6 @@ const News = ({ data, pageContext: { locale, pagination } }) => {
   for (let i = 0; i < pagesCount; i += 1) {
     const displayNum = i + 1;
     const label = String(displayNum);
-    const href = pageCurrent === 1 ? section : `${section}/${displayNum}`;
 
     if (i === pageCurrent) {
       items.push({
@@ -53,7 +52,7 @@ const News = ({ data, pageContext: { locale, pagination } }) => {
         ariaLabel: `${t('Go to page')} ${label}`,
         link: {
           variant: 'standalone',
-          href,
+          href: displayNum === 1 ? section : `/${section}/${displayNum}`,
           label,
         },
       });
