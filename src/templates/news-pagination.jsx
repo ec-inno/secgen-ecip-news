@@ -60,7 +60,7 @@ const News = ({ data, pageContext: { locale, pagination } }) => {
   }
 
   if (pagesCount !== pageCurrent + 1) {
-    const next = pageCurrent === 0 ? 2 : pageCurrent + 2;
+    const next = pageCurrent === 0 ? 2 : pageCurrent + 2; // /news === /news/1
 
     items.push({
       isNext: true,
