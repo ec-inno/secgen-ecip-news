@@ -3,9 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
 import slugify from 'slugify';
 
+import getPaginationItems from '@eci/utils/getPaginationItems';
+
 import Head from '../components/Head';
 import LinkExternal from '../components/Link/LinkEcl';
-import Pagination from '../components/Pagination/PaginationInternal';
+import LinkInternal from '../components/Link/LinkGatsby';
+import Pagination from '../components/Pagination/Pagination';
 
 const News = ({ data, pageContext: { locale, pagination } }) => {
   const { t } = useTranslation();
@@ -13,71 +16,9 @@ const News = ({ data, pageContext: { locale, pagination } }) => {
   /**
    * Prepare pagination.
    */
-  const items = [];
   const { pagesCount, pageCurrent } = pagination;
-  const section = `/${locale}/news`;
-
-  if (pageCurrent !== 0) {
-    const previous = pageCurrent === 1 ? '' : `/${pageCurrent}`;
-
-    items.push({
-      isPrevious: true,
-      ariaLabel: t('Go to previous page'),
-      link: {
-        variant: 'standalone',
-        href: `${section}${previous}`,
-        label: t('Previous'),
-        iconPosition: 'before',
-        icon: {
-          shape: 'ui--corner-arrow',
-          size: 'xs',
-          transform: 'rotate-270',
-        },
-      },
-    });
-  }
-
-  for (let i = 0; i < pagesCount; i += 1) {
-    const displayNum = i + 1;
-    const label = String(displayNum);
-
-    if (i === pageCurrent) {
-      items.push({
-        isCurrent: true,
-        ariaLabel: `${t('Page')} ${label}`,
-        label,
-      });
-    } else {
-      items.push({
-        ariaLabel: `${t('Go to page')} ${label}`,
-        link: {
-          variant: 'standalone',
-          href: displayNum === 1 ? section : `/${section}/${displayNum}`,
-          label,
-        },
-      });
-    }
-  }
-
-  if (pagesCount !== pageCurrent + 1) {
-    const next = pageCurrent === 0 ? 2 : pageCurrent + 2; // /news === /news/1
-
-    items.push({
-      isNext: true,
-      ariaLabel: t('Go to next page'),
-      link: {
-        variant: 'standalone',
-        href: `${section}/${next}`,
-        label: t('Next'),
-        iconPosition: 'after',
-        icon: {
-          shape: 'ui--corner-arrow',
-          size: 'xs',
-          transform: 'rotate-90',
-        },
-      },
-    });
-  }
+  const sectionBase = `/${locale}/news`;
+  const items = getPaginationItems({ pagesCount, pageCurrent, sectionBase, t });
 
   /**
    * Prepare news.
@@ -181,7 +122,13 @@ const News = ({ data, pageContext: { locale, pagination } }) => {
                       </Fragment>
                     );
                   })}
-                  <Pagination label={t('Browse news')} items={items} />
+                  {items.length > 1 && (
+                    <Pagination
+                      label={t('Browse news')}
+                      items={items}
+                      linkComponent={LinkInternal}
+                    />
+                  )}
                 </div>
               </>
             )}
