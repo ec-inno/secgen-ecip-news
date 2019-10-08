@@ -2,15 +2,14 @@ const path = require('path');
 const has = require('lodash/has');
 
 const { languages, defaultLangKey } = require('../languages');
+
+const getNodesPerLanguage = require('../src/utils/getNodesPerLanguage');
 const getLocaleData = require('../src/utils/getLocaleData');
 const setupI18next = require('../src/i18n/setupI18nextFsSyncBackend');
 
 const createPages = async ({ graphql, actions }) => {
   const i18n = setupI18next();
   const { createPage } = actions;
-
-  const itemsPerPage = 10;
-  const newsPerLanguage = {};
 
   const result = await graphql(`
     query getDrupalContent {
@@ -29,6 +28,9 @@ const createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
+            path {
+              langcode
+            }
           }
         }
       }
@@ -39,13 +41,25 @@ const createPages = async ({ graphql, actions }) => {
   const oeNews = allNodeOeNews.edges;
   const oePages = allNodeOePage.edges;
 
-  // We'll start off the default (English) language.
+  /**
+   * createPage() creating individual pages for each Gatsby node.
+   */
+
+  /**
+   * Creation of static pages (OePage) happens in 2 stages:
+   * 1) Create pages for the default language
+   * 2) Create pages for translations
+   *
+   * Translations are used when provided, fallback uses default language.
+   */
+
+  // Default language pages.
   const basicPages = oePages.filter(({ node }) =>
     node.id.includes(`/${defaultLangKey}/`)
   );
 
+  // And others, non-default.
   const otherLanguages = languages.map(l => l.lang);
-  // Remove default language from the list.
   otherLanguages.splice(otherLanguages.indexOf(defaultLangKey), 1);
 
   basicPages.forEach(({ node }) => {
@@ -98,22 +112,12 @@ const createPages = async ({ graphql, actions }) => {
     });
   });
 
-  // Prepare pagination for news content type.
-  oeNews.forEach(({ node }) => {
-    const langcode = node.id.split('/')[1];
+  /**
+   * createPage() creating page sections of several Gatsby nodes.
+   */
+  const itemsPerPage = 10;
+  const newsPerLanguage = getNodesPerLanguage(oeNews, defaultLangKey);
 
-    if (!newsPerLanguage[langcode]) {
-      newsPerLanguage[langcode] = [];
-    }
-
-    const nodeExists = newsPerLanguage[langcode].find(
-      n => n.id === node.id && n.path.langcode === langcode
-    );
-
-    if (!nodeExists) newsPerLanguage[langcode].push(node);
-  });
-
-  // Create per-language pages containing collections of nodes.
   languages
     .map(l => l.lang)
     .forEach(language => {
@@ -122,23 +126,26 @@ const createPages = async ({ graphql, actions }) => {
 
       // Create news sections with paginations for each language.
       const items = newsPerLanguage[language];
-      const numPages = items ? Math.ceil(items.length / itemsPerPage) : 1;
+      const pagesCount = items ? Math.ceil(items.length / itemsPerPage) : 1;
 
-      /* eslint-disable-next-line compat/compat */
-      Array.from({ length: numPages }).forEach((_, i) => {
+      Array.from({ length: pagesCount }).forEach((_, i) => {
         createPage({
           path: i === 0 ? `/${language}/news` : `/${language}/news/${i + 1}`,
           component: path.resolve('./src/templates/news-pagination.jsx'),
           context: {
-            limit: itemsPerPage,
-            skip: i * itemsPerPage,
-            numPages,
-            currentPage: i + 1,
+            title: i18n.t('News'),
+            includeInSitemap: i === 0 || false,
+            languageRegex,
             locale: language,
             localeData: getLocaleData(language),
-            languageRegex,
-            includeInSitemap: i === 0 || false,
-            title: i18n.t('News'),
+
+            // Pagination
+            limit: itemsPerPage,
+            skip: i * itemsPerPage,
+            pagination: {
+              pagesCount,
+              pageCurrent: i,
+            },
           },
         });
       });
@@ -148,11 +155,11 @@ const createPages = async ({ graphql, actions }) => {
         path: `/${language}/faq`,
         component: path.resolve('./src/templates/faq-page.jsx'),
         context: {
+          title: i18n.t('FAQ'),
+          includeInSitemap: true,
+          languageRegex,
           locale: language,
           localeData: getLocaleData(language),
-          languageRegex,
-          includeInSitemap: true,
-          title: i18n.t('FAQ'),
         },
       });
     });

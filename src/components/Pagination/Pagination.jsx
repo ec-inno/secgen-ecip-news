@@ -4,7 +4,9 @@ import classnames from 'classnames';
 
 import Link from '../Link/LinkEcl';
 
-const Pagination = ({ label, items, className, ...props }) => {
+const Pagination = ({ label, items, className, linkComponent, ...props }) => {
+  const LinkComp = linkComponent || Link;
+
   const classNames = classnames(className, 'ecl-pagination');
 
   return (
@@ -22,7 +24,7 @@ const Pagination = ({ label, items, className, ...props }) => {
                 })}
               >
                 {item.link ? (
-                  <Link
+                  <LinkComp
                     {...item.link}
                     className="ecl-pagination__link"
                     aria-label={item.ariaLabel}

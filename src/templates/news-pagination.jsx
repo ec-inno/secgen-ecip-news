@@ -1,23 +1,29 @@
 import React, { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import slugify from 'slugify';
 
-import Head from '../components/Head';
+import getPaginationItems from '@eci/utils/getPaginationItems';
 
-const News = ({ data, pageContext }) => {
+import Head from '../components/Head';
+import LinkExternal from '../components/Link/LinkEcl';
+import LinkInternal from '../components/Link/LinkGatsby';
+import Pagination from '../components/Pagination/Pagination';
+
+const News = ({ data, pageContext: { locale, pagination } }) => {
   const { t } = useTranslation();
 
-  const { currentPage, numPages, locale } = pageContext;
-  const pageRoot = `/${locale}/news/`;
-  const isFirst = currentPage === 1;
-  const isLast = currentPage === numPages;
-  const prevPage =
-    currentPage - 1 === 1 ? pageRoot : pageRoot + (currentPage - 1).toString();
-  const nextPage = pageRoot + (currentPage + 1).toString();
+  /**
+   * Prepare pagination.
+   */
+  const { pagesCount, pageCurrent } = pagination;
+  const sectionBase = `/${locale}/news`;
+  const items = getPaginationItems({ pagesCount, pageCurrent, sectionBase, t });
 
+  /**
+   * Prepare news.
+   */
   const { edges: newsItems } = data.allNodeOeNews;
-
   const hasNews = Object.keys(newsItems).length !== 0;
 
   return (
@@ -57,12 +63,12 @@ const News = ({ data, pageContext }) => {
                             key={i}
                             className="ecl-unordered-list__item ecl-u-type-bold ecl-u-mt-m"
                           >
-                            <a
+                            <LinkExternal
+                              label={title}
                               href={`#${slugify(title, { lower: true })}`}
-                              className="ecl-link ecl-link--standalone ecl-u-d-block"
-                            >
-                              {title}
-                            </a>
+                              variant="standalone"
+                              className="ecl-u-d-block"
+                            />
                           </li>
                         );
                       })}
@@ -70,18 +76,6 @@ const News = ({ data, pageContext }) => {
                   </nav>
                 </div>
                 <div className="ecl-col-12 ecl-col-sm-9">
-                  {!isFirst && (
-                    <Link to={prevPage} rel="prev">
-                      {'← '}
-                      {t('Previous page')}
-                    </Link>
-                  )}
-                  {!isLast && (
-                    <Link to={nextPage} rel="next">
-                      {' →'}
-                      {t('Next page')}
-                    </Link>
-                  )}
                   {newsItems.map((item, i) => {
                     const { node } = item;
                     const {
@@ -118,14 +112,23 @@ const News = ({ data, pageContext }) => {
                           <p className="ecl-u-type-paragraph">
                             {t('News source')}
                             {': '}
-                            <Link to={field_source.uri}>
-                              {field_source.uri}
-                            </Link>
+                            <LinkExternal
+                              target="_blank"
+                              href={field_source.uri}
+                              label={field_source.uri}
+                            />
                           </p>
                         )}
                       </Fragment>
                     );
                   })}
+                  {items.length > 1 && (
+                    <Pagination
+                      label={t('Browse news')}
+                      items={items}
+                      linkComponent={LinkInternal}
+                    />
+                  )}
                 </div>
               </>
             )}
