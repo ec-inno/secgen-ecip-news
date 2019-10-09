@@ -5,9 +5,7 @@ const langs = require('./languages');
 // Convert array of objects to an array of language codes.
 const languages = langs.languages.map(language => language.lang);
 
-const baseUrl = process.env.GATSBY_DRUPAL_API
-  ? process.env.GATSBY_DRUPAL_API
-  : 'http://localhost:8080/web';
+const baseUrl = process.env.GATSBY_DRUPAL_API || 'http://localhost:8080/web';
 
 module.exports = {
   // Default title and description.
@@ -24,12 +22,19 @@ module.exports = {
       resolve: '@eci/gatsby-source-drupal-jsonapi',
       options: {
         baseUrl,
-        apiBase: 'api',
         languages,
+        apiBase: 'api',
         basicAuth: {
           username: process.env.BASIC_AUTH_USERNAME,
           password: process.env.BASIC_AUTH_PASSWORD,
         },
+        entities: [
+          'node--faq',
+          'node--faq_section',
+          'node--oe_news',
+          'node--oe_page',
+          'menu',
+        ],
       },
     },
     {

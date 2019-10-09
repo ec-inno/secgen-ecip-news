@@ -18,10 +18,7 @@ module.exports = {
       'menu',
     ];
 
-    const {
-      GATSBY_DRUPAL_API: baseURL,
-      GATSBY_DRUPAL_API_OFFLINE: localhost,
-    } = process.env;
+    const { GATSBY_DRUPAL_API: baseURL } = process.env;
 
     if (!baseURL) {
       error('Cannot work without value for SITE_BASE_URL.');
@@ -32,19 +29,6 @@ module.exports = {
     const languages = getLanguages();
 
     const client = http.create({ baseURL });
-
-    const updateLinksToLocal = o => {
-      Object.keys(o).forEach(k => {
-        // Make the change.
-        if (k === 'href') {
-          o[k] = o[k].replace(baseURL, localhost);
-        }
-        // Recurse if nested.
-        if (o[k] !== null && typeof o[k] === 'object') {
-          updateLinksToLocal(o[k]);
-        }
-      });
-    };
 
     const saveData = (resourcePath, data) =>
       write(`${__dirname}/drupal_jsonapi/${resourcePath}/data.json`, data);
@@ -97,8 +81,7 @@ module.exports = {
 
             // Remove the base URL to create a local mirror of the resource.
             const resourcePath = url.replace(baseURL, '');
-            // Convert the other links inside the data for local use too.
-            updateLinksToLocal(data);
+
             // Persist it.
             saveData(resourcePath, data);
           });

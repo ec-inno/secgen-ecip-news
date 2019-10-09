@@ -72,25 +72,26 @@ curl -X POST http://localhost:8000/__refresh
 
 ## Working offline
 
-If you do not have a local Drupal installation to provide backend API, but you rather fetch information from a remote server, you might want to save API data locally:
+Ensure values for the following environment variables:
+
+```
+GATSBY_DRUPAL_API=Drupal site URL
+GATSBY_DRUPAL_API_OFFLINE=http://localhost:3000
+```
+
+### Download
 
 ```sh
 yarn eci-cli api download
 ```
 
-When you can serve the mirror through:
+### Serve
 
 ```sh
 yarn eci-cli api serve
 ```
 
-This way data from `GATSBY_DRUPAL_API` is available through `http://localhost:3000` and now you can start or build the project without depending on Drupal:
-
-```sh
-GATSBY_DRUPAL_API=http://localhost:3000 yarn start
-```
-
-Please make sure the value in this case matches the value of `GATSBY_DRUPAL_API_OFFLINE`.
+When the server is up and running and `GATSBY_DRUPAL_API_OFFLINE` is set, running `yarn start` will source Drupal content from the local mirror.
 
 ## Automation systems
 

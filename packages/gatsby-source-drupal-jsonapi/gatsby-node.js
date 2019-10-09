@@ -7,7 +7,7 @@ const getNodes = require('./lib/getNodes');
 // @see https://www.gatsbyjs.org/docs/node-apis/#sourceNodes
 exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest, reporter },
-  { apiBase, baseUrl, basicAuth, filters, headers, languages, params }
+  { apiBase, baseUrl, basicAuth, filters, headers, languages, params, entities }
 ) => {
   const { createNode } = actions;
 
@@ -15,14 +15,10 @@ exports.sourceNodes = async (
   apiBase = apiBase || 'jsonapi';
   languages = languages || [];
 
+  // Offline usage.
+  baseUrl = process.env.GATSBY_DRUPAL_API_OFFLINE || baseUrl;
+
   const nodes = [];
-  const entityTypes = [
-    'node--faq',
-    'node--faq_section',
-    'node--oe_news',
-    'node--oe_page',
-    'menu',
-  ];
 
   reporter.info('Getting content from Drupal ...');
 
@@ -40,9 +36,11 @@ exports.sourceNodes = async (
         let published = [];
         let drafts = [];
 
-        // Early exit on insufficient or edge case input.
-        if (!type || !url || type === 'self' || !entityTypes.includes(type))
-          return;
+        // Early exit on insufficient input.
+        if (!type || !url || type === 'self') return;
+
+        // Fetch data only for the specified list of entities.
+        if (!entities.includes(type)) return;
 
         const defaultEndpoint = `${baseUrl}/${apiBase}`;
         const languageEndpoint = `${baseUrl}/${language}/${apiBase}`;
@@ -50,6 +48,17 @@ exports.sourceNodes = async (
         if (url.href && !url.href.includes('skos')) {
           // Drupal's JSON:API needs corrections for its language dropping in links.
           url.href = url.href.replace(defaultEndpoint, languageEndpoint);
+
+          // When GATSBY_DRUPAL_API_OFFLINE, follow local resource links.
+          if (
+            process.env.GATSBY_DRUPAL_API &&
+            process.env.GATSBY_DRUPAL_API_OFFLINE
+          ) {
+            url.href = url.href.replace(
+              process.env.GATSBY_DRUPAL_API,
+              process.env.GATSBY_DRUPAL_API_OFFLINE
+            );
+          }
 
           published = await getLinkData(url, [], {
             filters,
