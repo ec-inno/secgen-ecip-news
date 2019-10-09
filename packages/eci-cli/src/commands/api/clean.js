@@ -7,7 +7,7 @@ module.exports = {
       system: { run },
     } = toolbox;
 
-    let folder =
+    const folder =
       options.folder ||
       process.env.DRUPAL_JSONAPI_OFFLINE_FOLDER ||
       'api/drupal/jsonapi';
