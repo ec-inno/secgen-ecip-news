@@ -1,0 +1,211 @@
+{
+  "data": [
+    {
+      "type": "node--faq_section",
+      "id": "842d6ea7-af45-4501-b1b1-e53bd3d18a4a",
+      "attributes": {
+        "drupal_internal__nid": 5,
+        "drupal_internal__vid": 17,
+        "langcode": "en",
+        "revision_timestamp": "2019-07-26T12:56:11+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "General Q&A on the European Citizens' Initiative (ECI)",
+        "created": "2019-07-26T12:55:18+00:00",
+        "changed": "2019-07-26T12:56:11+00:00",
+        "promote": false,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": null,
+        "content_translation_source": "und",
+        "content_translation_outdated": false
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/842d6ea7-af45-4501-b1b1-e53bd3d18a4a/relationships/node_type?resourceVersion=id%3A17"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/842d6ea7-af45-4501-b1b1-e53bd3d18a4a/relationships/revision_uid?resourceVersion=id%3A17"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/842d6ea7-af45-4501-b1b1-e53bd3d18a4a/relationships/uid?resourceVersion=id%3A17"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/842d6ea7-af45-4501-b1b1-e53bd3d18a4a/relationships/oe_content_content_owner?resourceVersion=id%3A17"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/842d6ea7-af45-4501-b1b1-e53bd3d18a4a/relationships/menu_link?resourceVersion=id%3A17"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/842d6ea7-af45-4501-b1b1-e53bd3d18a4a/menu_link?resourceVersion=id%3A17"
+            }
+          }
+        },
+        "field_faq_entries": {
+          "data": [
+            {
+              "type": "node--faq",
+              "id": "edd378e3-9c5d-4ef7-9f22-370d258070fe"
+            },
+            {
+              "type": "node--faq",
+              "id": "787551c2-1697-4639-bf03-b61af56ca66b"
+            }
+          ],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/842d6ea7-af45-4501-b1b1-e53bd3d18a4a/relationships/field_faq_entries?resourceVersion=id%3A17"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/842d6ea7-af45-4501-b1b1-e53bd3d18a4a/field_faq_entries?resourceVersion=id%3A17"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/842d6ea7-af45-4501-b1b1-e53bd3d18a4a?resourceVersion=id%3A17"
+        }
+      }
+    },
+    {
+      "type": "node--faq_section",
+      "id": "43527eb1-baf7-405c-8f55-740170831e74",
+      "attributes": {
+        "drupal_internal__nid": 8,
+        "drupal_internal__vid": 24,
+        "langcode": "en",
+        "revision_timestamp": "2019-07-26T12:57:04+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Registration of the proposed initiative",
+        "created": "2019-07-26T12:56:17+00:00",
+        "changed": "2019-07-26T12:57:04+00:00",
+        "promote": false,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": null,
+        "content_translation_source": "und",
+        "content_translation_outdated": false
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/43527eb1-baf7-405c-8f55-740170831e74/relationships/node_type?resourceVersion=id%3A24"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/43527eb1-baf7-405c-8f55-740170831e74/relationships/revision_uid?resourceVersion=id%3A24"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/43527eb1-baf7-405c-8f55-740170831e74/relationships/uid?resourceVersion=id%3A24"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/43527eb1-baf7-405c-8f55-740170831e74/relationships/oe_content_content_owner?resourceVersion=id%3A24"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/43527eb1-baf7-405c-8f55-740170831e74/relationships/menu_link?resourceVersion=id%3A24"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/43527eb1-baf7-405c-8f55-740170831e74/menu_link?resourceVersion=id%3A24"
+            }
+          }
+        },
+        "field_faq_entries": {
+          "data": [
+            {
+              "type": "node--faq",
+              "id": "6919bc13-8095-4295-a640-f0ab9697ce4f"
+            },
+            {
+              "type": "node--faq",
+              "id": "0de54ccd-85fb-4c7f-87c5-484417101657"
+            }
+          ],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/43527eb1-baf7-405c-8f55-740170831e74/relationships/field_faq_entries?resourceVersion=id%3A24"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/43527eb1-baf7-405c-8f55-740170831e74/field_faq_entries?resourceVersion=id%3A24"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section/43527eb1-baf7-405c-8f55-740170831e74?resourceVersion=id%3A24"
+        }
+      }
+    }
+  ],
+  "jsonapi": {
+    "version": "1.0",
+    "meta": {
+      "links": {
+        "self": {
+          "href": "http://jsonapi.org/format/1.0/"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/da/api/node/faq_section"
+    }
+  }
+}

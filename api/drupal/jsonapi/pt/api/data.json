@@ -1,0 +1,36 @@
+{
+  "jsonapi": {
+    "version": "1.0",
+    "meta": {
+      "links": {
+        "self": {
+          "href": "http://jsonapi.org/format/1.0/"
+        }
+      }
+    }
+  },
+  "data": [],
+  "links": {
+    "menu": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/pt/api/menu"
+    },
+    "node--faq": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/pt/api/node/faq"
+    },
+    "node--faq_section": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/pt/api/node/faq_section"
+    },
+    "node--oe_news": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/pt/api/node/oe_news"
+    },
+    "node--oe_page": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/pt/api/node/oe_page"
+    },
+    "self": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/pt/api"
+    },
+    "workflow--workflow": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/pt/api/workflow/workflow"
+    }
+  }
+}

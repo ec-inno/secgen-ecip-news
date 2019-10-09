@@ -69,7 +69,6 @@ yarn-error.log
 .yarn-integrity
 
 .netlify
-drupal_jsonapi
 
 # Generated on prod/test bulid in CI
 i18n_exports

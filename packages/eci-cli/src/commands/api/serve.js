@@ -5,12 +5,15 @@ module.exports = {
       print: { info, error },
     } = toolbox;
 
-    const { GATSBY_DRUPAL_API_OFFLINE: localhost } = process.env;
+    const {
+      GATSBY_DRUPAL_API_OFFLINE: localhost,
+      DRUPAL_JSONAPI_OFFLINE_FOLDER: folder,
+    } = process.env;
     const [protocol, hostname, port] = localhost.split(':');
     const http = require('http');
 
-    if (!localhost) {
-      error('Cannot work without value for GATSBY_DRUPAL_API_OFFLINE.');
+    if (!localhost || !folder) {
+      error('Missing required environment variable.');
     }
 
     if (!hostname.includes('localhost')) {
@@ -26,10 +29,10 @@ module.exports = {
       res.statusCode = 200;
 
       try {
-        const data = require(`${__dirname}/drupal_jsonapi/${req.url}/data.json`);
+        const data = require(`${folder}/${req.url}/data.json`);
         res.end(JSON.stringify(data));
       } catch (e) {
-        error(e.message);
+        error(`No data to mirror ${req.url}`);
         res.end('');
       }
     });

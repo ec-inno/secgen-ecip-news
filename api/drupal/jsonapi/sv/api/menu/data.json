@@ -1,0 +1,51 @@
+{
+  "data": [
+    {
+      "type": "menu",
+      "id": "3e8acd0e-21e0-4eae-ac78-8e8a1146f272",
+      "attributes": {
+        "drupal_internal__id": 2,
+        "langcode": "en",
+        "bundle": "menu_link_content",
+        "enabled": true,
+        "title": "Home",
+        "description": null,
+        "menu_name": "main",
+        "link": {
+          "uri": "internal:/",
+          "title": "",
+          "options": []
+        },
+        "external": false,
+        "rediscover": true,
+        "weight": 0,
+        "expanded": false,
+        "parent": null,
+        "changed": "2019-09-23T14:13:56+00:00",
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "fetched_alias": "/multisite/ecip/sv"
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/menu/3e8acd0e-21e0-4eae-ac78-8e8a1146f272"
+        }
+      }
+    }
+  ],
+  "jsonapi": {
+    "version": "1.0",
+    "meta": {
+      "links": {
+        "self": {
+          "href": "http://jsonapi.org/format/1.0/"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/menu"
+    }
+  }
+}

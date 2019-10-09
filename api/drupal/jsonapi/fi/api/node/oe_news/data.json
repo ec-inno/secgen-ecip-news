@@ -1,0 +1,154 @@
+{
+  "data": [
+    {
+      "type": "node--oe_news",
+      "id": "07baf477-add9-4c83-bd89-9fd2f748a9a5",
+      "attributes": {
+        "drupal_internal__nid": 44,
+        "drupal_internal__vid": 251,
+        "langcode": "en",
+        "revision_timestamp": "2019-10-09T11:27:32+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Launching European citizens’ initiatives just got easier",
+        "created": "2019-10-09T11:17:00+00:00",
+        "changed": "2019-10-09T11:19:32+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": null,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": {
+          "alias": "/news/launching-european-citizens-initiatives-just-got-easier",
+          "pid": 41,
+          "langcode": "en"
+        },
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "body": {
+          "value": "<p>The European Parliament and the Council adopted changes to the European Citizens’ Initiative on 17 April that will make it easier to launch such actions and gather signatures thanks to a new free, central online system. The updated rules – which take effect on 1 January 2020 – also include more help for organisers, translation of initiatives into all EU languages within certain limits and more flexibility on starting dates.</p>\r\n",
+          "format": "basic_html",
+          "processed": "The European Parliament and the Council adopted changes to the European Citizens’ Initiative on 17 April that will make it easier to launch such actions and gather signatures thanks to a new free, central online system. The updated rules – which take effect on 1 January 2020 – also include more help for organisers, translation of initiatives into all EU languages within certain limits and more flexibility on starting dates.",
+          "summary": ""
+        },
+        "field_source": {
+          "uri": "http://ec.europa.eu/citizens-initiative/public/welcome",
+          "title": "European Citizens' Initiative",
+          "options": []
+        },
+        "oe_publication_date": "2019-10-09",
+        "oe_related_links": [],
+        "oe_summary": {
+          "value": "<p>The European Parliament and the Council adopted changes to the European Citizens’ Initiative on 17 April that will make it easier to launch such actions and gather signatures thanks to a new free, central online system.</p>\r\n",
+          "format": "basic_html",
+          "processed": "The European Parliament and the Council adopted changes to the European Citizens’ Initiative on 17 April that will make it easier to launch such actions and gather signatures thanks to a new free, central online system."
+        },
+        "oe_teaser": {
+          "value": "<p>The European Parliament and the Council adopted changes to the European Citizens’ Initiative on 17 April.</p>\r\n",
+          "format": "basic_html",
+          "processed": "The European Parliament and the Council adopted changes to the European Citizens’ Initiative on 17 April."
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/relationships/node_type?resourceVersion=id%3A251"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/relationships/revision_uid?resourceVersion=id%3A251"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/relationships/uid?resourceVersion=id%3A251"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/relationships/oe_content_content_owner?resourceVersion=id%3A251"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/relationships/menu_link?resourceVersion=id%3A251"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/menu_link?resourceVersion=id%3A251"
+            }
+          }
+        },
+        "oe_author": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/relationships/oe_author?resourceVersion=id%3A251"
+            }
+          }
+        },
+        "oe_news_featured_media": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/relationships/oe_news_featured_media?resourceVersion=id%3A251"
+            }
+          }
+        },
+        "oe_news_location": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/relationships/oe_news_location?resourceVersion=id%3A251"
+            }
+          }
+        },
+        "oe_subject": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5/relationships/oe_subject?resourceVersion=id%3A251"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news/07baf477-add9-4c83-bd89-9fd2f748a9a5?resourceVersion=id%3A251"
+        }
+      }
+    }
+  ],
+  "jsonapi": {
+    "version": "1.0",
+    "meta": {
+      "links": {
+        "self": {
+          "href": "http://jsonapi.org/format/1.0/"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/fi/api/node/oe_news"
+    }
+  }
+}

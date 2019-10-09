@@ -1,9 +1,8 @@
 require('dotenv').config();
 
-const langs = require('./languages');
-
-// Convert array of objects to an array of language codes.
-const languages = langs.languages.map(language => language.lang);
+// Project-wide configurations.
+const entities = require('./config/entities.json');
+const languages = require('./config/languages.json');
 
 const baseUrl = process.env.GATSBY_DRUPAL_API || 'http://localhost:8080/web';
 
@@ -22,19 +21,13 @@ module.exports = {
       resolve: '@eci/gatsby-source-drupal-jsonapi',
       options: {
         baseUrl,
+        entities,
         languages,
         apiBase: 'api',
         basicAuth: {
           username: process.env.BASIC_AUTH_USERNAME,
           password: process.env.BASIC_AUTH_PASSWORD,
         },
-        entities: [
-          'node--faq',
-          'node--faq_section',
-          'node--oe_news',
-          'node--oe_page',
-          'menu',
-        ],
       },
     },
     {
@@ -42,7 +35,7 @@ module.exports = {
       options: {
         name: "European citizens' initiative",
         short_name: "European citizens' initiative",
-        start_url: `/`,
+        start_url: '/',
         background_color: '#034ea1',
         theme_color: '#034ea1',
         display: 'standalone',

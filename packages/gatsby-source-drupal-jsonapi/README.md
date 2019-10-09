@@ -87,26 +87,39 @@ In case there is an existing translation:
 
 ## Working offline
 
-It's possible to make a local mirror of Drupal's JSON:API:
+When combining this plugin and ECI's CLI, it's possible to make a local mirror of Drupal's JSON:API:
 
 In `.env`:
 
 ```
 GATSBY_DRUPAL_API=https://remote-drupal.site
 GATSBY_DRUPAL_API_OFFLINE=http://localhost:3000
+DRUPAL_JSONAPI_OFFLINE_FOLDER=api/drupal/jsonapi
 ```
 
 In the terminal:
 
+Start from clean slate:
+
+```sh
+yarn eci-cli api clean
 ```
-yarn eci-cli api clean // Ensure clean slate.
-yarn eci-cli api download // Mirror the whole GATSBY_DRUPAL_API JSON:API locally.
-yarn eci-cli api serve // Serve local mirror on GATSBY_DRUPAL_API_OFFLINE.
+
+Mirror `GATSBY_DRUPAL_API` locally:
+
+```sh
+yarn eci-cli api download --entitiesConfig config/entities.json --languagesConfig config/languages.json
+```
+
+Serve local mirror on `GATSBY_DRUPAL_API_OFFLINE`:
+
+```sh
+yarn eci-cli api serve
 ```
 
 In a separate session:
 
-```
+```sh
 yarn start
 ```
 

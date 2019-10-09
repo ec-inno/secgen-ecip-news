@@ -1,0 +1,923 @@
+{
+  "data": [
+    {
+      "type": "node--oe_page",
+      "id": "e22204b4-a5b1-4092-a3d0-90631b65e19f",
+      "attributes": {
+        "drupal_internal__nid": 46,
+        "drupal_internal__vid": 261,
+        "langcode": "en",
+        "revision_timestamp": "2019-10-09T11:46:04+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Contact",
+        "created": "2019-10-09T11:45:40+00:00",
+        "changed": "2019-10-09T11:46:04+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": {
+          "alias": "/contact",
+          "pid": 44,
+          "langcode": "en"
+        },
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "body": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder",
+          "summary": ""
+        },
+        "oe_related_links": [],
+        "oe_summary": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        },
+        "oe_teaser": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/e22204b4-a5b1-4092-a3d0-90631b65e19f/relationships/node_type?resourceVersion=id%3A261"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/e22204b4-a5b1-4092-a3d0-90631b65e19f/relationships/revision_uid?resourceVersion=id%3A261"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/e22204b4-a5b1-4092-a3d0-90631b65e19f/relationships/uid?resourceVersion=id%3A261"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/e22204b4-a5b1-4092-a3d0-90631b65e19f/relationships/oe_content_content_owner?resourceVersion=id%3A261"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/e22204b4-a5b1-4092-a3d0-90631b65e19f/relationships/menu_link?resourceVersion=id%3A261"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/e22204b4-a5b1-4092-a3d0-90631b65e19f/menu_link?resourceVersion=id%3A261"
+            }
+          }
+        },
+        "oe_author": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/e22204b4-a5b1-4092-a3d0-90631b65e19f/relationships/oe_author?resourceVersion=id%3A261"
+            }
+          }
+        },
+        "oe_subject": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/e22204b4-a5b1-4092-a3d0-90631b65e19f/relationships/oe_subject?resourceVersion=id%3A261"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/e22204b4-a5b1-4092-a3d0-90631b65e19f?resourceVersion=id%3A261"
+        }
+      }
+    },
+    {
+      "type": "node--oe_page",
+      "id": "20140b45-ce6a-44c0-9bf3-6ac0e6751327",
+      "attributes": {
+        "drupal_internal__nid": 47,
+        "drupal_internal__vid": 266,
+        "langcode": "en",
+        "revision_timestamp": "2019-10-09T11:47:41+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Communication material",
+        "created": "2019-10-09T11:47:03+00:00",
+        "changed": "2019-10-09T11:47:41+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": {
+          "alias": "/communication-material",
+          "pid": 45,
+          "langcode": "en"
+        },
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "body": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder",
+          "summary": ""
+        },
+        "oe_related_links": [],
+        "oe_summary": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        },
+        "oe_teaser": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/20140b45-ce6a-44c0-9bf3-6ac0e6751327/relationships/node_type?resourceVersion=id%3A266"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/20140b45-ce6a-44c0-9bf3-6ac0e6751327/relationships/revision_uid?resourceVersion=id%3A266"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/20140b45-ce6a-44c0-9bf3-6ac0e6751327/relationships/uid?resourceVersion=id%3A266"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/20140b45-ce6a-44c0-9bf3-6ac0e6751327/relationships/oe_content_content_owner?resourceVersion=id%3A266"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/20140b45-ce6a-44c0-9bf3-6ac0e6751327/relationships/menu_link?resourceVersion=id%3A266"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/20140b45-ce6a-44c0-9bf3-6ac0e6751327/menu_link?resourceVersion=id%3A266"
+            }
+          }
+        },
+        "oe_author": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/20140b45-ce6a-44c0-9bf3-6ac0e6751327/relationships/oe_author?resourceVersion=id%3A266"
+            }
+          }
+        },
+        "oe_subject": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/20140b45-ce6a-44c0-9bf3-6ac0e6751327/relationships/oe_subject?resourceVersion=id%3A266"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/20140b45-ce6a-44c0-9bf3-6ac0e6751327?resourceVersion=id%3A266"
+        }
+      }
+    },
+    {
+      "type": "node--oe_page",
+      "id": "fac8dd69-06fd-489b-91e2-51076996c283",
+      "attributes": {
+        "drupal_internal__nid": 48,
+        "drupal_internal__vid": 271,
+        "langcode": "en",
+        "revision_timestamp": "2019-10-09T11:48:42+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "How it works",
+        "created": "2019-10-09T11:48:17+00:00",
+        "changed": "2019-10-09T11:48:42+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": {
+          "alias": "/how-it-works",
+          "pid": 46,
+          "langcode": "en"
+        },
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "body": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder",
+          "summary": ""
+        },
+        "oe_related_links": [],
+        "oe_summary": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        },
+        "oe_teaser": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/fac8dd69-06fd-489b-91e2-51076996c283/relationships/node_type?resourceVersion=id%3A271"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/fac8dd69-06fd-489b-91e2-51076996c283/relationships/revision_uid?resourceVersion=id%3A271"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/fac8dd69-06fd-489b-91e2-51076996c283/relationships/uid?resourceVersion=id%3A271"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/fac8dd69-06fd-489b-91e2-51076996c283/relationships/oe_content_content_owner?resourceVersion=id%3A271"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/fac8dd69-06fd-489b-91e2-51076996c283/relationships/menu_link?resourceVersion=id%3A271"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/fac8dd69-06fd-489b-91e2-51076996c283/menu_link?resourceVersion=id%3A271"
+            }
+          }
+        },
+        "oe_author": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/fac8dd69-06fd-489b-91e2-51076996c283/relationships/oe_author?resourceVersion=id%3A271"
+            }
+          }
+        },
+        "oe_subject": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/fac8dd69-06fd-489b-91e2-51076996c283/relationships/oe_subject?resourceVersion=id%3A271"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/fac8dd69-06fd-489b-91e2-51076996c283?resourceVersion=id%3A271"
+        }
+      }
+    },
+    {
+      "type": "node--oe_page",
+      "id": "436b7fd0-60e1-4a02-a115-4a766925c952",
+      "attributes": {
+        "drupal_internal__nid": 49,
+        "drupal_internal__vid": 276,
+        "langcode": "en",
+        "revision_timestamp": "2019-10-09T11:49:57+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Regulatory framework for the European Citizens' Initiative",
+        "created": "2019-10-09T11:49:13+00:00",
+        "changed": "2019-10-09T11:49:57+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": {
+          "alias": "/how-it-works/regulatory-framework",
+          "pid": 47,
+          "langcode": "en"
+        },
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "body": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder",
+          "summary": ""
+        },
+        "oe_related_links": [],
+        "oe_summary": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        },
+        "oe_teaser": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/436b7fd0-60e1-4a02-a115-4a766925c952/relationships/node_type?resourceVersion=id%3A276"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/436b7fd0-60e1-4a02-a115-4a766925c952/relationships/revision_uid?resourceVersion=id%3A276"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/436b7fd0-60e1-4a02-a115-4a766925c952/relationships/uid?resourceVersion=id%3A276"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/436b7fd0-60e1-4a02-a115-4a766925c952/relationships/oe_content_content_owner?resourceVersion=id%3A276"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/436b7fd0-60e1-4a02-a115-4a766925c952/relationships/menu_link?resourceVersion=id%3A276"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/436b7fd0-60e1-4a02-a115-4a766925c952/menu_link?resourceVersion=id%3A276"
+            }
+          }
+        },
+        "oe_author": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/436b7fd0-60e1-4a02-a115-4a766925c952/relationships/oe_author?resourceVersion=id%3A276"
+            }
+          }
+        },
+        "oe_subject": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/436b7fd0-60e1-4a02-a115-4a766925c952/relationships/oe_subject?resourceVersion=id%3A276"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/436b7fd0-60e1-4a02-a115-4a766925c952?resourceVersion=id%3A276"
+        }
+      }
+    },
+    {
+      "type": "node--oe_page",
+      "id": "8efdc9eb-7be2-4eac-bcf2-2361430fd98f",
+      "attributes": {
+        "drupal_internal__nid": 53,
+        "drupal_internal__vid": 293,
+        "langcode": "en",
+        "revision_timestamp": "2019-10-09T12:10:47+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Data protection",
+        "created": "2019-10-09T12:07:44+00:00",
+        "changed": "2019-10-09T12:10:47+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": {
+          "alias": "/how-it-works/data-protection",
+          "pid": 51,
+          "langcode": "en"
+        },
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "body": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder",
+          "summary": ""
+        },
+        "oe_related_links": [],
+        "oe_summary": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        },
+        "oe_teaser": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/8efdc9eb-7be2-4eac-bcf2-2361430fd98f/relationships/node_type?resourceVersion=id%3A293"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/8efdc9eb-7be2-4eac-bcf2-2361430fd98f/relationships/revision_uid?resourceVersion=id%3A293"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/8efdc9eb-7be2-4eac-bcf2-2361430fd98f/relationships/uid?resourceVersion=id%3A293"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/8efdc9eb-7be2-4eac-bcf2-2361430fd98f/relationships/oe_content_content_owner?resourceVersion=id%3A293"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/8efdc9eb-7be2-4eac-bcf2-2361430fd98f/relationships/menu_link?resourceVersion=id%3A293"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/8efdc9eb-7be2-4eac-bcf2-2361430fd98f/menu_link?resourceVersion=id%3A293"
+            }
+          }
+        },
+        "oe_author": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/8efdc9eb-7be2-4eac-bcf2-2361430fd98f/relationships/oe_author?resourceVersion=id%3A293"
+            }
+          }
+        },
+        "oe_subject": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/8efdc9eb-7be2-4eac-bcf2-2361430fd98f/relationships/oe_subject?resourceVersion=id%3A293"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/8efdc9eb-7be2-4eac-bcf2-2361430fd98f?resourceVersion=id%3A293"
+        }
+      }
+    },
+    {
+      "type": "node--oe_page",
+      "id": "36ebbb0d-4c1f-49b3-b43c-4ef023f598e7",
+      "attributes": {
+        "drupal_internal__nid": 50,
+        "drupal_internal__vid": 297,
+        "langcode": "en",
+        "revision_timestamp": "2019-10-09T12:11:08+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Implementation at national level",
+        "created": "2019-10-09T11:50:34+00:00",
+        "changed": "2019-10-09T12:11:08+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": {
+          "alias": "/how-it-works/implementation-national-level",
+          "pid": 48,
+          "langcode": "en"
+        },
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "body": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder",
+          "summary": ""
+        },
+        "oe_related_links": [],
+        "oe_summary": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        },
+        "oe_teaser": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/36ebbb0d-4c1f-49b3-b43c-4ef023f598e7/relationships/node_type?resourceVersion=id%3A297"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/36ebbb0d-4c1f-49b3-b43c-4ef023f598e7/relationships/revision_uid?resourceVersion=id%3A297"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/36ebbb0d-4c1f-49b3-b43c-4ef023f598e7/relationships/uid?resourceVersion=id%3A297"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/36ebbb0d-4c1f-49b3-b43c-4ef023f598e7/relationships/oe_content_content_owner?resourceVersion=id%3A297"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/36ebbb0d-4c1f-49b3-b43c-4ef023f598e7/relationships/menu_link?resourceVersion=id%3A297"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/36ebbb0d-4c1f-49b3-b43c-4ef023f598e7/menu_link?resourceVersion=id%3A297"
+            }
+          }
+        },
+        "oe_author": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/36ebbb0d-4c1f-49b3-b43c-4ef023f598e7/relationships/oe_author?resourceVersion=id%3A297"
+            }
+          }
+        },
+        "oe_subject": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/36ebbb0d-4c1f-49b3-b43c-4ef023f598e7/relationships/oe_subject?resourceVersion=id%3A297"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/36ebbb0d-4c1f-49b3-b43c-4ef023f598e7?resourceVersion=id%3A297"
+        }
+      }
+    },
+    {
+      "type": "node--oe_page",
+      "id": "ab4bf846-d5f2-4c8d-996c-409a2bf254bc",
+      "attributes": {
+        "drupal_internal__nid": 52,
+        "drupal_internal__vid": 301,
+        "langcode": "en",
+        "revision_timestamp": "2019-10-09T12:11:24+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "History",
+        "created": "2019-10-09T11:53:06+00:00",
+        "changed": "2019-10-09T12:11:24+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": {
+          "alias": "/how-it-works/history",
+          "pid": 50,
+          "langcode": "en"
+        },
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "body": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder",
+          "summary": ""
+        },
+        "oe_related_links": [],
+        "oe_summary": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        },
+        "oe_teaser": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/ab4bf846-d5f2-4c8d-996c-409a2bf254bc/relationships/node_type?resourceVersion=id%3A301"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/ab4bf846-d5f2-4c8d-996c-409a2bf254bc/relationships/revision_uid?resourceVersion=id%3A301"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/ab4bf846-d5f2-4c8d-996c-409a2bf254bc/relationships/uid?resourceVersion=id%3A301"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/ab4bf846-d5f2-4c8d-996c-409a2bf254bc/relationships/oe_content_content_owner?resourceVersion=id%3A301"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/ab4bf846-d5f2-4c8d-996c-409a2bf254bc/relationships/menu_link?resourceVersion=id%3A301"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/ab4bf846-d5f2-4c8d-996c-409a2bf254bc/menu_link?resourceVersion=id%3A301"
+            }
+          }
+        },
+        "oe_author": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/ab4bf846-d5f2-4c8d-996c-409a2bf254bc/relationships/oe_author?resourceVersion=id%3A301"
+            }
+          }
+        },
+        "oe_subject": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/ab4bf846-d5f2-4c8d-996c-409a2bf254bc/relationships/oe_subject?resourceVersion=id%3A301"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/ab4bf846-d5f2-4c8d-996c-409a2bf254bc?resourceVersion=id%3A301"
+        }
+      }
+    },
+    {
+      "type": "node--oe_page",
+      "id": "adf0ccd4-3297-45a3-a3ef-1cb284e370de",
+      "attributes": {
+        "drupal_internal__nid": 45,
+        "drupal_internal__vid": 311,
+        "langcode": "en",
+        "revision_timestamp": "2019-10-09T12:15:53+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "How to start an initiative",
+        "created": "2019-10-09T11:43:34+00:00",
+        "changed": "2019-10-09T12:12:05+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": null,
+        "moderation_state": "published",
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": {
+          "alias": "/how-to-start",
+          "pid": 43,
+          "langcode": "en"
+        },
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "body": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder",
+          "summary": ""
+        },
+        "oe_related_links": [],
+        "oe_summary": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        },
+        "oe_teaser": {
+          "value": "<p>placeholder</p>\r\n",
+          "format": "basic_html",
+          "processed": "placeholder"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/adf0ccd4-3297-45a3-a3ef-1cb284e370de/relationships/node_type?resourceVersion=id%3A311"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/adf0ccd4-3297-45a3-a3ef-1cb284e370de/relationships/revision_uid?resourceVersion=id%3A311"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/adf0ccd4-3297-45a3-a3ef-1cb284e370de/relationships/uid?resourceVersion=id%3A311"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/adf0ccd4-3297-45a3-a3ef-1cb284e370de/relationships/oe_content_content_owner?resourceVersion=id%3A311"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/adf0ccd4-3297-45a3-a3ef-1cb284e370de/relationships/menu_link?resourceVersion=id%3A311"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/adf0ccd4-3297-45a3-a3ef-1cb284e370de/menu_link?resourceVersion=id%3A311"
+            }
+          }
+        },
+        "oe_author": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/adf0ccd4-3297-45a3-a3ef-1cb284e370de/relationships/oe_author?resourceVersion=id%3A311"
+            }
+          }
+        },
+        "oe_subject": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/adf0ccd4-3297-45a3-a3ef-1cb284e370de/relationships/oe_subject?resourceVersion=id%3A311"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page/adf0ccd4-3297-45a3-a3ef-1cb284e370de?resourceVersion=id%3A311"
+        }
+      }
+    }
+  ],
+  "jsonapi": {
+    "version": "1.0",
+    "meta": {
+      "links": {
+        "self": {
+          "href": "http://jsonapi.org/format/1.0/"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/ga/api/node/oe_page"
+    }
+  }
+}

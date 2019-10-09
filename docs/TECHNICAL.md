@@ -75,14 +75,21 @@ curl -X POST http://localhost:8000/__refresh
 Ensure values for the following environment variables:
 
 ```
-GATSBY_DRUPAL_API=Drupal site URL
+GATSBY_DRUPAL_API=https://remote-drupal.site
 GATSBY_DRUPAL_API_OFFLINE=http://localhost:3000
+DRUPAL_JSONAPI_OFFLINE_FOLDER=api/drupal/jsonapi
 ```
 
 ### Download
 
 ```sh
-yarn eci-cli api download
+yarn eci-cli api download --entitiesConfig config/entities.json --languagesConfig config/languages.json
+```
+
+Or be selective:
+
+```sh
+yarn eci-cli api download --entities node--oe_news,node--oe_page,menu --languages en,bg,fr
 ```
 
 ### Serve

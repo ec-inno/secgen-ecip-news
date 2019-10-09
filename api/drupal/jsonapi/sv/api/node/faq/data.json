@@ -1,0 +1,343 @@
+{
+  "data": [
+    {
+      "type": "node--faq",
+      "id": "edd378e3-9c5d-4ef7-9f22-370d258070fe",
+      "attributes": {
+        "drupal_internal__nid": 3,
+        "drupal_internal__vid": 11,
+        "langcode": "en",
+        "revision_timestamp": "2019-07-26T12:56:06+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "What is the difference between an ECI and a petition?",
+        "created": "2019-07-26T12:55:18+00:00",
+        "changed": "2019-07-26T12:56:06+00:00",
+        "promote": false,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": null,
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": null,
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "field_answer": {
+          "value": "The right to petition the European Parliament, which has already existed under the previous Treaties, differs substantially from the citizens' initiative introduced by the Lisbon Treaty.\r\nPetitions can be submitted by citizens of the Union as well by natural or legal persons residing or having their registered office in a member state, either individually or in association with other citizens or persons.\r\nPetitions must concern matters which come within the Union's fields of activity and which directly affect the petitioner(s) (e.g. a complaint).\r\nPetitions are addressed to the European Parliament in its role as the direct representative of citizens at EU level.\r\nWith petitions, there are no formal requirements for a minimum number of signatures or spread of support in multiple EU countries.\r\nThe citizens' initiative, on the other hand, enables citizens to call directly on the Commission to bring forward new proposals for legal acts - if they have sufficient support across the EU.\r\n\r\nMore on petitions to the European Parliament.",
+          "format": "plain_text",
+          "processed": "<p>The right to petition the European Parliament, which has already existed under the previous Treaties, differs substantially from the citizens&#039; initiative introduced by the Lisbon Treaty.<br />\nPetitions can be submitted by citizens of the Union as well by natural or legal persons residing or having their registered office in a member state, either individually or in association with other citizens or persons.<br />\nPetitions must concern matters which come within the Union&#039;s fields of activity and which directly affect the petitioner(s) (e.g. a complaint).<br />\nPetitions are addressed to the European Parliament in its role as the direct representative of citizens at EU level.<br />\nWith petitions, there are no formal requirements for a minimum number of signatures or spread of support in multiple EU countries.<br />\nThe citizens&#039; initiative, on the other hand, enables citizens to call directly on the Commission to bring forward new proposals for legal acts - if they have sufficient support across the EU.</p>\n<p>More on petitions to the European Parliament.</p>\n"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/edd378e3-9c5d-4ef7-9f22-370d258070fe/relationships/node_type?resourceVersion=id%3A11"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/edd378e3-9c5d-4ef7-9f22-370d258070fe/relationships/revision_uid?resourceVersion=id%3A11"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/edd378e3-9c5d-4ef7-9f22-370d258070fe/relationships/uid?resourceVersion=id%3A11"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/edd378e3-9c5d-4ef7-9f22-370d258070fe/relationships/oe_content_content_owner?resourceVersion=id%3A11"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/edd378e3-9c5d-4ef7-9f22-370d258070fe/relationships/menu_link?resourceVersion=id%3A11"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/edd378e3-9c5d-4ef7-9f22-370d258070fe/menu_link?resourceVersion=id%3A11"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/edd378e3-9c5d-4ef7-9f22-370d258070fe?resourceVersion=id%3A11"
+        }
+      }
+    },
+    {
+      "type": "node--faq",
+      "id": "787551c2-1697-4639-bf03-b61af56ca66b",
+      "attributes": {
+        "drupal_internal__nid": 4,
+        "drupal_internal__vid": 12,
+        "langcode": "en",
+        "revision_timestamp": "2019-07-26T12:56:06+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Are there citizens' initiatives within the member states?",
+        "created": "2019-07-26T12:55:51+00:00",
+        "changed": "2019-07-26T12:56:06+00:00",
+        "promote": false,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": null,
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": null,
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "field_answer": {
+          "value": "YES – in most member states, either national, regional or local ones. They differ considerably in scope and procedure.\r\n\r\nExamples of national citizens' initiatives \r\nAustria, Hungary, Italy, Latvia, Lithuania, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, the Netherlands.\r\n\r\nExamples of regional citizens' initiatives \r\nAustria, Germany, Spain, Sweden, the Netherlands.\r\n\r\nExamples of local citizens' initiatives \r\nBelgium, Germany, Hungary, Italy, Luxembourg, Slovenia, Spain, Sweden.\r\n\r\nOutside the EU \r\nSwitzerland, USA, etc.",
+          "format": "plain_text",
+          "processed": "<p>YES – in most member states, either national, regional or local ones. They differ considerably in scope and procedure.</p>\n<p>Examples of national citizens&#039; initiatives<br />\nAustria, Hungary, Italy, Latvia, Lithuania, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, the Netherlands.</p>\n<p>Examples of regional citizens&#039; initiatives<br />\nAustria, Germany, Spain, Sweden, the Netherlands.</p>\n<p>Examples of local citizens&#039; initiatives<br />\nBelgium, Germany, Hungary, Italy, Luxembourg, Slovenia, Spain, Sweden.</p>\n<p>Outside the EU<br />\nSwitzerland, USA, etc.</p>\n"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/787551c2-1697-4639-bf03-b61af56ca66b/relationships/node_type?resourceVersion=id%3A12"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/787551c2-1697-4639-bf03-b61af56ca66b/relationships/revision_uid?resourceVersion=id%3A12"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/787551c2-1697-4639-bf03-b61af56ca66b/relationships/uid?resourceVersion=id%3A12"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/787551c2-1697-4639-bf03-b61af56ca66b/relationships/oe_content_content_owner?resourceVersion=id%3A12"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/787551c2-1697-4639-bf03-b61af56ca66b/relationships/menu_link?resourceVersion=id%3A12"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/787551c2-1697-4639-bf03-b61af56ca66b/menu_link?resourceVersion=id%3A12"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/787551c2-1697-4639-bf03-b61af56ca66b?resourceVersion=id%3A12"
+        }
+      }
+    },
+    {
+      "type": "node--faq",
+      "id": "6919bc13-8095-4295-a640-f0ab9697ce4f",
+      "attributes": {
+        "drupal_internal__nid": 6,
+        "drupal_internal__vid": 18,
+        "langcode": "en",
+        "revision_timestamp": "2019-07-26T12:57:00+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "What information is needed to register a proposed initiative?",
+        "created": "2019-07-26T12:56:17+00:00",
+        "changed": "2019-07-26T12:57:00+00:00",
+        "promote": false,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": null,
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": null,
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "field_answer": {
+          "value": "the title of the proposed citizens' initiative (maximum 100 characters)\r\nthe subject-matter (maximum 200 characters)\r\na description of the objectives of the proposed citizens' initiative on which the Commission is invited to act (maximum 500 characters)\r\nthe provisions of the Treaties considered relevant by the organisers for the proposed action\r\npersonal details of the 7 members of the citizens' committee (full names, postal addresses, nationalities and dates of birth), indicating specifically the representative and the substitute as well as their E-mail addresses and telephone numbers\r\ndocuments that prove the full names, postal addresses, nationalities and dates of birth of each of the 7 members of the citizens' committee\r\nall sources of funding and support for the proposed citizens' initiative (known at the time of registration) worth more than €500 per year and per sponsor.\r\n\r\nOptionally, organisers may provide:\r\nthe address of their website for the proposed initiative (if any)\r\nan annex (max. 5 MB) with more detailed information on the subject, objectives and background to the proposed citizens' initiative\r\na draft legal act (max. 5 MB).",
+          "format": "plain_text",
+          "processed": "<p>the title of the proposed citizens&#039; initiative (maximum 100 characters)<br />\nthe subject-matter (maximum 200 characters)<br />\na description of the objectives of the proposed citizens&#039; initiative on which the Commission is invited to act (maximum 500 characters)<br />\nthe provisions of the Treaties considered relevant by the organisers for the proposed action<br />\npersonal details of the 7 members of the citizens&#039; committee (full names, postal addresses, nationalities and dates of birth), indicating specifically the representative and the substitute as well as their E-mail addresses and telephone numbers<br />\ndocuments that prove the full names, postal addresses, nationalities and dates of birth of each of the 7 members of the citizens&#039; committee<br />\nall sources of funding and support for the proposed citizens&#039; initiative (known at the time of registration) worth more than €500 per year and per sponsor.</p>\n<p>Optionally, organisers may provide:<br />\nthe address of their website for the proposed initiative (if any)<br />\nan annex (max. 5 MB) with more detailed information on the subject, objectives and background to the proposed citizens&#039; initiative<br />\na draft legal act (max. 5 MB).</p>\n"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/6919bc13-8095-4295-a640-f0ab9697ce4f/relationships/node_type?resourceVersion=id%3A18"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/6919bc13-8095-4295-a640-f0ab9697ce4f/relationships/revision_uid?resourceVersion=id%3A18"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/6919bc13-8095-4295-a640-f0ab9697ce4f/relationships/uid?resourceVersion=id%3A18"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/6919bc13-8095-4295-a640-f0ab9697ce4f/relationships/oe_content_content_owner?resourceVersion=id%3A18"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/6919bc13-8095-4295-a640-f0ab9697ce4f/relationships/menu_link?resourceVersion=id%3A18"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/6919bc13-8095-4295-a640-f0ab9697ce4f/menu_link?resourceVersion=id%3A18"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/6919bc13-8095-4295-a640-f0ab9697ce4f?resourceVersion=id%3A18"
+        }
+      }
+    },
+    {
+      "type": "node--faq",
+      "id": "0de54ccd-85fb-4c7f-87c5-484417101657",
+      "attributes": {
+        "drupal_internal__nid": 7,
+        "drupal_internal__vid": 19,
+        "langcode": "en",
+        "revision_timestamp": "2019-07-26T12:57:00+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Once the proposed initiative is registered, what information is published on this website?",
+        "created": "2019-07-26T12:56:44+00:00",
+        "changed": "2019-07-26T12:57:00+00:00",
+        "promote": false,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "moderation_state": null,
+        "oe_content_short_title": null,
+        "oe_content_navigation_title": null,
+        "oe_content_legacy_link": null,
+        "path": null,
+        "content_translation_source": "und",
+        "content_translation_outdated": false,
+        "field_answer": {
+          "value": "All the content related to the proposed initiative (title, subject-matter, objectives, provision(s) of the Treaties considered relevant by the organisers and any other information provided) and its sources of support and funding.\r\n\r\nAs regards the personal data of organisers, only their full names and the e-mail addresses of the contact persons (representative and substitute) are published.\r\n\r\nFor more details, see the privacy statement",
+          "format": "plain_text",
+          "processed": "<p>All the content related to the proposed initiative (title, subject-matter, objectives, provision(s) of the Treaties considered relevant by the organisers and any other information provided) and its sources of support and funding.</p>\n<p>As regards the personal data of organisers, only their full names and the e-mail addresses of the contact persons (representative and substitute) are published.</p>\n<p>For more details, see the privacy statement</p>\n"
+        }
+      },
+      "relationships": {
+        "node_type": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/0de54ccd-85fb-4c7f-87c5-484417101657/relationships/node_type?resourceVersion=id%3A19"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/0de54ccd-85fb-4c7f-87c5-484417101657/relationships/revision_uid?resourceVersion=id%3A19"
+            }
+          }
+        },
+        "uid": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/0de54ccd-85fb-4c7f-87c5-484417101657/relationships/uid?resourceVersion=id%3A19"
+            }
+          }
+        },
+        "oe_content_content_owner": {
+          "data": [],
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/0de54ccd-85fb-4c7f-87c5-484417101657/relationships/oe_content_content_owner?resourceVersion=id%3A19"
+            }
+          }
+        },
+        "menu_link": {
+          "data": null,
+          "links": {
+            "self": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/0de54ccd-85fb-4c7f-87c5-484417101657/relationships/menu_link?resourceVersion=id%3A19"
+            },
+            "related": {
+              "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/0de54ccd-85fb-4c7f-87c5-484417101657/menu_link?resourceVersion=id%3A19"
+            }
+          }
+        }
+      },
+      "links": {
+        "self": {
+          "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq/0de54ccd-85fb-4c7f-87c5-484417101657?resourceVersion=id%3A19"
+        }
+      }
+    }
+  ],
+  "jsonapi": {
+    "version": "1.0",
+    "meta": {
+      "links": {
+        "self": {
+          "href": "http://jsonapi.org/format/1.0/"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": {
+      "href": "https://webgate.acceptance.ec.europa.eu/multisite/ecip/sv/api/node/faq"
+    }
+  }
+}
